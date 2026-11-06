@@ -48,6 +48,7 @@ const ObjectHome = (props: PageHeaderVariantProps) => {
 								<div className="slds-page-header__name">
 									<Title
 										content={props.title}
+										level={props.titleLevel}
 										label={!props.trail ? props.label : null}
 									/>
 									{props.nameSwitcherDropdown ? (

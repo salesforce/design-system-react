@@ -21,7 +21,11 @@ const RelatedList = (props: PageHeaderVariantProps) => (
 				<MediaObject
 					body={
 						<div className="slds-page-header__name">
-							<Title content={props.title} label={props.label} />
+							<Title
+								content={props.title}
+								level={props.titleLevel}
+								label={props.label}
+							/>
 						</div>
 					}
 				/>

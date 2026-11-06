@@ -22,6 +22,8 @@ export interface PageHeaderVariantProps {
 	label?: ReactNode;
 	/** The title content */
 	title?: ReactNode;
+	/** The heading level of the title */
+	titleLevel?: 1 | 2 | 3 | 4 | 5 | 6;
 	/** Detail blocks (record-home variant) */
 	details?: PageHeaderDetail[];
 	/** Dropdown for the object-home name switcher */

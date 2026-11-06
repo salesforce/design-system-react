@@ -41,7 +41,7 @@ const Base = (props: PageHeaderVariantProps) => {
 					body={
 						<React.Fragment>
 							<div className="slds-page-header__name">
-								<Title content={props.title} />
+								<Title content={props.title} level={props.titleLevel} />
 							</div>
 							<Info content={props.info} variant={props.variant} />
 						</React.Fragment>

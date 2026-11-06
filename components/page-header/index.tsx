@@ -72,6 +72,8 @@ export interface PageHeaderProps {
 	onRenderControls?: () => ReactNode;
 	/** Title text or element */
 	title?: ReactNode;
+	/** Heading level of the title. Defaults to 1. */
+	titleLevel?: 1 | 2 | 3 | 4 | 5 | 6;
 	/** Breadcrumb trail */
 	trail?: ReactNode[];
 	/** Page header variant */
@@ -95,6 +97,7 @@ const PageHeader = ({
 	onRenderActions,
 	onRenderControls,
 	title,
+	titleLevel,
 	trail,
 	variant = 'base',
 }: PageHeaderProps): React.ReactElement => {
@@ -128,6 +131,7 @@ const PageHeader = ({
 		label,
 		nameSwitcherDropdown,
 		title,
+		titleLevel,
 		trail,
 		variant,
 	};

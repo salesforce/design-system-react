@@ -29,6 +29,10 @@ export interface PageHeaderTitleProps {
 	 * Sets whether the title will truncate its content responsively.
 	 */
 	truncate?: boolean;
+	/**
+	 * Heading level of the title element
+	 */
+	level?: 1 | 2 | 3 | 4 | 5 | 6;
 }
 
 class Title extends Component<PageHeaderTitleProps> {
@@ -54,9 +58,11 @@ class Title extends Component<PageHeaderTitleProps> {
 			}
 		);
 
+		const Heading = `h${this.props.level ?? 1}` as const;
+
 		return (
 			<div className="slds-page-header__name-title">
-				<h1>
+				<Heading>
 					<Label content={this.props.label} />
 					<span
 						className={classes}
@@ -69,7 +75,7 @@ class Title extends Component<PageHeaderTitleProps> {
 					>
 						{this.props.content}
 					</span>
-				</h1>
+				</Heading>
 			</div>
 		);
 	}

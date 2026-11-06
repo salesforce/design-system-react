@@ -336,3 +336,18 @@ describe('PageHeader title', () => {
 		}
 	);
 });
+
+describe('PageHeader titleLevel', () => {
+	it('renders an h1 by default and honors titleLevel', () => {
+		const { container, rerender } = render(<PageHeader title="Hi" />);
+		expect(container.querySelector('h1')).toHaveTextContent('Hi');
+		rerender(<PageHeader title="Hi" titleLevel={2} />);
+		expect(container.querySelector('h1')).toBeNull();
+		expect(container.querySelector('h2')).toHaveTextContent('Hi');
+	});
+
+	it('renders a title of 0', () => {
+		const { container } = render(<PageHeader title={0} />);
+		expect(container.querySelector('h1')).toHaveTextContent('0');
+	});
+});
