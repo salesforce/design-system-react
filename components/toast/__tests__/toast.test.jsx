@@ -200,3 +200,24 @@ describe('SLDSToast', () => {
 		});
 	});
 });
+
+describe('Toast refs', () => {
+	it('forwards ref to the toast root and ToastContainer ref to its root', () => {
+		const toastRef = { current: null };
+		const containerRef = { current: null };
+		const { container } = render(
+			<IconSettings iconPath="/assets/icons">
+				<ToastContainer ref={containerRef} className="c">
+					<Toast ref={toastRef} labels={{ heading: 'h' }} variant="info" />
+				</ToastContainer>
+			</IconSettings>
+		);
+		expect(containerRef.current).toBe(
+			container.querySelector('.slds-notify_container')
+		);
+		expect(containerRef.current).toHaveClass('c');
+		expect(toastRef.current).toBe(
+			container.querySelector('.slds-notify_toast')
+		);
+	});
+});

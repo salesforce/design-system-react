@@ -3,15 +3,15 @@
 
 // # Toast Container Component
 
-import React, { type ReactNode } from 'react';
-import classNames from '../../utilities/class-names';
+import React, { forwardRef, type ReactNode } from 'react';
+import classNames from 'classnames';
 import { TOAST_CONTAINER } from '../../utilities/constants';
 
 export interface ToastContainerProps {
 	/**
-	 * CSS classes to be added to tag with `.slds-notify_container`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
+	 * CSS classes to be added to tag with `.slds-notify_container`.
 	 */
-	className?: unknown[] | Record<string, unknown> | string;
+	className?: string | string[] | Record<string, boolean>;
 	/**
 	 * Toast components
 	 */
@@ -19,24 +19,19 @@ export interface ToastContainerProps {
 }
 
 /**
- * A fixed container for toast banners.
+ * A fixed container for toast banners. `ref` is the root element.
  */
+const ToastContainer = forwardRef<HTMLDivElement, ToastContainerProps>(
+	({ children, className }, ref) => (
+		<div
+			className={classNames('slds-notify_container', className as string)}
+			ref={ref}
+		>
+			{children}
+		</div>
+	)
+);
 
-class ToastContainer extends React.Component<ToastContainerProps> {
-	static displayName = TOAST_CONTAINER;
-
-	render() {
-		return (
-			<div
-				className={classNames(
-					'slds-notify_container',
-					this.props.className as string
-				)}
-			>
-				{this.props.children}
-			</div>
-		);
-	}
-}
+ToastContainer.displayName = TOAST_CONTAINER;
 
 export default ToastContainer;

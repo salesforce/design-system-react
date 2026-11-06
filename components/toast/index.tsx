@@ -2,6 +2,8 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 import React, {
+	forwardRef,
+	type ForwardedRef,
 	useState,
 	useEffect,
 	useRef,
@@ -120,17 +122,20 @@ const defaultIcons: Record<ToastVariant, ReactNode> = {
 /**
  * Toast serves as a feedback & confirmation mechanism after the user takes an action.
  */
-const Toast = ({
-	assistiveText: propAssistiveText,
-	className,
-	duration,
-	icon: propIcon,
-	labels: propLabels,
-	onClickHeadingLink,
-	onRequestClose,
-	style,
-	variant = 'info',
-}: ToastProps): React.ReactElement => {
+const ToastInner = (
+	{
+		assistiveText: propAssistiveText,
+		className,
+		duration,
+		icon: propIcon,
+		labels: propLabels,
+		onClickHeadingLink,
+		onRequestClose,
+		style,
+		variant = 'info',
+	}: ToastProps,
+	forwardedRef: ForwardedRef<HTMLDivElement>
+): React.ReactElement => {
 	const [isInitialRender, setIsInitialRender] = useState(true);
 	const toastRef = useRef<HTMLDivElement | null>(null);
 	const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -179,13 +184,18 @@ const Toast = ({
 	const saveToastRef = useCallback(
 		(element: HTMLDivElement | null) => {
 			toastRef.current = element;
+			if (typeof forwardedRef === 'function') {
+				forwardedRef(element);
+			} else if (forwardedRef) {
+				forwardedRef.current = element;
+			}
 			if (isInitialRender && element) {
 				DOMElementFocus.storeActiveElement();
 				element.focus();
 				setIsInitialRender(false);
 			}
 		},
-		[isInitialRender]
+		[isInitialRender, forwardedRef]
 	);
 
 	// Get the icon to display
@@ -255,6 +265,8 @@ const Toast = ({
 		</div>
 	);
 };
+
+const Toast = forwardRef<HTMLDivElement, ToastProps>(ToastInner);
 
 Toast.displayName = TOAST;
 
