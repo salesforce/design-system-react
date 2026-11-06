@@ -278,6 +278,8 @@ class SimpleDataTable extends React.Component<
 
 	scrollerRef: HTMLElement | null;
 
+	resizeObserver?: ResizeObserver;
+
 	// Map of cells to interactive elements within that cell
 	interactiveElements: Record<number, Record<number, string[]>>;
 
@@ -381,8 +383,10 @@ class SimpleDataTable extends React.Component<
 	getTableContext = memoize(
 		(
 			state: SimpleDataTableState,
-			isKeyboardNavigation: boolean | undefined
+			isKeyboardNavigation: boolean | undefined,
+			isGrid: boolean
 		) => ({
+			isGrid,
 			activeCell: state.activeCell,
 			activeElement: state.activeElement,
 			mode: state.mode,
@@ -532,7 +536,24 @@ class SimpleDataTable extends React.Component<
 			);
 		} else {
 			const method = attach ? 'addEventListener' : 'removeEventListener';
-			if (canUseEventListeners) {
+			if (typeof ResizeObserver !== 'undefined') {
+				// Track the scroller and table rather than the window, so headers
+				// also follow container resizes that leave the window alone.
+				this.resizeObserver?.disconnect();
+				this.resizeObserver = undefined;
+				if (attach) {
+					this.resizeObserver = new ResizeObserver(() => {
+						this.resizeFixedHeaders();
+						this.loadMoreIfNeeded();
+					});
+					if (this.scrollerRef) {
+						this.resizeObserver.observe(this.scrollerRef);
+					}
+					if (this.tableRef) {
+						this.resizeObserver.observe(this.tableRef);
+					}
+				}
+			} else if (canUseEventListeners) {
 				window[method]('resize', this.resizeFixedHeaders as EventListener);
 				window[method]('resize', this.loadMoreIfNeeded as EventListener);
 			}
@@ -880,12 +901,19 @@ class SimpleDataTable extends React.Component<
 			select: canSelectRows ? this.headerRefs.select : [],
 		};
 
+		// Arrow-key cell navigation only runs with both props, so only then is
+		// the table a grid.
+		const isGrid = Boolean(
+			this.props.fixedLayout && this.props.keyboardNavigation
+		);
+
 		let component = (
 			<React.Fragment>
 				<TableContext.Provider
 					value={this.getTableContext(
 						this.state,
-						this.props.keyboardNavigation
+						this.props.keyboardNavigation,
+						isGrid
 					)}
 				>
 					<table
@@ -895,7 +923,6 @@ class SimpleDataTable extends React.Component<
 							{
 								'slds-table_fixed-layout': this.props.fixedLayout,
 								'slds-table_header-fixed': this.props.fixedHeader,
-								'slds-table_resizable-cols': this.props.fixedLayout,
 								'slds-table_bordered': !this.props.unborderedRow,
 								'slds-table_cell-buffer':
 									!this.props.fixedLayout && !this.props.unbufferedCell,
@@ -915,7 +942,7 @@ class SimpleDataTable extends React.Component<
 								this.tableRef = node;
 							}
 						}}
-						role={this.props.fixedLayout ? 'grid' : undefined}
+						role={isGrid ? 'grid' : undefined}
 						onBlur={(event) => {
 							if (
 								this.tableRef &&

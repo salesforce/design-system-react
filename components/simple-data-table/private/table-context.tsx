@@ -6,6 +6,8 @@ export interface ActiveCell {
 }
 
 export interface TableContextValue {
+	/** The table has `role="grid"` (`fixedLayout` with `keyboardNavigation`) */
+	isGrid: boolean;
 	activeCell: ActiveCell;
 	activeElement: string | null;
 	mode: 'navigation' | 'actionable' | null;
@@ -23,6 +25,7 @@ export interface TableContextValue {
 }
 
 const defaultValue: TableContextValue = {
+	isGrid: false,
 	activeCell: { rowIndex: 0, columnIndex: 0 },
 	activeElement: null,
 	mode: null,
