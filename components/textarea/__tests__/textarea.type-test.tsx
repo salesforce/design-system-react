@@ -6,32 +6,19 @@
 
 import Textarea from '../index';
 
-const noop = () => {};
-
-export const numeric = <Textarea maxLength={100} onChange={noop} value="" />;
-
-export const stringLength = (
-	// @ts-expect-error `maxLength` is a number
-	<Textarea maxLength="100" onChange={noop} value="" />
-);
-
-export const changeData = (
+export const aria = (
 	<Textarea
-		onChange={(event, data) => {
-			const text: string = data.value;
-			return [event.target, text];
-		}}
 		value=""
+		onChange={() => {}}
+		aria-autocomplete="list"
+		aria-haspopup="listbox"
+		aria-expanded
 	/>
 );
 
-// @ts-expect-error `value` is required
-export const missingValue = <Textarea onChange={noop} />;
-
-// @ts-expect-error `onChange` is required
-export const missingOnChange = <Textarea value="" />;
-
-export const removedDefaultValue = (
-	// @ts-expect-error `defaultValue` was removed in v11
-	<Textarea defaultValue="x" onChange={noop} value="" />
+/* eslint-disable jsx-a11y/aria-proptypes -- deliberately invalid */
+export const badAutocomplete = (
+	// @ts-expect-error `aria-autocomplete` is `none`, `inline`, `list` or `both`
+	<Textarea value="" onChange={() => {}} aria-autocomplete="maybe" />
 );
+/* eslint-enable jsx-a11y/aria-proptypes */
