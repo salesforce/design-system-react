@@ -9,9 +9,6 @@ import React from 'react';
 // joining classNames together.'
 import classNames from 'classnames';
 
-// ### isFunction
-import isFunction from 'lodash.isfunction';
-
 import { VERTICAL_NAVIGATION_ITEM } from '../../../utilities/constants';
 import { type NavigationItem, type NavigationSelectData } from '../index';
 
@@ -49,11 +46,7 @@ const Item = ({
 		'aria-describedby': categoryId,
 		'aria-current': isSelected ? ('page' as const) : undefined,
 		onClick: (event: React.MouseEvent<ItemElement>) => {
-			if (isFunction(onSelect)) {
-				onSelect(event, {
-					item,
-				});
-			}
+			onSelect?.(event, { item });
 		},
 	};
 	const contents = (
