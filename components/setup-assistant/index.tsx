@@ -29,9 +29,9 @@ export interface StepToggleEventData {
 export interface SetupAssistantProps {
 	/** `SetupAssistantStep` elements. Other children are ignored. */
 	children?: ChildrenOf<StepProps>;
-	/** CSS classes */
+	/** CSS classes for the root element (the `section` with `isCard`, else the `ol`) */
 	className?: string | string[] | Record<string, boolean>;
-	/** HTML id */
+	/** HTML id of the root element */
 	id?: string;
 	/** Whether the assistant has card styling */
 	isCard?: boolean;
@@ -58,8 +58,11 @@ const SetupAssistant = ({
 
 	const steps = (
 		<ol
-			id={id}
-			className={classNames('slds-setup-assistant', className as string)}
+			id={isCard ? undefined : id}
+			className={classNames(
+				'slds-setup-assistant',
+				isCard ? undefined : (className as string)
+			)}
 		>
 			{React.Children.map(children, (child, i) => {
 				if (!isElementOfType<StepProps>(child, SetupAssistantStep)) {
@@ -79,7 +82,7 @@ const SetupAssistant = ({
 
 	if (isCard) {
 		return (
-			<section className="slds-card">
+			<section id={id} className={classNames('slds-card', className as string)}>
 				<header className="slds-theme_shade slds-p-around_medium slds-m-bottom_small">
 					{progressBar}
 				</header>

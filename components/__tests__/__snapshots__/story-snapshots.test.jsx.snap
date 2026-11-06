@@ -6217,7 +6217,7 @@ exports[`Story HTML snapshots > SetupAssistant > ExpandableSteps 1`] = `
 
 exports[`Story HTML snapshots > SetupAssistant > WithCard 1`] = `
 "<div class="slds-p-around_medium">
-  <section class="slds-card">
+  <section id="_R_0_" class="slds-card">
     <header class="slds-theme_shade slds-p-around_medium slds-m-bottom_small">
       <div>
         <p class="slds-m-bottom_small"><strong>2 of 4 steps completed</strong></p>
@@ -6226,7 +6226,7 @@ exports[`Story HTML snapshots > SetupAssistant > WithCard 1`] = `
         </div>
       </div>
     </header>
-    <ol id="_R_0_" class="slds-setup-assistant">
+    <ol class="slds-setup-assistant">
       <li class="slds-setup-assistant__item" id="slds-snapshot-id-1">
         <article class="slds-setup-assistant__step">
           <div class="slds-setup-assistant__step-summary">

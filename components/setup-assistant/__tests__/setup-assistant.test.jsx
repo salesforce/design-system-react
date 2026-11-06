@@ -322,3 +322,23 @@ describe('SLDS Setup Assistant', () => {
 		});
 	});
 });
+
+describe('SetupAssistant root', () => {
+	it('puts id and className on the ol outside card mode', () => {
+		const { container } = render(<SetupAssistant id="sa" className="x" />);
+		expect(container.firstChild.tagName).toBe('OL');
+		expect(container.firstChild).toHaveAttribute('id', 'sa');
+		expect(container.firstChild).toHaveClass('x');
+	});
+
+	it('puts id and className on the section in card mode', () => {
+		const { container } = render(
+			<SetupAssistant isCard id="sa" className="x" />
+		);
+		const root = container.firstChild;
+		expect(root.tagName).toBe('SECTION');
+		expect(root).toHaveAttribute('id', 'sa');
+		expect(root).toHaveClass('x', 'slds-card');
+		expect(container.querySelectorAll('#sa')).toHaveLength(1);
+	});
+});
