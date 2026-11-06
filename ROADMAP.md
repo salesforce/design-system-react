@@ -157,6 +157,20 @@ moves to `latest`.
    `listItemRenderer`), split-view listbox `renderListItem` (replaces `listItem`). Still open:
    the tree heading XOR as a union type (theme 7), and `errorText` on input, checkbox and
    combobox.
+   **Done (labels-naming):** accessibility and native-name items only. Heading levels: page-header
+   `titleLevel`, tree `headingLevel`, visual-picker link `headingLevel`. Accessible names:
+   vertical-navigation `assistiveText.label` (nav landmark), visual-picker `labels.label` /
+   `assistiveText.label`, radio-group `hasError` with a linked error id. Native names: popover
+   `aria-labelledby`, input keeps `required` and deprecates `aria-required`. progress-indicator
+   groups step tooltip props in `tooltip` (theme 7's union needs it). split-view `sortDirection`
+   is `'ascending' | 'descending'` (theme 7 types it). builder-header, pill-container and
+   trial-bar needed no change.
+   **Deferred past GA (2026-11-08 scope cut, additive i18n moves):** avatar, button-stateful
+   `states`, card, expandable-section, filter, panel filtering, progress-ring and welcome-mat
+   `unitsCompleted` English defaults into `labels`/`assistiveText`.
+   **Cut (2026-11-08 scope cut):** the simple-data-table `selectionMode`, toast `autoCloseDelay`
+   and tabs `errorIcon` renames (each would add a deprecated twin), and dropping tooltip's default
+   `content`.
 7. **Typing the contract.** Discriminated unions (tree nodes, welcome-mat variants, combobox,
    menu-dropdown and color-picker variants/options), no index signatures
    (vertical-navigation, split-view), textarea `maxLength` as a number.
