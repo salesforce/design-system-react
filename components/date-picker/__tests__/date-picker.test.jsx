@@ -809,6 +809,56 @@ describe('SLDSDatepicker', () => {
 		});
 	});
 
+	describe('input prop', () => {
+		it("calls the input's onChange and inputRef alongside the picker's own", () => {
+			const onChange = vi.fn();
+			const inputOnChange = vi.fn();
+			const inputRef = vi.fn();
+			const objectRef = { current: null };
+
+			const { container, rerender } = render(
+				<DemoComponent
+					input={<Input onChange={inputOnChange} inputRef={inputRef} />}
+					onChange={onChange}
+				/>
+			);
+			const input = container.querySelector('input');
+
+			expect(inputRef).toHaveBeenCalledWith(input);
+			fireEvent.change(input, { target: { value: '2/3/2010' } });
+			expect(inputOnChange).toHaveBeenCalledTimes(1);
+			expect(onChange).toHaveBeenCalledTimes(1);
+			expect(onChange.mock.calls[0][1].formattedDate).toBe('2/3/2010');
+
+			rerender(
+				<DemoComponent
+					input={<Input inputRef={objectRef} />}
+					onChange={onChange}
+				/>
+			);
+			expect(objectRef.current).toBe(container.querySelector('input'));
+		});
+
+		it('returns focus to the input on close when the input has its own inputRef', () => {
+			const { container } = render(
+				<DemoComponent input={<Input inputRef={() => {}} />} />
+			);
+			const input = container.querySelector('input');
+
+			fireEvent.click(container.querySelector('.slds-input__icon'));
+			expect(container.querySelector('.datepicker__month')).toBeInTheDocument();
+			fireEvent.keyDown(container.querySelector('.datepicker__month'), {
+				key: 'Escape',
+				keyCode: KEYS.ESCAPE,
+				which: KEYS.ESCAPE,
+			});
+			expect(
+				container.querySelector('.datepicker__month')
+			).not.toBeInTheDocument();
+			expect(document.activeElement).toBe(input);
+		});
+	});
+
 	describe('Disabled', () => {
 		it('onOpen is not called when disabled', () => {
 			const triggerClicked = vi.fn();
