@@ -30,7 +30,7 @@ describe('SLDSVerticalNavigation', () => {
 
 				// Find items described by this header
 				const links = container.querySelectorAll(
-					`a[aria-describedby="sample-navigation-${categoryId}"]`
+					`[aria-describedby="sample-navigation-${categoryId}"]`
 				);
 				expect(links).toHaveLength(itemCount);
 			});
@@ -68,7 +68,7 @@ describe('SLDSVerticalNavigation', () => {
 			expect(selectedLink).toHaveAttribute('aria-current', 'page');
 
 			// Other links should not have aria-current
-			const otherLink = container.querySelector('a[data-id="recent_reports"]');
+			const otherLink = container.querySelector('[data-id="recent_reports"]');
 			expect(otherLink).not.toHaveAttribute('aria-current');
 		});
 	});
@@ -130,7 +130,9 @@ describe('SLDSVerticalNavigation', () => {
 			expect(onSelect).toHaveBeenCalledTimes(1);
 			expect(onSelect.mock.calls[0][1].item.id).toBe('my_folders');
 			expect(
-				container.querySelector('li.slds-is-active a').getAttribute('data-id')
+				container
+					.querySelector('li.slds-is-active .slds-nav-vertical__action')
+					.getAttribute('data-id')
 			).toBe('recent_reports');
 		});
 
@@ -153,7 +155,9 @@ describe('SLDSVerticalNavigation', () => {
 			await userEvent.click(container.querySelector('a[data-id="my_folders"]'));
 
 			expect(
-				container.querySelector('li.slds-is-active a').getAttribute('data-id')
+				container
+					.querySelector('li.slds-is-active .slds-nav-vertical__action')
+					.getAttribute('data-id')
 			).toBe('my_folders');
 		});
 
@@ -197,7 +201,7 @@ describe('SLDSVerticalNavigation', () => {
 
 			// Each item should have a link with proper class
 			items.forEach((item) => {
-				const link = item.querySelector('a.slds-nav-vertical__action');
+				const link = item.querySelector('.slds-nav-vertical__action');
 				expect(link).toBeInTheDocument();
 			});
 		});
@@ -208,12 +212,19 @@ describe('SLDSVerticalNavigation', () => {
 			// The "my_folders" item has a url in the sample data
 			const myFoldersLink = container.querySelector('a[data-id="my_folders"]');
 			expect(myFoldersLink).toHaveAttribute('href', 'http://www.google.com');
+		});
 
-			// Items without url should have href="#"
-			const recentReportsLink = container.querySelector(
-				'a[data-id="recent_reports"]'
+		it('renders items without url as buttons', () => {
+			const { container } = render(
+				<VerticalNavigation {...defaultProps} selectedId="recent_reports" />
 			);
-			expect(recentReportsLink).toHaveAttribute('href', '#');
+
+			expect(container.querySelector('[href="#"]')).toBeNull();
+			const recent = container.querySelector('[data-id="recent_reports"]');
+			expect(recent.tagName).toBe('BUTTON');
+			expect(recent).toHaveAttribute('type', 'button');
+			expect(recent).toHaveClass('slds-nav-vertical__action');
+			expect(recent).toHaveAttribute('aria-current', 'page');
 		});
 	});
 
@@ -245,8 +256,10 @@ describe('SLDSVerticalNavigation', () => {
 				<VerticalNavigation {...defaultProps} onSelect={onSelect} />
 			);
 
-			const link = container.querySelector('a[data-id="recent_reports"]');
-			await userEvent.click(link);
+			const button = container.querySelector(
+				'button[data-id="recent_reports"]'
+			);
+			await userEvent.click(button);
 
 			expect(onSelect).toHaveBeenCalledTimes(1);
 			expect(onSelect).toHaveBeenCalledWith(
@@ -260,20 +273,17 @@ describe('SLDSVerticalNavigation', () => {
 			);
 		});
 
-		it('prevents default for items without url', async () => {
-			const onSelect = vi.fn((event) => {
-				// Check if preventDefault was called
-				expect(event.defaultPrevented).toBe(true);
-			});
-
+		it('selects items without url from the keyboard', async () => {
+			const onSelect = vi.fn();
 			const { container } = render(
 				<VerticalNavigation {...defaultProps} onSelect={onSelect} />
 			);
 
-			const link = container.querySelector('a[data-id="recent_reports"]');
-			await userEvent.click(link);
+			container.querySelector('button[data-id="recent_reports"]').focus();
+			await userEvent.keyboard('{Enter}');
+			await userEvent.keyboard(' ');
 
-			expect(onSelect).toHaveBeenCalled();
+			expect(onSelect).toHaveBeenCalledTimes(2);
 		});
 	});
 
