@@ -50,7 +50,7 @@ import type { SelectedListBoxOption } from '../pill-container/private/selected-l
 import generateId from '../../utilities/generate-id';
 import componentDoc from './component.json';
 import { IconSettingsContext } from '../icon-settings';
-import { useControllableState } from '../../utilities/hooks';
+import { useControllableState, useLatestRef } from '../../utilities/hooks';
 
 let currentOpenDropdown: { handleClose: () => void } | undefined;
 const documentDefined = typeof document !== 'undefined';
@@ -367,8 +367,6 @@ const defaultLabels: Required<ComboboxLabels> = {
 	inputIconTitle: '',
 };
 
-const defaultEvents: ComboboxEvents = {};
-
 // ===== Component =====
 
 const Combobox: React.FC<ComboboxProps> = (props) => {
@@ -383,7 +381,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 		disabled,
 		entityCombobox,
 		errorText,
-		events: eventsProp = {},
+		events: eventsProp,
 		fieldLevelHelpTooltip,
 		hasDeselect,
 		hasInputSpinner,
@@ -419,7 +417,8 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 	// Merge with defaults
 	const assistiveText = assign({}, defaultAssistiveText, assistiveTextProp);
 	const labels = assign({}, defaultLabels, labelsProp);
-	const events = assign({}, defaultEvents, eventsProp);
+	// Handlers read the latest `events`, so a new `events` object each render doesn't rebuild them
+	const eventsRef = useLatestRef<ComboboxEvents>(eventsProp ?? {});
 
 	// Context
 	const iconSettingsContext = useContext(IconSettingsContext);
@@ -589,14 +588,14 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 					}
 				}
 
-				if (events.onRequestClose) {
-					events.onRequestClose(event as React.SyntheticEvent, {});
+				if (eventsRef.current.onRequestClose) {
+					eventsRef.current.onRequestClose(event as React.SyntheticEvent, {});
 				}
 
 				setIsOpen(false);
 			}
 		},
-		[isOpenControlled, variant, popover, events, setIsOpen]
+		[isOpenControlled, variant, popover, eventsRef, setIsOpen]
 	);
 
 	// Called by the menu `Dialog` (or `Popover`) once it has rendered, so
@@ -605,8 +604,8 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 		(event?: React.SyntheticEvent, data?: Record<string, unknown>) => {
 			currentOpenDropdown = { handleClose: requestClose };
 
-			if (events.onOpen) {
-				events.onOpen(event, data || {});
+			if (eventsRef.current.onOpen) {
+				eventsRef.current.onOpen(event, data || {});
 			}
 
 			if (variant === 'readonly') {
@@ -624,7 +623,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 				}
 			}
 		},
-		[requestClose, events, variant, getOptions, selection]
+		[requestClose, eventsRef, variant, getOptions, selection]
 	);
 
 	// Every internal open path (typing, clicking the input, Down, Enter) goes
@@ -633,13 +632,13 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 	const requestOpen = useCallback(
 		(event?: React.SyntheticEvent) => {
 			if (!isOpen) {
-				if (events.onRequestOpen) {
-					events.onRequestOpen(event, {});
+				if (eventsRef.current.onRequestOpen) {
+					eventsRef.current.onRequestOpen(event, {});
 				}
 				setIsOpen(true);
 			}
 		},
-		[isOpen, events, setIsOpen]
+		[isOpen, eventsRef, setIsOpen]
 	);
 
 	const requestOpenMenu = useCallback(
@@ -679,7 +678,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 				const actionItem = option[ACTION_ITEM];
 				const actionEvent = event as React.MouseEvent | React.KeyboardEvent;
 				actionItem.onClick?.(actionEvent, { option: actionItem });
-				events.onSelectActionItem?.(actionEvent, {
+				eventsRef.current.onSelectActionItem?.(actionEvent, {
 					option: actionItem,
 					value: value ?? '',
 				});
@@ -703,13 +702,21 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 				newSelection = reject(selection, option);
 			}
 
-			if (events.onSelect) {
-				events.onSelect(event, { selection: newSelection });
+			if (eventsRef.current.onSelect) {
+				eventsRef.current.onSelect(event, { selection: newSelection });
 			}
 
 			requestClose(event);
 		},
-		[isSelected, multiple, deselectId, selection, events, requestClose, value]
+		[
+			isSelected,
+			multiple,
+			deselectId,
+			selection,
+			eventsRef,
+			requestClose,
+			value,
+		]
 	);
 
 	const handleInputBlur = useCallback(
@@ -729,30 +736,30 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 				}
 			}, 200);
 
-			if (events.onBlur) {
-				events.onBlur(event);
+			if (eventsRef.current.onBlur) {
+				eventsRef.current.onBlur(event);
 			}
 		},
-		[getId, popover, requestClose, events]
+		[getId, popover, requestClose, eventsRef]
 	);
 
 	const handleInputChange = useCallback(
 		(event: React.ChangeEvent<HTMLInputElement>) => {
 			requestOpenMenu(event);
-			if (events.onChange) {
-				events.onChange(event, { value: event.target.value });
+			if (eventsRef.current.onChange) {
+				eventsRef.current.onChange(event, { value: event.target.value });
 			}
 		},
-		[requestOpenMenu, events]
+		[requestOpenMenu, eventsRef]
 	);
 
 	const handleInputFocus = useCallback(
 		(event: React.FocusEvent) => {
-			if (events.onFocus) {
-				events.onFocus(event, {});
+			if (eventsRef.current.onFocus) {
+				eventsRef.current.onFocus(event, {});
 			}
 		},
-		[events]
+		[eventsRef]
 	);
 
 	const handleInputSubmit = useCallback(
@@ -790,9 +797,9 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 			} else if (
 				!predefinedOptionsOnly &&
 				(event.target as HTMLInputElement).value !== '' &&
-				events.onSubmit
+				eventsRef.current.onSubmit
 			) {
-				events.onSubmit(event, {
+				eventsRef.current.onSubmit(event, {
 					value: (event.target as HTMLInputElement).value,
 				});
 			}
@@ -807,7 +814,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 			handleSelect,
 			selection,
 			predefinedOptionsOnly,
-			events,
+			eventsRef,
 		]
 	);
 
@@ -1016,13 +1023,13 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 				setListboxHasFocus(true);
 			}
 
-			if (events.onRequestRemoveSelectedOption) {
-				events.onRequestRemoveSelectedOption(event, {
+			if (eventsRef.current.onRequestRemoveSelectedOption) {
+				eventsRef.current.onRequestRemoveSelectedOption(event, {
 					selection: reject(selection, option),
 				});
 			}
 		},
-		[selection, variant, multiple, events]
+		[selection, variant, multiple, eventsRef]
 	);
 
 	const handleRequestFocusSelectedListbox = useCallback(
@@ -1082,8 +1089,8 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 				) {
 					currentOpenDropdown = undefined;
 				}
-				if (events.onClose) {
-					events.onClose(closeEventRef.current, {});
+				if (eventsRef.current.onClose) {
+					eventsRef.current.onClose(closeEventRef.current, {});
 				}
 			}
 		}
