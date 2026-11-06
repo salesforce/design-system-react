@@ -54,7 +54,8 @@ describe('Card', () => {
 		);
 	const getFooter = (container) =>
 		getCard(container).querySelector(`.${footerCssClasses.base}`);
-	const getEmptyBodyHeading = (container) => getBody(container).querySelector('h3');
+	const getEmptyBodyHeading = (container) =>
+		getBody(container).querySelector('h3');
 
 	describe('Default Structure', () => {
 		it('has a header', () => {
@@ -276,7 +277,7 @@ describe('Card', () => {
 			...requiredProps,
 			bodyClassName: 'this-is-a-custom-body-class',
 			className: 'this-is-a-custom-card-class',
-			empty: true,
+			isEmpty: true,
 		};
 
 		it('has a header', () => {

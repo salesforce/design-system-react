@@ -8,6 +8,7 @@ import Body from './private/body';
 import Footer from './private/footer';
 import Empty from './empty';
 import { CARD } from '../../utilities/constants';
+import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import getAriaProps from '../../utilities/get-aria-props';
 import getDataProps from '../../utilities/get-data-props';
 
@@ -31,12 +32,14 @@ export interface CardProps {
 	children?: ReactNode;
 	/** CSS classes for the card */
 	className?: string | string[] | Record<string, boolean>;
-	/** Empty state content (true for default, or custom node) */
-	empty?: boolean | ReactNode;
+	/** Custom empty state content. For the default empty state, use `isEmpty`. */
+	empty?: ReactNode;
 	/** Filter input in the header */
 	filter?: ReactNode;
 	/** Footer content (often pagination) */
 	footer?: ReactNode;
+	/** Show the default empty state (heading from `heading`). `empty` takes precedence. */
+	isEmpty?: boolean;
 	/** Hide the header completely */
 	hasNoHeader?: boolean;
 	/**
@@ -78,6 +81,7 @@ const Card = ({
 	heading = 'Related Items',
 	icon,
 	id,
+	isEmpty = false,
 	style,
 	...rest
 }: CardProps): React.ReactElement => {
@@ -89,8 +93,14 @@ const Card = ({
 	const headingId = id ? id + idSuffixes.heading : undefined;
 	const headerActionsId = id ? id + idSuffixes.headerActions : undefined;
 
+	deprecatedProperty(
+		'Card',
+		empty === true ? true : undefined,
+		'empty={true}',
+		'isEmpty'
+	);
 	let resolvedEmpty: ReactNode = empty;
-	if (resolvedEmpty === true) {
+	if (resolvedEmpty === true || (isEmpty && !empty)) {
 		// Can be overridden by passing in a node to the empty prop
 		resolvedEmpty = <Empty id={id} heading={heading} />;
 	}
