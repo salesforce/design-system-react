@@ -13,6 +13,12 @@ const steps = [
 	{ id: 4, label: 'label #5' },
 ];
 
+// A step is completed before the selected one, and disabled beyond the next one
+const getStatus = (index, selectedId) => {
+	if (index < selectedId) return 'completed';
+	return index > selectedId + 1 ? 'disabled' : undefined;
+};
+
 /*
  * This example allows you to select the next step and only the next step. Typically, Progress Indicator should be paired with a modal and form errors should be explained outside of this component.
  */
@@ -21,20 +27,13 @@ class Example extends React.Component {
 		super(props);
 		this.state = {
 			steps,
-			completedSteps: [],
-			disabledSteps: steps.slice(2, steps.length),
-			selectedStep: steps[0],
+			selectedStep: 0,
 		};
 	}
 
 	handleStepEvent = (event, data) => {
 		this.setState({
-			completedSteps: steps.slice(0, data.step.id),
-			disabledSteps:
-				data.step.id < steps.length
-					? steps.slice(data.step.id + 2, steps.length)
-					: [],
-			selectedStep: data.step,
+			selectedStep: data.step.id,
 		});
 	};
 
@@ -50,11 +49,12 @@ class Example extends React.Component {
 				>
 					<ProgressIndicator
 						id="vertical-progress-indicator"
-						completedSteps={this.state.completedSteps}
-						disabledSteps={this.state.disabledSteps}
 						onStepClick={this.handleStepEvent}
 						orientation="vertical"
-						steps={this.state.steps}
+						steps={this.state.steps.map((step, index) => ({
+							...step,
+							status: getStatus(index, this.state.selectedStep),
+						}))}
 						selectedStep={this.state.selectedStep}
 					/>
 				</div>

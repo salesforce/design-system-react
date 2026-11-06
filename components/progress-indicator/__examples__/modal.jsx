@@ -37,11 +37,13 @@ const modalFooter = () => [
 	<ProgressIndicator
 		key="modal-progress-indicator"
 		variant="modal"
-		steps={steps}
-		selectedStep={steps[2]}
-		completedSteps={steps.slice(0, 2)}
-		disabledSteps={steps.slice(3, 5)}
-		errorSteps={steps.slice(2, 3)}
+		steps={steps.map((step, index) => ({
+			...step,
+			status: ['completed', 'completed', 'error', 'disabled', 'disabled'][
+				index
+			],
+		}))}
+		selectedStep={2}
 		onStepClick={handleStepEvent}
 	/>,
 	<Button key="modalBSave" label="Save" variant="brand" />,

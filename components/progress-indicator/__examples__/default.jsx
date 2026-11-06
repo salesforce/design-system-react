@@ -2,6 +2,12 @@ import React from 'react';
 import IconSettings from '~/components/icon-settings';
 import ProgressIndicator from '~/components/progress-indicator'; // `~` is replaced with design-system-react at runtime
 
+// A step is completed before the selected one, and disabled beyond the next one
+const getStatus = (index, selectedId) => {
+	if (index < selectedId) return 'completed';
+	return index > selectedId + 1 ? 'disabled' : undefined;
+};
+
 /*
  * This example allows you to select the next step and only the next step. Typically, Progress Indicator should be paired with a modal and form errors should be explained outside of this component.
  */
@@ -23,18 +29,16 @@ class Example extends React.Component {
 
 		this.state = {
 			steps,
-			completedSteps: [],
-			disabledSteps: steps.slice(2, steps.length),
-			selectedStep: steps[0],
+			selectedStep: 0,
 		};
 	}
 
 	handleStepEvent = (event, data) => {
 		const { steps } = this.state;
-		const completedSteps = steps.slice(0, data.step.id);
+		const hasCompleted = data.step.id > 0;
 
 		if (steps[0].assistiveText) {
-			if (completedSteps.length > 0) {
+			if (hasCompleted) {
 				steps[0].assistiveText = `${steps[0].assistiveText} - Completed`;
 			} else {
 				steps[0].assistiveText = steps[0].assistiveText.replace(
@@ -45,12 +49,7 @@ class Example extends React.Component {
 		}
 
 		this.setState({
-			completedSteps,
-			disabledSteps:
-				data.step.id < steps.length
-					? steps.slice(data.step.id + 2, steps.length)
-					: [],
-			selectedStep: data.step,
+			selectedStep: data.step.id,
 			steps,
 		});
 	};
@@ -67,10 +66,11 @@ class Example extends React.Component {
 				>
 					<ProgressIndicator
 						id="example-progress-indicator"
-						completedSteps={this.state.completedSteps}
-						disabledSteps={this.state.disabledSteps}
 						onStepClick={this.handleStepEvent}
-						steps={this.state.steps}
+						steps={this.state.steps.map((step, index) => ({
+							...step,
+							status: getStatus(index, this.state.selectedStep),
+						}))}
 						selectedStep={this.state.selectedStep}
 						// tooltipIsOpenSteps={stepsBasic.slice(0, 2)}
 					/>
