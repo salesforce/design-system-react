@@ -82,7 +82,7 @@ export interface TextareaProps {
 	'aria-required'?: boolean;
 	/** Autofocus on load (poor UX) */
 	autoFocus?: boolean;
-	/** Elements added after textarea */
+	/** Elements rendered after the textarea, inside the form element */
 	children?: ReactNode;
 	/** CSS class for textarea element */
 	className?: string | string[] | Record<string, boolean>;
