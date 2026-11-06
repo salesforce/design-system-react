@@ -8,6 +8,14 @@ import TableContext, { TableContextValue } from './private/table-context';
 
 import generateId from '../../utilities/generate-id';
 
+const FORWARD_REF_TYPE = Symbol.for('react.forward_ref');
+
+// `forwardRef` components take a `ref` to their DOM node instead of the `requestFocus` props
+const forwardsRef = (component: unknown): boolean =>
+	typeof component === 'object' &&
+	component !== null &&
+	(component as { $$typeof?: symbol }).$$typeof === FORWARD_REF_TYPE;
+
 /**
  * Wrapper for interactive elements in the table.
  *
@@ -16,9 +24,13 @@ import generateId from '../../utilities/generate-id';
  *
  * The wrapped element must accept the props:
  *  `onFocus`: Callback for when the element is focused.
- *  `onRequestFocus`: Trigger to indicate that this element should be focused.
- *  `requestFocus`: This wrapper overrides the `requestFocus` prop and provides its own value.
  *  `tabIndex`: This wrapper overrides the `tabIndex` prop and provides its own value.
+ *
+ * The wrapper focuses the element when it becomes the table's active element. A `forwardRef`
+ * component (Button, Checkbox) is focused through its `ref`, which must point at the focusable
+ * node. Any other component instead receives `requestFocus` (`true` when it should take focus)
+ * and `onRequestFocus(node)`, which it calls with the node to focus. `onRequestFocus` passed to
+ * the wrapper is called after the element is focused.
  */
 export default function createInteractiveElement(
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -28,6 +40,8 @@ export default function createInteractiveElement(
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	class InteractiveElement extends Component<any> {
 		elementId: string;
+
+		usesRef = forwardsRef(WrappedElement);
 
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		constructor(props: any) {
@@ -57,6 +71,16 @@ export default function createInteractiveElement(
 					this.props.onRequestFocus(...args);
 				}
 			}
+		}
+
+		// A new callback each render, so React calls it after every render, like the
+		// `requestFocus` effect the wrapped components used to run.
+		getFocusRef(tableContext: TableContextValue, requestFocus: boolean) {
+			return (node: HTMLElement | null) => {
+				if (node && requestFocus) {
+					this.onRequestFocus(tableContext, node);
+				}
+			};
 		}
 
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -91,11 +115,16 @@ export default function createInteractiveElement(
 									tableContext.mode === Mode.ACTIONABLE &&
 									tableContext.activeElement === this.elementId;
 								const tabIndex = tableContext.mode === Mode.ACTIONABLE ? 0 : -1;
+								const focusProps = this.usesRef
+									? { ref: this.getFocusRef(tableContext, requestFocus) }
+									: {
+											onRequestFocus: onRequestFocus.bind(this, tableContext),
+											requestFocus,
+										};
 								const keyboardNavProps = tableContext.allowKeyboardNavigation
 									? {
 											onFocus: onFocus.bind(this, tableContext),
-											onRequestFocus: onRequestFocus.bind(this, tableContext),
-											requestFocus,
+											...focusProps,
 											tabIndex,
 										}
 									: {};

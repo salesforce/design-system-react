@@ -170,4 +170,30 @@ describe('SLDSButton', () => {
 			consoleError.mockRestore();
 		});
 	});
+
+	describe('Deprecated requestFocus props', () => {
+		it('still calls onRequestFocus with the button, and warns', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const onRequestFocus = vi.fn();
+			renderButton({ requestFocus: true, onRequestFocus });
+
+			const btn = screen.getByRole('button');
+			expect(onRequestFocus).toHaveBeenCalledWith(btn);
+			expect(btn).not.toHaveAttribute('requestFocus');
+			expect(btn).not.toHaveAttribute('onRequestFocus');
+			expect(consoleError).toHaveBeenCalledWith(
+				expect.stringContaining(
+					'`requestFocus` will be removed in the next major version'
+				)
+			);
+			expect(consoleError).toHaveBeenCalledWith(
+				expect.stringContaining(
+					'`onRequestFocus` will be removed in the next major version'
+				)
+			);
+			consoleError.mockRestore();
+		});
+	});
 });

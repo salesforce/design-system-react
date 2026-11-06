@@ -413,7 +413,7 @@ export interface SimpleDataTableHighlightCellProps extends SimpleDataTableCellPr
 
 export interface SimpleDataTableInteractiveElementProps {
 	onFocus?: (event: React.FocusEvent) => void;
+	/** Called after the wrapper focuses the element */
 	onRequestFocus?: () => void;
-	requestFocus?: boolean;
 	tabIndex?: number;
 }

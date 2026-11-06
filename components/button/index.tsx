@@ -136,9 +136,14 @@ export interface ButtonProps {
 	onMouseLeave?: (event: MouseEvent<HTMLButtonElement>) => void;
 	/** Mouse up event handler */
 	onMouseUp?: (event: MouseEvent<HTMLButtonElement>) => void;
-	/** Request focus callback */
+	/**
+	 * @deprecated Focus the button through `ref` or `buttonRef` instead. Called with the
+	 * `<button>` when `requestFocus` is set. Still works, and warns.
+	 */
 	onRequestFocus?: (element: HTMLButtonElement) => void;
-	/** Trigger onRequestFocus */
+	/**
+	 * @deprecated Focus the button through `ref` or `buttonRef` instead. Still works, and warns.
+	 */
 	requestFocus?: boolean;
 	/** Responsive width on small screens */
 	responsive?: boolean;
@@ -210,8 +215,12 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 		} = props as ButtonProps & { tooltip?: ReactNode };
 
 		useEffect(() => {
-			checkRemovedProps(BUTTON, { tooltip }, componentDoc);
-		}, [tooltip]);
+			checkRemovedProps(
+				BUTTON,
+				{ onRequestFocus, requestFocus, tooltip },
+				componentDoc
+			);
+		}, [onRequestFocus, requestFocus, tooltip]);
 
 		const internalRef = useRef<HTMLButtonElement | null>(null);
 

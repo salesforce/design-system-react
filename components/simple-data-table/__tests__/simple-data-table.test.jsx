@@ -8,6 +8,11 @@ import SimpleDataTable from '../../simple-data-table';
 import SimpleDataTableColumn from '../../simple-data-table/column';
 import SimpleDataTableRowActions from '../../simple-data-table/row-actions';
 import SimpleDataTableHighlightCell from '../../simple-data-table/highlight-cell';
+import SimpleDataTableCell from '../../simple-data-table/cell';
+import SimpleDataTableInteractiveElement from '../../simple-data-table/interactive-element';
+import SimpleDataTableInteractiveLink from '../../simple-data-table/interactive-link';
+import Button from '../../button';
+import Checkbox from '../../checkbox';
 import IconSettings from '../../icon-settings';
 
 describe('SimpleDataTable', () => {
@@ -1268,6 +1273,46 @@ describe('SimpleDataTable', () => {
 				container.querySelectorAll('tbody td[tabindex="0"]').length
 			).toBeGreaterThan(0);
 			expect(actionTabIndexes().every((t) => t === '-1')).toBe(true);
+		});
+
+		it('focuses ref-forwarding interactive elements when entering actionable mode', () => {
+			const InteractiveButton = SimpleDataTableInteractiveElement(Button);
+			const InteractiveCheckbox = SimpleDataTableInteractiveElement(Checkbox);
+			const onRequestFocus = vi.fn();
+			const InteractiveCell = ({ children, ...props }) => (
+				<SimpleDataTableCell {...props}>
+					<InteractiveCheckbox
+						labels={{ label: 'Option' }}
+						onChange={() => {}}
+						onRequestFocus={onRequestFocus}
+					/>
+					<InteractiveButton label="Open" />
+					<SimpleDataTableInteractiveLink>
+						Click me
+					</SimpleDataTableInteractiveLink>
+				</SimpleDataTableCell>
+			);
+			InteractiveCell.displayName = SimpleDataTableCell.displayName;
+			const { container } = renderTable(
+				<SimpleDataTable {...defaultProps} fixedLayout keyboardNavigation>
+					<SimpleDataTableColumn label="Name" property="name" primaryColumn>
+						<InteractiveCell />
+					</SimpleDataTableColumn>
+				</SimpleDataTable>
+			);
+
+			// The primary column renders as a row header
+			const cell = container.querySelector('tbody th[tabindex="0"]');
+			fireEvent.focus(cell);
+			fireEvent.keyDown(cell, { key: 'Enter', keyCode: 13 });
+
+			// Button, Checkbox and the internal link get no `requestFocus` props;
+			// the wrapper focuses them through `ref`.
+			const checkbox = cell.querySelector('input[type="checkbox"]');
+			expect(document.activeElement).toBe(checkbox);
+			expect(onRequestFocus).toHaveBeenCalled();
+			expect(cell.querySelector('button')).toHaveAttribute('tabindex', '0');
+			expect(cell.querySelector('a')).toHaveAttribute('tabindex', '0');
 		});
 
 		it('renders interactive cells with proper structure for keyboard navigation', () => {
