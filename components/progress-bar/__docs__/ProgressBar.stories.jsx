@@ -129,7 +129,11 @@ export const ProgressValues = {
 			<ProgressBar value={25} labels={{ label: 'Getting Started' }} />
 			<ProgressBar value={50} labels={{ label: 'Halfway There' }} />
 			<ProgressBar value={75} labels={{ label: 'Almost Done' }} />
-			<ProgressBar value={100} color="success" labels={{ label: 'Complete!' }} />
+			<ProgressBar
+				value={100}
+				color="success"
+				labels={{ label: 'Complete!' }}
+			/>
 		</div>
 	),
 };

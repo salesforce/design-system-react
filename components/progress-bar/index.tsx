@@ -49,8 +49,10 @@ export interface ProgressBarLabels {
 export interface ProgressBarProps {
 	/** Assistive text for accessibility */
 	assistiveText?: ProgressBarAssistiveText;
-	/** CSS classes for the progress bar */
+	/** CSS classes for the root element */
 	className?: string | string[] | Record<string, boolean>;
+	/** CSS classes for the `role="progressbar"` element */
+	classNameBar?: string | string[] | Record<string, boolean>;
 	/** Color variant */
 	color?: ProgressBarColor;
 	/** Unique identifier */
@@ -83,6 +85,7 @@ const defaultLabels: ProgressBarLabels = {
 const ProgressBar = ({
 	assistiveText: propAssistiveText,
 	className,
+	classNameBar,
 	color,
 	id: propId,
 	labels: propLabels,
@@ -124,7 +127,11 @@ const ProgressBar = ({
 	};
 
 	return (
-		<div id={id} style={containerStyle}>
+		<div
+			id={id}
+			className={classNames(className as string) || undefined}
+			style={containerStyle}
+		>
 			{orientation === 'horizontal' && renderDescription()}
 			<div
 				aria-labelledby={
@@ -144,7 +151,7 @@ const ProgressBar = ({
 					{
 						'slds-progress-bar_vertical': orientation === 'vertical',
 					},
-					className as string
+					classNameBar as string
 				)}
 			>
 				<span
@@ -170,18 +177,3 @@ const ProgressBar = ({
 ProgressBar.displayName = PROGRESS_BAR;
 
 export default ProgressBar;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
