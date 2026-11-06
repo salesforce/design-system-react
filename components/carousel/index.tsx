@@ -28,6 +28,7 @@ import AutoplayButton from './private/auto-play-button';
 import checkProps from './check-props';
 import componentDoc from './component.json';
 
+import warning from 'warning';
 import KEYS from '../../utilities/key-code';
 import EventUtil from '../../utilities/event';
 import { useControllableState } from '../../utilities/hooks';
@@ -161,7 +162,7 @@ export interface CarouselProps {
 	isInfinite?: boolean;
 	/** Array of carousel items */
 	items: CarouselItemData[];
-	/** Number of items per panel */
+	/** Number of items per panel: a positive integer (other values fall back to 1 and warn in development) */
 	itemsPerPanel?: number;
 	/** @deprecated Use `renderItem` instead. */
 	onRenderItem?: (data: CarouselRenderItemData) => ReactNode;
@@ -209,7 +210,7 @@ const Carousel = ({
 	defaultIsAutoplayOn,
 	isInfinite = false,
 	items,
-	itemsPerPanel = 1,
+	itemsPerPanel: itemsPerPanelProp = 1,
 	onRenderItem,
 	onRequestAutoplayToggle,
 	onRequestPanelChange,
@@ -218,6 +219,13 @@ const Carousel = ({
 }: CarouselProps): ReactElement => {
 	const generatedId = useId();
 	const id = propId || generatedId;
+	const isValidItemsPerPanel =
+		Number.isInteger(itemsPerPanelProp) && itemsPerPanelProp >= 1;
+	const itemsPerPanel = isValidItemsPerPanel ? itemsPerPanelProp : 1;
+	warning(
+		isValidItemsPerPanel,
+		`[Design System React] \`itemsPerPanel\` of ${CAROUSEL} must be a positive integer; received ${itemsPerPanelProp}, using 1.`
+	);
 	// `onRenderItem` is deprecated
 	const renderItem = renderItemProp ?? onRenderItem;
 
