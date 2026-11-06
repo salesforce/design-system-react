@@ -113,13 +113,34 @@ describe('SLDSAlert', () => {
 			current.remove();
 		});
 
-		it('returns focus to the previously focused element when dismissible', () => {
+		it('does not move focus on mount without autoFocus', () => {
+			const opener = addButton();
+			opener.focus();
+
+			const { unmount } = render(
+				<IconSettings iconPath="/assets/icons">
+					<Alert dismissible labels={{ heading: 'Heading' }} variant="info" />
+				</IconSettings>
+			);
+			expect(document.activeElement).toBe(opener);
+			unmount();
+
+			expect(document.activeElement).toBe(opener);
+			opener.remove();
+		});
+
+		it('focuses the close button and restores focus on unmount with autoFocus', () => {
 			const opener = addButton();
 			opener.focus();
 
 			const { container, unmount } = render(
 				<IconSettings iconPath="/assets/icons">
-					<Alert dismissible labels={{ heading: 'Heading' }} variant="info" />
+					<Alert
+						autoFocus
+						dismissible
+						labels={{ heading: 'Heading' }}
+						variant="info"
+					/>
 				</IconSettings>
 			);
 			expect(document.activeElement).toBe(
