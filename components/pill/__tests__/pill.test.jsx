@@ -421,3 +421,15 @@ describe('SLDSPill', () => {
 		});
 	});
 });
+
+describe('SLDSPill ref', () => {
+	it('is the root element and keeps focus()/blur()', () => {
+		const ref = { current: null };
+		const { container } = render(
+			<SLDSPill ref={ref} labels={{ label: 'x' }} />
+		);
+		expect(ref.current).toBe(container.firstChild);
+		expect(typeof ref.current.focus).toBe('function');
+		expect(typeof ref.current.blur).toBe('function');
+	});
+});

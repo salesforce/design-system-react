@@ -83,14 +83,9 @@ export interface PillProps {
 }
 
 /**
- * Ref methods for Pill
+ * The `ref` of a Pill is its root element. `focus()` and `blur()` still work.
  */
-export interface PillRef {
-	/** Remove focus from the pill */
-	blur: () => void;
-	/** Give focus to the pill */
-	focus: () => void;
-}
+export type PillRef = HTMLSpanElement;
 
 const defaultLabels: PillLabels = {};
 const defaultAssistiveText: PillAssistiveText = {};
@@ -125,11 +120,7 @@ const Pill = forwardRef<PillRef, PillProps>(
 		const labels = { ...defaultLabels, ...propLabels };
 		const assistiveText = { ...defaultAssistiveText, ...propAssistiveText };
 
-		// Expose focus/blur methods via ref
-		useImperativeHandle(ref, () => ({
-			blur: () => rootRef.current?.blur(),
-			focus: () => rootRef.current?.focus(),
-		}));
+		useImperativeHandle(ref, () => rootRef.current as HTMLSpanElement);
 
 		const getHref = useCallback(() => {
 			return typeof href === 'string' ? href : '#';
