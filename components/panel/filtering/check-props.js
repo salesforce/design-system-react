@@ -2,17 +2,17 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 /* eslint-disable import/no-mutable-exports */
 
-import deprecatedProperty from '../../../utilities/warning/deprecated-property';
+import sunsetProperty from '../../../utilities/warning/sunset-property';
 
 let checkProps = function checkPropsFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
 	checkProps = function checkPropsFunction(COMPONENT, props) {
-		deprecatedProperty(
+		sunsetProperty(
 			COMPONENT,
 			props.assistiveTextCloseFilterPanel,
 			'assistiveTextCloseFilterPanel',
-			"assistiveText['closeButton']"
+			"Use `assistiveText={{ closeButton: '...' }}` instead."
 		);
 	};
 }
