@@ -713,4 +713,37 @@ describe('SLDSProgressIndicator', () => {
 			).toBe(true);
 		});
 	});
+
+	describe('Step ids', () => {
+		// Step 0 is not first, so a fallback to the index would give it a different id
+		const reorderedSteps = [
+			{ id: 'a', label: 'Step A' },
+			{ id: 0, label: 'Step zero' },
+		];
+
+		it('uses a step id of 0 for the tooltip id', () => {
+			const { container } = renderProgressIndicator({
+				steps: reorderedSteps,
+				selectedStep: reorderedSteps[0],
+				tooltipIsOpenSteps: reorderedSteps,
+			});
+			expect(
+				document.querySelector('#progress-indicator-tooltip-0')
+			).toHaveTextContent('Step zero');
+			expect(
+				container.querySelector('#progress-indicator-tooltip-1')
+			).not.toBeInTheDocument();
+		});
+
+		it('uses a step id of 0 for the vertical label id', () => {
+			const { container } = renderProgressIndicator({
+				steps: reorderedSteps,
+				selectedStep: reorderedSteps[0],
+				orientation: 'vertical',
+			});
+			expect(
+				container.querySelector('#progress-indicator-vertical-label-0')
+			).toHaveTextContent('Step zero');
+		});
+	});
 });
