@@ -37,7 +37,7 @@ if (process.env.NODE_ENV !== 'production') {
 	};
 }
 
-// v11 control-model removals and deprecated visual-picker render props.
+// v11 control-model removals, and deprecated focus and visual-picker render props.
 // Exported separately so the component can run these checks without enabling
 // the pre-existing `checkProps` warnings.
 export let checkDeprecatedProps = function checkDeprecatedPropsFunction() {};
@@ -55,6 +55,22 @@ if (process.env.NODE_ENV !== 'production') {
 			props.defaultChecked,
 			'defaultChecked',
 			'Checkbox is controlled: pass `checked` and update it in `onChange`.'
+		);
+
+		deprecatedProperty(
+			COMPONENT,
+			props.requestFocus,
+			'requestFocus',
+			undefined,
+			`Focus the checkbox through \`ref\`, which is forwarded to the \`<input>\`: \`ref.current.focus()\`. ${createDocUrl()}`
+		);
+
+		deprecatedProperty(
+			COMPONENT,
+			props.onRequestFocus,
+			'onRequestFocus',
+			undefined,
+			`Focus the checkbox through \`ref\` instead. ${createDocUrl()}`
 		);
 
 		deprecatedProperty(
