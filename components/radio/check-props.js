@@ -40,7 +40,7 @@ if (process.env.NODE_ENV !== 'production') {
 			props.requestFocus,
 			'requestFocus',
 			undefined,
-			`Focus the radio through \`refs.input\` instead: keep the \`<input>\` it receives and call \`.focus()\`. ${createDocUrl(
+			`Focus the radio through \`ref\` instead: it points at the \`<input>\`; call \`.focus()\`. ${createDocUrl(
 				'refs'
 			)}`
 		);
@@ -50,7 +50,15 @@ if (process.env.NODE_ENV !== 'production') {
 			props.onRequestFocus,
 			'onRequestFocus',
 			undefined,
-			`Focus the radio through \`refs.input\` instead. ${createDocUrl('refs')}`
+			`Focus the radio through \`ref\` instead. ${createDocUrl('refs')}`
+		);
+
+		deprecatedProperty(
+			COMPONENT,
+			props.refs,
+			'refs',
+			'ref',
+			'`ref` points at the input element.'
 		);
 
 		deprecatedProperty(

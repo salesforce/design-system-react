@@ -2,6 +2,8 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 import React, {
+	forwardRef,
+	type ForwardedRef,
 	useRef,
 	useId,
 	useCallback,
@@ -110,11 +112,11 @@ export interface RadioProps {
 	/** Focus handler */
 	onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
 	/**
-	 * @deprecated Focus the radio through `refs.input` instead. Called with the `<input>`
+	 * @deprecated Focus the radio through `ref` (the `<input>`) instead. Called with the `<input>`
 	 * when `requestFocus` is set. Still works, and warns.
 	 */
 	onRequestFocus?: (input: HTMLInputElement) => void;
-	/** @deprecated Focus the radio through `refs.input` instead. Still works, and warns. */
+	/** @deprecated Focus the radio through `ref` (the `<input>`) instead. Still works, and warns. */
 	requestFocus?: boolean;
 	/** Tab index */
 	tabIndex?: string;
@@ -142,7 +144,9 @@ export interface RadioProps {
 	description?: string;
 	/** Visual picker: size */
 	size?: RadioSize;
-	/** Ref callbacks */
+	/**
+	 * @deprecated Use `ref`, which points at the input element.
+	 */
 	refs?: RadioRefs;
 	/** Custom styles (for swatch variant) */
 	style?: CSSProperties;
@@ -173,45 +177,48 @@ const defaultLabels: RadioLabels = {};
  * A radio input that can have a single input checked at any one time.
  * Radios should be wrapped with a RadioGroup or RadioButtonGroup.
  */
-const Radio = ({
-	assistiveText: propAssistiveText,
-	'aria-describedby': ariaDescribedBy,
-	'aria-labelledby': ariaLabelledBy,
-	checked,
-	className,
-	// Removed in v11. Destructured so they never reach the DOM;
-	// `checkDeprecatedProps` warns about them.
-	defaultChecked,
-	deselectable,
-	disabled,
-	id: propId,
-	labelId,
-	labels: propLabels,
-	label,
-	name,
-	onChange,
-	onFocus,
-	onRequestFocus,
-	requestFocus,
-	tabIndex,
-	value,
-	variant = 'base',
-	coverable = false,
-	vertical,
-	visualPickerFigure,
-	visualPickerFigureSelected,
-	visualPickerFigureNotSelected,
-	onRenderVisualPicker,
-	onRenderVisualPickerSelected,
-	onRenderVisualPickerNotSelected,
-	size,
-	refs,
-	style,
-	...rest
-}: RadioProps & {
-	defaultChecked?: boolean;
-	label?: unknown;
-}): React.ReactElement => {
+const RadioInner = (
+	{
+		assistiveText: propAssistiveText,
+		'aria-describedby': ariaDescribedBy,
+		'aria-labelledby': ariaLabelledBy,
+		checked,
+		className,
+		// Removed in v11. Destructured so they never reach the DOM;
+		// `checkDeprecatedProps` warns about them.
+		defaultChecked,
+		deselectable,
+		disabled,
+		id: propId,
+		labelId,
+		labels: propLabels,
+		label,
+		name,
+		onChange,
+		onFocus,
+		onRequestFocus,
+		requestFocus,
+		tabIndex,
+		value,
+		variant = 'base',
+		coverable = false,
+		vertical,
+		visualPickerFigure,
+		visualPickerFigureSelected,
+		visualPickerFigureNotSelected,
+		onRenderVisualPicker,
+		onRenderVisualPickerSelected,
+		onRenderVisualPickerNotSelected,
+		size,
+		refs,
+		style,
+		...rest
+	}: RadioProps & {
+		defaultChecked?: boolean;
+		label?: unknown;
+	},
+	forwardedRef: ForwardedRef<HTMLInputElement>
+): React.ReactElement => {
 	const generatedId = useId();
 	const preventDuplicateRef = useRef(false);
 
@@ -263,12 +270,17 @@ const Radio = ({
 
 	const handleInputRef = useCallback(
 		(input: HTMLInputElement | null) => {
+			if (typeof forwardedRef === 'function') {
+				forwardedRef(input);
+			} else if (forwardedRef) {
+				forwardedRef.current = input;
+			}
 			refs?.input?.(input);
 			if (input && requestFocus && onRequestFocus) {
 				onRequestFocus(input);
 			}
 		},
-		[refs, requestFocus, onRequestFocus]
+		[refs, forwardedRef, requestFocus, onRequestFocus]
 	);
 
 	// Render the label based on variant
@@ -394,6 +406,8 @@ const Radio = ({
 		</span>
 	);
 };
+
+const Radio = forwardRef<HTMLInputElement, RadioProps>(RadioInner);
 
 Radio.displayName = RADIO;
 

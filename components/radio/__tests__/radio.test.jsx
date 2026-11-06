@@ -302,3 +302,19 @@ describe('Radio: deprecated requestFocus props', () => {
 		expect(document.activeElement).toBe(input);
 	});
 });
+
+describe('Radio ref', () => {
+	it('forwards ref to the input element', () => {
+		const ref = { current: null };
+		const { container } = render(
+			<Radio
+				id="radio-ref"
+				ref={ref}
+				labels={{ label: 'Option' }}
+				checked={false}
+				onChange={() => {}}
+			/>
+		);
+		expect(ref.current).toBe(container.querySelector('input'));
+	});
+});
