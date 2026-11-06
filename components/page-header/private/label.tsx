@@ -24,7 +24,7 @@ export interface PageHeaderLabelProps {
 
 const Label = (props: PageHeaderLabelProps) => {
 	if (props.trail && props.trail.length > 0) {
-		return <Breadcrumb styleContainer={props.style} trail={props.trail} />;
+		return <Breadcrumb style={props.style} trail={props.trail} />;
 	}
 
 	if (props.content) {

@@ -87,7 +87,11 @@ export const CustomAssistiveText = {
 export const CustomStyles = {
 	render: () => (
 		<Breadcrumb
-			styleContainer={{ backgroundColor: '#f3f3f3', padding: '10px', borderRadius: '4px' }}
+			style={{
+				backgroundColor: '#f3f3f3',
+				padding: '10px',
+				borderRadius: '4px',
+			}}
 			trail={[
 				<a href="#" key="home">
 					Home

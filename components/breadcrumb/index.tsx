@@ -7,6 +7,7 @@ import React, {
 	type CSSProperties,
 } from 'react';
 import { BREADCRUMB } from '../../utilities/constants';
+import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import Dropdown from '../menu-dropdown';
 
 /**
@@ -27,7 +28,13 @@ export interface BreadcrumbProps {
 	id?: string;
 	/** Overflow dropdown menu for condensed breadcrumbs */
 	overflowDropdownMenu?: ReactElement;
-	/** Custom styles for the nav container */
+	/** Class names applied to the root `nav` */
+	className?: string;
+	/** Custom styles for the root `nav` */
+	style?: CSSProperties;
+	/**
+	 * @deprecated Use `style`.
+	 */
 	styleContainer?: CSSProperties;
 	/** Array of anchor elements defining the breadcrumb path */
 	trail: ReactNode[];
@@ -65,11 +72,14 @@ const getBreadcrumbDropdown = (
  */
 const Breadcrumb = ({
 	assistiveText: propAssistiveText,
+	className,
 	id,
 	overflowDropdownMenu,
+	style,
 	styleContainer,
 	trail,
 }: BreadcrumbProps): React.ReactElement => {
+	deprecatedProperty(BREADCRUMB, styleContainer, 'styleContainer', 'style');
 	const assistiveTextLabel = {
 		...defaultAssistiveText,
 		...propAssistiveText,
@@ -79,7 +89,8 @@ const Breadcrumb = ({
 		<nav
 			role="navigation"
 			aria-label={assistiveTextLabel}
-			style={styleContainer}
+			className={className}
+			style={style ?? styleContainer}
 		>
 			<ol className="slds-breadcrumb slds-list_horizontal">
 				{overflowDropdownMenu &&
