@@ -2063,7 +2063,7 @@ exports[`Story HTML snapshots > Checkbox > WithError 1`] = `
 
 exports[`Story HTML snapshots > ColorPicker > CustomOnly 1`] = `
 "<div class="slds-p-around_medium">
-  <div class="slds-color-picker">
+  <div class="slds-color-picker" id="custom-only-color-picker">
     <div class="slds-color-picker__summary"><label class="slds-color-picker__summary-label" for="color-picker-summary-input-custom-only-color-picker" id="color-picker-label-custom-only-color-picker">Choose Color</label>
       <div style="display:inline-block"><button class="slds-button slds-button_icon-more slds-color-picker__summary-button" id="slds-color-picker__selector-custom-only-color-picker" tabindex="0" type="button" aria-haspopup="dialog">
           <div><span class="slds-assistive-text">Choose Color</span><span class="slds-swatch" style="background-image:linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)"><span class="slds-assistive-text">Transparent Swatch</span></span></div><svg class="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small" aria-hidden="true">
@@ -2080,7 +2080,7 @@ exports[`Story HTML snapshots > ColorPicker > CustomOnly 1`] = `
 
 exports[`Story HTML snapshots > ColorPicker > CustomTabSelected 1`] = `
 "<div class="slds-p-around_medium">
-  <div class="slds-color-picker">
+  <div class="slds-color-picker" id="Custom-tab-default-color-picker">
     <div class="slds-color-picker__summary"><label class="slds-color-picker__summary-label" for="color-picker-summary-input-Custom-tab-default-color-picker" id="color-picker-label-Custom-tab-default-color-picker">Choose Color</label>
       <div style="display:inline-block"><button class="slds-button slds-button_icon-more slds-color-picker__summary-button" id="slds-color-picker__selector-Custom-tab-default-color-picker" tabindex="0" type="button" aria-haspopup="dialog">
           <div><span class="slds-assistive-text">Choose Color</span><span class="slds-swatch" style="background-image:linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)"><span class="slds-assistive-text">Transparent Swatch</span></span></div><svg class="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small" aria-hidden="true">
@@ -2097,7 +2097,7 @@ exports[`Story HTML snapshots > ColorPicker > CustomTabSelected 1`] = `
 
 exports[`Story HTML snapshots > ColorPicker > CustomValidator 1`] = `
 "<div class="slds-p-around_medium">
-  <div class="slds-color-picker">
+  <div class="slds-color-picker" id="custom-validator-color-picker">
     <div class="slds-color-picker__summary"><label class="slds-color-picker__summary-label" for="color-picker-summary-input-custom-validator-color-picker" id="color-picker-label-custom-validator-color-picker">Choose Color</label>
       <div style="display:inline-block"><button class="slds-button slds-button_icon-more slds-color-picker__summary-button" id="slds-color-picker__selector-custom-validator-color-picker" tabindex="0" type="button" aria-haspopup="dialog">
           <div><span class="slds-assistive-text">Choose Color</span><span class="slds-swatch" style="background-image:linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)"><span class="slds-assistive-text">Transparent Swatch</span></span></div><svg class="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small" aria-hidden="true">
@@ -2114,7 +2114,7 @@ exports[`Story HTML snapshots > ColorPicker > CustomValidator 1`] = `
 
 exports[`Story HTML snapshots > ColorPicker > DefaultStory 1`] = `
 "<div class="slds-p-around_medium">
-  <div class="slds-color-picker test_class_name">
+  <div class="slds-color-picker test_class_name" id="default-color-picker">
     <div class="slds-color-picker__summary"><label class="slds-color-picker__summary-label" for="color-picker-summary-input-default-color-picker" id="color-picker-label-default-color-picker">Choose Color</label>
       <div style="display:inline-block"><button class="slds-button slds-button_icon-more slds-color-picker__summary-button" id="slds-color-picker__selector-default-color-picker" tabindex="0" type="button" aria-haspopup="dialog">
           <div><span class="slds-assistive-text">Choose Color</span><span class="slds-swatch" style="background-image:linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)"><span class="slds-assistive-text">Transparent Swatch</span></span></div><svg class="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small" aria-hidden="true">
@@ -2131,7 +2131,7 @@ exports[`Story HTML snapshots > ColorPicker > DefaultStory 1`] = `
 
 exports[`Story HTML snapshots > ColorPicker > Disabled 1`] = `
 "<div class="slds-p-around_medium">
-  <div class="slds-color-picker">
+  <div class="slds-color-picker" id="color-picker">
     <div class="slds-color-picker__summary"><label class="slds-color-picker__summary-label" for="color-picker-summary-input-color-picker" id="color-picker-label-color-picker">Choose Color</label>
       <div style="display:inline-block"><button class="slds-button slds-button_icon-more slds-color-picker__summary-button" disabled="" id="slds-color-picker__selector-color-picker" tabindex="0" type="button" aria-haspopup="dialog">
           <div><span class="slds-assistive-text">Choose Color</span><span class="slds-swatch" style="background-image:linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)"><span class="slds-assistive-text">Transparent Swatch</span></span></div><svg class="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small" aria-hidden="true">
@@ -2148,7 +2148,7 @@ exports[`Story HTML snapshots > ColorPicker > Disabled 1`] = `
 
 exports[`Story HTML snapshots > ColorPicker > DocSiteDefault 1`] = `
 "<div class="slds-p-around_medium">
-  <div class="slds-color-picker">
+  <div class="slds-color-picker" id="default-color-picker">
     <div class="slds-color-picker__summary"><label class="slds-color-picker__summary-label" for="color-picker-summary-input-default-color-picker" id="color-picker-label-default-color-picker">Choose Color</label>
       <div style="display:inline-block"><button class="slds-button slds-button_icon-more slds-color-picker__summary-button" id="slds-color-picker__selector-default-color-picker" tabindex="0" type="button" aria-haspopup="dialog">
           <div><span class="slds-assistive-text">Choose Color</span><span class="slds-swatch" style="background-image:linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)"><span class="slds-assistive-text">Transparent Swatch</span></span></div><svg class="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small" aria-hidden="true">
@@ -2165,7 +2165,7 @@ exports[`Story HTML snapshots > ColorPicker > DocSiteDefault 1`] = `
 
 exports[`Story HTML snapshots > ColorPicker > HiddenInput 1`] = `
 "<div class="slds-p-around_medium">
-  <div class="slds-color-picker">
+  <div class="slds-color-picker" id="hidden-input-color-picker">
     <div class="slds-color-picker__summary"><label class="slds-color-picker__summary-label" id="color-picker-label-hidden-input-color-picker">Choose Color</label>
       <div style="display:inline-block"><button class="slds-button slds-button_icon-more slds-color-picker__summary-button" id="slds-color-picker__selector-hidden-input-color-picker" tabindex="0" type="button" aria-haspopup="dialog">
           <div><span class="slds-assistive-text">Choose Color</span><span class="slds-swatch" style="background-image:linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)"><span class="slds-assistive-text">Transparent Swatch</span></span></div><svg class="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small" aria-hidden="true">
@@ -2179,7 +2179,7 @@ exports[`Story HTML snapshots > ColorPicker > HiddenInput 1`] = `
 
 exports[`Story HTML snapshots > ColorPicker > MenuOpen 1`] = `
 "<div class="slds-p-around_medium">
-  <div class="slds-color-picker">
+  <div class="slds-color-picker" id="color-picker">
     <div class="slds-color-picker__summary"><label class="slds-color-picker__summary-label" for="color-picker-summary-input-color-picker" id="color-picker-label-color-picker">Choose Color</label>
       <div style="display:inline-block"><button class="slds-button slds-button_icon-more slds-color-picker__summary-button" id="slds-color-picker__selector-color-picker" tabindex="0" type="button" aria-haspopup="dialog">
           <div><span class="slds-assistive-text">Choose Color</span><span class="slds-swatch" style="background-image:linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)"><span class="slds-assistive-text">Transparent Swatch</span></span></div><svg class="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small" aria-hidden="true">
@@ -2273,7 +2273,7 @@ exports[`Story HTML snapshots > ColorPicker > MenuOpen 1`] = `
 
 exports[`Story HTML snapshots > ColorPicker > NoLabel 1`] = `
 "<div class="slds-p-around_medium">
-  <div class="slds-color-picker test_class_name">
+  <div class="slds-color-picker test_class_name" id="default-color-picker">
     <div class="slds-color-picker__summary"><label class="slds-color-picker__summary-label slds-assistive-text" for="color-picker-summary-input-default-color-picker" id="color-picker-label-default-color-picker">I should be read</label>
       <div style="display:inline-block"><button class="slds-button slds-button_icon-more slds-color-picker__summary-button" id="slds-color-picker__selector-default-color-picker" tabindex="0" type="button" aria-haspopup="dialog">
           <div><span class="slds-assistive-text">I should be read</span><span class="slds-swatch" style="background-image:linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)"><span class="slds-assistive-text">Transparent Swatch</span></span></div><svg class="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small" aria-hidden="true">
@@ -2290,7 +2290,7 @@ exports[`Story HTML snapshots > ColorPicker > NoLabel 1`] = `
 
 exports[`Story HTML snapshots > ColorPicker > OuterInputErrorState 1`] = `
 "<div class="slds-p-around_medium">
-  <div class="slds-color-picker">
+  <div class="slds-color-picker" id="outer-input-error-state-color-picker">
     <div class="slds-color-picker__summary"><label class="slds-color-picker__summary-label" for="color-picker-summary-input-outer-input-error-state-color-picker" id="color-picker-label-outer-input-error-state-color-picker">Choose Color</label>
       <div style="display:inline-block"><button class="slds-button slds-button_icon-more slds-color-picker__summary-button" id="slds-color-picker__selector-outer-input-error-state-color-picker" tabindex="0" type="button" aria-haspopup="dialog">
           <div><span class="slds-assistive-text">Choose Color</span><span class="slds-swatch" style="background-color:#invalid"><span class="slds-assistive-text">#invalid</span></span></div><svg class="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small" aria-hidden="true">
@@ -2308,7 +2308,7 @@ exports[`Story HTML snapshots > ColorPicker > OuterInputErrorState 1`] = `
 
 exports[`Story HTML snapshots > ColorPicker > PredefinedColors 1`] = `
 "<div class="slds-p-around_medium">
-  <div class="slds-color-picker">
+  <div class="slds-color-picker" id="predefined-color-picker">
     <div class="slds-color-picker__summary"><label class="slds-color-picker__summary-label" for="color-picker-summary-input-predefined-color-picker" id="color-picker-label-predefined-color-picker">Choose Color</label>
       <div style="display:inline-block"><button class="slds-button slds-button_icon-more slds-color-picker__summary-button" id="slds-color-picker__selector-predefined-color-picker" tabindex="0" type="button" aria-haspopup="dialog">
           <div><span class="slds-assistive-text">Choose Color</span><span class="slds-swatch" style="background-color:#000000"><span class="slds-assistive-text">#000000</span></span></div><svg class="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small" aria-hidden="true">
@@ -2325,7 +2325,7 @@ exports[`Story HTML snapshots > ColorPicker > PredefinedColors 1`] = `
 
 exports[`Story HTML snapshots > ColorPicker > PredefinedColorsOnly 1`] = `
 "<div class="slds-p-around_medium">
-  <div class="slds-color-picker">
+  <div class="slds-color-picker" id="predefined-only-color-picker">
     <div class="slds-color-picker__summary"><label class="slds-color-picker__summary-label" for="color-picker-summary-input-predefined-only-color-picker" id="color-picker-label-predefined-only-color-picker">Choose Color</label>
       <div style="display:inline-block"><button class="slds-button slds-button_icon-more slds-color-picker__summary-button" id="slds-color-picker__selector-predefined-only-color-picker" tabindex="0" type="button" aria-haspopup="dialog">
           <div><span class="slds-assistive-text">Choose Color</span><span class="slds-swatch" style="background-color:#000000"><span class="slds-assistive-text">#000000</span></span></div><svg class="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small" aria-hidden="true">
@@ -2343,7 +2343,7 @@ exports[`Story HTML snapshots > ColorPicker > PredefinedColorsOnly 1`] = `
 exports[`Story HTML snapshots > ColorPicker > RightToLeft 1`] = `
 "<div class="slds-p-around_medium">
   <div dir="rtl">
-    <div class="slds-color-picker test_class_name">
+    <div class="slds-color-picker test_class_name" id="default-color-picker">
       <div class="slds-color-picker__summary"><label class="slds-color-picker__summary-label" for="color-picker-summary-input-default-color-picker" id="color-picker-label-default-color-picker">Choose Color</label>
         <div style="display:inline-block"><button class="slds-button slds-button_icon-more slds-color-picker__summary-button" id="slds-color-picker__selector-default-color-picker" tabindex="0" type="button" aria-haspopup="dialog">
             <div><span class="slds-assistive-text">Choose Color</span><span class="slds-swatch" style="background-image:linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)"><span class="slds-assistive-text">Transparent Swatch</span></span></div><svg class="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small" aria-hidden="true">
@@ -2361,7 +2361,7 @@ exports[`Story HTML snapshots > ColorPicker > RightToLeft 1`] = `
 
 exports[`Story HTML snapshots > ColorPicker > SwatchOnly 1`] = `
 "<div class="slds-p-around_medium">
-  <div class="slds-color-picker">
+  <div class="slds-color-picker" id="swatch-only-color-picker">
     <div class="slds-color-picker__summary"><label class="slds-color-picker__summary-label" for="color-picker-summary-input-swatch-only-color-picker" id="color-picker-label-swatch-only-color-picker">Choose Color</label>
       <div style="display:inline-block"><button class="slds-button slds-button_icon-more slds-color-picker__summary-button" id="slds-color-picker__selector-swatch-only-color-picker" tabindex="0" type="button" aria-haspopup="dialog">
           <div><span class="slds-assistive-text">Choose Color</span><span class="slds-swatch" style="background-image:linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)"><span class="slds-assistive-text">Transparent Swatch</span></span></div><svg class="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small" aria-hidden="true">
@@ -2378,7 +2378,7 @@ exports[`Story HTML snapshots > ColorPicker > SwatchOnly 1`] = `
 
 exports[`Story HTML snapshots > ColorPicker > WorkingColorErrorState 1`] = `
 "<div class="slds-p-around_medium">
-  <div class="slds-color-picker">
+  <div class="slds-color-picker" id="working-color-error-state-color-picker">
     <div class="slds-color-picker__summary"><label class="slds-color-picker__summary-label" for="color-picker-summary-input-working-color-error-state-color-picker" id="color-picker-label-working-color-error-state-color-picker">Choose Color</label>
       <div style="display:inline-block"><button class="slds-button slds-button_icon-more slds-color-picker__summary-button" id="slds-color-picker__selector-working-color-error-state-color-picker" tabindex="0" type="button" aria-haspopup="dialog">
           <div><span class="slds-assistive-text">Choose Color</span><span class="slds-swatch" style="background-image:linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)"><span class="slds-assistive-text">Transparent Swatch</span></span></div><svg class="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small" aria-hidden="true">
