@@ -100,7 +100,7 @@ class Example extends React.Component {
 							}}
 							bare
 							variant="option"
-							tabIndex="0"
+							tabIndex={0}
 							aria-selected="true"
 							onRemove={noop}
 						/>

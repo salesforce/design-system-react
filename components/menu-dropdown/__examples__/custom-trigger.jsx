@@ -11,7 +11,7 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Dropdown
-					tabIndex="-1"
+					tabIndex={-1}
 					align="right"
 					options={[
 						{ label: 'Menu Item One', value: 'A0' },

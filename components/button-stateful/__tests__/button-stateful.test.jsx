@@ -284,3 +284,23 @@ describe('ButtonStateful: required `onClick`', () => {
 		consoleError.mockRestore();
 	});
 });
+
+describe('Button Stateful native attributes', () => {
+	it('passes name and value through, and tabIndex as a number', () => {
+		const { container } = render(
+			<IconSettings iconPath="/assets/icons">
+				<ButtonStateful
+					isActive={false}
+					onClick={vi.fn()}
+					name="follow"
+					value="1"
+					tabIndex={-1}
+				/>
+			</IconSettings>
+		);
+		const button = container.querySelector('button');
+		expect(button).toHaveAttribute('name', 'follow');
+		expect(button).toHaveAttribute('value', '1');
+		expect(button).toHaveAttribute('tabindex', '-1');
+	});
+});

@@ -22,3 +22,17 @@ export const missingOnClick = <ButtonStateful isActive={false} />;
 export const disabledWithoutOnClick = (
 	<ButtonStateful disabled isActive={false} />
 );
+
+export const nativeAttributes = (
+	<ButtonStateful
+		isActive={false}
+		onClick={() => {}}
+		name="follow"
+		tabIndex={0}
+	/>
+);
+
+export const stringTabIndex = (
+	// @ts-expect-error `tabIndex` is a number
+	<ButtonStateful isActive={false} onClick={() => {}} tabIndex="0" />
+);
