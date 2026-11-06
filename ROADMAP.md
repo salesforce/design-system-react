@@ -133,6 +133,10 @@ moves to `latest`.
    edit-dialog `onCancel`/`onSave`, split-view listbox `onSort`, accordion, panel, combobox).
    Simple-data-table `onSort(event, data)` and `onAction(event, { item, option })` are done, and
    `onLoadMore` now gets `(event, { trigger })`. Still open: builder-header and files `onClick*`.
+   **Done (slots):** the library-component slots (`icon`, `header`, `moreActionsDropdown`,
+   `infoBadge`, `crop`) keep their typed `cloneElement` contracts and document them.
+   builder-header keeps its typed children (`ButtonGroup`, link or dropdown). Group radio
+   loses its `displayName` typing.
 5. **`className` and root.** Done for slider, tree, welcome-mat, popover, spinner, modal and
    vertical-navigation: `className`, `style` and the forwarded `ref` land on the outermost
    rendered element; other parts use `className*`/`style*`, and the old names warn once.
@@ -177,6 +181,7 @@ _Reviewed: accordion, alert, avatar, badge, breadcrumb, builder-header, button, 
       **Re-scoped by the child-contract rule:** children here are library components, so the `cloneElement`/child-props contract is allowed. Keep the other findings. Child contract done (theme 3): children are typed, injected props are internal, and no child is matched by `displayName`.
       **Partly done:** `icon` is typed and the consumer's own `inverse`/`size`/`className` win
       over the injected values.
+      **Done (slots):** kept as the documented contract: the `icon` element gets `containerClassName`/`inverse`/`size` defaults and its own props win. `toast` does the same.
 - [x] `alert` — decide whether focusing the close button on mount (and restoring focus on
       unmount) stays the default or becomes opt-in.
       **Decided (behavior-fixes):** focusing the close button on mount, and restoring focus on unmount, stays the default. No `autoFocus` prop.
@@ -229,6 +234,7 @@ _Reviewed: accordion, alert, avatar, badge, breadcrumb, builder-header, button, 
       children and `-nav` drops anything but link/dropdown.
       **Re-scoped by the child-contract rule:** children here are library components, so the `cloneElement`/child-props contract is allowed. Keep the other findings. Child contract done (theme 3): children are typed, injected props are internal, and no child is matched by `displayName`.
       **Partly done:** children are typed.
+      **Done (slots):** kept the typed children (`ButtonGroup`, link or dropdown) matched by reference, as #3272 left them; no code change.
 - [ ] `builder-header` — remove the hardcoded `position: relative; height: 100px` wrapper
       (so `className` lands on the real root), and decide the English default labels.
 - [ ] `builder-header/nav-dropdown` — stop extending `MenuDropdownProps` wholesale so
@@ -237,6 +243,7 @@ _Reviewed: accordion, alert, avatar, badge, breadcrumb, builder-header, button, 
 - [ ] `card` — rename `bodyClassName` → `classNameBody`; make `empty: boolean | ReactNode`
       two props or one `ReactNode`; decide the English defaults (`heading = 'Related Items'`,
       `'No Related Items'`); `header` is `cloneElement`-merged with a media-object contract.
+      **Done (slots):** the `header` merge is the documented contract (`figure`, `body`, `verticalCenter`, `canTruncate`; the element's own props win).
 
 **Control model (decided).** _Data and values are always controlled_ — they are app state
 (`checked`, `value`, `selection`, `isActive`, a date): required prop plus `onChange`, no
@@ -397,6 +404,7 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
       `Files` clones `crop` into children: both are implicit contracts. `File.labels.title`
       is documented as required but optional in the type; `href` defaults to `'#'`.
       **Re-scoped by the child-contract rule:** children here are library components, so the `cloneElement`/child-props contract is allowed. Keep the other findings. Child contract done (theme 3): children are typed, injected props are internal, and no child is matched by `displayName`.
+      **Done (slots):** the `moreActionsDropdown` and `crop` injections are documented contracts (your props win).
 - [ ] `filter` — `popoverIsOpen` is seeded from `popover.props.isOpen` and never re-synced, then
       overridden by the merged popover props; define one rule (ephemeral: uncontrolled with
       an `isOpen` override and `defaultIsOpen`). `onClick` takes no `(event, data)`.
@@ -457,6 +465,7 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
       div; `inputRef` is callback-only).
       **Re-scoped by the child-contract rule:** children here are library components, so the `cloneElement`/child-props contract is allowed. Keep the other findings. Child contract done (theme 3): children are typed, injected props are internal, and no child is matched by `displayName`.
       **Kept (removals):** `onSubmit` and `onKeyPress` were not deprecated in 0.10.x, so they stay until they have had a deprecation release.
+      **Done (slots):** `iconLeft`/`iconRight` stay `InputIcon` slots; `iconPosition` is set by the slot unless the element sets one.
 - [x] `input` — remove the sunset API from the contract: `assistiveText.fieldLevelHelpButton`
       and the dead `check-props.js` checks for
       `iconCategory`/`iconName`/`iconPosition`/`iconAssistiveText`/`onIconClick`.
@@ -495,6 +504,7 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
       (`index.tsx` exports them), and drop the deprecated `tooltip`, `offset`, `isInline`.
       **Trigger done (theme 3):** a `trigger` prop (element or function) replaces the trigger child, which still works and warns once; `List` and `Button` children are matched by reference and custom content keeps its key. The ref story, `ListItem`/`ListItemLabel` and the deprecated props are still open.
       **Done (removals):** `tooltip`, `offset` and `isInline` are removed and warn once. Still open: the ref story and `ListItem`/`ListItemLabel`.
+      **Done (slots):** `ListItem`/`ListItemLabel` stay public. The ref story is left to root-and-refs.
 - [ ] `menu-list` — `components/menu-list/*` are 4-line aliases of `utilities/menu-list`, not
       exported from `index.js` (deep import only). Remove them, or promote the real
       component. It is class-based, `cloneElement`s a tooltip template into items
@@ -519,6 +529,7 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
       **Partly done:** `actions`/`controls` slot props, with
       `onRenderActions`/`onRenderControls` deprecated.
       **Kept (removals):** `onRenderActions`/`onRenderControls` were the recommended API in 0.10.x, so they stay deprecated (and still work) through v11. Still open: `PageHeaderControl` matching by `displayName` and the `icon` class injection.
+      **Done (slots):** the `icon` class merge is the documented contract.
 - [ ] `page-header` — `details` items: `flavor` is a raw SLDS size string, no `id`/`key`
       (index keys); remove the
       unreachable legacy props (`iconCategory`, `iconName`, `contentRight`, `navRight`, …)
@@ -541,6 +552,7 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
       **Re-scoped by the child-contract rule:** children here are library components, so the `cloneElement`/child-props contract is allowed. Keep the other findings. Child contract done (theme 3): children are typed, injected props are internal, and no child is matched by `displayName`.
       **Partly done:** the error comes from the child's `errorLabel` and is rendered as
       `${id}-error`, so `aria-describedby` points at it.
+      **Done (slots):** `Filter` children and their `errorLabel` wiring stay; the `labels` rename is left to labels-naming.
 - [ ] `pill` — `onRemove: () => void` is called without an event on keyboard
       and as the click handler elsewhere, and its presence toggles the remove button: move to
       `(event, data)` and an explicit prop; `labels.label` vs `children` and `icon` vs
@@ -654,9 +666,11 @@ complete`) and `THEME_OPTIONS` is a second public surface; `icon` is only honore
       public API) and the button-group-only `style` prop needs a union; `className` lands on
       `.slds-form-element__control`, not the root `fieldset`; `displayName` exists only for the
       old clone contract.
+      **Done (slots):** the `displayName` typing on the group `Radio` alias is dropped.
 - [ ] `scoped-notification` — `icon` is a `ReactElement` that gets `cloneElement`ed to merge
       `assistiveText` (`:71`): render an icon node, or take `iconName`/`iconCategory` and
       build it; the deprecated `iconName` is still live (`:83`), remove or keep; `theme:
+  **Done (slots):** the `assistiveText`merge onto the`icon` element is the documented contract.
 'dark' | 'light'` has an implicit third state (no default).
       **Re-scoped by the child-contract rule:** children here are library components, so the `cloneElement`/child-props contract is allowed. Keep the other findings. Child contract done (theme 3): children are typed, injected props are internal, and no child is matched by `displayName`.
       **Partly done:** `iconName` is kept but deprecated with a warning; `icon` is typed
@@ -736,6 +750,7 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
       after the control.
       **Control model done (theme 2); `maxLength` is a number (#3252).** Still open: the aria prop types, `onSubmit` and `children`.
       **Kept (removals):** `onSubmit` was not deprecated in 0.10.x, so it stays until it has had a deprecation release. Still open: the aria prop types and `children`.
+      **Done (slots):** `children` are documented as rendering after the control; removing them is left to typing.
 - [ ] `toast` — `onRequestClose: () => void` has no event/data (timer path has no event; `alert`
       declares `(event: MouseEvent) => void`) → `(event | null, { trigger: 'timeout' | 'close-button' })`.
       Auto-dismiss: the timer effect depends on `handleClose`, which depends on `onRequestClose`,
@@ -752,6 +767,7 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
       `onRequestClose(event | undefined, { trigger: 'timeout' | 'close-button' })` and the timer
       no longer re-arms on an inline callback (#3251).
       **Done (callbacks):** `onClickHeadingLink` keeps a single `(event)` argument (a plain click, no `data`), typed `MouseEvent<HTMLAnchorElement>`; alert's follows the same rule. Still open: the `labels.headingLink` split.
+      **Done (slots):** `icon` merge kept as the documented contract, decided with `alert`.
 - [ ] `tooltip` — `isOpen` mode is keyed correctly (`isOpenProp === undefined`) but there is no
       `defaultIsOpen`, `onRequestOpen`/`onRequestClose` or `events`. `isOpen={false}` is documented
       as "disables interaction", which conflicts with the controlled-false rule (combobox
@@ -767,6 +783,7 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
       **Trigger done (theme 3):** a `trigger` prop (element or function) replaces the trigger child, which still works and warns once.
       **Control model done (theme 2).** `defaultIsOpen`, `onRequestOpen` and `onRequestClose` are added. Still open: `isDisabled`, the dead props and the trigger contract.
       **Deferred past GA:** renaming `onRequestTargetElement` to `getTargetElement` (non-breaking with an alias).
+      **Done (slots):** `FieldLevelHelpTooltip` and the combobox menu keep their typed Tooltip-element contracts; `isDisabled` is left to root-and-refs/typing.
 - [ ] `tree` — selection and expansion live on mutated node objects: `TreeNode.expanded`/
       `selected`/`loading` (`types.ts:15-23`), `handleSelect` writes `node.selected = false` on the
       consumer's data (`tree.tsx:184-190`), and the tree keeps its own selection/focus copy seeded
@@ -810,6 +827,7 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
       **Re-scoped by the child-contract rule:** children here are library components, so the `cloneElement`/child-props contract is allowed. Keep the other findings. Child contract already met: `icon`/`notificationBadge` are typed and only get `className` joined.
       **Done (behavior-fixes):** items without `url` render a `<button type="button">` with `slds-button_reset slds-nav-vertical__action`; `url` is optional.
       **Done (removals):** `lodash.isfunction` is replaced by optional chaining; `displayName` stays (the codebase overview requires it).
+      **Done (slots):** the `icon`/`notificationBadge` className merge is the documented contract.
 
 - [ ] `split-view` — `isOpen` is hybrid (mode by `typeof === 'boolean'`, uncontrolled start
       hard-coded `true`, no `defaultIsOpen`) → `value !== undefined` detection + `defaultIsOpen`.
@@ -890,6 +908,7 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
       **Partly done:** `onRequestClose(event, data)` is forwarded from Modal (#3251);
       `infoActions` replaces `onRenderInfoActions`; the variants are a discriminated union
       (#3252).
+      **Done (slots):** the `infoBadge` `isComplete` merge and tile `variant` injection are the documented, typed contract.
 - [ ] `welcome-mat` tile/info-badge — both are classes with `displayName` and `generateId()`;
       `Tile` `title`/`description` strings, `href` only (no `onClick`/`target`; the info-only
       variant renders a non-link) and `variant` is a duplicate prop injected by the parent
