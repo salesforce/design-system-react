@@ -1178,6 +1178,46 @@ describe('SLDSCombobox', () => {
 			expect(isOpen(container)).toBe(false);
 		});
 
+		it('calls the latest events after a re-render with a new events object', () => {
+			const firstOnChange = vi.fn();
+			const secondOnChange = vi.fn();
+			const secondOnRequestClose = vi.fn();
+			const { container, rerender } = renderCombobox({
+				events: { onChange: firstOnChange },
+			});
+			fireEvent.click(getNodes(container).input);
+			expect(isOpen(container)).toBe(true);
+
+			rerender(
+				<IconSettings iconPath="/assets/icons">
+					<Combobox
+						id={defaultProps.id}
+						labels={defaultProps.labels}
+						menuPosition="relative"
+						options={accountsWithIcon}
+						selection={[]}
+						value=""
+						events={{
+							onChange: secondOnChange,
+							onRequestClose: secondOnRequestClose,
+						}}
+					/>
+				</IconSettings>
+			);
+			// A new `events` object does not reset the open menu
+			expect(isOpen(container)).toBe(true);
+
+			const { input } = getNodes(container);
+			fireEvent.change(input, { target: { value: 'a' } });
+			fireEvent.keyDown(input, keyObjects.ESCAPE);
+
+			expect(firstOnChange).not.toHaveBeenCalled();
+			expect(secondOnChange).toHaveBeenCalledWith(expect.anything(), {
+				value: 'a',
+			});
+			expect(secondOnRequestClose).toHaveBeenCalledTimes(1);
+		});
+
 		it('uncontrolled: still opens when only events.onRequestOpen is supplied', () => {
 			const onRequestOpen = vi.fn();
 			const onOpen = vi.fn();
