@@ -46,6 +46,3 @@ const Swatch: React.FC<SwatchProps> = ({ color, style, label, labels }) => {
 Swatch.displayName = 'SLDSSwatch';
 
 export default Swatch;
-
-
-

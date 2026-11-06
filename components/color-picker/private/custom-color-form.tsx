@@ -103,6 +103,3 @@ const CustomColorForm: React.FC<CustomColorFormProps> = ({
 CustomColorForm.displayName = 'SLDSCustomColorForm';
 
 export default CustomColorForm;
-
-
-

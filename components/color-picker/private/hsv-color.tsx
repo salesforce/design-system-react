@@ -4,7 +4,11 @@ import KEYS from '../../../utilities/key-code';
 import RadioButtonGroup from '../../../components/radio-button-group';
 import Radio from '../../../components/radio-button-group/radio';
 import ColorUtils from '../../../utilities/color';
-import { WorkingColor, ColorPickerAssistiveText, ColorPickerLabels } from '../types';
+import {
+	WorkingColor,
+	ColorPickerAssistiveText,
+	ColorPickerLabels,
+} from '../types';
 
 export interface HsvColorProps {
 	/** Assistive text for accessibility */
@@ -73,7 +77,9 @@ const HsvColor: React.FC<HsvColorProps> = ({
 			const rect = event.currentTarget.getBoundingClientRect();
 			rangeIndicatorRef.current?.focus();
 			onSaturationValueChange(event, {
-				saturation: Math.round(((event.clientX - rect.left) / rect.width) * 100),
+				saturation: Math.round(
+					((event.clientX - rect.left) / rect.width) * 100
+				),
 				value: Math.round(((rect.bottom - event.clientY) / rect.height) * 100),
 			});
 		},
@@ -119,17 +125,16 @@ const HsvColor: React.FC<HsvColorProps> = ({
 	const workingColor = isTransparent() ? fallbackWorkingColor : color;
 
 	const style = { border: 'none', borderRadius: 'unset' };
-	const swatchStyle = isTransparent() ? { ...unselectedStyle } : { ...selectedStyle };
+	const swatchStyle = isTransparent()
+		? { ...unselectedStyle }
+		: { ...selectedStyle };
 	const transparentSwatchStyle = isTransparent()
 		? { ...selectedStyle }
 		: { ...unselectedStyle };
 
 	return (
 		<div>
-			<p
-				className="slds-assistive-text"
-				id={`color-picker-instructions-${id}`}
-			>
+			<p className="slds-assistive-text" id={`color-picker-instructions-${id}`}>
 				{assistiveText.saturationValueGrid}
 			</p>
 			<div
@@ -212,4 +217,3 @@ const HsvColor: React.FC<HsvColorProps> = ({
 HsvColor.displayName = 'SLDSHsvColor';
 
 export default HsvColor;
-

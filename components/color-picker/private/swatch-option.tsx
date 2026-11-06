@@ -33,14 +33,7 @@ const selectedInnerStyle: CSSProperties = {
  */
 const SwatchOption = forwardRef<HTMLAnchorElement, SwatchOptionProps>(
 	(
-		{
-			color,
-			labels,
-			onSelect,
-			swatchOptionRef,
-			workingColor,
-			tabIndex = -1,
-		},
+		{ color, labels, onSelect, swatchOptionRef, workingColor, tabIndex = -1 },
 		_ref
 	) => {
 		const isSelected = workingColor && workingColor.hex === color;
@@ -75,6 +68,3 @@ const SwatchOption = forwardRef<HTMLAnchorElement, SwatchOptionProps>(
 SwatchOption.displayName = 'SLDSSwatchOption';
 
 export default SwatchOption;
-
-
-
