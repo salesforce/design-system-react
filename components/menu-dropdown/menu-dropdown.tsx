@@ -5,6 +5,8 @@
 // Implements the [Dropdown design pattern](https://www.lightningdesignsystem.com/components/menus/#flavor-dropdown) in React.
 
 import React, {
+	forwardRef,
+	type ForwardedRef,
 	useState,
 	useRef,
 	useCallback,
@@ -420,9 +422,13 @@ export interface MenuDropdownProps {
 	value?: MenuDropdownValue;
 	/** Width of the menu dropdown */
 	width?: 'xx-small' | 'x-small' | 'small' | 'medium' | 'bottom' | 'large';
-	/** Internal: Used for requesting focus */
+	/**
+	 * @deprecated Use `ref`, which points at the trigger button.
+	 */
 	requestFocus?: boolean;
-	/** Internal: Callback for focus request */
+	/**
+	 * @deprecated Use `ref`, which points at the trigger button.
+	 */
 	onRequestFocus?: (trigger: HTMLElement) => void;
 }
 
@@ -474,9 +480,10 @@ const DropdownToDialogNubbinMapping: Record<string, string> = {
  * This is a React 19 compatible functional component that replaces the deprecated
  * react-onclickoutside HOC with a custom click outside handler.
  */
-const MenuDropdown: React.FC<MenuDropdownProps> & {
-	displayName: string;
-} = (props) => {
+const MenuDropdownInner = (
+	props: MenuDropdownProps,
+	forwardedRef: ForwardedRef<HTMLButtonElement>
+) => {
 	const {
 		align = 'left',
 		assistiveText,
@@ -1104,6 +1111,11 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 	const saveRefToTrigger = useCallback(
 		(trigger: HTMLButtonElement | null) => {
 			triggerRef.current = trigger;
+			if (typeof forwardedRef === 'function') {
+				forwardedRef(trigger);
+			} else if (forwardedRef) {
+				forwardedRef.current = trigger;
+			}
 			if (!triggerRendered && trigger) {
 				setTriggerRendered(true);
 			}
@@ -1111,7 +1123,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 				onRequestFocus(trigger);
 			}
 		},
-		[triggerRendered, requestFocus, onRequestFocus]
+		[triggerRendered, requestFocus, onRequestFocus, forwardedRef]
 	);
 
 	// Save ref to trigger container
@@ -1434,6 +1446,10 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 		/>
 	);
 };
+
+const MenuDropdown = forwardRef<HTMLButtonElement, MenuDropdownProps>(
+	MenuDropdownInner
+);
 
 MenuDropdown.displayName = MENU_DROPDOWN;
 

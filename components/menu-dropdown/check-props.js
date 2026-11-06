@@ -26,6 +26,20 @@ if (process.env.NODE_ENV !== 'production') {
 			)}`
 		);
 
+		deprecatedProperty(
+			COMPONENT,
+			props.requestFocus,
+			'requestFocus',
+			'ref',
+			'`ref` points at the trigger button; call `ref.current.focus()`.'
+		);
+		deprecatedProperty(
+			COMPONENT,
+			props.onRequestFocus,
+			'onRequestFocus',
+			'ref'
+		);
+
 		sunsetProperty(COMPONENT, props.tooltip, 'tooltip', createDocUrl());
 
 		sunsetProperty(

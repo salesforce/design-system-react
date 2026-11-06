@@ -1423,3 +1423,22 @@ describe('SLDSMenuDropdown', () => {
 		});
 	});
 });
+
+describe('MenuDropdown ref', () => {
+	it('forwards ref to the trigger button', () => {
+		const ref = { current: null };
+		const { container } = render(
+			<IconSettings iconPath="/assets/icons">
+				<Dropdown
+					ref={ref}
+					assistiveText={{ icon: 'More' }}
+					iconCategory="utility"
+					iconName="down"
+					iconVariant="border-filled"
+					options={[{ label: 'A', value: 'A' }]}
+				/>
+			</IconSettings>
+		);
+		expect(ref.current).toBe(container.querySelector('button'));
+	});
+});
