@@ -10638,9 +10638,7 @@ exports[`Story HTML snapshots > Toast > AllVariants 1`] = `
       <div class="slds-notify__content">
         <h2 class="slds-text-heading_small">Info </h2>
         <p>Information message</p>
-      </div><button class="slds-button slds-button_icon-inverse slds-notify__close" title="Close" type="button"><svg class="slds-button__icon" aria-hidden="true">
-          <use href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-        </svg><span class="slds-assistive-text">Close</span></button>
+      </div>
     </div>
     <div class="slds-notify slds-notify_toast slds-theme_success" role="status" tabindex="0"><span class="slds-assistive-text">success</span><span class="slds-m-right_small slds-no-flex slds-align-top"><svg class="slds-icon slds-icon_small" aria-hidden="true">
           <use href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>
@@ -10648,9 +10646,7 @@ exports[`Story HTML snapshots > Toast > AllVariants 1`] = `
       <div class="slds-notify__content">
         <h2 class="slds-text-heading_small">Success </h2>
         <p>Success message</p>
-      </div><button class="slds-button slds-button_icon-inverse slds-notify__close" title="Close" type="button"><svg class="slds-button__icon" aria-hidden="true">
-          <use href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-        </svg><span class="slds-assistive-text">Close</span></button>
+      </div>
     </div>
     <div class="slds-notify slds-notify_toast slds-theme_warning" role="status" tabindex="0"><span class="slds-assistive-text">warning</span><span class="slds-m-right_small slds-no-flex slds-align-top"><svg class="slds-icon slds-icon_small" aria-hidden="true">
           <use href="/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
@@ -10658,9 +10654,7 @@ exports[`Story HTML snapshots > Toast > AllVariants 1`] = `
       <div class="slds-notify__content">
         <h2 class="slds-text-heading_small">Warning </h2>
         <p>Warning message</p>
-      </div><button class="slds-button slds-button_icon-inverse slds-notify__close" title="Close" type="button"><svg class="slds-button__icon" aria-hidden="true">
-          <use href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-        </svg><span class="slds-assistive-text">Close</span></button>
+      </div>
     </div>
     <div class="slds-notify slds-notify_toast slds-theme_error" role="status" tabindex="0"><span class="slds-assistive-text">error</span><span class="slds-m-right_small slds-no-flex slds-align-top"><svg class="slds-icon slds-icon_small" aria-hidden="true">
           <use href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
@@ -10668,9 +10662,7 @@ exports[`Story HTML snapshots > Toast > AllVariants 1`] = `
       <div class="slds-notify__content">
         <h2 class="slds-text-heading_small">Error </h2>
         <p>Error message</p>
-      </div><button class="slds-button slds-button_icon-inverse slds-notify__close" title="Close" type="button"><svg class="slds-button__icon" aria-hidden="true">
-          <use href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-        </svg><span class="slds-assistive-text">Close</span></button>
+      </div>
     </div>
   </div>
 </div>"
@@ -10684,9 +10676,7 @@ exports[`Story HTML snapshots > Toast > Error 1`] = `
     <div class="slds-notify__content">
       <h2 class="slds-text-heading_small">Error Toast </h2>
       <p>An error occurred while processing your request.</p>
-    </div><button class="slds-button slds-button_icon-inverse slds-notify__close" title="Close" type="button"><svg class="slds-button__icon" aria-hidden="true">
-        <use href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-      </svg><span class="slds-assistive-text">Close</span></button>
+    </div>
   </div>
 </div>"
 `;
@@ -10699,9 +10689,7 @@ exports[`Story HTML snapshots > Toast > ErrorWithDetails 1`] = `
     <div class="slds-notify__content">
       <h2 class="slds-text-heading_small">Cannot Save Record </h2>
       <p>The following fields are required: Name, Email, Phone.</p>
-    </div><button class="slds-button slds-button_icon-inverse slds-notify__close" title="Close" type="button"><svg class="slds-button__icon" aria-hidden="true">
-        <use href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-      </svg><span class="slds-assistive-text">Close</span></button>
+    </div>
   </div>
 </div>"
 `;
@@ -10714,9 +10702,7 @@ exports[`Story HTML snapshots > Toast > Info 1`] = `
     <div class="slds-notify__content">
       <h2 class="slds-text-heading_small">Info Toast </h2>
       <p>This is an informational message.</p>
-    </div><button class="slds-button slds-button_icon-inverse slds-notify__close" title="Close" type="button"><svg class="slds-button__icon" aria-hidden="true">
-        <use href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-      </svg><span class="slds-assistive-text">Close</span></button>
+    </div>
   </div>
 </div>"
 `;
@@ -10729,9 +10715,7 @@ exports[`Story HTML snapshots > Toast > Success 1`] = `
     <div class="slds-notify__content">
       <h2 class="slds-text-heading_small">Success Toast </h2>
       <p>Your changes have been saved successfully.</p>
-    </div><button class="slds-button slds-button_icon-inverse slds-notify__close" title="Close" type="button"><svg class="slds-button__icon" aria-hidden="true">
-        <use href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-      </svg><span class="slds-assistive-text">Close</span></button>
+    </div>
   </div>
 </div>"
 `;
@@ -10744,9 +10728,7 @@ exports[`Story HTML snapshots > Toast > Warning 1`] = `
     <div class="slds-notify__content">
       <h2 class="slds-text-heading_small">Warning Toast </h2>
       <p>Please review your input before proceeding.</p>
-    </div><button class="slds-button slds-button_icon-inverse slds-notify__close" title="Close" type="button"><svg class="slds-button__icon" aria-hidden="true">
-        <use href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-      </svg><span class="slds-assistive-text">Close</span></button>
+    </div>
   </div>
 </div>"
 `;
@@ -10774,9 +10756,7 @@ exports[`Story HTML snapshots > Toast > WithDuration 1`] = `
     <div class="slds-notify__content">
       <h2 class="slds-text-heading_small">Auto-dismiss Toast </h2>
       <p>This toast will disappear after 5 seconds.</p>
-    </div><button class="slds-button slds-button_icon-inverse slds-notify__close" title="Close" type="button"><svg class="slds-button__icon" aria-hidden="true">
-        <use href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-      </svg><span class="slds-assistive-text">Close</span></button>
+    </div>
   </div>
 </div>"
 `;
@@ -10788,9 +10768,7 @@ exports[`Story HTML snapshots > Toast > WithHeadingLink 1`] = `
       </svg></span>
     <div class="slds-notify__content">
       <h2 class="slds-text-heading_small">Click the link: <a href="#">View Details</a></h2>
-    </div><button class="slds-button slds-button_icon-inverse slds-notify__close" title="Close" type="button"><svg class="slds-button__icon" aria-hidden="true">
-        <use href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-      </svg><span class="slds-assistive-text">Close</span></button>
+    </div>
   </div>
 </div>"
 `;

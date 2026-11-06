@@ -92,6 +92,7 @@ export const ErrorWithDetails = {
 export const WithCloseCallback = {
 	args: {
 		variant: 'success',
+		dismissible: true,
 		labels: {
 			heading: 'Closable Toast',
 			details: 'Click the X to trigger onRequestClose callback.',
