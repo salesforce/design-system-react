@@ -34,3 +34,13 @@ export const bareDateDisabled = (
 	// @ts-expect-error `dateDisabled` receives `{ date }`, not a bare Date
 	<DatePicker {...required} dateDisabled={isSundayFromBareDate} />
 );
+
+export const calendarFocus = (
+	<DatePicker
+		{...required}
+		onCalendarFocus={(_event, { direction }) => {
+			const known: 'next' | 'previous' | undefined = direction;
+			return known;
+		}}
+	/>
+);

@@ -1,6 +1,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
+import type { DatePickerFocusDirection } from '../date-picker';
 import React, { type ReactElement, type SyntheticEvent } from 'react';
 
 import Week from './week';
@@ -18,7 +19,10 @@ export interface CalendarProps {
 	/** Makes Monday the first day of the week */
 	isIsoWeekday?: boolean;
 	/** Called when focus moves off calendar */
-	onCalendarBlur: (event: SyntheticEvent, data: { direction: string }) => void;
+	onCalendarBlur: (
+		event: SyntheticEvent,
+		data: { direction: DatePickerFocusDirection }
+	) => void;
 	/** Called when month changes */
 	onChangeMonth: (event: SyntheticEvent | undefined, date: Date) => void;
 	/** Called when internal focus date requested */

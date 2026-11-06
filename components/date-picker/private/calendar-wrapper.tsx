@@ -1,6 +1,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
+import type { DatePickerFocusDirection } from '../date-picker';
 import React, { type SyntheticEvent } from 'react';
 
 // ### classNames
@@ -41,7 +42,11 @@ export interface CalendarWrapperProps {
 	/** Called when keyboard moves focus on calendar */
 	onCalendarFocus?: (
 		event: SyntheticEvent | undefined,
-		data: { date?: Date; ref?: HTMLElement; direction?: string }
+		data: {
+			date?: Date;
+			ref?: HTMLElement;
+			direction?: DatePickerFocusDirection;
+		}
 	) => void;
 	/** Called when calendar should close */
 	onRequestClose: (
@@ -89,7 +94,7 @@ class DatepickerCalendarWrapper extends React.Component<
 
 	handleCalendarBlur = (
 		event: SyntheticEvent,
-		{ direction }: { direction: string }
+		{ direction }: { direction: DatePickerFocusDirection }
 	) => {
 		if (direction === 'next' && this.previousMonthRef) {
 			if (this.props.onCalendarFocus) {
