@@ -83,9 +83,9 @@ export interface InputChangeData {
 }
 
 /**
- * Props for the Input component
+ * Props shared by every Input variant and label form
  */
-export interface InputProps {
+export interface InputBaseProps {
 	/** ID of the currently active child in a composite widget */
 	'aria-activedescendant'?: string;
 	/** Indicates if suggestions complete the textbox input */
@@ -104,8 +104,6 @@ export interface InputProps {
 	'aria-owns'?: string;
 	/** Whether input is required */
 	'aria-required'?: boolean;
-	/** Assistive text for accessibility */
-	assistiveText?: InputAssistiveText;
 	/** Browser autocomplete attribute */
 	autoComplete?: string;
 	/** Elements added after the input */
@@ -118,10 +116,6 @@ export interface InputProps {
 	errorText?: ReactNode;
 	/** Tooltip component for field-level help */
 	fieldLevelHelpTooltip?: ReactElement<TooltipProps> | null;
-	/** Fixed text/node on the left */
-	fixedTextLeft?: ReactNode;
-	/** Fixed text/node on the right */
-	fixedTextRight?: ReactNode;
 	/** Shows loading spinner inside input */
 	hasSpinner?: boolean;
 	/** Left-aligned `InputIcon`. The input sets its `iconPosition` to `left` unless the element sets one. */
@@ -138,16 +132,10 @@ export interface InputProps {
 	inputRef?: (element: HTMLInputElement | null) => void;
 	/** Displays value statically (static input pattern) */
 	isStatic?: boolean;
-	/** Label text above input */
-	label?: string;
 	/** Maximum character length */
-	maxLength?: string | number;
-	/** Maximum value for counter variant */
-	maxValue?: number;
+	maxLength?: number;
 	/** Minimum character length */
-	minLength?: string | number;
-	/** Minimum value for counter variant */
-	minValue?: number;
+	minLength?: number;
 	/** Form parameter name */
 	name?: string;
 	/** Blur event handler */
@@ -187,10 +175,8 @@ export interface InputProps {
 	required?: boolean;
 	/** ARIA role */
 	role?: string;
-	/** Step size for counter variant */
-	step?: number;
 	/** Tab index */
-	tabIndex?: string | number;
+	tabIndex?: number;
 	/** Custom styles for container */
 	styleContainer?: CSSProperties;
 	/** Custom styles for input element */
@@ -203,9 +189,65 @@ export interface InputProps {
 	 * in v11.)
 	 */
 	value?: string | number;
-	/** Input variant */
-	variant?: InputVariant;
 }
+
+/** The plain input, and the default. Counter-only props are not accepted. */
+interface InputBaseVariantProps {
+	/** Input variant */
+	variant?: 'base';
+	maxValue?: never;
+	minValue?: never;
+	step?: never;
+}
+
+/** A number input with increment and decrement buttons. Its `type` is always `number`. */
+interface InputCounterVariantProps {
+	/** Input variant */
+	variant: 'counter';
+	/** Maximum value */
+	maxValue?: number;
+	/** Minimum value */
+	minValue?: number;
+	/** Step size */
+	step?: number;
+}
+
+/** A visible `label`, or `assistiveText.label` for a visually hidden one, not both. */
+type InputLabelProps =
+	| {
+			/** Label text above input */
+			label?: string;
+			/** Assistive text for accessibility */
+			assistiveText?: InputAssistiveText & { label?: never };
+	  }
+	| {
+			label?: undefined;
+			/** Assistive text for accessibility */
+			assistiveText?: InputAssistiveText;
+	  };
+
+/** Fixed text on one side of the input, not both. */
+type InputFixedTextProps =
+	| {
+			/** Fixed text/node on the left */
+			fixedTextLeft?: ReactNode;
+			fixedTextRight?: never;
+	  }
+	| {
+			fixedTextLeft?: never;
+			/** Fixed text/node on the right */
+			fixedTextRight?: ReactNode;
+	  };
+
+/**
+ * Props for the Input component: a union on `variant` (counter-only props),
+ * with `label`/`assistiveText.label` and `fixedTextLeft`/`fixedTextRight`
+ * exclusive.
+ */
+export type InputProps = InputBaseProps &
+	(InputBaseVariantProps | InputCounterVariantProps) &
+	InputLabelProps &
+	InputFixedTextProps;
 
 /**
  * Props removed from the public API. Still destructured so they never reach

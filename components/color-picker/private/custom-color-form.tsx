@@ -59,7 +59,7 @@ const CustomColorForm: React.FC<CustomColorFormProps> = ({
 				})}
 				id={`color-picker-input-hex-${id}`}
 				label={labels.hexLabel}
-				maxLength="7"
+				maxLength={7}
 				onChange={onHexChange}
 				value={color.hex}
 			/>
@@ -71,7 +71,7 @@ const CustomColorForm: React.FC<CustomColorFormProps> = ({
 				id={`color-picker-input-r-${id}`}
 				label={labels.redAbbreviated}
 				onChange={onRedChange}
-				maxLength="3"
+				maxLength={3}
 				value={String(color.rgb.red)}
 			/>
 			<Input
@@ -82,7 +82,7 @@ const CustomColorForm: React.FC<CustomColorFormProps> = ({
 				id={`color-picker-input-g-${id}`}
 				label={labels.greenAbbreviated}
 				onChange={onGreenChange}
-				maxLength="3"
+				maxLength={3}
 				value={String(color.rgb.green)}
 			/>
 			<Input
@@ -93,7 +93,7 @@ const CustomColorForm: React.FC<CustomColorFormProps> = ({
 				id={`color-picker-input-b-${id}`}
 				label={labels.blueAbbreviated}
 				onChange={onBlueChange}
-				maxLength="3"
+				maxLength={3}
 				value={String(color.rgb.blue)}
 			/>
 		</div>
