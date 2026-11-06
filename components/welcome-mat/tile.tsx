@@ -65,9 +65,6 @@ export interface WelcomeMatTileInjectedProps {
 
 const defaultProps: Partial<WelcomeMatTileProps & WelcomeMatTileInjectedProps> =
 	{
-		assistiveText: {
-			completedIcon: 'Completed',
-		},
 		isComplete: false,
 		variant: 'steps',
 	};
@@ -99,7 +96,7 @@ class Tile extends React.Component<
 
 	render() {
 		const assistiveText = {
-			...defaultProps.assistiveText,
+			completedIcon: 'Completed',
 			...this.props.assistiveText,
 		};
 		const body = (
