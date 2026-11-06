@@ -520,11 +520,32 @@ describe('SLDS Carousel', () => {
 			fireEvent.keyDown(carousel, { keyCode: KEYS.RIGHT });
 
 			expect(onRequestPanelChange).toHaveBeenCalledTimes(1);
-			const callArgs = onRequestPanelChange.mock.calls[0];
-			expect(callArgs[0]).toBeTruthy(); // event object
-			expect(callArgs[1]).toBeTruthy(); // data object
-			expect(callArgs[1].currentPanel).toBe(0);
-			expect(callArgs[1].requestedPanel).toBe(1);
+			const [event, data] = onRequestPanelChange.mock.calls[0];
+			expect(event.type).toBe('keydown');
+			expect(data).toEqual({ currentPanel: 0, requestedPanel: 1 });
+		});
+
+		it('passes the keydown event to both callbacks when a key stops autoplay', () => {
+			const onRequestPanelChange = vi.fn();
+			const onRequestAutoplayToggle = vi.fn();
+			const { container } = renderCarousel({
+				itemsPerPanel: 1,
+				onRequestPanelChange,
+				onRequestAutoplayToggle,
+			});
+
+			fireEvent.keyDown(container.querySelector('.slds-carousel'), {
+				keyCode: KEYS.RIGHT,
+			});
+
+			// The same real event, never a stale or empty `{}` placeholder
+			const [panelEvent] = onRequestPanelChange.mock.calls[0];
+			const [autoplayEvent, autoplayData] =
+				onRequestAutoplayToggle.mock.calls[0];
+			expect(panelEvent.type).toBe('keydown');
+			expect(panelEvent.keyCode).toBe(KEYS.RIGHT);
+			expect(autoplayEvent).toBe(panelEvent);
+			expect(autoplayData).toEqual({ isAutoplayOn: false });
 		});
 
 		it('calls onItemClick correctly', () => {
