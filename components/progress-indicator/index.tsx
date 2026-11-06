@@ -96,26 +96,18 @@ export interface StepEventData {
 	step: ProgressStep;
 }
 
-/**
- * Props for the ProgressIndicator component
- */
-export interface ProgressIndicatorProps {
+/** Props every ProgressIndicator takes. */
+interface ProgressIndicatorBaseProps {
 	/** Assistive text for accessibility */
 	assistiveText?: ProgressIndicatorAssistiveText;
 	/** CSS classes */
 	className?: string | string[] | Record<string, boolean>;
 	/** Array of completed step objects */
 	completedSteps?: ProgressStep[];
-	/** Array of disabled step objects. `type="base"` only. */
-	disabledSteps?: ProgressStep[];
-	/** Array of error step objects. `type="base"` only. */
-	errorSteps?: ProgressStep[];
 	/** HTML id attribute */
 	id?: string;
 	/** **Text labels for internationalization** */
 	labels?: ProgressIndicatorLabels;
-	/** Orientation (horizontal or vertical). `type="base"` only. */
-	orientation?: ProgressIndicatorOrientation;
 	/** Click handler for steps */
 	onStepClick?: (
 		event: React.MouseEvent | React.KeyboardEvent,
@@ -127,25 +119,75 @@ export interface ProgressIndicatorProps {
 	selectedStep: ProgressStep;
 	/** Array of all steps */
 	steps: ProgressStep[];
-	/** Steps with open tooltips (for development). `type="base"` only. */
-	tooltipIsOpenSteps?: ProgressStep[];
-	/** Tooltip position strategy. `type="base"` only. */
-	tooltipPosition?: TooltipPosition;
-	/**
-	 * Visual pattern, like `type` on `lightning-progress-indicator`:
-	 * * `base` - (default) Step markers on a progress bar, with each step's label in a tooltip.
-	 * * `path` - SLDS Path, with each step's label shown in its stage. Use the arrow keys to move between stages. Completion comes from `completedSteps`; error, disabled, and tooltip props aren't supported.
-	 */
-	type?: ProgressIndicatorType;
-	/**
-	 * Component variant. `type="base"` only.
-	 * * `base` - (default) For white backgrounds.
-	 * * `shade` - For shaded backgrounds. Adds a light gray border to the step markers, like `variant="shade"` on `lightning-progress-indicator`.
-	 * * `modal` - The `shade` styling, with tooltips positioned for a modal footer.
-	 * * `setup-assistant` - Vertical steps with a bordered list, for Setup Assistant.
-	 */
-	variant?: ProgressIndicatorVariant;
 }
+
+/** Props of the step markers on a progress bar: `type="base"`, any variant. */
+interface ProgressIndicatorMarkerProps {
+	/** Array of disabled step objects. */
+	disabledSteps?: ProgressStep[];
+	/** Array of error step objects. */
+	errorSteps?: ProgressStep[];
+	/** Steps with open tooltips (for development). */
+	tooltipIsOpenSteps?: ProgressStep[];
+	/** Tooltip position strategy. */
+	tooltipPosition?: TooltipPosition;
+}
+
+/**
+ * Step markers on a progress bar, with each step's label in a tooltip.
+ * * `base` - (default) For white backgrounds.
+ * * `shade` - For shaded backgrounds. Adds a light gray border to the step markers, like `variant="shade"` on `lightning-progress-indicator`.
+ * * `modal` - The `shade` styling, with tooltips positioned for a modal footer.
+ */
+interface ProgressIndicatorBarProps
+	extends ProgressIndicatorBaseProps, ProgressIndicatorMarkerProps {
+	/**
+	 * Visual pattern, like `type` on `lightning-progress-indicator`.
+	 * * `base` - (default) Step markers on a progress bar.
+	 */
+	type?: 'base';
+	/** Component variant. */
+	variant?: Exclude<ProgressIndicatorVariant, 'setup-assistant'>;
+	/** Orientation (horizontal or vertical). */
+	orientation?: ProgressIndicatorOrientation;
+}
+
+/** Vertical steps with a bordered list, for Setup Assistant. Always vertical. */
+interface ProgressIndicatorSetupAssistantProps
+	extends ProgressIndicatorBaseProps, ProgressIndicatorMarkerProps {
+	type?: 'base';
+	/** Vertical steps with a bordered list, for Setup Assistant. */
+	variant: 'setup-assistant';
+	/** Setup Assistant is always vertical. */
+	orientation?: 'vertical';
+}
+
+/**
+ * SLDS Path, with each step's label shown in its stage. Use the arrow keys to
+ * move between stages. Completion comes from `completedSteps`; there are no
+ * error, disabled, tooltip, orientation or variant props.
+ */
+interface ProgressIndicatorPathProps extends ProgressIndicatorBaseProps {
+	/** Visual pattern: SLDS Path, with each step's label shown in its stage. */
+	type: 'path';
+	disabledSteps?: never;
+	errorSteps?: never;
+	orientation?: never;
+	tooltip?: never;
+	tooltipIsOpenSteps?: never;
+	tooltipPosition?: never;
+	variant?: never;
+}
+
+/**
+ * Props for the ProgressIndicator component: a union on `type` and `variant`,
+ * so a prop that a pattern ignores (or `orientation` that Setup Assistant
+ * overrides) does not compile.
+ */
+export type ProgressIndicatorProps =
+	| ProgressIndicatorBarProps
+	| ProgressIndicatorSetupAssistantProps
+	| ProgressIndicatorPathProps;
 
 const defaultSteps: ProgressStep[] = [
 	{ id: 0, label: 'tooltip label #1' },
@@ -203,24 +245,32 @@ function findStep(
 /**
  * Progress Indicator communicates to the user the progress of a particular process.
  */
-const ProgressIndicator = ({
-	assistiveText: propAssistiveText,
-	className,
-	completedSteps = [],
-	disabledSteps: propDisabledSteps,
-	errorSteps: propErrorSteps,
-	id: propId,
-	labels: propLabels,
-	orientation: propOrientation = 'horizontal',
-	onStepClick = () => {},
-	onStepFocus = () => {},
-	selectedStep,
-	steps: propSteps,
-	tooltipIsOpenSteps,
-	tooltipPosition: propTooltipPosition,
-	type = 'base',
-	variant = 'base',
-}: ProgressIndicatorProps): React.ReactElement => {
+const ProgressIndicator = (
+	props: ProgressIndicatorProps
+): React.ReactElement => {
+	const {
+		assistiveText: propAssistiveText,
+		className,
+		completedSteps = [],
+		disabledSteps: propDisabledSteps,
+		errorSteps: propErrorSteps,
+		id: propId,
+		labels: propLabels,
+		orientation: propOrientation = 'horizontal',
+		onStepClick = () => {},
+		onStepFocus = () => {},
+		selectedStep,
+		steps: propSteps,
+		tooltipIsOpenSteps,
+		tooltipPosition: propTooltipPosition,
+		type = 'base',
+		variant = 'base',
+	} = props as ProgressIndicatorBaseProps &
+		ProgressIndicatorMarkerProps & {
+			orientation?: ProgressIndicatorOrientation;
+			type?: ProgressIndicatorType;
+			variant?: ProgressIndicatorVariant;
+		};
 	const generatedId = useId();
 	const id = propId || generatedId;
 
