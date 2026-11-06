@@ -32,7 +32,10 @@ export interface CarouselItemProps {
 	/**
 	 * Function to generate the panel HTML `id`.
 	 */
-	getPanelId?: (params: { carouselId: string; itemId: string }) => string;
+	getPanelId?: (params: {
+		carouselId: string;
+		itemId: string | number;
+	}) => string;
 	/**
 	 * Carousel Item's visible heading
 	 */
@@ -44,7 +47,7 @@ export interface CarouselItemProps {
 	/**
 	 * Id of the item component.
 	 */
-	id?: string;
+	id?: string | number;
 	/**
 	 * Image alt text
 	 */
@@ -114,7 +117,7 @@ const CarouselItem = ({
 		<div
 			id={getPanelId?.({ carouselId, itemId: id } as {
 				carouselId: string;
-				itemId: string;
+				itemId: string | number;
 			})}
 			className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
 			role="tabpanel"

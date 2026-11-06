@@ -862,4 +862,19 @@ describe('SLDS Carousel', () => {
 			).toEqual([{ isAutoplayOn: false }, { isAutoplayOn: true }]);
 		});
 	});
+
+	describe('itemsPerPanel validation', () => {
+		it.each([0, -2, 1.5, NaN])('falls back to 1 for %s', (itemsPerPanel) => {
+			const spy = vi.spyOn(console, 'error').mockImplementation(() => {});
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<Carousel id="c" items={items} itemsPerPanel={itemsPerPanel} />
+				</IconSettings>
+			);
+			expect(container.querySelectorAll('[role="tab"]')).toHaveLength(
+				items.length
+			);
+			spy.mockRestore();
+		});
+	});
 });

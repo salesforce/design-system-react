@@ -29,7 +29,10 @@ export interface CarouselIndicatorsProps {
 	/**
 	 * Function to generate the panel HTML `id`.
 	 */
-	getPanelId?: (params: { carouselId: string; itemId: string }) => string;
+	getPanelId?: (params: {
+		carouselId: string;
+		itemId: string | number;
+	}) => string;
 	/**
 	 * Passed from carousel parent state, dictates if indicator currently has focus
 	 */
@@ -105,7 +108,7 @@ class CarouselIndicators extends React.Component<CarouselIndicatorsProps> {
 					);
 					let assistiveText = `${index}`;
 					let title = `${index}`;
-					let id = '';
+					let id: string | number = '';
 
 					if (props.items && props.items.length > 0) {
 						// eslint-disable-next-line prefer-destructuring
@@ -152,7 +155,7 @@ class CarouselIndicators extends React.Component<CarouselIndicatorsProps> {
 								aria-controls={props.getPanelId?.({
 									carouselId: props.carouselId,
 									itemId: id,
-								} as { carouselId: string; itemId: string })}
+								} as { carouselId: string; itemId: string | number })}
 								title={title}
 								onBlur={props.onBlur}
 								onClick={(event) => props.onClick?.(event, index)}
