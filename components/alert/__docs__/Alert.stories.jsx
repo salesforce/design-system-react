@@ -113,7 +113,8 @@ export const DismissibleInteractive = {
 				variant="warning"
 				dismissible
 				labels={{
-					heading: 'Click the X to dismiss this alert, then click the button to bring it back.',
+					heading:
+						'Click the X to dismiss this alert, then click the button to bring it back.',
 				}}
 				onRequestClose={() => setIsOpen(false)}
 			/>
