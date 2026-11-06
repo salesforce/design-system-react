@@ -784,3 +784,20 @@ describe('WelcomeMatInfoBadge', () => {
 		expect(check.querySelector('svg')).toHaveClass('slds-icon_xx-small');
 	});
 });
+
+describe('WelcomeMatInfoBadge className', () => {
+	it('accepts string, array and object classNames on the root', () => {
+		const { container } = render(
+			<IconSettings iconPath="/assets/icons">
+				<WelcomeMatInfoBadge
+					id="b"
+					image="x.png"
+					className={['a', { b: true, c: false }]}
+				/>
+			</IconSettings>
+		);
+		const root = container.querySelector('#b');
+		expect(root).toHaveClass('a', 'b');
+		expect(root).not.toHaveClass('c');
+	});
+});

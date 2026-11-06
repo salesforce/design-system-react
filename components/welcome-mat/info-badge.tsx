@@ -4,6 +4,7 @@
 // Implements the [Welcome Mat InfoBadge design pattern](https://lightningdesignsystem.com/components/welcome-mat/) in React.
 // Based on SLDS v2.4.0
 import React, { type ReactNode } from 'react';
+import classNames from 'classnames';
 import Icon from '../icon';
 
 import { WELCOME_MAT_BADGE } from '../../utilities/constants';
@@ -45,9 +46,9 @@ export interface WelcomeMatInfoBadgeProps {
 	 */
 	completeActions?: ReactNode;
 	/**
-	 * CSS class names to be added to the container element. `array`, `object`, or `string` are accepted.
+	 * CSS class names to be added to the root element.
 	 */
-	className?: unknown[] | Record<string, unknown> | string;
+	className?: string | string[] | Record<string, boolean>;
 	/**
 	 * HTML id for component.
 	 */
@@ -107,7 +108,10 @@ class InfoBadge extends React.Component<WelcomeMatInfoBadgeProps> {
 
 	render() {
 		return (
-			<div id={this.getId()} className={this.props.className as string}>
+			<div
+				id={this.getId()}
+				className={classNames(this.props.className as string) || undefined}
+			>
 				<div className="slds-welcome-mat__info-badge-container">
 					<img
 						className="slds-welcome-mat__info-badge"
