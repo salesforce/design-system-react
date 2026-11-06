@@ -135,7 +135,3 @@ export const Controlled: Story = {
 		return <ControlledExample />;
 	},
 };
-
-
-
-

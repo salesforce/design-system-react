@@ -8,6 +8,7 @@ import onlyOneOfProperties from '../../utilities/warning/only-one-of-properties'
 import sunsetProperty from '../../utilities/warning/sunset-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
 
+import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import { INPUT } from '../../utilities/constants';
 
 let checkProps = function checkPropsFunction() {};
@@ -31,6 +32,13 @@ if (process.env.NODE_ENV !== 'production') {
 				`Pass a \`Tooltip\` to \`fieldLevelHelpTooltip\` and set its \`assistiveText.triggerLearnMoreIcon\`. ${createDocUrl(
 					'fieldLevelHelpTooltip'
 				)}`
+			);
+			deprecatedProperty(
+				COMPONENT,
+				props['aria-required'],
+				'aria-required',
+				'required',
+				createDocUrl('required')
 			);
 
 			onlyOneOfProperties(

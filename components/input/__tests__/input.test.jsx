@@ -605,3 +605,18 @@ describe('SLDSInput', () => {
 		});
 	});
 });
+
+describe('Input required', () => {
+	it('sets the native required attribute', () => {
+		const { container } = render(<Input id="r" label="L" required />);
+		expect(container.querySelector('input')).toBeRequired();
+	});
+
+	it('still passes the deprecated aria-required through', () => {
+		const { container } = render(<Input id="r" label="L" aria-required />);
+		expect(container.querySelector('input')).toHaveAttribute(
+			'aria-required',
+			'true'
+		);
+	});
+});

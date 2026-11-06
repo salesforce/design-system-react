@@ -102,7 +102,10 @@ export interface InputProps {
 	'aria-labelledby'?: string;
 	/** ID of element(s) owned by this input */
 	'aria-owns'?: string;
-	/** Whether input is required */
+	/**
+	 * Whether input is required.
+	 * @deprecated Use `required`, which sets the native attribute and the label asterisk.
+	 */
 	'aria-required'?: boolean;
 	/** Assistive text for accessibility */
 	assistiveText?: InputAssistiveText;

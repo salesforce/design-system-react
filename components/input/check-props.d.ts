@@ -12,7 +12,3 @@ declare function checkProps(
 ): void;
 
 export default checkProps;
-
-
-
-

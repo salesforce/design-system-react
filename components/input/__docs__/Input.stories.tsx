@@ -314,19 +314,44 @@ export const InputTypes: Story = {
 	render: () => (
 		<div className="slds-grid slds-wrap slds-gutters">
 			<div className="slds-col slds-size_1-of-2 slds-p-bottom_medium">
-				<Input id="text-input" label="Text" type="text" placeholder="Text input" />
+				<Input
+					id="text-input"
+					label="Text"
+					type="text"
+					placeholder="Text input"
+				/>
 			</div>
 			<div className="slds-col slds-size_1-of-2 slds-p-bottom_medium">
-				<Input id="email-input" label="Email" type="email" placeholder="email@example.com" />
+				<Input
+					id="email-input"
+					label="Email"
+					type="email"
+					placeholder="email@example.com"
+				/>
 			</div>
 			<div className="slds-col slds-size_1-of-2 slds-p-bottom_medium">
-				<Input id="password-input" label="Password" type="password" placeholder="Enter password" />
+				<Input
+					id="password-input"
+					label="Password"
+					type="password"
+					placeholder="Enter password"
+				/>
 			</div>
 			<div className="slds-col slds-size_1-of-2 slds-p-bottom_medium">
-				<Input id="tel-input" label="Phone" type="tel" placeholder="(555) 555-5555" />
+				<Input
+					id="tel-input"
+					label="Phone"
+					type="tel"
+					placeholder="(555) 555-5555"
+				/>
 			</div>
 			<div className="slds-col slds-size_1-of-2 slds-p-bottom_medium">
-				<Input id="url-input" label="URL" type="url" placeholder="https://example.com" />
+				<Input
+					id="url-input"
+					label="URL"
+					type="url"
+					placeholder="https://example.com"
+				/>
 			</div>
 			<div className="slds-col slds-size_1-of-2 slds-p-bottom_medium">
 				<Input id="number-input" label="Number" type="number" placeholder="0" />
@@ -340,7 +365,3 @@ export const InputTypes: Story = {
 		</div>
 	),
 };
-
-
-
-
