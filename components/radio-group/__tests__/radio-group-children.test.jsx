@@ -34,3 +34,44 @@ describe('RadioGroup children', () => {
 		expect(calls).toEqual(['group']);
 	});
 });
+
+describe('RadioGroup labels', () => {
+	const renderGroup = (props) =>
+		render(
+			<RadioGroup onChange={() => {}} value={null} {...props}>
+				<Radio labels={{ label: 'One' }} value="one" />
+			</RadioGroup>
+		);
+
+	it('derives the error id and describes the radios with it', () => {
+		const { container, getByLabelText } = renderGroup({
+			labels: { label: 'Group', error: <em>Pick one</em> },
+		});
+		const error = container.querySelector('.slds-form-element__help');
+		expect(error.id).not.toBe('');
+		expect(getByLabelText('One')).toHaveAttribute('aria-describedby', error.id);
+		expect(container.querySelector('.slds-has-error')).toBeInTheDocument();
+	});
+
+	it('shows labels.label visibly even when assistiveText.label is set', () => {
+		const { container } = renderGroup({
+			labels: { label: 'Visible' },
+			assistiveText: { label: 'Hidden' },
+		});
+		const legend = container.querySelector('legend');
+		expect(legend).toHaveTextContent('Visible');
+		expect(legend).not.toHaveClass('slds-assistive-text');
+	});
+
+	it('hides the legend when only assistiveText.label is set', () => {
+		const { container } = renderGroup({ assistiveText: { label: 'Hidden' } });
+		expect(container.querySelector('legend')).toHaveClass(
+			'slds-assistive-text'
+		);
+	});
+
+	it('hasError applies error styling without a message', () => {
+		const { container } = renderGroup({ hasError: true });
+		expect(container.querySelector('.slds-has-error')).toBeInTheDocument();
+	});
+});

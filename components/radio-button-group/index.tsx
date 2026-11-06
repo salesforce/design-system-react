@@ -1,7 +1,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { type CSSProperties } from 'react';
+import React, { type CSSProperties, type ReactNode } from 'react';
 import RadioGroup, { type RadioGroupChangeProps } from '../radio-group';
 import { RADIO_BUTTON_GROUP } from '../../utilities/constants';
 import type { ChildrenOf } from '../../types/common';
@@ -21,8 +21,8 @@ export interface RadioButtonGroupAssistiveText {
  * Labels for RadioButtonGroup
  */
 export interface RadioButtonGroupLabels {
-	/** Error message to display */
-	error?: string;
+	/** Error message to display. Setting it also sets `hasError`. */
+	error?: ReactNode;
 	/** Label above the button group */
 	label?: string;
 }
@@ -36,8 +36,10 @@ interface RadioButtonGroupBaseProps {
 	className?: string | string[] | Record<string, boolean>;
 	/** Disable all radio inputs */
 	disabled?: boolean;
-	/** ID for error message element */
+	/** @deprecated The error id is derived. */
 	errorId?: string;
+	/** Applies error styling. Defaults to `true` when `labels.error` is set. */
+	hasError?: boolean;
 	/** Text labels */
 	labels?: RadioButtonGroupLabels;
 	/** Name attribute for all radios */

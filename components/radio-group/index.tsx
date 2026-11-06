@@ -8,6 +8,7 @@ import React, {
 	type ReactElement,
 	type CSSProperties,
 	type ChangeEvent,
+	type ReactNode,
 } from 'react';
 import classNames from 'classnames';
 import { RADIO_GROUP } from '../../utilities/constants';
@@ -29,7 +30,7 @@ export type RadioGroupVariant = 'base' | 'button-group';
  * Assistive text for RadioGroup
  */
 export interface RadioGroupAssistiveText {
-	/** Label for the group (shown in legend) */
+	/** Legend text hidden from sighted users. Used only when `labels.label` is not set. */
 	label?: string;
 	/** Text for required indicator */
 	required?: string;
@@ -39,9 +40,9 @@ export interface RadioGroupAssistiveText {
  * Labels for RadioGroup
  */
 export interface RadioGroupLabels {
-	/** Error message to display */
-	error?: string;
-	/** Label above the radio group */
+	/** Error message to display. Setting it also sets `hasError`. */
+	error?: ReactNode;
+	/** Label above the radio group (the visible legend) */
 	label?: string;
 }
 
@@ -99,8 +100,13 @@ interface RadioGroupBaseProps {
 	className?: string | string[] | Record<string, boolean>;
 	/** Disable all radio inputs */
 	disabled?: boolean;
-	/** ID for error message element */
+	/** @deprecated The error id is derived. */
 	errorId?: string;
+	/**
+	 * Applies error styling. Defaults to `true` when `labels.error` is set. Without
+	 * `labels.error`, nothing describes the error: pass one.
+	 */
+	hasError?: boolean;
 	/** Text labels */
 	labels?: RadioGroupLabels;
 	/** Name attribute for all radios */
@@ -141,6 +147,7 @@ const RadioGroup = ({
 	className,
 	disabled,
 	errorId: propErrorId,
+	hasError: propHasError,
 	labels: propLabels,
 	name: propName,
 	onChange,
@@ -156,13 +163,18 @@ const RadioGroup = ({
 	const labels = { ...defaultLabels, ...propLabels };
 
 	const name = propName || generatedName;
-	const hasError = Boolean(labels.error);
-	const errorId = hasError ? propErrorId || generatedErrorId : undefined;
+	const hasError = propHasError ?? Boolean(labels.error);
+	const hasErrorMessage = Boolean(labels.error);
+	const errorId = hasErrorMessage ? propErrorId || generatedErrorId : undefined;
 
 	const isControlled = value !== undefined;
 
 	useEffect(() => {
-		checkProps(RADIO_GROUP, { disabled, onChange, value }, componentDoc);
+		checkProps(
+			RADIO_GROUP,
+			{ disabled, errorId: propErrorId, onChange, value },
+			componentDoc
+		);
 	});
 
 	// Clone children with group props. With a group `value`, each radio's
@@ -207,7 +219,7 @@ const RadioGroup = ({
 				className={classNames(
 					'slds-form-element__legend',
 					'slds-form-element__label',
-					{ 'slds-assistive-text': assistiveText.label }
+					{ 'slds-assistive-text': !labels.label && assistiveText.label }
 				)}
 			>
 				{required && (
@@ -216,7 +228,7 @@ const RadioGroup = ({
 						<div className="slds-assistive-text">{assistiveText.required} </div>
 					</abbr>
 				)}
-				{assistiveText.label || labels.label}
+				{labels.label || assistiveText.label}
 			</legend>
 			<div
 				className={classNames(

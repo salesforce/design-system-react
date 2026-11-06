@@ -24,6 +24,14 @@ if (process.env.NODE_ENV !== 'production') {
 			)}`
 		);
 
+		deprecatedProperty(
+			COMPONENT,
+			props.errorId,
+			'errorId',
+			undefined,
+			`The id of the error element is derived. ${createDocUrl('labels')}`
+		);
+
 		// React's own "`checked` without `onChange`" warning never fires,
 		// because the group always attaches its own change handler.
 		requiredProperty(

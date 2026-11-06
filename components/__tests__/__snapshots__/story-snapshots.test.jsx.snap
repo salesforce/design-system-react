@@ -5725,7 +5725,7 @@ exports[`Story HTML snapshots > RadioGroup > Required 1`] = `
 exports[`Story HTML snapshots > RadioGroup > WithAssistiveText 1`] = `
 "<div class="slds-p-around_medium">
   <fieldset class="slds-form-element">
-    <legend class="slds-form-element__legend slds-form-element__label slds-assistive-text">Choose your preferred option</legend>
+    <legend class="slds-form-element__legend slds-form-element__label">Select an option</legend>
     <div class="slds-form-element__control"><span class="slds-radio"><input type="radio" id="_R_1d_" name="_R_0_" checked="" value="option1" /><label class="slds-radio__label" for="_R_1d_"><span class="slds-radio_faux"></span><span class="slds-form-element__label">Option 1</span></label></span><span class="slds-radio"><input type="radio" id="_R_2d_" name="_R_0_" value="option2" /><label class="slds-radio__label" for="_R_2d_"><span class="slds-radio_faux"></span><span class="slds-form-element__label">Option 2</span></label></span><span class="slds-radio"><input type="radio" id="_R_3d_" name="_R_0_" value="option3" /><label class="slds-radio__label" for="_R_3d_"><span class="slds-radio_faux"></span><span class="slds-form-element__label">Option 3</span></label></span></div>
   </fieldset>
 </div>"
