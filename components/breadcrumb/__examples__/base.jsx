@@ -11,7 +11,9 @@ class Example extends React.Component {
 			<a key="parent-entity" id="parent-entity" href="#entity">
 				Parent Entity
 			</a>,
-			<a key="parent-record" href="#record">Parent Record Name</a>,
+			<a key="parent-record" href="#record">
+				Parent Record Name
+			</a>,
 		];
 
 		return (
