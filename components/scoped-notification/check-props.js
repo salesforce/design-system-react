@@ -3,7 +3,7 @@
 /* eslint-disable import/no-mutable-exports */
 
 import getComponentDocFn from '../../utilities/get-component-doc';
-import deprecatedProperty from '../../utilities/warning/deprecated-property';
+import sunsetProperty from '../../utilities/warning/sunset-property';
 
 let checkProps = function checkPropsFunction() {};
 
@@ -11,12 +11,11 @@ if (process.env.NODE_ENV !== 'production') {
 	checkProps = function checkPropsFunction(COMPONENT, props, jsonDoc) {
 		const createDocUrl = getComponentDocFn(jsonDoc);
 
-		deprecatedProperty(
+		sunsetProperty(
 			COMPONENT,
 			props.iconName,
 			'iconName',
-			'icon',
-			createDocUrl('icon')
+			`Pass an \`Icon\` element to \`icon\` instead. ${createDocUrl('icon')}`
 		);
 	};
 }
