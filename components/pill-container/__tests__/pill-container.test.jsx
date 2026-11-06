@@ -350,3 +350,14 @@ describe('SLDSPillContainer', () => {
 		});
 	});
 });
+
+describe('PillContainer id', () => {
+	it('lands the consumer id on the root element', () => {
+		const { container } = render(
+			<IconSettings iconPath="/assets/icons">
+				<PillContainer id="my-pills" options={options} />
+			</IconSettings>
+		);
+		expect(container.querySelector('#my-pills')).toBeInTheDocument();
+	});
+});

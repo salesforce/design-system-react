@@ -4724,7 +4724,7 @@ exports[`Story HTML snapshots > Pill > WithIcon 1`] = `
 
 exports[`Story HTML snapshots > PillContainer > BareVariant 1`] = `
 "<div class="slds-p-around_medium" style="max-width:600px">
-  <div class="slds-pill_container" id="_R_0_-listbox-of-pill-options">
+  <div class="slds-pill_container" id="_R_0_">
     <ul class="slds-listbox slds-listbox_horizontal slds-p-top_xxx-small" aria-label="Selected Options:" role="listbox" aria-multiselectable="true" aria-orientation="horizontal">
       <li role="presentation" class="slds-listbox__item"><span role="option" aria-selected="true" tabindex="0" class="slds-pill slds-pill_bare"><span class="slds-pill__label" title="Acme">Acme</span><span class="slds-icon_container slds-pill__remove" title="Remove" role="button"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" style="cursor:pointer">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
@@ -4742,7 +4742,7 @@ exports[`Story HTML snapshots > PillContainer > BareVariant 1`] = `
 
 exports[`Story HTML snapshots > PillContainer > Default 1`] = `
 "<div class="slds-p-around_medium" style="max-width:600px">
-  <div class="slds-pill_container" id="_R_0_-listbox-of-pill-options">
+  <div class="slds-pill_container" id="_R_0_">
     <ul class="slds-listbox slds-listbox_horizontal slds-p-top_xxx-small" aria-label="Selected Options:" role="listbox" aria-multiselectable="true" aria-orientation="horizontal">
       <li role="presentation" class="slds-listbox__item"><span role="option" aria-selected="true" tabindex="0" class="slds-pill"><span class="slds-pill__label" title="Acme">Acme</span><span class="slds-icon_container slds-pill__remove" title="Remove" role="button"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" style="cursor:pointer">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
@@ -4769,7 +4769,7 @@ exports[`Story HTML snapshots > PillContainer > Empty 1`] = `
 
 exports[`Story HTML snapshots > PillContainer > Interactive 1`] = `
 "<div class="slds-p-around_medium" style="max-width:600px">
-  <div class="slds-pill_container" id="_R_0_-listbox-of-pill-options">
+  <div class="slds-pill_container" id="_R_0_">
     <ul class="slds-listbox slds-listbox_horizontal slds-p-top_xxx-small" aria-label="Selected Options:" role="listbox" aria-multiselectable="true" aria-orientation="horizontal">
       <li role="presentation" class="slds-listbox__item"><span role="option" aria-selected="true" tabindex="0" class="slds-pill"><span class="slds-pill__label" title="Acme">Acme</span><span class="slds-icon_container slds-pill__remove" title="Remove" role="button"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" style="cursor:pointer">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
@@ -4787,7 +4787,7 @@ exports[`Story HTML snapshots > PillContainer > Interactive 1`] = `
 
 exports[`Story HTML snapshots > PillContainer > WithError 1`] = `
 "<div class="slds-p-around_medium" style="max-width:600px">
-  <div class="slds-pill_container" id="_R_0_-listbox-of-pill-options">
+  <div class="slds-pill_container" id="_R_0_">
     <ul class="slds-listbox slds-listbox_horizontal slds-p-top_xxx-small" aria-label="Selected Options:" role="listbox" aria-multiselectable="true" aria-orientation="horizontal">
       <li role="presentation" class="slds-listbox__item"><span role="option" aria-selected="true" tabindex="0" class="slds-pill"><span class="slds-pill__label" title="Valid Item">Valid Item</span><span class="slds-icon_container slds-pill__remove" title="Remove" role="button"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" style="cursor:pointer">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
@@ -4805,7 +4805,7 @@ exports[`Story HTML snapshots > PillContainer > WithError 1`] = `
 
 exports[`Story HTML snapshots > PillContainer > WithIcons 1`] = `
 "<div class="slds-p-around_medium" style="max-width:600px">
-  <div class="slds-pill_container" id="_R_0_-listbox-of-pill-options">
+  <div class="slds-pill_container" id="_R_0_">
     <ul class="slds-listbox slds-listbox_horizontal slds-p-top_xxx-small" aria-label="Selected Options:" role="listbox" aria-multiselectable="true" aria-orientation="horizontal">
       <li role="presentation" class="slds-listbox__item"><span role="option" aria-selected="true" tabindex="0" class="slds-pill"><span class="slds-pill__icon_container"><span class="slds-icon_container slds-icon-standard-account"><svg class="slds-icon slds-icon_small" aria-hidden="true">
                 <use href="/assets/icons/standard-sprite/svg/symbols.svg#account"></use>

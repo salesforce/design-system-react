@@ -101,10 +101,7 @@ const getAvatar = (option: SelectedListBoxOption): ReactNode => {
 	let avatar: ReactNode = null;
 
 	if (avatarObject) {
-		if (
-			isReactComponent(avatarObject) ||
-			avatarObject instanceof HTMLElement
-		) {
+		if (isReactComponent(avatarObject) || avatarObject instanceof HTMLElement) {
 			avatar = avatarObject as ReactNode;
 		} else if ((avatarObject as { imgSrc?: string }).imgSrc) {
 			const avatarData = avatarObject as {
@@ -116,9 +113,7 @@ const getAvatar = (option: SelectedListBoxOption): ReactNode => {
 				<Avatar
 					imgSrc={avatarData.imgSrc}
 					title={avatarData.title || (option.label as string)}
-					variant={
-						(avatarData.variant as 'user' | 'entity') || 'user'
-					}
+					variant={(avatarData.variant as 'user' | 'entity') || 'user'}
 				/>
 			);
 		}
@@ -252,7 +247,7 @@ const SelectedListBox = ({
 															option: SelectedListBoxOption;
 														}
 													);
-											  }
+												}
 											: undefined,
 									onFocus: (event: React.FocusEvent, data?: unknown) => {
 										events.onPillFocus?.(event, {
@@ -264,12 +259,10 @@ const SelectedListBox = ({
 										});
 									},
 									onRequestFocusOnNextPill: events.onRequestFocusOnNextPill as
-										| ((event: unknown, data: unknown) => void)
-										| undefined,
+										((event: unknown, data: unknown) => void) | undefined,
 									onRequestFocusOnPreviousPill:
 										events.onRequestFocusOnPreviousPill as
-											| ((event: unknown, data: unknown) => void)
-											| undefined,
+											((event: unknown, data: unknown) => void) | undefined,
 									onRequestRemove: (event: unknown, data: unknown) => {
 										events.onRequestRemove?.(
 											event as unknown as MouseEvent,

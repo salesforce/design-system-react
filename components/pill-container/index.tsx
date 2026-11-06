@@ -347,7 +347,7 @@ const PillContainer = ({
 				onRequestFocusOnPreviousPill: handleNavigatePillContainer,
 				onRequestRemove: handleRequestRemove,
 			}}
-			id={`${id}-listbox-of-pill-options`}
+			id={id}
 			isBare={variant === 'bare'}
 			isPillContainer
 			labels={labels}
