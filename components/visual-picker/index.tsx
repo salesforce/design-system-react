@@ -1,7 +1,13 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { useId, type ReactNode, type ReactElement } from 'react';
+import React, {
+	forwardRef,
+	type ForwardedRef,
+	useId,
+	type ReactNode,
+	type ReactElement,
+} from 'react';
 import classNames from 'classnames';
 import { VISUAL_PICKER } from '../../utilities/constants';
 import deprecatedProperty from '../../utilities/warning/deprecated-property';
@@ -69,18 +75,21 @@ export interface VisualPickerProps {
 /**
  * Visual Picker allows users to select an option from a set of visual choices.
  */
-const VisualPicker = ({
-	assistiveText,
-	children,
-	className,
-	coverable,
-	id: propId,
-	label: deprecatedLabel,
-	labels,
-	links = false,
-	size = 'medium',
-	vertical = false,
-}: VisualPickerProps): React.ReactElement => {
+const VisualPickerInner = (
+	{
+		assistiveText,
+		children,
+		className,
+		coverable,
+		id: propId,
+		label: deprecatedLabel,
+		labels,
+		links = false,
+		size = 'medium',
+		vertical = false,
+	}: VisualPickerProps,
+	ref: ForwardedRef<HTMLFieldSetElement>
+): React.ReactElement => {
 	const generatedId = useId();
 	const id = propId || generatedId;
 	deprecatedProperty(VISUAL_PICKER, deprecatedLabel, 'label', 'labels.label');
@@ -137,6 +146,7 @@ const VisualPicker = ({
 
 	return (
 		<fieldset
+			ref={ref}
 			id={id}
 			className={classNames('slds-form-element', className as string)}
 		>
@@ -154,6 +164,10 @@ const VisualPicker = ({
 		</fieldset>
 	);
 };
+
+const VisualPicker = forwardRef<HTMLFieldSetElement, VisualPickerProps>(
+	VisualPickerInner
+);
 
 VisualPicker.displayName = VISUAL_PICKER;
 

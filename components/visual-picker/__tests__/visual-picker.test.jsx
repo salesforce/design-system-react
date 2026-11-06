@@ -295,3 +295,17 @@ describe('VisualPicker with links', () => {
 		expect(screen.getByRole('group', { name: 'Pick a link' })).toBeVisible();
 	});
 });
+
+describe('VisualPicker ref', () => {
+	it('forwards ref to the fieldset', () => {
+		const ref = { current: null };
+		const { container } = render(
+			<IconSettings iconPath="/assets/icons">
+				<VisualPicker ref={ref} labels={{ label: 'L' }}>
+					<Radio id="a" labels={{ label: 'A' }} value="a" />
+				</VisualPicker>
+			</IconSettings>
+		);
+		expect(ref.current).toBe(container.querySelector('fieldset'));
+	});
+});
