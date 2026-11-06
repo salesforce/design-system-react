@@ -17,7 +17,13 @@ const renderNotification = (props) =>
 describe('ScopedNotification icon', () => {
 	it("uses a string assistiveText on the icon as the icon's label", () => {
 		const { container } = renderNotification({
-			icon: <Icon category="utility" name="info" assistiveText="Information" />,
+			icon: (
+				<Icon
+					category="utility"
+					name="info"
+					assistiveText={{ label: 'Information' }}
+				/>
+			),
 		});
 		expect(container.querySelector('.slds-assistive-text').textContent).toBe(
 			'Information'

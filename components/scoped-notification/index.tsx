@@ -58,9 +58,7 @@ const ScopedNotification = ({
 		icon = React.cloneElement(propIcon, {
 			assistiveText: {
 				label: assistiveText?.icon,
-				...(typeof iconAssistiveText === 'string'
-					? { label: iconAssistiveText }
-					: iconAssistiveText),
+				...iconAssistiveText,
 			},
 		});
 	} else {
