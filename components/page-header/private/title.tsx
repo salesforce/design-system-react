@@ -40,7 +40,8 @@ class Title extends Component<PageHeaderTitleProps> {
 	};
 
 	render() {
-		if (!this.props.content) return null;
+		// `0` is a valid title; only a missing one renders nothing
+		if (this.props.content == null || this.props.content === '') return null;
 
 		const classes = classnames(
 			'slds-page-header__title',
@@ -58,8 +59,9 @@ class Title extends Component<PageHeaderTitleProps> {
 					<span
 						className={classes}
 						title={
-							typeof this.props.content === 'string'
-								? this.props.content
+							typeof this.props.content === 'string' ||
+							typeof this.props.content === 'number'
+								? String(this.props.content)
 								: undefined
 						}
 					>

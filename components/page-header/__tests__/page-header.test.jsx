@@ -296,3 +296,30 @@ describe('PageHeader', () => {
 		});
 	});
 });
+
+describe('PageHeader title', () => {
+	it.each(['base', 'object-home', 'record-home', 'related-list'])(
+		'%s: renders a title of 0',
+		(variant) => {
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<PageHeader title={0} variant={variant} />
+				</IconSettings>
+			);
+			const title = container.querySelector('.slds-page-header__title');
+			expect(title).toHaveTextContent('0');
+			expect(title).toHaveAttribute('title', '0');
+		}
+	);
+
+	it('renders no title element without a title', () => {
+		const { container } = render(
+			<IconSettings iconPath="/assets/icons">
+				<PageHeader />
+			</IconSettings>
+		);
+		expect(
+			container.querySelector('.slds-page-header__title')
+		).not.toBeInTheDocument();
+	});
+});
