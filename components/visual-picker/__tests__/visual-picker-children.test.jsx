@@ -9,7 +9,7 @@ describe('VisualPicker children', () => {
 	it("passes the picker's name to options, unless an option sets its own", () => {
 		const { getByLabelText } = render(
 			<IconSettings iconPath="/assets/icons">
-				<VisualPicker label="Picker" id="picker">
+				<VisualPicker labels={{ label: 'Picker' }} id="picker">
 					<Radio
 						labels={{ label: 'One' }}
 						value="one"

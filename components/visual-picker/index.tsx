@@ -4,6 +4,7 @@
 import React, { useId, type ReactNode, type ReactElement } from 'react';
 import classNames from 'classnames';
 import { VISUAL_PICKER } from '../../utilities/constants';
+import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import type { ChildrenOf } from '../../types/common';
 import type { CheckboxProps } from '../checkbox';
 import type { RadioProps } from '../radio';
@@ -23,6 +24,18 @@ interface VisualPickerOptionProps {
 	vertical?: boolean;
 }
 
+/** Visible text for VisualPicker */
+export interface VisualPickerLabels {
+	/** Visible legend of the picker's `fieldset` */
+	label?: ReactNode;
+}
+
+/** Assistive text for VisualPicker */
+export interface VisualPickerAssistiveText {
+	/** Accessible name of the `fieldset`, as a visually hidden legend. Used when `labels.label` is not set. */
+	label?: string;
+}
+
 /**
  * Props for the VisualPicker component
  */
@@ -39,8 +52,12 @@ export interface VisualPickerProps {
 	coverable?: boolean;
 	/** HTML id */
 	id?: string;
-	/** Label for the visual picker */
+	/** @deprecated Use `labels.label`. */
 	label?: string;
+	/** Visible text. `labels.label` is the legend of the picker. */
+	labels?: VisualPickerLabels;
+	/** Assistive text. `assistiveText.label` names the picker when no `labels.label` is shown. */
+	assistiveText?: VisualPickerAssistiveText;
 	/** Whether the picker has links as children */
 	links?: boolean;
 	/** Size of the picker */
@@ -53,17 +70,21 @@ export interface VisualPickerProps {
  * Visual Picker allows users to select an option from a set of visual choices.
  */
 const VisualPicker = ({
+	assistiveText,
 	children,
 	className,
 	coverable,
 	id: propId,
-	label,
+	label: deprecatedLabel,
+	labels,
 	links = false,
 	size = 'medium',
 	vertical = false,
 }: VisualPickerProps): React.ReactElement => {
 	const generatedId = useId();
 	const id = propId || generatedId;
+	deprecatedProperty(VISUAL_PICKER, deprecatedLabel, 'label', 'labels.label');
+	const legend = labels?.label ?? deprecatedLabel;
 
 	if (links) {
 		return <div className="slds-form-element__control">{children}</div>;
@@ -109,9 +130,16 @@ const VisualPicker = ({
 			id={id}
 			className={classNames('slds-form-element', className as string)}
 		>
-			<legend className="slds-form-element__legend slds-form-element__label">
-				{label}
-			</legend>
+			{legend || assistiveText?.label ? (
+				<legend
+					className={classNames({
+						'slds-form-element__legend slds-form-element__label': legend,
+						'slds-assistive-text': !legend,
+					})}
+				>
+					{legend || assistiveText?.label}
+				</legend>
+			) : null}
 			<div className="slds-form-element__control">{options}</div>
 		</fieldset>
 	);

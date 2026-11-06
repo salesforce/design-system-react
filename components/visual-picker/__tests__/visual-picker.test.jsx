@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
 
 import IconSettings from '../../icon-settings';
@@ -19,7 +19,7 @@ class VisualPickerExample extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<VisualPicker
-					label={this.props.label}
+					labels={{ label: this.props.label }}
 					id={this.props.id}
 					size="medium"
 					coverable
@@ -262,5 +262,29 @@ describe('SLDS Visual Picker', () => {
 		expect(cb1).not.toBeChecked();
 		expect(cb2).toBeChecked();
 		expect(cb3).toBeChecked();
+	});
+});
+
+describe('VisualPicker legend', () => {
+	it('shows labels.label as a visible legend', () => {
+		render(<VisualPicker labels={{ label: 'Pick one' }} />);
+		const legend = screen.getByText('Pick one');
+		expect(legend.tagName).toBe('LEGEND');
+		expect(legend).not.toHaveClass('slds-assistive-text');
+	});
+
+	it('hides the legend visually when only assistiveText.label is set', () => {
+		render(<VisualPicker assistiveText={{ label: 'Pick one' }} />);
+		expect(screen.getByText('Pick one')).toHaveClass('slds-assistive-text');
+	});
+
+	it('still accepts the deprecated label', () => {
+		render(<VisualPicker label="Old" />);
+		expect(screen.getByText('Old').tagName).toBe('LEGEND');
+	});
+
+	it('renders no legend without a label', () => {
+		const { container } = render(<VisualPicker />);
+		expect(container.querySelector('legend')).toBeNull();
 	});
 });

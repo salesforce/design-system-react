@@ -30,7 +30,7 @@ class Example extends React.Component {
 				>
 					<h1>Radio</h1>
 					<VisualPicker
-						label="Please Select Any One"
+						labels={{ label: 'Please Select Any One' }}
 						id="visual-picker-non-coverable-radio"
 					>
 						<Radio
@@ -98,7 +98,7 @@ class Example extends React.Component {
 					<hr />
 					<h1>Checkbox</h1>
 					<VisualPicker
-						label="Add the following object(s)"
+						labels={{ label: 'Add the following object(s)' }}
 						id="visual-picker-non-coverable-checkbox"
 					>
 						<Checkbox

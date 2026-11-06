@@ -41,7 +41,7 @@ export const RadioPicker = {
 		const [selected, setSelected] = useState('option1');
 
 		return (
-			<VisualPicker id="radio-picker" label="Select an Option">
+			<VisualPicker id="radio-picker" labels={{ label: 'Select an Option' }}>
 				<Radio
 					id="option1"
 					labels={{
@@ -87,7 +87,7 @@ export const CheckboxPicker = {
 		});
 
 		return (
-			<VisualPicker id="checkbox-picker" label="Select Features">
+			<VisualPicker id="checkbox-picker" labels={{ label: 'Select Features' }}>
 				<Checkbox
 					id="accounts"
 					labels={{ heading: 'Accounts', label: 'Track companies' }}
@@ -126,7 +126,11 @@ export const LargeSize = {
 		const [selected, setSelected] = useState('option1');
 
 		return (
-			<VisualPicker id="large-picker" label="Select Size" size="large">
+			<VisualPicker
+				id="large-picker"
+				labels={{ label: 'Select Size' }}
+				size="large"
+			>
 				<Radio
 					id="option1"
 					labels={{ heading: 'Starter', label: 'For small teams' }}
@@ -159,7 +163,11 @@ export const VerticalLayout = {
 		const [selected, setSelected] = useState('option1');
 
 		return (
-			<VisualPicker id="vertical-picker" label="Select Plan" vertical>
+			<VisualPicker
+				id="vertical-picker"
+				labels={{ label: 'Select Plan' }}
+				vertical
+			>
 				<Radio
 					id="option1"
 					labels={{ heading: 'Starter', label: 'For small teams' }}
@@ -198,7 +206,7 @@ export const Coverable = {
 		return (
 			<VisualPicker
 				id="coverable-picker"
-				label="Select with Cover Effect"
+				labels={{ label: 'Select with Cover Effect' }}
 				coverable
 			>
 				<Radio
