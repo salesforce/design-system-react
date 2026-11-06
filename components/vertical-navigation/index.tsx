@@ -24,8 +24,8 @@ export interface NavigationItem {
 	id: string;
 	/** Display label */
 	label: string;
-	/** URL for the link */
-	url: string;
+	/** URL for the link. Without one the item renders a button. */
+	url?: string;
 	/** `Icon` rendered before the label. Its `size` sets the right margin. */
 	icon?: ReactElement<IconProps>;
 	/** `Badge` rendered after the label, aligned right */
@@ -64,9 +64,10 @@ export interface VerticalNavigationProps {
 	/**
 	 * Called when an item is clicked, with the click event and `{ item }`. The navigation is
 	 * controlled: update `selectedId` from this callback to change the selected item.
+	 * Items with a `url` render a link; items without one render a button.
 	 */
 	onSelect: (
-		event: MouseEvent<HTMLAnchorElement>,
+		event: MouseEvent<HTMLAnchorElement | HTMLButtonElement>,
 		data: NavigationSelectData
 	) => void;
 	/**
