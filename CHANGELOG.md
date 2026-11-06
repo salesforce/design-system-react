@@ -48,6 +48,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `Filter` `errorLabel` is declared in the types. `PanelFilterList` already read it
 - `Popover` `openOn="none"`: the first child is only an anchor the popover points at, such as a walkthrough step's target, and the parent opens and closes it through `isOpen`. Popover adds no `id`, `aria-haspopup`, `tabIndex` or handlers to it
 - `WelcomeMatInfoBadge` `assistiveText.image`, alt text for the badge image (default `''`, decorative)
+- `ColorPicker` `events.onOpen`, `events.onClose`, `events.onRequestOpen` and `events.onRequestClose`, which were typed but never called. `onRequestClose` data `trigger` is typed `ColorPickerRequestCloseTrigger`, exported with `ColorPickerRequestCloseData`
+- `ColorPicker` `validateColor` and `validateWorkingColor` props (see Deprecated)
+- `useLatestRef` hook in `utilities/hooks/use-latest-ref`, for reading the latest consumer callbacks from stable handlers
 
 ### Changed
 
@@ -104,6 +107,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - **BREAKING**: `VisualPickerLink` `href` is required (and warns once when missing); without it the `<a>` was not a link. Use a `Checkbox` or `Radio` visual picker for options that do not navigate
 - `SimpleDataTable`: `role="grid"` and `role="gridcell"` are set only with both `fixedLayout` and `keyboardNavigation`, when arrow-key cell navigation runs. Fixed headers follow the scroller and table size through a `ResizeObserver` instead of a `window` resize listener
 - `ProgressIndicator`: a step `id` of `0` is used in DOM ids instead of falling back to the step index, so the ids of such steps change
+- `ColorPicker` `onRequestClose` fires before the picker changes its own state. Uncontrolled, it still closes itself; with `isOpen` passed, the parent decides
+- `Combobox` reads `events` through a ref, so its internal handlers no longer change identity when a new `events` object is passed on each render
+- `Toast` `onClickHeadingLink` is typed `(event: React.MouseEvent<HTMLAnchorElement>) => void`. It takes only the click event, like a native `onClick`
 
 ### Deprecated
 
@@ -139,6 +145,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `TabChildProps` (use `TabsPanelProps`) and `FileChildProps` (use `FileProps`)
 - `Combobox` `singleInputDisabled` (use `disabled`, which now disables the input in every variant)
 - `SimpleDataTable` `onFixedHeaderResize` and `onToggleFixedHeaderListeners`, which only existed to replace the `window` resize listener. They are still called and warn once
+- Callback props renamed to follow the v11 callback rules (`on*` for events, `get*`/`validate*` for functions that return a value). The old names keep working, log a one-time warning, and are ignored when the new name is passed:
+  - `ColorPicker` `events.onValidateColor` and `events.onValidateWorkingColor` (use `validateColor` and `validateWorkingColor`)
+  - `ColorPicker` top-level `onOpen`, `onClose`, `onRequestOpen` and `onRequestClose` (use the `events` keys). If both are set, both are called
+- `requestFocus` and `onRequestFocus` on `Button`, `Checkbox` and `Radio`. They keep working and log a one-time development warning. Focus through a ref instead: `ref` (or `buttonRef`) on `Button`, `ref` on `Checkbox` (forwarded to the `<input>`), and `refs.input` on `Radio`, then call `.focus()`. `SimpleDataTableInteractiveElement` focuses `forwardRef` components through `ref`, and still passes `requestFocus`/`onRequestFocus` to other wrapped components
 
 ### Fixed
 

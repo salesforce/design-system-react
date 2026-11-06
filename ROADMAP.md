@@ -121,6 +121,18 @@ moves to `latest`.
    date-picker, popover, welcome-mat, modal, carousel, setup-assistant, pill-container
    `events`). Still open: the plain-click `onClick*` handlers (builder-header, files,
    alert/toast heading link) and the per-component leftovers noted below.
+   **Done (callbacks):** `requestFocus`/`onRequestFocus` are deprecated on button, checkbox and
+   radio (use a ref; not deprecated in 0.10.x, so not removed). Color-picker's `validateColor`/`validateWorkingColor` replace the
+   `onValidate*` keys (old names deprecated). Color-picker's `events` entries are wired, and
+   color-picker and combobox read `events` through `useLatestRef`. Plain clicks keep a single
+   `(event)` (toast/alert heading link). **Deferred past GA (2026-11-08 scope cut, additive):**
+   the `get*` renames (icon-settings `getIconPath`, tooltip and popover `getTargetElement`),
+   date-picker `isValid`/`source`, modal `disableCloseOnClickOutside` and edit-dialog
+   `handleOpen` → `onRequestOpen`, and the typed callback `data` from the closed #3280 (alert,
+   color-picker `onRequestOpen`, docked-composer, input/search, pill, filter `onClick`,
+   edit-dialog `onCancel`/`onSave`, split-view listbox `onSort`, accordion, panel, combobox).
+   Simple-data-table `onSort(event, data)` and `onAction(event, { item, option })` are done, and
+   `onLoadMore` now gets `(event, { trigger })`. Still open: builder-header and files `onClick*`.
 5. **`className` and root.** Done for slider, tree, welcome-mat, popover, spinner, modal and
    vertical-navigation: `className`, `style` and the forwarded `ref` land on the outermost
    rendered element; other parts use `className*`/`style*`, and the old names warn once.
@@ -197,7 +209,8 @@ _Reviewed: accordion, alert, avatar, badge, breadcrumb, builder-header, button, 
       **Partly done:** blur only drops focus when it is not `:focus-visible`, so keyboard focus
       is kept.
       **Done (behavior-fixes):** the button never blurs itself, and `onMouseDown` is wired in the text variants.
-- [ ] `button` — `requestFocus`/`onRequestFocus` misuse the `onRequest*` prefix.
+- [x] `button` — `requestFocus`/`onRequestFocus` misuse the `onRequest*` prefix.
+      **Done (callbacks):** both are deprecated and warn once; focus through `ref`/`buttonRef`. `SimpleDataTableInteractiveElement` focuses `forwardRef` children through `ref`.
 - [ ] `button` — pick one ref API (`ref` vs `buttonRef`); model `variant: 'icon'` +
       `iconVariant`/`iconSize` as a discriminated union; give the deprecated `tooltip` prop a
       sunset path (`utilities/warning/sunset-property`) or remove it.
@@ -247,6 +260,7 @@ Callbacks stay grouped in an `events` object where components already use one
       examples pass numbers; `itemsPerPanel` is unvalidated.
       **Partly done:** `onRequestAutoplayToggle` reports the requested state (#3251);
       `onRenderItem` is deprecated for `renderItem(data: CarouselRenderItemData)`.
+      **Done (callbacks):** the event is the triggering click, key or focus event, or `undefined` from the autoplay timer; never `{}` or stale (regression test for the key path). Still open: `CarouselItemData.id` and `itemsPerPanel`.
 - [x] `color-picker` — `value` is data: make it fully controlled (required, no seeding into
       `useState`, no uncontrolled typing when `onChange` is missing; a parent that rejects a
       change must be able to revert). The in-popover working color is a draft: keep it
@@ -263,6 +277,7 @@ Callbacks stay grouped in an `events` object where components already use one
       `onRequestOpen()` takes no `(event, data)` and fires on close too.
       **Partly done:** `onRequestClose` goes through one `requestClose(event, data)` with a
       typed `trigger`.
+      **Done (callbacks):** `events.onOpen`/`onClose`/`onRequestOpen`/`onRequestClose` are wired and the top-level props are deprecated; `events` is read through `useLatestRef`; `validateColor`/`validateWorkingColor` replace the `onValidate*` keys (deprecated); `trigger` is `ColorPickerRequestCloseTrigger` and `onRequestClose` fires before the state change. **Deferred past GA (additive):** `onRequestOpen`'s `(event, data)` shape.
 - [ ] `color-picker` — `variant` + `defaultSelectedTab` + `swatchColors` as a discriminated
       union; decide where `id` lands (no DOM node today).
       **Partly done:** `variant`/`defaultSelectedTab`/`swatchColors` are a discriminated union
@@ -275,6 +290,7 @@ Callbacks stay grouped in an `events` object where components already use one
       anyway; `onClose` fires after an internal change even when `isOpen` is controlled;
       `onSelect` is really a request (`selection` is controlled).
       **Control model done (theme 2).** Still open: a referentially stable `events` object and typed callback `data`.
+      **Done (callbacks):** `events` is read through `useLatestRef`, so the handlers are stable. **Deferred past GA (additive):** typed callback `data`.
 - [x] `combobox` — enforce `variant` as a discriminated union (`popover`/`assistiveText.
 popoverLabel` are runtime-warned only; `options` is "required unless popover" only at
       runtime); `value` + `defaultValue` feed one input and flip controlled/uncontrolled (resolved by dropping `defaultValue`).
@@ -316,6 +332,7 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
       "invalid" (decide `Date | null` return now).
       **Partly done:** `date` is `Date | null` (`null` on clear, and when `parser` does not
       return a `Date`).
+      **Deferred past GA (additive):** `isValid` and `source` in `onChange` data.
 - [x] `date-picker` — `onRequestOpen`/`onRequestClose`/`onClose` take no `(event, data)`;
       `onRequestClose` fires when already closed and sets internal state even when `isOpen` is
       controlled; keyboard handling bypasses `onRequest*` entirely.
@@ -330,6 +347,7 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
       `assistiveTextOpenCalendar`, `formattedValue`: remove at GA or keep permanently.
       **Done (behavior-fixes):** the picker's `onChange` and `inputRef` are composed with the `input` prop's (consumer first) instead of replaced.
       **Done (removals):** `children`, `label`, `placeholder` and `assistiveTextOpenCalendar` are removed and warn once (`formattedValue` was removed in #3269).
+      **Done (callbacks):** `onCalendarFocus` gets `undefined`, not `null`, when a month change moves focus without an event.
 - [ ] `date-picker` — range selection: do not widen `date`/`value` to `Date | [Date, Date]`;
       plan a separate `DateRangePicker` (or `mode="range"` with distinct props).
 - [x] `checkbox` — `checked` is data: controlled only. Remove `defaultChecked` (the
@@ -343,6 +361,7 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
       on `button-group`/`visual-picker`, compile but are dropped); `requestFocus`/`onRequestFocus` → delete (use `ref`);
       `tabIndex` `string` → `number`; decide
       where `className` lands and whether unknown props spread to the `<input>`.
+      **Done (callbacks):** `requestFocus`/`onRequestFocus` are deprecated and warn once; focus through `ref`.
 
 - [x] `expandable-section` — `isOpen` is ephemeral, so uncontrolled is fine, but the mode is
       keyed off `onToggleOpen` being present: with a callback and no `isOpen` the section is
@@ -415,6 +434,7 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
       `Grid.Column` static-property composition: decide the final API (named exports) now.
 - [ ] `icon-settings` — `onRequestIconPath` is a return-value lookup, not a request: rename or
       document the exception before it is frozen.
+      **Deferred past GA:** a non-breaking rename (`getIconPath` plus a deprecated alias) can land in a minor.
 - [x] `illustration` — deprecated (XSS via `path`); `internalIllustration` looks unused; `illustration`/`path`/`name` precedence is
       implicit: either remove in 11.0 or freeze as-is.
       **Done (removals):** removed in 11.0, with its export, constant and story assets.
@@ -483,6 +503,7 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
       decide before exposing it.
 - [ ] `modal` — `onRequestClose: () => void` → `(event, data)`; `dismissOnClickOutside` has a derived default (`!disableClose`). (Deprecated `title`/`closeButtonAssistiveText`: removed in #3248.)
       **Partly done:** `onRequestClose` takes `(event, data)` (#3251).
+      **Deferred past GA (additive):** `disableCloseOnClickOutside` with `dismissOnClickOutside` deprecated.
 - [x] Remove the deprecated `modal/trigger` (`ModalTrigger.open`, also `SLDSModalTrigger`) in
       11.0: it creates a root it can never unmount or close and only wraps `Modal`. Done in #3248.
 
@@ -559,11 +580,15 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
       deprecated `footerClassName`, `closeButtonAssistiveText`, `offset`; `heading` vs
       `ariaLabelledby` as a union; `icon` only for the `feature` variant (union).
       **Done (removals):** `closeButtonAssistiveText` and `offset` are removed and warn once. `footerClassName` was not deprecated in 0.10.x, so it stays deprecated (and still works) through v11.
+- [ ] `popover` — `onRequestTargetElement` is a getter like Tooltip's: rename it `getTargetElement`
+      (old name deprecated, still works) to match Tooltip (found in the callbacks theme). The
+      internal `utilities/dialog` prop keeps its name. **Deferred past GA** (non-breaking rename).
 - [ ] `popover/edit-dialog` — class component with an index signature cast to `PopoverProps`;
       `handleOpen` → `onClick`/`onRequestOpen`; a consumer
       `onClose`/`onOpen` silently replaces EditDialog's own handlers (spread last); stale
       `popover` doc and an unused internal `isOpen`.
       **Done (behavior-fixes):** a consumer `onOpen`/`onClose`/`onRequestClose` runs after EditDialog's own handler instead of replacing it.
+      **Deferred past GA (additive):** deprecating `handleOpen` for `onRequestOpen`. Still open: the index signature cast, the stale `popover` doc and the unused `isOpen`.
 
 - [ ] `progress-indicator` — step status is three parallel `ProgressStep[]` arrays
       (`completedSteps`/`disabledSteps`/`errorSteps`) matched by `id` then by
@@ -603,6 +628,7 @@ complete`) and `THEME_OPTIONS` is a second public surface; `icon` is only honore
       input). (`onRender*` props named like callbacks: done, now `visualPickerFigure*` slots.)
       **Partly done:** `onRenderVisualPicker*` are `visualPickerFigure*` slots, with the old
       names deprecated.
+      **Done (callbacks):** `requestFocus`/`onRequestFocus` are deprecated and warn once; focus through `refs.input`. Still open: `forwardRef` to the input.
 - [x] `radio-group` (seen from `radio`) — `RadioGroup` injects `name`, `onChange`,
       `aria-describedby`, `disabled` with `Children.map` + `cloneElement`
       (`radio-group/index.tsx:98`): the `Radio` props are part of that contract; decide the
@@ -678,6 +704,7 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
       `sort={{ property, direction }}` + `onSort(event, data)` (today `onSort(data, event)`).
       **Partly done:** `header-cell` derives the sort direction from props instead of keeping
       its own copy.
+      **Done (callbacks):** `onSort(event, { property, sortDirection })`; the `sort` object is still open.
 - [ ] `simple-data-table` — callbacks and types: `onLoadMore()` has no event; the
       `onToggleFixedHeaderListeners` and `onFixedHeaderResize` escape hatches (a fake `{}`
       event) exist because of a `window` resize listener; `onAction(item, selection)` →
@@ -689,6 +716,7 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
       `assistiveTextFor*` props; `fixedLayout` still adds the vestigial `slds-table_resizable-cols`
       class (kept: SLDS uses it for header padding) and `role="grid"` after resizing was removed.
       **Done (behavior-fixes):** `role="grid"`/`gridcell` need `fixedLayout` and `keyboardNavigation`; fixed headers use a `ResizeObserver` on the scroller and table, and `onToggleFixedHeaderListeners`/`onFixedHeaderResize` are deprecated (still called).
+      **Done (callbacks):** `onAction(event, { item, option })` (`SimpleDataTableRowActionData`) and `onLoadMore(event, { trigger })` (`SimpleDataTableLoadMoreData`; `event` is `undefined` for `'update'` and `ResizeObserver` resizes).
       **Done (removals):** the table and column `assistiveTextFor*` props are removed and warn once.
 
 - [ ] `slider` — `value` + `defaultValue` twin (`index.tsx:34-35,119,169-171`) and
@@ -723,6 +751,7 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
       **Partly done:**
       `onRequestClose(event | undefined, { trigger: 'timeout' | 'close-button' })` and the timer
       no longer re-arms on an inline callback (#3251).
+      **Done (callbacks):** `onClickHeadingLink` keeps a single `(event)` argument (a plain click, no `data`), typed `MouseEvent<HTMLAnchorElement>`; alert's follows the same rule. Still open: the `labels.headingLink` split.
 - [ ] `tooltip` — `isOpen` mode is keyed correctly (`isOpenProp === undefined`) but there is no
       `defaultIsOpen`, `onRequestOpen`/`onRequestClose` or `events`. `isOpen={false}` is documented
       as "disables interaction", which conflicts with the controlled-false rule (combobox
@@ -737,6 +766,7 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
       Tooltip element), progress-indicator step, button.
       **Trigger done (theme 3):** a `trigger` prop (element or function) replaces the trigger child, which still works and warns once.
       **Control model done (theme 2).** `defaultIsOpen`, `onRequestOpen` and `onRequestClose` are added. Still open: `isDisabled`, the dead props and the trigger contract.
+      **Deferred past GA:** renaming `onRequestTargetElement` to `getTargetElement` (non-breaking with an alias).
 - [ ] `tree` — selection and expansion live on mutated node objects: `TreeNode.expanded`/
       `selected`/`loading` (`types.ts:15-23`), `handleSelect` writes `node.selected = false` on the
       consumer's data (`tree.tsx:184-190`), and the tree keeps its own selection/focus copy seeded
