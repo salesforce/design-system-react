@@ -18,6 +18,16 @@ if (process.env.NODE_ENV !== 'production') {
 			'renderListItem',
 			`\`renderListItem\` is a function called with \`{ isFocused, isSelected, isUnread, item }\`, not a component. ${createDocUrl('renderListItem')}`
 		);
+
+		deprecatedProperty(
+			COMPONENT,
+			props.sortDirection === 'up' || props.sortDirection === 'down'
+				? true
+				: undefined,
+			"sortDirection='up' | 'down'",
+			"sortDirection='ascending' | 'descending'",
+			createDocUrl('sortDirection')
+		);
 	};
 }
 

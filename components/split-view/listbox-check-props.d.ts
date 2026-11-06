@@ -3,7 +3,7 @@
 
 declare const checkProps: (
 	componentName: string,
-	props: { listItem?: unknown },
+	props: { listItem?: unknown; sortDirection?: unknown },
 	jsonDoc?: Record<string, unknown>
 ) => void;
 

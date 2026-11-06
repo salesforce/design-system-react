@@ -2,9 +2,7 @@ import { render } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
 import IconSettings from '../../icon-settings';
-import SplitViewListbox, {
-	SORT_OPTIONS,
-} from '../listbox';
+import SplitViewListbox, { SORT_OPTIONS } from '../listbox';
 
 const listOptions = [
 	{
@@ -63,7 +61,7 @@ describe('SLDSSplitView - Listbox unread', () => {
 			},
 			unreadItem: 'test unread',
 		},
-		sortDirection: SORT_OPTIONS.DOWN,
+		sortDirection: SORT_OPTIONS.DESCENDING,
 		events: {
 			onSort: vi.fn(),
 			onSelect: (event, { selectedItems }) => {
@@ -85,13 +83,15 @@ describe('SLDSSplitView - Listbox unread', () => {
 		expect(listItems[2].className).not.toContain('slds-is-unread');
 		expect(listItems[3].className).toContain('slds-is-unread');
 
-		expect(
-			container.querySelectorAll('.slds-indicator_unread')
-		).toHaveLength(2);
+		expect(container.querySelectorAll('.slds-indicator_unread')).toHaveLength(
+			2
+		);
 	});
 
 	it('should have unread assistive text', () => {
-		const unreadIndicators = container.querySelectorAll('.slds-indicator_unread');
+		const unreadIndicators = container.querySelectorAll(
+			'.slds-indicator_unread'
+		);
 
 		expect(unreadIndicators[0].getAttribute('title')).toBe('test unread');
 		expect(unreadIndicators[1].getAttribute('title')).toBe('test unread');

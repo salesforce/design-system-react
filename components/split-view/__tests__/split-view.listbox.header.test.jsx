@@ -2,9 +2,7 @@ import { render, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
 import IconSettings from '../../icon-settings';
-import SplitViewListbox, {
-	SORT_OPTIONS,
-} from '../listbox';
+import SplitViewListbox, { SORT_OPTIONS } from '../listbox';
 
 const listOptions = [
 	{
@@ -62,7 +60,7 @@ describe('SLDSSplitView - Listbox header', () => {
 				ascending: 'test ascending',
 			},
 		},
-		sortDirection: SORT_OPTIONS.DOWN,
+		sortDirection: SORT_OPTIONS.DESCENDING,
 		events: {
 			onSort: vi.fn(),
 			onSelect: (event, { selectedItems }) => {
@@ -127,7 +125,10 @@ describe('SLDSSplitView - Listbox header', () => {
 			it('should have a sort direction up icon', () => {
 				rerender(
 					<IconSettings iconPath="/assets/icons">
-						<SplitViewListbox {...props} sortDirection={SORT_OPTIONS.UP} />
+						<SplitViewListbox
+							{...props}
+							sortDirection={SORT_OPTIONS.ASCENDING}
+						/>
 					</IconSettings>
 				);
 
@@ -140,7 +141,10 @@ describe('SLDSSplitView - Listbox header', () => {
 			it('should have sort ascending assistive text', () => {
 				rerender(
 					<IconSettings iconPath="/assets/icons">
-						<SplitViewListbox {...props} sortDirection={SORT_OPTIONS.UP} />
+						<SplitViewListbox
+							{...props}
+							sortDirection={SORT_OPTIONS.ASCENDING}
+						/>
 					</IconSettings>
 				);
 
@@ -148,6 +152,24 @@ describe('SLDSSplitView - Listbox header', () => {
 					'.slds-split-view__list-header > span > span'
 				);
 				expect(headerSpans[2].textContent).toBe('- test ascending');
+			});
+
+			it('should still accept the deprecated up and down values', () => {
+				rerender(
+					<IconSettings iconPath="/assets/icons">
+						<SplitViewListbox {...props} sortDirection="up" />
+					</IconSettings>
+				);
+				expect(
+					container
+						.querySelector('.slds-split-view__list-header svg > use')
+						.getAttribute('href')
+				).toContain('arrowup');
+				expect(
+					container.querySelectorAll(
+						'.slds-split-view__list-header > span > span'
+					)[2].textContent
+				).toBe('- test ascending');
 			});
 
 			it('should not have a sort direction when no direction specified', () => {
@@ -162,7 +184,9 @@ describe('SLDSSplitView - Listbox header', () => {
 			});
 
 			it('should call onSort when the header is clicked', () => {
-				const header = container.querySelector('a.slds-split-view__list-header');
+				const header = container.querySelector(
+					'a.slds-split-view__list-header'
+				);
 				fireEvent.click(header);
 				expect(props.events.onSort).toHaveBeenCalled();
 			});
@@ -170,10 +194,7 @@ describe('SLDSSplitView - Listbox header', () => {
 			it('should not be clickable when onSort not specified', () => {
 				rerender(
 					<IconSettings iconPath="/assets/icons">
-						<SplitViewListbox
-							{...props}
-							events={{ onSelect: vi.fn() }}
-						/>
+						<SplitViewListbox {...props} events={{ onSelect: vi.fn() }} />
 					</IconSettings>
 				);
 				expect(

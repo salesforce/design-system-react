@@ -18,7 +18,11 @@ import checkProps, { checkSelectionProps } from './listbox-check-props';
 import componentDoc from './component.json';
 
 export const SORT_OPTIONS = Object.freeze({
+	ASCENDING: 'ascending',
+	DESCENDING: 'descending',
+	/** @deprecated Use `ASCENDING`. */
 	UP: 'up',
+	/** @deprecated Use `DESCENDING`. */
 	DOWN: 'down',
 });
 
@@ -127,11 +131,13 @@ export interface SplitViewListboxProps<
 	 */
 	labels?: SplitViewListboxLabels;
 	/**
-	 * The direction of the sort arrow. Option are:
-	 * * SORT_OPTIONS.UP: `up`
-	 * * SORT_OPTIONS.DOWN: `down`
+	 * The direction of the sort arrow. Options are:
+	 * * SORT_OPTIONS.ASCENDING: `ascending`
+	 * * SORT_OPTIONS.DESCENDING: `descending`
+	 *
+	 * `up` and `down` are deprecated aliases of `ascending` and `descending`.
 	 */
-	sortDirection?: 'up' | 'down';
+	sortDirection?: 'ascending' | 'descending' | 'up' | 'down';
 	/**
 	 * Allows multiple item to be selection
 	 */
@@ -408,15 +414,18 @@ class SplitViewListbox<
 		this.focusItem(item);
 	}
 
+	isDescending(): boolean {
+		return (
+			this.props.sortDirection === SORT_OPTIONS.DESCENDING ||
+			this.props.sortDirection === SORT_OPTIONS.DOWN
+		);
+	}
+
 	sortDirection(): ReactNode {
 		return this.props.sortDirection ? (
 			<Icon
 				category="utility"
-				name={
-					this.props.sortDirection === SORT_OPTIONS.DOWN
-						? 'arrowdown'
-						: 'arrowup'
-				}
+				name={this.isDescending() ? 'arrowdown' : 'arrowup'}
 				size="xx-small"
 				className="slds-align-top"
 			/>
@@ -451,7 +460,7 @@ class SplitViewListbox<
 			? this.headerWrapper(
 					<span
 						aria-sort={
-							(this.props.sortDirection === SORT_OPTIONS.DOWN
+							(this.isDescending()
 								? sort.descending
 								: sort.ascending) as React.AriaAttributes['aria-sort']
 						}
@@ -466,9 +475,7 @@ class SplitViewListbox<
 						</span>
 						<span className="slds-assistive-text">
 							{'- '}
-							{this.props.sortDirection === SORT_OPTIONS.DOWN
-								? sort.descending
-								: sort.ascending}
+							{this.isDescending() ? sort.descending : sort.ascending}
 						</span>
 					</span>
 				)

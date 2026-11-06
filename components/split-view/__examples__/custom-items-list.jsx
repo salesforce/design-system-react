@@ -10,8 +10,8 @@ import SplitViewHeader from '~/components/split-view/header';
 import SplitViewListbox from '~/components/split-view/listbox';
 
 const SORT_OPTIONS = {
-	UP: 'up',
-	DOWN: 'down',
+	ASCENDING: 'ascending',
+	DESCENDING: 'descending',
 };
 
 const listOptions = [
@@ -181,7 +181,7 @@ class Example extends React.Component {
 			options: listOptions,
 			selected: [listOptions[listOptions.length - 2].id],
 			unread: [listOptions[0].id, listOptions[2].id],
-			sortDirection: SORT_OPTIONS.DOWN,
+			sortDirection: SORT_OPTIONS.DESCENDING,
 		};
 
 		this.sortList = this.sortList.bind(this);
@@ -189,13 +189,15 @@ class Example extends React.Component {
 
 	sortList() {
 		const sortDirection =
-			this.state.sortDirection === SORT_OPTIONS.DOWN
-				? SORT_OPTIONS.UP
-				: SORT_OPTIONS.DOWN;
+			this.state.sortDirection === SORT_OPTIONS.DESCENDING
+				? SORT_OPTIONS.ASCENDING
+				: SORT_OPTIONS.DESCENDING;
 
 		this.setState({
 			options: this.state.options.sort((a, b) =>
-				sortDirection === SORT_OPTIONS.DOWN ? a.name > b.name : b.name > a.name
+				sortDirection === SORT_OPTIONS.DESCENDING
+					? a.name > b.name
+					: b.name > a.name
 			),
 			sortDirection,
 		});
