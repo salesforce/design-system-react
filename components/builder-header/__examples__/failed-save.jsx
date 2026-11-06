@@ -87,7 +87,6 @@ const Example = (props) => (
 								iconName="error"
 								iconSize="medium"
 								iconVariant="container"
-								colorVariant="error"
 								variant="icon"
 							/>
 						</Popover>

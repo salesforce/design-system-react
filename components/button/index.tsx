@@ -13,6 +13,7 @@ import React, {
 	type CSSProperties,
 	type ReactNode,
 	type ForwardedRef,
+	type ButtonHTMLAttributes,
 } from 'react';
 import classNames from 'classnames';
 // These imports use the old JSX files for now until they're converted
@@ -75,9 +76,13 @@ export interface ButtonAssistiveText {
 }
 
 /**
- * Props for the Button component
+ * Props shared by every Button variant. Other `<button>` attributes (`name`,
+ * `value`, `role`, `autoFocus`, ...) pass through to the element.
  */
-export interface ButtonProps {
+export interface ButtonBaseProps extends Omit<
+	ButtonHTMLAttributes<HTMLButtonElement>,
+	'children' | 'className' | 'onClick' | 'style' | 'tabIndex' | 'title' | 'type'
+> {
 	/** Assistive text for accessibility */
 	assistiveText?: ButtonAssistiveText;
 	/** Callback for DOM reference */
@@ -100,13 +105,6 @@ export interface ButtonProps {
 	iconPath?: string;
 	/** Icon position */
 	iconPosition?: IconPosition;
-	/**
-	 * Icon size. With `iconVariant`, sizes the button container (`slds-button_icon-*`); otherwise sizes the SVG (`slds-button__icon_*`).
-	 * `xx-small` requires `iconVariant`, since SLDS only defines it for the button container (matches `lightning-button-icon`).
-	 */
-	iconSize?: ButtonIconSize;
-	/** Icon variant */
-	iconVariant?: ButtonIconVariant;
 	/** Unique identifier */
 	id?: string;
 	/** Inverse colors for dark backgrounds */
@@ -150,18 +148,38 @@ export interface ButtonProps {
 	/** Custom inline styles */
 	style?: CSSProperties;
 	/** Tab index */
-	tabIndex?: number | string;
+	tabIndex?: number;
 	/** HTML title attribute */
 	title?: string;
 	/** Button type attribute */
 	type?: ButtonType;
-	/** Button variant */
-	variant?: ButtonVariant;
-	/** Allow any additional props for aria-*, data-*, form* */
-	[key: `aria-${string}`]: string | boolean | undefined;
-	[key: `data-${string}`]: string | number | boolean | undefined;
-	[key: `form${string}`]: string | undefined;
 }
+
+/**
+ * Icon sizing and styling props, shared by the icon-capable variants.
+ */
+interface ButtonIconProps {
+	/**
+	 * Icon size. With `iconVariant`, sizes the button container (`slds-button_icon-*`); otherwise sizes the SVG (`slds-button__icon_*`).
+	 * `xx-small` requires `iconVariant`, since SLDS only defines it for the button container (matches `lightning-button-icon`).
+	 */
+	iconSize?: ButtonIconSize;
+	/** Icon variant */
+	iconVariant?: ButtonIconVariant;
+}
+
+/**
+ * `variant="icon"` is the icon button: it is the variant that takes `iconVariant`.
+ * Other variants size the icon with `iconSize` only.
+ */
+export type ButtonProps = ButtonBaseProps &
+	(
+		| ({ /** Button variant */ variant: 'icon' } & ButtonIconProps)
+		| ({
+				/** Button variant */
+				variant?: Exclude<ButtonVariant, 'icon'>;
+		  } & Pick<ButtonIconProps, 'iconSize'> & { iconVariant?: undefined })
+	);
 
 const defaultAssistiveText: ButtonAssistiveText = { icon: '' };
 
@@ -209,10 +227,16 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 			// Removed in v11. Destructured so it never reaches the DOM;
 			// `checkRemovedProps` warns about it.
 			tooltip,
+			// Injected by `ButtonGroup` into its last child for `MenuDropdown`; a
+			// Button has no use for it, so keep it off the DOM.
+			triggerClassName: _triggerClassName,
 			type = 'button',
 			variant = 'neutral',
 			...restProps
-		} = props as ButtonProps & { tooltip?: ReactNode };
+		} = props as ButtonProps & {
+			tooltip?: ReactNode;
+			triggerClassName?: unknown;
+		};
 
 		useEffect(() => {
 			checkRemovedProps(
@@ -354,6 +378,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 					title={title}
 					type={type}
 					style={style}
+					{...restProps}
 					{...ariaProps}
 					{...dataProps}
 					{...formProps}

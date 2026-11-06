@@ -330,7 +330,6 @@ export const FailedSave = {
 							iconName="error"
 							iconSize="medium"
 							iconVariant="container"
-							colorVariant="error"
 							variant="icon"
 						/>
 						<SaveActions />

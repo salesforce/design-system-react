@@ -16,7 +16,7 @@ const panelContent = (
 							category="standard"
 							name="opportunity"
 							size="small"
-							tabIndex="0"
+							tabIndex={0}
 						/>
 					</div>
 					<div className="slds-media__body">
