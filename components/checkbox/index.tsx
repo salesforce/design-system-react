@@ -12,8 +12,6 @@ import {
 	type ReactNode,
 } from 'react';
 import classNames from 'classnames';
-import KEYS from '../../utilities/key-code';
-import EventUtil from '../../utilities/event';
 import getAriaProps from '../../utilities/get-aria-props';
 import { CHECKBOX } from '../../utilities/constants';
 import Icon from '../icon/index';
@@ -132,7 +130,10 @@ interface CheckboxBaseProps {
 	onKeyUp?: (event: KeyboardEvent<HTMLInputElement>) => void;
 	/** Request focus callback */
 	onRequestFocus?: (element: HTMLInputElement) => void;
-	/** Read-only mode */
+	/**
+	 * Shows the checked state without letting the user change it. The checkbox stays focusable
+	 * and is announced as read-only; clicks and Space do not toggle it or call `onChange`.
+	 */
 	readOnly?: boolean;
 	/** Trigger onRequestFocus */
 	requestFocus?: boolean;
@@ -285,6 +286,11 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 	};
 
 	const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+		// Read-only: skip `onChange`, so React restores the controlled `checked`. (Calling
+		// `preventDefault` on the click instead conflicts with that restore and unchecks the box.)
+		if (readOnly) {
+			return;
+		}
 		onChange?.(event, {
 			checked: indeterminate ? true : !checked,
 			indeterminate: false,
@@ -295,14 +301,6 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 		if (internalRef.current) {
 			internalRef.current.indeterminate = !!indeterminate;
 		}
-	};
-
-	const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
-		if (event.keyCode === KEYS.ENTER || event.keyCode === KEYS.SPACE) {
-			EventUtil.trapImmediate(event);
-			handleChange(event as unknown as ChangeEvent<HTMLInputElement>);
-		}
-		onKeyDown?.(event);
 	};
 
 	const ariaProps = getAriaProps(restProps);
@@ -316,10 +314,11 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 		onBlur,
 		onChange: handleChange,
 		onFocus,
-		onKeyDown: handleKeyDown,
+		onKeyDown,
 		onKeyPress,
 		onKeyUp,
 		role,
+		'aria-readonly': readOnly || undefined,
 		required,
 		type: 'checkbox' as const,
 		...ariaProps,
