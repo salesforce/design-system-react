@@ -57,6 +57,57 @@ describe('SLDSFilter', () => {
 		});
 	});
 
+	describe('Popover open state', () => {
+		const renderFilter = (popoverProps) =>
+			render(
+				<IconSettings iconPath="/assets/icons">
+					<Filter
+						property="Show Me"
+						predicate="All Opportunities"
+						popover={
+							<DemoComponent
+								className="custom-filter-popover"
+								{...popoverProps}
+							/>
+						}
+					/>
+				</IconSettings>
+			);
+
+		it('starts open from the popover defaultIsOpen and can be closed', async () => {
+			const { container } = renderFilter({ defaultIsOpen: true });
+
+			await waitFor(() => {
+				expect(document.querySelector('[role="dialog"]')).toBeInTheDocument();
+			});
+		});
+
+		it('is closed by default', () => {
+			renderFilter({});
+
+			expect(document.querySelector('[role="dialog"]')).not.toBeInTheDocument();
+		});
+
+		it('opens an uncontrolled popover when the filter is clicked', async () => {
+			const { container } = renderFilter({});
+
+			fireEvent.click(container.querySelector('.slds-filters__item button'));
+
+			await waitFor(() => {
+				expect(document.querySelector('[role="dialog"]')).toBeInTheDocument();
+			});
+		});
+
+		it('keeps a controlled popover isOpen={false} closed when the filter is clicked', async () => {
+			const { container } = renderFilter({ isOpen: false });
+
+			fireEvent.click(container.querySelector('.slds-filters__item button'));
+			await new Promise((resolve) => setTimeout(resolve, 50));
+
+			expect(document.querySelector('[role="dialog"]')).not.toBeInTheDocument();
+		});
+	});
+
 	describe('On click handler when clicking on filter', () => {
 		it('Filter could take onClick prop and trigger this callback during filter click', async () => {
 			const onClick = vi.fn();
