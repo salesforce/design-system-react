@@ -708,7 +708,7 @@ export const ReadonlyMultiple: Story = {
 };
 
 // Individual options can be disabled in the readonly (picklist) variant
-// too, independent of `singleInputDisabled` on the whole widget.
+// too, independent of `disabled` on the whole widget.
 export const ReadonlyWithDisabledOption: Story = {
 	render: () => {
 		const optionsWithDisabled = picklistOptions.map((option, index) => ({
@@ -828,7 +828,7 @@ export const ReadonlyDisabled: Story = {
 				labels={{ label: 'Select Option' }}
 				options={picklistOptions}
 				selection={selection}
-				singleInputDisabled
+				disabled
 				variant="readonly"
 			/>
 		);
