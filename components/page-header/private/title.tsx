@@ -40,8 +40,10 @@ class Title extends Component<PageHeaderTitleProps> {
 	};
 
 	render() {
-		// `0` is a valid title; only a missing one renders nothing
-		if (this.props.content == null || this.props.content === '') return null;
+		// `0` is a valid title; a missing, empty or boolean one renders nothing
+		const { content } = this.props;
+		if (content == null || content === '' || typeof content === 'boolean')
+			return null;
 
 		const classes = classnames(
 			'slds-page-header__title',

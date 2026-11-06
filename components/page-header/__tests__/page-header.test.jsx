@@ -322,4 +322,17 @@ describe('PageHeader title', () => {
 			container.querySelector('.slds-page-header__title')
 		).not.toBeInTheDocument();
 	});
+	it.each([false, true, ''])(
+		'renders no title element for a title of %j',
+		(title) => {
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<PageHeader title={title} />
+				</IconSettings>
+			);
+			expect(
+				container.querySelector('.slds-page-header__title')
+			).not.toBeInTheDocument();
+		}
+	);
 });
