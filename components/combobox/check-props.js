@@ -28,6 +28,13 @@ if (process.env.NODE_ENV !== 'production') {
 		);
 		deprecatedProperty(
 			COMPONENT,
+			props.classNameContainer,
+			'classNameContainer',
+			'className',
+			'`className` now lands on the root element; use `classNameCombobox` for the inner `.slds-combobox`.'
+		);
+		deprecatedProperty(
+			COMPONENT,
 			props.isInline,
 			'isInline',
 			'menuPosition="relative"',

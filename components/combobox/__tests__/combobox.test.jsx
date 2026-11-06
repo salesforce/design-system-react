@@ -1364,3 +1364,46 @@ describe('SLDSCombobox', () => {
 		});
 	});
 });
+
+describe('Combobox root and ref', () => {
+	const options = [{ id: '1', label: 'One', value: '1' }];
+
+	it('puts className on the form element and classNameCombobox on .slds-combobox', () => {
+		const { container } = render(
+			<IconSettings iconPath="/assets/icons">
+				<Combobox
+					id="c"
+					className="on-root"
+					classNameCombobox="on-inner"
+					labels={{ label: 'Label' }}
+					options={options}
+				/>
+			</IconSettings>
+		);
+		expect(container.querySelector('.slds-form-element')).toHaveClass(
+			'on-root'
+		);
+		expect(container.querySelector('.slds-combobox')).toHaveClass('on-inner');
+		expect(container.querySelector('.slds-combobox')).not.toHaveClass(
+			'on-root'
+		);
+	});
+
+	it('forwards ref to a DOM element wrapping the combobox', () => {
+		const ref = React.createRef();
+		const { container } = render(
+			<IconSettings iconPath="/assets/icons">
+				<Combobox
+					id="c"
+					ref={ref}
+					labels={{ label: 'Label' }}
+					options={options}
+				/>
+			</IconSettings>
+		);
+		expect(ref.current).toBeInstanceOf(HTMLDivElement);
+		expect(
+			ref.current.contains(container.querySelector('.slds-combobox'))
+		).toBe(true);
+	});
+});

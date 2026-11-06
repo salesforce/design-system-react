@@ -205,9 +205,13 @@ type ComboboxLegacyMenuItem = React.ComponentType<{
 interface ComboboxBaseProps {
 	/** aria-describedby attribute */
 	'aria-describedby'?: string;
-	/** CSS classes for combobox container */
+	/** CSS classes for the root element */
 	className?: string | string[] | Record<string, boolean>;
-	/** CSS classes for top level container */
+	/** CSS classes for the inner `.slds-combobox` element */
+	classNameCombobox?: string | string[] | Record<string, boolean>;
+	/**
+	 * @deprecated Use `className`.
+	 */
 	classNameContainer?: string | string[] | Record<string, boolean>;
 	/** CSS classes for dropdown menu */
 	classNameMenu?: string | string[] | Record<string, boolean>;
@@ -370,6 +374,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 		assistiveText: assistiveTextProp = {},
 		'aria-describedby': ariaDescribedby,
 		className,
+		classNameCombobox,
 		classNameContainer,
 		classNameMenu,
 		classNameMenuSubHeader,
@@ -1366,7 +1371,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 							'slds-is-open': getIsOpen(),
 							'slds-has-error': errorText,
 						},
-						className
+						classNameCombobox
 					)}
 					role="combobox"
 					aria-expanded={getIsOpen()}
@@ -1536,7 +1541,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 							'slds-is-open': getIsOpen(),
 							'slds-has-error': errorText,
 						},
-						className
+						classNameCombobox
 					)}
 					role="combobox"
 					aria-expanded={getIsOpen()}
@@ -1625,7 +1630,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 								'slds-is-open': getIsOpen(),
 								'slds-has-error': errorText,
 							},
-							className
+							classNameCombobox
 						)}
 						role="combobox"
 						aria-expanded={getIsOpen()}
@@ -1727,7 +1732,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 								'slds-is-open': getIsOpen(),
 								'slds-has-error': errorText,
 							},
-							className
+							classNameCombobox
 						)}
 						role="combobox"
 						aria-expanded={getIsOpen()}
@@ -1803,7 +1808,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 								'slds-is-open': getIsOpen(),
 								'slds-has-error': errorText,
 							},
-							className
+							classNameCombobox
 						)}
 						role="combobox"
 						aria-expanded={getIsOpen()}
@@ -1928,7 +1933,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 								'slds-is-open': getIsOpen(),
 								'slds-has-error': errorText,
 							},
-							className
+							classNameCombobox
 						)}
 						role="combobox"
 						aria-expanded={getIsOpen()}
@@ -2010,7 +2015,9 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 	const variantRenderer = subRenders[variant]?.[multipleOrSingle];
 
 	const mainCombobox = (
-		<div className={classNames('slds-form-element', classNameContainer)}>
+		<div
+			className={classNames('slds-form-element', className, classNameContainer)}
+		>
 			{entityCombobox ? null : (
 				<Label
 					assistiveText={

@@ -26,40 +26,65 @@ export type {
  * Combobox wrapper that handles click outside detection
  * Replaces react-onclickoutside HOC for React 19 compatibility
  */
-const ComboboxWithClickOutside = forwardRef<HTMLDivElement, ComboboxProps>(
-	(props, ref: ForwardedRef<HTMLDivElement>) => {
-		const containerRef = useRef<HTMLDivElement>(null);
-		const comboboxRef = useRef<{
-			handleClickOutside?: (event: MouseEvent | TouchEvent) => void;
-		}>(null);
+type ComboboxInnerProps = ComboboxProps & {
+	forwardedRef?: ForwardedRef<HTMLDivElement>;
+};
 
-		// Use our custom hook to detect clicks outside
-		useClickOutside(
-			containerRef,
-			(event) => {
-				// The Combobox component handles click outside via handleRequestClose
-				// This is triggered when clicking outside the combobox container
-				if (comboboxRef.current?.handleClickOutside) {
-					comboboxRef.current.handleClickOutside(event);
-				}
-			},
-			{
-				enabled: true,
-				ignoreClass: 'ignore-react-onclickoutside',
+const ComboboxWithClickOutside = ({
+	forwardedRef: ref,
+	...props
+}: ComboboxInnerProps) => {
+	const containerRef = useRef<HTMLDivElement>(null);
+	const comboboxRef = useRef<{
+		handleClickOutside?: (event: MouseEvent | TouchEvent) => void;
+	}>(null);
+
+	// Use our custom hook to detect clicks outside
+	useClickOutside(
+		containerRef,
+		(event) => {
+			// The Combobox component handles click outside via handleRequestClose
+			// This is triggered when clicking outside the combobox container
+			if (comboboxRef.current?.handleClickOutside) {
+				comboboxRef.current.handleClickOutside(event);
 			}
-		);
+		},
+		{
+			enabled: true,
+			ignoreClass: 'ignore-react-onclickoutside',
+		}
+	);
 
-		return (
-			<div ref={containerRef}>
-				<Combobox {...props} />
-			</div>
-		);
-	}
-);
+	return (
+		<div
+			ref={(node) => {
+				containerRef.current = node;
+				if (typeof ref === 'function') {
+					ref(node);
+				} else if (ref) {
+					ref.current = node;
+				}
+			}}
+		>
+			<Combobox {...props} />
+		</div>
+	);
+};
 
 ComboboxWithClickOutside.displayName = 'ComboboxWithClickOutside';
 
-// Wrap with LanguageDirection for RTL support
-export default LanguageDirection(
+// Wrap with LanguageDirection for RTL support. The HOC is a class, so the ref
+// is passed down as a prop to reach the wrapper `div`.
+const ComboboxWithDirection = LanguageDirection(
 	ComboboxWithClickOutside
-) as unknown as React.FC<ComboboxProps>;
+) as unknown as React.FC<ComboboxInnerProps>;
+
+const ComboboxWithRef = forwardRef<HTMLDivElement, ComboboxProps>(
+	(props, ref) => <ComboboxWithDirection {...props} forwardedRef={ref} />
+);
+
+ComboboxWithRef.displayName = 'Combobox';
+
+export default ComboboxWithRef as unknown as React.ForwardRefExoticComponent<
+	ComboboxProps & React.RefAttributes<HTMLDivElement>
+>;

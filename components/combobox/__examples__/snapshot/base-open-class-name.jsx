@@ -51,8 +51,8 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Combobox
-					className="this-is-the-input"
-					classNameContainer="this-is-the-container"
+					classNameCombobox="this-is-the-input"
+					className="this-is-the-container"
 					classNameMenu="this-is-the-menu"
 					classNameMenuSubHeader="this-is-the-menu-sub-header"
 					id="combobox-unique-id"
