@@ -22,7 +22,12 @@ export interface ControlProps {
  * The PageHeaderControl component is used to wrap individual controls within PageHeader 'actions' and 'controls' sections.
  */
 const Control = (props: ControlProps): React.ReactElement => (
-	<div className={classnames('slds-page-header__control', props.className as string)}>
+	<div
+		className={classnames(
+			'slds-page-header__control',
+			props.className as string
+		)}
+	>
 		{props.children}
 	</div>
 );
