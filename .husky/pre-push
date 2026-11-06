@@ -1,3 +1,7 @@
 # Story HTML snapshots are the most commonly missed update. Fail fast here
 # (~3s) rather than in CI. Fix with `npm test -- --run -u`, review, commit.
 npm run --silent test:snapshots
+
+# Same idea for the committed public API snapshot in api/ (~2s). Fix with
+# `npm run api:update`, review the type diff, commit.
+npm run --silent api:check

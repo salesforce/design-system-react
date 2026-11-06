@@ -32,3 +32,21 @@ jobs:
       # must stay green. Same script contributors run locally.
       - name: Typecheck, test, build, lint
         run: npm run test:ci
+
+  # Public API snapshot: the committed api/ must match the declarations the
+  # PR's code emits, so every type change is visible in the diff. PRs only:
+  # pushes to master were already gated by their PR. Make `api` a required
+  # status check in branch protection for this to block merges.
+  api:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+          cache: 'npm'
+      - name: Install dependencies
+        run: npm ci
+      - name: Check public API snapshot
+        run: npm run api:check

@@ -61,6 +61,8 @@ export default tseslint.config(
 			'storybook-static/**',
 			// Gitignored agent scratch space (see AGENTS.md).
 			'.planning/**',
+			// Generated public API snapshot (npm run api:update).
+			'api/**',
 			'storybook-based-tests/**',
 			'icons/**',
 			'**/*.config.js',

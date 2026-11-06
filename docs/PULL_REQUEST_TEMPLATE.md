@@ -20,6 +20,7 @@ Please complete for every pull request.
 - [ ] `npm run typecheck` is clean (`tsc --noEmit`).
 - [ ] `npm test -- --run` passes — this runs both Vitest projects (jsdom `unit` + real-browser `browser`) **and** the story HTML snapshots. If you changed rendered markup on purpose, update snapshots with `npm test -- --run -u` and review the diff.
 - [ ] `npm run build` succeeds (type-check + Vite library build + `.d.ts` + entry shims).
+- [ ] `npm run api:check` passes. If you changed public types on purpose, update the snapshot with `npm run api:update` and review the `api/` diff.
 
 **Behavior & docs:**
 
@@ -36,6 +37,7 @@ Please complete for every pull request.
 - [ ] Change has adequate test coverage; bug fixes include a regression test.
 - [ ] Reviewed the affected Storybook stories and their a11y panels.
 - [ ] Rendered markup still conforms to [SLDS](https://www.lightningdesignsystem.com/) — check the story HTML snapshot diff (`components/__tests__/__snapshots__/story-snapshots.test.jsx.snap`).
+- [ ] **Public API types:** reviewed the `api/` diff. Removed/renamed exports, narrowed or newly required props, and reordered callback parameters are breaking.
 - [ ] **Public API / package surface:** if exports changed, the deep-import contract still holds (`@salesforce/design-system-react/components/<name>` and nested paths resolve for ESM, CJS, and types). Removing/renaming a public component or export is a **breaking change** → `feat!:`/`BREAKING CHANGE:` and a major version bump.
 
 <!--
