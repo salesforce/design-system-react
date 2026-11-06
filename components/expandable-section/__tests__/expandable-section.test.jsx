@@ -259,3 +259,16 @@ describe('SLDSExpandableSection', () => {
 		});
 	});
 });
+
+describe('ExpandableSection nonCollapsible', () => {
+	it('stays open when nonCollapsible is combined with isOpen={false}', () => {
+		const { container } = render(
+			<ExpandableSection nonCollapsible isOpen={false} title="T">
+				Content
+			</ExpandableSection>
+		);
+		expect(container.querySelector('.slds-section')).toHaveClass(
+			'slds-is-open'
+		);
+	});
+});
