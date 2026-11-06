@@ -6,3 +6,4 @@ export {
 	type UseClickOutsideOptions,
 } from './use-click-outside';
 export { useControllableState } from './use-controllable-state';
+export { useLatestRef } from './use-latest-ref';
