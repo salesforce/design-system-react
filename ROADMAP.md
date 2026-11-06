@@ -172,6 +172,23 @@ moves to `latest`.
    (vertical-navigation, split-view), textarea `maxLength` as a number.
    **Done in #3252:** all of the above except the tree heading XOR (theme 6) and
    menu-dropdown `multiple` tied to an array `value` with `options`/`children` required.
+   **Done (typing):** unions on `variant`/`type`/mode with `never` on ignored props and a
+   `*.type-test.tsx` for each: alert, toast, button, button-stateful,
+   button-group, builder-header, card, carousel, combobox, date-picker, checkbox,
+   expandable-section, dynamic-icon, files, icon/button-icon, icon/input-icon, grid, input,
+   menu-dropdown, page-header, panel filtering, pill, pill-container, popover (and edit dialog),
+   progress-indicator, progress-ring, radio, radio-group, setup-assistant,
+   simple-data-table, spinner (`placement`), textarea, tree, trial-bar,
+   visual-picker (`links` union), truncate and dialog `containerProps` (`HTMLAttributes` instead
+   of a `[key: string]` catch-all).
+   **Deferred past GA (2026-11-08 scope cut):** scoped-notification `base` theme name and
+   welcome-mat `ReactNode` labels with InfoBadge `imageSrc` (naming, non-breaking).
+   **Cut:** narrowing the tabs `className` type (cosmetic).
+   **Partly done:** progress-bar needs no change (Decision); tooltip `position` is left, since the
+   same portal-strategy union is `menuPosition` on combobox, date-picker, color-picker,
+   menu-dropdown and progress-indicator and needs one cross-component rename (naming);
+   icon already has `category: IconCategory` and no string `assistiveText`. Callback-shape
+   items are done (callbacks) or deferred past GA (additive).
 8. **Fix now (bugs, not breaking).** Done: simple-data-table `getAssistiveText` argument
    order, grid `"undefined slds-col"` (#3239), split-view `bottomRightText` title,
    vertical-navigation `aria-current`, tabs `disabled` type, toast timer re-arm (#3251).
