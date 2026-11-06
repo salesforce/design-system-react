@@ -1,3 +1,4 @@
+import { createRef } from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import Button from '../index';
@@ -195,5 +196,15 @@ describe('SLDSButton', () => {
 			);
 			consoleError.mockRestore();
 		});
+	});
+});
+
+describe('Button ref API', () => {
+	it('forwards ref to the button and still supports the deprecated buttonRef', () => {
+		const ref = createRef();
+		const buttonRef = vi.fn();
+		render(<Button label="x" ref={ref} buttonRef={buttonRef} />);
+		expect(ref.current.tagName).toBe('BUTTON');
+		expect(buttonRef).toHaveBeenCalledWith(ref.current);
 	});
 });

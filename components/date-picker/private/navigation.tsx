@@ -82,7 +82,7 @@ class DatepickerMonthNavigation extends React.Component<NavigationProps> {
 							iconVariant="container"
 							onKeyDown={this.props.onPreviousMonthKeyDown}
 							onClick={this.previousMonthClicked}
-							buttonRef={(component: HTMLButtonElement | null) => {
+							ref={(component: HTMLButtonElement | null) => {
 								this.props.previousMonthRef(component);
 							}}
 							variant="icon"

@@ -191,7 +191,7 @@ const ButtonTrigger = forwardRef<
 		renderedTrigger = (
 			<Button
 				{...(mergeProps(buttonDefaults, buttonProps) as ButtonProps)}
-				buttonRef={
+				ref={
 					consumerButtonRef
 						? (element: HTMLButtonElement | null) => {
 								consumerButtonRef(element);

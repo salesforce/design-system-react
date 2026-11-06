@@ -21,6 +21,7 @@ import getAriaProps from '../../utilities/get-aria-props';
 import getDataProps from '../../utilities/get-data-props';
 import getFormProps from '../../utilities/get-form-props';
 import { BUTTON } from '../../utilities/constants';
+import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import { checkRemovedProps } from './check-props';
 import componentDoc from './component.json';
 import type { IconCategory } from '../../types/common';
@@ -80,7 +81,9 @@ export interface ButtonAssistiveText {
 export interface ButtonProps {
 	/** Assistive text for accessibility */
 	assistiveText?: ButtonAssistiveText;
-	/** Callback for DOM reference */
+	/**
+	 * @deprecated Use `ref`.
+	 */
 	buttonRef?: (ref: HTMLButtonElement | null) => void;
 	/** Additional CSS classes */
 	className?: string | string[] | Record<string, boolean>;
@@ -213,6 +216,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 			variant = 'neutral',
 			...restProps
 		} = props as ButtonProps & { tooltip?: ReactNode };
+
+		deprecatedProperty(BUTTON, buttonRef, 'buttonRef', 'ref');
 
 		useEffect(() => {
 			checkRemovedProps(

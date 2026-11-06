@@ -177,7 +177,7 @@ const Alert = ({
 			{dismissible && (
 				<Button
 					assistiveText={{ icon: assistiveText.closeButton as string }}
-					buttonRef={saveButtonRef}
+					ref={saveButtonRef}
 					className="slds-notify__close"
 					iconCategory="utility"
 					iconName="close"

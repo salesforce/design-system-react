@@ -82,7 +82,7 @@ const AccordionPanel = ({
 					<Button
 						aria-controls={`${id}-accordion-panel`}
 						aria-expanded={expanded}
-						buttonRef={refs.summaryButton}
+						ref={refs.summaryButton}
 						className="slds-button_reset slds-accordion__summary-action"
 						iconCategory="utility"
 						iconClassName="slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left"
