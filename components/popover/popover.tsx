@@ -28,6 +28,7 @@ import KEYS from '../../utilities/key-code';
 import { POPOVER } from '../../utilities/constants';
 import { IconSettingsContext } from '../icon-settings';
 import deprecatedProperty from '../../utilities/warning/deprecated-property';
+import mergeProps from '../../utilities/merge-props';
 import getComponentDocFn from '../../utilities/get-component-doc';
 import componentDoc from './component.json';
 
@@ -929,30 +930,39 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>(
 				clonedTrigger = child;
 			} else if (index === 0 && React.isValidElement(child)) {
 				const childProps = child.props as Record<string, unknown>;
-				const triggerProps: Record<string, unknown> = {
-					'aria-haspopup': 'dialog',
-					id,
-					onClick:
-						openOn === 'click' || openOn === 'hybrid'
-							? (event: MouseEvent) => {
-									handleClick(
-										event,
-										childProps.onClick as (e: MouseEvent) => void
-									);
-								}
-							: childProps.onClick,
-					onFocus: openOn === 'hover' ? handleFocus : undefined,
-					onMouseDown,
-					onMouseEnter:
-						openOn === 'hover' || openOn === 'hybrid'
-							? handleMouseEnter
-							: undefined,
-					onMouseLeave:
-						openOn === 'hover' || openOn === 'hybrid'
-							? handleMouseLeave
-							: undefined,
-					tabIndex: (childProps.tabIndex as number) || 0,
-				};
+				// The trigger's own handlers run alongside the popover's instead of being replaced.
+				// `onClick` already calls the trigger's after the popover's (see `handleClick`).
+				const childOnClick = childProps.onClick;
+				const triggerProps = mergeProps(
+					{
+						'aria-haspopup': 'dialog',
+						id,
+						onClick:
+							openOn === 'click' || openOn === 'hybrid'
+								? (event: MouseEvent) => {
+										handleClick(event, childOnClick as (e: MouseEvent) => void);
+									}
+								: childOnClick,
+						onFocus: openOn === 'hover' ? handleFocus : undefined,
+						onMouseDown,
+						onMouseEnter:
+							openOn === 'hover' || openOn === 'hybrid'
+								? handleMouseEnter
+								: undefined,
+						onMouseLeave:
+							openOn === 'hover' || openOn === 'hybrid'
+								? handleMouseLeave
+								: undefined,
+						// `??` so a trigger can opt out of the tab order with -1 (or 0 as a string)
+						tabIndex: childProps.tabIndex ?? 0,
+					},
+					{
+						onFocus: childProps.onFocus,
+						onMouseDown: childProps.onMouseDown,
+						onMouseEnter: childProps.onMouseEnter,
+						onMouseLeave: childProps.onMouseLeave,
+					}
+				);
 				clonedTrigger = React.cloneElement(child, triggerProps);
 			} else if (child) {
 				otherChildren.push(child);
