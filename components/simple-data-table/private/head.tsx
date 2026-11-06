@@ -12,6 +12,10 @@ import CellContext from './cell-context';
 import TableContext from './table-context';
 import useContextHelper from './context-helper';
 
+import type {
+	SimpleDataTableAssistiveText,
+	SimpleDataTableColumnConfig,
+} from '../types';
 import { SIMPLE_DATA_TABLE_HEAD } from '../../../utilities/constants';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -19,20 +23,6 @@ const InteractiveCheckbox = InteractiveElement(
 	Checkbox as any
 ) as React.ComponentType<any>;
 /* eslint-enable @typescript-eslint/no-explicit-any */
-
-interface SimpleDataTableColumnConfig {
-	Cell: React.ComponentType<Record<string, unknown>>;
-	props: Record<string, unknown>;
-}
-
-interface AssistiveText {
-	actionsHeader?: string;
-	selectAllRows?: string;
-	selectRowGroup?: string;
-	columnSort?: string;
-	columnSortedAscending?: string;
-	columnSortedDescending?: string;
-}
 
 interface ActionsHeaderProps {
 	assistiveText?: string;
@@ -239,7 +229,7 @@ const SelectHeader: React.FC<SelectHeaderProps> = (props) => {
 };
 
 export interface SimpleDataTableHeadProps {
-	assistiveText?: AssistiveText;
+	assistiveText?: SimpleDataTableAssistiveText;
 	allSelected?: boolean;
 	headerRefs?: (
 		ref: HTMLElement | null,
