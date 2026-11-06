@@ -123,7 +123,12 @@ describe('SLDSToast', () => {
 
 		const renderToast = (props) => (
 			<IconSettings iconPath="/assets/icons">
-				<Toast labels={{ heading: 'Heading' }} variant="info" {...props} />
+				<Toast
+					dismissible
+					labels={{ heading: 'Heading' }}
+					variant="info"
+					{...props}
+				/>
 			</IconSettings>
 		);
 
@@ -198,5 +203,23 @@ describe('SLDSToast', () => {
 			const toast = container.querySelector('.slds-notify');
 			expect(toast).toHaveStyle({ backgroundColor: 'rgb(18, 49, 35)' });
 		});
+	});
+});
+
+describe('Toast dismissible', () => {
+	const renderToast = (props) => (
+		<IconSettings iconPath="/assets/icons">
+			<Toast labels={{ heading: 'Hi' }} {...props} />
+		</IconSettings>
+	);
+
+	it('renders no close button by default', () => {
+		const { container } = render(renderToast());
+		expect(container.querySelector('button.slds-notify__close')).toBeNull();
+	});
+
+	it('renders the close button with dismissible', () => {
+		const { container } = render(renderToast({ dismissible: true }));
+		expect(container.querySelector('button.slds-notify__close')).not.toBeNull();
 	});
 });
