@@ -4,6 +4,7 @@
 
 import warning from 'warning';
 
+import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import onlyOneOfProperties from '../../utilities/warning/only-one-of-properties';
 import requiredProperty from '../../utilities/warning/required-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
@@ -39,6 +40,34 @@ if (process.env.NODE_ENV !== 'production') {
 			'events.onChange',
 			`ColorPicker is controlled: without \`events.onChange\`, choosing a color does nothing. Update \`value\` from \`data.color\` in \`events.onChange\`, or set \`disabled\`. ${createDocUrl(
 				'events'
+			)}`
+		);
+
+		['onClose', 'onOpen', 'onRequestClose', 'onRequestOpen'].forEach((name) => {
+			deprecatedProperty(
+				COMPONENT,
+				props[name],
+				name,
+				`events.${name}`,
+				createDocUrl('events')
+			);
+		});
+		deprecatedProperty(
+			COMPONENT,
+			props.events?.onValidateColor,
+			'events.onValidateColor',
+			'validateColor',
+			`A validator returns a value, so it is not an event. ${createDocUrl(
+				'validateColor'
+			)}`
+		);
+		deprecatedProperty(
+			COMPONENT,
+			props.events?.onValidateWorkingColor,
+			'events.onValidateWorkingColor',
+			'validateWorkingColor',
+			`A validator returns a value, so it is not an event. ${createDocUrl(
+				'validateWorkingColor'
 			)}`
 		);
 	};
