@@ -42,13 +42,32 @@ if (process.env.NODE_ENV !== 'production') {
 			'DatePicker is controlled: pass `value` (a `Date`, or `null`) and update it in `onChange`. The input text is derived from `value` with `formatter`.'
 		);
 
-		deprecatedProperty(
+		sunsetProperty(
 			COMPONENT,
 			props.children,
 			'children',
-			'input',
-			`Please see \`input\` prop description and add your own \`Input\`. Props will be shallow merged. ${createDocUrl(
+			`Pass your own \`Input\` element to the \`input\` prop instead. Its props are shallow merged. ${createDocUrl(
 				'input'
+			)}`
+		);
+		sunsetProperty(
+			COMPONENT,
+			props.label,
+			'label',
+			`Use \`labels.label\` instead. ${createDocUrl('labels')}`
+		);
+		sunsetProperty(
+			COMPONENT,
+			props.placeholder,
+			'placeholder',
+			`Use \`labels.placeholder\` instead. ${createDocUrl('labels')}`
+		);
+		sunsetProperty(
+			COMPONENT,
+			props.assistiveTextOpenCalendar,
+			'assistiveTextOpenCalendar',
+			`Use \`assistiveText.openCalendar\` instead. ${createDocUrl(
+				'assistiveText'
 			)}`
 		);
 
