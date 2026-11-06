@@ -3,7 +3,11 @@ import React from 'react';
 import CustomColorForm from './custom-color-form';
 import HsvColor from './hsv-color';
 import { type InputChangeData } from '../../input';
-import { WorkingColor, ColorPickerAssistiveText, ColorPickerLabels } from '../types';
+import {
+	WorkingColor,
+	ColorPickerAssistiveText,
+	ColorPickerLabels,
+} from '../types';
 
 type InputChangeHandler = (
 	event:
@@ -124,6 +128,3 @@ const CustomColor: React.FC<CustomColorProps> = ({
 CustomColor.displayName = 'SLDSCustomColor';
 
 export default CustomColor;
-
-
-

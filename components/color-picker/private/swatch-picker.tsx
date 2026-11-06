@@ -15,7 +15,10 @@ export interface SwatchPickerProps {
 	/** Labels for internationalization */
 	labels?: ColorPickerLabels;
 	/** Callback when a swatch is selected */
-	onSelect: (event: React.MouseEvent | React.KeyboardEvent, data: { hex: string }) => void;
+	onSelect: (
+		event: React.MouseEvent | React.KeyboardEvent,
+		data: { hex: string }
+	) => void;
 	/** Array of hex color values for the swatch options */
 	swatchColors: string[];
 	/** Text direction (from LanguageDirection HOC) */
@@ -141,6 +144,3 @@ const SwatchPicker: React.FC<SwatchPickerProps> = ({
 SwatchPicker.displayName = 'SLDSSwatchPicker';
 
 export default LanguageDirection(SwatchPicker);
-
-
-
