@@ -34,8 +34,8 @@ export interface SimpleDataTableCellProps {
 }
 
 /**
- * The default Cell renderer for the SimpleDataTable. Pass in any React component
- * with the same `displayName` which takes the same props to provide custom rendering.
+ * The default Cell renderer for the SimpleDataTable. To customize a column's cells,
+ * pass an element of any component that takes these props as the column's child.
  */
 const SimpleDataTableCell: React.FC<SimpleDataTableCellProps> = (props) => {
 	const tableContext = useContext(TableContext);

@@ -1,12 +1,14 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import { useState, type ReactNode } from 'react';
+import { useState } from 'react';
 
 import Tabs from '../../tabs';
+import type { TabsPanelProps } from '../../tabs/panel';
+import type { ChildrenOf } from '../../../types/common';
 
 interface ColorPickerTabsProps {
-	children: ReactNode;
+	children: ChildrenOf<TabsPanelProps>;
 	/** `value` of the tab shown when the popover opens */
 	defaultValue: string;
 	id: string;

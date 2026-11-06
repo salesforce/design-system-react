@@ -158,7 +158,11 @@ export interface PopoverProps {
 	assistiveText?: PopoverAssistiveText;
 	/** HTML id of heading for aria-labelledby */
 	ariaLabelledby?: string;
-	/** Trigger element (first child) and optional other children */
+	/**
+	 * The element the popover attaches to (the first child), and optional other children rendered
+	 * beside it. The first child is the trigger: Popover adds `id`, `aria-haspopup`, `tabIndex` and
+	 * its open handlers to it, unless `openOn` is `'none'`, which leaves it as it is.
+	 */
 	children: ReactNode;
 	/** Popover body content */
 	body: ReactNode;
@@ -245,8 +249,13 @@ export interface PopoverProps {
 	) => void;
 	/** Custom target element getter */
 	onRequestTargetElement?: () => HTMLElement | null;
-	/** Open trigger type */
-	openOn?: 'click' | 'hover' | 'hybrid';
+	/**
+	 * What on the first child opens the popover: `click` (the default), `hover`, or `hybrid` (click
+	 * or hover). `none` makes the first child only an anchor that the popover points at, such as
+	 * the target of a walkthrough step: Popover leaves its markup and handlers alone, and the
+	 * parent opens and closes the popover through `isOpen`.
+	 */
+	openOn?: 'click' | 'hover' | 'hybrid' | 'none';
 	/** Overlay for click-outside on iframes */
 	overlay?: boolean | ((isOpen: boolean, overlayElement: HTMLElement) => void);
 	/** Positioning strategy */
@@ -915,7 +924,10 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>(
 		let clonedTrigger: ReactNode = null;
 
 		React.Children.forEach(children, (child, index) => {
-			if (index === 0 && React.isValidElement(child)) {
+			if (index === 0 && openOn === 'none') {
+				// An anchor only: the popover is positioned against it, nothing more
+				clonedTrigger = child;
+			} else if (index === 0 && React.isValidElement(child)) {
 				const childProps = child.props as Record<string, unknown>;
 				const triggerProps: Record<string, unknown> = {
 					'aria-haspopup': 'dialog',

@@ -25,6 +25,11 @@ export interface FilterProps {
 	children?: React.ReactNode;
 	/** Custom CSS classes for slds-filters__item node */
 	className?: string | string[] | Record<string, boolean>;
+	/**
+	 * Error message for a Filter inside a `PanelFilterList`. The list shows it below the
+	 * filter and sets `isError`. A standalone Filter doesn't render it.
+	 */
+	errorLabel?: string;
 	/** Applies error state styling */
 	isError?: boolean;
 	/** Unique ID for keyboard navigation and ARIA support */

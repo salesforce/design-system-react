@@ -7,7 +7,6 @@ import React, {
 	useCallback,
 	useEffect,
 	useId,
-	type ReactNode,
 	type MouseEvent,
 	type KeyboardEvent,
 } from 'react';
@@ -17,6 +16,8 @@ import classNames from 'classnames';
 import TabsList from './private/tabs-list';
 import Tab from './private/tab';
 import TabPanel from './private/tab-panel';
+import type { TabsPanelProps } from './panel';
+import type { ChildrenOf } from '../../types/common';
 
 import { TABS } from '../../utilities/constants';
 import KEYS from '../../utilities/key-code';
@@ -30,20 +31,8 @@ import componentDoc from './component.json';
  */
 export type TabsVariant = 'default' | 'scoped' | 'vertical';
 
-/**
- * Tab child props (TabsPanel)
- */
-export interface TabChildProps {
-	label: ReactNode;
-	value?: string;
-	disabled?: boolean;
-	hasError?: boolean;
-	assistiveText?: {
-		withErrorIcon?: string;
-	};
-	children?: ReactNode;
-	key?: string | number;
-}
+/** @deprecated Use `TabsPanelProps` from `tabs/panel`. */
+export type TabChildProps = TabsPanelProps;
 
 /**
  * Data passed to the Tabs `onSelect` callback
@@ -69,8 +58,8 @@ export interface TabsSelectData {
  * Props shared by both ways of controlling the selected tab
  */
 interface TabsBaseProps {
-	/** TabsPanel children */
-	children: ReactNode;
+	/** `TabsPanel` elements, one per tab. Tabs reads each panel's `label`, `value`, `disabled`, `hasError` and `assistiveText`. */
+	children: ChildrenOf<TabsPanelProps>;
 	/** CSS classes */
 	className?: string | string[] | Record<string, boolean>;
 	/** HTML id */
@@ -121,7 +110,7 @@ export type TabsProps = TabsBaseProps &
 
 // The value a panel is matched by: its `value`, or its index as a string.
 const getPanelValue = (
-	child: React.ReactElement<TabChildProps>,
+	child: React.ReactElement<TabsPanelProps>,
 	index: number
 ): string => child.props.value ?? String(index);
 
@@ -148,7 +137,7 @@ function isTabNodeDisabled(node: HTMLElement): boolean {
 }
 
 // Determine if a tab React element is disabled
-function isTabDisabled(tab: React.ReactElement<TabChildProps>): boolean {
+function isTabDisabled(tab: React.ReactElement<TabsPanelProps>): boolean {
 	return Boolean(tab.props?.disabled);
 }
 
@@ -183,13 +172,13 @@ const Tabs = (props: TabsProps): React.ReactElement => {
 
 	const [focus, setFocus] = useState(false);
 	const tabsRef = useRef<
-		Array<{ tab: React.ReactElement<TabChildProps>; node: HTMLElement | null }>
+		Array<{ tab: React.ReactElement<TabsPanelProps>; node: HTMLElement | null }>
 	>([]);
 	const tabsNodeRef = useRef<HTMLDivElement>(null);
 
 	const childArray = React.Children.toArray(
 		children
-	) as React.ReactElement<TabChildProps>[];
+	) as React.ReactElement<TabsPanelProps>[];
 	const tabsCount = childArray.length;
 
 	// Selection is controlled: derived from `value`, or from the deprecated

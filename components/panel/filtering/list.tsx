@@ -9,18 +9,20 @@
 // ## Dependencies
 
 // ### React
-import React, { Component, type ReactNode } from 'react';
+import React, { Component } from 'react';
 
 // ## Constants
 import { PANEL_FILTER_LIST } from '../../../utilities/constants';
+import type { FilterProps } from '../../filter';
+import type { ChildrenOf } from '../../../types/common';
 
 import generateId from '../../../utilities/generate-id';
 
 export interface PanelFilterListProps {
 	/**
-	 * Pass in `Filter` components
+	 * `Filter` elements. A filter with an `errorLabel` shows it below the filter and gets `isError`.
 	 */
-	children?: ReactNode;
+	children?: ChildrenOf<FilterProps>;
 }
 
 /**
@@ -38,24 +40,20 @@ class PanelFilterList extends Component<PanelFilterListProps> {
 
 	render() {
 		const children = React.Children.map(this.props.children, (child, index) => {
-			if (!React.isValidElement(child)) {
+			if (!React.isValidElement<FilterProps>(child)) {
 				return null;
 			}
 
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			const childProps = child.props as any;
-			const id = childProps.id
-				? childProps.id
-				: `${this.generatedId}-${index}`;
+			const childProps = child.props;
+			const id = childProps.id || `${this.generatedId}-${index}`;
 
-			let clonedChild;
-
-			if (childProps.errorLabel) {
-				clonedChild = React.cloneElement(child, {
-					isError: true,
-					// eslint-disable-next-line @typescript-eslint/no-explicit-any
-				} as any);
-			}
+			// The filter's `aria-describedby` points at `${id}-error`, so it needs this id
+			const clonedChild = childProps.errorLabel
+				? React.cloneElement(child, {
+						id,
+						isError: childProps.isError ?? true,
+					})
+				: null;
 
 			return (
 				<li className="slds-item slds-hint-parent">

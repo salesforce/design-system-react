@@ -3,7 +3,6 @@ import React from 'react';
 import Button from '~/components/button';
 import ButtonGroup from '~/components/button-group';
 import Dropdown from '~/components/menu-dropdown';
-import DropdownTrigger from '~/components/menu-dropdown/button-trigger';
 import Icon from '~/components/icon';
 import IconSettings from '~/components/icon-settings';
 import PageHeader from '~/components/page-header';
@@ -49,16 +48,15 @@ class Example extends React.Component {
 							{ type: 'divider' },
 							{ label: 'Menu Item Four', value: 'D0' },
 						]}
-					>
-						<DropdownTrigger>
+						trigger={
 							<Button
 								assistiveText={{ icon: 'List View Controls' }}
 								iconCategory="utility"
 								iconName="settings"
 								iconVariant="more"
 							/>
-						</DropdownTrigger>
-					</Dropdown>
+						}
+					/>
 				</PageHeaderControl>
 				<PageHeaderControl>
 					<Dropdown
@@ -75,8 +73,7 @@ class Example extends React.Component {
 							{ type: 'divider' },
 							{ label: 'Menu Item Four', value: 'D0' },
 						]}
-					>
-						<DropdownTrigger>
+						trigger={
 							<Button
 								assistiveText={{ icon: 'Change view' }}
 								iconCategory="utility"
@@ -84,8 +81,8 @@ class Example extends React.Component {
 								iconVariant="more"
 								variant="icon"
 							/>
-						</DropdownTrigger>
-					</Dropdown>
+						}
+					/>
 				</PageHeaderControl>
 				<PageHeaderControl>
 					<Button

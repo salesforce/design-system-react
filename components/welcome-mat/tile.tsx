@@ -14,10 +14,7 @@ import generateId from '../../utilities/generate-id';
 const displayName = WELCOME_MAT_TILE;
 
 export type WelcomeMatTileVariant =
-	| 'steps'
-	| 'info-only'
-	| 'splash'
-	| 'trailhead-connected';
+	'steps' | 'info-only' | 'splash' | 'trailhead-connected';
 
 export interface WelcomeMatTileProps {
 	/**
@@ -56,24 +53,31 @@ export interface WelcomeMatTileProps {
 	 * Title for the tile component.
 	 */
 	title?: string;
-	/**
-	 * Variant of the Welcome Mat Tile
-	 */
+}
+
+/**
+ * Props the WelcomeMat sets on each tile. Not part of the public API.
+ */
+export interface WelcomeMatTileInjectedProps {
+	/** The parent WelcomeMat's variant */
 	variant?: WelcomeMatTileVariant;
 }
 
-const defaultProps: Partial<WelcomeMatTileProps> = {
-	assistiveText: {
-		completedIcon: 'Completed',
-	},
-	isComplete: false,
-	variant: 'steps',
-};
+const defaultProps: Partial<WelcomeMatTileProps & WelcomeMatTileInjectedProps> =
+	{
+		assistiveText: {
+			completedIcon: 'Completed',
+		},
+		isComplete: false,
+		variant: 'steps',
+	};
 
 /**
  * Tile component item represents a tile in a Welcome Mat
  */
-class Tile extends React.Component<WelcomeMatTileProps> {
+class Tile extends React.Component<
+	WelcomeMatTileProps & WelcomeMatTileInjectedProps
+> {
 	static displayName = displayName;
 
 	static defaultProps = defaultProps;
@@ -163,4 +167,4 @@ class Tile extends React.Component<WelcomeMatTileProps> {
 	}
 }
 
-export default Tile;
+export default Tile as React.ComponentType<WelcomeMatTileProps>;

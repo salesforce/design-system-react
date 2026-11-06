@@ -31,7 +31,9 @@ import Menu, {
 	type MenuRenderMenuItemData,
 } from './private/menu';
 import Label from '../forms/private/label';
-import Popover from '../popover';
+import Popover, { type PopoverProps } from '../popover';
+import type { InputProps } from '../input';
+import type { TooltipProps } from '../tooltip';
 import SelectedListBox from '../pill-container/private/selected-listbox';
 
 import FieldLevelHelpTooltip from '../tooltip/private/field-level-help-tooltip';
@@ -238,8 +240,12 @@ interface ComboboxBaseProps {
 	id?: string;
 	/** Sets dialog width inheritance */
 	inheritWidthOf?: 'target' | 'menu' | 'none';
-	/** Custom input component */
-	input?: ReactElement;
+	/**
+	 * An `Input` element whose props are passed to the combobox's input. They win over the
+	 * combobox's own, except `onChange`, which is called with `(event, { value })` alongside
+	 * the combobox's handler.
+	 */
+	input?: ReactElement<Partial<InputProps>>;
 	/** Callback to get input ref */
 	inputRef?: (ref: HTMLInputElement | null) => void;
 	/**
@@ -282,8 +288,11 @@ interface ComboboxBaseProps {
 	selectedListboxRef?: (ref: HTMLUListElement | null) => void;
 	/** Whether single input is disabled */
 	singleInputDisabled?: boolean;
-	/** Tooltip for disabled menu items */
-	tooltipMenuItemDisabled?: ReactElement;
+	/**
+	 * A `Tooltip` element shown on disabled menu items. Its props win over the combobox's
+	 * defaults; an option's `tooltipContent` wins over its `content`.
+	 */
+	tooltipMenuItemDisabled?: ReactElement<Partial<TooltipProps>>;
 	/**
 	 * Text in the input. Controlled: update it from `events.onChange`.
 	 * (`defaultValue` was removed in v11.)
@@ -318,8 +327,12 @@ export type ComboboxVariantProps =
 			/** Assistive text for accessibility. `popoverLabel` labels the dialog. */
 			assistiveText: ComboboxAssistiveText & { popoverLabel: string };
 			options?: never;
-			/** Popover component rendered as the dialog */
-			popover: ReactElement;
+			/**
+			 * A `Popover` element rendered as the dialog. Its props win over the combobox's
+			 * defaults, except `body`, which the combobox wraps, and `children`, which the
+			 * combobox replaces with its input.
+			 */
+			popover: ReactElement<Partial<PopoverProps>>;
 	  };
 
 export type ComboboxProps = ComboboxBaseProps & ComboboxVariantProps;
@@ -1318,8 +1331,16 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 		tooltipMenuItemDisabled,
 	]);
 
-	// User defined props from input
-	const userDefinedInputProps = input?.props || {};
+	// The `input` element's props are spread last so they win, except `onChange`: `Input`'s
+	// is `(event, data)` and InnerInput's is native, so call it alongside the combobox's own.
+	const { onChange: inputOnChange, ...userDefinedInputProps } = (input?.props ??
+		{}) as Partial<InputProps> & Record<string, unknown>;
+	const withInputOnChange =
+		(handler: (event: React.ChangeEvent<HTMLInputElement>) => void) =>
+		(event: React.ChangeEvent<HTMLInputElement>) => {
+			inputOnChange?.(event, { value: event.target.value });
+			handler(event);
+		};
 
 	// ===== Sub-renders =====
 
@@ -1372,7 +1393,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 						onKeyDown={handleKeyDown}
 						inputRef={setInputRefCallback}
 						onClick={(event: React.MouseEvent) => requestOpen(event)}
-						onChange={handleInputChange}
+						onChange={withInputOnChange(handleInputChange)}
 						placeholder={labels.placeholder}
 						readOnly={!!(predefinedOptionsOnly && activeOption)}
 						required={required}
@@ -1540,7 +1561,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 						onKeyDown={handleKeyDown}
 						inputRef={setInputRefCallback}
 						onClick={(event: React.MouseEvent) => requestOpen(event)}
-						onChange={handleInputChange}
+						onChange={withInputOnChange(handleInputChange)}
 						placeholder={labels.placeholder}
 						readOnly={!!(predefinedOptionsOnly && activeOption)}
 						required={required}
@@ -1645,11 +1666,11 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 							onKeyDown={handleKeyDown}
 							inputRef={setInputRefCallback}
 							onClick={(event: React.MouseEvent) => requestOpenMenu(event)}
-							onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+							onChange={withInputOnChange((event) => {
 								if (!selection.length) {
 									handleInputChange(event);
 								}
-							}}
+							})}
 							placeholder={labels.placeholder}
 							readOnly={
 								!!(predefinedOptionsOnly && activeOption) || !!selection.length
@@ -1726,7 +1747,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 								onKeyDown={handleKeyDown}
 								inputRef={setInputRefCallback}
 								onClick={(event: React.MouseEvent) => requestOpen(event)}
-								onChange={handleInputChange}
+								onChange={withInputOnChange(handleInputChange)}
 								placeholder={labels.placeholder}
 								readOnly
 								required={required}
@@ -1800,11 +1821,11 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 							onKeyDown={handleKeyDown}
 							inputRef={setInputRefCallback}
 							onClick={(event: React.MouseEvent) => requestOpenMenu(event)}
-							onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+							onChange={withInputOnChange((event) => {
 								if (!selection.length) {
 									handleInputChange(event);
 								}
-							}}
+							})}
 							placeholder={labels.placeholderReadOnly}
 							readOnly
 							required={required}
@@ -1925,11 +1946,11 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 							onKeyDown={handleKeyDown}
 							inputRef={setInputRefCallback}
 							onClick={(event: React.MouseEvent) => requestOpenMenu(event)}
-							onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+							onChange={withInputOnChange((event) => {
 								if (!selection.length) {
 									handleInputChange(event);
 								}
-							}}
+							})}
 							placeholder={labels.placeholderReadOnly}
 							readOnly
 							required={required}

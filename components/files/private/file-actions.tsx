@@ -6,10 +6,12 @@
 // Implements the [FileActions design pattern](https://www.lightningdesignsystem.com/components/files/) in React.
 
 import React, { type ReactElement } from 'react';
+import classNames from 'classnames';
 
 import { FILES_ACTIONS } from '../../../utilities/constants';
 import Button from '../../button';
 import Icon from '../../icon';
+import type { MenuDropdownProps } from '../../menu-dropdown';
 
 export interface FileActionsAssistiveText {
 	download?: string;
@@ -28,7 +30,7 @@ export interface FileActionsProps {
 	/**
 	 *  Dropdown for More Actions; doesn't show More actions button if empty
 	 */
-	moreActionsDropdown?: ReactElement<Record<string, unknown>>;
+	moreActionsDropdown?: ReactElement<Partial<MenuDropdownProps>>;
 	/**
 	 *  Action to be done on clicking download button; doesnt show download button if empty
 	 */
@@ -40,6 +42,7 @@ export interface FileActionsProps {
  */
 const FileActions = (props: FileActionsProps) => {
 	const assistiveText = props.assistiveText ?? {};
+	const { moreActionsDropdown } = props;
 	const actions = (
 		<div className="slds-file__actions-menu">
 			<div className="slds-button-group" role="group">
@@ -61,14 +64,25 @@ const FileActions = (props: FileActionsProps) => {
 						/>
 					</Button>
 				) : null}
-				{props.moreActionsDropdown
-					? React.cloneElement(props.moreActionsDropdown, {
-							assistiveText: { icon: assistiveText.moreActions },
-							overlay: false,
-							buttonVariant: 'icon',
-							buttonInverse: props.hasNoVisibleTitle,
-							className: 'dsr-file__more-actions-dropdown ',
-							triggerClassName: 'dsr-file__more-actions',
+				{moreActionsDropdown
+					? React.cloneElement(moreActionsDropdown, {
+							assistiveText: {
+								icon: assistiveText.moreActions,
+								...moreActionsDropdown.props.assistiveText,
+							},
+							overlay: moreActionsDropdown.props.overlay ?? false,
+							buttonVariant: moreActionsDropdown.props.buttonVariant ?? 'icon',
+							buttonInverse:
+								moreActionsDropdown.props.buttonInverse ??
+								props.hasNoVisibleTitle,
+							className: classNames(
+								'dsr-file__more-actions-dropdown',
+								moreActionsDropdown.props.className
+							),
+							triggerClassName: classNames(
+								'dsr-file__more-actions',
+								moreActionsDropdown.props.triggerClassName
+							),
 						})
 					: null}
 			</div>

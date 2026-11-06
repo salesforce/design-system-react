@@ -8,7 +8,6 @@ import MenuDropdown, {
 	type MenuDropdownOption,
 	type MenuDropdownValue,
 } from '../index';
-import ButtonTrigger from '../button-trigger';
 import IconSettings from '../../icon-settings';
 import Button from '../../button';
 // eslint-disable-next-line camelcase
@@ -232,15 +231,16 @@ export const CustomTrigger: Story = {
 		options,
 	},
 	render: (args) => (
-		<MenuDropdown {...args}>
-			<ButtonTrigger>
+		<MenuDropdown
+			{...args}
+			trigger={
 				<Button
 					assistiveText={{ icon: 'Custom Dropdown Trigger' }}
 					iconCategory="utility"
 					iconName="settings"
 				/>
-			</ButtonTrigger>
-		</MenuDropdown>
+			}
+		/>
 	),
 };
 
@@ -270,16 +270,15 @@ export const WithNubbins: Story = {
 						menuPosition="relative"
 						nubbinPosition={position}
 						options={options.slice(0, 5)}
-					>
-						<ButtonTrigger>
+						trigger={
 							<Button
 								iconVariant="container"
 								iconCategory="utility"
 								iconName="settings"
 								label={position}
 							/>
-						</ButtonTrigger>
-					</MenuDropdown>
+						}
+					/>
 				</div>
 			))}
 		</div>

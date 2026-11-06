@@ -421,7 +421,7 @@ exports[`Story HTML snapshots > BuilderHeader > AfterSuccessfulSave 1`] = `
                       <use href="/assets/icons/utility-sprite/svg/symbols.svg#settings"></use>
                     </svg><span class="slds-assistive-text">Link</span></span></span><span class="slds-media__body"><span class="slds-truncate" title="Link">Link</span></span></a></li>
             <li class="slds-builder-header__nav-item">
-              <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="dropdown"><button class="slds-button slds-builder-header__item-action slds-media slds-media_center" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><span class="slds-media__figure"><span class="slds-icon_container slds-icon-utility-page slds-current-color"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+              <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="dropdown"><button class="slds-button ignore-click-dropdown slds-builder-header__item-action slds-media slds-media_center" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><span class="slds-media__figure"><span class="slds-icon_container slds-icon-utility-page slds-current-color"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                         <use href="/assets/icons/utility-sprite/svg/symbols.svg#page"></use>
                       </svg><span class="slds-assistive-text">Dropdown</span></span></span><span class="slds-media__body"><span class="slds-truncate" title="Dropdown">Dropdown</span><span class="slds-icon_container slds-icon-utility-chevrondown slds-current-color slds-m-left_small"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                         <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevrondown"></use>
@@ -580,7 +580,7 @@ exports[`Story HTML snapshots > BuilderHeader > FailedSave 1`] = `
                       <use href="/assets/icons/utility-sprite/svg/symbols.svg#settings"></use>
                     </svg><span class="slds-assistive-text">Link</span></span></span><span class="slds-media__body"><span class="slds-truncate" title="Link">Link</span></span></a></li>
             <li class="slds-builder-header__nav-item">
-              <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="dropdown"><button class="slds-button slds-builder-header__item-action slds-media slds-media_center" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><span class="slds-media__figure"><span class="slds-icon_container slds-icon-utility-page slds-current-color"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+              <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="dropdown"><button class="slds-button ignore-click-dropdown slds-builder-header__item-action slds-media slds-media_center" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><span class="slds-media__figure"><span class="slds-icon_container slds-icon-utility-page slds-current-color"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                         <use href="/assets/icons/utility-sprite/svg/symbols.svg#page"></use>
                       </svg><span class="slds-assistive-text">Dropdown</span></span></span><span class="slds-media__body"><span class="slds-truncate" title="Dropdown">Dropdown</span><span class="slds-icon_container slds-icon-utility-chevrondown slds-current-color slds-m-left_small"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                         <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevrondown"></use>
@@ -651,7 +651,7 @@ exports[`Story HTML snapshots > BuilderHeader > SuccessfulSave 1`] = `
                       <use href="/assets/icons/utility-sprite/svg/symbols.svg#settings"></use>
                     </svg><span class="slds-assistive-text">Link</span></span></span><span class="slds-media__body"><span class="slds-truncate" title="Link">Link</span></span></a></li>
             <li class="slds-builder-header__nav-item">
-              <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="dropdown"><button class="slds-button slds-builder-header__item-action slds-media slds-media_center" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><span class="slds-media__figure"><span class="slds-icon_container slds-icon-utility-page slds-current-color"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+              <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="dropdown"><button class="slds-button ignore-click-dropdown slds-builder-header__item-action slds-media slds-media_center" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><span class="slds-media__figure"><span class="slds-icon_container slds-icon-utility-page slds-current-color"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                         <use href="/assets/icons/utility-sprite/svg/symbols.svg#page"></use>
                       </svg><span class="slds-assistive-text">Dropdown</span></span></span><span class="slds-media__body"><span class="slds-truncate" title="Dropdown">Dropdown</span><span class="slds-icon_container slds-icon-utility-chevrondown slds-current-color slds-m-left_small"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                         <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevrondown"></use>
@@ -720,7 +720,7 @@ exports[`Story HTML snapshots > BuilderHeader > WithToolbar 1`] = `
                       <use href="/assets/icons/utility-sprite/svg/symbols.svg#settings"></use>
                     </svg><span class="slds-assistive-text">Link</span></span></span><span class="slds-media__body"><span class="slds-truncate" title="Link">Link</span></span></a></li>
             <li class="slds-builder-header__nav-item">
-              <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="dropdown"><button class="slds-button slds-builder-header__item-action slds-media slds-media_center" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><span class="slds-media__figure"><span class="slds-icon_container slds-icon-utility-page slds-current-color"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+              <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="dropdown"><button class="slds-button ignore-click-dropdown slds-builder-header__item-action slds-media slds-media_center" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><span class="slds-media__figure"><span class="slds-icon_container slds-icon-utility-page slds-current-color"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                         <use href="/assets/icons/utility-sprite/svg/symbols.svg#page"></use>
                       </svg><span class="slds-assistive-text">Dropdown</span></span></span><span class="slds-media__body"><span class="slds-truncate" title="Dropdown">Dropdown</span><span class="slds-icon_container slds-icon-utility-chevrondown slds-current-color slds-m-left_small"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                         <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevrondown"></use>
@@ -787,7 +787,7 @@ exports[`Story HTML snapshots > BuilderHeader > WithUtilities 1`] = `
                       <use href="/assets/icons/utility-sprite/svg/symbols.svg#settings"></use>
                     </svg><span class="slds-assistive-text">Link</span></span></span><span class="slds-media__body"><span class="slds-truncate" title="Link">Link</span></span></a></li>
             <li class="slds-builder-header__nav-item">
-              <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="dropdown"><button class="slds-button slds-builder-header__item-action slds-media slds-media_center" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><span class="slds-media__figure"><span class="slds-icon_container slds-icon-utility-page slds-current-color"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+              <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="dropdown"><button class="slds-button ignore-click-dropdown slds-builder-header__item-action slds-media slds-media_center" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><span class="slds-media__figure"><span class="slds-icon_container slds-icon-utility-page slds-current-color"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                         <use href="/assets/icons/utility-sprite/svg/symbols.svg#page"></use>
                       </svg><span class="slds-assistive-text">Dropdown</span></span></span><span class="slds-media__body"><span class="slds-truncate" title="Dropdown">Dropdown</span><span class="slds-icon_container slds-icon-utility-chevrondown slds-current-color slds-m-left_small"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                         <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevrondown"></use>
@@ -803,7 +803,7 @@ exports[`Story HTML snapshots > BuilderHeader > WithUtilities 1`] = `
                     <use href="/assets/icons/utility-sprite/svg/symbols.svg#back"></use>
                   </svg></span></span><span class="slds-media__body"><span class="slds-truncate" title="Back">Back</span></span></a></div>
           <div class="slds-builder-header__utilities-item">
-            <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="utilities-dropdown"><button class="slds-button slds-builder-header__item-action slds-media slds-media_center" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><span class="slds-media__figure"><span class="slds-icon_container slds-icon-utility-page slds-current-color"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+            <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="utilities-dropdown"><button class="slds-button ignore-click-utilities-dropdown slds-builder-header__item-action slds-media slds-media_center" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><span class="slds-media__figure"><span class="slds-icon_container slds-icon-utility-page slds-current-color"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                       <use href="/assets/icons/utility-sprite/svg/symbols.svg#help"></use>
                     </svg><span class="slds-assistive-text">Dropdown</span></span></span><span class="slds-media__body"><span class="slds-truncate" title="Help">Help</span><span class="slds-icon_container slds-icon-utility-chevrondown slds-current-color slds-m-left_small"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                       <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevrondown"></use>
@@ -4961,6 +4961,45 @@ exports[`Story HTML snapshots > Popover > NoNubbin 1`] = `
 exports[`Story HTML snapshots > Popover > WalkthroughActionVariant 1`] = `
 "<div class="slds-p-around_large" style="min-height:300px">
   <div style="display:inline-block"><button class="slds-button slds-button_brand" id="walkthrough-action-popover" tabindex="0" type="button" aria-haspopup="dialog">Show Action</button></div>
+</div>"
+`;
+
+exports[`Story HTML snapshots > Popover > WalkthroughOnAnchor 1`] = `
+"<div class="slds-p-around_large" style="min-height:300px">
+  <article class="slds-card">
+    <div class="slds-card__header slds-grid">
+      <div class="slds-media slds-media_center slds-has-flexi-truncate">
+        <div class="slds-media__body">
+          <h2 class="slds-text-heading_small slds-truncate" title="Accounts">Accounts</h2>
+        </div>
+      </div>
+      <div class="slds-no-flex">
+        <div style="display:inline-block">
+          <div class="slds-button-group" id="_R_1t_" role="group"><button class="slds-button slds-button_neutral" type="button">New</button><button class="slds-button slds-button_icon-border" type="button"><svg class="slds-button__icon" aria-hidden="true">
+                <use href="/assets/icons/utility-sprite/svg/symbols.svg#filterList"></use>
+              </svg><span class="slds-assistive-text">Filter</span></button><button class="slds-button slds-button_icon-border" type="button"><svg class="slds-button__icon" aria-hidden="true">
+                <use href="/assets/icons/utility-sprite/svg/symbols.svg#refresh"></use>
+              </svg><span class="slds-assistive-text">Refresh</span></button></div>
+          <section class="absolute-positioned slds-nubbin_top-right ignore-react-onclickoutside slds-popover slds-popover_walkthrough" style="outline:0;position:absolute;pointer-events:none" role="dialog" tabindex="-1" id="walkthrough-anchor-popover-popover" aria-labelledby="walkthrough-anchor-popover-dialog-heading" aria-describedby="walkthrough-anchor-popover-dialog-body"><button class="slds-button slds-button_icon slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon slds-button_icon-inverse" type="button"><svg class="slds-button__icon" aria-hidden="true">
+                <use href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+              </svg><span class="slds-assistive-text">Close dialog</span></button>
+            <header class="slds-popover__header slds-p-vertical_medium">
+              <h2 id="walkthrough-anchor-popover-dialog-heading" class="slds-text-heading_medium">The card toolbar</h2>
+            </header>
+            <div id="walkthrough-anchor-popover-dialog-body" class="slds-popover__body">Use the toolbar to create, filter and refresh the records in this card.</div>
+            <footer class="slds-popover__footer">
+              <div class="slds-grid slds-grid_vertical-align-center"><span class="slds-text-title">Step 2 of 4</span>
+                <div class="slds-col_bump-left" style="display:inline-block"><button class="slds-button slds-button_brand" type="button">Next</button></div>
+              </div>
+            </footer>
+          </section>
+        </div>
+      </div>
+    </div>
+    <div class="slds-card__body">
+      <p class="slds-p-horizontal_medium">Account records</p>
+    </div>
+  </article>
 </div>"
 `;
 
@@ -9437,7 +9476,7 @@ exports[`Story HTML snapshots > SimpleDataTable > JoinedWithPageHeaderStory 1`] 
                 <div class="slds-page-header__name-title">
                   <h1><span>Leads</span><span class="slds-page-header__title slds-truncate">
                       <h1 class="slds-page-header__title slds-p-right_x-small">
-                        <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="page-header-dropdown-object-home-header"><button class="slds-button slds-button_reset slds-type-focus" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true">Dropdown<svg class="slds-button__icon slds-button__icon_right" aria-hidden="true">
+                        <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="page-header-dropdown-object-home-header"><button class="slds-button ignore-click-page-header-dropdown-object-home-header slds-button_reset slds-type-focus" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true">Dropdown<svg class="slds-button__icon slds-button__icon_right" aria-hidden="true">
                               <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
                             </svg></button></div>
                       </h1>

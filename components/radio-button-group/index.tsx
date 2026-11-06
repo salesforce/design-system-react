@@ -1,9 +1,11 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { type ReactNode, type CSSProperties } from 'react';
+import React, { type CSSProperties } from 'react';
 import RadioGroup, { type RadioGroupChangeProps } from '../radio-group';
 import { RADIO_BUTTON_GROUP } from '../../utilities/constants';
+import type { ChildrenOf } from '../../types/common';
+import type { RadioGroupItemProps } from '../radio';
 
 /**
  * Assistive text for RadioButtonGroup
@@ -28,12 +30,8 @@ export interface RadioButtonGroupLabels {
 interface RadioButtonGroupBaseProps {
 	/** Assistive text for accessibility */
 	assistiveText?: RadioButtonGroupAssistiveText;
-	/**
-	 * `Radio` components (from `radio-button-group/radio`) as children. The
-	 * group injects `name`, `onChange`, `aria-describedby`, `disabled` and,
-	 * when `value` is set, `checked`.
-	 */
-	children: ReactNode;
+	/** `Radio` elements (from `radio-button-group/radio`); see `RadioGroup` `children` */
+	children: ChildrenOf<RadioGroupItemProps>;
 	/** CSS classes */
 	className?: string | string[] | Record<string, boolean>;
 	/** Disable all radio inputs */

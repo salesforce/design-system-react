@@ -1,20 +1,27 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { type ReactNode, type ReactElement, type CSSProperties, type MouseEvent } from 'react';
+import React, {
+	type ReactElement,
+	type CSSProperties,
+	type MouseEvent,
+} from 'react';
 import classNames from 'classnames';
 import EventUtil from '../../utilities/event';
-import BuilderHeaderUtilities from './utilities';
+import BuilderHeaderMisc, { type BuilderHeaderMiscProps } from './misc';
+import BuilderHeaderNav, { type BuilderHeaderNavProps } from './nav';
+import BuilderHeaderToolbar, {
+	type BuilderHeaderToolbarProps,
+} from './toolbar';
+import BuilderHeaderUtilities, {
+	type BuilderHeaderUtilitiesProps,
+} from './utilities';
 import BuilderHeaderNavLink from './nav-link';
+import isElementOfType from '../../utilities/is-element-of-type';
+import type { ChildrenOf } from '../../types/common';
 import Icon from '../icon';
 import type { IconCategory } from '../../types/common';
-import {
-	BUILDER_HEADER,
-	BUILDER_HEADER_NAV,
-	BUILDER_HEADER_TOOLBAR,
-	BUILDER_HEADER_MISC,
-	BUILDER_HEADER_UTILITIES,
-} from '../../utilities/constants';
+import { BUILDER_HEADER } from '../../utilities/constants';
 
 /**
  * Assistive text for BuilderHeader
@@ -58,8 +65,13 @@ export interface BuilderHeaderLabels {
 export interface BuilderHeaderProps {
 	/** Assistive text for accessibility */
 	assistiveText?: BuilderHeaderAssistiveText;
-	/** BuilderHeaderNav, BuilderHeaderToolbar, BuilderHeaderMisc children */
-	children?: ReactNode;
+	/** `BuilderHeaderNav`, `BuilderHeaderToolbar`, `BuilderHeaderMisc` and `BuilderHeaderUtilities` elements. Other children are ignored. */
+	children?: ChildrenOf<
+		| BuilderHeaderNavProps
+		| BuilderHeaderToolbarProps
+		| BuilderHeaderMiscProps
+		| BuilderHeaderUtilitiesProps
+	>;
 	/** CSS classes */
 	className?: string | string[] | Record<string, boolean>;
 	/** Event handlers */
@@ -134,35 +146,29 @@ const BuilderHeader = ({
 	const misc: ReactElement[] = [];
 
 	React.Children.forEach(children, (child) => {
-		if (child && React.isValidElement(child)) {
-			const displayName = (child.type as { displayName?: string }).displayName;
-			switch (displayName) {
-				case BUILDER_HEADER_NAV:
-					nav = child;
-					break;
-				case BUILDER_HEADER_TOOLBAR:
-					toolbar = child;
-					break;
-				case BUILDER_HEADER_MISC:
-					misc.push(child);
-					break;
-				case BUILDER_HEADER_UTILITIES:
-					utilities = child;
-					break;
-				default:
-					break;
-			}
+		if (isElementOfType(child, BuilderHeaderNav)) {
+			nav = child;
+		} else if (isElementOfType(child, BuilderHeaderToolbar)) {
+			toolbar = child;
+		} else if (isElementOfType(child, BuilderHeaderMisc)) {
+			misc.push(child);
+		} else if (isElementOfType(child, BuilderHeaderUtilities)) {
+			utilities = child;
 		}
 	});
 
 	const resolvedIconPath = iconPath || undefined;
-	const resolvedIconCategory = (iconPath ? undefined : iconCategory) as IconCategory | undefined;
+	const resolvedIconCategory = (iconPath ? undefined : iconCategory) as
+		IconCategory | undefined;
 	const resolvedIconName = iconPath ? undefined : iconName;
 
 	return (
 		<div style={{ position: 'relative', height: '100px' }}>
 			<div
-				className={classNames('slds-builder-header_container', className as string)}
+				className={classNames(
+					'slds-builder-header_container',
+					className as string
+				)}
 				style={style}
 			>
 				<header className="slds-builder-header">
@@ -211,4 +217,3 @@ const BuilderHeader = ({
 BuilderHeader.displayName = BUILDER_HEADER;
 
 export default BuilderHeader;
-

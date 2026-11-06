@@ -22,38 +22,39 @@ class Example extends React.Component {
 						align="bottom"
 						content="Buttonbar Tooltip"
 						variant="list-item"
-					>
-						<Button id="refresh-button" label="Refresh" />
-					</Tooltip>
+						trigger={<Button id="refresh-button" label="Refresh" />}
+					/>
 					<Tooltip
 						id="edit-tooltip"
 						align="bottom right"
 						content="Buttonbar Tooltip"
 						variant="list-item"
-					>
-						<Button label="Edit" id="edit-button" />
-					</Tooltip>
+						trigger={<Button label="Edit" id="edit-button" />}
+					/>
 					<Tooltip
 						id="drop-tooltip"
 						align="bottom right"
 						content="Buttonbar Tooltip"
 						variant="list-item"
-					>
-						<Dropdown
-							id="options"
-							assistiveText={{ icon: 'More Options' }}
-							buttonVariant="icon"
-							iconCategory="utility"
-							iconName="down"
-							iconVariant="border-filled"
-							onSelect={(event, { option }) => console.log('selected', option)}
-							options={[
-								{ label: 'A Option', value: 'A0' },
-								{ label: 'B Option', value: 'B0' },
-								{ label: 'C Option', value: 'C0' },
-							]}
-						/>
-					</Tooltip>
+						trigger={
+							<Dropdown
+								id="options"
+								assistiveText={{ icon: 'More Options' }}
+								buttonVariant="icon"
+								iconCategory="utility"
+								iconName="down"
+								iconVariant="border-filled"
+								onSelect={(event, { option }) =>
+									console.log('selected', option)
+								}
+								options={[
+									{ label: 'A Option', value: 'A0' },
+									{ label: 'B Option', value: 'B0' },
+									{ label: 'C Option', value: 'C0' },
+								]}
+							/>
+						}
+					/>
 				</ButtonGroup>
 			</IconSettings>
 		);

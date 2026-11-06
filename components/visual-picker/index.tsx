@@ -4,17 +4,18 @@
 import React, { useId, type ReactNode, type ReactElement } from 'react';
 import classNames from 'classnames';
 import { VISUAL_PICKER } from '../../utilities/constants';
+import type { ChildrenOf } from '../../types/common';
+import type { CheckboxProps } from '../checkbox';
+import type { RadioProps } from '../radio';
+import type { VisualPickerLinkProps } from './link';
 
 /**
  * Visual picker size options
  */
 export type VisualPickerSize = 'medium' | 'large';
 
-/**
- * Props for child elements that can be cloned
- */
-export interface VisualPickerChildProps {
-	index?: string;
+/** Props the picker passes to each option when the option doesn't set them */
+interface VisualPickerOptionProps {
 	coverable?: boolean;
 	variant?: string;
 	name?: string;
@@ -26,8 +27,12 @@ export interface VisualPickerChildProps {
  * Props for the VisualPicker component
  */
 export interface VisualPickerProps {
-	/** Visual Picker children (Checkbox, Radio, VisualPickerLink) */
-	children?: ReactNode;
+	/**
+	 * `Checkbox` or `Radio` elements (or `VisualPickerLink` elements with `links`). Each option gets
+	 * `variant: 'visual-picker'`, a shared `name`, and the picker's `coverable`, `size` and `vertical`,
+	 * unless the option sets them itself.
+	 */
+	children?: ChildrenOf<CheckboxProps | RadioProps | VisualPickerLinkProps>;
 	/** CSS classes */
 	className?: string | string[] | Record<string, boolean>;
 	/** Whether items are coverable on selection */
@@ -85,13 +90,13 @@ const VisualPicker = ({
 			);
 		}
 
-		return React.cloneElement(option as ReactElement<VisualPickerChildProps>, {
-			index: `${id}-${index}`,
-			coverable,
-			variant: 'visual-picker',
-			name: `${id}_options`,
-			size,
-			vertical: !!vertical,
+		const optionProps = option.props as VisualPickerOptionProps;
+		return React.cloneElement(option as ReactElement<VisualPickerOptionProps>, {
+			coverable: optionProps.coverable ?? coverable,
+			variant: optionProps.variant ?? 'visual-picker',
+			name: optionProps.name ?? `${id}_options`,
+			size: optionProps.size ?? size,
+			vertical: optionProps.vertical ?? !!vertical,
 		});
 	};
 
@@ -100,8 +105,13 @@ const VisualPicker = ({
 	);
 
 	return (
-		<fieldset id={id} className={classNames('slds-form-element', className as string)}>
-			<legend className="slds-form-element__legend slds-form-element__label">{label}</legend>
+		<fieldset
+			id={id}
+			className={classNames('slds-form-element', className as string)}
+		>
+			<legend className="slds-form-element__legend slds-form-element__label">
+				{label}
+			</legend>
 			<div className="slds-form-element__control">{options}</div>
 		</fieldset>
 	);
@@ -110,17 +120,3 @@ const VisualPicker = ({
 VisualPicker.displayName = VISUAL_PICKER;
 
 export default VisualPicker;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
