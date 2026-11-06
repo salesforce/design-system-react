@@ -288,7 +288,7 @@ interface PopoverOtherVariantProps {
  * The dialog is named by `heading`, or by the `id` of another element in
  * `ariaLabelledby`, not both.
  */
-type PopoverLabelProps =
+export type PopoverLabelProps =
 	| {
 			/** Popover heading */
 			heading?: ReactNode;
