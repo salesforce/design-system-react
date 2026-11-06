@@ -7,6 +7,7 @@ import React, { type ReactNode } from 'react';
 import classNames from 'classnames';
 
 import { VISUAL_PICKER_LINK } from '../../utilities/constants';
+import checkProps from './check-props';
 
 export interface VisualPickerLinkProps {
 	/**
@@ -18,9 +19,9 @@ export interface VisualPickerLinkProps {
 	 */
 	className?: unknown[] | Record<string, unknown> | string;
 	/**
-	 * URL for the Link
+	 * URL for the Link (required: without it the `<a>` is not a link)
 	 */
-	href?: string;
+	href: string;
 	/**
 	 * Icon node for the Link
 	 */
@@ -40,6 +41,11 @@ export interface VisualPickerLinkProps {
  */
 class VisualPickerLink extends React.Component<VisualPickerLinkProps> {
 	static displayName = VISUAL_PICKER_LINK;
+
+	constructor(props: VisualPickerLinkProps) {
+		super(props);
+		checkProps(VISUAL_PICKER_LINK, props as unknown as Record<string, unknown>);
+	}
 
 	render() {
 		return (
