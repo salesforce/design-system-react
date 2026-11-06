@@ -80,8 +80,11 @@ export interface ToastProps {
 	icon?: ReactElement<IconProps>;
 	/** Text labels */
 	labels?: ToastLabels;
-	/** Callback when heading link is clicked */
-	onClickHeadingLink?: (event: React.MouseEvent) => void;
+	/**
+	 * Callback when the heading link is clicked. It receives the anchor's click event only;
+	 * like a native `onClick`, there is no `data` argument.
+	 */
+	onClickHeadingLink?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
 	/**
 	 * Callback when close button is clicked or duration expires. `event` is the close
 	 * button click, or `undefined` when the `duration` timer fires. `data.trigger` is

@@ -74,6 +74,21 @@ describe('SLDSToast', () => {
 			expect(onClickHeadingLink).toHaveBeenCalledTimes(1);
 		});
 
+		it('passes the anchor click event as the only argument', () => {
+			const onClickHeadingLink = vi.fn();
+			const { container } = render(
+				<DemoComponent onClickHeadingLink={onClickHeadingLink} />
+			);
+
+			const link = container.querySelector('a');
+			fireEvent.click(link);
+
+			expect(onClickHeadingLink.mock.calls[0]).toHaveLength(1);
+			const [event] = onClickHeadingLink.mock.calls[0];
+			expect(event.type).toBe('click');
+			expect(event.target).toBe(link);
+		});
+
 		it('renders in a fixed notify container', () => {
 			const { container } = render(<DemoComponent />);
 
