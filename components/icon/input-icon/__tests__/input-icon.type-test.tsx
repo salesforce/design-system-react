@@ -26,3 +26,8 @@ export const unknownProp = (
 	// @ts-expect-error unknown props are rejected
 	<InputIcon name="search" foo="bar" />
 );
+
+export const clickableWithoutAssistiveText = (
+	// @ts-expect-error a clickable icon is a button and needs `assistiveText.icon`
+	<InputIcon name="clear" category="utility" onClick={() => {}} />
+);

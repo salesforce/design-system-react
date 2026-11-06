@@ -53,7 +53,7 @@ export interface InputIconClickableProps
 			'children' | 'className' | 'onClick' | 'style' | 'title' | 'type'
 		> {
 	/** Assistive text for the icon button */
-	assistiveText?: { icon?: string };
+	assistiveText: { icon: string };
 	/** This event fires when the icon is clicked. */
 	onClick: (event: MouseEvent<HTMLButtonElement>) => void;
 	/** Receives the button node */
