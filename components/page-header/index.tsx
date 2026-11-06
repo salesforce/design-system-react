@@ -16,6 +16,7 @@ import Base from './private/base';
 import RecordHome from './private/record-home';
 import ObjectHome from './private/object-home';
 import RelatedList from './private/related-list';
+import type { PageHeaderVariantProps } from './private/types';
 
 /**
  * Page header variant types
@@ -33,74 +34,156 @@ export interface PageHeaderDetail {
 	content?: ReactNode;
 	/** Whether content is truncated */
 	truncate?: boolean;
-	/** Flavor modifier */
-	flavor?: string;
+	/** Width of the block, appended as `slds-size_{flavor}`, such as `1-of-4` */
+	flavor?: `${number}-of-${number}`;
+	/** Stable key for the block. Defaults to its index. */
+	id?: string;
 }
 
-/**
- * Props for the PageHeader component
- */
-export interface PageHeaderProps {
+/** Props every variant takes. */
+interface PageHeaderCommonProps {
+	/** CSS classes */
+	className?: string | string[] | Record<string, boolean>;
+	/** Whether joined with SimpleDataTable */
+	joined?: boolean;
+	/** Title text or element */
+	title?: ReactNode;
+}
+
+/** Actions shown in the upper right of the `object-home`, `record-home` and `related-list` variants. */
+interface PageHeaderActionsProps {
 	/**
 	 * Actions shown in the upper right. Pass a `PageHeaderControl`, or a fragment
 	 * whose children are all `PageHeaderControl` elements.
 	 */
 	actions?: ReactNode;
-	/** CSS classes */
-	className?: string | string[] | Record<string, boolean>;
+	/** @deprecated Use `actions` instead. */
+	onRenderActions?: () => ReactNode;
+}
+
+/** Controls shown in the lower right (upper right for the `base` variant). */
+interface PageHeaderControlsProps {
 	/**
 	 * Controls shown in the lower right (upper right for the `base` variant).
 	 * Pass a `PageHeaderControl`, or a fragment whose children are all
 	 * `PageHeaderControl` elements.
 	 */
 	controls?: ReactNode;
-	/** Detail blocks for record-home variant */
-	details?: PageHeaderDetail[];
+	/** @deprecated Use `controls` instead. */
+	onRenderControls?: () => ReactNode;
+}
+
+/** The plain header, and the default. It has no actions, label, trail or details. */
+interface PageHeaderBaseVariantProps
+	extends PageHeaderCommonProps, PageHeaderControlsProps {
+	/** Page header variant */
+	variant?: 'base';
 	/** Icon element */
 	icon?: ReactElement;
 	/** Info text or element */
 	info?: ReactNode;
-	/** Whether joined with SimpleDataTable */
-	joined?: boolean;
+	actions?: never;
+	details?: never;
+	label?: never;
+	onRenderActions?: never;
+	nameSwitcherDropdown?: never;
+	trail?: never;
+}
+
+/** A list page header with a name switcher and a breadcrumb trail. */
+interface PageHeaderObjectHomeVariantProps
+	extends
+		PageHeaderCommonProps,
+		PageHeaderActionsProps,
+		PageHeaderControlsProps {
+	/** Page header variant */
+	variant: 'object-home';
+	/** Icon element */
+	icon?: ReactElement;
+	/** Info text or element */
+	info?: ReactNode;
 	/** Label text or element */
 	label?: ReactNode;
-	/** Name switcher dropdown for object-home variant */
+	/** Name switcher dropdown */
 	nameSwitcherDropdown?: ReactNode;
-	/** @deprecated Use `actions` instead. */
-	onRenderActions?: () => ReactNode;
-	/** @deprecated Use `controls` instead. */
-	onRenderControls?: () => ReactNode;
-	/** Title text or element */
-	title?: ReactNode;
 	/** Breadcrumb trail */
 	trail?: ReactNode[];
-	/** Page header variant */
-	variant?: PageHeaderVariant;
+	details?: never;
 }
+
+/** A record page header with detail blocks. */
+interface PageHeaderRecordHomeVariantProps
+	extends PageHeaderCommonProps, PageHeaderActionsProps {
+	/** Page header variant */
+	variant: 'record-home';
+	/** Icon element */
+	icon?: ReactElement;
+	/** Label text or element */
+	label?: ReactNode;
+	/** Detail blocks */
+	details?: PageHeaderDetail[];
+	controls?: never;
+	info?: never;
+	onRenderControls?: never;
+	nameSwitcherDropdown?: never;
+	trail?: never;
+}
+
+/** A related list header. It has no icon. */
+interface PageHeaderRelatedListVariantProps
+	extends
+		PageHeaderCommonProps,
+		PageHeaderActionsProps,
+		PageHeaderControlsProps {
+	/** Page header variant */
+	variant: 'related-list';
+	/** Info text or element */
+	info?: ReactNode;
+	/** Label text or element */
+	label?: ReactNode;
+	/** Breadcrumb trail */
+	trail?: ReactNode[];
+	details?: never;
+	icon?: never;
+	nameSwitcherDropdown?: never;
+}
+
+/**
+ * Props for the PageHeader component: a union on `variant`, so a prop that a
+ * variant ignores is a compile error.
+ */
+export type PageHeaderProps =
+	| PageHeaderBaseVariantProps
+	| PageHeaderObjectHomeVariantProps
+	| PageHeaderRecordHomeVariantProps
+	| PageHeaderRelatedListVariantProps;
 
 /**
  * The PageHeader component adds PageHeader with multiple variants:
  * base, object-home, record-home, and related-list.
  */
-const PageHeader = ({
-	actions: actionsProp,
-	className,
-	controls: controlsProp,
-	details,
-	icon,
-	info,
-	joined,
-	label,
-	nameSwitcherDropdown,
-	onRenderActions,
-	onRenderControls,
-	title,
-	trail,
-	variant = 'base',
-}: PageHeaderProps): React.ReactElement => {
+const PageHeader = (props: PageHeaderProps): React.ReactElement => {
+	const {
+		actions: actionsProp,
+		className,
+		controls: controlsProp,
+		details,
+		icon,
+		info,
+		joined,
+		label,
+		nameSwitcherDropdown,
+		onRenderActions,
+		onRenderControls,
+		title,
+		trail,
+		variant = 'base',
+	} = props as PageHeaderVariantProps &
+		Pick<PageHeaderCommonProps, 'className' | 'joined'> &
+		PageHeaderActionsProps &
+		PageHeaderControlsProps;
 	const actions = actionsProp ?? onRenderActions?.();
 	const controls = controlsProp ?? onRenderControls?.();
-
 	useEffect(() => {
 		checkProps(
 			PAGE_HEADER,

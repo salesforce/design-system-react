@@ -16,7 +16,7 @@ export interface PageHeaderDetailRowProps {
 	/**
 	 * An array of detail blocks
 	 */
-	details?: PageHeaderDetailBlockProps[];
+	details?: (PageHeaderDetailBlockProps & { id?: string })[];
 }
 
 class DetailRow extends Component<PageHeaderDetailRowProps> {
@@ -29,7 +29,7 @@ class DetailRow extends Component<PageHeaderDetailRowProps> {
 
 		if (this.props.details) {
 			return this.props.details.map((detail, i) => {
-				const key = `page-header-detail-block-${i}`;
+				const key = detail.id ?? `page-header-detail-block-${i}`;
 
 				return (
 					<DetailBlock
