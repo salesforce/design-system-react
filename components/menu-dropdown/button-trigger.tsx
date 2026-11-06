@@ -45,8 +45,6 @@ export interface ButtonTriggerProps {
 	className?: string | string[] | Record<string, boolean>;
 	/** A unique ID for accessibility support */
 	id?: string;
-	/** Whether the dropdown is inline */
-	isInline?: boolean;
 	/** Informs the trigger on the open/close state of the dropdown menu */
 	isOpen?: boolean;
 	/** The dropdown menu to render */
@@ -91,8 +89,6 @@ export interface ButtonTriggerProps {
 	label?: string | ReactNode;
 	/** Disabled state */
 	disabled?: boolean;
-	/** Tooltip */
-	tooltip?: ReactNode;
 	/** Tab index */
 	tabIndex?: string;
 	/** Button style */
@@ -122,7 +118,6 @@ const ButtonTrigger = forwardRef<
 		iconVariant,
 		id,
 		inverse,
-		isInline: _isInline,
 		isOpen,
 		label,
 		onBlur,
@@ -136,7 +131,6 @@ const ButtonTrigger = forwardRef<
 		openOn: openOnProp,
 		style,
 		tabIndex,
-		tooltip,
 		trigger,
 		triggerRef,
 		triggerClassName,
@@ -167,7 +161,6 @@ const ButtonTrigger = forwardRef<
 		label,
 		style,
 		tabIndex,
-		tooltip,
 		variant,
 		'aria-expanded': isOpen,
 		'aria-haspopup': true,

@@ -295,8 +295,6 @@ export interface MenuDropdownProps {
 	inheritTargetWidth?: boolean;
 	/** Adds inverse class to the dropdown */
 	inverse?: boolean;
-	/** @deprecated Use menuPosition="relative" instead */
-	isInline?: boolean;
 	/**
 	 * Whether the menu is open. Setting it (`true` or `false`) makes the open
 	 * state controlled: clicks, keys, hover, outside clicks and selection call
@@ -321,8 +319,6 @@ export interface MenuDropdownProps {
 	multiple?: boolean;
 	/** Positions dropdown menu with a nubbin */
 	nubbinPosition?: DropdownNubbinPosition;
-	/** @deprecated */
-	offset?: string;
 	/** Called when the triggering button loses focus */
 	onBlur?: (event: FocusEvent) => void;
 	/** Triggered when the trigger button is clicked */
@@ -401,8 +397,6 @@ export interface MenuDropdownProps {
 	style?: React.CSSProperties;
 	/** Write "-1" if you don't want the user to tab to the button */
 	tabIndex?: string;
-	/** Tooltip for the trigger button */
-	tooltip?: ReactNode;
 	/**
 	 * The element that opens the menu, rendered inside the trigger `div` (which handles clicks,
 	 * focus, keys and hover). A `Button` element takes the button props of MenuDropdown (`label`,
@@ -506,7 +500,6 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 		id,
 		inheritTargetWidth,
 		inverse = false,
-		isInline,
 		isOpen: isOpenProp,
 		label,
 		length = '5',
@@ -516,7 +509,6 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 		menuStyle,
 		multiple,
 		nubbinPosition,
-		offset,
 		onBlur,
 		onClick,
 		onClose,
@@ -536,7 +528,6 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 		onRequestFocus,
 		style,
 		tabIndex,
-		tooltip,
 		tooltipMenuItem,
 		trigger,
 		triggerClassName,
@@ -632,8 +623,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 		[multiple, selectedValues]
 	);
 
-	// Menu position (for backwards compatibility)
-	const menuPosition = isInline ? 'relative' : menuPositionProp;
+	const menuPosition = menuPositionProp;
 
 	// Get list item ID
 	const getListItemId = useCallback(
@@ -1325,7 +1315,6 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 					hasNubbin={hasNubbin}
 					hasStaticAlignment={hasStaticAlignment}
 					inheritWidthOf={inheritTargetWidth ? 'target' : 'none'}
-					offset={offset}
 					onClose={handleDialogClose}
 					onKeyDown={handleKeyDown}
 					outsideClickIgnoreClass={outsideClickIgnoreClass}
@@ -1349,7 +1338,6 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 			context,
 			hasStaticAlignment,
 			inheritTargetWidth,
-			offset,
 			handleDialogClose,
 			handleKeyDown,
 			menuPosition,
@@ -1439,7 +1427,6 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 			openOn={openOn}
 			style={style}
 			tabIndex={tabIndex || (isOpen ? '-1' : '0')}
-			tooltip={tooltip}
 			triggerClassName={triggerClassName}
 			triggerRef={saveRefToTrigger}
 			variant={buttonVariant}

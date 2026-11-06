@@ -28,11 +28,10 @@ if (process.env.NODE_ENV !== 'production') {
 
 		sunsetProperty(COMPONENT, props.tooltip, 'tooltip', createDocUrl());
 
-		deprecatedProperty(
+		sunsetProperty(
 			COMPONENT,
 			props.offset,
 			'offset',
-			undefined,
 			`The manual setting of positional offset of dialog components has been deemed unreliable. Position logic has been re-written to deliver better and more reliable positioning. Please create an issue if you have an edge case not covered by the built-in logic. ${createDocUrl()}`
 		);
 
@@ -61,12 +60,11 @@ if (process.env.NODE_ENV !== 'production') {
 			createDocUrl('trigger')
 		);
 
-		deprecatedProperty(
+		sunsetProperty(
 			COMPONENT,
 			props.isInline,
 			'isInline',
-			'menuPosition="relative"',
-			createDocUrl('menuPosition')
+			`Use \`menuPosition="relative"\` instead. ${createDocUrl('menuPosition')}`
 		);
 	};
 }
