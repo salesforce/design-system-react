@@ -1,7 +1,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { type KeyboardEvent } from 'react';
+import React, { forwardRef, type KeyboardEvent } from 'react';
 
 import Input, { type InputProps, type InputAssistiveText } from './index';
 import InputIcon from '../icon/input-icon/index';
@@ -55,56 +55,65 @@ const handleKeyDown = (
  *
  * @see https://lightningdesignsystem.com/components/input/
  */
-const Search = ({
-	assistiveText,
-	clearable = false,
-	onClear,
-	onSearch,
-	placeholder,
-	...props
-}: SearchProps) => {
-	checkProps(
-		SEARCH,
-		{ assistiveText, clearable, onClear, onSearch, placeholder, ...props },
-		componentDoc
-	);
+const Search = forwardRef<HTMLInputElement, SearchProps>(
+	(
+		{
+			assistiveText,
+			clearable = false,
+			onClear,
+			onSearch,
+			placeholder,
+			...props
+		},
+		ref
+	) => {
+		checkProps(
+			SEARCH,
+			{ assistiveText, clearable, onClear, onSearch, placeholder, ...props },
+			componentDoc
+		);
 
-	const mergedAssistiveText: InputAssistiveText = {
-		label: assistiveText?.label,
-	};
+		const mergedAssistiveText: InputAssistiveText = {
+			label: assistiveText?.label,
+		};
 
-	return (
-		<Input
-			assistiveText={mergedAssistiveText}
-			iconLeft={
-				<InputIcon
-					assistiveText={{ icon: 'Search' }}
-					category="utility"
-					name="search"
-					onClick={onSearch}
-				/>
-			}
-			iconRight={
-				clearable ? (
+		return (
+			<Input
+				assistiveText={mergedAssistiveText}
+				iconLeft={
 					<InputIcon
-						assistiveText={{ icon: 'Clear' }}
+						assistiveText={{ icon: 'Search' }}
 						category="utility"
-						name="clear"
-						onClick={onClear}
+						name="search"
+						onClick={onSearch}
 					/>
-				) : null
-			}
-			onKeyDown={
-				onSearch
-					? (event) =>
-							handleKeyDown(event as KeyboardEvent<HTMLInputElement>, onSearch)
-					: undefined
-			}
-			placeholder={placeholder}
-			{...props}
-		/>
-	);
-};
+				}
+				iconRight={
+					clearable ? (
+						<InputIcon
+							assistiveText={{ icon: 'Clear' }}
+							category="utility"
+							name="clear"
+							onClick={onClear}
+						/>
+					) : null
+				}
+				onKeyDown={
+					onSearch
+						? (event) =>
+								handleKeyDown(
+									event as KeyboardEvent<HTMLInputElement>,
+									onSearch
+								)
+						: undefined
+				}
+				placeholder={placeholder}
+				ref={ref}
+				{...props}
+			/>
+		);
+	}
+);
 
 Search.displayName = SEARCH;
 
