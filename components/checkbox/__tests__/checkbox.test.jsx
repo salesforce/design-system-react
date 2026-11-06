@@ -364,3 +364,54 @@ describe('Checkbox keyboard and readOnly', () => {
 		);
 	});
 });
+
+describe('Checkbox: deprecated requestFocus props', () => {
+	it('still calls onRequestFocus with the input, and warns', () => {
+		const consoleError = vi
+			.spyOn(console, 'error')
+			.mockImplementation(() => {});
+		const onRequestFocus = vi.fn();
+		const { container } = render(
+			<Checkbox
+				id="cb-request-focus"
+				labels={{ label: 'Option' }}
+				checked={false}
+				onChange={() => {}}
+				onRequestFocus={onRequestFocus}
+				requestFocus
+			/>
+		);
+
+		const input = container.querySelector('input');
+		expect(onRequestFocus).toHaveBeenCalledWith(input);
+		expect(input).not.toHaveAttribute('requestFocus');
+		expect(consoleError).toHaveBeenCalledWith(
+			expect.stringContaining(
+				'`requestFocus` will be removed in the next major version'
+			)
+		);
+		expect(consoleError).toHaveBeenCalledWith(
+			expect.stringContaining(
+				'`onRequestFocus` will be removed in the next major version'
+			)
+		);
+		consoleError.mockRestore();
+	});
+
+	it('forwards ref to the input so it can be focused', () => {
+		const ref = { current: null };
+		render(
+			<Checkbox
+				id="cb-ref"
+				labels={{ label: 'Option' }}
+				checked={false}
+				onChange={() => {}}
+				ref={ref}
+			/>
+		);
+
+		ref.current.focus();
+		expect(document.activeElement).toBe(ref.current);
+		expect(ref.current.tagName).toBe('INPUT');
+	});
+});

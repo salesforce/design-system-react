@@ -128,14 +128,20 @@ interface CheckboxBaseProps {
 	onKeyPress?: (event: KeyboardEvent<HTMLInputElement>) => void;
 	/** Key up event handler */
 	onKeyUp?: (event: KeyboardEvent<HTMLInputElement>) => void;
-	/** Request focus callback */
+	/**
+	 * @deprecated Focus the checkbox through `ref`, which is forwarded to the `<input>`.
+	 * Called with the `<input>` when `requestFocus` is set. Still works, and warns.
+	 */
 	onRequestFocus?: (element: HTMLInputElement) => void;
 	/**
 	 * Shows the checked state without letting the user change it. The checkbox stays focusable
 	 * and is announced as read-only; clicks and Space do not toggle it or call `onChange`.
 	 */
 	readOnly?: boolean;
-	/** Trigger onRequestFocus */
+	/**
+	 * @deprecated Focus the checkbox through `ref`, which is forwarded to the `<input>`.
+	 * Still works, and warns.
+	 */
 	requestFocus?: boolean;
 	/** Mark as required */
 	required?: boolean;
@@ -244,11 +250,15 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 				onRenderVisualPicker,
 				onRenderVisualPickerSelected,
 				onRenderVisualPickerNotSelected,
+				onRequestFocus,
+				requestFocus,
 			},
 			componentDoc
 		);
 	}, [
 		defaultChecked,
+		onRequestFocus,
+		requestFocus,
 		onRenderVisualPicker,
 		onRenderVisualPickerSelected,
 		onRenderVisualPickerNotSelected,
