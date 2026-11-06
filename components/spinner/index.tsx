@@ -18,10 +18,10 @@ export type SpinnerSize = 'xx-small' | 'x-small' | 'small' | 'medium' | 'large';
 export type SpinnerVariant = 'base' | 'brand' | 'inverse';
 
 /**
- * Where the spinner sits: on its own (`default`), inline in the document flow
+ * Where the spinner sits: in a container (`container`), inline in the document flow
  * (`inline`), or inside an input field (`input`).
  */
-export type SpinnerPlacement = 'default' | 'inline' | 'input';
+export type SpinnerPlacement = 'container' | 'inline' | 'input';
 
 /**
  * Assistive text for Spinner
@@ -64,7 +64,7 @@ interface SpinnerBaseProps {
 
 /** Where the spinner sits. Replaces `isInline` and `isInput`. */
 interface SpinnerPlacementProps {
-	/** Where the spinner sits. Defaults to `default`. */
+	/** Where the spinner sits. Defaults to `container`. */
 	placement?: SpinnerPlacement;
 	isInline?: never;
 	isInput?: never;
@@ -133,7 +133,7 @@ const Spinner = forwardRef<HTMLDivElement, SpinnerProps>((props, ref) => {
 	// `isInline` and `isInput` are the deprecated spellings of `placement`
 	const placement =
 		propPlacement ??
-		(deprecatedIsInput ? 'input' : deprecatedIsInline ? 'inline' : 'default');
+		(deprecatedIsInput ? 'input' : deprecatedIsInline ? 'inline' : 'container');
 
 	const mergedAssistiveText = {
 		...defaultAssistiveText,
