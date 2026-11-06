@@ -24,4 +24,28 @@ describe('PanelFilterList', () => {
 			container.querySelector(`[aria-describedby="${error.id}"]`)
 		).toBeInTheDocument();
 	});
+
+	it.each([
+		['standalone', (filter) => filter],
+		[
+			'in a list without errorLabel',
+			(filter) => <PanelFilterList>{filter}</PanelFilterList>,
+		],
+	])(
+		'%s: isError does not point aria-describedby at a missing element',
+		(name, wrap) => {
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					{wrap(
+						<Filter id="f" isError property="Name" predicate="equals Acme" />
+					)}
+				</IconSettings>
+			);
+			expect(container.querySelector('#f-error')).not.toBeInTheDocument();
+			expect(
+				container.querySelector('[aria-describedby]')
+			).not.toBeInTheDocument();
+			expect(container.querySelector('.slds-has-error')).toBeInTheDocument();
+		}
+	);
 });

@@ -3635,7 +3635,7 @@ exports[`Story HTML snapshots > Filter > Error 1`] = `
     <div class="slds-col_bump-left" style="width:420px">
       <div>
         <div class="slds-filters__item slds-grid slds-grid_vertical-align-center slds-has-error">
-          <div class="slds-grow" style="display:inline-block"><button class="slds-button_reset slds-grow slds-has-blur-focus" aria-describedby="sample-panel-filtering-show-me-error" type="button" aria-haspopup="dialog" id="sample-panel-filtering-show-me" tabindex="0"><span class="slds-assistive-text">Edit filter:</span><span class="slds-show slds-text-body_small">Show Me</span><span class="slds-show">All Products</span></button></div><button class="slds-button slds-button_icon slds-button_icon-bare slds-button_icon-small" title="Remove Filter: Show Me All Products" type="button"><svg class="slds-button__icon slds-button__icon_hint" aria-hidden="true">
+          <div class="slds-grow" style="display:inline-block"><button class="slds-button_reset slds-grow slds-has-blur-focus" type="button" aria-haspopup="dialog" id="sample-panel-filtering-show-me" tabindex="0"><span class="slds-assistive-text">Edit filter:</span><span class="slds-show slds-text-body_small">Show Me</span><span class="slds-show">All Products</span></button></div><button class="slds-button slds-button_icon slds-button_icon-bare slds-button_icon-small" title="Remove Filter: Show Me All Products" type="button"><svg class="slds-button__icon slds-button__icon_hint" aria-hidden="true">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#delete"></use>
             </svg><span class="slds-assistive-text">Remove Filter: Show Me All Products</span></button>
         </div>
