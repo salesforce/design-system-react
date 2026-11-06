@@ -6,6 +6,7 @@ import classNames from 'classnames';
 
 import UtilityIcon from '../../utilities/utility-icon';
 import { PROGRESS_INDICATOR_PATH } from '../../../utilities/constants';
+import getStepAssistiveLabel from './step-assistive-text';
 import { useRovingTabIndex } from './use-roving-tab-index';
 import {
 	type ProgressIndicatorAssistiveText,
@@ -101,7 +102,7 @@ const Path = ({
 										step,
 									};
 
-									let stageAssistiveText = step.assistiveText;
+									let stageAssistiveText = getStepAssistiveLabel(step);
 									if (stageAssistiveText === undefined) {
 										if (isSelected) {
 											stageAssistiveText = assistiveText.currentStage;

@@ -13,7 +13,9 @@ class Example extends React.Component {
 			{
 				id: 0,
 				label: <i>tooltip label #1</i>,
-				assistiveText: 'This is custom text in the assistive text key',
+				assistiveText: {
+					label: 'This is custom text in the assistive text key',
+				},
 			},
 			{ id: 1, label: 'tooltip label #2' },
 			{ id: 2, label: <strong>tooltip label #3</strong> },
@@ -34,14 +36,13 @@ class Example extends React.Component {
 		const completedSteps = steps.slice(0, data.step.id);
 
 		if (steps[0].assistiveText) {
-			if (completedSteps.length > 0) {
-				steps[0].assistiveText = `${steps[0].assistiveText} - Completed`;
-			} else {
-				steps[0].assistiveText = steps[0].assistiveText.replace(
-					' - Completed',
-					''
-				);
-			}
+			const { label } = steps[0].assistiveText;
+			steps[0].assistiveText = {
+				label:
+					completedSteps.length > 0
+						? `${label.replace(' - Completed', '')} - Completed`
+						: label.replace(' - Completed', ''),
+			};
 		}
 
 		this.setState({
@@ -72,7 +73,7 @@ class Example extends React.Component {
 						onStepClick={this.handleStepEvent}
 						steps={this.state.steps}
 						selectedStep={this.state.selectedStep}
-						// tooltipIsOpenSteps={stepsBasic.slice(0, 2)}
+						// tooltip={{ isOpenSteps: stepsBasic.slice(0, 2) }}
 					/>
 				</div>
 			</IconSettings>

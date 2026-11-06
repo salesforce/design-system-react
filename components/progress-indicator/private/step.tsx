@@ -1,5 +1,6 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+import getStepAssistiveLabel from './step-assistive-text';
 import React from 'react';
 
 // ### classNames
@@ -136,7 +137,7 @@ class Step extends React.Component<StepProps> {
 			>
 				{icon}
 				<span className="slds-assistive-text">
-					{this.props.step.assistiveText || (
+					{getStepAssistiveLabel(this.props.step) || (
 						<React.Fragment>
 							{`${props.assistiveText?.step} ${props.index + 1}: `}
 							{props.step.label}
@@ -160,7 +161,7 @@ class Step extends React.Component<StepProps> {
 			>
 				{icon}
 				<span className="slds-assistive-text">
-					{this.props.step.assistiveText || (
+					{getStepAssistiveLabel(this.props.step) || (
 						<React.Fragment>
 							{`${props.assistiveText?.step} ${props.index + 1}: `}
 							{props.step.label}

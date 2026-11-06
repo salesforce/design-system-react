@@ -38,6 +38,24 @@ export type TooltipPosition =
 	'absolute' | 'overflowBoundaryElement' | 'relative';
 
 /**
+ * Assistive text for a single step
+ */
+export interface ProgressStepAssistiveText {
+	/** Replaces the generated "Step n: label - status" text */
+	label?: string;
+}
+
+/**
+ * Tooltip settings for `type="base"`
+ */
+export interface ProgressIndicatorTooltip {
+	/** Steps with open tooltips (for development) */
+	isOpenSteps?: ProgressStep[];
+	/** Tooltip position strategy */
+	position?: TooltipPosition;
+}
+
+/**
  * Step object structure
  */
 export interface ProgressStep {
@@ -45,8 +63,11 @@ export interface ProgressStep {
 	id: string | number;
 	/** Tooltip label */
 	label: string;
-	/** Optional assistive text override */
-	assistiveText?: string;
+	/**
+	 * Replaces the generated assistive text of the step. A plain string is deprecated: use
+	 * `{ label }`.
+	 */
+	assistiveText?: string | ProgressStepAssistiveText;
 	/** Action shown next to the step label. Only used by the `setup-assistant` variant. */
 	setupAssistantAction?: ReactNode;
 	/** Estimated time shown next to the step label. Only used by the `setup-assistant` variant. */
@@ -127,9 +148,11 @@ export interface ProgressIndicatorProps {
 	selectedStep: ProgressStep;
 	/** Array of all steps */
 	steps: ProgressStep[];
-	/** Steps with open tooltips (for development). `type="base"` only. */
+	/** Tooltip settings. `type="base"` only. */
+	tooltip?: ProgressIndicatorTooltip;
+	/** @deprecated Use `tooltip.isOpenSteps`. */
 	tooltipIsOpenSteps?: ProgressStep[];
-	/** Tooltip position strategy. `type="base"` only. */
+	/** @deprecated Use `tooltip.position`. */
 	tooltipPosition?: TooltipPosition;
 	/**
 	 * Visual pattern, like `type` on `lightning-progress-indicator`:
@@ -216,8 +239,9 @@ const ProgressIndicator = ({
 	onStepFocus = () => {},
 	selectedStep,
 	steps: propSteps,
-	tooltipIsOpenSteps,
-	tooltipPosition: propTooltipPosition,
+	tooltip,
+	tooltipIsOpenSteps: deprecatedTooltipIsOpenSteps,
+	tooltipPosition: deprecatedTooltipPosition,
 	type = 'base',
 	variant = 'base',
 }: ProgressIndicatorProps): React.ReactElement => {
@@ -225,6 +249,9 @@ const ProgressIndicator = ({
 	const id = propId || generatedId;
 
 	const assistiveText = { ...defaultAssistiveText, ...propAssistiveText };
+	const tooltipIsOpenSteps =
+		tooltip?.isOpenSteps ?? deprecatedTooltipIsOpenSteps;
+	const propTooltipPosition = tooltip?.position ?? deprecatedTooltipPosition;
 	const allSteps = checkSteps(propSteps) ? propSteps : defaultSteps;
 
 	// Check props in development. Pass whether each step array has items, not the array itself, so that
@@ -232,6 +259,12 @@ const ProgressIndicator = ({
 	const hasDisabledSteps = Boolean(propDisabledSteps?.length);
 	const hasErrorSteps = Boolean(propErrorSteps?.length);
 	const hasTooltipIsOpenSteps = Boolean(tooltipIsOpenSteps?.length);
+	const hasDeprecatedTooltipIsOpenSteps = Boolean(
+		deprecatedTooltipIsOpenSteps?.length
+	);
+	const hasDeprecatedStepAssistiveText = Boolean(
+		propSteps?.some((step) => typeof step?.assistiveText === 'string')
+	);
 	const hasDeprecatedSetupAssistantAction = Boolean(
 		propSteps?.some((step) => step?.onRenderSetupAssistantAction !== undefined)
 	);
@@ -245,6 +278,9 @@ const ProgressIndicator = ({
 				orientation: propOrientation,
 				tooltipIsOpenSteps: hasTooltipIsOpenSteps,
 				tooltipPosition: propTooltipPosition,
+				deprecatedTooltipIsOpenSteps: hasDeprecatedTooltipIsOpenSteps,
+				deprecatedTooltipPosition,
+				hasDeprecatedStepAssistiveText,
 				type,
 				variant,
 			},
@@ -255,6 +291,9 @@ const ProgressIndicator = ({
 		hasErrorSteps,
 		hasDeprecatedSetupAssistantAction,
 		hasTooltipIsOpenSteps,
+		hasDeprecatedTooltipIsOpenSteps,
+		hasDeprecatedStepAssistiveText,
+		deprecatedTooltipPosition,
 		propOrientation,
 		propTooltipPosition,
 		type,

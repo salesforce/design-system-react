@@ -577,7 +577,7 @@ describe('SLDSProgressIndicator', () => {
 				...pathProps,
 				disabledSteps: [steps[3]],
 				errorSteps: [steps[2]],
-				tooltipIsOpenSteps: [steps[1]],
+				tooltip: { isOpenSteps: [steps[1]] },
 			});
 
 			expect(getMessages(consoleError)).toEqual([
@@ -745,5 +745,35 @@ describe('SLDSProgressIndicator', () => {
 				container.querySelector('#progress-indicator-vertical-label-0')
 			).toHaveTextContent('Step zero');
 		});
+	});
+});
+
+describe('ProgressIndicator step assistiveText and tooltip', () => {
+	const stepList = [
+		{ id: 0, label: 'One', assistiveText: { label: 'Custom one' } },
+		{ id: 1, label: 'Two', assistiveText: 'Plain two' },
+	];
+
+	it('uses assistiveText.label and the deprecated string', () => {
+		const { container } = render(
+			<IconSettings iconPath="/assets/icons">
+				<ProgressIndicator steps={stepList} selectedStep={stepList[0]} />
+			</IconSettings>
+		);
+		expect(container).toHaveTextContent('Custom one');
+		expect(container).toHaveTextContent('Plain two');
+	});
+
+	it('opens tooltips from tooltip.isOpenSteps', () => {
+		const { container } = render(
+			<IconSettings iconPath="/assets/icons">
+				<ProgressIndicator
+					steps={stepList}
+					selectedStep={stepList[0]}
+					tooltip={{ isOpenSteps: [stepList[1]] }}
+				/>
+			</IconSettings>
+		);
+		expect(document.querySelector('.slds-popover_tooltip')).not.toBeNull();
 	});
 });
