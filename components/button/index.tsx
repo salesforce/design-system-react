@@ -17,11 +17,12 @@ import React, {
 import classNames from 'classnames';
 // These imports use the old JSX files for now until they're converted
 import ButtonIcon from '../icon/button-icon/index.jsx';
-import Tooltip from '../tooltip/index.jsx';
 import getAriaProps from '../../utilities/get-aria-props';
 import getDataProps from '../../utilities/get-data-props';
 import getFormProps from '../../utilities/get-form-props';
 import { BUTTON } from '../../utilities/constants';
+import { checkRemovedProps } from './check-props';
+import componentDoc from './component.json';
 import type { IconCategory } from '../../types/common';
 
 /**
@@ -147,8 +148,6 @@ export interface ButtonProps {
 	tabIndex?: number | string;
 	/** HTML title attribute */
 	title?: string;
-	/** Tooltip content (deprecated) */
-	tooltip?: ReactNode;
 	/** Button type attribute */
 	type?: ButtonType;
 	/** Button variant */
@@ -202,11 +201,17 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 			style,
 			tabIndex,
 			title,
+			// Removed in v11. Destructured so it never reaches the DOM;
+			// `checkRemovedProps` warns about it.
 			tooltip,
 			type = 'button',
 			variant = 'neutral',
 			...restProps
-		} = props;
+		} = props as ButtonProps & { tooltip?: ReactNode };
+
+		useEffect(() => {
+			checkRemovedProps(BUTTON, { tooltip }, componentDoc);
+		}, [tooltip]);
 
 		const internalRef = useRef<HTMLButtonElement | null>(null);
 
@@ -359,11 +364,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 				</button>
 			);
 		};
-
-		// Deprecated: wrap button in tooltip if tooltip prop is provided
-		if (tooltip) {
-			return <Tooltip content={tooltip} trigger={renderButton()} />;
-		}
 
 		return renderButton();
 	}

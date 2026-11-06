@@ -153,4 +153,21 @@ describe('SLDSButton', () => {
 			expect(onClick).toHaveBeenCalledTimes(1);
 		});
 	});
+
+	describe('Removed tooltip prop', () => {
+		it('ignores and warns about the removed tooltip prop', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const { container } = renderButton({ tooltip: 'Help text' });
+
+			expect(container.querySelector('.slds-popover_tooltip')).toBeNull();
+			expect(container.innerHTML).not.toContain('Help text');
+			expect(screen.getByRole('button')).not.toHaveAttribute('tooltip');
+			expect(consoleError).toHaveBeenCalledWith(
+				expect.stringContaining('`tooltip` has reached End-of-Life')
+			);
+			consoleError.mockRestore();
+		});
+	});
 });
