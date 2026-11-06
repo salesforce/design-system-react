@@ -113,8 +113,10 @@ export interface InputProps {
 	autoComplete?: string;
 	/** Elements added after the input */
 	children?: ReactNode;
-	/** CSS classes for the outer container */
+	/** CSS classes for the root element */
 	className?: string | string[] | Record<string, boolean>;
+	/** CSS classes for the input element */
+	classNameInput?: string | string[] | Record<string, boolean>;
 	/** Disables the input */
 	disabled?: boolean;
 	/** Error message (highlights input as error) */
@@ -137,7 +139,9 @@ export interface InputProps {
 	inlineHelpText?: ReactNode;
 	/** Inline edit trigger element */
 	inlineEditTrigger?: ReactNode;
-	/** Ref callback for the input element */
+	/**
+	 * @deprecated Use `ref`, which points at the input element.
+	 */
 	inputRef?: (element: HTMLInputElement | null) => void;
 	/** Displays value statically (static input pattern) */
 	isStatic?: boolean;
@@ -194,9 +198,13 @@ export interface InputProps {
 	step?: number;
 	/** Tab index */
 	tabIndex?: string | number;
-	/** Custom styles for container */
+	/** Custom styles for the root element */
+	style?: CSSProperties;
+	/**
+	 * @deprecated Use `style`.
+	 */
 	styleContainer?: CSSProperties;
-	/** Custom styles for input element */
+	/** Custom styles for the input element */
 	styleInput?: CSSProperties;
 	/** Input type */
 	type?: InputType;
@@ -228,7 +236,7 @@ const defaultAssistiveText: InputAssistiveText = {
  *
  * @see https://lightningdesignsystem.com/components/input/
  */
-const Input = forwardRef<HTMLDivElement, InputProps>(
+const Input = forwardRef<HTMLInputElement, InputProps>(
 	(
 		{
 			'aria-activedescendant': ariaActivedescendant,
@@ -244,6 +252,7 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
 			autoComplete,
 			children,
 			className,
+			classNameInput,
 			defaultValue,
 			disabled = false,
 			errorText,
@@ -281,6 +290,7 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
 			role,
 			step,
 			tabIndex,
+			style,
 			styleContainer,
 			styleInput,
 			type = 'text',
@@ -316,6 +326,19 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
 
 		const assistiveText = { ...defaultAssistiveText, ...propAssistiveText };
 
+		// `ref` is the one ref API; `inputRef` is a deprecated callback alias.
+		const setInputRef = useCallback(
+			(element: HTMLInputElement | null) => {
+				if (typeof ref === 'function') {
+					ref(element);
+				} else if (ref) {
+					ref.current = element;
+				}
+				propInputRef?.(element);
+			},
+			[ref, propInputRef]
+		);
+
 		// Check props in development
 		checkProps(
 			INPUT,
@@ -333,6 +356,7 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
 				autoComplete,
 				children,
 				className,
+				classNameInput,
 				defaultValue,
 				disabled,
 				errorText,
@@ -370,6 +394,7 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
 				role,
 				step,
 				tabIndex,
+				style,
 				styleContainer,
 				styleInput,
 				type,
@@ -587,8 +612,7 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
 					},
 					className
 				)}
-				style={styleContainer}
-				ref={ref}
+				style={style ?? styleContainer}
 			>
 				<Label
 					assistiveText={assistiveText}
@@ -613,10 +637,13 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
 					aria-owns={ariaOwns}
 					aria-required={ariaRequired}
 					autoComplete={autoComplete}
-					className={classNames({
-						'slds-input_counter': variant === COUNTER,
-						'slds-p-horizontal_none': variant === COUNTER && readOnly,
-					})}
+					className={classNames(
+						{
+							'slds-input_counter': variant === COUNTER,
+							'slds-p-horizontal_none': variant === COUNTER && readOnly,
+						},
+						classNameInput
+					)}
 					containerProps={{
 						className: 'slds-form-element__control',
 					}}
@@ -646,7 +673,7 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
 					onSelect={onSelect}
 					onSubmit={onSubmit}
 					placeholder={placeholder}
-					inputRef={propInputRef}
+					inputRef={setInputRef}
 					readOnly={readOnly}
 					required={required}
 					role={role}

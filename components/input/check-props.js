@@ -40,6 +40,19 @@ if (process.env.NODE_ENV !== 'production') {
 				'required',
 				createDocUrl('required')
 			);
+			deprecatedProperty(
+				COMPONENT,
+				props.styleContainer,
+				'styleContainer',
+				'style'
+			);
+			deprecatedProperty(
+				COMPONENT,
+				props.inputRef,
+				'inputRef',
+				'ref',
+				'`ref` now points at the input element.'
+			);
 
 			onlyOneOfProperties(
 				COMPONENT,

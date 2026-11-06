@@ -279,7 +279,7 @@ export const CustomStyling: Story = {
 			backgroundColor: '#f4f6f9',
 			borderRadius: '8px',
 		},
-		styleContainer: {
+		style: {
 			maxWidth: '300px',
 		},
 	},

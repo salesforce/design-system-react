@@ -620,3 +620,45 @@ describe('Input required', () => {
 		);
 	});
 });
+
+describe('Input root, parts and ref', () => {
+	it('puts className and style on the root, classNameInput on the input, and ref on the input', async () => {
+		const { createRef } = await import('react');
+		const ref = createRef();
+		const inputRef = vi.fn();
+		const { container } = render(
+			<Input
+				id="i"
+				label="L"
+				className="on-root"
+				classNameInput="on-input"
+				style={{ margin: '3px' }}
+				ref={ref}
+				inputRef={inputRef}
+				value=""
+				onChange={() => {}}
+			/>
+		);
+		const root = container.querySelector('.slds-form-element');
+		expect(root).toHaveClass('on-root');
+		expect(root.style.margin).toBe('3px');
+		expect(ref.current).toBe(container.querySelector('input'));
+		expect(ref.current).toHaveClass('on-input');
+		expect(inputRef).toHaveBeenCalledWith(ref.current);
+	});
+
+	it('still honours the deprecated styleContainer', () => {
+		const { container } = render(
+			<Input
+				id="i"
+				label="L"
+				styleContainer={{ margin: '4px' }}
+				value=""
+				onChange={() => {}}
+			/>
+		);
+		expect(container.querySelector('.slds-form-element').style.margin).toBe(
+			'4px'
+		);
+	});
+});

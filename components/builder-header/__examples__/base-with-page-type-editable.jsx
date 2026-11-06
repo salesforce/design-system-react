@@ -96,7 +96,7 @@ class Example extends React.Component {
 			<div className="slds-form slds-form_stacked slds-p-top_medium slds-p-right_small slds-p-left_small">
 				<Input
 					id="page-type"
-					inputRef={this.setInputRef}
+					ref={this.setInputRef}
 					label="Page Type"
 					value={this.state.pageType}
 					onChange={this.onChange('page-type')}
