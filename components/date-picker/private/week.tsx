@@ -1,6 +1,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
+import type { DatePickerFocusDirection } from '../date-picker';
 import { type ReactElement, type SyntheticEvent } from 'react';
 
 import Day from './day';
@@ -19,7 +20,10 @@ export interface WeekProps {
 	/** Date that has focus */
 	focusedDate: Date;
 	/** Called when focus moves off calendar */
-	onCalendarBlur: (event: SyntheticEvent, data: { direction: string }) => void;
+	onCalendarBlur: (
+		event: SyntheticEvent,
+		data: { direction: DatePickerFocusDirection }
+	) => void;
 	/** Called on next day keyboard navigation */
 	onKeyboardNavigateToNextDay: (
 		event: SyntheticEvent,
