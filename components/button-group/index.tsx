@@ -12,16 +12,16 @@ import type { ChildrenOf } from '../../types/common';
 /**
  * Button group variant types
  */
-export type ButtonGroupVariant = 'checkbox' | 'list';
+export type ButtonGroupVariant = 'base' | 'checkbox' | 'list';
 
 /**
  * Labels for ButtonGroup
  */
 export interface ButtonGroupLabels {
 	/** Error message to display */
-	error?: string;
+	error?: ReactNode;
 	/** Label above the button group */
-	label?: string;
+	label?: ReactNode;
 }
 
 /**
@@ -42,7 +42,7 @@ export interface ButtonGroupProps {
 	id?: string;
 	/** Text labels */
 	labels?: ButtonGroupLabels;
-	/** Button group variant */
+	/** Button group variant. `base` is the plain group, `checkbox` groups `Checkbox` children, `list` renders a list of buttons. */
 	variant?: ButtonGroupVariant;
 }
 
@@ -57,7 +57,7 @@ const ButtonGroup = ({
 	classNameContainer,
 	id: propId,
 	labels: propLabels,
-	variant,
+	variant = 'base',
 }: ButtonGroupProps): React.ReactElement => {
 	const generatedId = useId();
 	const id = propId || generatedId;
@@ -71,7 +71,7 @@ const ButtonGroup = ({
 	let processedChildren: ReactNode = children;
 
 	// Add slds-button_last class to the last button (for non-checkbox, non-list variants)
-	if (childArray.length > 1 && !variant) {
+	if (childArray.length > 1 && variant === 'base') {
 		processedChildren = childArray.map((child, index) => {
 			if (index === lastElementIndex && React.isValidElement(child)) {
 				const { triggerClassName } = child.props as {
