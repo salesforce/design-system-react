@@ -1,10 +1,12 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { type ReactNode, type ReactElement } from 'react';
+import React, { useEffect, type ReactNode, type ReactElement } from 'react';
 import classNames from 'classnames';
 import Icon, { type IconProps } from '../icon';
 import { SCOPED_NOTIFICATION } from '../../utilities/constants';
+import checkProps from './check-props';
+import componentDoc from './component.json';
 
 /**
  * Theme options for ScopedNotification
@@ -31,8 +33,6 @@ export interface ScopedNotificationProps {
 	children?: ReactNode;
 	/** Custom `Icon`. Its own `assistiveText` wins over `assistiveText.icon`. */
 	icon?: ReactElement<IconProps>;
-	/** Icon name when using default icon */
-	iconName?: string;
 	/** Theme for the notification */
 	theme?: ScopedNotificationTheme;
 }
@@ -48,7 +48,14 @@ const ScopedNotification = ({
 	icon: propIcon,
 	iconName,
 	theme,
-}: ScopedNotificationProps): React.ReactElement => {
+}: ScopedNotificationProps & {
+	// Removed in v11. Destructured so it never reaches the DOM.
+	iconName?: unknown;
+}): React.ReactElement => {
+	useEffect(() => {
+		checkProps(SCOPED_NOTIFICATION, { iconName }, componentDoc);
+	}, [iconName]);
+
 	// Build the icon element
 	let icon: ReactNode;
 
@@ -69,7 +76,7 @@ const ScopedNotification = ({
 					label: assistiveText?.icon || 'Info',
 				}}
 				category="utility"
-				name={iconName || 'info'}
+				name="info"
 				colorVariant={theme === 'dark' ? 'base' : undefined}
 				size="small"
 			/>
