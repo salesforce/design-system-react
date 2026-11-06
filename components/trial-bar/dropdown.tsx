@@ -1,12 +1,15 @@
 import classNames from 'classnames';
 
 import Dropdown from '../menu-dropdown';
-import { type MenuDropdownProps } from '../menu-dropdown/menu-dropdown';
+import { type MenuDropdownBaseProps } from '../menu-dropdown/menu-dropdown';
 import Button from '../button';
 
 import { TRIAL_BAR_DROPDOWN } from '../../utilities/constants';
 
-export interface TrialBarDropdownProps extends MenuDropdownProps {
+export interface TrialBarDropdownProps extends Omit<
+	MenuDropdownBaseProps,
+	'label' | 'trigger'
+> {
 	/**
 	 * Label rendered on the dropdown trigger button.
 	 */

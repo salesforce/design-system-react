@@ -68,3 +68,33 @@ export const requestData = (
 		options={options}
 	/>
 );
+
+export const iconButton = (
+	<MenuDropdown buttonVariant="icon" iconName="down" options={options} />
+);
+
+export const iconButtonWithTrigger = (
+	<MenuDropdown buttonVariant="icon" trigger={<button type="button" />} />
+);
+
+export const iconButtonWithoutIcon = (
+	// @ts-expect-error an icon button needs `iconName` or a `trigger`
+	<MenuDropdown buttonVariant="icon" options={options} />
+);
+
+export const numericTabIndex = <MenuDropdown tabIndex={-1} options={options} />;
+
+export const stringTabIndex = (
+	// @ts-expect-error `tabIndex` is a number
+	<MenuDropdown tabIndex="-1" options={options} />
+);
+
+export const bottomWidth = (
+	// @ts-expect-error `bottom` is not a width
+	<MenuDropdown width="bottom" options={options} />
+);
+
+export const nullLength = (
+	// @ts-expect-error `length` has no `null`; omit it for the default
+	<MenuDropdown length={null} options={options} />
+);
