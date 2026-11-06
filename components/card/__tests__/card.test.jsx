@@ -104,7 +104,7 @@ describe('Card', () => {
 
 		const optionalProps = {
 			...requiredProps,
-			bodyClassName: 'this-is-a-custom-body-class',
+			classNameBody: 'this-is-a-custom-body-class',
 			className: 'this-is-a-custom-card-class',
 			footer: renderFooterContents,
 			headerActions: renderHeaderActions,
@@ -274,7 +274,7 @@ describe('Card', () => {
 	describe('Empty Structure', () => {
 		const props = {
 			...requiredProps,
-			bodyClassName: 'this-is-a-custom-body-class',
+			classNameBody: 'this-is-a-custom-body-class',
 			className: 'this-is-a-custom-card-class',
 			empty: true,
 		};
@@ -312,5 +312,18 @@ describe('Card', () => {
 			expect(emptyBodyheading).toBeInTheDocument();
 			expect(emptyBodyheading.textContent).toBe(requiredProps.heading);
 		});
+	});
+});
+
+describe('Card deprecated bodyClassName', () => {
+	it('still applies the class, and classNameBody wins', () => {
+		const { container } = render(
+			<Card heading="h" bodyClassName="old" classNameBody="new">
+				x
+			</Card>
+		);
+		const body = container.querySelector('.slds-card__body');
+		expect(body).toHaveClass('new');
+		expect(body).not.toHaveClass('old');
 	});
 });

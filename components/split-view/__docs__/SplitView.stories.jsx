@@ -27,7 +27,7 @@ const sampleDetailContent = (
 			This is the detail panel. Click the toggle button to show or hide the
 			master panel.
 		</p>
-		<Card heading="Sample Card" bodyClassName="slds-p-around_medium">
+		<Card heading="Sample Card" classNameBody="slds-p-around_medium">
 			<p>Card content goes here.</p>
 		</Card>
 	</div>

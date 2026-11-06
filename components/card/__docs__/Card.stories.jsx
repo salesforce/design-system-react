@@ -214,7 +214,7 @@ export const CustomHeading = {
 export const SetHeightCard = {
 	render: () => (
 		<Card
-			bodyClassName="slds-grow slds-scrollable_y"
+			classNameBody="slds-grow slds-scrollable_y"
 			className="slds-grid slds-grid_vertical"
 			footer={<a href="#">View All</a>}
 			heading="Card with Set Height"
@@ -238,7 +238,7 @@ export const SetHeightCard = {
 export const WithoutHeader = {
 	render: () => (
 		<Card
-			bodyClassName="slds-grow slds-scrollable_y"
+			classNameBody="slds-grow slds-scrollable_y"
 			className="slds-grid slds-grid_vertical"
 			footer={<a href="#">Footer Link</a>}
 			hasNoHeader

@@ -10,6 +10,7 @@ import Empty from './empty';
 import { CARD } from '../../utilities/constants';
 import getAriaProps from '../../utilities/get-aria-props';
 import getDataProps from '../../utilities/get-data-props';
+import deprecatedProperty from '../../utilities/warning/deprecated-property';
 
 /**
  * ID suffixes for card sub-elements
@@ -25,12 +26,16 @@ export const idSuffixes = {
  * Props for the Card component
  */
 export interface CardProps {
-	/** CSS classes for the card body */
+	/**
+	 * @deprecated Use `classNameBody`.
+	 */
 	bodyClassName?: string | string[] | Record<string, boolean>;
 	/** Main content of the card */
 	children?: ReactNode;
 	/** CSS classes for the card */
 	className?: string | string[] | Record<string, boolean>;
+	/** CSS classes for the card body */
+	classNameBody?: string | string[] | Record<string, boolean>;
 	/** Empty state content (true for default, or custom node) */
 	empty?: boolean | ReactNode;
 	/** Filter input in the header */
@@ -69,6 +74,7 @@ const Card = ({
 	bodyClassName,
 	children,
 	className,
+	classNameBody: propClassNameBody,
 	empty,
 	filter,
 	footer,
@@ -81,6 +87,8 @@ const Card = ({
 	style,
 	...rest
 }: CardProps): React.ReactElement => {
+	deprecatedProperty('Card', bodyClassName, 'bodyClassName', 'classNameBody');
+	const classNameBody = propClassNameBody ?? bodyClassName;
 	const ariaProps = getAriaProps(rest);
 	const dataProps = getDataProps(rest);
 
@@ -116,11 +124,11 @@ const Card = ({
 				/>
 			)}
 			{!resolvedEmpty ? (
-				<Body id={bodyId} className={bodyClassName}>
+				<Body id={bodyId} className={classNameBody}>
 					{children}
 				</Body>
 			) : (
-				<Body id={bodyId} className={bodyClassName}>
+				<Body id={bodyId} className={classNameBody}>
 					{resolvedEmpty}
 				</Body>
 			)}
