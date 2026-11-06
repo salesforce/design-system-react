@@ -26,20 +26,38 @@ export interface StepToggleEventData {
 /**
  * Props for the SetupAssistant component
  */
-export interface SetupAssistantProps {
+interface SetupAssistantBaseProps {
 	/** `SetupAssistantStep` elements. Other children are ignored. */
 	children?: ChildrenOf<StepProps>;
 	/** CSS classes */
 	className?: string | string[] | Record<string, boolean>;
 	/** HTML id */
 	id?: string;
-	/** Whether the assistant has card styling */
-	isCard?: boolean;
 	/** Called when a step requests to expand / collapse. `data.isOpen` is the requested (next) state. */
 	onStepToggleIsOpen?: (event: MouseEvent, data: StepToggleEventData) => void;
-	/** Progress bar component */
+}
+
+/** A bare list of steps. There is no header to hold a progress bar. */
+interface SetupAssistantListProps {
+	/** Whether the assistant has card styling */
+	isCard?: false;
+	progressBar?: never;
+}
+
+/** A card with a header, which holds the progress bar. */
+interface SetupAssistantCardProps {
+	/** Whether the assistant has card styling */
+	isCard: true;
+	/** Progress bar component, shown in the card header */
 	progressBar?: ReactNode;
 }
+
+/**
+ * Props for the SetupAssistant component: a union on `isCard`, because only
+ * the card has a header to show `progressBar` in.
+ */
+export type SetupAssistantProps = SetupAssistantBaseProps &
+	(SetupAssistantListProps | SetupAssistantCardProps);
 
 /**
  * Setup Assistant provides Administrators with a centralized list of tasks for
