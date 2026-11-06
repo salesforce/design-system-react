@@ -32,19 +32,15 @@ const THEME_CLASSES: Record<ProgressRingTheme, string> = {
 };
 
 /**
- * Props for the ProgressRing component
+ * Props shared by every ProgressRing
  */
-export interface ProgressRingProps {
+interface ProgressRingBaseProps {
 	/** HTML id attribute */
 	id?: string;
 	/** CSS classes */
 	className?: string | string[] | Record<string, boolean>;
 	/** Theme applied to the ring */
 	theme?: ProgressRingTheme;
-	/** Custom icon to display */
-	icon?: ReactNode;
-	/** Whether to display theme icon */
-	hasIcon?: boolean;
 	/** Progress percentage (0-100) */
 	value: number;
 	/** Flow direction of progress */
@@ -52,6 +48,27 @@ export interface ProgressRingProps {
 	/** Size of the progress ring */
 	size?: ProgressRingSize;
 }
+
+/** No icon is rendered, so a custom `icon` would be ignored. */
+interface ProgressRingWithoutIconProps {
+	hasIcon?: false;
+	icon?: never;
+}
+
+/** Renders the theme icon, or the custom `icon` when set. */
+interface ProgressRingWithIconProps {
+	/** Whether to display the theme icon */
+	hasIcon: true;
+	/** Custom icon to display instead of the theme icon */
+	icon?: ReactNode;
+}
+
+/**
+ * Props for the ProgressRing component. `icon` is only honored with `hasIcon`,
+ * so it is only accepted there.
+ */
+export type ProgressRingProps = ProgressRingBaseProps &
+	(ProgressRingWithoutIconProps | ProgressRingWithIconProps);
 
 /**
  * Customizable progress ring displaying progress in a circular format.
