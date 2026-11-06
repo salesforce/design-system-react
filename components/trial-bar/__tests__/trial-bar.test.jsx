@@ -3,6 +3,7 @@ import { describe, it, expect, vi, afterEach } from 'vitest';
 
 import TrialBar from '../index';
 import TrialBarDropdown from '../dropdown';
+import TrialBarButton from '../button';
 
 const getTimeLeft = (container) => container.querySelector('.slds-box');
 const getTimeLeftAfter = (container) =>
@@ -90,5 +91,22 @@ describe('TrialBarDropdown', () => {
 		const trigger = container.querySelector('.slds-dropdown-trigger button');
 		expect(trigger).toHaveTextContent('Choose your tour');
 		expect(trigger.querySelector('.slds-assistive-text')).toBeNull();
+	});
+});
+
+describe('TrialBarButton', () => {
+	it('merges the consumer className and style instead of dropping them', () => {
+		const { container } = render(
+			<TrialBarButton
+				label="x"
+				className="mine"
+				style={{ color: 'red', padding: '2px' }}
+			/>
+		);
+		const button = container.querySelector('button');
+		expect(button).toHaveClass('slds-m-right_small', 'mine');
+		expect(button.style.color).toBe('red');
+		expect(button.style.padding).toBe('2px');
+		expect(button.style.border).toMatch(/^0/);
 	});
 });
