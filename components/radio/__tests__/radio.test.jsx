@@ -226,4 +226,25 @@ describe('Radio control model', () => {
 			)
 		).toBe(true);
 	});
+
+	it('ignores the removed label prop and warns', () => {
+		const consoleError = vi
+			.spyOn(console, 'error')
+			.mockImplementation(() => {});
+		const { container } = render(
+			<Radio
+				id="radio-label"
+				checked={false}
+				label="Old label"
+				onChange={() => {}}
+			/>
+		);
+
+		expect(container.textContent).not.toContain('Old label');
+		expect(getInput(container)).not.toHaveAttribute('label');
+		expect(consoleError).toHaveBeenCalledWith(
+			expect.stringContaining('`label` has reached End-of-Life')
+		);
+		consoleError.mockRestore();
+	});
 });

@@ -9,22 +9,8 @@ import sunsetProperty from '../../utilities/warning/sunset-property';
 
 let checkProps = function checkPropsFunction() {};
 
-if (process.env.NODE_ENV !== 'production') {
-	checkProps = function checkPropsFunction(COMPONENT, props, jsonDoc) {
-		const createDocUrl = getComponentDocFn(jsonDoc);
-
-		sunsetProperty(
-			COMPONENT,
-			props.label,
-			'label',
-			`Use \`labels.label\` instead.${createDocUrl('labels')}`
-		);
-	};
-}
-
-// v11 control-model removals and deprecated visual-picker render props.
-// Exported separately so the component can run these checks without enabling
-// the pre-existing `checkProps` warnings.
+// v11 removals and deprecated visual-picker render props. Exported separately
+// from the unused default `checkProps`.
 export let checkDeprecatedProps = function checkDeprecatedPropsFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
@@ -40,6 +26,13 @@ if (process.env.NODE_ENV !== 'production') {
 			props.defaultChecked,
 			'defaultChecked',
 			'Radio is controlled: pass `checked` and update it in `onChange`, or pass `value` to the RadioGroup/RadioButtonGroup.'
+		);
+
+		sunsetProperty(
+			COMPONENT,
+			props.label,
+			'label',
+			`Use \`labels.label\` instead. ${createDocUrl('labels')}`
 		);
 
 		deprecatedProperty(
