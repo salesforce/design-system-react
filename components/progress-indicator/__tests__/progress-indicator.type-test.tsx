@@ -65,3 +65,21 @@ export const pathWithVariant = (
 		variant="modal"
 	/>
 );
+
+export const statusAndIdSelection = (
+	<ProgressIndicator
+		steps={[
+			{ id: 0, label: 'One', status: 'completed' },
+			{ id: 1, label: 'Two', status: 'error' },
+		]}
+		selectedStep={1}
+	/>
+);
+
+export const unknownStatus = (
+	<ProgressIndicator
+		// @ts-expect-error `status` is `completed`, `disabled` or `error`
+		steps={[{ id: 0, label: 'One', status: 'done' }]}
+		selectedStep={0}
+	/>
+);

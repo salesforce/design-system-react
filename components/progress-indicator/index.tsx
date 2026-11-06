@@ -1,8 +1,13 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { useEffect, useId, useMemo, type ReactNode } from 'react';
-import find from 'lodash.find';
+import React, {
+	useCallback,
+	useEffect,
+	useId,
+	useMemo,
+	type ReactNode,
+} from 'react';
 import { PROGRESS_INDICATOR } from '../../utilities/constants';
 import componentDoc from './component.json';
 
@@ -38,11 +43,21 @@ export type TooltipPosition =
 	'absolute' | 'overflowBoundaryElement' | 'relative';
 
 /**
+ * Status of a single step. A step has at most one status.
+ */
+export type ProgressStepStatus = 'completed' | 'disabled' | 'error';
+
+/**
  * Step object structure
  */
 export interface ProgressStep {
-	/** Unique identifier */
+	/** Unique identifier. Steps are matched by `id`. */
 	id: string | number;
+	/**
+	 * Status of the step. A step has one status, so it cannot be both `error` and `completed`.
+	 * `disabled` and `error` apply to `type="base"` only; `type="path"` shows `completed`.
+	 */
+	status?: ProgressStepStatus;
 	/** Tooltip label */
 	label: string;
 	/** Optional assistive text override */
@@ -102,7 +117,7 @@ interface ProgressIndicatorBaseProps {
 	assistiveText?: ProgressIndicatorAssistiveText;
 	/** CSS classes */
 	className?: string | string[] | Record<string, boolean>;
-	/** Array of completed step objects */
+	/** @deprecated Set `status: 'completed'` on the step. Matched by `id`. */
 	completedSteps?: ProgressStep[];
 	/** HTML id attribute */
 	id?: string;
@@ -115,17 +130,21 @@ interface ProgressIndicatorBaseProps {
 	) => void;
 	/** Focus handler for steps */
 	onStepFocus?: (event: React.FocusEvent, data: StepEventData) => void;
-	/** Currently selected step */
-	selectedStep: ProgressStep;
+	/**
+	 * Currently selected step: the `id` of one of the `steps` (a step object is also accepted and
+	 * matched by its `id`; one without an `id` is matched by its content, which is deprecated). The
+	 * first step is selected when nothing matches.
+	 */
+	selectedStep: ProgressStep | ProgressStep['id'];
 	/** Array of all steps */
 	steps: ProgressStep[];
 }
 
 /** Props of the step markers on a progress bar: `type="base"`, any variant. */
 interface ProgressIndicatorMarkerProps {
-	/** Array of disabled step objects. */
+	/** @deprecated Set `status: 'disabled'` on the step. Matched by `id`. */
 	disabledSteps?: ProgressStep[];
-	/** Array of error step objects. */
+	/** @deprecated Set `status: 'error'` on the step. Matched by `id`. */
 	errorSteps?: ProgressStep[];
 	/** Steps with open tooltips (for development). */
 	tooltipIsOpenSteps?: ProgressStep[];
@@ -164,7 +183,7 @@ interface ProgressIndicatorSetupAssistantProps
 
 /**
  * SLDS Path, with each step's label shown in its stage. Use the arrow keys to
- * move between stages. Completion comes from `completedSteps`; there are no
+ * move between stages. Completion comes from `status: 'completed'`; there are no
  * error, disabled, tooltip, orientation or variant props.
  */
 interface ProgressIndicatorPathProps extends ProgressIndicatorBaseProps {
@@ -221,7 +240,7 @@ function checkSteps(steps?: ProgressStep[]): boolean {
 }
 
 /**
- * Check if an item exists in an array of items
+ * Check if a step is one of the items, matching by `id`
  */
 function findStep(
 	item: ProgressStep | undefined,
@@ -229,17 +248,9 @@ function findStep(
 ): boolean {
 	if (!item || !items) return false;
 
-	const itemsArray = !Array.isArray(items) ? [items] : items;
+	const itemsArray = Array.isArray(items) ? items : [items];
 
-	return Boolean(
-		find(itemsArray, (arrayItem) => {
-			if (arrayItem === item) return true;
-			if (arrayItem.id !== undefined && item.id !== undefined) {
-				return arrayItem.id === item.id;
-			}
-			return JSON.stringify(arrayItem) === JSON.stringify(item);
-		})
-	);
+	return itemsArray.some((arrayItem) => arrayItem.id === item.id);
 }
 
 /**
@@ -251,7 +262,7 @@ const ProgressIndicator = (
 	const {
 		assistiveText: propAssistiveText,
 		className,
-		completedSteps = [],
+		completedSteps: propCompletedSteps,
 		disabledSteps: propDisabledSteps,
 		errorSteps: propErrorSteps,
 		id: propId,
@@ -275,13 +286,45 @@ const ProgressIndicator = (
 	const id = propId || generatedId;
 
 	const assistiveText = { ...defaultAssistiveText, ...propAssistiveText };
-	const allSteps = checkSteps(propSteps) ? propSteps : defaultSteps;
+	const hasValidSteps = checkSteps(propSteps);
+	const allSteps = hasValidSteps ? propSteps : defaultSteps;
+	const completedSteps = propCompletedSteps ?? [];
+	// A step's own `status` wins over the deprecated arrays. It is one status, so it excludes the others.
+	const getStatusFlags = (step: ProgressStep) =>
+		step.status === undefined
+			? {
+					isCompleted: findStep(step, completedSteps),
+					isDisabled: findStep(step, propDisabledSteps),
+					isError: findStep(step, propErrorSteps),
+				}
+			: {
+					isCompleted: step.status === 'completed',
+					isDisabled: step.status === 'disabled',
+					isError: step.status === 'error',
+				};
+	const selectedStepId =
+		typeof selectedStep === 'object' ? selectedStep?.id : selectedStep;
+	// A step object without an `id` is matched the 0.10.x way, by its whole content.
+	const selectedStepWithoutId =
+		typeof selectedStep === 'object' && selectedStep?.id === undefined
+			? JSON.stringify(selectedStep)
+			: undefined;
+	const isSelectedStep = useCallback(
+		(step: ProgressStep) =>
+			selectedStepWithoutId === undefined
+				? step.id === selectedStepId
+				: JSON.stringify(step) === selectedStepWithoutId,
+		[selectedStepId, selectedStepWithoutId]
+	);
 
 	// Check props in development. Pass whether each step array has items, not the array itself, so that
 	// an empty array doesn't count as passed and a new array on each render doesn't re-run the check.
 	const hasDisabledSteps = Boolean(propDisabledSteps?.length);
 	const hasErrorSteps = Boolean(propErrorSteps?.length);
+	const hasDeprecatedCompletedSteps = Boolean(propCompletedSteps?.length);
+	const hasInvalidSteps = propSteps !== undefined && !hasValidSteps;
 	const hasTooltipIsOpenSteps = Boolean(tooltipIsOpenSteps?.length);
+	const hasSelectedStepWithoutId = selectedStepWithoutId !== undefined;
 	const hasDeprecatedSetupAssistantAction = Boolean(
 		propSteps?.some((step) => step?.onRenderSetupAssistantAction !== undefined)
 	);
@@ -291,6 +334,9 @@ const ProgressIndicator = (
 			{
 				disabledSteps: hasDisabledSteps,
 				errorSteps: hasErrorSteps,
+				hasDeprecatedCompletedSteps,
+				hasInvalidSteps,
+				hasSelectedStepWithoutId,
 				hasDeprecatedSetupAssistantAction,
 				orientation: propOrientation,
 				tooltipIsOpenSteps: hasTooltipIsOpenSteps,
@@ -303,6 +349,9 @@ const ProgressIndicator = (
 	}, [
 		hasDisabledSteps,
 		hasErrorSteps,
+		hasDeprecatedCompletedSteps,
+		hasInvalidSteps,
+		hasSelectedStepWithoutId,
 		hasDeprecatedSetupAssistantAction,
 		hasTooltipIsOpenSteps,
 		propOrientation,
@@ -315,13 +364,13 @@ const ProgressIndicator = (
 	const currentStepIndex = useMemo(() => {
 		let index = 0;
 		for (let i = 0; i < allSteps.length; i += 1) {
-			if (findStep(allSteps[i], selectedStep)) {
+			if (isSelectedStep(allSteps[i])) {
 				index = i;
 				break;
 			}
 		}
 		return index;
-	}, [allSteps, selectedStep]);
+	}, [allSteps, isSelectedStep]);
 
 	if (type === 'path') {
 		return (
@@ -334,16 +383,13 @@ const ProgressIndicator = (
 				onStepClick={onStepClick}
 				onStepFocus={onStepFocus}
 				steps={allSteps.map((step) => ({
-					isCompleted: findStep(step, completedSteps),
-					isSelected: findStep(step, selectedStep),
+					isCompleted: getStatusFlags(step).isCompleted,
+					isSelected: isSelectedStep(step),
 					step,
 				}))}
 			/>
 		);
 	}
-
-	const disabledSteps = propDisabledSteps ?? [];
-	const errorSteps = propErrorSteps ?? [];
 
 	// Calculate progress value
 	const progressValue =
@@ -383,10 +429,10 @@ const ProgressIndicator = (
 					assistiveText={assistiveText}
 					id={id}
 					index={i}
-					isSelected={findStep(step, selectedStep)}
-					isDisabled={findStep(step, disabledSteps)}
-					isError={findStep(step, errorSteps)}
-					isCompleted={findStep(step, completedSteps)}
+					isSelected={isSelectedStep(step)}
+					isDisabled={getStatusFlags(step).isDisabled}
+					isError={getStatusFlags(step).isError}
+					isCompleted={getStatusFlags(step).isCompleted}
 					onClick={onStepClick}
 					onFocus={onStepFocus}
 					step={step}

@@ -18,6 +18,10 @@ const stages = [
 	{ id: 4, label: 'Closed' },
 ];
 
+// Returns copies of `list` with `statuses[index]` as each step's `status`
+const withStatus = (list, statuses) =>
+	list.map((step, index) => ({ ...step, status: statuses[index] }));
+
 export default {
 	title: 'Components/ProgressIndicator',
 	component: ProgressIndicator,
@@ -50,9 +54,8 @@ export default {
 export const Default = {
 	render: () => (
 		<ProgressIndicator
-			steps={steps}
-			selectedStep={steps[2]}
-			completedSteps={[steps[0], steps[1]]}
+			steps={withStatus(steps, ['completed', 'completed'])}
+			selectedStep={2}
 		/>
 	),
 };
@@ -68,14 +71,11 @@ const InteractiveExample = () => {
 		}
 	};
 
-	const completedSteps = steps.slice(0, currentStep);
-
 	return (
 		<div>
 			<ProgressIndicator
-				steps={steps}
-				selectedStep={steps[currentStep]}
-				completedSteps={completedSteps}
+				steps={withStatus(steps, Array(currentStep).fill('completed'))}
+				selectedStep={currentStep}
 				onStepClick={handleStepClick}
 			/>
 			<div className="slds-m-top_large slds-grid slds-grid_align-center">
@@ -108,9 +108,8 @@ export const Interactive = {
 export const Vertical = {
 	render: () => (
 		<ProgressIndicator
-			steps={steps}
-			selectedStep={steps[2]}
-			completedSteps={[steps[0], steps[1]]}
+			steps={withStatus(steps, ['completed', 'completed'])}
+			selectedStep={2}
 			orientation="vertical"
 		/>
 	),
@@ -120,10 +119,8 @@ export const Vertical = {
 export const WithError = {
 	render: () => (
 		<ProgressIndicator
-			steps={steps}
-			selectedStep={steps[2]}
-			completedSteps={[steps[0], steps[1]]}
-			errorSteps={[steps[2]]}
+			steps={withStatus(steps, ['completed', 'completed', 'error'])}
+			selectedStep={2}
 		/>
 	),
 };
@@ -132,10 +129,14 @@ export const WithError = {
 export const WithDisabledSteps = {
 	render: () => (
 		<ProgressIndicator
-			steps={steps}
-			selectedStep={steps[1]}
-			completedSteps={[steps[0]]}
-			disabledSteps={[steps[3], steps[4]]}
+			steps={withStatus(steps, [
+				'completed',
+				undefined,
+				undefined,
+				'disabled',
+				'disabled',
+			])}
+			selectedStep={1}
 		/>
 	),
 };
@@ -145,9 +146,8 @@ export const ShadeVariant = {
 	render: () => (
 		<div className="slds-theme_shade slds-p-around_medium">
 			<ProgressIndicator
-				steps={steps}
-				selectedStep={steps[2]}
-				completedSteps={[steps[0], steps[1]]}
+				steps={withStatus(steps, ['completed', 'completed'])}
+				selectedStep={2}
 				variant="shade"
 			/>
 		</div>
@@ -158,9 +158,8 @@ export const ShadeVariant = {
 export const ModalVariant = {
 	render: () => (
 		<ProgressIndicator
-			steps={steps}
-			selectedStep={steps[2]}
-			completedSteps={[steps[0], steps[1]]}
+			steps={withStatus(steps, ['completed', 'completed'])}
+			selectedStep={2}
 			variant="modal"
 		/>
 	),
@@ -170,9 +169,8 @@ export const ModalVariant = {
 export const SetupAssistantVariant = {
 	render: () => (
 		<ProgressIndicator
-			steps={steps}
-			selectedStep={steps[2]}
-			completedSteps={[steps[0], steps[1]]}
+			steps={withStatus(steps, ['completed', 'completed'])}
+			selectedStep={2}
 			variant="setup-assistant"
 		/>
 	),
@@ -182,9 +180,8 @@ export const SetupAssistantVariant = {
 export const AllComplete = {
 	render: () => (
 		<ProgressIndicator
-			steps={steps}
-			selectedStep={steps[4]}
-			completedSteps={steps}
+			steps={withStatus(steps, Array(5).fill('completed'))}
+			selectedStep={4}
 		/>
 	),
 };
@@ -194,9 +191,8 @@ export const Path = {
 	render: () => (
 		<ProgressIndicator
 			type="path"
-			steps={stages}
-			selectedStep={stages[2]}
-			completedSteps={[stages[0], stages[1]]}
+			steps={withStatus(stages, ['completed', 'completed'])}
+			selectedStep={2}
 		/>
 	),
 };
@@ -215,9 +211,8 @@ const InteractivePathExample = () => {
 	return (
 		<ProgressIndicator
 			type="path"
-			steps={stages}
-			selectedStep={stages[currentStage]}
-			completedSteps={stages.slice(0, currentStage)}
+			steps={withStatus(stages, Array(currentStage).fill('completed'))}
+			selectedStep={currentStage}
 			onStepClick={handleStepClick}
 		/>
 	);
