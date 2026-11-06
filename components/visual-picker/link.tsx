@@ -23,6 +23,10 @@ export interface VisualPickerLinkProps {
 	 */
 	href: string;
 	/**
+	 * Heading level of the title, 1 to 6. Defaults to 2.
+	 */
+	headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
+	/**
 	 * Icon node for the Link
 	 */
 	icon?: ReactNode;
@@ -48,6 +52,7 @@ class VisualPickerLink extends React.Component<VisualPickerLinkProps> {
 	}
 
 	render() {
+		const Heading = `h${this.props.headingLevel ?? 2}` as const;
 		return (
 			<a
 				href={this.props.href}
@@ -66,12 +71,12 @@ class VisualPickerLink extends React.Component<VisualPickerLinkProps> {
 					{this.props.icon}
 				</div>
 				<div className="slds-media__body slds-border_left slds-p-around_small">
-					<h2
+					<Heading
 						className="slds-truncate slds-text-heading_small"
 						title={this.props.title}
 					>
 						{this.props.title}
-					</h2>
+					</Heading>
 					<p className="slds-m-top_small">{this.props.description}</p>
 				</div>
 			</a>

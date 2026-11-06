@@ -30,3 +30,18 @@ describe('VisualPickerLink', () => {
 		consoleError.mockRestore();
 	});
 });
+
+describe('VisualPickerLink heading level', () => {
+	it('renders the title as an h2 by default', () => {
+		const { container } = render(<VisualPickerLink href="#" title="Title" />);
+		expect(container.querySelector('h2')).toHaveTextContent('Title');
+	});
+
+	it('renders the title at headingLevel', () => {
+		const { container } = render(
+			<VisualPickerLink href="#" title="Title" headingLevel={4} />
+		);
+		expect(container.querySelector('h4')).toHaveTextContent('Title');
+		expect(container.querySelector('h2')).toBeNull();
+	});
+});
