@@ -39,7 +39,11 @@ export interface CardProps {
 	footer?: ReactNode;
 	/** Hide the header completely */
 	hasNoHeader?: boolean;
-	/** Custom header (overrides default media object) */
+	/**
+	 * Custom header (overrides default media object), such as a `MediaObject` element. The card
+	 * merges `figure` (the `icon`), `body` (the `heading`), `verticalCenter` and `canTruncate`
+	 * into it; props set on the element win.
+	 */
 	header?: ReactNode;
 	/** Actions in the header */
 	headerActions?: ReactNode;
@@ -128,18 +132,3 @@ const Card = ({
 Card.displayName = CARD;
 
 export default Card;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
