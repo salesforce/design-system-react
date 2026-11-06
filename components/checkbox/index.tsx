@@ -347,7 +347,13 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 	// Button Group Variant
 	if (variant === 'button-group') {
 		return (
-			<span className="slds-button slds-checkbox_button">
+			<span
+				className={classNames(
+					'slds-button',
+					'slds-checkbox_button',
+					className as string
+				)}
+			>
 				<input
 					{...inputProps}
 					ref={setRef}
@@ -421,7 +427,8 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 				className={classNames(
 					'slds-visual-picker',
 					`slds-visual-picker_${size}`,
-					vertical && 'slds-visual-picker_vertical'
+					vertical && 'slds-visual-picker_vertical',
+					className as string
 				)}
 			>
 				<input

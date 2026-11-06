@@ -415,3 +415,33 @@ describe('Checkbox: deprecated requestFocus props', () => {
 		expect(ref.current.tagName).toBe('INPUT');
 	});
 });
+
+describe('Checkbox className root', () => {
+	it.each(['base', 'toggle', 'button-group', 'visual-picker'])(
+		'lands className on the root of the %s variant',
+		(variant) => {
+			const { container } = render(
+				<Checkbox
+					variant={variant}
+					className="on-root"
+					labels={{ label: 'L' }}
+					checked={false}
+					onChange={() => {}}
+				/>
+			);
+			expect(container.firstChild).toHaveClass('on-root');
+		}
+	);
+
+	it('does not spread unknown props onto the input', () => {
+		const { container } = render(
+			<Checkbox
+				labels={{ label: 'L' }}
+				checked={false}
+				onChange={() => {}}
+				{...{ 'data-foo': 'x', title: 'nope' }}
+			/>
+		);
+		expect(container.querySelector('input')).not.toHaveAttribute('title');
+	});
+});
