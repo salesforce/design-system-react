@@ -124,9 +124,9 @@ export interface InputProps {
 	fixedTextRight?: ReactNode;
 	/** Shows loading spinner inside input */
 	hasSpinner?: boolean;
-	/** Left-aligned `InputIcon`. Its `iconPosition` defaults to `left`. */
+	/** Left-aligned `InputIcon`. The input sets its `iconPosition` to `left` unless the element sets one. */
 	iconLeft?: ReactElement<InputIconProps> | null;
-	/** Right-aligned `InputIcon`. Its `iconPosition` defaults to `right`. */
+	/** Right-aligned `InputIcon`. The input sets its `iconPosition` to `right` unless the element sets one. */
 	iconRight?: ReactElement<InputIconProps> | null;
 	/** HTML id attribute */
 	id?: string;
