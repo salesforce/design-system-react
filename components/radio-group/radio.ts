@@ -3,9 +3,9 @@
 import type { ReactElement } from 'react';
 import Radio, { type RadioGroupItemProps } from '../radio/index';
 
-const GroupRadio = Radio as unknown as ((
+const GroupRadio = Radio as unknown as (
 	props: RadioGroupItemProps
-) => ReactElement) & { displayName?: string };
+) => ReactElement;
 
 export type { RadioGroupItemProps };
 
