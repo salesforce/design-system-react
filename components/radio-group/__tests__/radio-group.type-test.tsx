@@ -5,24 +5,28 @@
 // `@ts-expect-error` fails the build if the line below it stops erroring.
 
 import RadioGroup from '../index';
+import Radio from '../radio';
 
-export const controlled = (
-	<RadioGroup
-		onChange={(event, data) => {
-			const next: string | null = data.value;
-			return [event.target, next];
-		}}
-		value="a"
-	>
-		{null}
+export const base = (
+	<RadioGroup value="a" onChange={() => {}}>
+		<Radio value="a" labels={{ label: 'A' }} />
 	</RadioGroup>
 );
 
-// @ts-expect-error `onChange` is required unless `disabled` is set
-export const missingOnChange = <RadioGroup value="a">{null}</RadioGroup>;
+export const buttonGroupStyle = (
+	<RadioGroup
+		value="a"
+		variant="button-group"
+		style={{ width: 10 }}
+		onChange={() => {}}
+	>
+		<Radio value="a" variant="button-group" labels={{ label: 'A' }} />
+	</RadioGroup>
+);
 
-export const disabledWithoutOnChange = (
-	<RadioGroup disabled value="a">
-		{null}
+export const baseStyle = (
+	// @ts-expect-error `style` styles the button-group wrapper
+	<RadioGroup value="a" style={{ width: 10 }} onChange={() => {}}>
+		<Radio value="a" labels={{ label: 'A' }} />
 	</RadioGroup>
 );
