@@ -4,7 +4,7 @@
 // Type-level regression tests, checked by `npm run typecheck`. Each
 // `@ts-expect-error` fails the build if the line below it stops erroring.
 
-import ColorPicker from '../index';
+import ColorPicker, { type ColorPickerRequestCloseTrigger } from '../index';
 
 const events = { onChange: () => {} };
 
@@ -54,9 +54,44 @@ export const missingValue = <ColorPicker events={events} />;
 
 export const controlledOpen = (
 	<ColorPicker
-		events={events}
+		events={{ ...events, onRequestOpen: () => {} }}
 		isOpen={false}
+		value="#ffffff"
+	/>
+);
+
+// `data.trigger` is a closed union
+export const requestCloseTrigger = (
+	<ColorPicker
+		events={{
+			...events,
+			onRequestClose: (event, data) => {
+				const trigger: ColorPickerRequestCloseTrigger = data.trigger;
+				// @ts-expect-error `mouseLeave` is a Popover trigger the picker never sends
+				if (trigger === 'mouseLeave') return;
+			},
+		}}
+		value="#ffffff"
+	/>
+);
+
+// The deprecated top-level callbacks still type-check
+export const deprecatedTopLevelCallbacks = (
+	<ColorPicker
+		events={events}
+		onClose={() => {}}
+		onOpen={() => {}}
+		onRequestClose={(event, data) => data.trigger}
 		onRequestOpen={() => {}}
+		value="#ffffff"
+	/>
+);
+
+export const validators = (
+	<ColorPicker
+		events={events}
+		validateColor={(hex) => hex.startsWith('#')}
+		validateWorkingColor={(hex) => hex.length === 7}
 		value="#ffffff"
 	/>
 );

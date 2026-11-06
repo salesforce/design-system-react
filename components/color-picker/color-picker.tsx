@@ -23,7 +23,7 @@ import Popover from '../popover';
 import ColorUtils from '../../utilities/color';
 import { COLOR_PICKER } from '../../utilities/constants';
 import generateId from '../../utilities/generate-id';
-import { useControllableState } from '../../utilities/hooks';
+import { useControllableState, useLatestRef } from '../../utilities/hooks';
 
 import {
 	WorkingColor,
@@ -31,6 +31,7 @@ import {
 	ColorPickerLabels,
 	ColorPickerChangeHandler,
 	ColorPickerEvents,
+	ColorPickerRequestCloseData,
 } from './types';
 
 interface ColorPickerBaseProps {
@@ -46,8 +47,8 @@ interface ColorPickerBaseProps {
 	disabled?: boolean;
 	/**
 	 * Error message for the outer input. When empty, the message is derived from `value`:
-	 * `labels.invalidColor` is shown while `value` fails validation (`events.onValidateColor`,
-	 * or the built-in hex/named-color check).
+	 * `labels.invalidColor` is shown while `value` fails validation (`validateColor`, or the
+	 * built-in hex/named-color check).
 	 */
 	errorText?: string;
 	/** Error message for the custom tab working color input */
@@ -83,30 +84,24 @@ interface ColorPickerBaseProps {
 	 * color is internal and is reset from `value` each time the popover opens.
 	 */
 	valueWorking?: string;
-	/** Callback when popover closes */
-	onClose?: (
-		event: React.SyntheticEvent,
-		data: { trigger?: string; componentWillUnmount?: boolean }
-	) => void;
-	/** Callback when popover opens */
-	onOpen?: (
-		event: React.SyntheticEvent,
-		data: { portal?: HTMLElement }
-	) => void;
+	/** @deprecated Use `events.onClose` instead. Still works, and warns. */
+	onClose?: ColorPickerEvents['onClose'];
+	/** @deprecated Use `events.onOpen` instead. Still works, and warns. */
+	onOpen?: ColorPickerEvents['onOpen'];
+	/** @deprecated Use `events.onRequestClose` instead. Still works, and warns. */
+	onRequestClose?: ColorPickerEvents['onRequestClose'];
+	/** @deprecated Use `events.onRequestOpen` instead. Still works, and warns. */
+	onRequestOpen?: ColorPickerEvents['onRequestOpen'];
 	/**
-	 * Called when the popover requests to close. `data.trigger` says why: `cancel` (Cancel button
-	 * or Escape), `submit` (Done button), `clickOutside`, `triggerClick`, or `newPopover`. When
-	 * `isOpen` is controlled, set it to `false` here.
+	 * Replaces the built-in hex/named-color check for the summary input. Returns whether `hex`
+	 * is a valid color.
 	 */
-	onRequestClose?: (
-		event: React.SyntheticEvent,
-		data: { trigger: string }
-	) => void;
+	validateColor?: (hex: string) => boolean;
 	/**
-	 * Called when the swatch button is clicked while the popover is closed. When `isOpen` is
-	 * controlled, set it to `true` here.
+	 * Replaces the built-in hex check for the custom tab's working color input. Returns whether
+	 * `hex` is a valid color.
 	 */
-	onRequestOpen?: () => void;
+	validateWorkingColor?: (hex: string) => boolean;
 }
 
 /**
@@ -207,6 +202,9 @@ const defaultSwatchColors = [
 
 type HexValidator = ((hex: string) => boolean) | undefined;
 
+// A module constant, so a missing `events` doesn't create a new object every render
+const NO_EVENTS: ColorPickerEvents = {};
+
 /** Builds a working color from a color value, resolving CSS color names to hex. */
 const getWorkingColorFromValue = (
 	color: string,
@@ -247,7 +245,7 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
 	disabled = false,
 	errorText: errorTextProp,
 	errorTextWorkingColor,
-	events = {},
+	events = NO_EVENTS,
 	hasStaticAlignment,
 	hideInput = false,
 	isOpen: isOpenProp,
@@ -262,6 +260,8 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
 	onOpen,
 	onRequestClose,
 	onRequestOpen,
+	validateColor: validateColorProp,
+	validateWorkingColor: validateWorkingColorProp,
 }) => {
 	// Merge labels and assistive text with defaults
 	const labels = useMemo(
@@ -282,7 +282,19 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
 
 	// `value` is controlled data. A missing `value` (warned in `checkProps`) renders as no color.
 	const value = valueProp ?? '';
-	const validateWorkingColor = events.onValidateWorkingColor;
+	const validateColor = validateColorProp ?? events.onValidateColor;
+	const validateWorkingColor =
+		validateWorkingColorProp ?? events.onValidateWorkingColor;
+
+	// Handlers read the latest callbacks, so a new `events` object each render doesn't rebuild
+	// them. The deprecated top-level callbacks are called after their `events` counterparts.
+	const eventsRef = useLatestRef(events);
+	const deprecatedEventsRef = useLatestRef({
+		onClose,
+		onOpen,
+		onRequestClose,
+		onRequestOpen,
+	});
 
 	// Popover open state is ephemeral UI: controlled when `isOpen` is set, internal otherwise
 	const [isOpen, setIsOpen] = useControllableState(isOpenProp, defaultIsOpen);
@@ -320,8 +332,8 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
 
 	// Derived from `value` on every render rather than seeded once
 	const isValueValid = useMemo(
-		() => isValidColor(value, events.onValidateColor),
-		[value, events.onValidateColor]
+		() => isValidColor(value, validateColor),
+		[value, validateColor]
 	);
 	const colorErrorMessage =
 		errorTextProp || (isValueValid ? '' : labels.invalidColor || '');
@@ -342,6 +354,10 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
 				errorTextWorkingColor,
 				events,
 				hasStaticAlignment,
+				onClose,
+				onOpen,
+				onRequestClose,
+				onRequestOpen,
 				hideInput,
 				isOpen: isOpenProp,
 				labels: labelsProp,
@@ -363,11 +379,9 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
 			setPreviousWorkingColor(workingColor);
 			setDraftColor(newColor);
 
-			if (events.onWorkingColorChange) {
-				events.onWorkingColorChange(event, { color: newColor });
-			}
+			eventsRef.current.onWorkingColorChange?.(event, { color: newColor });
 		},
-		[events, workingColor]
+		[eventsRef, workingColor]
 	);
 
 	// Helper to update working color
@@ -404,16 +418,35 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
 		[updateWorkingColor]
 	);
 
-	// Request a close. Uncontrolled, the popover closes itself; controlled, the parent decides.
+	// Request a close before it happens. Uncontrolled, the popover then closes itself; controlled,
+	// the parent decides.
 	const requestClose = useCallback(
-		(event: React.SyntheticEvent, data: { trigger: string }) => {
-			setIsOpen(false);
+		(event: React.SyntheticEvent, data: ColorPickerRequestCloseData) => {
+			eventsRef.current.onRequestClose?.(event, data);
+			deprecatedEventsRef.current.onRequestClose?.(event, data);
 
-			if (onRequestClose) {
-				onRequestClose(event, data);
-			}
+			setIsOpen(false);
 		},
-		[setIsOpen, onRequestClose]
+		[eventsRef, deprecatedEventsRef, setIsOpen]
+	);
+
+	const handleClose = useCallback(
+		(
+			event: React.SyntheticEvent,
+			data: { trigger?: string; componentWillUnmount?: boolean }
+		) => {
+			eventsRef.current.onClose?.(event, data);
+			deprecatedEventsRef.current.onClose?.(event, data);
+		},
+		[eventsRef, deprecatedEventsRef]
+	);
+
+	const handleOpen = useCallback(
+		(event: React.SyntheticEvent, data: { portal?: HTMLElement }) => {
+			eventsRef.current.onOpen?.(event, data);
+			deprecatedEventsRef.current.onOpen?.(event, data);
+		},
+		[eventsRef, deprecatedEventsRef]
 	);
 
 	const handleCancel = useCallback(
@@ -443,13 +476,11 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
 	// The summary input is controlled by `value`: report the typed text and let the parent decide
 	const handleHexInputChange = useCallback(
 		(event: React.SyntheticEvent, data: InputChangeData) => {
-			const isValid = isValidColor(data.value, events.onValidateColor);
+			const isValid = isValidColor(data.value, validateColor);
 
-			if (events.onChange) {
-				events.onChange(event, { color: data.value, isValid });
-			}
+			eventsRef.current.onChange?.(event, { color: data.value, isValid });
 		},
-		[events]
+		[eventsRef, validateColor]
 	);
 
 	const handleNavigate = useCallback(
@@ -484,28 +515,25 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
 
 	const handleSubmitButtonClick = useCallback(
 		(event: React.MouseEvent) => {
-			if (events.onChange) {
-				events.onChange(event, {
-					color: workingColor.hex,
-					isValid: true,
-				});
-			}
+			eventsRef.current.onChange?.(event, {
+				color: workingColor.hex,
+				isValid: true,
+			});
 
 			requestClose(event, { trigger: 'submit' });
 		},
-		[events, requestClose, workingColor.hex]
+		[eventsRef, requestClose, workingColor.hex]
 	);
 
 	// While open, Popover has already requested a close (`triggerClick`) for this click
 	const handleSwatchButtonClick = useCallback(() => {
 		if (!isOpen) {
-			setIsOpen(true);
+			eventsRef.current.onRequestOpen?.();
+			deprecatedEventsRef.current.onRequestOpen?.();
 
-			if (onRequestOpen) {
-				onRequestOpen();
-			}
+			setIsOpen(true);
 		}
-	}, [isOpen, setIsOpen, onRequestOpen]);
+	}, [eventsRef, deprecatedEventsRef, isOpen, setIsOpen]);
 
 	const handleSwatchSelect = useCallback(
 		(event: React.MouseEvent | React.KeyboardEvent, data: { hex: string }) => {
@@ -644,17 +672,16 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
 					id={`slds-color-picker__selector-${componentId}`}
 					isOpen={isOpen}
 					onClose={
-						onClose as unknown as
-							| ((
-									event?: unknown,
-									data?: { componentWillUnmount?: boolean }
-							  ) => void)
-							| undefined
+						handleClose as unknown as (
+							event?: unknown,
+							data?: { componentWillUnmount?: boolean }
+						) => void
 					}
 					onOpen={
-						onOpen as unknown as
-							| ((event?: unknown, data?: { portal?: HTMLElement }) => void)
-							| undefined
+						handleOpen as unknown as (
+							event?: unknown,
+							data?: { portal?: HTMLElement }
+						) => void
 					}
 					onRequestClose={
 						requestClose as unknown as

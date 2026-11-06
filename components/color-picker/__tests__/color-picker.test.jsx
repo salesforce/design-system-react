@@ -129,15 +129,10 @@ describe('SLDSColorPicker', () => {
 			);
 		});
 
-		it('fires onValidateColor when input changes', () => {
+		it('calls validateColor when input changes', () => {
 			const customValidator = vi.fn();
 			const { container } = render(
-				<ColorPicker
-					value=""
-					events={{
-						onValidateColor: customValidator,
-					}}
-				/>
+				<ColorPicker value="" validateColor={customValidator} />
 			);
 
 			const input = container.querySelector(selectors.summaryInput);
@@ -166,8 +161,7 @@ describe('SLDSColorPicker', () => {
 			const { container } = render(
 				<ColorPicker
 					value=""
-					onRequestOpen={onRequestOpenSpy}
-					onOpen={onOpenSpy}
+					events={{ onOpen: onOpenSpy, onRequestOpen: onRequestOpenSpy }}
 				/>
 			);
 
@@ -184,7 +178,7 @@ describe('SLDSColorPicker', () => {
 		it('closes popover when clicked and popover is open', async () => {
 			const onCloseSpy = vi.fn();
 			const { container } = render(
-				<ColorPicker value="" defaultIsOpen onClose={onCloseSpy} />
+				<ColorPicker value="" defaultIsOpen events={{ onClose: onCloseSpy }} />
 			);
 
 			const button = container.querySelector(selectors.toggle);
@@ -399,8 +393,8 @@ describe('SLDSColorPicker', () => {
 						swatchColors={['#ff0000']}
 						events={{
 							onChange: onChange,
+							onRequestClose: onRequestCloseSpy,
 						}}
-						onRequestClose={onRequestCloseSpy}
 					/>
 				);
 
@@ -715,7 +709,7 @@ describe('SLDSColorPicker', () => {
 					);
 				});
 
-				it('fires onValidateWorkingColor when set', () => {
+				it('calls validateWorkingColor when set', () => {
 					const spyCustomColorValidator = vi.fn();
 					const customColorValidator = (hex) => {
 						spyCustomColorValidator(hex);
@@ -726,7 +720,7 @@ describe('SLDSColorPicker', () => {
 						<ColorPicker
 							value=""
 							isOpen
-							events={{ onValidateWorkingColor: customColorValidator }}
+							validateWorkingColor={customColorValidator}
 						/>
 					);
 
@@ -1033,8 +1027,8 @@ describe('SLDSColorPicker', () => {
 				const onRequestOpen = vi.fn();
 				const { container } = render(
 					<ColorPicker
+						events={{ onRequestOpen }}
 						isOpen={false}
-						onRequestOpen={onRequestOpen}
 						value="#000000"
 					/>
 				);
@@ -1052,9 +1046,8 @@ describe('SLDSColorPicker', () => {
 				const onRequestOpen = vi.fn();
 				const { container } = render(
 					<ColorPicker
+						events={{ onRequestClose, onRequestOpen }}
 						isOpen
-						onRequestClose={onRequestClose}
-						onRequestOpen={onRequestOpen}
 						value="#000000"
 					/>
 				);
@@ -1078,9 +1071,11 @@ describe('SLDSColorPicker', () => {
 					const [isOpen, setIsOpen] = useState(false);
 					return (
 						<ColorPicker
+							events={{
+								onRequestClose: () => setIsOpen(false),
+								onRequestOpen: () => setIsOpen(true),
+							}}
 							isOpen={isOpen}
-							onRequestClose={() => setIsOpen(false)}
-							onRequestOpen={() => setIsOpen(true)}
 							value="#000000"
 						/>
 					);
@@ -1119,8 +1114,7 @@ describe('SLDSColorPicker', () => {
 				const onRequestClose = vi.fn();
 				const { container } = render(
 					<ColorPicker
-						onRequestClose={onRequestClose}
-						onRequestOpen={onRequestOpen}
+						events={{ onRequestClose, onRequestOpen }}
 						value="#000000"
 					/>
 				);
@@ -1273,5 +1267,135 @@ describe('ColorPicker: required `events.onChange`', () => {
 		expect(requiredWarnings()).toHaveLength(1);
 
 		consoleError.mockRestore();
+	});
+
+	describe('callbacks', () => {
+		it('calls events.onRequestClose before the uncontrolled popover closes', () => {
+			let wasOpen;
+			const { container } = render(
+				<ColorPicker
+					defaultIsOpen
+					events={{
+						onRequestClose: () => {
+							wasOpen = !!container.querySelector(selectors.popover);
+						},
+					}}
+					value="#000000"
+				/>
+			);
+
+			fireEvent.click(container.querySelector(selectors.cancel));
+
+			expect(wasOpen).toBe(true);
+			expect(
+				container.querySelector(selectors.popover)
+			).not.toBeInTheDocument();
+		});
+
+		it('calls the latest events after a re-render with a new events object', () => {
+			const first = vi.fn();
+			const second = vi.fn();
+			const { container, rerender } = render(
+				<ColorPicker events={{ onChange: first }} value="" />
+			);
+			rerender(<ColorPicker events={{ onChange: second }} value="" />);
+
+			fireEvent.change(container.querySelector(selectors.summaryInput), {
+				target: { value: '#ffffff' },
+			});
+
+			expect(first).not.toHaveBeenCalled();
+			expect(second).toHaveBeenCalledWith(expect.anything(), {
+				color: '#ffffff',
+				isValid: true,
+			});
+		});
+
+		it('still calls the deprecated top-level callbacks after events, and warns', async () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const calls = [];
+			const record = (name) => () => calls.push(name);
+			const { container } = render(
+				<ColorPicker
+					events={{
+						onClose: record('events.onClose'),
+						onOpen: record('events.onOpen'),
+						onRequestClose: record('events.onRequestClose'),
+						onRequestOpen: record('events.onRequestOpen'),
+					}}
+					onClose={record('onClose')}
+					onOpen={record('onOpen')}
+					onRequestClose={record('onRequestClose')}
+					onRequestOpen={record('onRequestOpen')}
+					value="#000000"
+				/>
+			);
+
+			await userEvent.click(container.querySelector(selectors.toggle));
+			await waitFor(() => {
+				expect(container.querySelector(selectors.popover)).toBeInTheDocument();
+			});
+			fireEvent.click(container.querySelector(selectors.cancel));
+
+			expect(calls).toEqual([
+				'events.onRequestOpen',
+				'onRequestOpen',
+				'events.onOpen',
+				'onOpen',
+				'events.onRequestClose',
+				'onRequestClose',
+				'events.onClose',
+				'onClose',
+			]);
+			['onClose', 'onOpen', 'onRequestClose', 'onRequestOpen'].forEach(
+				(name) => {
+					expect(consoleError).toHaveBeenCalledWith(
+						expect.stringContaining(
+							`\`${name}\` will be removed in the next major version of SLDSColorPicker. Use \`events.${name}\` instead.`
+						)
+					);
+				}
+			);
+			consoleError.mockRestore();
+		});
+
+		it('still uses the deprecated events.onValidate* validators, and warns', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const onValidateColor = vi.fn(() => true);
+			const onValidateWorkingColor = vi.fn(() => true);
+			const { container } = render(
+				<ColorPicker
+					events={{ onValidateColor, onValidateWorkingColor }}
+					isOpen
+					value=""
+				/>
+			);
+
+			fireEvent.change(container.querySelector(selectors.summaryInput), {
+				target: { value: '#ffffff' },
+			});
+			fireEvent.change(
+				container.querySelector(`${selectors.customHex} input`),
+				{ target: { value: '#00ff00' } }
+			);
+
+			expect(onValidateColor).toHaveBeenCalledWith('#ffffff');
+			expect(onValidateWorkingColor).toHaveBeenCalledWith('#00ff00');
+			expect(consoleError).toHaveBeenCalledWith(
+				expect.stringContaining(
+					'`events.onValidateColor` will be removed in the next major version of SLDSColorPicker. Use `validateColor` instead.'
+				)
+			);
+			expect(consoleError).toHaveBeenCalledWith(
+				expect.stringContaining(
+					'`events.onValidateWorkingColor` will be removed in the next major version of SLDSColorPicker. Use `validateWorkingColor` instead.'
+				)
+			);
+			consoleError.mockRestore();
+		});
 	});
 });

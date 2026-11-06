@@ -12,11 +12,15 @@ import Default from '../__examples__/default';
 
 const HEX_REGEX_6_DIGITS = /^#([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i;
 
-const handleChange = (event: React.SyntheticEvent, data: { color: string; isValid?: boolean }) => {
+const handleChange = (
+	event: React.SyntheticEvent,
+	data: { color: string; isValid?: boolean }
+) => {
 	action('onChange')(event, data);
 };
 
-const customOuterInputValidator = (hex: string) => !hex || HEX_REGEX_6_DIGITS.test(hex);
+const customOuterInputValidator = (hex: string) =>
+	!hex || HEX_REGEX_6_DIGITS.test(hex);
 
 // `value` (and `valueWorking`, when a story sets it) are controlled, so stories keep them in state
 const StatefulColorPicker = (props: ColorPickerProps) => {
@@ -216,11 +220,9 @@ export const WorkingColorErrorState: Story = {
 
 export const CustomValidator: Story = {
 	args: {
-		events: {
-			onChange: handleChange,
-			onValidateColor: customOuterInputValidator,
-			onValidateWorkingColor: customOuterInputValidator,
-		},
+		events: { onChange: handleChange },
+		validateColor: customOuterInputValidator,
+		validateWorkingColor: customOuterInputValidator,
 		id: 'custom-validator-color-picker',
 		labels: { label: 'Choose Color' },
 	},
@@ -249,4 +251,3 @@ export const DocSiteDefault: Story = {
 	name: 'Doc site Default',
 	render: () => <Default />,
 };
-

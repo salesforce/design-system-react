@@ -74,6 +74,23 @@ export type ColorPickerChangeHandler = (
 	data: { color: string; isValid?: boolean }
 ) => void;
 
+/**
+ * Why the popover requested to close:
+ * * `cancel`: the Cancel button or Escape
+ * * `submit`: the Done button
+ * * `clickOutside`: a click outside the popover
+ * * `triggerClick`: the swatch button was clicked while open
+ * * `newPopover`: another popover opened
+ */
+export type ColorPickerRequestCloseTrigger =
+	'cancel' | 'submit' | 'clickOutside' | 'triggerClick' | 'newPopover';
+
+/** Data passed to `events.onRequestClose` */
+export interface ColorPickerRequestCloseData {
+	/** What caused the close request */
+	trigger: ColorPickerRequestCloseTrigger;
+}
+
 export interface ColorPickerEvents {
 	/**
 	 * Triggered when the user types in the input and when Done is clicked. Returns the hex
@@ -90,16 +107,26 @@ export interface ColorPickerEvents {
 		event: React.SyntheticEvent,
 		data: { portal?: HTMLElement }
 	) => void;
-	/** Triggered when the user clicks outside the menu or clicks the close button */
+	/**
+	 * Called when the popover requests to close, before it closes. `data.trigger` says why. When
+	 * `isOpen` is controlled, set it to `false` here (or leave it `true` to keep the popover open).
+	 */
 	onRequestClose?: (
 		event: React.SyntheticEvent,
-		data: { trigger: string }
+		data: ColorPickerRequestCloseData
 	) => void;
-	/** Function called when the color-picker menu would like to show */
+	/**
+	 * Called when the swatch button is clicked while the popover is closed, before it opens. When
+	 * `isOpen` is controlled, set it to `true` here.
+	 */
 	onRequestOpen?: () => void;
-	/** Function that overwrites default color validator for outer input */
+	/**
+	 * @deprecated Use the top-level `validateColor` prop instead. Still works, and warns.
+	 */
 	onValidateColor?: (hex: string) => boolean;
-	/** Function that overwrites default color validator for custom tab inner input */
+	/**
+	 * @deprecated Use the top-level `validateWorkingColor` prop instead. Still works, and warns.
+	 */
 	onValidateWorkingColor?: (hex: string) => boolean;
 	/** Triggered when working color changes (color inside the custom tab) */
 	onWorkingColorChange?: (
