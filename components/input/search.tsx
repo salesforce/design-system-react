@@ -3,7 +3,11 @@
 
 import React, { type KeyboardEvent } from 'react';
 
-import Input, { type InputProps, type InputAssistiveText } from './index';
+import Input, {
+	type InputBaseProps,
+	type InputProps,
+	type InputAssistiveText,
+} from './index';
 import InputIcon from '../icon/input-icon/index';
 import checkProps from './check-props';
 import componentDoc from './component.json';
@@ -23,7 +27,7 @@ export interface SearchAssistiveText extends InputAssistiveText {
  * Props for the Search component
  */
 export interface SearchProps extends Omit<
-	InputProps,
+	InputBaseProps,
 	'assistiveText' | 'iconLeft' | 'iconRight'
 > {
 	/** Assistive text for accessibility */

@@ -4,12 +4,15 @@
 // ### React
 import React from 'react';
 
-import Input, { type InputProps } from '../input';
+import Input, { type InputBaseProps, type InputProps } from '../input';
 import InputIcon from '../icon/input-icon';
 
 import { CARD_FILTER } from '../../utilities/constants';
 
-export interface CardFilterProps extends Omit<InputProps, 'id'> {
+export interface CardFilterProps extends Omit<
+	InputBaseProps,
+	'id' | 'assistiveText'
+> {
 	/**
 	 * The HTML `id` from the card with a suffixe.
 	 */
