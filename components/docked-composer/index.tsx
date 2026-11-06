@@ -9,6 +9,7 @@ import React, {
 	type MouseEvent,
 } from 'react';
 import Button from '../button';
+import { useControllableState } from '../../utilities/hooks';
 
 /**
  * Assistive text for DockedComposer
@@ -50,8 +51,14 @@ export interface DockedComposerProps {
 	header?: ReactNode;
 	/** HTML id */
 	id?: string;
-	/** Whether the composer is open */
+	/**
+	 * Whether the composer is open. When set, the composer is controlled: update it from
+	 * `onRequestMinimize` / `onRequestExpand`. Leave it `undefined` for an uncontrolled composer
+	 * (see `defaultIsOpen`). The body is unmounted while closed.
+	 */
 	isOpen?: boolean;
+	/** Initial open state of an uncontrolled composer (`isOpen` is `undefined`). Defaults to `false`. */
+	defaultIsOpen?: boolean;
 }
 
 const defaultAssistiveText: DockedComposerAssistiveText = {
@@ -71,11 +78,14 @@ const DockedComposer = ({
 	events = {},
 	header,
 	id: propId,
-	isOpen,
+	isOpen: isOpenProp,
+	defaultIsOpen = false,
 }: DockedComposerProps): React.ReactElement => {
 	const generatedId = useId();
 	const id = propId || generatedId;
 	const assistiveText = { ...defaultAssistiveText, ...propAssistiveText };
+
+	const [isOpen, setIsOpen] = useControllableState(isOpenProp, defaultIsOpen);
 
 	const sectionClassName = isOpen ? 'slds-is-open' : 'slds-is-closed';
 
@@ -137,9 +147,14 @@ const DockedComposer = ({
 	}, []);
 
 	const handleToggle =
-		(handler?: (event: MouseEvent<HTMLButtonElement>) => void) =>
+		(
+			nextIsOpen: boolean,
+			handler?: (event: MouseEvent<HTMLButtonElement>) => void
+		) =>
 		(event: MouseEvent<HTMLButtonElement>) => {
 			shouldFocusToggleRef.current = true;
+			// No-op when `isOpen` is controlled
+			setIsOpen(nextIsOpen);
 			handler?.(event);
 			// A click's effects run before this timeout. If the parent rejected the request there was
 			// no render, so clear the flag here; a later, unrelated `isOpen` change must not take focus.
@@ -183,7 +198,7 @@ const DockedComposer = ({
 								title={assistiveText.minimizeButton}
 								assistiveText={{ icon: assistiveText.minimizeButton }}
 								buttonRef={setToggleButtonRef}
-								onClick={handleToggle(events.onRequestMinimize)}
+								onClick={handleToggle(false, events.onRequestMinimize)}
 								iconCategory="utility"
 								iconName="minimize_window"
 								iconVariant="bare"
@@ -195,7 +210,7 @@ const DockedComposer = ({
 								title={assistiveText.expandButton}
 								assistiveText={{ icon: assistiveText.expandButton }}
 								buttonRef={setToggleButtonRef}
-								onClick={handleToggle(events.onRequestExpand)}
+								onClick={handleToggle(true, events.onRequestExpand)}
 								iconCategory="utility"
 								iconName="expand_alt"
 								iconVariant="bare"
