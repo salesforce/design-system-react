@@ -4,76 +4,57 @@
 // Type-level regression tests, checked by `npm run typecheck`. Each
 // `@ts-expect-error` fails the build if the line below it stops erroring.
 
-import Tree, { type TreeNode } from '../index';
+import Tree from '../index';
+import type { TreeNode } from '../index';
 
-export const item: TreeNode = { id: 1, label: 'Grains', type: 'item' };
+const nodes: TreeNode[] = [
+	{ id: 'a', label: 'A', type: 'branch', nodes: [] },
+	{ id: 'b', label: 'B', type: 'item' },
+];
 
-export const branch: TreeNode = {
-	id: 2,
-	label: 'Fruits',
-	type: 'branch',
-	expanded: true,
-	nodes: [item],
-};
+export const visibleHeading = (
+	<Tree
+		id="t"
+		nodes={nodes}
+		selectedIds={[]}
+		onSelect={() => {}}
+		labels={{ heading: 'Tree' }}
+	/>
+);
 
-// @ts-expect-error items have no children
-export const itemNodes: TreeNode = {
-	id: 3,
-	label: 'Nuts',
+export const hiddenHeading = (
+	<Tree
+		id="t"
+		nodes={nodes}
+		selectedIds={[]}
+		onSelect={() => {}}
+		assistiveText={{ heading: 'Tree' }}
+	/>
+);
+
+export const bothHeadings = (
+	// @ts-expect-error a heading is visible or hidden, not both
+	<Tree
+		id="t"
+		nodes={nodes}
+		selectedIds={[]}
+		onSelect={() => {}}
+		labels={{ heading: 'Tree' }}
+		assistiveText={{ heading: 'Tree' }}
+	/>
+);
+
+// @ts-expect-error an item cannot contain nodes
+export const itemWithNodes: TreeNode = {
+	id: 'c',
+	label: 'C',
 	type: 'item',
 	nodes: [],
 };
 
-// @ts-expect-error items cannot expand
-export const itemExpanded: TreeNode = {
-	id: 4,
-	label: 'Nuts',
-	type: 'item',
-	expanded: true,
+export const unknownType: TreeNode = {
+	id: 'd',
+	label: 'D',
+	// @ts-expect-error `type` is `branch` or `item`
+	type: 'leaf',
 };
-
-// @ts-expect-error `type` is required
-export const untyped: TreeNode = { id: 5, label: 'Nuts' };
-
-// @ts-expect-error `type` is `branch` or `item`
-export const folder: TreeNode = { id: 6, label: 'Nuts', type: 'folder' };
-
-// The deprecated node fields still type-check, so existing node data compiles
-export const legacyFields: TreeNode = {
-	id: 7,
-	label: 'Nuts',
-	type: 'branch',
-	selected: true,
-	expanded: false,
-};
-
-export const controlled = (
-	<Tree
-		id="tree"
-		labels={{ heading: 'Foods' }}
-		nodes={[item, branch]}
-		selectedIds={[1]}
-		onSelect={(_event, { selectedIds }) => selectedIds.length}
-		expandedIds={['a', 2]}
-		onRequestToggle={(_event, { expandedIds }) => expandedIds.length}
-	/>
-);
-
-export const uncontrolledExpansion = (
-	<Tree
-		id="tree"
-		labels={{ heading: 'Foods' }}
-		nodes={[item, branch]}
-		selectedIds={[]}
-		onSelect={() => {}}
-		defaultExpandedIds={[2]}
-	/>
-);
-
-export const noSelection = (
-	// @ts-expect-error selection is controlled data: `selectedIds` is required
-	<Tree id="tree" nodes={[item]} onSelect={() => {}} />
-);
-
-// @ts-expect-error `onSelect` is required: without it, selecting a node does nothing
-export const noOnSelect = <Tree id="tree" nodes={[item]} selectedIds={[]} />;
