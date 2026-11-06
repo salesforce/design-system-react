@@ -111,7 +111,7 @@ const SimpleDataTableRowActions: React.FC<
 					ref.focus();
 				}
 			}}
-			role={fixedLayout ? 'gridcell' : undefined}
+			role={tableContext.isGrid ? 'gridcell' : undefined}
 			tabIndex={tabIndex}
 		>
 			<InteractiveDropdown {...dropdownProps} />

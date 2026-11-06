@@ -89,6 +89,20 @@ if (process.env.NODE_ENV !== 'production') {
 
 		deprecatedProperty(
 			COMPONENT,
+			props.onFixedHeaderResize,
+			'onFixedHeaderResize',
+			undefined,
+			`The table repositions its fixed headers itself when its scroller or table resizes. ${createDocUrl()}`
+		);
+		deprecatedProperty(
+			COMPONENT,
+			props.onToggleFixedHeaderListeners,
+			'onToggleFixedHeaderListeners',
+			undefined,
+			`The table watches its own size with a ResizeObserver instead of a window resize listener. ${createDocUrl()}`
+		);
+		deprecatedProperty(
+			COMPONENT,
 			props.onRenderSubHeadingRow,
 			'onRenderSubHeadingRow',
 			'renderSubHeadingRow',

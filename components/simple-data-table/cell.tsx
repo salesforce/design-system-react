@@ -79,7 +79,7 @@ const SimpleDataTableCell: React.FC<SimpleDataTableCellProps> = (props) => {
 				className={className}
 				ref={ref}
 				data-label={props.label}
-				role={props.fixedLayout ? 'gridcell' : undefined}
+				role={tableContext.isGrid ? 'gridcell' : undefined}
 				tabIndex={tabIndex}
 				style={props.width ? { width: props.width } : undefined}
 				onFocus={handleFocus}
@@ -97,7 +97,7 @@ const SimpleDataTableCell: React.FC<SimpleDataTableCellProps> = (props) => {
 			onFocus={handleFocus}
 			onKeyDown={handleKeyDown}
 			ref={ref}
-			role={props.fixedLayout ? 'gridcell' : undefined}
+			role={tableContext.isGrid ? 'gridcell' : undefined}
 			style={props.width ? { width: props.width } : undefined}
 			tabIndex={tabIndex}
 			headers={props.headerId}

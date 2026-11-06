@@ -190,7 +190,7 @@ const SimpleDataTableRow: React.FC<SimpleDataTableRowProps> = (props) => {
 					<>
 						{props.canSelectRows ? (
 							<td
-								role={props.fixedLayout ? 'gridcell' : undefined}
+								role={tableContext.isGrid ? 'gridcell' : undefined}
 								className="slds-text-align_right"
 								data-label={props.stacked ? 'Select Row' : undefined}
 								style={{ width: '3.25rem' }}
