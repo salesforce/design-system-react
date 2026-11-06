@@ -333,7 +333,7 @@ const InnerInput = ({
 					<Spinner
 						assistiveText={{ label: assistiveText.spinner }}
 						id={loadingStatusIconId}
-						isInput
+						placement="input"
 						size="x-small"
 						variant="brand"
 					/>
