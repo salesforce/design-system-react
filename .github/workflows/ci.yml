@@ -40,13 +40,34 @@ jobs:
   api:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          # The classifier compares against the merge base with the PR's base branch.
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '24.19.0'
           cache: 'npm'
       - name: Install dependencies
+        id: install
         run: npm ci
       - name: Check public API snapshot
         run: npm run api:check
+
+      # Advisory: classify type changes against the base branch as breaking,
+      # possibly breaking or additive. Always exits 0; reports through
+      # annotations on the api/ diff, the job summary, and one PR comment
+      # (skipped for fork PRs, whose token can't comment).
+      - name: Classify public type changes
+        if: always() && steps.install.outcome == 'success'
+        run: npx tsx scripts/api-compat.ts
+        env:
+          BASE_REF: ${{ github.base_ref }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          API_COMPAT_COMMENT: ${{ github.event.pull_request.head.repo.fork && '0' || '1' }}
+          GH_TOKEN: ${{ github.token }}
