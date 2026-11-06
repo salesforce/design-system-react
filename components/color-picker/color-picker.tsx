@@ -642,6 +642,7 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
 	return (
 		<div
 			className={classNames('slds-color-picker', className)}
+			id={idProp}
 			ref={wrapperRef}
 		>
 			<div className="slds-color-picker__summary">
