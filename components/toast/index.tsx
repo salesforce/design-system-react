@@ -96,8 +96,8 @@ export interface ToastProps {
 	) => void;
 	/** Custom styles */
 	style?: CSSProperties;
-	/** Toast type/severity */
-	variant: ToastVariant;
+	/** Toast type/severity (default `info`) */
+	variant?: ToastVariant;
 }
 
 const defaultAssistiveText: ToastAssistiveText = {
