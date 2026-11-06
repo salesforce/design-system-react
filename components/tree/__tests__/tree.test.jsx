@@ -1298,3 +1298,20 @@ describe('Tree: required `onSelect`', () => {
 		});
 	});
 });
+
+describe('Tree headingLevel', () => {
+	it('renders an h4 by default and honors headingLevel', () => {
+		const props = {
+			id: 'lvl',
+			labels: { heading: 'Foods' },
+			nodes: [{ id: 'a', label: 'A', type: 'item' }],
+			selectedIds: [],
+			onSelect: () => {},
+		};
+		const { container, rerender } = render(<Tree {...props} />);
+		expect(container.querySelector('h4')).toHaveTextContent('Foods');
+		rerender(<Tree {...props} headingLevel={2} />);
+		expect(container.querySelector('h4')).toBeNull();
+		expect(container.querySelector('h2')).toHaveTextContent('Foods');
+	});
+});

@@ -52,6 +52,8 @@ export interface TreeProps {
 	getNodes?: (node: { nodes?: TreeNode[] }) => TreeNode[] | undefined;
 	/** @deprecated Use `labels.heading` instead. */
 	heading?: ReactNode;
+	/** Heading level of the tree heading. Defaults to 4. */
+	headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
 	/** HTML id of the tree container (required) */
 	id: string;
 	/**
@@ -211,6 +213,7 @@ const Tree = forwardRef<HTMLDivElement, TreeProps>(
 			listClassName,
 			getNodes = defaultGetNodes,
 			heading: headingProp,
+			headingLevel = 4,
 			id,
 			labels,
 			nodes,
@@ -459,6 +462,7 @@ const Tree = forwardRef<HTMLDivElement, TreeProps>(
 
 		// Determine heading text
 		const headingText = assistiveHeading || visibleHeading;
+		const Heading = `h${headingLevel}` as const;
 
 		return (
 			<div
@@ -466,14 +470,14 @@ const Tree = forwardRef<HTMLDivElement, TreeProps>(
 				className={classNames('slds-tree_container', className)}
 				ref={ref}
 			>
-				<h4
+				<Heading
 					className={classNames('slds-tree__group-header', {
 						'slds-assistive-text': !!assistiveHeading,
 					})}
 					id={`${id}__heading`}
 				>
 					{headingText}
-				</h4>
+				</Heading>
 				<Branch
 					getNodes={getNodes}
 					initalClassName={classNames(listClassName, classNameList)}
