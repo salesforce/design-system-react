@@ -288,3 +288,10 @@ describe('VisualPicker legend', () => {
 		expect(container.querySelector('legend')).toBeNull();
 	});
 });
+
+describe('VisualPicker with links', () => {
+	it('names the group from assistiveText.label', () => {
+		render(<VisualPicker links assistiveText={{ label: 'Pick a link' }} />);
+		expect(screen.getByRole('group', { name: 'Pick a link' })).toBeVisible();
+	});
+});

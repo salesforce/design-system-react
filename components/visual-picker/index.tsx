@@ -87,7 +87,17 @@ const VisualPicker = ({
 	const legend = labels?.label ?? deprecatedLabel;
 
 	if (links) {
-		return <div className="slds-form-element__control">{children}</div>;
+		const linksLabel =
+			typeof legend === 'string' ? legend : assistiveText?.label;
+		return (
+			<div
+				className="slds-form-element__control"
+				role={linksLabel ? 'group' : undefined}
+				aria-label={linksLabel}
+			>
+				{children}
+			</div>
+		);
 	}
 
 	// Clone the picker props onto each real option element. When an option is a
