@@ -51,7 +51,8 @@ export interface FileProps {
 	 */
 	hasNoVisibleTitle?: boolean;
 	/**
-	 * Href attribute for image
+	 * Href attribute for image. Defaults to `#`, which does not navigate, so `onClickImage`
+	 * can handle the click without a URL.
 	 */
 	href?: string;
 	/**
@@ -72,10 +73,10 @@ export interface FileProps {
 	isLoading?: boolean;
 	/**
 	 * Labels for the File Component
-	 * * image - title for the file. Required.
+	 * * title - title for the file, shown under the preview and used as its name.
 	 */
-	labels?: {
-		title?: string;
+	labels: {
+		title: string;
 	};
 	/**
 	 * `MenuDropdown` for the more actions button; doesn't show more actions button if empty.
@@ -92,7 +93,10 @@ export interface FileProps {
 	onClickImage?: (event: React.MouseEvent) => void;
 }
 
-const defaultProps: Partial<FileProps> = {
+const defaultProps: Pick<
+	FileProps,
+	'assistiveText' | 'hasNoVisibleTitle' | 'href' | 'isLoading'
+> = {
 	assistiveText: {
 		download: 'download',
 		link: 'Preview:',
@@ -178,7 +182,7 @@ class File extends React.Component<FileProps> {
 						<FileFigure
 							assistiveText={assistiveText}
 							labels={{
-								title: this.props.labels?.title,
+								title: this.props.labels.title,
 							}}
 							isLoading={this.props.isLoading}
 							image={this.props.image}
@@ -197,9 +201,9 @@ class File extends React.Component<FileProps> {
 							<div className="slds-media__body">
 								<span
 									className="slds-file__text slds-truncate"
-									title={this.props.labels?.title}
+									title={this.props.labels.title}
 								>
-									{this.props.labels?.title}
+									{this.props.labels.title}
 								</span>
 							</div>
 						</figcaption>
