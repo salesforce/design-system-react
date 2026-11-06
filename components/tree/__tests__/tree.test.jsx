@@ -1277,4 +1277,24 @@ describe('Tree: required `onSelect`', () => {
 
 		consoleError.mockRestore();
 	});
+
+	describe('Leaf keys', () => {
+		it('keeps nested leaf DOM nodes across renders', () => {
+			const { rerender, nodes, getNode } = renderTree();
+			const apple = getNode('apple');
+
+			rerender(
+				<Tree
+					labels={{ heading: 'Foods' }}
+					id="tree"
+					nodes={nodes}
+					selectedIds={['grains']}
+					defaultExpandedIds={['fruits']}
+				/>
+			);
+
+			// Keyed by `node.id`, so the leaf is updated in place, not remounted
+			expect(getNode('apple')).toBe(apple);
+		});
+	});
 });
