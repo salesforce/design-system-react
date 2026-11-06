@@ -87,12 +87,23 @@ class EditDialog extends React.Component<EditDialogProps, EditDialogState> {
 
 	state: EditDialogState = { isOpen: false };
 
-	handleOpen = () => {
+	// A consumer's `onOpen`/`onClose`/`onRequestClose` (passed through to Popover) run alongside
+	// these instead of replacing them.
+	handleOpen = (...args: Parameters<NonNullable<PopoverProps['onOpen']>>) => {
 		this.setState({ isOpen: true });
+		(this.props.onOpen as PopoverProps['onOpen'])?.(...args);
 	};
 
-	handleClose = () => {
+	handleClose = (...args: Parameters<NonNullable<PopoverProps['onClose']>>) => {
 		this.setState({ isOpen: false });
+		(this.props.onClose as PopoverProps['onClose'])?.(...args);
+	};
+
+	handleRequestClose = (
+		...args: Parameters<NonNullable<PopoverProps['onRequestClose']>>
+	) => {
+		this.setState({ isOpen: false });
+		(this.props.onRequestClose as PopoverProps['onRequestClose'])?.(...args);
 	};
 
 	render() {
@@ -137,10 +148,10 @@ class EditDialog extends React.Component<EditDialogProps, EditDialogState> {
 					</div>
 				}
 				styleFooter={{ borderTop: '0px' }}
-				onClose={this.handleClose}
-				onRequestClose={this.handleClose}
-				onOpen={this.handleOpen}
 				{...(restProps as unknown as PopoverProps)}
+				onClose={this.handleClose}
+				onRequestClose={this.handleRequestClose}
+				onOpen={this.handleOpen}
 			>
 				{children}
 			</Popover>
