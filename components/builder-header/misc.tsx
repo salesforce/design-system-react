@@ -19,7 +19,9 @@ export interface BuilderHeaderMiscProps {
 /**
  * The miscellaneous section of the header.
  */
-const BuilderHeaderMisc = (props: BuilderHeaderMiscProps): React.ReactElement => (
+const BuilderHeaderMisc = (
+	props: BuilderHeaderMiscProps
+): React.ReactElement => (
 	<div className="slds-builder-header__item" style={{ width: '100%' }}>
 		<div className="slds-builder-header__item-label">{props.children}</div>
 	</div>
