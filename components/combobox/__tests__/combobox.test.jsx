@@ -599,6 +599,47 @@ describe('SLDSCombobox', () => {
 		});
 	});
 
+	describe('disabled', () => {
+		it.each([
+			['base', {}],
+			['base multiple', { multiple: true }],
+			['inline-listbox', { variant: 'inline-listbox' }],
+			[
+				'inline-listbox multiple',
+				{ variant: 'inline-listbox', multiple: true },
+			],
+			['readonly', { variant: 'readonly' }],
+			['readonly multiple', { variant: 'readonly', multiple: true }],
+		])('%s: disables the input and keeps the menu closed', (name, props) => {
+			const { container } = render(
+				<DemoComponent {...props} disabled isOpen options={accounts} />
+			);
+			const nodes = getNodes(container);
+			expect(nodes.input).toBeDisabled();
+			expect(nodes.menuListbox).not.toBeInTheDocument();
+		});
+
+		it('still honors the deprecated singleInputDisabled and warns once', async () => {
+			vi.resetModules();
+			const { default: checkProps } = await import('../check-props');
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			checkProps('SLDSCombobox', { singleInputDisabled: true }, {});
+			checkProps('SLDSCombobox', { singleInputDisabled: true }, {});
+			const warnings = consoleError.mock.calls.filter(([message]) =>
+				String(message).includes('`singleInputDisabled`')
+			);
+			expect(warnings).toHaveLength(1);
+			consoleError.mockRestore();
+
+			const { container } = render(
+				<DemoComponent singleInputDisabled variant="readonly" />
+			);
+			expect(getNodes(container).input).toBeDisabled();
+		});
+	});
+
 	describe('Dialog variant', () => {
 		it('popover opens when down arrow is pressed', () => {
 			const { container } = render(
