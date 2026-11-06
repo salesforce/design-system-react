@@ -23,17 +23,13 @@ interface VisualPickerOptionProps {
 	vertical?: boolean;
 }
 
-/**
- * Props for the VisualPicker component
- */
-export interface VisualPickerProps {
+interface VisualPickerOptionsProps {
 	/**
-	 * `Checkbox` or `Radio` elements (or `VisualPickerLink` elements with `links`). Each option gets
-	 * `variant: 'visual-picker'`, a shared `name`, and the picker's `coverable`, `size` and `vertical`,
-	 * unless the option sets them itself.
+	 * `Checkbox` or `Radio` elements. Each option gets `variant: 'visual-picker'`, a shared `name`,
+	 * and the picker's `coverable`, `size` and `vertical`, unless the option sets them itself.
 	 */
-	children?: ChildrenOf<CheckboxProps | RadioProps | VisualPickerLinkProps>;
-	/** CSS classes */
+	children?: ChildrenOf<CheckboxProps | RadioProps>;
+	/** CSS classes for the `fieldset` */
 	className?: string | string[] | Record<string, boolean>;
 	/** Whether items are coverable on selection */
 	coverable?: boolean;
@@ -42,7 +38,7 @@ export interface VisualPickerProps {
 	/** Label for the visual picker */
 	label?: string;
 	/** Whether the picker has links as children */
-	links?: boolean;
+	links?: false;
 	/** Size of the picker */
 	size?: VisualPickerSize;
 	/** Whether layout is vertical */
@@ -50,18 +46,43 @@ export interface VisualPickerProps {
 }
 
 /**
+ * A picker of `VisualPickerLink` elements. It renders a bare container with no
+ * `fieldset`, legend, `id` or class, so none of the options props apply.
+ */
+interface VisualPickerLinksProps {
+	/** `VisualPickerLink` elements */
+	children?: ChildrenOf<VisualPickerLinkProps>;
+	/** Whether the picker has links as children */
+	links: true;
+	className?: never;
+	coverable?: never;
+	id?: never;
+	label?: never;
+	size?: never;
+	vertical?: never;
+}
+
+/**
+ * Props for the VisualPicker component: a union on `links`, because the links
+ * picker renders a different, bare container.
+ */
+export type VisualPickerProps =
+	VisualPickerOptionsProps | VisualPickerLinksProps;
+
+/**
  * Visual Picker allows users to select an option from a set of visual choices.
  */
-const VisualPicker = ({
-	children,
-	className,
-	coverable,
-	id: propId,
-	label,
-	links = false,
-	size = 'medium',
-	vertical = false,
-}: VisualPickerProps): React.ReactElement => {
+const VisualPicker = (props: VisualPickerProps): React.ReactElement => {
+	const {
+		children,
+		className,
+		coverable,
+		id: propId,
+		label,
+		links = false,
+		size = 'medium',
+		vertical,
+	} = props as VisualPickerOptionsProps & { links?: boolean };
 	const generatedId = useId();
 	const id = propId || generatedId;
 
@@ -96,7 +117,7 @@ const VisualPicker = ({
 			variant: optionProps.variant ?? 'visual-picker',
 			name: optionProps.name ?? `${id}_options`,
 			size: optionProps.size ?? size,
-			vertical: optionProps.vertical ?? !!vertical,
+			vertical: optionProps.vertical ?? vertical,
 		});
 	};
 
@@ -105,10 +126,7 @@ const VisualPicker = ({
 	);
 
 	return (
-		<fieldset
-			id={id}
-			className={classNames('slds-form-element', className as string)}
-		>
+		<fieldset id={id} className={classNames('slds-form-element', className)}>
 			<legend className="slds-form-element__legend slds-form-element__label">
 				{label}
 			</legend>
