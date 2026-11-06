@@ -21,13 +21,15 @@ class Example extends React.Component {
 		};
 	}
 
-	onChange = (inputName) => (event, { value }) => {
-		if (inputName === 'first-name') {
-			this.setState({ firstName: value });
-		} else {
-			this.setState({ lastName: value });
-		}
-	};
+	onChange =
+		(inputName) =>
+		(event, { value }) => {
+			if (inputName === 'first-name') {
+				this.setState({ firstName: value });
+			} else {
+				this.setState({ lastName: value });
+			}
+		};
 
 	handleClose = (event, data) => {
 		if (this.props.log) {
