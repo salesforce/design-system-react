@@ -165,8 +165,6 @@ export interface SimpleDataTableBaseProps {
 	) => void;
 	/** Callback when infinite loading loads more data */
 	onLoadMore?: () => void;
-	/** @deprecated Use `onRowChange(event, { selection })` instead. */
-	onChange?: (selection: SimpleDataTableItem[], event: SyntheticEvent) => void;
 	/** Callback when the table should be sorted */
 	onSort?: (data: SimpleDataTableSortData, event: SyntheticEvent) => void;
 	/**
@@ -197,18 +195,6 @@ export interface SimpleDataTableBaseProps {
 	unbufferedCell?: boolean;
 	/** Search term for highlighting */
 	search?: string;
-	/** @deprecated Use assistiveText.actionsHeader */
-	assistiveTextForActionsHeader?: string;
-	/** @deprecated Use assistiveText.selectAllRows */
-	assistiveTextForSelectAllRows?: string;
-	/** @deprecated Use assistiveText.columnSortedAscending */
-	assistiveTextForColumnSortedAscending?: string;
-	/** @deprecated Use assistiveText.columnSortedDescending */
-	assistiveTextForColumnSortedDescending?: string;
-	/** @deprecated Use assistiveText.columnSort */
-	assistiveTextForColumnSort?: string;
-	/** @deprecated Use assistiveText.selectRow */
-	assistiveTextForSelectRow?: string;
 }
 
 export type SimpleDataTableProps = SimpleDataTableBaseProps &
@@ -377,12 +363,6 @@ export interface SimpleDataTableHeaderCellProps {
 	sortable?: boolean;
 	sortDirection?: 'desc' | 'asc';
 	width?: string;
-	/** @deprecated */
-	assistiveTextForColumnSort?: string;
-	/** @deprecated */
-	assistiveTextForColumnSortedAscending?: string;
-	/** @deprecated */
-	assistiveTextForColumnSortedDescending?: string;
 }
 
 // ============================================================================

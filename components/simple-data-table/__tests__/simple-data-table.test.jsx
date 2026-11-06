@@ -248,12 +248,55 @@ describe('SimpleDataTable', () => {
 	});
 
 	describe('Assistive text', () => {
-		it('maps the deprecated assistiveTextFor* props to their own keys', () => {
+		it('ignores and warns about the removed assistiveTextFor* props', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
 			const { container } = renderTable(
 				<SimpleDataTable
 					{...defaultProps}
 					assistiveTextForSelectAllRows="Custom select all"
 					assistiveTextForColumnSort="Custom sort by:"
+					fixedLayout
+					onSort={() => {}}
+				>
+					{columns.map((columnProps) => (
+						<SimpleDataTableColumn
+							{...columnProps}
+							assistiveTextForColumnSort="Column sort by:"
+							key={columnProps.property}
+						/>
+					))}
+				</SimpleDataTable>
+			);
+
+			const thead = getTable(container).querySelector('thead');
+			expect(
+				thead.querySelector('[id$="-column-group-header-row-select"]')
+					.textContent
+			).toBe('Select all rows');
+			expect(
+				thead.querySelector('th.slds-is-sortable a .slds-assistive-text')
+					.textContent
+			).toBe('Sort by:  ');
+			['assistiveTextForSelectAllRows', 'assistiveTextForColumnSort'].forEach(
+				(prop) => {
+					expect(consoleError).toHaveBeenCalledWith(
+						expect.stringContaining(`\`${prop}\` has reached End-of-Life`)
+					);
+				}
+			);
+			consoleError.mockRestore();
+		});
+
+		it('reads the labels from assistiveText', () => {
+			const { container } = renderTable(
+				<SimpleDataTable
+					{...defaultProps}
+					assistiveText={{
+						columnSort: 'Custom sort by:',
+						selectAllRows: 'Custom select all',
+					}}
 					fixedLayout
 					onSort={() => {}}
 				>
@@ -1542,7 +1585,7 @@ describe('SimpleDataTable', () => {
 			expect(getRowInput(container, 2)).not.toBeChecked();
 		});
 
-		it('still calls the deprecated onChange(selection, event), and warns', async () => {
+		it('ignores and warns about the removed onChange(selection, event)', async () => {
 			const consoleError = vi
 				.spyOn(console, 'error')
 				.mockImplementation(() => {});
@@ -1562,19 +1605,12 @@ describe('SimpleDataTable', () => {
 			const user = userEvent.setup();
 			await user.click(getRowInput(container, 3));
 
-			expect(onChange).toHaveBeenCalledTimes(1);
-			expect(onChange.mock.calls[0][0]).toEqual([items[2]]);
-			expect(onChange.mock.calls[0][1]).toHaveProperty('target');
+			expect(onChange).not.toHaveBeenCalled();
 			expect(onRowChange).toHaveBeenCalledTimes(1);
 			expect(onRowChange.mock.calls[0][1].selection).toEqual([items[2]]);
-			expect(
-				consoleError.mock.calls.some((args) => {
-					const message = args.join(' ');
-					return (
-						message.includes('`onChange`') && message.includes('`onRowChange`')
-					);
-				})
-			).toBe(true);
+			expect(consoleError).toHaveBeenCalledWith(
+				expect.stringContaining('`onChange` has reached End-of-Life')
+			);
 			consoleError.mockRestore();
 		});
 	});
@@ -1736,21 +1772,12 @@ describe('SimpleDataTable: required `onRowChange`', () => {
 		// Without `selectRows` there is nothing to select
 		render(<FreshSimpleDataTable id="a" items={items} />);
 		expect(requiredWarnings()).toHaveLength(0);
-		// The deprecated `onChange` still fires, so it counts
+		// The removed `onChange` no longer counts
 		render(
 			<FreshSimpleDataTable
 				id="b"
 				items={items}
 				onChange={() => {}}
-				selectRows="checkbox"
-				selection={[]}
-			/>
-		);
-		expect(requiredWarnings()).toHaveLength(0);
-		render(
-			<FreshSimpleDataTable
-				id="c"
-				items={items}
 				selectRows="checkbox"
 				selection={[]}
 			/>
