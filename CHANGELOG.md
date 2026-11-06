@@ -120,6 +120,29 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `VerticalNavigation`: `assistiveText.label` names the `nav` landmark
 - `SplitView` listbox: `sortDirection` is `'ascending' | 'descending'`; `'up'` and `'down'` still work and warn once
 - `VisualPicker`: `labels.label` is the legend and `assistiveText.label` is a visually hidden one; `label` is deprecated. `VisualPickerLink` takes `headingLevel`
+- `Breadcrumb`: `style` and `className` land on the root `nav`; `styleContainer` is deprecated
+- `Button`: `ref` is the one ref API, to the `<button>`; `buttonRef` is deprecated
+- **BREAKING**: `BuilderHeader` renders `className` and `style` on the real root instead of a hard-coded wrapper. Update selectors that relied on the wrapper
+- `Card`: `classNameBody` replaces `bodyClassName`, which is deprecated
+- `ColorPicker`: the consumer `id` renders on the root element
+- **BREAKING**: `Combobox` `className` lands on the root `.slds-form-element`; use `classNameCombobox` for the inner `.slds-combobox`. `classNameContainer` is deprecated, and `ref` now reaches a DOM element
+- **BREAKING**: `DatePicker` `className` lands on the root instead of the calendar dialog; use `classNameMenu` for the dialog and `classNameTrigger` (replaces `triggerClassName`) for the trigger. `ref` is forwarded to the root
+- `Checkbox`: `className` applies to the root of every variant
+- **BREAKING**: `Input` `ref` points at the `<input>` instead of the wrapper div. `style` replaces `styleContainer`, `ref` replaces `inputRef` (both deprecated), and `classNameInput` is new. `Search` forwards `ref` to its input
+- `MenuDropdown`: `ref` is forwarded to the trigger button; `requestFocus` is deprecated
+- `Pill`: `ref` is the root element instead of an imperative handle
+- **BREAKING**: `PillContainer` renders the `id` you pass on the root listbox, not `id-listbox-of-pill-options`. Update selectors and aria references that used the suffixed id
+- **BREAKING**: `ProgressBar` `className` lands on the root; use the new `classNameBar` for the `role="progressbar"` element
+- `Radio`: `ref` points at the `<input>`; `refs.input` is deprecated
+- **BREAKING**: `RadioGroup` `className` lands on the fieldset; the control div's class moves to `classNameControl`
+- **BREAKING**: `SetupAssistant` `id` and `className` land on the real root in each mode
+- **BREAKING**: `SimpleDataTable` `className` lands on the outermost element; use `classNameTable` for the `<table>`
+- `Toast`: `ref` is forwarded to the root and `ToastContainer` `className` is typed as a string
+- `Tooltip`: `classNameTrigger`, `styleTrigger` and `classNameDialog` replace `triggerClassName`, `triggerStyle` and `dialogClassName`, which are deprecated
+- `TrialBarButton` merges the consumer `className` and `style` instead of overriding them
+- `Tabs`: `ref` is forwarded to the root `div`
+- `VisualPicker`: `ref` is forwarded to the `fieldset`
+- `WelcomeMat` `InfoBadge`: `className` is typed like other components and merged into the root class
 
 ### Deprecated
 

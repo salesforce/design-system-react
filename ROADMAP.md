@@ -171,6 +171,16 @@ moves to `latest`.
    **Cut (2026-11-08 scope cut):** the simple-data-table `selectionMode`, toast `autoCloseDelay`
    and tabs `errorIcon` renames (each would add a deprecated twin), and dropping tooltip's default
    `content`.
+   **Done (root-and-refs):** `className`, `style` and `ref` land on the root, parts use `className*`,
+   and the old names warn once: breadcrumb (`style`), button (`ref`), builder-header, card
+   (`classNameBody`), color-picker `id`, combobox (`classNameCombobox`), date-picker
+   (`classNameMenu`, `classNameTrigger`), checkbox, input (`style`, `classNameInput`, `ref` on the
+   input, Search `ref`), menu-dropdown `ref`, pill `ref`, pill-container `id`, progress-bar
+   (`classNameBar`), radio `ref`, radio-group (`classNameControl`), setup-assistant,
+   simple-data-table (`classNameTable`), toast, tooltip (`classNameTrigger`, `styleTrigger`,
+   `classNameDialog`), trial-bar button merge, tabs `ref`, visual-picker `ref`, welcome-mat
+   info-badge. Breaking: builder-header, combobox, date-picker, input, pill-container,
+   progress-bar, radio-group, setup-assistant, simple-data-table.
 7. **Typing the contract.** Discriminated unions (tree nodes, welcome-mat variants, combobox,
    menu-dropdown and color-picker variants/options), no index signatures
    (vertical-navigation, split-view), textarea `maxLength` as a number.
@@ -684,7 +694,7 @@ complete`) and `THEME_OPTIONS` is a second public surface; `icon` is only honore
 - [ ] `scoped-notification` — `icon` is a `ReactElement` that gets `cloneElement`ed to merge
       `assistiveText` (`:71`): render an icon node, or take `iconName`/`iconCategory` and
       build it; the deprecated `iconName` is still live (`:83`), remove or keep; `theme:
-  **Done (slots):** the `assistiveText`merge onto the`icon` element is the documented contract.
+**Done (slots):** the `assistiveText`merge onto the`icon` element is the documented contract.
 'dark' | 'light'` has an implicit third state (no default).
       **Re-scoped by the child-contract rule:** children here are library components, so the `cloneElement`/child-props contract is allowed. Keep the other findings. Child contract done (theme 3): children are typed, injected props are internal, and no child is matched by `displayName`.
       **Partly done:** `iconName` is kept but deprecated with a warning; `icon` is typed
