@@ -6,7 +6,11 @@ import { describe, it, expect, vi } from 'vitest';
 import IconSettings from '../../icon-settings';
 import DockedComposer from '../index';
 
-const DemoComponent = ({ onRequestMinimize, onRequestExpand, onRequestClose }) => {
+const DemoComponent = ({
+	onRequestMinimize,
+	onRequestExpand,
+	onRequestClose,
+}) => {
 	const [isOpen, setIsOpen] = useState(true);
 	const [isClosed, setIsClosed] = useState(false);
 
@@ -54,7 +58,9 @@ describe('SLDSDockedComposer', () => {
 
 	it('calls onRequestMinimize when minimize button clicked', async () => {
 		const onRequestMinimize = vi.fn();
-		const { container } = render(<DemoComponent onRequestMinimize={onRequestMinimize} />);
+		const { container } = render(
+			<DemoComponent onRequestMinimize={onRequestMinimize} />
+		);
 
 		// Find and click minimize button
 		const minimizeButton = container.querySelector('button[title*="Minimize"]');
@@ -66,7 +72,9 @@ describe('SLDSDockedComposer', () => {
 
 	it('calls onRequestClose when close button clicked', async () => {
 		const onRequestClose = vi.fn();
-		const { container } = render(<DemoComponent onRequestClose={onRequestClose} />);
+		const { container } = render(
+			<DemoComponent onRequestClose={onRequestClose} />
+		);
 
 		// Find and click close button
 		const closeButton = container.querySelector('button[title*="Close"]');
