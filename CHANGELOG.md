@@ -47,6 +47,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `trigger` prop on `Tooltip` and `MenuDropdown`. Pass an element, which the component merges its trigger props into, or a function that receives them (`TooltipTriggerProps`, `MenuDropdownTriggerProps`) for full control. With an element, your props win, event handlers are composed (yours runs first), and `className`, `aria-describedby` and `aria-labelledby` are joined. For `MenuDropdown`, a `Button` element takes the dropdown's button props as defaults
 - `Filter` `errorLabel` is declared in the types. `PanelFilterList` already read it
 - `Popover` `openOn="none"`: the first child is only an anchor the popover points at, such as a walkthrough step's target, and the parent opens and closes it through `isOpen`. Popover adds no `id`, `aria-haspopup`, `tabIndex` or handlers to it
+- `WelcomeMatInfoBadge` `assistiveText.image`, alt text for the badge image (default `''`, decorative)
 
 ### Changed
 
@@ -96,6 +97,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - **BREAKING**: `Tooltip` and `MenuDropdown` merge their trigger props into the trigger instead of overwriting them, including for the deprecated `children` trigger. The trigger's own `onBlur`, `onFocus`, `onKeyDown` and `onMouseEnter`/`onMouseLeave` now run, before the component's; its `aria-describedby` is joined with `Tooltip`'s; and its `className` is joined with `MenuDropdown`'s (which keeps the dropdown's `ignore-click-*` class on a `Button` trigger). `Popover` still takes the element it attaches to as `children`, which need not be a button
 - **BREAKING**: `Combobox` `popover`, `input` and `tooltipMenuItemDisabled` props win over the combobox's defaults. `input`'s `onChange` is called with `(event, { value })` alongside the combobox's handler, and `popover`'s `children` are replaced with the combobox input
 - `TrialBarDropdown` passes its `children` to the menu as custom content instead of dropping them
+- **BREAKING**: `Checkbox`: Enter no longer toggles the box and `onChange` is never called with a `KeyboardEvent` (Space still toggles through the native click). `readOnly` is applied: it sets `aria-readonly`, keeps the box focusable and blocks `onChange`. Handlers that relied on Enter should listen to `onKeyDown`
+- **BREAKING**: `VerticalNavigation` items without `url` render `<button type="button" class="slds-button_reset slds-nav-vertical__action">` instead of `<a href="#">`, and `NavigationItem.url` is optional. `onSelect`'s event is typed `MouseEvent<HTMLAnchorElement | HTMLButtonElement>`; widen handlers annotated with an anchor event, and update selectors that target `a.slds-nav-vertical__action`
+- **BREAKING**: `VisualPickerLink` `href` is required (and warns once when missing); without it the `<a>` was not a link. Use a `Checkbox` or `Radio` visual picker for options that do not navigate
+- `SimpleDataTable`: `fixedLayout` no longer adds the vestigial `slds-table_resizable-cols` class. `role="grid"` and `role="gridcell"` are set only with both `fixedLayout` and `keyboardNavigation`, when arrow-key cell navigation runs. Fixed headers follow the scroller and table size through a `ResizeObserver` instead of a `window` resize listener
+- `ProgressIndicator`: a step `id` of `0` is used in DOM ids instead of falling back to the step index, so the ids of such steps change
 
 ### Deprecated
 
@@ -129,6 +135,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - `Popover` `contentsClassName` (use `classNameDialog`), `triggerClassName` (use `className`), `footerClassName` (use `classNameFooter`) and `footerStyle` (use `styleFooter`)
 - Passing a trigger as `children` to `Tooltip`, or a `DropdownTrigger` child to `MenuDropdown` (use `trigger`). Both keep working and log a one-time warning
 - `TabChildProps` (use `TabsPanelProps`) and `FileChildProps` (use `FileProps`)
+- `Combobox` `singleInputDisabled` (use `disabled`, which now disables the input in every variant)
+- `SimpleDataTable` `onFixedHeaderResize` and `onToggleFixedHeaderListeners`, which only existed to replace the `window` resize listener. They are still called and warn once
 
 ### Fixed
 
@@ -166,6 +174,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `RadioGroup`: a `Radio`'s own `name` is kept, and its `aria-describedby` is joined with the group's error id instead of replaced; `VisualPicker` keeps a child's `name`
 - `MenuDropdown`: custom (non-`List`) content no longer remounts on every render
 - `Tooltip`: the trigger keeps its own event handlers and `aria-describedby`, and passing several children no longer throws
+- `ButtonStateful`: no longer blurs itself on mouse leave or blur, so focus stays on the button and the next Tab continues from it; `onBlur` is never called with a `MouseEvent`, and `onMouseDown` is called in the text variants too
+- `Combobox`: `disabled` disables the input, not just the menu
+- `DatePicker`: an `input` prop with its own `onChange` or `inputRef` no longer replaces the picker's, which broke typing a date and focus on close; both run, the consumer's first
+- `DockedComposer`: an open composer focuses its `role="dialog"` section when it mounts or the parent opens it, and returns focus when it unmounts; a minimized one leaves focus alone. Minimizing or expanding moves focus to the button that replaced the clicked one instead of dropping it to `<body>`, and `aria-describedby` is only set while the body is rendered
+- `Filter`: `isError` sets `aria-describedby` only when the `${id}-error` element is rendered (inside a `PanelFilterList` with `errorLabel`)
+- `PageHeader`: a `title` of `0` is rendered
+- `Pill`: the link variant no longer wraps its `<a>` in a `role="button"` span
+- `Popover`: the trigger's own `onFocus`, `onMouseDown`, `onMouseEnter` and `onMouseLeave` run alongside the popover's instead of being replaced
+- `PopoverEditDialog`: a consumer `onOpen`, `onClose` or `onRequestClose` no longer replaces the dialog's own handlers, so it still opens and closes
+- `Tree`: leaf items are keyed by `node.id`, so they no longer remount on every render
+- `WelcomeMatInfoBadge`: the check icon (and its "Completed" text) renders only when `isComplete`
 
 ### Removed
 
