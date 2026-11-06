@@ -1,7 +1,13 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { useId, type ReactNode, type MouseEvent } from 'react';
+import React, {
+	useEffect,
+	useId,
+	useRef,
+	type ReactNode,
+	type MouseEvent,
+} from 'react';
 import Button from '../button';
 
 /**
@@ -73,6 +79,41 @@ const DockedComposer = ({
 
 	const sectionClassName = isOpen ? 'slds-is-open' : 'slds-is-closed';
 
+	// The minimize and expand buttons replace each other, so the clicked one unmounts and focus
+	// would fall to <body>. When the parent accepts the request, move focus to the button that
+	// took its place.
+	const toggleButtonRef = useRef<HTMLButtonElement | null>(null);
+	const shouldFocusToggleRef = useRef(false);
+	const setToggleButtonRef = (node: HTMLButtonElement | null) => {
+		toggleButtonRef.current = node;
+	};
+
+	// Runs after every render: if the click's render flipped `isOpen`, focus the new button.
+	const previousIsOpenRef = useRef(isOpen);
+	useEffect(() => {
+		if (
+			shouldFocusToggleRef.current &&
+			previousIsOpenRef.current !== isOpen &&
+			toggleButtonRef.current
+		) {
+			toggleButtonRef.current.focus();
+		}
+		previousIsOpenRef.current = isOpen;
+		shouldFocusToggleRef.current = false;
+	});
+
+	const handleToggle =
+		(handler?: (event: MouseEvent<HTMLButtonElement>) => void) =>
+		(event: MouseEvent<HTMLButtonElement>) => {
+			shouldFocusToggleRef.current = true;
+			handler?.(event);
+			// A click's effects run before this timeout. If the parent rejected the request there was
+			// no render, so clear the flag here; a later, unrelated `isOpen` change must not take focus.
+			setTimeout(() => {
+				shouldFocusToggleRef.current = false;
+			});
+		};
+
 	return (
 		<div
 			id={`${id}-container`}
@@ -82,7 +123,7 @@ const DockedComposer = ({
 				className={`slds-docked-composer slds-grid slds-grid_vertical ${sectionClassName}`}
 				role="dialog"
 				aria-labelledby={`${id}-dialog-heading`}
-				aria-describedby={`${id}-body`}
+				aria-describedby={isOpen ? `${id}-body` : undefined}
 			>
 				<header
 					className="slds-docked-composer__header slds-grid slds-shrink-none"
@@ -105,7 +146,8 @@ const DockedComposer = ({
 								id={`${id}-minimize-button`}
 								title={assistiveText.minimizeButton}
 								assistiveText={{ icon: assistiveText.minimizeButton }}
-								onClick={events.onRequestMinimize}
+								buttonRef={setToggleButtonRef}
+								onClick={handleToggle(events.onRequestMinimize)}
 								iconCategory="utility"
 								iconName="minimize_window"
 								iconVariant="bare"
@@ -116,7 +158,8 @@ const DockedComposer = ({
 								id={`${id}-expand-button`}
 								title={assistiveText.expandButton}
 								assistiveText={{ icon: assistiveText.expandButton }}
-								onClick={events.onRequestExpand}
+								buttonRef={setToggleButtonRef}
+								onClick={handleToggle(events.onRequestExpand)}
 								iconCategory="utility"
 								iconName="expand_alt"
 								iconVariant="bare"

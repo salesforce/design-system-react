@@ -99,3 +99,50 @@ describe('SLDSDockedComposer', () => {
 		expect(container.firstChild).toBeInTheDocument();
 	});
 });
+
+describe('DockedComposer focus and ARIA', () => {
+	it('moves focus to the button that replaces the clicked minimize/expand button', async () => {
+		const user = userEvent.setup();
+		render(<DemoComponent />);
+
+		await user.click(screen.getByRole('button', { name: 'Minimize' }));
+		expect(screen.getByRole('button', { name: 'Expand' })).toHaveFocus();
+
+		await user.click(screen.getByRole('button', { name: 'Expand' }));
+		expect(screen.getByRole('button', { name: 'Minimize' })).toHaveFocus();
+	});
+
+	it('does not move focus on mount or when isOpen changes without a click', () => {
+		const { rerender } = render(
+			<IconSettings iconPath="/assets/icons">
+				<DockedComposer header="Header" isOpen />
+			</IconSettings>
+		);
+		expect(document.body).toHaveFocus();
+
+		rerender(
+			<IconSettings iconPath="/assets/icons">
+				<DockedComposer header="Header" isOpen={false} />
+			</IconSettings>
+		);
+		expect(document.body).toHaveFocus();
+	});
+
+	it('only points aria-describedby at the body while it is rendered', () => {
+		const { container, rerender } = render(
+			<IconSettings iconPath="/assets/icons">
+				<DockedComposer id="dc" header="Header" body="Body" isOpen />
+			</IconSettings>
+		);
+		const section = container.querySelector('section');
+		expect(section).toHaveAttribute('aria-describedby', 'dc-body');
+		expect(container.querySelector('#dc-body')).toBeInTheDocument();
+
+		rerender(
+			<IconSettings iconPath="/assets/icons">
+				<DockedComposer id="dc" header="Header" body="Body" isOpen={false} />
+			</IconSettings>
+		);
+		expect(section).not.toHaveAttribute('aria-describedby');
+	});
+});
