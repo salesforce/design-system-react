@@ -37,7 +37,7 @@ class Example extends React.Component {
 					<div className="slds-col_padded">
 						<DynamicIcon
 							isStatic
-							strengthLevel="-1"
+							strengthLevel={-1}
 							title="Strength icon title"
 							variant="strength"
 						/>
@@ -45,7 +45,7 @@ class Example extends React.Component {
 					<div className="slds-col_padded">
 						<DynamicIcon
 							isStatic
-							strengthLevel="-2"
+							strengthLevel={-2}
 							title="Strength icon title"
 							variant="strength"
 						/>
@@ -53,21 +53,21 @@ class Example extends React.Component {
 					<div className="slds-col_padded">
 						<DynamicIcon
 							isStatic
-							strengthLevel="-3"
+							strengthLevel={-3}
 							title="Strength icon title"
 							variant="strength"
 						/>
 					</div>
 					<div className="slds-col_padded">
 						<DynamicIcon
-							strengthLevel="3"
+							strengthLevel={3}
 							title="Strength icon title"
 							variant="strength"
 						/>
 					</div>
 					<div className="slds-col_padded">
 						<DynamicIcon
-							strengthLevel="-3"
+							strengthLevel={-3}
 							title="Strength icon title"
 							variant="strength"
 						/>
