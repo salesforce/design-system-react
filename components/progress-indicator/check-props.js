@@ -35,6 +35,20 @@ if (process.env.NODE_ENV !== 'production') {
 
 		deprecatedProperty(
 			COMPONENT,
+			props.deprecatedTooltipIsOpenSteps || undefined,
+			'tooltipIsOpenSteps',
+			'tooltip.isOpenSteps',
+			createDocUrl('tooltip')
+		);
+		deprecatedProperty(
+			COMPONENT,
+			props.deprecatedTooltipPosition,
+			'tooltipPosition',
+			'tooltip.position',
+			createDocUrl('tooltip')
+		);
+		deprecatedProperty(
+			COMPONENT,
 			props.hasDeprecatedSetupAssistantAction || undefined,
 			'steps[].onRenderSetupAssistantAction',
 			'steps[].setupAssistantAction',

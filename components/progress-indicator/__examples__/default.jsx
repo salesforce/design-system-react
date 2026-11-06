@@ -72,7 +72,7 @@ class Example extends React.Component {
 						onStepClick={this.handleStepEvent}
 						steps={this.state.steps}
 						selectedStep={this.state.selectedStep}
-						// tooltipIsOpenSteps={stepsBasic.slice(0, 2)}
+						// tooltip={{ isOpenSteps: stepsBasic.slice(0, 2) }}
 					/>
 				</div>
 			</IconSettings>

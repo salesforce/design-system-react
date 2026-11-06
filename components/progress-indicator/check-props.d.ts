@@ -15,6 +15,10 @@ export interface CheckedProps extends Pick<
 	/** Whether any step passes the deprecated `onRenderSetupAssistantAction` */
 	hasDeprecatedSetupAssistantAction: boolean;
 	tooltipIsOpenSteps: boolean;
+	/** Whether `tooltipIsOpenSteps` (deprecated) has items */
+	deprecatedTooltipIsOpenSteps: boolean;
+	/** The deprecated `tooltipPosition` */
+	deprecatedTooltipPosition: ProgressIndicatorProps['tooltipPosition'];
 }
 
 /**
