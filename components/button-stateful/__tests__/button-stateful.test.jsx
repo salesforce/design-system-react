@@ -194,6 +194,37 @@ describe('Button Stateful', () => {
 		});
 	});
 
+	describe('Mouse handlers', () => {
+		it.each([['icon'], ['text'], [undefined]])(
+			'calls onMouseDown for variant %s',
+			(variant) => {
+				const onMouseDown = vi.fn();
+				const { container } = render(
+					<IconSettings iconPath="/assets/icons">
+						<ButtonStateful
+							{...requiredPropsNoVariant}
+							variant={variant}
+							onMouseDown={onMouseDown}
+						/>
+					</IconSettings>
+				);
+				fireEvent.mouseDown(getButton(container));
+				expect(onMouseDown).toHaveBeenCalledTimes(1);
+			}
+		);
+
+		it('does not call onBlur on mouse leave', () => {
+			const onBlur = vi.fn();
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<ButtonStateful onBlur={onBlur} />
+				</IconSettings>
+			);
+			fireEvent.mouseLeave(getButton(container));
+			expect(onBlur).not.toHaveBeenCalled();
+		});
+	});
+
 	describe('Variant classes', () => {
 		const renderVariant = (variant) =>
 			getButton(

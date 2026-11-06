@@ -207,17 +207,6 @@ const ButtonStateful = ({
 		[className, variant, responsive]
 	);
 
-	const handleBlur = useCallback(
-		(e: FocusEvent<HTMLButtonElement> | MouseEvent<HTMLButtonElement>) => {
-			if (onBlur) onBlur(e as FocusEvent<HTMLButtonElement>);
-			// SLDS shows `slds-text-selected-focus` on `.slds-is-selected:focus`, so
-			// drop focus left behind by a mouse click. Keyboard focus is
-			// `:focus-visible` and stays put.
-			if (!e.currentTarget.matches(':focus-visible')) e.currentTarget.blur();
-		},
-		[onBlur]
-	);
-
 	const handleClick = useCallback(
 		(e: MouseEvent<HTMLButtonElement>) => {
 			onClick?.(e, { isActive: !isActive });
@@ -248,7 +237,7 @@ const ButtonStateful = ({
 				className={getClassName(isActive)}
 				disabled={disabled}
 				id={id}
-				onBlur={handleBlur}
+				onBlur={onBlur}
 				onClick={handleClick}
 				onFocus={onFocus}
 				onKeyDown={onKeyDown}
@@ -256,7 +245,6 @@ const ButtonStateful = ({
 				onKeyUp={onKeyUp}
 				onMouseDown={onMouseDown}
 				onMouseEnter={onMouseEnter}
-				onMouseLeave={handleBlur}
 				tabIndex={tabIndex ? parseInt(tabIndex, 10) : undefined}
 				type="button"
 			>
@@ -299,14 +287,14 @@ const ButtonStateful = ({
 			className={getClassName(isActive)}
 			disabled={disabled}
 			id={id}
-			onBlur={handleBlur}
+			onBlur={onBlur}
 			onClick={handleClick}
 			onFocus={onFocus}
 			onKeyDown={onKeyDown}
 			onKeyPress={onKeyPress}
 			onKeyUp={onKeyUp}
+			onMouseDown={onMouseDown}
 			onMouseEnter={onMouseEnter}
-			onMouseLeave={handleBlur}
 			tabIndex={tabIndex ? parseInt(tabIndex, 10) : undefined}
 			type="button"
 		>
