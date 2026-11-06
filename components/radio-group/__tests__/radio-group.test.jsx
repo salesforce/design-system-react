@@ -208,3 +208,24 @@ describe('RadioGroup: required `onChange`', () => {
 		consoleError.mockRestore();
 	});
 });
+
+describe('RadioGroup className', () => {
+	it('lands className on the fieldset and classNameControl on the control', () => {
+		const { container } = render(
+			<RadioGroup
+				className="on-root"
+				classNameControl="on-control"
+				labels={{ label: 'L' }}
+				name="g"
+				onChange={() => {}}
+				value=""
+			>
+				<Radio id="a" labels={{ label: 'A' }} value="a" />
+			</RadioGroup>
+		);
+		expect(container.querySelector('fieldset')).toHaveClass('on-root');
+		expect(container.querySelector('.slds-form-element__control')).toHaveClass(
+			'on-control'
+		);
+	});
+});

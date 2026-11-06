@@ -96,8 +96,10 @@ interface RadioGroupBaseProps {
 	 * is joined with the group's error id.
 	 */
 	children: ChildrenOf<RadioGroupItemProps>;
-	/** CSS classes */
+	/** CSS classes for the root `fieldset` */
 	className?: string | string[] | Record<string, boolean>;
+	/** CSS classes for the `.slds-form-element__control` element */
+	classNameControl?: string | string[] | Record<string, boolean>;
 	/** Disable all radio inputs */
 	disabled?: boolean;
 	/** @deprecated The error id is derived. */
@@ -145,6 +147,7 @@ const RadioGroup = ({
 	assistiveText: propAssistiveText,
 	children,
 	className,
+	classNameControl,
 	disabled,
 	errorId: propErrorId,
 	hasError: propHasError,
@@ -211,9 +214,13 @@ const RadioGroup = ({
 
 	return (
 		<fieldset
-			className={classNames('slds-form-element', {
-				'slds-has-error': hasError,
-			})}
+			className={classNames(
+				'slds-form-element',
+				{
+					'slds-has-error': hasError,
+				},
+				className as string
+			)}
 		>
 			<legend
 				className={classNames(
@@ -233,7 +240,7 @@ const RadioGroup = ({
 			<div
 				className={classNames(
 					'slds-form-element__control',
-					className as string
+					classNameControl as string
 				)}
 			>
 				{variant === 'button-group' ? (
