@@ -30,9 +30,11 @@ export interface WelcomeMatInfoBadgeProps {
 	/**
 	 *  **Assistive text for accessibility.**
 	 * * `completed` : For users of assistive technology, assistive text for completed icon.
+	 * * `image` : Alt text for the badge `image`. Defaults to `''` (decorative).
 	 */
 	assistiveText?: {
 		completed?: string;
+		image?: string;
 	};
 	/**
 	 * Content rendered inside the badge container.
@@ -112,15 +114,17 @@ class InfoBadge extends React.Component<WelcomeMatInfoBadgeProps> {
 						src={this.props.image}
 						width="50"
 						height="50"
-						alt=""
+						alt={this.props.assistiveText?.image ?? ''}
 					/>
-					<Icon
-						category="action"
-						name="check"
-						assistiveText={{ label: this.getCompletedText() }}
-						containerStyle={completeCheckStyle}
-						size="xx-small"
-					/>
+					{this.props.isComplete ? (
+						<Icon
+							category="action"
+							name="check"
+							assistiveText={{ label: this.getCompletedText() }}
+							containerStyle={completeCheckStyle}
+							size="xx-small"
+						/>
+					) : null}
 				</div>
 				{this.props.children}
 				{this.props.isComplete
