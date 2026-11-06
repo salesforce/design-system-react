@@ -248,3 +248,57 @@ describe('Radio control model', () => {
 		consoleError.mockRestore();
 	});
 });
+
+describe('Radio: deprecated requestFocus props', () => {
+	it('still calls onRequestFocus with the input, and warns', () => {
+		const consoleError = vi
+			.spyOn(console, 'error')
+			.mockImplementation(() => {});
+		const onRequestFocus = vi.fn();
+		const { container } = render(
+			<Radio
+				id="radio-request-focus"
+				labels={{ label: 'Option' }}
+				checked={false}
+				onChange={() => {}}
+				onRequestFocus={onRequestFocus}
+				requestFocus
+			/>
+		);
+
+		const input = container.querySelector('input');
+		expect(onRequestFocus).toHaveBeenCalledWith(input);
+		expect(input).not.toHaveAttribute('requestFocus');
+		expect(consoleError).toHaveBeenCalledWith(
+			expect.stringContaining(
+				'`requestFocus` will be removed in the next major version'
+			)
+		);
+		expect(consoleError).toHaveBeenCalledWith(
+			expect.stringContaining(
+				'`onRequestFocus` will be removed in the next major version'
+			)
+		);
+		consoleError.mockRestore();
+	});
+
+	it('passes the input to refs.input so it can be focused', () => {
+		let input;
+		render(
+			<Radio
+				id="radio-refs"
+				labels={{ label: 'Option' }}
+				checked={false}
+				onChange={() => {}}
+				refs={{
+					input: (node) => {
+						input = node;
+					},
+				}}
+			/>
+		);
+
+		input.focus();
+		expect(document.activeElement).toBe(input);
+	});
+});
