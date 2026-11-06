@@ -15,7 +15,7 @@ export const deprecatedInline = <Spinner isInline />;
 export const deprecatedInput = <Spinner isInput />;
 
 export const unknownPlacement = (
-	// @ts-expect-error only `default`, `inline` and `input` exist
+	// @ts-expect-error only `container`, `inline` and `input` exist
 	<Spinner placement="floating" />
 );
 
