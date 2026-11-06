@@ -17,6 +17,7 @@ import React, {
 import SelectedListBox from './private/selected-listbox';
 import { PILL_CONTAINER } from '../../utilities/constants';
 import checkProps from './check-props';
+import type { IconCategory } from '../../types/common';
 import componentDoc from './component.json';
 
 /**
@@ -29,7 +30,7 @@ export interface PillOption {
 		| {
 				imgSrc?: string;
 				title?: string;
-				variant?: string;
+				variant?: 'user' | 'entity';
 		  };
 	/** Bare style */
 	bare?: boolean;
@@ -39,17 +40,16 @@ export interface PillOption {
 	icon?:
 		| ReactNode
 		| {
-				category?: string;
+				category?: IconCategory;
 				name?: string;
+				title?: string;
 		  };
-	/** Unique identifier */
-	id?: string;
+	/** Unique identifier, used as the React key */
+	id: string;
 	/** Display label */
 	label?: ReactNode | string;
 	/** Hover title */
 	title?: string;
-	/** Allow additional properties */
-	[key: string]: unknown;
 }
 
 /**
@@ -312,9 +312,9 @@ const PillContainer = ({
 	const handleRequestRemove = useCallback(
 		(
 			event: MouseEvent | KeyboardEvent | React.SyntheticEvent,
-			data: { index?: number; option: PillOption }
+			data: { index: number; option: PillOption }
 		) => {
-			if (onRequestRemovePill && data.index !== undefined) {
+			if (onRequestRemovePill) {
 				preserveFocusRef.current = true;
 				onRequestRemovePill(event as MouseEvent | KeyboardEvent, {
 					index: data.index,
