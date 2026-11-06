@@ -158,7 +158,9 @@ export interface PopoverProps {
 	align?: PopoverAlign;
 	/** Accessibility labels */
 	assistiveText?: PopoverAssistiveText;
-	/** HTML id of heading for aria-labelledby */
+	/** HTML id of the heading element that labels the dialog. Use instead of `heading`. */
+	'aria-labelledby'?: string;
+	/** @deprecated Use `aria-labelledby`. */
 	ariaLabelledby?: string;
 	/**
 	 * The element the popover attaches to (the first child), and optional other children rendered
@@ -308,7 +310,8 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>((props, ref) => {
 	const {
 		align = 'right',
 		assistiveText: propAssistiveText,
-		ariaLabelledby,
+		'aria-labelledby': ariaLabelledbyProp,
+		ariaLabelledby: deprecatedAriaLabelledby,
 		children,
 		body,
 		classNameBody,
@@ -361,6 +364,7 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>((props, ref) => {
 		if (process.env.NODE_ENV !== 'production') {
 			const createDocUrl = getComponentDocFn(componentDoc);
 			const renamedProps: [string, unknown, string][] = [
+				['ariaLabelledby', deprecatedAriaLabelledby, 'aria-labelledby'],
 				['contentsClassName', contentsClassName, 'classNameDialog'],
 				['footerClassName', footerClassName, 'classNameFooter'],
 				['footerStyle', footerStyle, 'styleFooter'],
@@ -390,6 +394,7 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>((props, ref) => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []); // Only run on mount
 
+	const ariaLabelledby = ariaLabelledbyProp ?? deprecatedAriaLabelledby;
 	const generatedId = useId();
 	const id = propId || generatedId;
 	const context = useContext(IconSettingsContext);
