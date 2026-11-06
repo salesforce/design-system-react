@@ -3967,63 +3967,6 @@ exports[`Story HTML snapshots > IconSettings > BaseSpriteImportsNoTest 1`] = `
 </div>"
 `;
 
-exports[`Story HTML snapshots > Illustration > HeadingAndMessage 1`] = `
-"<div class="slds-p-around_medium">
-  <div class="slds-illustration slds-illustration_small">
-    <div class="slds-text-longform">
-      <h3 class="slds-text-heading_medium">Lorem ipsum dolor</h3>
-      <p class="slds-text-body_regular">Lorem ipsum dolor sit amet, consectetur</p>
-    </div>
-  </div>
-</div>"
-`;
-
-exports[`Story HTML snapshots > Illustration > HeadingOnly1 1`] = `
-"<div class="slds-p-around_medium">
-  <div class="slds-illustration slds-illustration_small">
-    <div class="slds-text-longform">
-      <h3 class="slds-text-heading_medium">Lorem ipsum dolor</h3>
-    </div>
-  </div>
-</div>"
-`;
-
-exports[`Story HTML snapshots > Illustration > LargeImageAndText 1`] = `
-"<div class="slds-p-around_medium">
-  <div class="slds-illustration slds-illustration_large"><svg class="slds-illustration__svg" aria-hidden="true" name="no-access" style="height:400px">
-      <use xlink:href="/assets/images/illustrations/empty-state-no-access.svg#no-access"></use>
-    </svg>
-    <div class="slds-text-longform">
-      <h3 class="slds-text-heading_medium">Lorem ipsum dolor</h3>
-      <p class="slds-text-body_regular">Lorem ipsum dolor sit amet, consectetur</p>
-    </div>
-  </div>
-</div>"
-`;
-
-exports[`Story HTML snapshots > Illustration > MessageOnly1 1`] = `
-"<div class="slds-p-around_medium">
-  <div class="slds-illustration slds-illustration_small">
-    <div class="slds-text-longform">
-      <p class="slds-text-body_regular">Lorem ipsum dolor sit amet, consectetur</p>
-    </div>
-  </div>
-</div>"
-`;
-
-exports[`Story HTML snapshots > Illustration > SmallImageAndText 1`] = `
-"<div class="slds-p-around_medium">
-  <div class="slds-illustration slds-illustration_small"><svg class="slds-illustration__svg" aria-hidden="true" name="no-access">
-      <use xlink:href="/assets/images/illustrations/empty-state-no-access.svg#no-access"></use>
-    </svg>
-    <div class="slds-text-longform">
-      <h3 class="slds-text-heading_medium">Lorem ipsum dolor</h3>
-      <p class="slds-text-body_regular">Lorem ipsum dolor sit amet, consectetur</p>
-    </div>
-  </div>
-</div>"
-`;
-
 exports[`Story HTML snapshots > Input > AssistiveTextLabel 1`] = `
 "<div class="slds-p-around_medium">
   <div class="slds-form-element"><label class="slds-form-element__label slds-assistive-text" for="assistive-label-input">Hidden label for screen readers</label>
