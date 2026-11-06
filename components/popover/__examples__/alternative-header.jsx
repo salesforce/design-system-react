@@ -75,7 +75,7 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<div>
 					<Popover
-						ariaLabelledby="ALTERNATIVE-HEADING"
+						aria-labelledby="ALTERNATIVE-HEADING"
 						body={panelContent}
 						id="popover-alternative-header"
 					>

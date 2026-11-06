@@ -709,3 +709,26 @@ describe('Popover trigger props', () => {
 		);
 	});
 });
+
+describe('Popover aria-labelledby', () => {
+	it('uses aria-labelledby and the deprecated ariaLabelledby for the dialog', () => {
+		const { baseElement, rerender } = render(
+			<Popover isOpen aria-labelledby="mine" body="b">
+				<button type="button">t</button>
+			</Popover>
+		);
+		expect(baseElement.querySelector('[role="dialog"]')).toHaveAttribute(
+			'aria-labelledby',
+			'mine'
+		);
+		rerender(
+			<Popover isOpen ariaLabelledby="old" body="b">
+				<button type="button">t</button>
+			</Popover>
+		);
+		expect(baseElement.querySelector('[role="dialog"]')).toHaveAttribute(
+			'aria-labelledby',
+			'old'
+		);
+	});
+});

@@ -90,7 +90,7 @@ class Example extends React.Component {
 						{this.state.prevFirstName} {this.state.prevLastName}
 					</span>
 					<EditDialog
-						ariaLabelledby="edit-name"
+						aria-labelledby="edit-name"
 						body={editDialogPopoverBody}
 						isModified={
 							this.state.firstName !== this.state.prevFirstName ||
