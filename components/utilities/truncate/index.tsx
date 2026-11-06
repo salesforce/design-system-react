@@ -1,7 +1,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import { Component, type ReactNode } from 'react';
+import { Component, type HTMLAttributes, type ReactNode } from 'react';
 
 import memoize from 'memoize-one';
 
@@ -28,7 +28,10 @@ if (documentDefined) {
 	}
 }
 
-export interface TruncateProps {
+export interface TruncateProps extends Omit<
+	HTMLAttributes<HTMLDivElement>,
+	'children' | 'prefix'
+> {
 	containerClassName?: string;
 	line?: number;
 	prefix?: string;
@@ -37,9 +40,6 @@ export interface TruncateProps {
 	textTruncateChild?: ReactNode;
 	truncateText?: string;
 	wrapper?: (outputText: string, child?: ReactNode) => ReactNode;
-	// Any additional props are spread onto the rendered element.
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	[key: string]: any;
 }
 
 interface TruncateState {

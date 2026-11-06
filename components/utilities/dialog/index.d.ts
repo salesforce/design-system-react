@@ -1,4 +1,11 @@
-import { ReactNode, CSSProperties, KeyboardEvent, MouseEvent, Ref } from 'react';
+import {
+	ReactNode,
+	CSSProperties,
+	HTMLAttributes,
+	KeyboardEvent,
+	MouseEvent,
+	Ref,
+} from 'react';
 
 export type DialogAlign =
 	| 'top'
@@ -14,16 +21,12 @@ export type DialogAlign =
 	| 'left top'
 	| 'left bottom';
 
-export type DialogPosition = 'absolute' | 'overflowBoundaryElement' | 'relative';
+export type DialogPosition =
+	'absolute' | 'overflowBoundaryElement' | 'relative';
 
 export type DialogVariant = 'dropdown' | 'popover' | 'tooltip';
 
-export interface DialogContainerProps {
-	id?: string;
-	'aria-labelledby'?: string;
-	'aria-describedby'?: string;
-	[key: string]: unknown;
-}
+export type DialogContainerProps = HTMLAttributes<HTMLDivElement>;
 
 export interface DialogProps {
 	align?: DialogAlign;
@@ -37,13 +40,22 @@ export interface DialogProps {
 	hasStaticAlignment?: boolean;
 	inheritWidthOf?: 'target' | 'menu' | 'none' | string;
 	offset?: string;
-	onCancel?: (event?: MouseEvent | KeyboardEvent, data?: { trigger?: string }) => void;
-	onClose?: (event?: React.SyntheticEvent, data?: { componentWillUnmount?: boolean; trigger?: string }) => void;
+	onCancel?: (
+		event?: MouseEvent | KeyboardEvent,
+		data?: { trigger?: string }
+	) => void;
+	onClose?: (
+		event?: React.SyntheticEvent,
+		data?: { componentWillUnmount?: boolean; trigger?: string }
+	) => void;
 	onKeyDown?: (event: KeyboardEvent) => void;
 	onMouseDown?: (event: MouseEvent) => void;
 	onMouseEnter?: (event: MouseEvent) => void;
 	onMouseLeave?: (event: MouseEvent) => void;
-	onOpen?: (event?: React.SyntheticEvent, data?: { portal?: HTMLElement } | Record<string, unknown>) => void;
+	onOpen?: (
+		event?: React.SyntheticEvent,
+		data?: { portal?: HTMLElement } | Record<string, unknown>
+	) => void;
 	onRequestTargetElement?: () => HTMLElement | null;
 	outsideClickIgnoreClass?: string;
 	position?: DialogPosition;
@@ -52,15 +64,7 @@ export interface DialogProps {
 	ref?: Ref<HTMLElement>;
 }
 
-declare const Dialog: React.ForwardRefExoticComponent<DialogProps & React.RefAttributes<HTMLElement>>;
+declare const Dialog: React.ForwardRefExoticComponent<
+	DialogProps & React.RefAttributes<HTMLElement>
+>;
 export default Dialog;
-
-
-
-
-
-
-
-
-
-
