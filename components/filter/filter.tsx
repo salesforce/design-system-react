@@ -1,7 +1,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { useState, useCallback, useContext, useMemo } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import classNames from 'classnames';
 
 import Button from '../button';
@@ -9,6 +9,7 @@ import Popover from '../popover';
 
 import { FILTER } from '../../utilities/constants';
 import generateId from '../../utilities/generate-id';
+import { useControllableState } from '../../utilities/hooks';
 import FilterErrorIdContext from './private/error-id-context';
 
 import {
@@ -91,9 +92,13 @@ const Filter: React.FC<FilterProps> = ({
 	const errorId = useContext(FilterErrorIdContext);
 	const errorDescribedBy = isError ? errorId : undefined;
 
-	// Popover state - use popover's isOpen if provided
-	const [popoverIsOpen, setPopoverIsOpen] = useState(
-		(popover?.props as { isOpen?: boolean } | undefined)?.isOpen ?? false
+	// Popover state: controlled when the custom popover sets `isOpen`, otherwise internal and seeded
+	// from its `defaultIsOpen`
+	const popoverOpenProps = popover?.props as
+		{ isOpen?: boolean; defaultIsOpen?: boolean } | undefined;
+	const [popoverIsOpen, setPopoverIsOpen] = useControllableState(
+		popoverOpenProps?.isOpen,
+		popoverOpenProps?.defaultIsOpen ?? false
 	);
 
 	// Merge assistive text with defaults
@@ -112,12 +117,12 @@ const Filter: React.FC<FilterProps> = ({
 	const handleFilterClick = useCallback(() => {
 		setPopoverIsOpen(true);
 		onClick?.();
-	}, [onClick]);
+	}, [onClick, setPopoverIsOpen]);
 
 	// Handle popover close
 	const handleClose = useCallback(() => {
 		setPopoverIsOpen(false);
-	}, []);
+	}, [setPopoverIsOpen]);
 
 	// Handle change (Done button clicked)
 	const handleChange = useCallback(
@@ -160,7 +165,6 @@ const Filter: React.FC<FilterProps> = ({
 		body: popoverBody,
 		heading: '',
 		id,
-		isOpen: popoverIsOpen,
 		offset: align === 'right' ? '0px -35px' : undefined,
 		onClose: handleClose,
 		onRequestClose: handleClose,
@@ -168,6 +172,7 @@ const Filter: React.FC<FilterProps> = ({
 		className: 'slds-grow',
 		// Merge with custom popover props if provided
 		...(popover?.props || {}),
+		isOpen: popoverIsOpen,
 		// Remove children from merged props
 		children: undefined,
 	};
