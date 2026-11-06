@@ -163,53 +163,51 @@ const BuilderHeader = ({
 	const resolvedIconName = iconPath ? undefined : iconName;
 
 	return (
-		<div style={{ position: 'relative', height: '100px' }}>
-			<div
-				className={classNames(
-					'slds-builder-header_container',
-					className as string
-				)}
-				style={style}
-			>
-				<header className="slds-builder-header">
-					<div className="slds-builder-header__item">
-						<div className="slds-builder-header__item-label slds-media slds-media_center">
-							<div className="slds-media__figure">
-								<Icon
-									assistiveText={{ label: assistiveText.icon }}
-									category={resolvedIconCategory}
-									containerClassName={classNames(
-										'slds-icon_container',
-										'slds-icon-utility-builder',
-										'slds-current-color',
-										iconClassName as string
-									)}
-									name={resolvedIconName}
-									path={resolvedIconPath}
-									size="x-small"
-								/>
-							</div>
-							<div className="slds-media__body">{labels.title}</div>
+		<div
+			className={classNames(
+				'slds-builder-header_container',
+				className as string
+			)}
+			style={style}
+		>
+			<header className="slds-builder-header">
+				<div className="slds-builder-header__item">
+					<div className="slds-builder-header__item-label slds-media slds-media_center">
+						<div className="slds-media__figure">
+							<Icon
+								assistiveText={{ label: assistiveText.icon }}
+								category={resolvedIconCategory}
+								containerClassName={classNames(
+									'slds-icon_container',
+									'slds-icon-utility-builder',
+									'slds-current-color',
+									iconClassName as string
+								)}
+								name={resolvedIconName}
+								path={resolvedIconPath}
+								size="x-small"
+							/>
 						</div>
+						<div className="slds-media__body">{labels.title}</div>
 					</div>
-					{nav}
+				</div>
+				{nav}
 
-					{misc.length > 0 ? (
-						misc
-					) : (
-						<div className="slds-builder-header__item slds-has-flexi-truncate">
-							<h1 className="slds-builder-header__item-label">
-								<span className="slds-truncate" title={labels.pageType}>
-									{labels.pageType}
-								</span>
-							</h1>
-						</div>
-					)}
+				{misc.length > 0 ? (
+					misc
+				) : (
+					<div className="slds-builder-header__item slds-has-flexi-truncate">
+						<h1 className="slds-builder-header__item-label">
+							<span className="slds-truncate" title={labels.pageType}>
+								{labels.pageType}
+							</span>
+						</h1>
+					</div>
+				)}
 
-					{utilities}
-				</header>
-				{toolbar}
-			</div>
+				{utilities}
+			</header>
+			{toolbar}
 		</div>
 	);
 };

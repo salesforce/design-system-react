@@ -85,3 +85,16 @@ describe('SLDSBuilderHeader', () => {
 		});
 	});
 });
+
+describe('BuilderHeader root', () => {
+	it('lands className and style on the outermost element', () => {
+		const { container } = render(
+			<IconSettings iconPath="/assets/icons">
+				<BuilderHeader className="x" style={{ margin: '3px' }} />
+			</IconSettings>
+		);
+		const root = container.firstChild;
+		expect(root).toHaveClass('slds-builder-header_container', 'x');
+		expect(root.style.margin).toBe('3px');
+	});
+});
