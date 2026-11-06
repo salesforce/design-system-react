@@ -112,6 +112,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `ColorPicker` `onRequestClose` fires before the picker changes its own state. Uncontrolled, it still closes itself; with `isOpen` passed, the parent decides
 - `Combobox` reads `events` through a ref, so its internal handlers no longer change identity when a new `events` object is passed on each render
 - `Toast` `onClickHeadingLink` is typed `(event: React.MouseEvent<HTMLAnchorElement>) => void`. It takes only the click event, like a native `onClick`
+- Typing the contract: props are discriminated unions, so a prop a variant ignores is a compile error. Breaking entries list the migration:
+  - **BREAKING**: `Button`, `ButtonStateful`, `ButtonGroup`, `Card`, `Input`, `Checkbox`, `Radio`, `RadioGroup`, `DynamicIcon`, `InputIcon`, `PageHeader`, `PanelFilterGroup`, `ProgressIndicator`, `ProgressRing`, `SetupAssistant`, `Popover`, `Pill`, `Tree` and `VisualPicker` props are unions on `variant`, `type`, `isCard`, `hasIcon`, `links` or the heading props. Remove the props the type now rejects; they were ignored at runtime
+  - **BREAKING**: `Card` `isEmpty` replaces the default empty state; `ExpandableSection` rejects `isOpen={false}` and `defaultIsOpen={false}` with `nonCollapsible`
+  - **BREAKING**: `File` requires `labels.title`; `PillContainer` options require `id` and have no index signature; `SimpleDataTable` types have no index signatures
+  - **BREAKING**: `Toast` renders the close button only when `dismissible` is set. Add `dismissible` to toasts that should be closable
+  - **BREAKING**: `Textarea` aria props use `TextareaHTMLAttributes`; `Tree` no longer exports `FlattenedNode`; `Radio` `description` is removed and `tabIndex` is a number
+  - **BREAKING**: `TrialBar` dropdown omits `inverse`
+  - **BREAKING**: `ButtonIcon` has no index signature and adds the `xx-small` size. Remove extra props such as `disabled`; it was never applied to the icon
+  - **BREAKING**: `Truncate` props and `Dialog` `containerProps` are `HTMLAttributes<HTMLDivElement>` instead of an open `[key: string]` index. Remove props that are not valid `div` attributes
+  - `Alert` and `Toast` `variant` is optional (`info`); `Spinner` `placement` (`isInline` and `isInput` are deprecated and warn once)
+  - `Carousel` `itemsPerPanel` must be a positive integer (other values fall back to 1 and warn); `DatePicker` `onCalendarFocus` direction is `'next' | 'previous'`
 
 ### Deprecated
 
