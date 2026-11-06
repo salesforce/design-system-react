@@ -628,3 +628,37 @@ describe('SLDSTooltip', () => {
 		});
 	});
 });
+
+describe('Tooltip root classes and style', () => {
+	it('puts className and style on the root, and keeps the deprecated names working', () => {
+		const { container, rerender } = render(
+			<IconSettings iconPath="/assets/icons">
+				<Tooltip
+					id="t"
+					content="c"
+					className="on-root"
+					style={{ margin: '3px' }}
+					trigger={<Button label="x" />}
+				/>
+			</IconSettings>
+		);
+		const root = container.querySelector('.slds-tooltip-trigger');
+		expect(root).toHaveClass('on-root');
+		expect(root.style.margin).toBe('3px');
+
+		rerender(
+			<IconSettings iconPath="/assets/icons">
+				<Tooltip
+					id="t"
+					content="c"
+					triggerClassName="old-root"
+					triggerStyle={{ margin: '5px' }}
+					trigger={<Button label="x" />}
+				/>
+			</IconSettings>
+		);
+		const oldRoot = container.querySelector('.slds-tooltip-trigger');
+		expect(oldRoot).toHaveClass('old-root');
+		expect(oldRoot.style.margin).toBe('5px');
+	});
+});

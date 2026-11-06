@@ -117,7 +117,7 @@ export const Open = {
 		align: 'bottom',
 		isOpen: true,
 		id: 'tooltip-open',
-		dialogClassName: 'dialog-classname',
+		classNameDialog: 'dialog-classname',
 	},
 	render: (args) => (
 		<Tooltip {...args} trigger={<Button label="Trigger Tooltip" />} />

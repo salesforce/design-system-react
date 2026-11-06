@@ -13,11 +13,11 @@ export interface FieldLevelHelpTooltipProps {
 }
 
 const defaultProps: Partial<TooltipProps> = {
-	triggerClassName: 'slds-form-element__icon',
+	className: 'slds-form-element__icon',
 	// This allows `position: absolute` Tooltips to align properly.
 	// If not present, tooltip will always be below the info icon
 	// instead of above it.
-	triggerStyle: { position: 'static' },
+	style: { position: 'static' },
 	variant: 'learnMore',
 };
 

@@ -192,7 +192,7 @@ class Step extends React.Component<StepProps> {
 			content: React.ReactNode;
 			theme: TooltipTheme;
 			position?: TooltipPosition;
-			triggerStyle: React.CSSProperties;
+			style: React.CSSProperties;
 			isOpen?: boolean;
 		} = {
 			align: 'top',
@@ -202,7 +202,7 @@ class Step extends React.Component<StepProps> {
 			content: this.props.step.label,
 			theme: 'info',
 			position: this.props.tooltipPosition,
-			triggerStyle: { display: !renderIcon ? 'flex' : '' },
+			style: { display: !renderIcon ? 'flex' : '' },
 		};
 
 		// This is mainly for dev test purpose.

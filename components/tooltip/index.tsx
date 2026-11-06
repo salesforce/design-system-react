@@ -138,7 +138,15 @@ export interface TooltipProps {
 	 */
 	content?: ReactNode;
 	/**
+	 * CSS classes to be added to the root element: the wrapper with `.slds-tooltip-trigger` on it.
+	 */
+	className?: string | string[] | Record<string, boolean>;
+	/**
 	 * CSS classes to be added to the popover dialog. That is the element with `.slds-popover` on it.
+	 */
+	classNameDialog?: string | string[] | Record<string, boolean>;
+	/**
+	 * @deprecated Use `classNameDialog`.
 	 */
 	dialogClassName?: string | string[] | Record<string, boolean>;
 	/**
@@ -168,6 +176,7 @@ export interface TooltipProps {
 	hoverOpenDelay?: number;
 	/**
 	 * A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the popover to the triggering element.
+	 * It is the id of the popover, not of the root element.
 	 */
 	id?: string;
 	/**
@@ -215,7 +224,7 @@ export interface TooltipProps {
 	 */
 	onClickTrigger?: (event: MouseEvent<HTMLAnchorElement>) => void;
 	/**
-	 * CSS classes to be added to tag with `slds-tooltip-trigger`.
+	 * @deprecated Use `className`.
 	 */
 	triggerClassName?: string | string[] | Record<string, boolean>;
 	/**
@@ -226,7 +235,11 @@ export interface TooltipProps {
 	 */
 	position?: TooltipPosition;
 	/**
-	 * Custom styles to be added to wrapping triggering `div`.
+	 * Custom styles to be added to the root element (the wrapping trigger `div`).
+	 */
+	style?: CSSProperties;
+	/**
+	 * @deprecated Use `style`.
 	 */
 	triggerStyle?: CSSProperties;
 	/**
@@ -275,6 +288,8 @@ const Tooltip = ({
 	align = 'top',
 	assistiveText: assistiveTextProp,
 	children,
+	className,
+	classNameDialog,
 	content = <span>Tooltip</span>,
 	dialogClassName,
 	hasAnchoredNubbin = false,
@@ -292,6 +307,7 @@ const Tooltip = ({
 	onClickTrigger,
 	triggerClassName,
 	position = 'absolute',
+	style,
 	triggerStyle,
 	theme = 'info',
 	trigger,
@@ -328,6 +344,8 @@ const Tooltip = ({
 				align,
 				assistiveText,
 				children,
+				className,
+				classNameDialog,
 				content,
 				dialogClassName,
 				hasAnchoredNubbin,
@@ -342,6 +360,7 @@ const Tooltip = ({
 				onClickTrigger,
 				triggerClassName,
 				position,
+				style,
 				triggerStyle,
 				theme,
 				trigger,
@@ -711,7 +730,7 @@ const Tooltip = ({
 					{
 						'slds-theme_error': theme === 'error',
 					},
-					dialogClassName
+					classNameDialog ?? dialogClassName
 				)}
 				align={align}
 				context={iconSettings}
@@ -735,12 +754,15 @@ const Tooltip = ({
 	const containerStyles: CSSProperties = {
 		display: 'inline-block',
 		lineHeight: '1',
-		...triggerStyle,
+		...(style ?? triggerStyle),
 	};
 
 	return (
 		<div
-			className={classNames('slds-tooltip-trigger', triggerClassName)}
+			className={classNames(
+				'slds-tooltip-trigger',
+				className ?? triggerClassName
+			)}
 			style={containerStyles}
 			ref={saveTriggerRef}
 		>

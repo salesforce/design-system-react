@@ -7,12 +7,27 @@ import React from 'react';
 import isTriggerTabbable from '../../utilities/warning/is-trigger-tabbable';
 import childrenAsTrigger from '../../utilities/warning/children-as-trigger';
 import getComponentDocFn from '../../utilities/get-component-doc';
+import deprecatedProperty from '../../utilities/warning/deprecated-property';
 
 let checkProps = function checkPropsFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
 	checkProps = function checkPropsFunction(COMPONENT, props, jsonDoc) {
 		const createDocUrl = getComponentDocFn(jsonDoc);
+
+		deprecatedProperty(
+			COMPONENT,
+			props.triggerClassName,
+			'triggerClassName',
+			'className'
+		);
+		deprecatedProperty(COMPONENT, props.triggerStyle, 'triggerStyle', 'style');
+		deprecatedProperty(
+			COMPONENT,
+			props.dialogClassName,
+			'dialogClassName',
+			'classNameDialog'
+		);
 
 		const usesChildrenAsTrigger =
 			props.trigger === undefined && React.Children.count(props.children) !== 0;
