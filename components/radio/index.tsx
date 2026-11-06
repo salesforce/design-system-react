@@ -109,9 +109,12 @@ export interface RadioProps {
 	onChange: RadioChangeHandler;
 	/** Focus handler */
 	onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
-	/** Request focus callback */
+	/**
+	 * @deprecated Focus the radio through `refs.input` instead. Called with the `<input>`
+	 * when `requestFocus` is set. Still works, and warns.
+	 */
 	onRequestFocus?: (input: HTMLInputElement) => void;
-	/** Whether to request focus */
+	/** @deprecated Focus the radio through `refs.input` instead. Still works, and warns. */
 	requestFocus?: boolean;
 	/** Tab index */
 	tabIndex?: string;
@@ -225,12 +228,16 @@ const Radio = ({
 				onRenderVisualPicker,
 				onRenderVisualPickerSelected,
 				onRenderVisualPickerNotSelected,
+				onRequestFocus,
+				requestFocus,
 			},
 			componentDoc
 		);
 	}, [
 		defaultChecked,
 		label,
+		onRequestFocus,
+		requestFocus,
 		onRenderVisualPicker,
 		onRenderVisualPickerSelected,
 		onRenderVisualPickerNotSelected,

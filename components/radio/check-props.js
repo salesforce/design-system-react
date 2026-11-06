@@ -9,7 +9,7 @@ import sunsetProperty from '../../utilities/warning/sunset-property';
 
 let checkProps = function checkPropsFunction() {};
 
-// v11 removals and deprecated visual-picker render props. Exported separately
+// v11 removals, and deprecated focus and visual-picker render props. Exported separately
 // from the unused default `checkProps`.
 export let checkDeprecatedProps = function checkDeprecatedPropsFunction() {};
 
@@ -33,6 +33,24 @@ if (process.env.NODE_ENV !== 'production') {
 			props.label,
 			'label',
 			`Use \`labels.label\` instead. ${createDocUrl('labels')}`
+		);
+
+		deprecatedProperty(
+			COMPONENT,
+			props.requestFocus,
+			'requestFocus',
+			undefined,
+			`Focus the radio through \`refs.input\` instead: keep the \`<input>\` it receives and call \`.focus()\`. ${createDocUrl(
+				'refs'
+			)}`
+		);
+
+		deprecatedProperty(
+			COMPONENT,
+			props.onRequestFocus,
+			'onRequestFocus',
+			undefined,
+			`Focus the radio through \`refs.input\` instead. ${createDocUrl('refs')}`
 		);
 
 		deprecatedProperty(
