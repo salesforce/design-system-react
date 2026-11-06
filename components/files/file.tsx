@@ -51,7 +51,8 @@ export interface FileProps {
 	 */
 	hasNoVisibleTitle?: boolean;
 	/**
-	 * Href attribute for image
+	 * Href attribute for image. Without it the image is a link to `#` that does not navigate;
+	 * use `onClickImage` for the click.
 	 */
 	href?: string;
 	/**
@@ -72,10 +73,10 @@ export interface FileProps {
 	isLoading?: boolean;
 	/**
 	 * Labels for the File Component
-	 * * image - title for the file. Required.
+	 * * title - title for the file, shown under the preview and used as its name.
 	 */
-	labels?: {
-		title?: string;
+	labels: {
+		title: string;
 	};
 	/**
 	 * `MenuDropdown` for the more actions button; doesn't show more actions button if empty.
@@ -92,14 +93,16 @@ export interface FileProps {
 	onClickImage?: (event: React.MouseEvent) => void;
 }
 
-const defaultProps: Partial<FileProps> = {
+const defaultProps: Pick<
+	FileProps,
+	'assistiveText' | 'hasNoVisibleTitle' | 'isLoading'
+> = {
 	assistiveText: {
 		download: 'download',
 		link: 'Preview:',
 		loading: 'loading',
 		moreActions: 'more actions',
 	},
-	href: '#',
 	isLoading: false,
 	hasNoVisibleTitle: false,
 };
@@ -141,7 +144,7 @@ class File extends React.Component<FileProps> {
 	}
 
 	handleOnClickImage = (event: React.MouseEvent) => {
-		if (this.props.href === '#') {
+		if (this.props.href === undefined || this.props.href === '#') {
 			event.preventDefault();
 		}
 
@@ -168,7 +171,7 @@ class File extends React.Component<FileProps> {
 			>
 				<figure>
 					<a
-						href={this.props.href}
+						href={this.props.href ?? '#'}
 						className={classNames(
 							'slds-file__crop',
 							`slds-file__crop_${this.props.crop ?? '16-by-9'}`
@@ -178,7 +181,7 @@ class File extends React.Component<FileProps> {
 						<FileFigure
 							assistiveText={assistiveText}
 							labels={{
-								title: this.props.labels?.title,
+								title: this.props.labels.title,
 							}}
 							isLoading={this.props.isLoading}
 							image={this.props.image}
@@ -197,9 +200,9 @@ class File extends React.Component<FileProps> {
 							<div className="slds-media__body">
 								<span
 									className="slds-file__text slds-truncate"
-									title={this.props.labels?.title}
+									title={this.props.labels.title}
 								>
-									{this.props.labels?.title}
+									{this.props.labels.title}
 								</span>
 							</div>
 						</figcaption>
