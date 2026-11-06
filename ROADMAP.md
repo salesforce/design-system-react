@@ -157,6 +157,23 @@ moves to `latest`.
    `listItemRenderer`), split-view listbox `renderListItem` (replaces `listItem`). Still open:
    the tree heading XOR as a union type (theme 7), and `errorText` on input, checkbox and
    combobox.
+   **Done (labels-naming):** accessibility and native-name items only. Accessible names:
+   vertical-navigation `assistiveText.label` (nav landmark), radio-group `hasError` with a linked
+   error id. Native names: popover `aria-labelledby`, input keeps `required` and deprecates
+   `aria-required`. progress-indicator groups step tooltip props in `tooltip` (theme 7's union
+   needs it). builder-header, pill-container and trial-bar needed no change. Kept as is:
+   visual-picker `label` stays a string prop, progress-indicator `steps[].assistiveText` stays a
+   string (the steps array already scopes it), and the welcome-mat Tile `completedIcon` default.
+   **Deferred past GA (2026-11-12, additive):** heading-level props (page-header `titleLevel`,
+   tree `headingLevel`, visual-picker link `headingLevel`, each defaulting to today's level) and
+   split-view `sortDirection` `'ascending' | 'descending'` alongside `up`/`down` (deprecate the
+   old values in a minor; narrowing the type waits for the next major).
+   **Deferred past GA (2026-11-08 scope cut, additive i18n moves):** avatar, button-stateful
+   `states`, card, expandable-section, filter, panel filtering, progress-ring and welcome-mat
+   `unitsCompleted` English defaults into `labels`/`assistiveText`.
+   **Cut (2026-11-08 scope cut):** the simple-data-table `selectionMode`, toast `autoCloseDelay`
+   and tabs `errorIcon` renames (each would add a deprecated twin), and dropping tooltip's default
+   `content`.
 7. **Typing the contract.** Discriminated unions (tree nodes, welcome-mat variants, combobox,
    menu-dropdown and color-picker variants/options), no index signatures
    (vertical-navigation, split-view), textarea `maxLength` as a number.
@@ -670,7 +687,7 @@ complete`) and `THEME_OPTIONS` is a second public surface; `icon` is only honore
 - [ ] `scoped-notification` — `icon` is a `ReactElement` that gets `cloneElement`ed to merge
       `assistiveText` (`:71`): render an icon node, or take `iconName`/`iconCategory` and
       build it; the deprecated `iconName` is still live (`:83`), remove or keep; `theme:
-  **Done (slots):** the `assistiveText`merge onto the`icon` element is the documented contract.
+**Done (slots):** the `assistiveText`merge onto the`icon` element is the documented contract.
 'dark' | 'light'` has an implicit third state (no default).
       **Re-scoped by the child-contract rule:** children here are library components, so the `cloneElement`/child-props contract is allowed. Keep the other findings. Child contract done (theme 3): children are typed, injected props are internal, and no child is matched by `displayName`.
       **Partly done:** `iconName` is kept but deprecated with a warning; `icon` is typed

@@ -112,6 +112,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `ColorPicker` `onRequestClose` fires before the picker changes its own state. Uncontrolled, it still closes itself; with `isOpen` passed, the parent decides
 - `Combobox` reads `events` through a ref, so its internal handlers no longer change identity when a new `events` object is passed on each render
 - `Toast` `onClickHeadingLink` is typed `(event: React.MouseEvent<HTMLAnchorElement>) => void`. It takes only the click event, like a native `onClick`
+- `Input`: `aria-required` is deprecated in favour of `required`
+- `Popover`: `aria-labelledby` replaces `ariaLabelledby`
+- `ProgressIndicator`: `tooltip.isOpenSteps` and `tooltip.position` replace `tooltipIsOpenSteps` and `tooltipPosition`, which are deprecated
+- `RadioGroup`: `hasError` replaces the `errorId`-driven error state and `labels.label` is the visible legend; `errorId` is deprecated
+- `VerticalNavigation`: `assistiveText.label` names the `nav` landmark
 
 ### Deprecated
 
