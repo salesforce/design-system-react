@@ -80,3 +80,29 @@ describe('SimpleDataTable children', () => {
 		).toBeInTheDocument();
 	});
 });
+
+describe('SimpleDataTable className', () => {
+	const col = <SimpleDataTableColumn label="Name" property="name" />;
+
+	it('puts className on the table without fixedHeader', () => {
+		const { container } = renderTable(
+			{ className: 'on-root', classNameTable: 'on-table' },
+			col
+		);
+		const table = container.querySelector('table');
+		expect(table).toHaveClass('on-root', 'on-table');
+	});
+
+	it('puts className on the outer container with fixedHeader, classNameTable on the table', () => {
+		const { container } = renderTable(
+			{ className: 'on-root', classNameTable: 'on-table', fixedHeader: true },
+			col
+		);
+		expect(
+			container.querySelector('.slds-table_header-fixed_container')
+		).toHaveClass('on-root');
+		const table = container.querySelector('table');
+		expect(table).toHaveClass('on-table');
+		expect(table).not.toHaveClass('on-root');
+	});
+});

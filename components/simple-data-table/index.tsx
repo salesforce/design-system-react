@@ -904,7 +904,8 @@ class SimpleDataTable extends React.Component<
 								'slds-no-row-hover': this.props.noRowHover,
 								'slds-table_header-hidden': this.props.isHeadless,
 							},
-							this.props.className
+							this.props.fixedHeader ? undefined : this.props.className,
+							this.props.classNameTable
 						)}
 						id={this.getId()}
 						ref={(node) => {
@@ -1043,7 +1044,10 @@ class SimpleDataTable extends React.Component<
 
 			component = (
 				<div
-					className="slds-table_header-fixed_container"
+					className={classNames(
+						'slds-table_header-fixed_container',
+						this.props.className
+					)}
 					style={styles}
 					onScroll={(e) => {
 						const containerScrollLeft = (e.target as HTMLElement).scrollLeft;

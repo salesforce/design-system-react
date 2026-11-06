@@ -133,8 +133,13 @@ export interface SimpleDataTableBaseProps {
 	children?: ChildrenOf<
 		SimpleDataTableColumnProps | SimpleDataTableRowActionsProps
 	>;
-	/** Class names to be added to the table */
+	/**
+	 * Class names for the root element: the `table`, or with `fixedHeader` the
+	 * outer container `div`.
+	 */
 	className?: string | string[] | Record<string, boolean>;
+	/** Class names for the `table` element (differs from `className` with `fixedHeader`) */
+	classNameTable?: string | string[] | Record<string, boolean>;
 	/** A variant which adds border to the vertical columns */
 	columnBordered?: boolean;
 	/** Enable fixed headers and scrolling */
