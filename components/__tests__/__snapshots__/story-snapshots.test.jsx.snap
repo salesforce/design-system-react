@@ -4747,18 +4747,18 @@ exports[`Story HTML snapshots > Pill > ErrorPill 1`] = `
 `;
 
 exports[`Story HTML snapshots > Pill > LinkedPill 1`] = `
-"<div class="slds-p-around_medium"><span role="button" class="slds-pill slds-pill_link"><a href="https://salesforce.com" class="slds-pill__action" title="Linked Pill"><span class="slds-pill__label">Linked Pill</span></a><span class="slds-icon_container slds-pill__remove" title="Remove" role="button"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" style="cursor:pointer">
+"<div class="slds-p-around_medium"><span class="slds-pill slds-pill_link"><a href="https://salesforce.com" class="slds-pill__action" title="Linked Pill"><span class="slds-pill__label">Linked Pill</span></a><span class="slds-icon_container slds-pill__remove" title="Remove" role="button"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" style="cursor:pointer">
         <use href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
       </svg><span class="slds-assistive-text">Remove</span></span></span></div>"
 `;
 
 exports[`Story HTML snapshots > Pill > MultiplePills 1`] = `
 "<div class="slds-p-around_medium">
-  <div class="slds-pill_container"><span role="button" class="slds-pill slds-pill_link"><a href="#" class="slds-pill__action" title="Pill 1"><span class="slds-pill__label">Pill 1</span></a><span class="slds-icon_container slds-pill__remove" title="Remove" role="button"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" style="cursor:pointer">
+  <div class="slds-pill_container"><span class="slds-pill slds-pill_link"><a href="#" class="slds-pill__action" title="Pill 1"><span class="slds-pill__label">Pill 1</span></a><span class="slds-icon_container slds-pill__remove" title="Remove" role="button"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" style="cursor:pointer">
           <use href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-        </svg><span class="slds-assistive-text">Remove</span></span></span><span role="button" class="slds-pill slds-pill_link"><a href="#" class="slds-pill__action" title="Pill 2"><span class="slds-pill__label">Pill 2</span></a><span class="slds-icon_container slds-pill__remove" title="Remove" role="button"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" style="cursor:pointer">
+        </svg><span class="slds-assistive-text">Remove</span></span></span><span class="slds-pill slds-pill_link"><a href="#" class="slds-pill__action" title="Pill 2"><span class="slds-pill__label">Pill 2</span></a><span class="slds-icon_container slds-pill__remove" title="Remove" role="button"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" style="cursor:pointer">
           <use href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-        </svg><span class="slds-assistive-text">Remove</span></span></span><span role="button" class="slds-pill slds-pill_link"><a href="#" class="slds-pill__action" title="Pill 3"><span class="slds-pill__label">Pill 3</span></a><span class="slds-icon_container slds-pill__remove" title="Remove" role="button"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" style="cursor:pointer">
+        </svg><span class="slds-assistive-text">Remove</span></span></span><span class="slds-pill slds-pill_link"><a href="#" class="slds-pill__action" title="Pill 3"><span class="slds-pill__label">Pill 3</span></a><span class="slds-icon_container slds-pill__remove" title="Remove" role="button"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" style="cursor:pointer">
           <use href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
         </svg><span class="slds-assistive-text">Remove</span></span></span></div>
 </div>"
@@ -4766,7 +4766,7 @@ exports[`Story HTML snapshots > Pill > MultiplePills 1`] = `
 
 exports[`Story HTML snapshots > Pill > TruncatedPill 1`] = `
 "<div class="slds-p-around_medium">
-  <div style="width:200px"><span role="button" class="slds-pill slds-pill_link"><a href="#" class="slds-pill__action" title="This is a very long pill label that should be truncated"><span class="slds-pill__label">This is a very long pill label that should be truncated</span></a><span class="slds-icon_container slds-pill__remove" title="Remove" role="button"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" style="cursor:pointer">
+  <div style="width:200px"><span class="slds-pill slds-pill_link"><a href="#" class="slds-pill__action" title="This is a very long pill label that should be truncated"><span class="slds-pill__label">This is a very long pill label that should be truncated</span></a><span class="slds-icon_container slds-pill__remove" title="Remove" role="button"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" style="cursor:pointer">
           <use href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
         </svg><span class="slds-assistive-text">Remove</span></span></span></div>
 </div>"
@@ -4780,7 +4780,7 @@ exports[`Story HTML snapshots > Pill > UnlinkedPill 1`] = `
 
 exports[`Story HTML snapshots > Pill > WithAvatar 1`] = `
 "<link rel="preload" as="image" href="https://lightningdesignsystem.com/assets/images/avatar2.jpg" />
-<div class="slds-p-around_medium"><span role="button" class="slds-pill slds-pill_link"><span class="slds-pill__icon_container">
+<div class="slds-p-around_medium"><span class="slds-pill slds-pill_link"><span class="slds-pill__icon_container">
       <div><span class="slds-avatar slds-avatar_circle slds-avatar_x-small"><img alt="" src="https://lightningdesignsystem.com/assets/images/avatar2.jpg" title="user avatar" /></span></div>
     </span><a href="#" class="slds-pill__action" title="Pill with Avatar"><span class="slds-pill__label">Pill with Avatar</span></a><span class="slds-icon_container slds-pill__remove" title="Remove" role="button"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" style="cursor:pointer">
         <use href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
@@ -4788,7 +4788,7 @@ exports[`Story HTML snapshots > Pill > WithAvatar 1`] = `
 `;
 
 exports[`Story HTML snapshots > Pill > WithIcon 1`] = `
-"<div class="slds-p-around_medium"><span role="button" class="slds-pill slds-pill_link"><span class="slds-pill__icon_container"><span class="slds-icon_container slds-icon-standard-account"><svg class="slds-icon" aria-hidden="true">
+"<div class="slds-p-around_medium"><span class="slds-pill slds-pill_link"><span class="slds-pill__icon_container"><span class="slds-icon_container slds-icon-standard-account"><svg class="slds-icon" aria-hidden="true">
           <use href="/assets/icons/standard-sprite/svg/symbols.svg#account"></use>
         </svg><span class="slds-assistive-text">Account</span></span></span><a href="#" class="slds-pill__action" title="Pill with Icon"><span class="slds-pill__label">Pill with Icon</span></a><span class="slds-icon_container slds-pill__remove" title="Remove" role="button"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" style="cursor:pointer">
         <use href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>

@@ -234,7 +234,10 @@ const Pill = forwardRef<PillRef, PillProps>(
 
 		// Determine role
 		let role: string | undefined;
-		if (variant === 'link') {
+		// A link pill with `labels.label` renders an `<a>`, which is the interactive element; a
+		// `role="button"` around it would nest one control in another. Without a label there is
+		// no `<a>`, so the pill itself is the button.
+		if (variant === 'link' && !labels.label) {
 			role = 'button';
 		} else if (variant === 'option') {
 			role = 'option';
