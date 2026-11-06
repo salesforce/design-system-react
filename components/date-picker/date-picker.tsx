@@ -129,8 +129,12 @@ interface DatePickerBaseProps {
 	assistiveText?: DatePickerAssistiveText;
 	/** Alignment of dropdown */
 	align?: 'left' | 'right';
-	/** CSS classes for datepicker */
+	/** CSS classes for the root element */
 	className?: string | string[] | Record<string, boolean>;
+	/** CSS classes for the calendar dialog */
+	classNameMenu?: string | string[] | Record<string, boolean>;
+	/** CSS classes for the trigger wrapper */
+	classNameTrigger?: string | string[] | Record<string, boolean>;
 	/** Whether component is disabled */
 	disabled?: boolean;
 	/** Function to determine if a date should be disabled. Receives `{ date }`. */
@@ -211,7 +215,9 @@ interface DatePickerBaseProps {
 	relativeYearFrom?: number;
 	/** Years after current year in dropdown */
 	relativeYearTo?: number;
-	/** CSS classes for trigger wrapper */
+	/**
+	 * @deprecated Use `classNameTrigger`.
+	 */
 	triggerClassName?: string | string[] | Record<string, boolean>;
 	/**
 	 * Selected date, or `null` for no date. Required and controlled: the input and calendar
@@ -300,7 +306,8 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 	const {
 		assistiveText: assistiveTextProp = {},
 		align = 'left',
-		className,
+		classNameMenu,
+		classNameTrigger,
 		disabled,
 		dateDisabled = () => false,
 		defaultIsOpen = false,
@@ -662,7 +669,7 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 						menuPosition === 'relative' && align === 'right',
 					'slds-dropdown_left': menuPosition === 'relative' && align === 'left',
 				},
-				className
+				classNameMenu
 			),
 			context: iconSettingsContext,
 			hasStaticAlignment,
@@ -683,7 +690,7 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 		disabled,
 		getIsOpen,
 		align,
-		className,
+		classNameMenu,
 		iconSettingsContext,
 		hasStaticAlignment,
 		handleClose,
@@ -797,7 +804,7 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 					'slds-has-error': hasError,
 					'slds-is-open': getIsOpen(),
 				},
-				triggerClassName
+				classNameTrigger ?? triggerClassName
 			)}
 		>
 			{inputToRender}

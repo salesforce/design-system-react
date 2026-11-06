@@ -1288,3 +1288,40 @@ describe('DatePicker: required `onChange`', () => {
 		consoleError.mockRestore();
 	});
 });
+
+describe('Datepicker root classes and ref', () => {
+	it('lands className on the root, classNameTrigger on the trigger and forwards ref', () => {
+		const ref = { current: null };
+		const { container } = render(
+			<IconSettings iconPath="/assets/icons">
+				<Datepicker
+					{...defaultProps}
+					ref={ref}
+					className="on-root"
+					classNameTrigger="on-trigger"
+					value={null}
+				/>
+			</IconSettings>
+		);
+		expect(container.firstChild).toHaveClass('on-root');
+		expect(ref.current).toBe(container.firstChild);
+		expect(container.querySelector('.slds-dropdown-trigger')).toHaveClass(
+			'on-trigger'
+		);
+	});
+
+	it('still honours the deprecated triggerClassName', () => {
+		const { container } = render(
+			<IconSettings iconPath="/assets/icons">
+				<Datepicker
+					{...defaultProps}
+					triggerClassName="old-trigger"
+					value={null}
+				/>
+			</IconSettings>
+		);
+		expect(container.querySelector('.slds-dropdown-trigger')).toHaveClass(
+			'old-trigger'
+		);
+	});
+});

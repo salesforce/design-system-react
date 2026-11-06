@@ -73,6 +73,14 @@ if (process.env.NODE_ENV !== 'production') {
 
 		deprecatedProperty(
 			COMPONENT,
+			props.triggerClassName,
+			'triggerClassName',
+			'classNameTrigger',
+			'`className` now lands on the root element; use `classNameMenu` for the calendar dialog.'
+		);
+
+		deprecatedProperty(
+			COMPONENT,
 			props.onFocus,
 			'onFocus',
 			undefined,

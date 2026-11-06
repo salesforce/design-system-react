@@ -2,6 +2,7 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 import { forwardRef, type ForwardedRef } from 'react';
+import classNames from 'classnames';
 import Datepicker, { type DatePickerProps } from './date-picker';
 
 export type {
@@ -27,8 +28,8 @@ export type {
  * react-onclickoutside HOC that was removed for React 19 compatibility.
  */
 const DatepickerWithClickOutside = forwardRef<HTMLDivElement, DatePickerProps>(
-	(props, _ref: ForwardedRef<HTMLDivElement>) => (
-		<div>
+	({ className, ...props }, ref: ForwardedRef<HTMLDivElement>) => (
+		<div ref={ref} className={classNames(className as string) || undefined}>
 			<Datepicker {...props} />
 		</div>
 	)
