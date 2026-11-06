@@ -8,7 +8,7 @@ import { TRIAL_BAR_DROPDOWN } from '../../utilities/constants';
 
 export interface TrialBarDropdownProps extends Omit<
 	MenuDropdownBaseProps,
-	'label' | 'trigger'
+	'inverse' | 'label' | 'trigger'
 > {
 	/**
 	 * Label rendered on the dropdown trigger button.
