@@ -25,6 +25,21 @@ if (process.env.NODE_ENV !== 'production') {
 			'style',
 			createDocUrl('style')
 		);
+
+		deprecatedProperty(
+			COMPONENT,
+			props.isInline,
+			'isInline',
+			'placement="inline"',
+			createDocUrl('placement')
+		);
+		deprecatedProperty(
+			COMPONENT,
+			props.isInput,
+			'isInput',
+			'placement="input"',
+			createDocUrl('placement')
+		);
 	};
 }
 

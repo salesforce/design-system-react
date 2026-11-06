@@ -562,7 +562,7 @@ const Menu: React.FC<MenuProps> = ({
 						<Spinner
 							assistiveText={{ label: assistiveText.loadingMenuItems }}
 							hasContainer={false}
-							isInline
+							placement="inline"
 							size="x-small"
 						/>
 					</div>
