@@ -29,3 +29,44 @@ export const readOnlyWithoutOnChange = <Checkbox checked readOnly />;
 export const maybeDisabledWithOnChange = (
 	<Checkbox checked disabled={Math.random() > 0.5} onChange={() => {}} />
 );
+
+export const toggle = <Checkbox checked variant="toggle" onChange={() => {}} />;
+
+export const indeterminateToggle = (
+	// @ts-expect-error a toggle has no `indeterminate` state
+	<Checkbox checked variant="toggle" indeterminate onChange={() => {}} />
+);
+
+export const classNameOnButtonGroup = (
+	// @ts-expect-error `className` is dropped by `button-group`
+	<Checkbox checked variant="button-group" className="x" onChange={() => {}} />
+);
+
+export const errorTextOnVisualPicker = (
+	// @ts-expect-error `errorText` is dropped by `visual-picker`
+	<Checkbox checked variant="visual-picker" errorText="x" onChange={() => {}} />
+);
+
+export const coverableBase = (
+	// @ts-expect-error `coverable` belongs to `visual-picker`
+	<Checkbox checked variant="base" coverable onChange={() => {}} />
+);
+
+export const visualPicker = (
+	<Checkbox
+		checked
+		variant="visual-picker"
+		coverable
+		size="large"
+		onChange={() => {}}
+	/>
+);
+
+export const numericTabIndex = (
+	<Checkbox checked tabIndex={-1} onChange={() => {}} />
+);
+
+export const stringTabIndex = (
+	// @ts-expect-error `tabIndex` is a number
+	<Checkbox checked tabIndex="0" onChange={() => {}} />
+);
