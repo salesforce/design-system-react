@@ -2,6 +2,8 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 import React, {
+	forwardRef,
+	type ForwardedRef,
 	useState,
 	useRef,
 	useCallback,
@@ -144,7 +146,10 @@ function isTabDisabled(tab: React.ReactElement<TabsPanelProps>): boolean {
 /**
  * Tabs keeps related content in a single container that is shown and hidden through navigation.
  */
-const Tabs = (props: TabsProps): React.ReactElement => {
+const TabsInner = (
+	props: TabsProps,
+	forwardedRef: ForwardedRef<HTMLDivElement>
+): React.ReactElement => {
 	const {
 		children,
 		className,
@@ -386,13 +391,22 @@ const Tabs = (props: TabsProps): React.ReactElement => {
 			onClick={handleClick}
 			onKeyDown={handleKeyDown}
 			data-tabs
-			ref={tabsNodeRef}
+			ref={(node) => {
+				tabsNodeRef.current = node;
+				if (typeof forwardedRef === 'function') {
+					forwardedRef(node);
+				} else if (forwardedRef) {
+					forwardedRef.current = node;
+				}
+			}}
 		>
 			{renderTabsList()}
 			{renderTabPanels()}
 		</div>
 	);
 };
+
+const Tabs = forwardRef<HTMLDivElement, TabsProps>(TabsInner);
 
 Tabs.displayName = TABS;
 

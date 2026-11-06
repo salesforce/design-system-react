@@ -755,3 +755,16 @@ describe('Tabs', () => {
 		});
 	});
 });
+
+describe('Tabs ref', () => {
+	it('forwards ref to the root div', () => {
+		const ref = { current: null };
+		const { container } = render(
+			<Tabs id="t" ref={ref} className="on-root">
+				<Panel label="One">one</Panel>
+			</Tabs>
+		);
+		expect(ref.current).toBe(container.firstChild);
+		expect(ref.current).toHaveClass('on-root');
+	});
+});
