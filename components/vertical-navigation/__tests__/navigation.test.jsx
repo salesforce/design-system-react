@@ -395,3 +395,28 @@ describe('SLDSVerticalNavigation', () => {
 		});
 	});
 });
+
+describe('VerticalNavigation assistiveText', () => {
+	it('labels the nav landmark with assistiveText.label', () => {
+		const { container, rerender } = render(
+			<VerticalNavigation
+				categories={[]}
+				selectedId={null}
+				onSelect={() => {}}
+				assistiveText={{ label: 'Settings' }}
+			/>
+		);
+		expect(container.querySelector('nav')).toHaveAttribute(
+			'aria-label',
+			'Settings'
+		);
+		rerender(
+			<VerticalNavigation
+				categories={[]}
+				selectedId={null}
+				onSelect={() => {}}
+			/>
+		);
+		expect(container.querySelector('nav')).not.toHaveAttribute('aria-label');
+	});
+});

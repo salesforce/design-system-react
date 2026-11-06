@@ -52,9 +52,19 @@ export interface NavigationSelectData {
 }
 
 /**
+ * Assistive text for VerticalNavigation
+ */
+export interface VerticalNavigationAssistiveText {
+	/** Accessible name of the `nav` landmark, e.g. "Settings". Unset by default. */
+	label?: string;
+}
+
+/**
  * Props for the VerticalNavigation component
  */
 export interface VerticalNavigationProps {
+	/** Assistive text for accessibility */
+	assistiveText?: VerticalNavigationAssistiveText;
 	/** Array of navigation categories */
 	categories: NavigationCategory[];
 	/** CSS classes for the root `nav.slds-nav-vertical` element */
@@ -81,7 +91,10 @@ export interface VerticalNavigationProps {
  * to another page or parts of the page the user is in.
  */
 const VerticalNavigation = forwardRef<HTMLElement, VerticalNavigationProps>(
-	({ categories, className, id: propId, onSelect, selectedId }, ref) => {
+	(
+		{ assistiveText, categories, className, id: propId, onSelect, selectedId },
+		ref
+	) => {
 		const generatedId = useId();
 		const rootId = propId || generatedId;
 
@@ -93,6 +106,7 @@ const VerticalNavigation = forwardRef<HTMLElement, VerticalNavigationProps>(
 
 		return (
 			<nav
+				aria-label={assistiveText?.label}
 				id={rootId}
 				className={classNames('slds-nav-vertical', className)}
 				ref={ref}
