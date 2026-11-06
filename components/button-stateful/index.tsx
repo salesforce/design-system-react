@@ -4,6 +4,7 @@
 import React, {
 	useCallback,
 	useEffect,
+	useState,
 	type ReactNode,
 	type MouseEvent,
 	type FocusEvent,
@@ -188,6 +189,12 @@ const ButtonStateful = ({
 	// `active` is the deprecated name; `isActive` wins when both are passed.
 	const isActive = !!(isActiveProp ?? active);
 
+	// SLDS shows the hover/focus text ("Unfollow") on a focused selected button.
+	// After a mouse click that would show the opposite of what was just chosen,
+	// so mark the click with `slds-is-selected-clicked` until focus leaves.
+	// Keyboard clicks (`detail === 0`) keep the focus text.
+	const [isClicked, setIsClicked] = useState(false);
+
 	const getClassName = useCallback(
 		(active: boolean) =>
 			classNames(className, 'slds-button', 'slds-button_stateful', {
@@ -199,19 +206,30 @@ const ButtonStateful = ({
 				'slds-button_inverse': variant === 'inverse',
 				'slds-button_success': variant === 'success',
 				'slds-not-selected': !active,
-				'slds-is-selected': active,
+				// SLDS uses one or the other: `:focus` on `slds-is-selected` would win
+				'slds-is-selected': active && !isClicked,
+				'slds-is-selected-clicked': active && isClicked,
 				'slds-max-small-button_stretch': responsive,
 				'slds-button_icon-border': variant === 'icon',
 				'slds-button_icon-border-filled': variant === 'icon-filled',
 			}),
-		[className, variant, responsive]
+		[className, variant, responsive, isClicked]
 	);
 
 	const handleClick = useCallback(
 		(e: MouseEvent<HTMLButtonElement>) => {
+			setIsClicked(e.detail > 0);
 			onClick?.(e, { isActive: !isActive });
 		},
 		[onClick, isActive]
+	);
+
+	const handleBlur = useCallback(
+		(e: FocusEvent<HTMLButtonElement>) => {
+			setIsClicked(false);
+			onBlur?.(e);
+		},
+		[onBlur]
 	);
 
 	const defaultIconProps = {
@@ -237,7 +255,7 @@ const ButtonStateful = ({
 				className={getClassName(isActive)}
 				disabled={disabled}
 				id={id}
-				onBlur={onBlur}
+				onBlur={handleBlur}
 				onClick={handleClick}
 				onFocus={onFocus}
 				onKeyDown={onKeyDown}
@@ -287,7 +305,7 @@ const ButtonStateful = ({
 			className={getClassName(isActive)}
 			disabled={disabled}
 			id={id}
-			onBlur={onBlur}
+			onBlur={handleBlur}
 			onClick={handleClick}
 			onFocus={onFocus}
 			onKeyDown={onKeyDown}

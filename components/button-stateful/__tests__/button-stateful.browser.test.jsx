@@ -37,12 +37,39 @@ describe('ButtonStateful focus (browser)', () => {
 		await act(async () => {
 			await userEvent.click(button);
 		});
-		expect(button).toHaveClass('slds-is-selected');
+		expect(button).toHaveClass('slds-is-selected-clicked');
 		expect(document.activeElement).toBe(button);
 
 		await userEvent.unhover(button);
 
 		expect(document.activeElement).toBe(button);
+		// The click chose "selected", so show that, not the focus text.
+		expect(button.querySelector('.slds-text-selected')).toBeVisible();
+		expect(button.querySelector('.slds-text-selected-focus')).not.toBeVisible();
+	});
+
+	it('shows the focus text again once a clicked button is refocused', async () => {
+		const { container } = render(
+			<IconSettings iconPath="/assets/icons">
+				<button type="button">Before</button>
+				<StatefulButton />
+			</IconSettings>
+		);
+		const button = container.querySelector('.slds-button');
+
+		await act(async () => {
+			await userEvent.click(button);
+		});
+		await userEvent.unhover(button);
+		await act(async () => {
+			await userEvent.tab({ shift: true });
+		});
+		expect(button).toHaveClass('slds-is-selected');
+		expect(button).not.toHaveClass('slds-is-selected-clicked');
+
+		await userEvent.tab();
+		expect(document.activeElement).toBe(button);
+		expect(button.querySelector('.slds-text-selected-focus')).toBeVisible();
 	});
 
 	it('keeps keyboard focus when the mouse leaves', async () => {
