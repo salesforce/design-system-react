@@ -6,7 +6,6 @@ import classnames from 'classnames';
 
 import Controls from '../controls';
 import DetailRow from '../detail-row';
-import Icon from '../../../icon';
 import MediaObject from '../../../media-object';
 import Title from '../title';
 
@@ -17,19 +16,7 @@ const displayName = 'PageHeaderRecordHome';
 const RecordHome = (props: PageHeaderVariantProps) => {
 	let icon;
 
-	// Backwards compatibility
-	if (props.iconName) {
-		// `position`/`variant` are legacy props not on IconProps; preserved via cast.
-		const iconProps = {
-			category: props.iconCategory,
-			className: 'slds-page-header__icon',
-			name: props.iconName,
-			position: props.iconPosition,
-			size: props.iconSize,
-			variant: props.iconVariant,
-		} as Record<string, unknown>;
-		icon = <Icon {...iconProps} />;
-	} else if (props.icon) {
+	if (props.icon) {
 		let iconClasses = 'slds-page-header__icon';
 
 		if (props.icon.props) {
@@ -62,11 +49,7 @@ const RecordHome = (props: PageHeaderVariantProps) => {
 						figure={icon}
 					/>
 				</div>
-				<Controls
-					contentRight={props.contentRight}
-					actions={props.actions}
-					type="actions"
-				/>
+				<Controls actions={props.actions} type="actions" />
 			</div>
 			{props.details ? (
 				<div className="slds-page-header__row slds-page-header__row_gutters">
