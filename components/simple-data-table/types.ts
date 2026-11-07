@@ -155,7 +155,10 @@ export interface SimpleDataTableBaseProps {
 	keyboardNavigation?: boolean;
 	/** A variant which removes hover style on rows */
 	noRowHover?: boolean;
-	/** Callback for fixed header resize */
+	/**
+	 * @deprecated The table repositions its fixed headers itself when the
+	 * scroller or table resizes. Still called until GA.
+	 */
 	onFixedHeaderResize?: (
 		event: Event | null,
 		data: { headerRefs: HTMLElement[]; scrollerRef: HTMLElement | null }
@@ -166,7 +169,10 @@ export interface SimpleDataTableBaseProps {
 	onChange?: (selection: SimpleDataTableItem[], event: SyntheticEvent) => void;
 	/** Callback when the table should be sorted */
 	onSort?: (data: SimpleDataTableSortData, event: SyntheticEvent) => void;
-	/** Callback for fixed header listener toggle */
+	/**
+	 * @deprecated The table watches its own size with a `ResizeObserver`, so
+	 * there is no `window` listener to replace. Still called until GA.
+	 */
 	onToggleFixedHeaderListeners?: (
 		event: Record<string, unknown>,
 		data: {

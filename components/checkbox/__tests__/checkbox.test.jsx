@@ -310,3 +310,57 @@ describe('Checkbox: required `onChange`', () => {
 		consoleError.mockRestore();
 	});
 });
+
+describe('Checkbox keyboard and readOnly', () => {
+	it('does not fake a change on Enter or Space keydown', () => {
+		const onChange = vi.fn();
+		const onKeyDown = vi.fn();
+		const { container } = render(
+			<Checkbox
+				labels={{ label: 'A' }}
+				onChange={onChange}
+				onKeyDown={onKeyDown}
+			/>
+		);
+		const input = container.querySelector('input');
+
+		fireEvent.keyDown(input, { key: 'Enter', keyCode: 13 });
+		fireEvent.keyDown(input, { key: ' ', keyCode: 32 });
+
+		// Space toggles a native checkbox through its click; Enter does not toggle it
+		expect(onChange).not.toHaveBeenCalled();
+		expect(onKeyDown).toHaveBeenCalledTimes(2);
+	});
+
+	it.each(['base', 'toggle', 'button-group', 'visual-picker'])(
+		'%s: readOnly is announced, stays focusable and does not toggle',
+		(variant) => {
+			const onChange = vi.fn();
+			const { container } = render(
+				<Checkbox
+					checked
+					labels={{ label: 'A' }}
+					onChange={onChange}
+					readOnly
+					variant={variant}
+				/>
+			);
+			const input = container.querySelector('input');
+
+			expect(input).toHaveAttribute('aria-readonly', 'true');
+			expect(input).not.toBeDisabled();
+			fireEvent.click(input);
+			expect(onChange).not.toHaveBeenCalled();
+			expect(input).toBeChecked();
+		}
+	);
+
+	it('does not set aria-readonly by default', () => {
+		const { container } = render(
+			<Checkbox labels={{ label: 'A' }} onChange={() => {}} />
+		);
+		expect(container.querySelector('input')).not.toHaveAttribute(
+			'aria-readonly'
+		);
+	});
+});

@@ -1,7 +1,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useState, useCallback, useContext, useMemo } from 'react';
 import classNames from 'classnames';
 
 import Button from '../button';
@@ -9,6 +9,7 @@ import Popover from '../popover';
 
 import { FILTER } from '../../utilities/constants';
 import generateId from '../../utilities/generate-id';
+import FilterErrorIdContext from './private/error-id-context';
 
 import {
 	FilterAssistiveText,
@@ -30,7 +31,10 @@ export interface FilterProps {
 	 * filter and sets `isError`. A standalone Filter doesn't render it.
 	 */
 	errorLabel?: string;
-	/** Applies error state styling */
+	/**
+	 * Applies error state styling. Inside a `PanelFilterList` with `errorLabel`, the filter is
+	 * also described by the error message.
+	 */
 	isError?: boolean;
 	/** Unique ID for keyboard navigation and ARIA support */
 	id?: string;
@@ -83,6 +87,9 @@ const Filter: React.FC<FilterProps> = ({
 	// Generate stable ID
 	const generatedId = useMemo(() => generateId(), []);
 	const id = idProp || generatedId;
+	// Only describe the filter by an error element that is rendered
+	const errorId = useContext(FilterErrorIdContext);
+	const errorDescribedBy = isError ? errorId : undefined;
 
 	// Popover state - use popover's isOpen if provided
 	const [popoverIsOpen, setPopoverIsOpen] = useState(
@@ -196,7 +203,7 @@ const Filter: React.FC<FilterProps> = ({
 					<button
 						className="slds-button_reset slds-grow slds-has-blur-focus"
 						onClick={handleFilterClick}
-						aria-describedby={isError ? `${id}-error` : undefined}
+						aria-describedby={errorDescribedBy}
 						type="button"
 					>
 						{triggerContent}
@@ -204,7 +211,7 @@ const Filter: React.FC<FilterProps> = ({
 				</Popover>
 			) : (
 				<button
-					aria-describedby={isError ? `${id}-error` : undefined}
+					aria-describedby={errorDescribedBy}
 					className="slds-button_reset slds-grow slds-has-blur-focus"
 					disabled
 					type="button"

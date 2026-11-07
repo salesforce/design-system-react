@@ -614,3 +614,71 @@ describe('SLDSPopover', () => {
 		});
 	});
 });
+
+describe('Popover trigger props', () => {
+	const renderWithTrigger = (trigger, props = {}) =>
+		render(
+			<IconSettings iconPath="/assets/icons">
+				<Popover id="trigger-props" body="Body" {...props}>
+					{trigger}
+				</Popover>
+			</IconSettings>
+		);
+
+	it("calls the trigger's own handlers alongside the popover's", () => {
+		const onFocus = vi.fn();
+		const onMouseDown = vi.fn();
+		const onMouseEnter = vi.fn();
+		const onMouseLeave = vi.fn();
+		const onOpen = vi.fn();
+		const { container } = renderWithTrigger(
+			<button
+				type="button"
+				onFocus={onFocus}
+				onMouseDown={onMouseDown}
+				onMouseEnter={onMouseEnter}
+				onMouseLeave={onMouseLeave}
+			>
+				Trigger
+			</button>,
+			{ openOn: 'hover', onOpen }
+		);
+		const trigger = container.querySelector('#trigger-props');
+
+		fireEvent.focus(trigger);
+		fireEvent.mouseDown(trigger);
+		fireEvent.mouseEnter(trigger);
+		fireEvent.mouseLeave(trigger);
+
+		expect(onFocus).toHaveBeenCalledTimes(1);
+		expect(onMouseDown).toHaveBeenCalledTimes(1);
+		expect(onMouseEnter).toHaveBeenCalledTimes(1);
+		expect(onMouseLeave).toHaveBeenCalledTimes(1);
+		// The popover's own focus handler still opens it
+		expect(
+			container.ownerDocument.querySelector('#trigger-props-popover')
+		).toBeInTheDocument();
+	});
+
+	it('keeps a trigger tabIndex of -1', () => {
+		const { container } = renderWithTrigger(
+			<button type="button" tabIndex={-1}>
+				Trigger
+			</button>
+		);
+		expect(container.querySelector('#trigger-props')).toHaveAttribute(
+			'tabindex',
+			'-1'
+		);
+	});
+
+	it('defaults the trigger tabIndex to 0', () => {
+		const { container } = renderWithTrigger(
+			<button type="button">Trigger</button>
+		);
+		expect(container.querySelector('#trigger-props')).toHaveAttribute(
+			'tabindex',
+			'0'
+		);
+	});
+});

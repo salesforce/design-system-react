@@ -3,9 +3,7 @@
 
 import { Component, type ReactNode } from 'react';
 import classnames from 'classnames';
-import DetailBlock, {
-	type PageHeaderDetailBlockProps,
-} from './detail-block';
+import DetailBlock, { type PageHeaderDetailBlockProps } from './detail-block';
 
 const displayName = 'PageHeaderDetailRow';
 

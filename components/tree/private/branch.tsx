@@ -125,7 +125,7 @@ const Branch: React.FC<BranchProps> = ({
 					<Item
 						label={childNode.label}
 						htmlId={htmlId}
-						key={generateId()}
+						key={childNode.id}
 						level={level + 1}
 						node={childNode}
 						flattenedNodes={props.flattenedNodes}

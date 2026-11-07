@@ -3137,7 +3137,7 @@ exports[`Story HTML snapshots > DatePicker > RightToLeft 1`] = `
 exports[`Story HTML snapshots > DockedComposer > Closed 1`] = `
 "<div class="slds-p-around_medium" style="min-height:300px;position:relative">
   <div id="_R_0_-container" class="slds-docked_container">
-    <section class="slds-docked-composer slds-grid slds-grid_vertical slds-is-closed" role="dialog" aria-labelledby="_R_0_-dialog-heading" aria-describedby="_R_0_-body">
+    <section class="slds-docked-composer slds-grid slds-grid_vertical slds-is-closed" role="dialog" tabindex="-1" aria-labelledby="_R_0_-dialog-heading">
       <header class="slds-docked-composer__header slds-grid slds-shrink-none" aria-live="assertive">
         <div class="slds-media slds-media_center slds-no-space">
           <div class="slds-media__body">
@@ -3158,7 +3158,7 @@ exports[`Story HTML snapshots > DockedComposer > Closed 1`] = `
 exports[`Story HTML snapshots > DockedComposer > Interactive 1`] = `
 "<div class="slds-p-around_medium" style="min-height:300px;position:relative">
   <div id="_R_0_-container" class="slds-docked_container">
-    <section class="slds-docked-composer slds-grid slds-grid_vertical slds-is-open" role="dialog" aria-labelledby="_R_0_-dialog-heading" aria-describedby="_R_0_-body">
+    <section class="slds-docked-composer slds-grid slds-grid_vertical slds-is-open" role="dialog" tabindex="-1" aria-labelledby="_R_0_-dialog-heading" aria-describedby="_R_0_-body">
       <header class="slds-docked-composer__header slds-grid slds-shrink-none" aria-live="assertive">
         <div class="slds-media slds-media_center slds-no-space">
           <div class="slds-media__body">
@@ -3192,7 +3192,7 @@ exports[`Story HTML snapshots > DockedComposer > Interactive 1`] = `
 exports[`Story HTML snapshots > DockedComposer > Open 1`] = `
 "<div class="slds-p-around_medium" style="min-height:300px;position:relative">
   <div id="_R_0_-container" class="slds-docked_container">
-    <section class="slds-docked-composer slds-grid slds-grid_vertical slds-is-open" role="dialog" aria-labelledby="_R_0_-dialog-heading" aria-describedby="_R_0_-body">
+    <section class="slds-docked-composer slds-grid slds-grid_vertical slds-is-open" role="dialog" tabindex="-1" aria-labelledby="_R_0_-dialog-heading" aria-describedby="_R_0_-body">
       <header class="slds-docked-composer__header slds-grid slds-shrink-none" aria-live="assertive">
         <div class="slds-media slds-media_center slds-no-space">
           <div class="slds-media__body">
@@ -3635,7 +3635,7 @@ exports[`Story HTML snapshots > Filter > Error 1`] = `
     <div class="slds-col_bump-left" style="width:420px">
       <div>
         <div class="slds-filters__item slds-grid slds-grid_vertical-align-center slds-has-error">
-          <div class="slds-grow" style="display:inline-block"><button class="slds-button_reset slds-grow slds-has-blur-focus" aria-describedby="sample-panel-filtering-show-me-error" type="button" aria-haspopup="dialog" id="sample-panel-filtering-show-me" tabindex="0"><span class="slds-assistive-text">Edit filter:</span><span class="slds-show slds-text-body_small">Show Me</span><span class="slds-show">All Products</span></button></div><button class="slds-button slds-button_icon slds-button_icon-bare slds-button_icon-small" title="Remove Filter: Show Me All Products" type="button"><svg class="slds-button__icon slds-button__icon_hint" aria-hidden="true">
+          <div class="slds-grow" style="display:inline-block"><button class="slds-button_reset slds-grow slds-has-blur-focus" type="button" aria-haspopup="dialog" id="sample-panel-filtering-show-me" tabindex="0"><span class="slds-assistive-text">Edit filter:</span><span class="slds-show slds-text-body_small">Show Me</span><span class="slds-show">All Products</span></button></div><button class="slds-button slds-button_icon slds-button_icon-bare slds-button_icon-small" title="Remove Filter: Show Me All Products" type="button"><svg class="slds-button__icon slds-button__icon_hint" aria-hidden="true">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#delete"></use>
             </svg><span class="slds-assistive-text">Remove Filter: Show Me All Products</span></button>
         </div>
@@ -4747,18 +4747,18 @@ exports[`Story HTML snapshots > Pill > ErrorPill 1`] = `
 `;
 
 exports[`Story HTML snapshots > Pill > LinkedPill 1`] = `
-"<div class="slds-p-around_medium"><span role="button" class="slds-pill slds-pill_link"><a href="https://salesforce.com" class="slds-pill__action" title="Linked Pill"><span class="slds-pill__label">Linked Pill</span></a><span class="slds-icon_container slds-pill__remove" title="Remove" role="button"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" style="cursor:pointer">
+"<div class="slds-p-around_medium"><span class="slds-pill slds-pill_link"><a href="https://salesforce.com" class="slds-pill__action" title="Linked Pill"><span class="slds-pill__label">Linked Pill</span></a><span class="slds-icon_container slds-pill__remove" title="Remove" role="button"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" style="cursor:pointer">
         <use href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
       </svg><span class="slds-assistive-text">Remove</span></span></span></div>"
 `;
 
 exports[`Story HTML snapshots > Pill > MultiplePills 1`] = `
 "<div class="slds-p-around_medium">
-  <div class="slds-pill_container"><span role="button" class="slds-pill slds-pill_link"><a href="#" class="slds-pill__action" title="Pill 1"><span class="slds-pill__label">Pill 1</span></a><span class="slds-icon_container slds-pill__remove" title="Remove" role="button"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" style="cursor:pointer">
+  <div class="slds-pill_container"><span class="slds-pill slds-pill_link"><a href="#" class="slds-pill__action" title="Pill 1"><span class="slds-pill__label">Pill 1</span></a><span class="slds-icon_container slds-pill__remove" title="Remove" role="button"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" style="cursor:pointer">
           <use href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-        </svg><span class="slds-assistive-text">Remove</span></span></span><span role="button" class="slds-pill slds-pill_link"><a href="#" class="slds-pill__action" title="Pill 2"><span class="slds-pill__label">Pill 2</span></a><span class="slds-icon_container slds-pill__remove" title="Remove" role="button"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" style="cursor:pointer">
+        </svg><span class="slds-assistive-text">Remove</span></span></span><span class="slds-pill slds-pill_link"><a href="#" class="slds-pill__action" title="Pill 2"><span class="slds-pill__label">Pill 2</span></a><span class="slds-icon_container slds-pill__remove" title="Remove" role="button"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" style="cursor:pointer">
           <use href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-        </svg><span class="slds-assistive-text">Remove</span></span></span><span role="button" class="slds-pill slds-pill_link"><a href="#" class="slds-pill__action" title="Pill 3"><span class="slds-pill__label">Pill 3</span></a><span class="slds-icon_container slds-pill__remove" title="Remove" role="button"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" style="cursor:pointer">
+        </svg><span class="slds-assistive-text">Remove</span></span></span><span class="slds-pill slds-pill_link"><a href="#" class="slds-pill__action" title="Pill 3"><span class="slds-pill__label">Pill 3</span></a><span class="slds-icon_container slds-pill__remove" title="Remove" role="button"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" style="cursor:pointer">
           <use href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
         </svg><span class="slds-assistive-text">Remove</span></span></span></div>
 </div>"
@@ -4766,7 +4766,7 @@ exports[`Story HTML snapshots > Pill > MultiplePills 1`] = `
 
 exports[`Story HTML snapshots > Pill > TruncatedPill 1`] = `
 "<div class="slds-p-around_medium">
-  <div style="width:200px"><span role="button" class="slds-pill slds-pill_link"><a href="#" class="slds-pill__action" title="This is a very long pill label that should be truncated"><span class="slds-pill__label">This is a very long pill label that should be truncated</span></a><span class="slds-icon_container slds-pill__remove" title="Remove" role="button"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" style="cursor:pointer">
+  <div style="width:200px"><span class="slds-pill slds-pill_link"><a href="#" class="slds-pill__action" title="This is a very long pill label that should be truncated"><span class="slds-pill__label">This is a very long pill label that should be truncated</span></a><span class="slds-icon_container slds-pill__remove" title="Remove" role="button"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" style="cursor:pointer">
           <use href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
         </svg><span class="slds-assistive-text">Remove</span></span></span></div>
 </div>"
@@ -4780,7 +4780,7 @@ exports[`Story HTML snapshots > Pill > UnlinkedPill 1`] = `
 
 exports[`Story HTML snapshots > Pill > WithAvatar 1`] = `
 "<link rel="preload" as="image" href="https://lightningdesignsystem.com/assets/images/avatar2.jpg" />
-<div class="slds-p-around_medium"><span role="button" class="slds-pill slds-pill_link"><span class="slds-pill__icon_container">
+<div class="slds-p-around_medium"><span class="slds-pill slds-pill_link"><span class="slds-pill__icon_container">
       <div><span class="slds-avatar slds-avatar_circle slds-avatar_x-small"><img alt="" src="https://lightningdesignsystem.com/assets/images/avatar2.jpg" title="user avatar" /></span></div>
     </span><a href="#" class="slds-pill__action" title="Pill with Avatar"><span class="slds-pill__label">Pill with Avatar</span></a><span class="slds-icon_container slds-pill__remove" title="Remove" role="button"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" style="cursor:pointer">
         <use href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
@@ -4788,7 +4788,7 @@ exports[`Story HTML snapshots > Pill > WithAvatar 1`] = `
 `;
 
 exports[`Story HTML snapshots > Pill > WithIcon 1`] = `
-"<div class="slds-p-around_medium"><span role="button" class="slds-pill slds-pill_link"><span class="slds-pill__icon_container"><span class="slds-icon_container slds-icon-standard-account"><svg class="slds-icon" aria-hidden="true">
+"<div class="slds-p-around_medium"><span class="slds-pill slds-pill_link"><span class="slds-pill__icon_container"><span class="slds-icon_container slds-icon-standard-account"><svg class="slds-icon" aria-hidden="true">
           <use href="/assets/icons/standard-sprite/svg/symbols.svg#account"></use>
         </svg><span class="slds-assistive-text">Account</span></span></span><a href="#" class="slds-pill__action" title="Pill with Icon"><span class="slds-pill__label">Pill with Icon</span></a><span class="slds-icon_container slds-pill__remove" title="Remove" role="button"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" style="cursor:pointer">
         <use href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
@@ -6412,7 +6412,7 @@ exports[`Story HTML snapshots > SetupAssistant > WithCard 1`] = `
 exports[`Story HTML snapshots > SimpleDataTable > AdvancedFixedLayout 1`] = `
 "<div class="slds-p-around_medium">
   <div>
-    <table aria-multiselectable="true" class="slds-table slds-table_fixed-layout slds-table_resizable-cols slds-table_bordered" id="SimpleDataTableExample-2" role="grid">
+    <table aria-multiselectable="true" class="slds-table slds-table_fixed-layout slds-table_bordered" id="SimpleDataTableExample-2" role="grid">
       <thead class="">
         <tr class="slds-line-height_reset">
           <th class="slds-text-align_right" scope="col" style="width:3.25rem">
@@ -6551,7 +6551,7 @@ exports[`Story HTML snapshots > SimpleDataTable > AdvancedSingleSelectFixedHeade
   <div>
     <div class="slds-table_header-fixed_container" style="border-top:1px solid var(--slds-g-color-border-1);height:100%">
       <div class="slds-table_header-fixed_scroller" style="height:100%;overflow:auto">
-        <table class="slds-table slds-table_fixed-layout slds-table_header-fixed slds-table_resizable-cols slds-table_bordered" id="SimpleDataTableExample-SingleRequiredSelect" role="grid">
+        <table class="slds-table slds-table_fixed-layout slds-table_header-fixed slds-table_bordered" id="SimpleDataTableExample-SingleRequiredSelect" role="grid">
           <thead class="">
             <tr class="slds-line-height_reset">
               <th class="slds-text-align_right" scope="col" style="height:0;line-height:0;width:3.25rem">
@@ -6695,7 +6695,7 @@ exports[`Story HTML snapshots > SimpleDataTable > AdvancedSingleSelectFixedHeade
 exports[`Story HTML snapshots > SimpleDataTable > AdvancedSingleSelectFixedLayout 1`] = `
 "<div class="slds-p-around_medium">
   <div>
-    <table class="slds-table slds-table_fixed-layout slds-table_resizable-cols slds-table_bordered" id="SimpleDataTableExample-SingleRequiredSelect" role="grid">
+    <table class="slds-table slds-table_fixed-layout slds-table_bordered" id="SimpleDataTableExample-SingleRequiredSelect" role="grid">
       <thead class="">
         <tr class="slds-line-height_reset">
           <th class="slds-text-align_right" scope="col" style="width:3.25rem">
@@ -6814,7 +6814,7 @@ exports[`Story HTML snapshots > SimpleDataTable > AdvancedSingleSelectFixedLayou
 exports[`Story HTML snapshots > SimpleDataTable > AdvancedWithHeaderRow 1`] = `
 "<div class="slds-p-around_medium">
   <div>
-    <table aria-multiselectable="true" class="slds-table slds-table_fixed-layout slds-table_resizable-cols slds-table_bordered" id="SimpleDataTableExample-2" role="grid">
+    <table aria-multiselectable="true" class="slds-table slds-table_fixed-layout slds-table_bordered" id="SimpleDataTableExample-2">
       <thead class="">
         <tr class="slds-line-height_reset">
           <th class="slds-text-align_right" scope="col" style="width:3.25rem">
@@ -6840,86 +6840,86 @@ exports[`Story HTML snapshots > SimpleDataTable > AdvancedWithHeaderRow 1`] = `
           </th>
         </tr>
         <tr aria-selected="false" class="">
-          <td role="gridcell" class="slds-text-align_right" style="width:3.25rem">
+          <td class="slds-text-align_right" style="width:3.25rem">
             <div class="slds-form-element">
               <div class="slds-form-element__control"><span class="slds-checkbox"><input id="SimpleDataTableExample-2-SLDSSimpleDataTableRow-8IKSDFZV91-SelectRow" type="checkbox" aria-labelledby="SimpleDataTableExample-2-SLDSSimpleDataTableRow-8IKSDFZV91-SelectRow-label SimpleDataTableExample-2-SLDSSimpleDataTableHead-column-group-header-row-select" name="SelectRow2" /><label class="slds-checkbox__label" for="SimpleDataTableExample-2-SLDSSimpleDataTableRow-8IKSDFZV91-SelectRow" id="SimpleDataTableExample-2-SLDSSimpleDataTableRow-8IKSDFZV91-SelectRow-label"><span class="slds-checkbox_faux"></span><span class="slds-assistive-text">Select this row 2</span></label></span></div>
             </div>
           </td>
-          <th class="" data-label="Name" role="gridcell" style="width:10rem">
+          <th class="" data-label="Name" style="width:10rem">
             <div class="slds-truncate" title="Mule Systems">Mule Systems</div>
           </th>
-          <td class="" data-label="Account Name" role="gridcell" style="width:8rem" headers="header-row-example-id-1">
+          <td class="" data-label="Account Name" style="width:8rem" headers="header-row-example-id-1">
             <div class="slds-truncate" title="MuleSoft">MuleSoft</div>
           </td>
-          <td class="" data-label="Close Date" role="gridcell" headers="header-row-example-id-1">
+          <td class="" data-label="Close Date" headers="header-row-example-id-1">
             <div class="slds-truncate" title="3/31/17 2:05PM">3/31/17 2:05PM</div>
           </td>
-          <td class="" data-label="Stage" role="gridcell" headers="header-row-example-id-1">
+          <td class="" data-label="Stage" headers="header-row-example-id-1">
             <div class="slds-truncate" title="Processing">Processing</div>
           </td>
-          <td class="" data-label="Confidence" role="gridcell" headers="header-row-example-id-1">
+          <td class="" data-label="Confidence" headers="header-row-example-id-1">
             <div class="slds-truncate" title="80%">80%</div>
           </td>
-          <td class="" data-label="Amount" role="gridcell" headers="header-row-example-id-1">
+          <td class="" data-label="Amount" headers="header-row-example-id-1">
             <div class="slds-truncate" title="$14,000">$14,000</div>
           </td>
-          <td class="" data-label="Contact" role="gridcell" headers="header-row-example-id-1">
+          <td class="" data-label="Contact" headers="header-row-example-id-1">
             <div class="slds-truncate" title="bob@mulesoft.com">bob@mulesoft.com</div>
           </td>
         </tr>
         <tr aria-selected="false" class="">
-          <td role="gridcell" class="slds-text-align_right" style="width:3.25rem">
+          <td class="slds-text-align_right" style="width:3.25rem">
             <div class="slds-form-element">
               <div class="slds-form-element__control"><span class="slds-checkbox"><input id="SimpleDataTableExample-2-SLDSSimpleDataTableRow-8IKZHZZV80-SelectRow" type="checkbox" aria-labelledby="SimpleDataTableExample-2-SLDSSimpleDataTableRow-8IKZHZZV80-SelectRow-label SimpleDataTableExample-2-SLDSSimpleDataTableHead-column-group-header-row-select" name="SelectRow3" /><label class="slds-checkbox__label" for="SimpleDataTableExample-2-SLDSSimpleDataTableRow-8IKZHZZV80-SelectRow" id="SimpleDataTableExample-2-SLDSSimpleDataTableRow-8IKZHZZV80-SelectRow-label"><span class="slds-checkbox_faux"></span><span class="slds-assistive-text">Select this row 3</span></label></span></div>
             </div>
           </td>
-          <th class="" data-label="Name" role="gridcell" style="width:10rem">
+          <th class="" data-label="Name" style="width:10rem">
             <div class="slds-truncate" title="Acme - 1,200 Widgets">Acme - 1,200 Widgets</div>
           </th>
-          <td class="" data-label="Account Name" role="gridcell" style="width:8rem" headers="header-row-example-id-1">
+          <td class="" data-label="Account Name" style="width:8rem" headers="header-row-example-id-1">
             <div class="slds-truncate" title="Acme">Acme</div>
           </td>
-          <td class="" data-label="Close Date" role="gridcell" headers="header-row-example-id-1">
+          <td class="" data-label="Close Date" headers="header-row-example-id-1">
             <div class="slds-truncate" title="4/10/15">4/10/15</div>
           </td>
-          <td class="" data-label="Stage" role="gridcell" headers="header-row-example-id-1">
+          <td class="" data-label="Stage" headers="header-row-example-id-1">
             <div class="slds-truncate" title="Value Proposition">Value Proposition</div>
           </td>
-          <td class="" data-label="Confidence" role="gridcell" headers="header-row-example-id-1">
+          <td class="" data-label="Confidence" headers="header-row-example-id-1">
             <div class="slds-truncate" title="70%">70%</div>
           </td>
-          <td class="" data-label="Amount" role="gridcell" headers="header-row-example-id-1">
+          <td class="" data-label="Amount" headers="header-row-example-id-1">
             <div class="slds-truncate" title="$25,000,000">$25,000,000</div>
           </td>
-          <td class="" data-label="Contact" role="gridcell" headers="header-row-example-id-1">
+          <td class="" data-label="Contact" headers="header-row-example-id-1">
             <div class="slds-truncate" title="jrogers@acme.com">jrogers@acme.com</div>
           </td>
         </tr>
         <tr aria-selected="false" class="">
-          <td role="gridcell" class="slds-text-align_right" style="width:3.25rem">
+          <td class="slds-text-align_right" style="width:3.25rem">
             <div class="slds-form-element">
               <div class="slds-form-element__control"><span class="slds-checkbox"><input id="SimpleDataTableExample-2-SLDSSimpleDataTableRow-5GJOOOPWU7-SelectRow" type="checkbox" aria-labelledby="SimpleDataTableExample-2-SLDSSimpleDataTableRow-5GJOOOPWU7-SelectRow-label SimpleDataTableExample-2-SLDSSimpleDataTableHead-column-group-header-row-select" name="SelectRow4" /><label class="slds-checkbox__label" for="SimpleDataTableExample-2-SLDSSimpleDataTableRow-5GJOOOPWU7-SelectRow" id="SimpleDataTableExample-2-SLDSSimpleDataTableRow-5GJOOOPWU7-SelectRow-label"><span class="slds-checkbox_faux"></span><span class="slds-assistive-text">Select this row 4</span></label></span></div>
             </div>
           </td>
-          <th class="" data-label="Name" role="gridcell" style="width:10rem">
+          <th class="" data-label="Name" style="width:10rem">
             <div class="slds-truncate" title="Acme - 200 Widgets">Acme - 200 Widgets</div>
           </th>
-          <td class="" data-label="Account Name" role="gridcell" style="width:8rem" headers="header-row-example-id-1">
+          <td class="" data-label="Account Name" style="width:8rem" headers="header-row-example-id-1">
             <div class="slds-truncate" title="Acme">Acme</div>
           </td>
-          <td class="" data-label="Close Date" role="gridcell" headers="header-row-example-id-1">
+          <td class="" data-label="Close Date" headers="header-row-example-id-1">
             <div class="slds-truncate" title="1/31/15">1/31/15</div>
           </td>
-          <td class="" data-label="Stage" role="gridcell" headers="header-row-example-id-1">
+          <td class="" data-label="Stage" headers="header-row-example-id-1">
             <div class="slds-truncate" title="Prospecting">Prospecting</div>
           </td>
-          <td class="" data-label="Confidence" role="gridcell" headers="header-row-example-id-1">
+          <td class="" data-label="Confidence" headers="header-row-example-id-1">
             <div class="slds-truncate" title="30%">30%</div>
           </td>
-          <td class="" data-label="Amount" role="gridcell" headers="header-row-example-id-1">
+          <td class="" data-label="Amount" headers="header-row-example-id-1">
             <div class="slds-truncate" title="$5,000,000">$5,000,000</div>
           </td>
-          <td class="" data-label="Contact" role="gridcell" headers="header-row-example-id-1">
+          <td class="" data-label="Contact" headers="header-row-example-id-1">
             <div class="slds-truncate" title="bob@acme.com">bob@acme.com</div>
           </td>
         </tr>
@@ -6929,30 +6929,30 @@ exports[`Story HTML snapshots > SimpleDataTable > AdvancedWithHeaderRow 1`] = `
           </th>
         </tr>
         <tr aria-selected="false" class="">
-          <td role="gridcell" class="slds-text-align_right" style="width:3.25rem">
+          <td class="slds-text-align_right" style="width:3.25rem">
             <div class="slds-form-element">
               <div class="slds-form-element__control"><span class="slds-checkbox"><input id="SimpleDataTableExample-2-SLDSSimpleDataTableRow-8SDFDSZHZZV34-SelectRow" type="checkbox" aria-labelledby="SimpleDataTableExample-2-SLDSSimpleDataTableRow-8SDFDSZHZZV34-SelectRow-label SimpleDataTableExample-2-SLDSSimpleDataTableHead-column-group-header-row-select" name="SelectRow6" /><label class="slds-checkbox__label" for="SimpleDataTableExample-2-SLDSSimpleDataTableRow-8SDFDSZHZZV34-SelectRow" id="SimpleDataTableExample-2-SLDSSimpleDataTableRow-8SDFDSZHZZV34-SelectRow-label"><span class="slds-checkbox_faux"></span><span class="slds-assistive-text">Select this row 6</span></label></span></div>
             </div>
           </td>
-          <th class="" data-label="Name" role="gridcell" style="width:10rem">
+          <th class="" data-label="Name" style="width:10rem">
             <div class="slds-truncate" title="salesforce.com - 5,000 Widgets">salesforce.com - 5,000 Widgets</div>
           </th>
-          <td class="" data-label="Account Name" role="gridcell" style="width:8rem" headers="header-row-example-id-2">
+          <td class="" data-label="Account Name" style="width:8rem" headers="header-row-example-id-2">
             <div class="slds-truncate" title="MulesSoft">MulesSoft</div>
           </td>
-          <td class="" data-label="Close Date" role="gridcell" headers="header-row-example-id-2">
+          <td class="" data-label="Close Date" headers="header-row-example-id-2">
             <div class="slds-truncate" title="10/31/18 4:15AM">10/31/18 4:15AM</div>
           </td>
-          <td class="" data-label="Stage" role="gridcell" headers="header-row-example-id-2">
+          <td class="" data-label="Stage" headers="header-row-example-id-2">
             <div class="slds-truncate" title="Id. Decision Makers">Id. Decision Makers</div>
           </td>
-          <td class="" data-label="Confidence" role="gridcell" headers="header-row-example-id-2">
+          <td class="" data-label="Confidence" headers="header-row-example-id-2">
             <div class="slds-truncate" title="35%">35%</div>
           </td>
-          <td class="" data-label="Amount" role="gridcell" headers="header-row-example-id-2">
+          <td class="" data-label="Amount" headers="header-row-example-id-2">
             <div class="slds-truncate" title="$50,000">$50,000</div>
           </td>
-          <td class="" data-label="Contact" role="gridcell" headers="header-row-example-id-2">
+          <td class="" data-label="Contact" headers="header-row-example-id-2">
             <div class="slds-truncate" title="chyral@salesforce.com">chyral@salesforce.com</div>
           </td>
         </tr>
@@ -6962,30 +6962,30 @@ exports[`Story HTML snapshots > SimpleDataTable > AdvancedWithHeaderRow 1`] = `
           </th>
         </tr>
         <tr aria-selected="false" class="">
-          <td role="gridcell" class="slds-text-align_right" style="width:3.25rem">
+          <td class="slds-text-align_right" style="width:3.25rem">
             <div class="slds-form-element">
               <div class="slds-form-element__control"><span class="slds-checkbox"><input id="SimpleDataTableExample-2-SLDSSimpleDataTableRow-8IKZHWERWRV81-SelectRow" type="checkbox" aria-labelledby="SimpleDataTableExample-2-SLDSSimpleDataTableRow-8IKZHWERWRV81-SelectRow-label SimpleDataTableExample-2-SLDSSimpleDataTableHead-column-group-header-row-select" name="SelectRow8" /><label class="slds-checkbox__label" for="SimpleDataTableExample-2-SLDSSimpleDataTableRow-8IKZHWERWRV81-SelectRow" id="SimpleDataTableExample-2-SLDSSimpleDataTableRow-8IKZHWERWRV81-SelectRow-label"><span class="slds-checkbox_faux"></span><span class="slds-assistive-text">Select this row 8</span></label></span></div>
             </div>
           </td>
-          <th class="" data-label="Name" role="gridcell" style="width:10rem">
+          <th class="" data-label="Name" style="width:10rem">
             <div class="slds-truncate" title="salesforce.com - 1,000 Widgets">salesforce.com - 1,000 Widgets</div>
           </th>
-          <td class="" data-label="Account Name" role="gridcell" style="width:8rem" headers="header-row-example-id-3">
+          <td class="" data-label="Account Name" style="width:8rem" headers="header-row-example-id-3">
             <div class="slds-truncate" title="salesforce.com">salesforce.com</div>
           </td>
-          <td class="" data-label="Close Date" role="gridcell" headers="header-row-example-id-3">
+          <td class="" data-label="Close Date" headers="header-row-example-id-3">
             <div class="slds-truncate" title="1/31/15 3:45PM">1/31/15 3:45PM</div>
           </td>
-          <td class="" data-label="Stage" role="gridcell" headers="header-row-example-id-3">
+          <td class="" data-label="Stage" headers="header-row-example-id-3">
             <div class="slds-truncate" title="Id. Decision Makers">Id. Decision Makers</div>
           </td>
-          <td class="" data-label="Confidence" role="gridcell" headers="header-row-example-id-3">
+          <td class="" data-label="Confidence" headers="header-row-example-id-3">
             <div class="slds-truncate" title="60%">60%</div>
           </td>
-          <td class="" data-label="Amount" role="gridcell" headers="header-row-example-id-3">
+          <td class="" data-label="Amount" headers="header-row-example-id-3">
             <div class="slds-truncate" title="$25,000">$25,000</div>
           </td>
-          <td class="" data-label="Contact" role="gridcell" headers="header-row-example-id-3">
+          <td class="" data-label="Contact" headers="header-row-example-id-3">
             <div class="slds-truncate" title="nathan@salesforce.com">nathan@salesforce.com</div>
           </td>
         </tr>
@@ -6998,7 +6998,7 @@ exports[`Story HTML snapshots > SimpleDataTable > AdvancedWithHeaderRow 1`] = `
 exports[`Story HTML snapshots > SimpleDataTable > BasicFixedLayoutStory 1`] = `
 "<div class="slds-p-around_medium">
   <div style="overflow:auto">
-    <table class="slds-table slds-table_fixed-layout slds-table_resizable-cols slds-table_bordered" id="SimpleDataTableExample-1-default" role="grid">
+    <table class="slds-table slds-table_fixed-layout slds-table_bordered" id="SimpleDataTableExample-1-default">
       <thead class="">
         <tr class="slds-line-height_reset">
           <th id="SimpleDataTableExample-1-default-opportunityName-th" aria-label="Opportunity Name" aria-sort="none" class="" scope="col" style="width:6em"><span class="slds-p-horizontal_x-small slds-th__action" style="display:flex"><span class="slds-truncate" title="Opportunity Name">Opportunity Name</span></span></th>
@@ -7012,71 +7012,71 @@ exports[`Story HTML snapshots > SimpleDataTable > BasicFixedLayoutStory 1`] = `
       </thead>
       <tbody>
         <tr class="">
-          <td class="" data-label="Opportunity Name" role="gridcell" style="width:6em">
+          <td class="" data-label="Opportunity Name" style="width:6em">
             <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
           </td>
-          <td class="" data-label="Account Name" role="gridcell" style="width:5em">
+          <td class="" data-label="Account Name" style="width:5em">
             <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
           </td>
-          <td class="" data-label="Close Date" role="gridcell" style="width:5em">
+          <td class="" data-label="Close Date" style="width:5em">
             <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
           </td>
-          <td class="" data-label="Stage" role="gridcell" style="width:5em">
+          <td class="" data-label="Stage" style="width:5em">
             <div class="slds-truncate" title="Prospecting">Prospecting</div>
           </td>
-          <td class="" data-label="Confidence" role="gridcell" style="width:5em">
+          <td class="" data-label="Confidence" style="width:5em">
             <div class="slds-truncate" title="20%">20%</div>
           </td>
-          <td class="" data-label="Amount" role="gridcell" style="width:5em">
+          <td class="" data-label="Amount" style="width:5em">
             <div class="slds-truncate" title="$25k">$25k</div>
           </td>
-          <td class="" data-label="Contact" role="gridcell" style="width:6em">
+          <td class="" data-label="Contact" style="width:6em">
             <div class="slds-truncate" title="jrogers@cloudhub.com">jrogers@cloudhub.com</div>
           </td>
         </tr>
         <tr class="">
-          <td class="" data-label="Opportunity Name" role="gridcell" style="width:6em">
+          <td class="" data-label="Opportunity Name" style="width:6em">
             <div class="slds-truncate" title="Cloudhub + Anypoint Connectors">Cloudhub + Anypoint Connectors</div>
           </td>
-          <td class="" data-label="Account Name" role="gridcell" style="width:5em">
+          <td class="" data-label="Account Name" style="width:5em">
             <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
           </td>
-          <td class="" data-label="Close Date" role="gridcell" style="width:5em">
+          <td class="" data-label="Close Date" style="width:5em">
             <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
           </td>
-          <td class="" data-label="Stage" role="gridcell" style="width:5em">
+          <td class="" data-label="Stage" style="width:5em">
             <div class="slds-truncate" title="Prospecting">Prospecting</div>
           </td>
-          <td class="" data-label="Confidence" role="gridcell" style="width:5em">
+          <td class="" data-label="Confidence" style="width:5em">
             <div class="slds-truncate" title="20%">20%</div>
           </td>
-          <td class="" data-label="Amount" role="gridcell" style="width:5em">
+          <td class="" data-label="Amount" style="width:5em">
             <div class="slds-truncate" title="$25k">$25k</div>
           </td>
-          <td class="" data-label="Contact" role="gridcell" style="width:6em">
+          <td class="" data-label="Contact" style="width:6em">
             <div class="slds-truncate" title="jrogers@cloudhub.com">jrogers@cloudhub.com</div>
           </td>
         </tr>
         <tr class="">
-          <td class="" data-label="Opportunity Name" role="gridcell" style="width:6em">
+          <td class="" data-label="Opportunity Name" style="width:6em">
             <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
           </td>
-          <td class="" data-label="Account Name" role="gridcell" style="width:5em">
+          <td class="" data-label="Account Name" style="width:5em">
             <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
           </td>
-          <td class="" data-label="Close Date" role="gridcell" style="width:5em">
+          <td class="" data-label="Close Date" style="width:5em">
             <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
           </td>
-          <td class="" data-label="Stage" role="gridcell" style="width:5em">
+          <td class="" data-label="Stage" style="width:5em">
             <div class="slds-truncate" title="Prospecting">Prospecting</div>
           </td>
-          <td class="" data-label="Confidence" role="gridcell" style="width:5em">
+          <td class="" data-label="Confidence" style="width:5em">
             <div class="slds-truncate" title="20%">20%</div>
           </td>
-          <td class="" data-label="Amount" role="gridcell" style="width:5em">
+          <td class="" data-label="Amount" style="width:5em">
             <div class="slds-truncate" title="$25k">$25k</div>
           </td>
-          <td class="" data-label="Contact" role="gridcell" style="width:6em">
+          <td class="" data-label="Contact" style="width:6em">
             <div class="slds-truncate" title="jrogers@cloudhub.com">jrogers@cloudhub.com</div>
           </td>
         </tr>
@@ -7721,7 +7721,7 @@ exports[`Story HTML snapshots > SimpleDataTable > FixedHeaderHorizontalScrolling
   <div style="height:200px;width:400px">
     <div class="slds-table_header-fixed_container" style="border-top:1px solid var(--slds-g-color-border-1);height:100%">
       <div class="slds-table_header-fixed_scroller" style="height:100%;overflow:auto">
-        <table aria-multiselectable="true" class="slds-table slds-table_fixed-layout slds-table_header-fixed slds-table_resizable-cols slds-table_bordered" id="SimpleDataTableExample-FixedHeaders" role="grid" style="min-width:800px">
+        <table aria-multiselectable="true" class="slds-table slds-table_fixed-layout slds-table_header-fixed slds-table_bordered" id="SimpleDataTableExample-FixedHeaders" role="grid" style="min-width:800px">
           <thead class="">
             <tr class="slds-line-height_reset">
               <th class="slds-text-align_right" scope="col" style="height:0;line-height:0;width:3.25rem">
@@ -8185,7 +8185,7 @@ exports[`Story HTML snapshots > SimpleDataTable > FixedHeaderStory 1`] = `
   <div style="height:200px">
     <div class="slds-table_header-fixed_container" style="border-top:1px solid var(--slds-g-color-border-1);height:100%">
       <div class="slds-table_header-fixed_scroller" style="height:100%;overflow:auto">
-        <table aria-multiselectable="true" class="slds-table slds-table_fixed-layout slds-table_header-fixed slds-table_resizable-cols slds-table_bordered" id="SimpleDataTableExample-FixedHeaders" role="grid">
+        <table aria-multiselectable="true" class="slds-table slds-table_fixed-layout slds-table_header-fixed slds-table_bordered" id="SimpleDataTableExample-FixedHeaders" role="grid">
           <thead class="">
             <tr class="slds-line-height_reset">
               <th class="slds-text-align_right" scope="col" style="height:0;line-height:0;width:3.25rem">
@@ -8649,7 +8649,7 @@ exports[`Story HTML snapshots > SimpleDataTable > InfiniteScrollingStory 1`] = `
   <div style="height:200px">
     <div class="slds-table_header-fixed_container" style="border-top:1px solid var(--slds-g-color-border-1);height:100%">
       <div class="slds-table_header-fixed_scroller" style="height:100%;overflow:auto">
-        <table aria-multiselectable="true" class="slds-table slds-table_fixed-layout slds-table_header-fixed slds-table_resizable-cols slds-table_bordered" id="SimpleDataTableExample-FixedHeaders" role="grid">
+        <table aria-multiselectable="true" class="slds-table slds-table_fixed-layout slds-table_header-fixed slds-table_bordered" id="SimpleDataTableExample-FixedHeaders">
           <thead class="">
             <tr class="slds-line-height_reset">
               <th class="slds-text-align_right" scope="col" style="height:0;line-height:0;width:3.25rem">
@@ -8705,396 +8705,396 @@ exports[`Story HTML snapshots > SimpleDataTable > InfiniteScrollingStory 1`] = `
           </thead>
           <tbody>
             <tr aria-selected="false" class="slds-hint-parent">
-              <td role="gridcell" class="slds-text-align_right" style="width:3.25rem">
+              <td class="slds-text-align_right" style="width:3.25rem">
                 <div class="slds-form-element">
                   <div class="slds-form-element__control"><span class="slds-checkbox"><input id="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-896a6a60-SelectRow" type="checkbox" aria-labelledby="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-896a6a60-SelectRow-label SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableHead-column-group-header-row-select" name="SelectRow1" /><label class="slds-checkbox__label" for="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-896a6a60-SelectRow" id="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-896a6a60-SelectRow-label"><span class="slds-checkbox_faux"></span><span class="slds-assistive-text">Select this row 1</span></label></span></div>
                 </div>
               </td>
-              <th class="" data-label="Name" role="gridcell">
+              <th class="" data-label="Name">
                 <div class="slds-truncate" title="Acme - 1,200 Widgets"><a href="#">Acme - 1,200 Widgets</a></div>
               </th>
-              <td class="" data-label="Account Name" role="gridcell">
+              <td class="" data-label="Account Name">
                 <div class="slds-truncate" title="Acme">Acme</div>
               </td>
-              <td class="" data-label="Close Date" role="gridcell">
+              <td class="" data-label="Close Date">
                 <div class="slds-truncate" title="4/10/15">4/10/15</div>
               </td>
-              <td class="" data-label="Stage" role="gridcell">
+              <td class="" data-label="Stage">
                 <div class="slds-truncate" title="Value Proposition">Value Proposition</div>
               </td>
-              <td class="" data-label="Confidence" role="gridcell">
+              <td class="" data-label="Confidence">
                 <div class="slds-truncate" title="70%">70%</div>
               </td>
-              <td class="" data-label="Amount" role="gridcell">
+              <td class="" data-label="Amount">
                 <div class="slds-truncate" title="$25,000,000">$25,000,000</div>
               </td>
-              <td class="" data-label="Contact" role="gridcell">
+              <td class="" data-label="Contact">
                 <div class="slds-truncate" title="jrogers@acme.com"><a href="#">jrogers@acme.com</a></div>
               </td>
-              <td class="" data-label="Actions" style="width:3.25rem" role="gridcell">
+              <td class="" data-label="Actions" style="width:3.25rem">
                 <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-896a6a60-SLDSSimpleDataTableRowActions"><button class="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-896a6a60-SLDSSimpleDataTableRowActions slds-button_icon-x-small" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><svg class="slds-button__icon slds-button__icon_hint" aria-hidden="true">
                       <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
                     </svg><span class="slds-assistive-text">Actions</span></button></div>
               </td>
             </tr>
             <tr aria-selected="false" class="slds-hint-parent">
-              <td role="gridcell" class="slds-text-align_right" style="width:3.25rem">
+              <td class="slds-text-align_right" style="width:3.25rem">
                 <div class="slds-form-element">
                   <div class="slds-form-element__control"><span class="slds-checkbox"><input id="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-44da9dcd-SelectRow" type="checkbox" aria-labelledby="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-44da9dcd-SelectRow-label SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableHead-column-group-header-row-select" name="SelectRow2" /><label class="slds-checkbox__label" for="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-44da9dcd-SelectRow" id="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-44da9dcd-SelectRow-label"><span class="slds-checkbox_faux"></span><span class="slds-assistive-text">Select this row 2</span></label></span></div>
                 </div>
               </td>
-              <th class="" data-label="Name" role="gridcell">
+              <th class="" data-label="Name">
                 <div class="slds-truncate" title="Acme - 200 Widgets"><a href="#">Acme - 200 Widgets</a></div>
               </th>
-              <td class="" data-label="Account Name" role="gridcell">
+              <td class="" data-label="Account Name">
                 <div class="slds-truncate" title="Acme">Acme</div>
               </td>
-              <td class="" data-label="Close Date" role="gridcell">
+              <td class="" data-label="Close Date">
                 <div class="slds-truncate" title="1/31/15">1/31/15</div>
               </td>
-              <td class="" data-label="Stage" role="gridcell">
+              <td class="" data-label="Stage">
                 <div class="slds-truncate" title="Prospecting">Prospecting</div>
               </td>
-              <td class="" data-label="Confidence" role="gridcell">
+              <td class="" data-label="Confidence">
                 <div class="slds-truncate" title="30%">30%</div>
               </td>
-              <td class="" data-label="Amount" role="gridcell">
+              <td class="" data-label="Amount">
                 <div class="slds-truncate" title="$5,000,000">$5,000,000</div>
               </td>
-              <td class="" data-label="Contact" role="gridcell">
+              <td class="" data-label="Contact">
                 <div class="slds-truncate" title="bob@acme.com"><a href="#">bob@acme.com</a></div>
               </td>
-              <td class="" data-label="Actions" style="width:3.25rem" role="gridcell">
+              <td class="" data-label="Actions" style="width:3.25rem">
                 <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-44da9dcd-SLDSSimpleDataTableRowActions"><button class="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-44da9dcd-SLDSSimpleDataTableRowActions slds-button_icon-x-small" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><svg class="slds-button__icon slds-button__icon_hint" aria-hidden="true">
                       <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
                     </svg><span class="slds-assistive-text">Actions</span></button></div>
               </td>
             </tr>
             <tr aria-selected="false" class="slds-hint-parent">
-              <td role="gridcell" class="slds-text-align_right" style="width:3.25rem">
+              <td class="slds-text-align_right" style="width:3.25rem">
                 <div class="slds-form-element">
                   <div class="slds-form-element__control"><span class="slds-checkbox"><input id="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-f988a721-SelectRow" type="checkbox" aria-labelledby="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-f988a721-SelectRow-label SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableHead-column-group-header-row-select" name="SelectRow3" /><label class="slds-checkbox__label" for="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-f988a721-SelectRow" id="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-f988a721-SelectRow-label"><span class="slds-checkbox_faux"></span><span class="slds-assistive-text">Select this row 3</span></label></span></div>
                 </div>
               </td>
-              <th class="" data-label="Name" role="gridcell">
+              <th class="" data-label="Name">
                 <div class="slds-truncate" title="salesforce.com - 1,000 Widgets"><a href="#">salesforce.com - 1,000 Widgets</a></div>
               </th>
-              <td class="" data-label="Account Name" role="gridcell">
+              <td class="" data-label="Account Name">
                 <div class="slds-truncate" title="salesforce.com">salesforce.com</div>
               </td>
-              <td class="" data-label="Close Date" role="gridcell">
+              <td class="" data-label="Close Date">
                 <div class="slds-truncate" title="1/31/15 3:45PM">1/31/15 3:45PM</div>
               </td>
-              <td class="" data-label="Stage" role="gridcell">
+              <td class="" data-label="Stage">
                 <div class="slds-truncate" title="Id. Decision Makers">Id. Decision Makers</div>
               </td>
-              <td class="" data-label="Confidence" role="gridcell">
+              <td class="" data-label="Confidence">
                 <div class="slds-truncate" title="60%">60%</div>
               </td>
-              <td class="" data-label="Amount" role="gridcell">
+              <td class="" data-label="Amount">
                 <div class="slds-truncate" title="$25,000">$25,000</div>
               </td>
-              <td class="" data-label="Contact" role="gridcell">
+              <td class="" data-label="Contact">
                 <div class="slds-truncate" title="nathan@salesforce.com"><a href="#">nathan@salesforce.com</a></div>
               </td>
-              <td class="" data-label="Actions" style="width:3.25rem" role="gridcell">
+              <td class="" data-label="Actions" style="width:3.25rem">
                 <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-f988a721-SLDSSimpleDataTableRowActions"><button class="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-f988a721-SLDSSimpleDataTableRowActions slds-button_icon-x-small" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><svg class="slds-button__icon slds-button__icon_hint" aria-hidden="true">
                       <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
                     </svg><span class="slds-assistive-text">Actions</span></button></div>
               </td>
             </tr>
             <tr aria-selected="false" class="slds-hint-parent">
-              <td role="gridcell" class="slds-text-align_right" style="width:3.25rem">
+              <td class="slds-text-align_right" style="width:3.25rem">
                 <div class="slds-form-element">
                   <div class="slds-form-element__control"><span class="slds-checkbox"><input id="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-d7679cdd-SelectRow" type="checkbox" aria-labelledby="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-d7679cdd-SelectRow-label SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableHead-column-group-header-row-select" name="SelectRow4" /><label class="slds-checkbox__label" for="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-d7679cdd-SelectRow" id="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-d7679cdd-SelectRow-label"><span class="slds-checkbox_faux"></span><span class="slds-assistive-text">Select this row 4</span></label></span></div>
                 </div>
               </td>
-              <th class="" data-label="Name" role="gridcell">
+              <th class="" data-label="Name">
                 <div class="slds-truncate" title="Acme - 800 Widgets"><a href="#">Acme - 800 Widgets</a></div>
               </th>
-              <td class="" data-label="Account Name" role="gridcell">
+              <td class="" data-label="Account Name">
                 <div class="slds-truncate" title="Acme">Acme</div>
               </td>
-              <td class="" data-label="Close Date" role="gridcell">
+              <td class="" data-label="Close Date">
                 <div class="slds-truncate" title="6/11/18">6/11/18</div>
               </td>
-              <td class="" data-label="Stage" role="gridcell">
+              <td class="" data-label="Stage">
                 <div class="slds-truncate" title="Value Proposition">Value Proposition</div>
               </td>
-              <td class="" data-label="Confidence" role="gridcell">
+              <td class="" data-label="Confidence">
                 <div class="slds-truncate" title="85%">85%</div>
               </td>
-              <td class="" data-label="Amount" role="gridcell">
+              <td class="" data-label="Amount">
                 <div class="slds-truncate" title="$970,000">$970,000</div>
               </td>
-              <td class="" data-label="Contact" role="gridcell">
+              <td class="" data-label="Contact">
                 <div class="slds-truncate" title="jrogers@acme.com"><a href="#">jrogers@acme.com</a></div>
               </td>
-              <td class="" data-label="Actions" style="width:3.25rem" role="gridcell">
+              <td class="" data-label="Actions" style="width:3.25rem">
                 <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-d7679cdd-SLDSSimpleDataTableRowActions"><button class="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-d7679cdd-SLDSSimpleDataTableRowActions slds-button_icon-x-small" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><svg class="slds-button__icon slds-button__icon_hint" aria-hidden="true">
                       <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
                     </svg><span class="slds-assistive-text">Actions</span></button></div>
               </td>
             </tr>
             <tr aria-selected="false" class="slds-hint-parent">
-              <td role="gridcell" class="slds-text-align_right" style="width:3.25rem">
+              <td class="slds-text-align_right" style="width:3.25rem">
                 <div class="slds-form-element">
                   <div class="slds-form-element__control"><span class="slds-checkbox"><input id="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-0085f7a0-SelectRow" type="checkbox" aria-labelledby="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-0085f7a0-SelectRow-label SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableHead-column-group-header-row-select" name="SelectRow5" /><label class="slds-checkbox__label" for="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-0085f7a0-SelectRow" id="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-0085f7a0-SelectRow-label"><span class="slds-checkbox_faux"></span><span class="slds-assistive-text">Select this row 5</span></label></span></div>
                 </div>
               </td>
-              <th class="" data-label="Name" role="gridcell">
+              <th class="" data-label="Name">
                 <div class="slds-truncate" title="Acme - 744 Widgets"><a href="#">Acme - 744 Widgets</a></div>
               </th>
-              <td class="" data-label="Account Name" role="gridcell">
+              <td class="" data-label="Account Name">
                 <div class="slds-truncate" title="Acme">Acme</div>
               </td>
-              <td class="" data-label="Close Date" role="gridcell">
+              <td class="" data-label="Close Date">
                 <div class="slds-truncate" title="4/15/17">4/15/17</div>
               </td>
-              <td class="" data-label="Stage" role="gridcell">
+              <td class="" data-label="Stage">
                 <div class="slds-truncate" title="Prospecting">Prospecting</div>
               </td>
-              <td class="" data-label="Confidence" role="gridcell">
+              <td class="" data-label="Confidence">
                 <div class="slds-truncate" title="56%">56%</div>
               </td>
-              <td class="" data-label="Amount" role="gridcell">
+              <td class="" data-label="Amount">
                 <div class="slds-truncate" title="$3,110,000">$3,110,000</div>
               </td>
-              <td class="" data-label="Contact" role="gridcell">
+              <td class="" data-label="Contact">
                 <div class="slds-truncate" title="bob@acme.com"><a href="#">bob@acme.com</a></div>
               </td>
-              <td class="" data-label="Actions" style="width:3.25rem" role="gridcell">
+              <td class="" data-label="Actions" style="width:3.25rem">
                 <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-0085f7a0-SLDSSimpleDataTableRowActions"><button class="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-0085f7a0-SLDSSimpleDataTableRowActions slds-button_icon-x-small" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><svg class="slds-button__icon slds-button__icon_hint" aria-hidden="true">
                       <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
                     </svg><span class="slds-assistive-text">Actions</span></button></div>
               </td>
             </tr>
             <tr aria-selected="false" class="slds-hint-parent">
-              <td role="gridcell" class="slds-text-align_right" style="width:3.25rem">
+              <td class="slds-text-align_right" style="width:3.25rem">
                 <div class="slds-form-element">
                   <div class="slds-form-element__control"><span class="slds-checkbox"><input id="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-b7acc778-SelectRow" type="checkbox" aria-labelledby="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-b7acc778-SelectRow-label SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableHead-column-group-header-row-select" name="SelectRow6" /><label class="slds-checkbox__label" for="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-b7acc778-SelectRow" id="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-b7acc778-SelectRow-label"><span class="slds-checkbox_faux"></span><span class="slds-assistive-text">Select this row 6</span></label></span></div>
                 </div>
               </td>
-              <th class="" data-label="Name" role="gridcell">
+              <th class="" data-label="Name">
                 <div class="slds-truncate" title="salesforce.com - 847 Widgets"><a href="#">salesforce.com - 847 Widgets</a></div>
               </th>
-              <td class="" data-label="Account Name" role="gridcell">
+              <td class="" data-label="Account Name">
                 <div class="slds-truncate" title="salesforce.com">salesforce.com</div>
               </td>
-              <td class="" data-label="Close Date" role="gridcell">
+              <td class="" data-label="Close Date">
                 <div class="slds-truncate" title="5/23/18 1:02PM">5/23/18 1:02PM</div>
               </td>
-              <td class="" data-label="Stage" role="gridcell">
+              <td class="" data-label="Stage">
                 <div class="slds-truncate" title="Id. Decision Makers">Id. Decision Makers</div>
               </td>
-              <td class="" data-label="Confidence" role="gridcell">
+              <td class="" data-label="Confidence">
                 <div class="slds-truncate" title="62%">62%</div>
               </td>
-              <td class="" data-label="Amount" role="gridcell">
+              <td class="" data-label="Amount">
                 <div class="slds-truncate" title="$18,000">$18,000</div>
               </td>
-              <td class="" data-label="Contact" role="gridcell">
+              <td class="" data-label="Contact">
                 <div class="slds-truncate" title="nathan@salesforce.com"><a href="#">nathan@salesforce.com</a></div>
               </td>
-              <td class="" data-label="Actions" style="width:3.25rem" role="gridcell">
+              <td class="" data-label="Actions" style="width:3.25rem">
                 <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-b7acc778-SLDSSimpleDataTableRowActions"><button class="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-b7acc778-SLDSSimpleDataTableRowActions slds-button_icon-x-small" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><svg class="slds-button__icon slds-button__icon_hint" aria-hidden="true">
                       <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
                     </svg><span class="slds-assistive-text">Actions</span></button></div>
               </td>
             </tr>
             <tr aria-selected="false" class="slds-hint-parent">
-              <td role="gridcell" class="slds-text-align_right" style="width:3.25rem">
+              <td class="slds-text-align_right" style="width:3.25rem">
                 <div class="slds-form-element">
                   <div class="slds-form-element__control"><span class="slds-checkbox"><input id="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-17991de5-SelectRow" type="checkbox" aria-labelledby="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-17991de5-SelectRow-label SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableHead-column-group-header-row-select" name="SelectRow7" /><label class="slds-checkbox__label" for="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-17991de5-SelectRow" id="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-17991de5-SelectRow-label"><span class="slds-checkbox_faux"></span><span class="slds-assistive-text">Select this row 7</span></label></span></div>
                 </div>
               </td>
-              <th class="" data-label="Name" role="gridcell">
+              <th class="" data-label="Name">
                 <div class="slds-truncate" title="Acme - 1,621 Widgets"><a href="#">Acme - 1,621 Widgets</a></div>
               </th>
-              <td class="" data-label="Account Name" role="gridcell">
+              <td class="" data-label="Account Name">
                 <div class="slds-truncate" title="Acme">Acme</div>
               </td>
-              <td class="" data-label="Close Date" role="gridcell">
+              <td class="" data-label="Close Date">
                 <div class="slds-truncate" title="5/16/17">5/16/17</div>
               </td>
-              <td class="" data-label="Stage" role="gridcell">
+              <td class="" data-label="Stage">
                 <div class="slds-truncate" title="Value Proposition">Value Proposition</div>
               </td>
-              <td class="" data-label="Confidence" role="gridcell">
+              <td class="" data-label="Confidence">
                 <div class="slds-truncate" title="70%">70%</div>
               </td>
-              <td class="" data-label="Amount" role="gridcell">
+              <td class="" data-label="Amount">
                 <div class="slds-truncate" title="$23,600,000">$23,600,000</div>
               </td>
-              <td class="" data-label="Contact" role="gridcell">
+              <td class="" data-label="Contact">
                 <div class="slds-truncate" title="jrogers@acme.com"><a href="#">jrogers@acme.com</a></div>
               </td>
-              <td class="" data-label="Actions" style="width:3.25rem" role="gridcell">
+              <td class="" data-label="Actions" style="width:3.25rem">
                 <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-17991de5-SLDSSimpleDataTableRowActions"><button class="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-17991de5-SLDSSimpleDataTableRowActions slds-button_icon-x-small" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><svg class="slds-button__icon slds-button__icon_hint" aria-hidden="true">
                       <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
                     </svg><span class="slds-assistive-text">Actions</span></button></div>
               </td>
             </tr>
             <tr aria-selected="false" class="slds-hint-parent">
-              <td role="gridcell" class="slds-text-align_right" style="width:3.25rem">
+              <td class="slds-text-align_right" style="width:3.25rem">
                 <div class="slds-form-element">
                   <div class="slds-form-element__control"><span class="slds-checkbox"><input id="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-09b2cee9-SelectRow" type="checkbox" aria-labelledby="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-09b2cee9-SelectRow-label SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableHead-column-group-header-row-select" name="SelectRow8" /><label class="slds-checkbox__label" for="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-09b2cee9-SelectRow" id="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-09b2cee9-SelectRow-label"><span class="slds-checkbox_faux"></span><span class="slds-assistive-text">Select this row 8</span></label></span></div>
                 </div>
               </td>
-              <th class="" data-label="Name" role="gridcell">
+              <th class="" data-label="Name">
                 <div class="slds-truncate" title="Acme - 430 Widgets"><a href="#">Acme - 430 Widgets</a></div>
               </th>
-              <td class="" data-label="Account Name" role="gridcell">
+              <td class="" data-label="Account Name">
                 <div class="slds-truncate" title="Acme">Acme</div>
               </td>
-              <td class="" data-label="Close Date" role="gridcell">
+              <td class="" data-label="Close Date">
                 <div class="slds-truncate" title="6/12/18">6/12/18</div>
               </td>
-              <td class="" data-label="Stage" role="gridcell">
+              <td class="" data-label="Stage">
                 <div class="slds-truncate" title="Prospecting">Prospecting</div>
               </td>
-              <td class="" data-label="Confidence" role="gridcell">
+              <td class="" data-label="Confidence">
                 <div class="slds-truncate" title="42%">42%</div>
               </td>
-              <td class="" data-label="Amount" role="gridcell">
+              <td class="" data-label="Amount">
                 <div class="slds-truncate" title="$4,222,222">$4,222,222</div>
               </td>
-              <td class="" data-label="Contact" role="gridcell">
+              <td class="" data-label="Contact">
                 <div class="slds-truncate" title="bob@acme.com"><a href="#">bob@acme.com</a></div>
               </td>
-              <td class="" data-label="Actions" style="width:3.25rem" role="gridcell">
+              <td class="" data-label="Actions" style="width:3.25rem">
                 <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-09b2cee9-SLDSSimpleDataTableRowActions"><button class="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-09b2cee9-SLDSSimpleDataTableRowActions slds-button_icon-x-small" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><svg class="slds-button__icon slds-button__icon_hint" aria-hidden="true">
                       <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
                     </svg><span class="slds-assistive-text">Actions</span></button></div>
               </td>
             </tr>
             <tr aria-selected="false" class="slds-hint-parent">
-              <td role="gridcell" class="slds-text-align_right" style="width:3.25rem">
+              <td class="slds-text-align_right" style="width:3.25rem">
                 <div class="slds-form-element">
                   <div class="slds-form-element__control"><span class="slds-checkbox"><input id="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-d0035700-SelectRow" type="checkbox" aria-labelledby="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-d0035700-SelectRow-label SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableHead-column-group-header-row-select" name="SelectRow9" /><label class="slds-checkbox__label" for="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-d0035700-SelectRow" id="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-d0035700-SelectRow-label"><span class="slds-checkbox_faux"></span><span class="slds-assistive-text">Select this row 9</span></label></span></div>
                 </div>
               </td>
-              <th class="" data-label="Name" role="gridcell">
+              <th class="" data-label="Name">
                 <div class="slds-truncate" title="salesforce.com - 677 Widgets"><a href="#">salesforce.com - 677 Widgets</a></div>
               </th>
-              <td class="" data-label="Account Name" role="gridcell">
+              <td class="" data-label="Account Name">
                 <div class="slds-truncate" title="salesforce.com">salesforce.com</div>
               </td>
-              <td class="" data-label="Close Date" role="gridcell">
+              <td class="" data-label="Close Date">
                 <div class="slds-truncate" title="7/21/17 10:11AM">7/21/17 10:11AM</div>
               </td>
-              <td class="" data-label="Stage" role="gridcell">
+              <td class="" data-label="Stage">
                 <div class="slds-truncate" title="Id. Decision Makers">Id. Decision Makers</div>
               </td>
-              <td class="" data-label="Confidence" role="gridcell">
+              <td class="" data-label="Confidence">
                 <div class="slds-truncate" title="42%">42%</div>
               </td>
-              <td class="" data-label="Amount" role="gridcell">
+              <td class="" data-label="Amount">
                 <div class="slds-truncate" title="$24,200">$24,200</div>
               </td>
-              <td class="" data-label="Contact" role="gridcell">
+              <td class="" data-label="Contact">
                 <div class="slds-truncate" title="nathan@salesforce.com"><a href="#">nathan@salesforce.com</a></div>
               </td>
-              <td class="" data-label="Actions" style="width:3.25rem" role="gridcell">
+              <td class="" data-label="Actions" style="width:3.25rem">
                 <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-d0035700-SLDSSimpleDataTableRowActions"><button class="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-d0035700-SLDSSimpleDataTableRowActions slds-button_icon-x-small" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><svg class="slds-button__icon slds-button__icon_hint" aria-hidden="true">
                       <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
                     </svg><span class="slds-assistive-text">Actions</span></button></div>
               </td>
             </tr>
             <tr aria-selected="false" class="slds-hint-parent">
-              <td role="gridcell" class="slds-text-align_right" style="width:3.25rem">
+              <td class="slds-text-align_right" style="width:3.25rem">
                 <div class="slds-form-element">
                   <div class="slds-form-element__control"><span class="slds-checkbox"><input id="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-4a526f0c-SelectRow" type="checkbox" aria-labelledby="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-4a526f0c-SelectRow-label SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableHead-column-group-header-row-select" name="SelectRow10" /><label class="slds-checkbox__label" for="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-4a526f0c-SelectRow" id="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-4a526f0c-SelectRow-label"><span class="slds-checkbox_faux"></span><span class="slds-assistive-text">Select this row 10</span></label></span></div>
                 </div>
               </td>
-              <th class="" data-label="Name" role="gridcell">
+              <th class="" data-label="Name">
                 <div class="slds-truncate" title="Acme - 1,444 Widgets"><a href="#">Acme - 1,444 Widgets</a></div>
               </th>
-              <td class="" data-label="Account Name" role="gridcell">
+              <td class="" data-label="Account Name">
                 <div class="slds-truncate" title="Acme">Acme</div>
               </td>
-              <td class="" data-label="Close Date" role="gridcell">
+              <td class="" data-label="Close Date">
                 <div class="slds-truncate" title="3/18/18">3/18/18</div>
               </td>
-              <td class="" data-label="Stage" role="gridcell">
+              <td class="" data-label="Stage">
                 <div class="slds-truncate" title="Value Proposition">Value Proposition</div>
               </td>
-              <td class="" data-label="Confidence" role="gridcell">
+              <td class="" data-label="Confidence">
                 <div class="slds-truncate" title="66%">66%</div>
               </td>
-              <td class="" data-label="Amount" role="gridcell">
+              <td class="" data-label="Amount">
                 <div class="slds-truncate" title="$22,000,000">$22,000,000</div>
               </td>
-              <td class="" data-label="Contact" role="gridcell">
+              <td class="" data-label="Contact">
                 <div class="slds-truncate" title="jrogers@acme.com"><a href="#">jrogers@acme.com</a></div>
               </td>
-              <td class="" data-label="Actions" style="width:3.25rem" role="gridcell">
+              <td class="" data-label="Actions" style="width:3.25rem">
                 <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-4a526f0c-SLDSSimpleDataTableRowActions"><button class="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-4a526f0c-SLDSSimpleDataTableRowActions slds-button_icon-x-small" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><svg class="slds-button__icon slds-button__icon_hint" aria-hidden="true">
                       <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
                     </svg><span class="slds-assistive-text">Actions</span></button></div>
               </td>
             </tr>
             <tr aria-selected="false" class="slds-hint-parent">
-              <td role="gridcell" class="slds-text-align_right" style="width:3.25rem">
+              <td class="slds-text-align_right" style="width:3.25rem">
                 <div class="slds-form-element">
                   <div class="slds-form-element__control"><span class="slds-checkbox"><input id="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-9a5dbdb2-SelectRow" type="checkbox" aria-labelledby="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-9a5dbdb2-SelectRow-label SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableHead-column-group-header-row-select" name="SelectRow11" /><label class="slds-checkbox__label" for="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-9a5dbdb2-SelectRow" id="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-9a5dbdb2-SelectRow-label"><span class="slds-checkbox_faux"></span><span class="slds-assistive-text">Select this row 11</span></label></span></div>
                 </div>
               </td>
-              <th class="" data-label="Name" role="gridcell">
+              <th class="" data-label="Name">
                 <div class="slds-truncate" title="Acme - 320 Widgets"><a href="#">Acme - 320 Widgets</a></div>
               </th>
-              <td class="" data-label="Account Name" role="gridcell">
+              <td class="" data-label="Account Name">
                 <div class="slds-truncate" title="Acme">Acme</div>
               </td>
-              <td class="" data-label="Close Date" role="gridcell">
+              <td class="" data-label="Close Date">
                 <div class="slds-truncate" title="1/31/18">1/31/18</div>
               </td>
-              <td class="" data-label="Stage" role="gridcell">
+              <td class="" data-label="Stage">
                 <div class="slds-truncate" title="Prospecting">Prospecting</div>
               </td>
-              <td class="" data-label="Confidence" role="gridcell">
+              <td class="" data-label="Confidence">
                 <div class="slds-truncate" title="36%">36%</div>
               </td>
-              <td class="" data-label="Amount" role="gridcell">
+              <td class="" data-label="Amount">
                 <div class="slds-truncate" title="$4,322,000">$4,322,000</div>
               </td>
-              <td class="" data-label="Contact" role="gridcell">
+              <td class="" data-label="Contact">
                 <div class="slds-truncate" title="bob@acme.com"><a href="#">bob@acme.com</a></div>
               </td>
-              <td class="" data-label="Actions" style="width:3.25rem" role="gridcell">
+              <td class="" data-label="Actions" style="width:3.25rem">
                 <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-9a5dbdb2-SLDSSimpleDataTableRowActions"><button class="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-9a5dbdb2-SLDSSimpleDataTableRowActions slds-button_icon-x-small" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><svg class="slds-button__icon slds-button__icon_hint" aria-hidden="true">
                       <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
                     </svg><span class="slds-assistive-text">Actions</span></button></div>
               </td>
             </tr>
             <tr aria-selected="false" class="slds-hint-parent">
-              <td role="gridcell" class="slds-text-align_right" style="width:3.25rem">
+              <td class="slds-text-align_right" style="width:3.25rem">
                 <div class="slds-form-element">
                   <div class="slds-form-element__control"><span class="slds-checkbox"><input id="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-356dbb52-SelectRow" type="checkbox" aria-labelledby="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-356dbb52-SelectRow-label SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableHead-column-group-header-row-select" name="SelectRow12" /><label class="slds-checkbox__label" for="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-356dbb52-SelectRow" id="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-356dbb52-SelectRow-label"><span class="slds-checkbox_faux"></span><span class="slds-assistive-text">Select this row 12</span></label></span></div>
                 </div>
               </td>
-              <th class="" data-label="Name" role="gridcell">
+              <th class="" data-label="Name">
                 <div class="slds-truncate" title="salesforce.com - 4,000 Widgets"><a href="#">salesforce.com - 4,000 Widgets</a></div>
               </th>
-              <td class="" data-label="Account Name" role="gridcell">
+              <td class="" data-label="Account Name">
                 <div class="slds-truncate" title="salesforce.com">salesforce.com</div>
               </td>
-              <td class="" data-label="Close Date" role="gridcell">
+              <td class="" data-label="Close Date">
                 <div class="slds-truncate" title="2/21/17 8:33PM">2/21/17 8:33PM</div>
               </td>
-              <td class="" data-label="Stage" role="gridcell">
+              <td class="" data-label="Stage">
                 <div class="slds-truncate" title="Id. Decision Makers">Id. Decision Makers</div>
               </td>
-              <td class="" data-label="Confidence" role="gridcell">
+              <td class="" data-label="Confidence">
                 <div class="slds-truncate" title="72%">72%</div>
               </td>
-              <td class="" data-label="Amount" role="gridcell">
+              <td class="" data-label="Amount">
                 <div class="slds-truncate" title="$15,000">$15,000</div>
               </td>
-              <td class="" data-label="Contact" role="gridcell">
+              <td class="" data-label="Contact">
                 <div class="slds-truncate" title="nathan@salesforce.com"><a href="#">nathan@salesforce.com</a></div>
               </td>
-              <td class="" data-label="Actions" style="width:3.25rem" role="gridcell">
+              <td class="" data-label="Actions" style="width:3.25rem">
                 <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-356dbb52-SLDSSimpleDataTableRowActions"><button class="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-SimpleDataTableExample-FixedHeaders-SLDSSimpleDataTableRow-356dbb52-SLDSSimpleDataTableRowActions slds-button_icon-x-small" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><svg class="slds-button__icon slds-button__icon_hint" aria-hidden="true">
                       <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
                     </svg><span class="slds-assistive-text">Actions</span></button></div>
@@ -9118,7 +9118,7 @@ exports[`Story HTML snapshots > SimpleDataTable > InteractiveElementsStory 1`] =
 "<div class="slds-p-around_medium">
   <div style="overflow:auto">
     <h3 class="slds-text-heading_medium slds-m-vertical_medium">Default Fluid Layout</h3>
-    <table class="slds-table slds-table_fixed-layout slds-table_resizable-cols slds-table_bordered" id="SimpleDataTableExample-1-default" role="grid">
+    <table class="slds-table slds-table_fixed-layout slds-table_bordered" id="SimpleDataTableExample-1-default" role="grid">
       <thead class="">
         <tr class="slds-line-height_reset">
           <th id="SimpleDataTableExample-1-default-opportunityName-th" aria-label="Opportunity Name" aria-sort="none" class="" scope="col"><span class="slds-p-horizontal_x-small slds-th__action" style="display:flex"><span class="slds-truncate" title="Opportunity Name">Opportunity Name</span></span></th>
@@ -9203,7 +9203,7 @@ exports[`Story HTML snapshots > SimpleDataTable > InteractiveElementsStory 1`] =
       </tbody>
     </table>
     <h3 class="slds-text-heading_medium slds-m-vertical_medium">Striped</h3>
-    <table class="slds-table slds-table_fixed-layout slds-table_resizable-cols slds-table_bordered slds-table_striped" id="SimpleDataTableExample-1-striped" role="grid">
+    <table class="slds-table slds-table_fixed-layout slds-table_bordered slds-table_striped" id="SimpleDataTableExample-1-striped" role="grid">
       <thead class="">
         <tr class="slds-line-height_reset">
           <th id="SimpleDataTableExample-1-striped-opportunityName-th" aria-label="Opportunity Name" aria-sort="none" class="" scope="col"><span class="slds-p-horizontal_x-small slds-th__action" style="display:flex"><span class="slds-truncate" title="Opportunity Name">Opportunity Name</span></span></th>
@@ -9288,7 +9288,7 @@ exports[`Story HTML snapshots > SimpleDataTable > InteractiveElementsStory 1`] =
       </tbody>
     </table>
     <h3 class="slds-text-heading_medium slds-m-vertical_medium">No Row Hover</h3>
-    <table class="slds-table slds-table_fixed-layout slds-table_resizable-cols slds-table_bordered slds-no-row-hover" id="SimpleDataTableExample-noRowHover" role="grid">
+    <table class="slds-table slds-table_fixed-layout slds-table_bordered slds-no-row-hover" id="SimpleDataTableExample-noRowHover" role="grid">
       <thead class="">
         <tr class="slds-line-height_reset">
           <th id="SimpleDataTableExample-noRowHover-opportunityName-th" aria-label="Opportunity Name" aria-sort="none" class="" scope="col"><span class="slds-p-horizontal_x-small slds-th__action" style="display:flex"><span class="slds-truncate" title="Opportunity Name">Opportunity Name</span></span></th>
@@ -9373,7 +9373,7 @@ exports[`Story HTML snapshots > SimpleDataTable > InteractiveElementsStory 1`] =
       </tbody>
     </table>
     <h3 class="slds-text-heading_medium slds-m-vertical_medium">Column Bordered</h3>
-    <table class="slds-table slds-table_fixed-layout slds-table_resizable-cols slds-table_bordered slds-table_col-bordered" id="SimpleDataTableExample-columnBordered" role="grid">
+    <table class="slds-table slds-table_fixed-layout slds-table_bordered slds-table_col-bordered" id="SimpleDataTableExample-columnBordered" role="grid">
       <thead class="">
         <tr class="slds-line-height_reset">
           <th id="SimpleDataTableExample-columnBordered-opportunityName-th" aria-label="Opportunity Name" aria-sort="none" class="" scope="col"><span class="slds-p-horizontal_x-small slds-th__action" style="display:flex"><span class="slds-truncate" title="Opportunity Name">Opportunity Name</span></span></th>
@@ -9537,7 +9537,7 @@ exports[`Story HTML snapshots > SimpleDataTable > JoinedWithPageHeaderStory 1`] 
     </div>
     <div class="slds-table_header-fixed_container" style="border-top:none;height:100%;border-bottom:1px solid var(--slds-g-color-border-1);border-left:1px solid var(--slds-g-color-border-1);border-right:1px solid var(--slds-g-color-border-1);border-radius:0 0 var(--slds-g-radius-border-2) var(--slds-g-radius-border-2)">
       <div class="slds-table_header-fixed_scroller" style="height:100%;overflow:auto">
-        <table aria-multiselectable="true" class="slds-table slds-table_fixed-layout slds-table_header-fixed slds-table_resizable-cols slds-table_bordered" id="SimpleDataTableExample-JoinedWithPageHeader" role="grid">
+        <table aria-multiselectable="true" class="slds-table slds-table_fixed-layout slds-table_header-fixed slds-table_bordered" id="SimpleDataTableExample-JoinedWithPageHeader" role="grid">
           <thead class="">
             <tr class="slds-line-height_reset">
               <th class="slds-text-align_right" scope="col" style="height:0;line-height:0;width:3.25rem">
