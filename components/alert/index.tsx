@@ -46,12 +46,6 @@ export interface AlertLabels {
 export interface AlertProps {
 	/** Assistive text for accessibility */
 	assistiveText?: AlertAssistiveText;
-	/**
-	 * Focus the close button when the Alert mounts, and return focus to the previously focused
-	 * element when it unmounts. Only applies when `dismissible`. `role="alert"` already announces
-	 * the message, so leave this off unless the alert needs an immediate response.
-	 */
-	autoFocus?: boolean;
 	/** CSS classes for the alert container */
 	className?: string | string[] | Record<string, boolean>;
 	/** Show close button */
@@ -99,7 +93,6 @@ const defaultIcons: Record<AlertVariant, ReactNode> = {
  */
 const Alert = ({
 	assistiveText: propAssistiveText,
-	autoFocus = false,
 	className,
 	dismissible,
 	icon: propIcon,
@@ -130,14 +123,14 @@ const Alert = ({
 	const saveButtonRef = useCallback(
 		(component: HTMLButtonElement | null) => {
 			closeButtonRef.current = component;
-			if (autoFocus && isInitialRender && component) {
+			if (isInitialRender && component) {
 				DOMElementFocus.storeActiveElement();
 				hasStoredFocusRef.current = true;
 				component.focus();
 				setIsInitialRender(false);
 			}
 		},
-		[autoFocus, isInitialRender]
+		[isInitialRender]
 	);
 
 	// Get the icon to display
