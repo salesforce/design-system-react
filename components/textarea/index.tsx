@@ -142,6 +142,8 @@ export interface TextareaProps {
 	required?: boolean;
 	/** ARIA role */
 	role?: string;
+	/** Visible number of text lines (maps to the HTML `rows` attribute) */
+	rows?: number;
 	/** The text in the textarea. Required: Textarea is controlled. */
 	value: string;
 	/** Text wrapping mode */
@@ -183,6 +185,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 			placeholder,
 			required,
 			role,
+			rows,
 			value,
 			// Removed in v11: destructured so it doesn't reach the DOM. check-props warns.
 			defaultValue: _defaultValue,
@@ -273,6 +276,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 						ref={ref}
 						role={role}
 						required={required}
+						rows={rows}
 						wrap={wrap}
 						value={value}
 						aria-describedby={
