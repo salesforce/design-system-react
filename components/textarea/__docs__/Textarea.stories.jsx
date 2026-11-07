@@ -101,6 +101,15 @@ WithMaxLength.args = {
 	maxLength: 100,
 };
 
+export const WithRows = Template.bind({});
+WithRows.args = {
+	id: 'textarea-rows',
+	labels: { label: 'Tall Textarea' },
+	name: 'rows-textarea',
+	placeholder: 'This textarea shows five visible lines',
+	rows: 5,
+};
+
 export const AssistiveTextOnly = Template.bind({});
 AssistiveTextOnly.args = {
 	id: 'textarea-assistive',
