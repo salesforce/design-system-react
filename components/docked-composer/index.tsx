@@ -79,6 +79,12 @@ const DockedComposer = ({
 
 	const sectionClassName = isOpen ? 'slds-is-open' : 'slds-is-closed';
 
+	// An open composer behaves like a dialog: when it mounts open, or the parent opens it without
+	// a click, focus the dialog and return focus to where it was when the composer unmounts. A
+	// minimized composer is only a bar and leaves focus alone.
+	const dialogRef = useRef<HTMLElement | null>(null);
+	const returnFocusRef = useRef<HTMLElement | null>(null);
+
 	// The minimize and expand buttons replace each other, so the clicked one unmounts and focus
 	// would fall to <body>. When the parent accepts the request, move focus to the button that
 	// took its place.
@@ -88,19 +94,47 @@ const DockedComposer = ({
 		toggleButtonRef.current = node;
 	};
 
-	// Runs after every render: if the click's render flipped `isOpen`, focus the new button.
-	const previousIsOpenRef = useRef(isOpen);
+	// Runs after every render. `false` before the first render, so mounting open counts as opening.
+	const previousIsOpenRef = useRef<boolean | undefined>(false);
 	useEffect(() => {
-		if (
-			shouldFocusToggleRef.current &&
-			previousIsOpenRef.current !== isOpen &&
-			toggleButtonRef.current
-		) {
-			toggleButtonRef.current.focus();
+		if (previousIsOpenRef.current !== isOpen) {
+			if (shouldFocusToggleRef.current) {
+				toggleButtonRef.current?.focus();
+			} else if (isOpen && dialogRef.current) {
+				const active = document.activeElement as HTMLElement | null;
+				if (
+					!returnFocusRef.current &&
+					active &&
+					active !== document.body &&
+					!dialogRef.current.contains(active)
+				) {
+					returnFocusRef.current = active;
+				}
+				dialogRef.current.focus();
+			}
 		}
 		previousIsOpenRef.current = isOpen;
 		shouldFocusToggleRef.current = false;
 	});
+
+	useEffect(() => {
+		// Read the node here: refs are already detached when the cleanup runs.
+		const dialog = dialogRef.current;
+		return () => {
+			// Only restore focus the composer took, and only if it is not already somewhere else.
+			const returnFocus = returnFocusRef.current;
+			const active = document.activeElement;
+			if (
+				returnFocus?.isConnected &&
+				(!active || active === document.body || dialog?.contains(active))
+			) {
+				returnFocus.focus();
+			}
+			returnFocusRef.current = null;
+			// Let a remount (React StrictMode replays effects) focus the dialog again.
+			previousIsOpenRef.current = false;
+		};
+	}, []);
 
 	const handleToggle =
 		(handler?: (event: MouseEvent<HTMLButtonElement>) => void) =>
@@ -121,7 +155,9 @@ const DockedComposer = ({
 		>
 			<section
 				className={`slds-docked-composer slds-grid slds-grid_vertical ${sectionClassName}`}
+				ref={dialogRef}
 				role="dialog"
+				tabIndex={-1}
 				aria-labelledby={`${id}-dialog-heading`}
 				aria-describedby={isOpen ? `${id}-body` : undefined}
 			>

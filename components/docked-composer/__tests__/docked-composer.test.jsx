@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { StrictMode, useState } from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, it, expect, vi } from 'vitest';
@@ -112,20 +112,81 @@ describe('DockedComposer focus and ARIA', () => {
 		expect(screen.getByRole('button', { name: 'Minimize' })).toHaveFocus();
 	});
 
-	it('does not move focus on mount or when isOpen changes without a click', () => {
-		const { rerender } = render(
+	const renderComposer = (props, render_ = render) =>
+		render_(
 			<IconSettings iconPath="/assets/icons">
-				<DockedComposer header="Header" isOpen />
+				<button type="button">Before</button>
+				{props.mounted === false ? null : (
+					<DockedComposer header="Header" {...props} />
+				)}
 			</IconSettings>
 		);
+
+	it('focuses the dialog when it mounts open', () => {
+		renderComposer({ isOpen: true });
+		expect(screen.getByRole('dialog')).toHaveFocus();
+	});
+
+	it('does not move focus when it mounts minimized', () => {
+		renderComposer({ isOpen: false });
+		expect(document.body).toHaveFocus();
+	});
+
+	it('focuses the dialog when the parent opens it without a click', () => {
+		const { rerender } = renderComposer({ isOpen: false });
 		expect(document.body).toHaveFocus();
 
-		rerender(
-			<IconSettings iconPath="/assets/icons">
-				<DockedComposer header="Header" isOpen={false} />
-			</IconSettings>
+		renderComposer({ isOpen: true }, rerender);
+		expect(screen.getByRole('dialog')).toHaveFocus();
+	});
+
+	it('does not move focus when the parent minimizes it without a click', () => {
+		const { rerender } = renderComposer({ isOpen: true });
+		const dialog = screen.getByRole('dialog');
+
+		renderComposer({ isOpen: false }, rerender);
+		expect(dialog).toHaveFocus();
+	});
+
+	it('returns focus to the previously focused element when an open composer unmounts', () => {
+		const { rerender } = renderComposer({ mounted: false });
+		const before = screen.getByRole('button', { name: 'Before' });
+		before.focus();
+
+		renderComposer({ isOpen: true }, rerender);
+		expect(screen.getByRole('dialog')).toHaveFocus();
+
+		renderComposer({ mounted: false }, rerender);
+		expect(before).toHaveFocus();
+	});
+
+	it('returns focus on unmount under StrictMode', () => {
+		const tree = (mounted) => (
+			<StrictMode>
+				<IconSettings iconPath="/assets/icons">
+					<button type="button">Before</button>
+					{mounted ? <DockedComposer header="Header" isOpen /> : null}
+				</IconSettings>
+			</StrictMode>
 		);
-		expect(document.body).toHaveFocus();
+		const { rerender } = render(tree(false));
+		const before = screen.getByRole('button', { name: 'Before' });
+		before.focus();
+
+		rerender(tree(true));
+		expect(screen.getByRole('dialog')).toHaveFocus();
+
+		rerender(tree(false));
+		expect(before).toHaveFocus();
+	});
+
+	it('does not move focus on unmount when it never took focus', () => {
+		const { rerender } = renderComposer({ mounted: false });
+		const before = screen.getByRole('button', { name: 'Before' });
+
+		renderComposer({ isOpen: false }, rerender);
+		renderComposer({ mounted: false }, rerender);
+		expect(before).not.toHaveFocus();
 	});
 
 	it('only points aria-describedby at the body while it is rendered', () => {
