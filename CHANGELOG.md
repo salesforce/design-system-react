@@ -76,7 +76,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - `Checkbox`, `RadioGroup`, `RadioButtonGroup`, `Slider` and `DatePicker`: `onChange`
   - `ButtonStateful`: `onClick`
   - `ColorPicker`: `events.onChange`
-  - `SimpleDataTable`: `onRowChange` when `selectRows` is set. The deprecated `onChange` still satisfies it at runtime
+  - `SimpleDataTable`: `onRowChange` when `selectRows` is set
   - `Tree`: `onSelect`. The deprecated `onClick` still satisfies it at runtime
   - The props types of these components are now type aliases, so they can no longer be extended with `interface … extends`
 - **BREAKING**: Ephemeral UI state is controlled when its prop is not `undefined`, whether or not a callback is passed. A controlled value is always honored, and callbacks always report the requested state:
@@ -202,6 +202,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - String `assistiveText` on `Avatar`, `Breadcrumb`, `Button`, `ButtonStateful`, `Checkbox`, `Search`, `Spinner`, `Textarea`, and `Tree`. Pass an object, such as `assistiveText={{ label: 'Loading' }}`; see each component's `assistiveText` type for its keys.
   - The `components/forms/checkbox` and `components/tabs/pane` aliases, which v11 never shipped as JavaScript, and the `Checkbox` prop `oldEventParameterOrder`, which v11 ignored. Import `components/checkbox` and `components/tabs/panel`.
   - The `FORMS_INLINE_EDIT` constant in `utilities/constants`.
+- **BREAKING**: Props and components deprecated in 0.10.x, settled for v11. Each prop is removed from the types; at runtime it is ignored, kept off the DOM, and logs a one-time development warning that names the replacement:
+  - `Button` `tooltip`. Wrap the button instead: `<Tooltip content={…} trigger={<Button … />} />`
+  - `DatePicker` `children` (use `input`), `label` (use `labels.label`), `placeholder` (use `labels.placeholder`) and `assistiveTextOpenCalendar` (use `assistiveText.openCalendar`)
+  - `Icon` string `assistiveText`. Pass an object: `assistiveText={{ label: '…' }}`
+  - `Illustration` and its `SLDSIllustration` alias (`components/illustration`), and the `ILLUSTRATION` constant. Copy the markup from the [SLDS Illustration blueprint](https://www.lightningdesignsystem.com/components/illustration/) instead
+  - `Input` `assistiveText.fieldLevelHelpButton` (set `assistiveText.triggerLearnMoreIcon` on the `Tooltip` passed to `fieldLevelHelpTooltip`)
+  - `MenuDropdown` `tooltip` (wrap the trigger in a `Tooltip`), `offset` (no replacement; positioning is automatic) and `isInline` (use `menuPosition="relative"`)
+  - `PanelFilterGroup` `assistiveTextCloseFilterPanel` (use `assistiveText.closeButton`)
+  - `Popover` `closeButtonAssistiveText` (use `assistiveText.closeButton`) and `offset` (no replacement)
+  - `Radio` `label` (use `labels.label`)
+  - `ScopedNotification` `iconName` (pass an `Icon` to `icon`)
+  - `SimpleDataTable` `onChange(selection, event)` (use `onRowChange(event, { selection })`; `onChange` no longer satisfies the `onRowChange` requirement), and `assistiveTextForActionsHeader`, `assistiveTextForColumnSort`, `assistiveTextForColumnSortedAscending`, `assistiveTextForColumnSortedDescending`, `assistiveTextForSelectAllRows` and `assistiveTextForSelectRow` on the table, plus the three column-sort ones on `SimpleDataTableColumn` (use the matching `assistiveText` key on the table)
 
 ## [11.0.0-alpha.4] - 2026-10-06
 
