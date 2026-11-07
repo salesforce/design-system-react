@@ -101,15 +101,19 @@ describe('SLDSDockedComposer', () => {
 });
 
 describe('DockedComposer focus and ARIA', () => {
-	it('moves focus to the button that replaces the clicked minimize/expand button', async () => {
+	it('moves focus to the dialog heading after minimizing or expanding', async () => {
 		const user = userEvent.setup();
 		render(<DemoComponent />);
+		const dialog = screen.getByRole('dialog');
+		const heading = document.getElementById(
+			dialog.getAttribute('aria-labelledby')
+		);
 
 		await user.click(screen.getByRole('button', { name: 'Minimize' }));
-		expect(screen.getByRole('button', { name: 'Expand' })).toHaveFocus();
+		expect(heading).toHaveFocus();
 
 		await user.click(screen.getByRole('button', { name: 'Expand' }));
-		expect(screen.getByRole('button', { name: 'Minimize' })).toHaveFocus();
+		expect(heading).toHaveFocus();
 	});
 
 	it('does not move focus on mount or when isOpen changes without a click', () => {
