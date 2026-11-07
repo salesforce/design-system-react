@@ -65,7 +65,7 @@ export interface DatePickerChangeData {
 
 /**
  * What caused the DatePicker to request opening its calendar.
- * - `input-click`: the input (or deprecated `children` input) was clicked
+ * - `input-click`: the input was clicked
  * - `icon-click`: the calendar icon button was clicked
  * - `keyboard`: Down or Up arrow was pressed in the input
  */
@@ -131,8 +131,6 @@ interface DatePickerBaseProps {
 	align?: 'left' | 'right';
 	/** CSS classes for datepicker */
 	className?: string | string[] | Record<string, boolean>;
-	/** Children (deprecated - use input prop) */
-	children?: ReactElement;
 	/** Whether component is disabled */
 	disabled?: boolean;
 	/** Function to determine if a date should be disabled. Receives `{ date }`. */
@@ -218,12 +216,6 @@ interface DatePickerBaseProps {
 	 * Update it from `onChange`. (`undefined` is treated as `null` and warns in development.)
 	 */
 	value: Date | null;
-	/** @deprecated Use labels.label */
-	label?: string;
-	/** @deprecated Use labels.placeholder */
-	placeholder?: string;
-	/** @deprecated Use assistiveText.openCalendar */
-	assistiveTextOpenCalendar?: string;
 	/** Whether field is required */
 	required?: boolean;
 	/** Blur handler */
@@ -306,7 +298,6 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 		assistiveText: assistiveTextProp = {},
 		align = 'left',
 		className,
-		children,
 		disabled,
 		dateDisabled = () => false,
 		defaultIsOpen = false,
@@ -332,9 +323,6 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 		triggerClassName,
 		value: valueProp,
 		// Deprecated props
-		label,
-		placeholder,
-		assistiveTextOpenCalendar,
 		required,
 		onBlur,
 		onFocus,
@@ -706,7 +694,7 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 			iconRight: (
 				<InputIcon
 					assistiveText={{
-						icon: assistiveTextOpenCalendar || assistiveText.openCalendar,
+						icon: assistiveText.openCalendar,
 					}}
 					aria-haspopup
 					aria-expanded={getIsOpen()}
@@ -732,30 +720,19 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 
 		const topLevelDeprecatedComponentProps = {
 			disabled,
-			label: label || labels.label,
+			label: labels.label,
 			onBlur,
 			onFocus,
-			placeholder: placeholder || labels.placeholder,
+			placeholder: labels.placeholder,
 			required,
-		};
-
-		const childrenProps = (children?.props || {}) as Record<string, unknown>;
-		const childrenPropInputProps = {
-			...childrenProps,
-			onClick: (event: React.MouseEvent<HTMLInputElement>) => {
-				openDialog(event, { trigger: 'input-click' });
-				if (typeof childrenProps.onClick === 'function') {
-					childrenProps.onClick();
-				}
-			},
 		};
 
 		const inputRenderProps = (input?.props || {}) as Record<string, unknown>;
 
-		// The `input` element's (or deprecated `children`'s) props win, except `onChange` and
+		// The `input` element's props win, except `onChange` and
 		// `inputRef`: the picker needs its own to track typed text and to return focus to the input
 		// on close, so both are called.
-		const consumerProps = { ...childrenProps, ...inputRenderProps };
+		const consumerProps = inputRenderProps;
 		const consumerOnChange = consumerProps.onChange as
 			((...args: unknown[]) => void) | undefined;
 		const consumerInputRef = consumerProps.inputRef as
@@ -764,7 +741,6 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 		return {
 			...defaultInputProps,
 			...topLevelDeprecatedComponentProps,
-			...childrenPropInputProps,
 			...inputRenderProps,
 			onChange: (event: ChangeEvent<HTMLInputElement>, ...rest: unknown[]) => {
 				consumerOnChange?.(event, ...rest);
@@ -782,7 +758,6 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 			},
 		};
 	}, [
-		assistiveTextOpenCalendar,
 		assistiveText.openCalendar,
 		getIsOpen,
 		openDialogFromIcon,
@@ -793,14 +768,11 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 		handleKeyDown,
 		inputValue,
 		disabled,
-		label,
 		labels.label,
 		labels.placeholder,
 		onBlur,
 		onFocus,
-		placeholder,
 		required,
-		children,
 		input,
 	]);
 
@@ -808,13 +780,8 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 
 	const inputProps = getInputProps();
 
-	// `children` prop is a deprecated API
-	const inputToRender = children ? (
-		React.cloneElement(children, inputProps as Record<string, unknown>)
-	) : (
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		<Input {...(inputProps as any)} />
-	);
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	const inputToRender = <Input {...(inputProps as any)} />;
 
 	return (
 		<div

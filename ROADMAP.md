@@ -56,8 +56,12 @@ moves to `latest`.
    `ModalTrigger`; `assistiveText: string | object` becomes object-only (avatar, breadcrumb,
    spinner, textarea, tree); `tooltip` dead/legacy props (`openByDefault`, `isInline`,
    `target`, `info`/`error` variants).
-   **Done in #3248** (11.0.0-alpha.6): all of the above. Still open: `icon`'s string
-   `assistiveText`, and the deprecated props on popover, menu-dropdown and input listed below.
+   **Done in #3248** (11.0.0-alpha.6): all of the above.
+   **Done (removals):** `icon`'s string `assistiveText`, `Illustration`, and the props
+   deprecated in 0.10.x on button, date-picker, input, menu-dropdown, panel, popover, radio,
+   scoped-notification and simple-data-table. Props first deprecated during the v11 alphas
+   (page-header `onRenderActions`/`onRenderControls`, popover `footerClassName`) or never
+   deprecated (input `onSubmit`/`onKeyPress`, slider `onInput`, textarea `onSubmit`) stay.
 2. **Uncontrolled data and selection.** Rule of thumb: if it would reasonably live in
    Redux/app state, it is controlled. Remove `default*` twins and internal copies from
    checkbox, radio, input, combobox, slider, textarea and tabs. Selection is controlled in
@@ -197,6 +201,7 @@ _Reviewed: accordion, alert, avatar, badge, breadcrumb, builder-header, button, 
 - [ ] `button` — pick one ref API (`ref` vs `buttonRef`); model `variant: 'icon'` +
       `iconVariant`/`iconSize` as a discriminated union; give the deprecated `tooltip` prop a
       sunset path (`utilities/warning/sunset-property`) or remove it.
+      **Done (removals):** `tooltip` is removed and warns once; wrap the button in a `Tooltip`.
 - [ ] `button`, `button-stateful` — extend `ButtonHTMLAttributes` so `name`, `value`, `role`,
       `autoFocus`, etc. pass through (only `aria-*`/`data-*`/`form*` do today). Settle `tabIndex`
       type (`button` takes `number | string`, `button-stateful` only `string`).
@@ -324,6 +329,7 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
       `direction` as `'next' | 'previous'`. Settle `children`, `label`, `placeholder`,
       `assistiveTextOpenCalendar`, `formattedValue`: remove at GA or keep permanently.
       **Done (behavior-fixes):** the picker's `onChange` and `inputRef` are composed with the `input` prop's (consumer first) instead of replaced.
+      **Done (removals):** `children`, `label`, `placeholder` and `assistiveTextOpenCalendar` are removed and warn once (`formattedValue` was removed in #3269).
 - [ ] `date-picker` — range selection: do not widen `date`/`value` to `Date | [Date, Date]`;
       plan a separate `DateRangePicker` (or `mode="range"` with distinct props).
 - [x] `checkbox` — `checked` is data: controlled only. Remove `defaultChecked` (the
@@ -400,6 +406,7 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
 - [ ] `icon` — `assistiveText: object | string` union (pick the object);
       `category: string` should be a union.
       **Partly done:** `category` is typed `IconCategory`.
+      **Done (removals):** `assistiveText` is object-only; a string warns once and is ignored.
 - [ ] `icon/button-icon` — `size` union lacks `xx-small` while `button`'s `iconSize` accepts it; drop the index signature.
 - [ ] `icon/input-icon` — rendering switches between `Button` and a plain icon on whether
       `onClick` is passed (callback-presence mode switch): make it an explicit prop or split
@@ -408,8 +415,9 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
       `Grid.Column` static-property composition: decide the final API (named exports) now.
 - [ ] `icon-settings` — `onRequestIconPath` is a return-value lookup, not a request: rename or
       document the exception before it is frozen.
-- [ ] `illustration` — deprecated (XSS via `path`); `internalIllustration` looks unused; `illustration`/`path`/`name` precedence is
+- [x] `illustration` — deprecated (XSS via `path`); `internalIllustration` looks unused; `illustration`/`path`/`name` precedence is
       implicit: either remove in 11.0 or freeze as-is.
+      **Done (removals):** removed in 11.0, with its export, constant and story assets.
 
 - [x] `input` — `defaultValue` is a data twin of `value` (`index.tsx:116`); the counter variant
       also mutates and reads the DOM value in uncontrolled mode. Remove `defaultValue` and the
@@ -428,9 +436,11 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
       types (`string | number` today) and the ref target (`forwardRef` points at the wrapper
       div; `inputRef` is callback-only).
       **Re-scoped by the child-contract rule:** children here are library components, so the `cloneElement`/child-props contract is allowed. Keep the other findings. Child contract done (theme 3): children are typed, injected props are internal, and no child is matched by `displayName`.
-- [ ] `input` — remove the sunset API from the contract: `assistiveText.fieldLevelHelpButton`
+      **Kept (removals):** `onSubmit` and `onKeyPress` were not deprecated in 0.10.x, so they stay until they have had a deprecation release.
+- [x] `input` — remove the sunset API from the contract: `assistiveText.fieldLevelHelpButton`
       and the dead `check-props.js` checks for
       `iconCategory`/`iconName`/`iconPosition`/`iconAssistiveText`/`onIconClick`.
+      **Done (removals):** `assistiveText.fieldLevelHelpButton` is removed and warns once; the dead checks are deleted.
 - [ ] `input/search` — `onClear`/`onSearch` take `(event)` only,
       move to `(event, data)`; make it a `forwardRef`.
 - [ ] `media-object` — decide `body` prop vs `children` (consistent with the `badge`
@@ -464,6 +474,7 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
       `requestFocus` is a positional hack) and whether `ListItem`/`ListItemLabel` stay public
       (`index.tsx` exports them), and drop the deprecated `tooltip`, `offset`, `isInline`.
       **Trigger done (theme 3):** a `trigger` prop (element or function) replaces the trigger child, which still works and warns once; `List` and `Button` children are matched by reference and custom content keeps its key. The ref story, `ListItem`/`ListItemLabel` and the deprecated props are still open.
+      **Done (removals):** `tooltip`, `offset` and `isInline` are removed and warn once. Still open: the ref story and `ListItem`/`ListItemLabel`.
 - [ ] `menu-list` — `components/menu-list/*` are 4-line aliases of `utilities/menu-list`, not
       exported from `index.js` (deep import only). Remove them, or promote the real
       component. It is class-based, `cloneElement`s a tooltip template into items
@@ -486,11 +497,13 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
       with a class in `base`, `object-home` and `record-home`.
       **Partly done:** `actions`/`controls` slot props, with
       `onRenderActions`/`onRenderControls` deprecated.
+      **Kept (removals):** `onRenderActions`/`onRenderControls` were the recommended API in 0.10.x, so they stay deprecated (and still work) through v11. Still open: `PageHeaderControl` matching by `displayName` and the `icon` class injection.
 - [ ] `page-header` — `details` items: `flavor` is a raw SLDS size string, no `id`/`key`
       (index keys); remove the
       unreachable legacy props (`iconCategory`, `iconName`, `contentRight`, `navRight`, …)
       and branches. Hardcoded `h1` title (add a heading-level prop) and `title` of `0` drops.
       **Done (behavior-fixes):** a `title` of `0` renders.
+      **Done (removals):** the legacy `icon*`/`contentRight`/`navRight` branches, passthrough and checks are deleted.
 - [ ] `panel` — `PanelFilterGroup` `variant?: 'panel'` is a one-value variant that changes
       structure (built-in header/footer vs `header`/`footer` slots): make it a union or
       two components; flat `addFilterLabel`/`cancelLabel`/
@@ -499,6 +512,7 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
       `onClickAdd`/`onClickRemoveAll`/`onRequestCancel|Close|Save` → `(event, data)` with one
       naming scheme; drop the `[key: string]: unknown` signature (`...rest` is destructured
       and never spread); English strings live in `defaultProps`.
+      **Done (removals):** `assistiveTextCloseFilterPanel` is removed and warns once.
 - [ ] `panel` — `PanelFilterList` uses `Children.map` and `cloneElement(child, { isError })`,
       wraps each child in `<li>`, and generates an error `<p>` not tied to the child by
       `aria-describedby`: replace with an item component taking `errorLabel`. `list-heading`:
@@ -544,6 +558,7 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
       `overlay: boolean | function` (the function receives a shared DOM element); remove
       deprecated `footerClassName`, `closeButtonAssistiveText`, `offset`; `heading` vs
       `ariaLabelledby` as a union; `icon` only for the `feature` variant (union).
+      **Done (removals):** `closeButtonAssistiveText` and `offset` are removed and warn once. `footerClassName` was not deprecated in 0.10.x, so it stays deprecated (and still works) through v11.
 - [ ] `popover/edit-dialog` — class component with an index signature cast to `PopoverProps`;
       `handleOpen` → `onClick`/`onRequestOpen`; a consumer
       `onClose`/`onOpen` silently replaces EditDialog's own handlers (spread last); stale
@@ -574,10 +589,11 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
 complete`) and `THEME_OPTIONS` is a second public surface; `icon` is only honored with
       `hasIcon` (implicit coupling: drop `hasIcon` or make a union); hardcoded English icon
       titles ("Warning", "Expired", "Complete") need `assistiveText` keys.
-- [ ] `radio` — `defaultChecked` is a data twin of `checked` (`radio/index.tsx:60`); make
+- [x] `radio` — `defaultChecked` is a data twin of `checked` (`radio/index.tsx:60`); make
       `checked` + `onChange` required and drop it. `onChange` data is `{ checked: !checked }`,
       which reports `true` every time when uncontrolled. Remove the deprecated `label`.
-      **Control model done (theme 2).** Still open: remove the deprecated `label`.
+      **Control model done (theme 2).**
+      **Done (removals):** `label` is removed and warns once.
 - [ ] `radio` — `variant` (`base | button-group | swatch | visual-picker`) as a discriminated
       union: `coverable`, `vertical`, `size`, `onRenderVisualPicker*` and swatch `style` are
       visual-picker/swatch only; `description` is declared and never rendered; `size` has no
@@ -619,6 +635,7 @@ complete`) and `THEME_OPTIONS` is a second public surface; `icon` is only honore
       **Re-scoped by the child-contract rule:** children here are library components, so the `cloneElement`/child-props contract is allowed. Keep the other findings. Child contract done (theme 3): children are typed, injected props are internal, and no child is matched by `displayName`.
       **Partly done:** `iconName` is kept but deprecated with a warning; `icon` is typed
       `ReactElement<IconProps>`.
+      **Done (removals):** `iconName` is removed and warns once.
 - [x] `setup-assistant` — steps are found by `displayName === SETUP_ASSISTANT_STEP` (other
       children are silently dropped) and `cloneElement`ed with `index`, `onToggleIsOpen`,
       `stepNumber` (`index.tsx:61-73`); `onRenderFigure` is checked by `displayName === ICON`
@@ -653,7 +670,8 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
       today (deprecated `onChange(selection, event)` and `onRowChange`); settle the name before
       the deprecated one goes. `selectRows: boolean | 'checkbox' | 'radio'` →
       `selectionMode: 'none' | 'checkbox' | 'radio'`.
-      **Control model done (theme 2).** `selection` is required when `selectRows` is set (a union type) and matched by `id`; `onRowChange(event, { selection })` is the name, and the deprecated `onChange` still warns. Still open: `selectRows` → `selectionMode`.
+      **Control model done (theme 2).** `selection` is required when `selectRows` is set (a union type) and matched by `id`; `onRowChange(event, { selection })` is the name. Still open: `selectRows` → `selectionMode`.
+      **Done (removals):** `onChange(selection, event)` is removed and warns once.
 - [ ] `simple-data-table` — sort state is split across columns (`isSorted`, `sortDirection`,
       `isDefaultSortDescending`) so two columns can both be sorted, and `header-cell` keeps an
       internal `sortDirection` copy that drifts from the prop. Use a table-level
@@ -671,12 +689,14 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
       `assistiveTextFor*` props; `fixedLayout` still adds the vestigial `slds-table_resizable-cols`
       class and `role="grid"` after resizing was removed.
       **Done (behavior-fixes):** `fixedLayout` no longer adds `slds-table_resizable-cols`; `role="grid"`/`gridcell` need `fixedLayout` and `keyboardNavigation`; fixed headers use a `ResizeObserver` on the scroller and table, and `onToggleFixedHeaderListeners`/`onFixedHeaderResize` are deprecated (still called).
+      **Done (removals):** the table and column `assistiveTextFor*` props are removed and warn once.
 
 - [ ] `slider` — `value` + `defaultValue` twin (`index.tsx:34-35,119,169-171`) and
       `displayValue = value ?? defaultValue ?? 0` goes stale when uncontrolled. Require `value` +
       `onChange(event, { value })`, drop `defaultValue`. Also:
       `errorText` → `labels.error` + `hasError`; `label` duplicates `assistiveText.label`; `onInput` duplicates `onChange`.
-      **Control model done (theme 2).** Still open: `onInput`.
+      **Control model done (theme 2).**
+      **Kept (removals):** `onInput` was not deprecated in 0.10.x, so it stays until it has had a deprecation release.
 - [x] `spinner` — `assistiveText: object | string` (string form deprecated; `check-props` is
       **Done:** `assistiveText` is object-only (#3248).
 - [ ] `spinner` — `isInline`/`isInput`
@@ -687,6 +707,7 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
       → extend `TextareaHTMLAttributes`; `onSubmit` on a textarea never fires; `children` render
       after the control.
       **Control model done (theme 2); `maxLength` is a number (#3252).** Still open: the aria prop types, `onSubmit` and `children`.
+      **Kept (removals):** `onSubmit` was not deprecated in 0.10.x, so it stays until it has had a deprecation release. Still open: the aria prop types and `children`.
 - [ ] `toast` — `onRequestClose: () => void` has no event/data (timer path has no event; `alert`
       declares `(event: MouseEvent) => void`) → `(event | null, { trigger: 'timeout' | 'close-button' })`.
       Auto-dismiss: the timer effect depends on `handleClose`, which depends on `onRequestClose`,
@@ -758,6 +779,7 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
       **Control model done (theme 2); `NavigationItem` index signature dropped and `icon`/`notificationBadge` declared (#3252).** Still open: the `icon`/`notificationBadge` contract, `href="#"` items, the `<nav>` label, `displayName` and `lodash.isfunction`.
       **Re-scoped by the child-contract rule:** children here are library components, so the `cloneElement`/child-props contract is allowed. Keep the other findings. Child contract already met: `icon`/`notificationBadge` are typed and only get `className` joined.
       **Done (behavior-fixes):** items without `url` render a `<button type="button">` with `slds-button_reset slds-nav-vertical__action`; `url` is optional.
+      **Done (removals):** `lodash.isfunction` is replaced by optional chaining; `displayName` stays (the codebase overview requires it).
 
 - [ ] `split-view` — `isOpen` is hybrid (mode by `typeof === 'boolean'`, uncontrolled start
       hard-coded `true`, no `defaultIsOpen`) → `value !== undefined` detection + `defaultIsOpen`.

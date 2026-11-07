@@ -76,10 +76,19 @@ export const WithCustomIcon = {
 	),
 };
 
-// With custom icon name
+// With a different utility icon
 export const WithIconName = {
 	render: () => (
-		<ScopedNotification iconName="announcement">
+		<ScopedNotification
+			icon={
+				<Icon
+					assistiveText={{ label: 'Info' }}
+					category="utility"
+					name="announcement"
+					size="small"
+				/>
+			}
+		>
 			<p>This notification uses a different icon name.</p>
 		</ScopedNotification>
 	),

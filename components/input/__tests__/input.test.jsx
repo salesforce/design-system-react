@@ -6,6 +6,7 @@ import Input from '../';
 import Icon from '../../icon';
 import InputIcon from '../../icon/input-icon';
 import IconSettings from '../../icon-settings';
+import Tooltip from '../../tooltip';
 
 describe('SLDSInput', () => {
 	const defaultProps = {
@@ -581,6 +582,26 @@ describe('SLDSInput', () => {
 
 			const { container } = renderInput({ defaultValue: 'stale' });
 			expect(container.querySelector('input').value).toBe('');
+		});
+
+		it('ignores and warns about `assistiveText.fieldLevelHelpButton`', () => {
+			const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+			try {
+				const { container } = renderInput({
+					assistiveText: { fieldLevelHelpButton: 'Old help' },
+					fieldLevelHelpTooltip: <Tooltip content="Some help" />,
+					label: 'Name',
+				});
+				expect(container.innerHTML).not.toContain('Old help');
+				expect(container.innerHTML).toContain('Help');
+				expect(errorSpy).toHaveBeenCalledWith(
+					expect.stringContaining(
+						'`assistiveText.fieldLevelHelpButton` has reached End-of-Life'
+					)
+				);
+			} finally {
+				errorSpy.mockRestore();
+			}
 		});
 	});
 });

@@ -70,8 +70,6 @@ export interface InputAssistiveText {
 	decrement?: string;
 	/** Text for increment button in counter variant */
 	increment?: string;
-	/** Text for field level help button */
-	fieldLevelHelpButton?: string;
 }
 
 /**
@@ -598,9 +596,6 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
 				/>
 				{fieldLevelHelpTooltip && hasRenderedLabel ? (
 					<FieldLevelHelpTooltip
-						assistiveText={{
-							triggerLearnMoreIcon: assistiveText.fieldLevelHelpButton,
-						}}
 						fieldLevelHelpTooltip={fieldLevelHelpTooltip}
 					/>
 				) : null}

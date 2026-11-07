@@ -100,8 +100,6 @@ export interface RadioProps {
 	labelId?: string;
 	/** Text labels */
 	labels?: RadioLabels;
-	/** @deprecated Use labels.label instead */
-	label?: string;
 	/** Input name attribute */
 	name?: string;
 	/**
@@ -178,15 +176,15 @@ const Radio = ({
 	'aria-labelledby': ariaLabelledBy,
 	checked,
 	className,
-	// Removed in v11 (Radio is controlled). Destructured so it never reaches
-	// the DOM; `checkDeprecatedProps` warns about it.
+	// Removed in v11. Destructured so they never reach the DOM;
+	// `checkDeprecatedProps` warns about them.
 	defaultChecked,
 	deselectable,
 	disabled,
 	id: propId,
 	labelId,
 	labels: propLabels,
-	label: deprecatedLabel,
+	label,
 	name,
 	onChange,
 	onFocus,
@@ -207,23 +205,23 @@ const Radio = ({
 	refs,
 	style,
 	...rest
-}: RadioProps & { defaultChecked?: boolean }): React.ReactElement => {
+}: RadioProps & {
+	defaultChecked?: boolean;
+	label?: unknown;
+}): React.ReactElement => {
 	const generatedId = useId();
 	const preventDuplicateRef = useRef(false);
 
 	const id = propId || generatedId;
 	const assistiveText = { ...defaultAssistiveText, ...propAssistiveText };
-	const labels = {
-		...defaultLabels,
-		...(deprecatedLabel ? { label: deprecatedLabel } : {}),
-		...propLabels,
-	};
+	const labels = { ...defaultLabels, ...propLabels };
 
 	useEffect(() => {
 		checkDeprecatedProps(
 			RADIO,
 			{
 				defaultChecked,
+				label,
 				onRenderVisualPicker,
 				onRenderVisualPickerSelected,
 				onRenderVisualPickerNotSelected,
@@ -232,6 +230,7 @@ const Radio = ({
 		);
 	}, [
 		defaultChecked,
+		label,
 		onRenderVisualPicker,
 		onRenderVisualPickerSelected,
 		onRenderVisualPickerNotSelected,

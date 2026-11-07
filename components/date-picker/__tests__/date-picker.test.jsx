@@ -1084,6 +1084,57 @@ describe('SLDSDatepicker', () => {
 				);
 				consoleError.mockRestore();
 			});
+
+			it('ignores and warns about the removed label, placeholder and assistiveTextOpenCalendar props', () => {
+				const consoleError = vi
+					.spyOn(console, 'error')
+					.mockImplementation(() => {});
+				const { container } = render(
+					<DemoComponent
+						assistiveTextOpenCalendar="Old open calendar"
+						label="Old label"
+						labels={{ label: 'Date', placeholder: 'Pick one' }}
+						placeholder="Old placeholder"
+						value={null}
+					/>
+				);
+
+				expect(container.innerHTML).not.toContain('Old label');
+				expect(container.innerHTML).not.toContain('Old open calendar');
+				expect(container.querySelector(inputSelector)).toHaveAttribute(
+					'placeholder',
+					'Pick one'
+				);
+				['label', 'placeholder', 'assistiveTextOpenCalendar'].forEach(
+					(prop) => {
+						expect(consoleError).toHaveBeenCalledWith(
+							expect.stringContaining(`\`${prop}\` has reached End-of-Life`)
+						);
+					}
+				);
+				consoleError.mockRestore();
+			});
+
+			it('ignores and warns about the removed children input', () => {
+				const consoleError = vi
+					.spyOn(console, 'error')
+					.mockImplementation(() => {});
+				const { container } = render(
+					<DemoComponent value={null}>
+						<Input placeholder="Child input" />
+					</DemoComponent>
+				);
+
+				expect(container.querySelectorAll('input')).toHaveLength(1);
+				expect(container.querySelector(inputSelector)).not.toHaveAttribute(
+					'placeholder',
+					'Child input'
+				);
+				expect(consoleError).toHaveBeenCalledWith(
+					expect.stringContaining('`children` has reached End-of-Life')
+				);
+				consoleError.mockRestore();
+			});
 		});
 
 		describe('isOpen', () => {

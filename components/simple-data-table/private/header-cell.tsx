@@ -47,12 +47,6 @@ export interface SimpleDataTableHeaderCellProps {
 	sortable?: boolean;
 	sortDirection?: 'desc' | 'asc';
 	width?: string;
-	/** @deprecated */
-	assistiveTextForColumnSort?: string;
-	/** @deprecated */
-	assistiveTextForColumnSortedAscending?: string;
-	/** @deprecated */
-	assistiveTextForColumnSortedDescending?: string;
 }
 
 /**
@@ -128,8 +122,7 @@ const SimpleDataTableHeaderCell: React.FC<SimpleDataTableHeaderCellProps> = (
 					role="button"
 				>
 					<span className="slds-assistive-text">
-						{props.assistiveTextForColumnSort ||
-							props.assistiveText?.columnSort}{' '}
+						{props.assistiveText?.columnSort}{' '}
 					</span>
 					<span
 						className="slds-truncate"
@@ -148,10 +141,8 @@ const SimpleDataTableHeaderCell: React.FC<SimpleDataTableHeaderCellProps> = (
 					{effectiveSortDirection ? (
 						<span className="slds-assistive-text" aria-atomic="true">
 							{effectiveSortDirection === 'asc'
-								? props.assistiveTextForColumnSortedAscending ||
-									props.assistiveText?.columnSortedAscending
-								: props.assistiveTextForColumnSortedDescending ||
-									props.assistiveText?.columnSortedDescending}
+								? props.assistiveText?.columnSortedAscending
+								: props.assistiveText?.columnSortedDescending}
 						</span>
 					) : null}
 				</SortLink>

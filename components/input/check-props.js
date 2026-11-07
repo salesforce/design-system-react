@@ -3,7 +3,6 @@
 /* eslint-disable import/no-mutable-exports */
 /* eslint-disable max-len */
 
-import deprecatedProperty from '../../utilities/warning/deprecated-property';
 // import oneOfRequiredProperty from '../../../utilities/warning/one-of-required-property';
 import onlyOneOfProperties from '../../utilities/warning/only-one-of-properties';
 import sunsetProperty from '../../utilities/warning/sunset-property';
@@ -25,50 +24,13 @@ if (process.env.NODE_ENV !== 'production') {
 				'Input is controlled: pass `value` and update it in `onChange`.'
 			);
 
-			const iconDeprecatedMessage = `Please use \`iconLeft\` and \`iconRight\` to pass in a customized <Icon> component. ${createDocUrl()}`;
-
-			// Deprecated and changed to another property
-			deprecatedProperty(
+			sunsetProperty(
 				COMPONENT,
 				props.assistiveText && props.assistiveText.fieldLevelHelpButton,
 				'assistiveText.fieldLevelHelpButton',
-				undefined,
-				`Please pass a \`Tooltip\` component into \`fieldLevelHelpTooltip\` with \`assistiveText.triggerLearnMoreIcon\`.`
-			);
-			deprecatedProperty(
-				COMPONENT,
-				props.iconCategory,
-				'iconCategory',
-				undefined,
-				iconDeprecatedMessage
-			);
-			deprecatedProperty(
-				COMPONENT,
-				props.iconName,
-				'iconName',
-				undefined,
-				iconDeprecatedMessage
-			);
-			deprecatedProperty(
-				COMPONENT,
-				props.iconPosition,
-				'iconPosition',
-				undefined,
-				iconDeprecatedMessage
-			);
-			deprecatedProperty(
-				COMPONENT,
-				props.iconAssistiveText,
-				'iconAssistiveText',
-				undefined,
-				iconDeprecatedMessage
-			);
-			deprecatedProperty(
-				COMPONENT,
-				props.onIconClick,
-				'onIconClick',
-				undefined,
-				iconDeprecatedMessage
+				`Pass a \`Tooltip\` to \`fieldLevelHelpTooltip\` and set its \`assistiveText.triggerLearnMoreIcon\`. ${createDocUrl(
+					'fieldLevelHelpTooltip'
+				)}`
 			);
 
 			onlyOneOfProperties(

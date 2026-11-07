@@ -4,15 +4,8 @@
 import React from 'react';
 
 import Tooltip, { type TooltipProps } from '../index';
-import objectHelpers from '../../../utilities/object';
 
 export interface FieldLevelHelpTooltipProps {
-	/**
-	 * Assistive Text object from parent component such as Input, Combobox, etc.
-	 */
-	assistiveText?: {
-		triggerLearnMoreIcon?: string;
-	};
 	/**
 	 * Tooltip from external prop - a Tooltip element to use
 	 */
@@ -30,7 +23,6 @@ const defaultProps: Partial<TooltipProps> = {
 
 const FieldLevelHelpTooltip = ({
 	fieldLevelHelpTooltip,
-	assistiveText = {},
 }: FieldLevelHelpTooltipProps): React.ReactElement | null => {
 	if (!fieldLevelHelpTooltip) {
 		return null;
@@ -45,15 +37,6 @@ const FieldLevelHelpTooltip = ({
 				...defaultProps,
 				// props from external developer
 				...tooltipProps,
-				// allow backwards compatibility with Input's
-				// assistiveText.fieldLevelHelpButton
-				// `Input` used to have an `assistiveText.fieldLevelHelpButton`
-				// prop and that prop needs to override the default Tooltip
-				// "Help" string.
-				assistiveText: {
-					...tooltipProps.assistiveText,
-					...objectHelpers.removeUndefined(assistiveText),
-				},
 			}}
 		/>
 	);
@@ -62,17 +45,3 @@ const FieldLevelHelpTooltip = ({
 FieldLevelHelpTooltip.displayName = 'FieldLevelHelpTooltip';
 
 export default FieldLevelHelpTooltip;
-
-
-
-
-
-
-
-
-
-
-
-
-
-

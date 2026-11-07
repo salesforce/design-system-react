@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { render, fireEvent, waitFor } from '@testing-library/react';
+import { render, fireEvent, screen, waitFor } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 
 import Dropdown from '../../menu-dropdown';
@@ -1395,6 +1395,30 @@ describe('SLDSMenuDropdown', () => {
 				menuOptions.length
 			);
 			expect(menu.querySelectorAll('.legacy-item')).toHaveLength(0);
+			consoleError.mockRestore();
+		});
+	});
+
+	describe('Removed props', () => {
+		it('ignores and warns about tooltip, offset and isInline', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const { container } = renderDropdown({
+				isInline: true,
+				offset: '10px 5px',
+				tooltip: <span className="removed-tooltip">Help text</span>,
+			});
+
+			expect(container.querySelector('.removed-tooltip')).toBeNull();
+			const button = screen.getByRole('button');
+			expect(button).not.toHaveAttribute('tooltip');
+			expect(button).not.toHaveAttribute('offset');
+			['tooltip', 'offset', 'isInline'].forEach((prop) => {
+				expect(consoleError).toHaveBeenCalledWith(
+					expect.stringContaining(`\`${prop}\` has reached End-of-Life`)
+				);
+			});
 			consoleError.mockRestore();
 		});
 	});
