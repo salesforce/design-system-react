@@ -177,7 +177,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `ButtonStateful`: no longer blurs itself on mouse leave or blur, so focus stays on the button and the next Tab continues from it; `onBlur` is never called with a `MouseEvent`, and `onMouseDown` is called in the text variants too
 - `Combobox`: `disabled` disables the input, not just the menu
 - `DatePicker`: an `input` prop with its own `onChange` or `inputRef` no longer replaces the picker's, which broke typing a date and focus on close; both run, the consumer's first
-- `DockedComposer`: minimizing or expanding moves focus to the button that replaced the clicked one instead of dropping it to `<body>`, and `aria-describedby` is only set while the body is rendered
+- `DockedComposer`: an open composer focuses its `role="dialog"` section when it mounts or the parent opens it, and returns focus when it unmounts; a minimized one leaves focus alone. Minimizing or expanding moves focus to the button that replaced the clicked one instead of dropping it to `<body>`, and `aria-describedby` is only set while the body is rendered
 - `Filter`: `isError` sets `aria-describedby` only when the `${id}-error` element is rendered (inside a `PanelFilterList` with `errorLabel`)
 - `PageHeader`: a `title` of `0` is rendered
 - `Pill`: the link variant no longer wraps its `<a>` in a `role="button"` span
