@@ -3141,7 +3141,7 @@ exports[`Story HTML snapshots > DockedComposer > Closed 1`] = `
       <header class="slds-docked-composer__header slds-grid slds-shrink-none" aria-live="assertive">
         <div class="slds-media slds-media_center slds-no-space">
           <div class="slds-media__body">
-            <h2 class="slds-truncate" id="_R_0_-dialog-heading" tabindex="-1" title="New Email">New Email</h2>
+            <h2 class="slds-truncate" id="_R_0_-dialog-heading" title="New Email">New Email</h2>
           </div>
         </div>
         <div class="slds-col_bump-left slds-shrink-none"><button class="slds-button slds-button_icon slds-button_icon-bare" id="_R_0_-expand-button" title="Expand" type="button"><svg class="slds-button__icon" aria-hidden="true">
@@ -3162,7 +3162,7 @@ exports[`Story HTML snapshots > DockedComposer > Interactive 1`] = `
       <header class="slds-docked-composer__header slds-grid slds-shrink-none" aria-live="assertive">
         <div class="slds-media slds-media_center slds-no-space">
           <div class="slds-media__body">
-            <h2 class="slds-truncate" id="_R_0_-dialog-heading" tabindex="-1" title="New Email">New Email</h2>
+            <h2 class="slds-truncate" id="_R_0_-dialog-heading" title="New Email">New Email</h2>
           </div>
         </div>
         <div class="slds-col_bump-left slds-shrink-none"><button class="slds-button slds-button_icon slds-button_icon-bare" id="_R_0_-minimize-button" title="Minimize" type="button"><svg class="slds-button__icon" aria-hidden="true">
@@ -3196,7 +3196,7 @@ exports[`Story HTML snapshots > DockedComposer > Open 1`] = `
       <header class="slds-docked-composer__header slds-grid slds-shrink-none" aria-live="assertive">
         <div class="slds-media slds-media_center slds-no-space">
           <div class="slds-media__body">
-            <h2 class="slds-truncate" id="_R_0_-dialog-heading" tabindex="-1" title="New Email">New Email</h2>
+            <h2 class="slds-truncate" id="_R_0_-dialog-heading" title="New Email">New Email</h2>
           </div>
         </div>
         <div class="slds-col_bump-left slds-shrink-none"><button class="slds-button slds-button_icon slds-button_icon-bare" id="_R_0_-minimize-button" title="Minimize" type="button"><svg class="slds-button__icon" aria-hidden="true">

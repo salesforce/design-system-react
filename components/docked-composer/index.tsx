@@ -80,20 +80,23 @@ const DockedComposer = ({
 	const sectionClassName = isOpen ? 'slds-is-open' : 'slds-is-closed';
 
 	// The minimize and expand buttons replace each other, so the clicked one unmounts and focus
-	// would fall to <body>. When the parent accepts the request, move focus to the heading that
-	// names the dialog (its `aria-labelledby` target), so the dialog's name is announced.
-	const headingRef = useRef<HTMLHeadingElement | null>(null);
+	// would fall to <body>. When the parent accepts the request, move focus to the button that
+	// took its place.
+	const toggleButtonRef = useRef<HTMLButtonElement | null>(null);
 	const shouldFocusToggleRef = useRef(false);
+	const setToggleButtonRef = (node: HTMLButtonElement | null) => {
+		toggleButtonRef.current = node;
+	};
 
-	// Runs after every render: if the click's render flipped `isOpen`, focus the heading.
+	// Runs after every render: if the click's render flipped `isOpen`, focus the new button.
 	const previousIsOpenRef = useRef(isOpen);
 	useEffect(() => {
 		if (
 			shouldFocusToggleRef.current &&
 			previousIsOpenRef.current !== isOpen &&
-			headingRef.current
+			toggleButtonRef.current
 		) {
-			headingRef.current.focus();
+			toggleButtonRef.current.focus();
 		}
 		previousIsOpenRef.current = isOpen;
 		shouldFocusToggleRef.current = false;
@@ -131,8 +134,6 @@ const DockedComposer = ({
 							<h2
 								className="slds-truncate"
 								id={`${id}-dialog-heading`}
-								ref={headingRef}
-								tabIndex={-1}
 								title={typeof header === 'string' ? header : undefined}
 							>
 								{header}
@@ -145,6 +146,7 @@ const DockedComposer = ({
 								id={`${id}-minimize-button`}
 								title={assistiveText.minimizeButton}
 								assistiveText={{ icon: assistiveText.minimizeButton }}
+								buttonRef={setToggleButtonRef}
 								onClick={handleToggle(events.onRequestMinimize)}
 								iconCategory="utility"
 								iconName="minimize_window"
@@ -156,6 +158,7 @@ const DockedComposer = ({
 								id={`${id}-expand-button`}
 								title={assistiveText.expandButton}
 								assistiveText={{ icon: assistiveText.expandButton }}
+								buttonRef={setToggleButtonRef}
 								onClick={handleToggle(events.onRequestExpand)}
 								iconCategory="utility"
 								iconName="expand_alt"
