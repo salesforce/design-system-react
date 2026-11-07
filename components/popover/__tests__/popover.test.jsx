@@ -176,6 +176,33 @@ describe('SLDSPopover', () => {
 			});
 		});
 
+		it('ignores and warns about the removed closeButtonAssistiveText and offset props', async () => {
+			vi.resetModules();
+			const { default: FreshPopover } = await import('../');
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+
+			const { container } = render(
+				<FreshPopover
+					{...defaultProps}
+					closeButtonAssistiveText="Old close"
+					isOpen
+					offset="10px 5px"
+				>
+					<button type="button">Trigger</button>
+				</FreshPopover>
+			);
+
+			expect(container.textContent).not.toContain('Old close');
+			expect(container.textContent).toContain('Close dialog');
+			['closeButtonAssistiveText', 'offset'].forEach((prop) => {
+				expect(consoleError).toHaveBeenCalledWith(
+					expect.stringContaining(`\`${prop}\` has reached End-of-Life`)
+				);
+			});
+		});
+
 		it('applies classNameFooter and styleFooter when footerWalkthroughActions is used', () => {
 			const { container } = renderPopover({
 				isOpen: true,
