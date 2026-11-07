@@ -5,7 +5,6 @@ import React, { type ReactElement } from 'react';
 import classnames from 'classnames';
 
 import Controls from '../controls';
-import Icon from '../../../icon';
 import Info from '../info';
 import MediaObject from '../../../media-object';
 import Title from '../title';
@@ -17,19 +16,7 @@ const displayName = 'PageHeaderBase';
 const Base = (props: PageHeaderVariantProps) => {
 	let icon;
 
-	// Backwards compatibility
-	if (props.iconName) {
-		// `position`/`variant` are legacy props not on IconProps; preserved via cast.
-		const iconProps = {
-			category: props.iconCategory,
-			className: 'slds-page-header__icon',
-			name: props.iconName,
-			position: props.iconPosition,
-			size: props.iconSize,
-			variant: props.iconVariant,
-		} as Record<string, unknown>;
-		icon = <Icon {...iconProps} />;
-	} else if (props.icon) {
+	if (props.icon) {
 		let iconClasses = 'slds-page-header__icon';
 
 		if (props.icon.props) {
@@ -64,7 +51,6 @@ const Base = (props: PageHeaderVariantProps) => {
 			</div>
 			<Controls
 				className="slds-align-middle"
-				navRight={props.navRight}
 				controls={props.controls}
 				type="controls"
 			/>

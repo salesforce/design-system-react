@@ -26,38 +26,15 @@ export interface PageHeaderControlsProps {
 	 * Content for the controls column.
 	 */
 	controls?: ReactNode;
-	/**
-	 * Legacy content for the right/actions column.
-	 */
-	contentRight?: ReactNode;
-	/**
-	 * Legacy content for the right/controls column.
-	 */
-	navRight?: ReactNode;
 }
 
 class Controls extends Component<PageHeaderControlsProps> {
 	static displayName = displayName;
 
 	render() {
-		let controls: ReactNode;
-		let isUsingLegacyProp = false;
-		let legacyControls: ReactNode;
+		const controls =
+			this.props.type === 'actions' ? this.props.actions : this.props.controls;
 		let vettedControls: ReactNode;
-
-		if (this.props.type === 'actions') {
-			if (this.props.actions) {
-				controls = this.props.actions;
-			} else if (this.props.contentRight) {
-				controls = this.props.contentRight;
-				isUsingLegacyProp = true;
-			}
-		} else if (this.props.controls) {
-			controls = this.props.controls;
-		} else if (this.props.navRight) {
-			controls = this.props.navRight;
-			isUsingLegacyProp = true;
-		}
 
 		if (controls) {
 			const controlsElement = controls as React.ReactElement & {
@@ -76,26 +53,6 @@ class Controls extends Component<PageHeaderControlsProps> {
 				vettedControls = collected;
 			}
 
-			// Backward compatibility for older 'contentRight' & 'navRight' structures.
-			if (
-				isUsingLegacyProp &&
-				(!vettedControls ||
-					(Array.isArray(vettedControls) && vettedControls.length < 1))
-			) {
-				if (typeof controls !== 'string') {
-					legacyControls = (
-						<div
-							className="slds-page-header__controls"
-							{...controlsElement.props}
-						/>
-					);
-				} else {
-					legacyControls = (
-						<div className="slds-page-header__controls">{controls}</div>
-					);
-				}
-			}
-
 			return (
 				<div
 					className={classnames(
@@ -103,9 +60,7 @@ class Controls extends Component<PageHeaderControlsProps> {
 						this.props.className
 					)}
 				>
-					{legacyControls || (
-						<div className="slds-page-header__controls">{vettedControls}</div>
-					)}
+					<div className="slds-page-header__controls">{vettedControls}</div>
 				</div>
 			);
 		}

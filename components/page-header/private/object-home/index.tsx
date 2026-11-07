@@ -5,7 +5,6 @@ import React, { type ReactElement } from 'react';
 import classnames from 'classnames';
 
 import Controls from '../controls';
-import Icon from '../../../icon';
 import Info from '../info';
 import Label from '../label';
 import MediaObject from '../../../media-object';
@@ -18,19 +17,7 @@ const displayName = 'PageHeaderObjectHome';
 const ObjectHome = (props: PageHeaderVariantProps) => {
 	let icon;
 
-	// Backwards compatibility
-	if (props.iconName) {
-		// `position`/`variant` are legacy props not on IconProps; preserved via cast.
-		const iconProps = {
-			category: props.iconCategory,
-			className: 'slds-page-header__icon',
-			name: props.iconName,
-			position: props.iconPosition,
-			size: props.iconSize,
-			variant: props.iconVariant,
-		} as Record<string, unknown>;
-		icon = <Icon {...iconProps} />;
-	} else if (props.icon) {
+	if (props.icon) {
 		let iconClasses = 'slds-page-header__icon';
 
 		if (props.icon.props) {
@@ -76,10 +63,8 @@ const ObjectHome = (props: PageHeaderVariantProps) => {
 				</div>
 				<Controls
 					className={classnames({
-						'slds-align-middle slds-p-bottom_none':
-							!props.controls && !props.navRight,
+						'slds-align-middle slds-p-bottom_none': !props.controls,
 					})}
-					contentRight={props.contentRight}
 					actions={props.actions}
 					type="actions"
 				/>
@@ -95,7 +80,6 @@ const ObjectHome = (props: PageHeaderVariantProps) => {
 						// depended on `actions`. Behavior preserved verbatim.
 						'slds-align-middle': !props.actions,
 					})}
-					navRight={props.navRight}
 					controls={props.controls}
 					type="controls"
 				/>
