@@ -145,8 +145,8 @@ moves to `latest`.
 8. **Fix now (bugs, not breaking).** Done: simple-data-table `getAssistiveText` argument
    order, grid `"undefined slds-col"` (#3239), split-view `bottomRightText` title,
    vertical-navigation `aria-current`, tabs `disabled` type, toast timer re-arm (#3251).
-   **Behavior-fixes theme:** runtime and a11y fixes inside the current API in alert
-   (`autoFocus` opt-in), button-stateful, combobox `disabled`, date-picker `input` merge,
+   **Behavior-fixes theme:** runtime and a11y fixes inside the current API in
+   button-stateful, combobox `disabled`, date-picker `input` merge,
    checkbox (Enter/`readOnly`), docked-composer focus, filter, page-header, pill, popover
    trigger handlers, edit-dialog, progress-indicator ids, simple-data-table grid markup and
    `ResizeObserver`, tree leaf keys, vertical-navigation buttons, visual-picker `href` and
@@ -163,7 +163,7 @@ _Reviewed: accordion, alert, avatar, badge, breadcrumb, builder-header, button, 
       over the injected values.
 - [x] `alert` — decide whether focusing the close button on mount (and restoring focus on
       unmount) stays the default or becomes opt-in.
-      **Done (behavior-fixes):** opt-in through `autoFocus` (default `false`); focus is restored only when the Alert moved it.
+      **Decided (behavior-fixes):** focusing the close button on mount, and restoring focus on unmount, stays the default. No `autoFocus` prop.
 - [ ] `accordion` — replace the `cloneElement` + `Children.count` child contract (implicit
       `refs`/`onClickSummary`/`onKeyDownSummary` injection) with context or an `items` prop.
       **Re-scoped by the child-contract rule:** children here are library components, so the `cloneElement`/child-props contract is allowed. Keep the other findings. Child contract done (theme 3): children are typed, injected props are internal, and no child is matched by `displayName`.
