@@ -546,14 +546,18 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 			offset: number;
 			options: ComboboxOption[];
 		}) => {
-			const nextIndex = currentIndex + offset;
-			const skipIndex =
-				opts.length > nextIndex &&
-				nextIndex >= 0 &&
-				opts[nextIndex].type === 'separator';
-			const newIndex = skipIndex ? nextIndex + offset : nextIndex;
-			const hasNewIndex = opts.length > nextIndex && nextIndex >= 0;
-			return hasNewIndex ? newIndex : currentIndex;
+			// Skip every separator in a row (`addSubheadings` keeps the
+			// subheading of a category with no matches, so two can be adjacent),
+			// and stay put when no option is left in that direction.
+			let newIndex = currentIndex + offset;
+			while (
+				newIndex >= 0 &&
+				newIndex < opts.length &&
+				opts[newIndex].type === 'separator'
+			) {
+				newIndex += offset;
+			}
+			return newIndex >= 0 && newIndex < opts.length ? newIndex : currentIndex;
 		},
 		[]
 	);
@@ -669,6 +673,11 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 				option,
 			}: { selection: ComboboxOption[]; option: ComboboxOption }
 		) => {
+			// A separator is a subheading, never a selectable option
+			if (option.type === 'separator') {
+				return;
+			}
+
 			if (isActionItemRow(option)) {
 				const actionItem = option[ACTION_ITEM];
 				const actionEvent = event as React.MouseEvent | React.KeyboardEvent;

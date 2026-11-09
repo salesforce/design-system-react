@@ -1014,6 +1014,118 @@ describe('SLDSCombobox', () => {
 				)
 			).toEqual(['heading', '1']);
 		});
+
+		describe('keyboard navigation over separators', () => {
+			const renderOpenCombobox = (options, onSelect) => {
+				const { container } = render(
+					<IconSettings iconPath="/assets/icons">
+						<Combobox
+							id="separator-nav"
+							events={{ onChange: () => {}, onSelect }}
+							isOpen
+							labels={{ label: 'Search' }}
+							options={options}
+							selection={[]}
+							value=""
+						/>
+					</IconSettings>
+				);
+				return container.querySelector('#separator-nav');
+			};
+
+			it('skips adjacent separators and selects the next option', () => {
+				const onSelect = vi.fn();
+				// No option matches the first category, so its subheading is
+				// directly followed by the next one.
+				const options = addSubheadings({
+					subheadings,
+					filteredOptions: [
+						{ id: '1', label: 'Big Deal', category: 'opportunity' },
+					],
+				});
+				expect(options.map((option) => option.id)).toEqual([
+					'account',
+					'opportunity',
+					'1',
+				]);
+				const input = renderOpenCombobox(options, onSelect);
+
+				fireEvent.keyDown(input, keyObjects.DOWN);
+				expect(input).toHaveAttribute(
+					'aria-activedescendant',
+					'separator-nav-listbox-option-1'
+				);
+
+				fireEvent.keyDown(input, keyObjects.ENTER);
+				expect(onSelect).toHaveBeenCalledTimes(1);
+				expect(onSelect.mock.calls[0][1]).toEqual({
+					selection: [options[2]],
+				});
+			});
+
+			it('stays on the last option when only separators follow it', () => {
+				const onSelect = vi.fn();
+				const options = [
+					{ id: '1', label: 'Acme' },
+					{ id: 'heading', label: 'Accounts', type: 'separator' },
+				];
+				const input = renderOpenCombobox(options, onSelect);
+
+				fireEvent.keyDown(input, keyObjects.DOWN);
+				fireEvent.keyDown(input, keyObjects.DOWN);
+				expect(input).toHaveAttribute(
+					'aria-activedescendant',
+					'separator-nav-listbox-option-1'
+				);
+
+				fireEvent.keyDown(input, keyObjects.ENTER);
+				expect(onSelect.mock.calls[0][1]).toEqual({
+					selection: [options[0]],
+				});
+			});
+
+			it('stays on the first option when only separators precede it', () => {
+				const options = [
+					{ id: 'heading', label: 'Accounts', type: 'separator' },
+					{ id: '1', label: 'Acme' },
+				];
+				const input = renderOpenCombobox(options, vi.fn());
+
+				fireEvent.keyDown(input, keyObjects.DOWN);
+				fireEvent.keyDown(input, keyObjects.UP);
+				expect(input).toHaveAttribute(
+					'aria-activedescendant',
+					'separator-nav-listbox-option-1'
+				);
+			});
+
+			it('never reports a separator as a selection', () => {
+				const onSelect = vi.fn();
+				const options = [
+					{ id: 'heading', label: 'Accounts', type: 'separator' },
+					{ id: '1', label: 'Zeta' },
+				];
+				const { container } = render(
+					<IconSettings iconPath="/assets/icons">
+						<Combobox
+							id="separator-select"
+							events={{ onSelect }}
+							isOpen
+							labels={{ label: 'Search' }}
+							options={options}
+							selection={[]}
+							variant="readonly"
+						/>
+					</IconSettings>
+				);
+				const input = container.querySelector('#separator-select');
+
+				// Letter navigation matches the separator's label
+				fireEvent.keyDown(input, { key: 'a', keyCode: 65, which: 65 });
+				fireEvent.keyDown(input, keyObjects.ENTER);
+				expect(onSelect).not.toHaveBeenCalled();
+			});
+		});
 	});
 
 	describe('renderMenuItem', () => {
