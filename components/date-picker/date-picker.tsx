@@ -557,7 +557,13 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 				}
 			}
 
-			if (event.keyCode === KEYS.ESCAPE || event.keyCode === KEYS.ENTER) {
+			// Only trap Enter and Escape while the calendar is open, so a closed
+			// DatePicker still lets Enter submit its form and Escape reach a
+			// surrounding dialog
+			if (
+				getIsOpen() &&
+				(event.keyCode === KEYS.ESCAPE || event.keyCode === KEYS.ENTER)
+			) {
 				EventUtil.trapEvent(event);
 				handleRequestClose(event, {
 					trigger: event.keyCode === KEYS.ESCAPE ? 'escape' : 'enter',
