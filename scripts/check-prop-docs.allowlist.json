@@ -15,18 +15,6 @@
 		"components/checkbox/index: CheckboxLabels.label",
 		"components/checkbox/index: CheckboxLabels.toggleDisabled",
 		"components/checkbox/index: CheckboxLabels.toggleEnabled",
-		"components/date-picker/date-picker: DatePickerAssistiveText.nextMonth",
-		"components/date-picker/date-picker: DatePickerAssistiveText.openCalendar",
-		"components/date-picker/date-picker: DatePickerAssistiveText.previousMonth",
-		"components/date-picker/date-picker: DatePickerAssistiveText.year",
-		"components/date-picker/date-picker: DatePickerChangeProps.disabled",
-		"components/date-picker/date-picker: DatePickerChangeProps.onChange",
-		"components/date-picker/date-picker: DatePickerLabels.abbreviatedWeekDays",
-		"components/date-picker/date-picker: DatePickerLabels.label",
-		"components/date-picker/date-picker: DatePickerLabels.months",
-		"components/date-picker/date-picker: DatePickerLabels.placeholder",
-		"components/date-picker/date-picker: DatePickerLabels.today",
-		"components/date-picker/date-picker: DatePickerLabels.weekDays",
 		"components/icon/index: IconProps.assistiveText.label",
 		"components/icon/input-icon/index: InputIconClickableProps.assistiveText.icon",
 		"components/icon/input-icon/index: InputIconClickableProps.type",
@@ -40,10 +28,5 @@
 		"components/slider/index: SliderChangeProps.disabled",
 		"components/slider/index: SliderChangeProps.onChange"
 	],
-	"deprecated": [
-		"components/date-picker: onBlur",
-		"components/date-picker: onFocus",
-		"components/date-picker: onKeyDown",
-		"components/date-picker: required"
-	]
+	"deprecated": []
 }
