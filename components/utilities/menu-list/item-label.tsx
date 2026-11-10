@@ -11,14 +11,26 @@ import { type ReactNode } from 'react';
 // ## Constants
 import { LIST_ITEM_LABEL } from '../../../utilities/constants';
 
+/**
+ * Props a menu item passes to its label renderer (`renderLabel` or
+ * `labelRenderer`), taken from the menu option.
+ */
 export interface ListItemLabelProps {
+	/** The option's `data`. */
 	data?: Record<string, unknown>;
+	/** The rendered left icon, or the checkmark in the checkmark variant. */
 	icon?: ReactNode;
+	/** Index of the item in the menu. */
 	index?: number;
+	/** Whether the menu uses the inverse color scheme. */
 	inverted?: boolean;
+	/** Whether the item is selected. */
 	isSelected?: boolean;
+	/** The option's `label`. Also used as the `title`. */
 	label?: string;
+	/** Whether the item shows a checkmark when selected. */
 	checkmark?: boolean;
+	/** The option's `value`. */
 	value?: unknown;
 }
 
