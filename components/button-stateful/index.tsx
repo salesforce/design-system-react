@@ -79,7 +79,12 @@ export type ButtonStatefulClickProps =
 			 */
 			onClick: ButtonStatefulClickHandler;
 	  }
-	| { disabled: true; onClick?: ButtonStatefulClickHandler };
+	| {
+			/** Disables the button. */
+			disabled: true;
+			/** Called on click. Optional while disabled. */
+			onClick?: ButtonStatefulClickHandler;
+	  };
 
 interface ButtonStatefulBaseProps extends Omit<
 	ButtonHTMLAttributes<HTMLButtonElement>,
