@@ -438,11 +438,15 @@ type MenuDropdownIconButtonProps =
 			buttonVariant: 'icon';
 			/** Name of the icon */
 			iconName: string;
+			/** Custom trigger. See `trigger` above. */
 			trigger?: TriggerRender<MenuDropdownTriggerProps>;
 	  }
 	| {
+			/** Determines variant of the Button component that triggers dropdown */
 			buttonVariant: 'icon';
+			/** Name of the icon. Optional when `trigger` renders its own. */
 			iconName?: string;
+			/** Custom trigger, required when there is no `iconName`. See `trigger` above. */
 			trigger: TriggerRender<MenuDropdownTriggerProps>;
 	  };
 
