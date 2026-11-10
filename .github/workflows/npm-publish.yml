@@ -10,6 +10,9 @@ on:
 jobs:
   publish-npm:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -19,7 +22,11 @@ jobs:
       - name: Install dependencies and build 🔧
         run: npm install --legacy-peer-deps
       - run: npm run build:npm-package
+      # The build needs Node 14, but npm trusted publishing (OIDC) needs
+      # npm >= 11.5.1, so switch Node for the publish step only.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+          registry-url: 'https://registry.npmjs.org'
       - name: Publish package on NPM 📦
         run: npm publish .tmp-npm --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
