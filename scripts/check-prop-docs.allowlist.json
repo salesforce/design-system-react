@@ -1,6 +1,5 @@
 {
 	"undocumented": [
-		"components/input/index: InputLabelProps.label",
 		"components/pill/index: PillContentProps.labels.label",
 		"components/popover/popover: PopoverAssistiveText.closeButton",
 		"components/progress-ring/index: ProgressRingWithoutIconProps.hasIcon"

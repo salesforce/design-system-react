@@ -221,6 +221,7 @@ type InputLabelProps =
 			assistiveText?: InputAssistiveText & { label?: never };
 	  }
 	| {
+			/** Unset when the label is visually hidden in `assistiveText.label`. */
 			label?: undefined;
 			/** Assistive text for accessibility */
 			assistiveText?: InputAssistiveText;
