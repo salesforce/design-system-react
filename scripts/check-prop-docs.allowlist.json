@@ -33,8 +33,6 @@
 		"components/icon/input-icon/index: InputIconClickableProps.type",
 		"components/icon/input-icon/index: InputIconDecorativeProps.onClick",
 		"components/input/index: InputLabelProps.label",
-		"components/panel/filtering/group: PanelFilterGroupRemovedProps.assistiveTextCloseFilterPanel",
-		"components/panel/filtering/group: PanelFilterGroupSlotProps.variant",
 		"components/pill/index: PillContentProps.labels.label",
 		"components/popover/popover: PopoverAssistiveText.closeButton",
 		"components/progress-ring/index: ProgressRingWithoutIconProps.hasIcon",
