@@ -307,7 +307,6 @@ export default tseslint.config(
 		files: [
 			'components/radio-button-group/__docs__/RadioButtonGroup.stories.jsx',
 			'components/radio-button-group/__examples__/base.jsx',
-			'components/radio-group/__examples__/base.jsx',
 			'components/setup-assistant/__docs__/SetupAssistant.stories.jsx',
 			'components/setup-assistant/__examples__/card.jsx',
 			'components/setup-assistant/__examples__/hub-expandable-steps.jsx',
