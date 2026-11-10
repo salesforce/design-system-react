@@ -189,7 +189,6 @@ const HsvColor: React.FC<HsvColorProps> = ({
 					value={isTransparent() ? '' : workingColor.hex}
 				>
 					<Radio
-						checked={!isTransparent()}
 						id={`color-picker-active-working-color-swatch-${id}`}
 						key="working-color"
 						labels={{
@@ -200,7 +199,6 @@ const HsvColor: React.FC<HsvColorProps> = ({
 						variant="swatch"
 					/>
 					<Radio
-						checked={isTransparent()}
 						id={`color-picker-transparent-swatch-${id}`}
 						key="transparent"
 						labels={{ label: labels.customTabTransparentSwatch }}
