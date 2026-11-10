@@ -1,7 +1,6 @@
 {
 	"undocumented": [
 		"components/builder-header/nav-dropdown: BuilderHeaderNavDropdownProps.assistiveText.icon",
-		"components/button-stateful/index: <anonymous>.triggerClassName",
 		"components/button-stateful/index: ButtonStatefulClickProps.disabled",
 		"components/button-stateful/index: ButtonStatefulClickProps.onClick",
 		"components/button/index: ButtonAssistiveText.icon",
