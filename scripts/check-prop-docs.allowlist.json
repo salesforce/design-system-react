@@ -1,6 +1,5 @@
 {
 	"undocumented": [
-		"components/popover/popover: PopoverAssistiveText.closeButton",
 		"components/progress-ring/index: ProgressRingWithoutIconProps.hasIcon"
 	],
 	"deprecated": []

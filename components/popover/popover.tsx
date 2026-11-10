@@ -93,6 +93,7 @@ export type PopoverVariant =
  * Assistive text for Popover
  */
 export interface PopoverAssistiveText {
+	/** Label of the close button. Defaults to the English text `Close dialog`. */
 	closeButton?: string;
 }
 
