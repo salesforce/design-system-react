@@ -1019,7 +1019,8 @@ describe('SimpleDataTable', () => {
 			const table = container.querySelector('table');
 
 			expect(table).not.toHaveAttribute('role');
-			expect(table).not.toHaveClass('slds-table_resizable-cols');
+			// Kept for SLDS's header cell padding, not for column resizing.
+			expect(table).toHaveClass('slds-table_resizable-cols');
 			expect(container.querySelector('[role="gridcell"]')).toBeNull();
 		});
 

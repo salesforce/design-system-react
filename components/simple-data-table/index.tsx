@@ -882,6 +882,9 @@ class SimpleDataTable extends React.Component<
 							{
 								'slds-table_fixed-layout': this.props.fixedLayout,
 								'slds-table_header-fixed': this.props.fixedHeader,
+								// Not vestigial: SLDS uses it to zero the `thead th` padding,
+								// which `.slds-th__action` then supplies.
+								'slds-table_resizable-cols': this.props.fixedLayout,
 								'slds-table_bordered': !this.props.unborderedRow,
 								'slds-table_cell-buffer':
 									!this.props.fixedLayout && !this.props.unbufferedCell,
