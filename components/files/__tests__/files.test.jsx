@@ -46,3 +46,23 @@ describe('File without href', () => {
 		expect(onClickImage).toHaveBeenCalledTimes(1);
 	});
 });
+
+describe('File loading', () => {
+	it('lifts the spinner container without a deprecated Spinner prop', () => {
+		const warn = vi.spyOn(console, 'error').mockImplementation(() => {});
+		const { container } = render(
+			<IconSettings iconPath="/assets/icons">
+				<File isLoading labels={{ title: 'One.pdf' }} />
+			</IconSettings>
+		);
+		expect(container.querySelector('.slds-spinner_container')).toHaveStyle({
+			zIndex: '1',
+		});
+		expect(
+			warn.mock.calls.filter(([message]) =>
+				String(message).includes('will be removed')
+			)
+		).toEqual([]);
+		warn.mockRestore();
+	});
+});

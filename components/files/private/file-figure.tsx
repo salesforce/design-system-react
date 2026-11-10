@@ -58,7 +58,7 @@ const FileFigure = ({
 					size="medium"
 					variant="base"
 					assistiveText={{ label: assistiveText.loading }}
-					containerStyle={{ zIndex: '1' }}
+					style={{ zIndex: '1' }}
 				/>
 			</React.Fragment>
 		);
