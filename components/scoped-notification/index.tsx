@@ -50,6 +50,7 @@ const ScopedNotification = ({
 	theme,
 }: ScopedNotificationProps & {
 	// Removed in v11. Destructured so it never reaches the DOM.
+	/** @deprecated Removed and ignored. Pass an `Icon` element to `icon`. */
 	iconName?: unknown;
 }): React.ReactElement => {
 	useEffect(() => {
