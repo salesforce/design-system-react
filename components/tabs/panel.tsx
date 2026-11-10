@@ -34,6 +34,7 @@ export interface TabsPanelProps {
 	 * * `withErrorIcon`: This text is for the error icon that will be placed next to the `<Tab />` title
 	 */
 	assistiveText?: {
+		/** Label of the error icon shown with `hasError`. Defaults to the English text `This item has an error`. */
 		withErrorIcon?: string;
 	};
 }
