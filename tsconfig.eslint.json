@@ -10,6 +10,7 @@
 		"components/**/*",
 		"utilities/**/*",
 		"types/**/*",
+		"docs/**/*",
 		"vitest.setup.ts",
 		"vitest.setup.browser.ts",
 		"vitest.console-guard.ts"
