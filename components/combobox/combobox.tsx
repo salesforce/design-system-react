@@ -60,26 +60,44 @@ const documentDefined = typeof document !== 'undefined';
 // ===== Types =====
 
 export interface ComboboxAssistiveText {
+	/** Visually hidden input label, used when there is no `labels.label`. */
 	label?: string;
+	/** Spinner label while `hasMenuSpinner` is set. Defaults to the English text `Loading`. */
 	loadingMenuItems?: string;
+	/** Read before the selected item in the menu of the `readonly` variant. Defaults to the English text `Current Selection:`. */
 	optionSelectedInMenu?: string;
+	/** `aria-label` of the `popover` variant's dialog. Required for that variant. */
 	popoverLabel?: string;
+	/** Label of the button that removes the selected option in the single-select `inline-listbox` variant. Defaults to the English text `Remove selected option`. */
 	removeSingleSelectedOption?: string;
+	/** Appended to each pill's label in multiple selection. Defaults to the English text `, Press delete or backspace to remove`. */
 	removePill?: string;
+	/** Label of the listbox of selected pills in multiple selection. Defaults to the English text `Selected Options:`. */
 	selectedListboxLabel?: string;
 }
 
 export interface ComboboxLabels {
+	/** First menu item of a single-select `readonly` combobox; choosing it clears the selection. Defaults to the English text `None`. */
 	deselectOption?: string;
+	/** Visible label above the input. */
 	label?: ReactNode | string;
+	/** Cancel button in the `popover` variant's footer. Defaults to the English text `Cancel`. */
 	cancelButton?: string;
+	/** Done button in the `popover` variant's footer. Defaults to the English text `Done`. */
 	doneButton?: string;
+	/** Input text of a multiple-selection `readonly` combobox with more than one option selected. Defaults to the English text `<n> options selected`. */
 	multipleOptionsSelected?: string;
+	/** Shown in the menu when no options match. Defaults to the English text `No matches found.`. */
 	noOptionsFound?: ReactNode | string;
+	/** Input placeholder. */
 	placeholder?: string;
+	/** Input placeholder of the `readonly` variant. Defaults to the English text `Select an Option`. */
 	placeholderReadOnly?: string;
+	/** Title of each pill's remove icon. Defaults to the English text `Remove`. */
 	removePillTitle?: string;
+	/** Tooltip for disabled options. Defaults to the English text `This option is disabled.`. */
 	optionDisabledTooltipLabel?: string;
+	/** Title of the search icon in the input. */
 	inputIconTitle?: string;
 }
 
