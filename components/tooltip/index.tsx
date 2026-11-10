@@ -112,10 +112,15 @@ export interface TooltipRequestCloseData {
 export interface TooltipTriggerProps {
 	/** The tooltip's id while it's open */
 	'aria-describedby'?: string;
+	/** Requests close when the trigger loses focus. */
 	onBlur: (event: FocusEvent<HTMLElement>) => void;
+	/** Requests open when the trigger gains focus. */
 	onFocus: (event: FocusEvent<HTMLElement>) => void;
+	/** Requests close on Escape. */
 	onKeyDown: (event: KeyboardEvent<HTMLElement>) => void;
+	/** Requests open on hover. */
 	onMouseEnter: (event: MouseEvent<HTMLElement>) => void;
+	/** Requests close when the pointer leaves, after `hoverCloseDelay`. */
 	onMouseLeave: (event: MouseEvent<HTMLElement>) => void;
 }
 
