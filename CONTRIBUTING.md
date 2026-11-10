@@ -41,7 +41,7 @@ Thank you for your interest in contributing! This guide will help you get starte
 
    View components at http://localhost:6007
 
-5. **Read the [Codebase Overview](docs/codebase-overview.md)** to understand conventions and best practices. If you work with an AI coding agent, it should read [AGENTS.md](AGENTS.md).
+5. **Read the [Codebase Overview](docs/codebase-overview.md)** to understand conventions and best practices. If you work with an AI coding agent, it should read [AGENTS.md](AGENTS.md). When you change a public prop, update the [0.10.x → v11 migration guide](docs/migration-v11.md) and its snippet type-test (`docs/__tests__/migration-v11.type-test.tsx`).
 
 ## Development Workflow
 
