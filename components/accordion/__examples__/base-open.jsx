@@ -48,7 +48,7 @@ class Example extends React.Component {
 							expanded
 							id={item.id}
 							key={item.id}
-							onTogglePanel={() => this.togglePanel(event, item)}
+							onTogglePanel={(event) => this.togglePanel(event, item)}
 							summary={item.summary}
 						>
 							{item.details}

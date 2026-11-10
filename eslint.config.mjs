@@ -305,7 +305,6 @@ export default tseslint.config(
 	// the replacement API.
 	{
 		files: [
-			'components/accordion/__examples__/base-open.jsx',
 			'components/builder-header/__examples__/base-with-page-type-editable.jsx',
 			'components/radio-button-group/__docs__/RadioButtonGroup.stories.jsx',
 			'components/radio-button-group/__examples__/base.jsx',
