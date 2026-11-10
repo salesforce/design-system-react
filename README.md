@@ -51,6 +51,13 @@ npm 7 and later also installs the peer dependencies: `react`, `react-dom`, and `
 - **Node.js**: >= 24 (declared in `engines`; npm warns on older versions)
 - **A bundler that understands the `exports` field** (Vite, webpack 5, Rollup, esbuild, and so on). The package ships ES modules, CommonJS, and `.d.ts` files.
 
+## Documentation
+
+- **Storybook**: [salesforce.github.io/design-system-react](https://salesforce.github.io/design-system-react/), built from `master` on every push and release.
+- **For LLM agents**: [`llms.txt`](https://salesforce.github.io/design-system-react/llms.txt) indexes one markdown file per component (import lines, props table, examples), generated from the package's `.d.ts` files. [`llms-full.txt`](https://salesforce.github.io/design-system-react/llms-full.txt) has them all in one file.
+- **Offline, in your project**: the same files ship in the package. Point your coding agent at `node_modules/@salesforce/design-system-react/dist/llms/llms.txt`; it matches the version you installed, which the hosted copy (built from `master`) may not.
+- **Types**: the `.d.ts` files are the API contract, with JSDoc on the props. Props marked `@deprecated` name their replacement.
+
 ## Getting Started
 
 Welcome to this community-supported project! This library is the [React](https://react.dev/) implementation of the [Salesforce Lightning Design System](https://www.lightningdesignsystem.com/).

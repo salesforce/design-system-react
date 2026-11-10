@@ -35,6 +35,12 @@
 - [ ] Publish hosted docs for v11. `react.lightningdesignsystem.com` redirects to
       GitHub, and there is no public v11 documentation site (Chromatic builds Storybook
       on push, but only for review).
+  - [x] `.github/workflows/docs-site.yml` publishes Storybook and the generated LLM
+        docs (`llms.txt` at the site root) to GitHub Pages on push to `master` and on
+        release. The package ships the same docs in `dist/llms/`.
+  - [ ] Enable GitHub Pages (source: GitHub Actions) and point
+        `react.lightningdesignsystem.com` at the site. Maintainer task: DNS and the
+        current redirect.
 - [x] Use one tag format for releases. `scripts/release.ts` creates `v<version>` tags,
       and every release since 11.0.0-alpha.5 uses them. Only the old `11.0.0-alpha.4`
       tag lacks the `v` prefix.
