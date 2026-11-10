@@ -59,7 +59,12 @@ export type SliderChangeProps =
 			 */
 			onChange: SliderChangeHandler;
 	  }
-	| { disabled: true; onChange?: SliderChangeHandler };
+	| {
+			/** Disables the slider. */
+			disabled: true;
+			/** Called on change. Optional while disabled. */
+			onChange?: SliderChangeHandler;
+	  };
 
 interface SliderBaseProps {
 	/** ARIA describedby attribute */
