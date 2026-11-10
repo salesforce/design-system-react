@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { StrictMode, useState } from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, it, expect, vi } from 'vitest';
@@ -97,5 +97,113 @@ describe('SLDSDockedComposer', () => {
 
 		// NOTE: The visibility state is reflected through DOM/ARIA attributes
 		expect(container.firstChild).toBeInTheDocument();
+	});
+});
+
+describe('DockedComposer focus and ARIA', () => {
+	it('moves focus to the button that replaces the clicked minimize/expand button', async () => {
+		const user = userEvent.setup();
+		render(<DemoComponent />);
+
+		await user.click(screen.getByRole('button', { name: 'Minimize' }));
+		expect(screen.getByRole('button', { name: 'Expand' })).toHaveFocus();
+
+		await user.click(screen.getByRole('button', { name: 'Expand' }));
+		expect(screen.getByRole('button', { name: 'Minimize' })).toHaveFocus();
+	});
+
+	const renderComposer = (props, render_ = render) =>
+		render_(
+			<IconSettings iconPath="/assets/icons">
+				<button type="button">Before</button>
+				{props.mounted === false ? null : (
+					<DockedComposer header="Header" {...props} />
+				)}
+			</IconSettings>
+		);
+
+	it('focuses the dialog when it mounts open', () => {
+		renderComposer({ isOpen: true });
+		expect(screen.getByRole('dialog')).toHaveFocus();
+	});
+
+	it('does not move focus when it mounts minimized', () => {
+		renderComposer({ isOpen: false });
+		expect(document.body).toHaveFocus();
+	});
+
+	it('focuses the dialog when the parent opens it without a click', () => {
+		const { rerender } = renderComposer({ isOpen: false });
+		expect(document.body).toHaveFocus();
+
+		renderComposer({ isOpen: true }, rerender);
+		expect(screen.getByRole('dialog')).toHaveFocus();
+	});
+
+	it('does not move focus when the parent minimizes it without a click', () => {
+		const { rerender } = renderComposer({ isOpen: true });
+		const dialog = screen.getByRole('dialog');
+
+		renderComposer({ isOpen: false }, rerender);
+		expect(dialog).toHaveFocus();
+	});
+
+	it('returns focus to the previously focused element when an open composer unmounts', () => {
+		const { rerender } = renderComposer({ mounted: false });
+		const before = screen.getByRole('button', { name: 'Before' });
+		before.focus();
+
+		renderComposer({ isOpen: true }, rerender);
+		expect(screen.getByRole('dialog')).toHaveFocus();
+
+		renderComposer({ mounted: false }, rerender);
+		expect(before).toHaveFocus();
+	});
+
+	it('returns focus on unmount under StrictMode', () => {
+		const tree = (mounted) => (
+			<StrictMode>
+				<IconSettings iconPath="/assets/icons">
+					<button type="button">Before</button>
+					{mounted ? <DockedComposer header="Header" isOpen /> : null}
+				</IconSettings>
+			</StrictMode>
+		);
+		const { rerender } = render(tree(false));
+		const before = screen.getByRole('button', { name: 'Before' });
+		before.focus();
+
+		rerender(tree(true));
+		expect(screen.getByRole('dialog')).toHaveFocus();
+
+		rerender(tree(false));
+		expect(before).toHaveFocus();
+	});
+
+	it('does not move focus on unmount when it never took focus', () => {
+		const { rerender } = renderComposer({ mounted: false });
+		const before = screen.getByRole('button', { name: 'Before' });
+
+		renderComposer({ isOpen: false }, rerender);
+		renderComposer({ mounted: false }, rerender);
+		expect(before).not.toHaveFocus();
+	});
+
+	it('only points aria-describedby at the body while it is rendered', () => {
+		const { container, rerender } = render(
+			<IconSettings iconPath="/assets/icons">
+				<DockedComposer id="dc" header="Header" body="Body" isOpen />
+			</IconSettings>
+		);
+		const section = container.querySelector('section');
+		expect(section).toHaveAttribute('aria-describedby', 'dc-body');
+		expect(container.querySelector('#dc-body')).toBeInTheDocument();
+
+		rerender(
+			<IconSettings iconPath="/assets/icons">
+				<DockedComposer id="dc" header="Header" body="Body" isOpen={false} />
+			</IconSettings>
+		);
+		expect(section).not.toHaveAttribute('aria-describedby');
 	});
 });

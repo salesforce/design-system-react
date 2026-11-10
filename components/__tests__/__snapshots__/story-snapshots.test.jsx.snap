@@ -3137,7 +3137,7 @@ exports[`Story HTML snapshots > DatePicker > RightToLeft 1`] = `
 exports[`Story HTML snapshots > DockedComposer > Closed 1`] = `
 "<div class="slds-p-around_medium" style="min-height:300px;position:relative">
   <div id="_R_0_-container" class="slds-docked_container">
-    <section class="slds-docked-composer slds-grid slds-grid_vertical slds-is-closed" role="dialog" aria-labelledby="_R_0_-dialog-heading" aria-describedby="_R_0_-body">
+    <section class="slds-docked-composer slds-grid slds-grid_vertical slds-is-closed" role="dialog" tabindex="-1" aria-labelledby="_R_0_-dialog-heading">
       <header class="slds-docked-composer__header slds-grid slds-shrink-none" aria-live="assertive">
         <div class="slds-media slds-media_center slds-no-space">
           <div class="slds-media__body">
@@ -3158,7 +3158,7 @@ exports[`Story HTML snapshots > DockedComposer > Closed 1`] = `
 exports[`Story HTML snapshots > DockedComposer > Interactive 1`] = `
 "<div class="slds-p-around_medium" style="min-height:300px;position:relative">
   <div id="_R_0_-container" class="slds-docked_container">
-    <section class="slds-docked-composer slds-grid slds-grid_vertical slds-is-open" role="dialog" aria-labelledby="_R_0_-dialog-heading" aria-describedby="_R_0_-body">
+    <section class="slds-docked-composer slds-grid slds-grid_vertical slds-is-open" role="dialog" tabindex="-1" aria-labelledby="_R_0_-dialog-heading" aria-describedby="_R_0_-body">
       <header class="slds-docked-composer__header slds-grid slds-shrink-none" aria-live="assertive">
         <div class="slds-media slds-media_center slds-no-space">
           <div class="slds-media__body">
@@ -3192,7 +3192,7 @@ exports[`Story HTML snapshots > DockedComposer > Interactive 1`] = `
 exports[`Story HTML snapshots > DockedComposer > Open 1`] = `
 "<div class="slds-p-around_medium" style="min-height:300px;position:relative">
   <div id="_R_0_-container" class="slds-docked_container">
-    <section class="slds-docked-composer slds-grid slds-grid_vertical slds-is-open" role="dialog" aria-labelledby="_R_0_-dialog-heading" aria-describedby="_R_0_-body">
+    <section class="slds-docked-composer slds-grid slds-grid_vertical slds-is-open" role="dialog" tabindex="-1" aria-labelledby="_R_0_-dialog-heading" aria-describedby="_R_0_-body">
       <header class="slds-docked-composer__header slds-grid slds-shrink-none" aria-live="assertive">
         <div class="slds-media slds-media_center slds-no-space">
           <div class="slds-media__body">
