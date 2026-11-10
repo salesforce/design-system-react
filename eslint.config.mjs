@@ -282,5 +282,40 @@ export default tseslint.config(
 			'@typescript-eslint/no-explicit-any': 'off',
 			'no-console': 'off',
 		},
+	},
+
+	// Deprecated props in examples and stories. Agents and consumers copy these
+	// files verbatim, so a deprecated prop here spreads; make it an error. The
+	// rule needs type information, so re-enable the project for the `.js`/`.jsx`
+	// files the block above opts out (`tsconfig.eslint.json` includes them via
+	// `allowJs`).
+	{
+		files: [
+			'components/**/__examples__/**/*.{ts,tsx,js,jsx}',
+			'components/**/__docs__/**/*.{ts,tsx,js,jsx}',
+		],
+		languageOptions: {
+			parserOptions: { project: ['./tsconfig.eslint.json'] },
+		},
+		rules: {
+			'@typescript-eslint/no-deprecated': 'error',
+		},
+	},
+	// Files still waiting on their fix. Remove an entry when its example moves to
+	// the replacement API.
+	{
+		files: [
+			'components/accordion/__examples__/base-open.jsx',
+			'components/builder-header/__examples__/base-with-page-type-editable.jsx',
+			'components/radio-button-group/__docs__/RadioButtonGroup.stories.jsx',
+			'components/radio-button-group/__examples__/base.jsx',
+			'components/radio-group/__examples__/base.jsx',
+			'components/setup-assistant/__docs__/SetupAssistant.stories.jsx',
+			'components/setup-assistant/__examples__/card.jsx',
+			'components/setup-assistant/__examples__/hub-expandable-steps.jsx',
+		],
+		rules: {
+			'@typescript-eslint/no-deprecated': 'off',
+		},
 	}
 );
