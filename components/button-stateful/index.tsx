@@ -4,6 +4,7 @@
 import React, {
 	useCallback,
 	useEffect,
+	useState,
 	type ReactNode,
 	type MouseEvent,
 	type FocusEvent,
@@ -188,6 +189,12 @@ const ButtonStateful = ({
 	// `active` is the deprecated name; `isActive` wins when both are passed.
 	const isActive = !!(isActiveProp ?? active);
 
+	// SLDS shows the hover/focus text ("Unfollow") on a focused selected button.
+	// After a mouse click that would show the opposite of what was just chosen,
+	// so mark the click with `slds-is-selected-clicked` until focus leaves.
+	// Keyboard clicks (`detail === 0`) keep the focus text.
+	const [isClicked, setIsClicked] = useState(false);
+
 	const getClassName = useCallback(
 		(active: boolean) =>
 			classNames(className, 'slds-button', 'slds-button_stateful', {
@@ -199,30 +206,30 @@ const ButtonStateful = ({
 				'slds-button_inverse': variant === 'inverse',
 				'slds-button_success': variant === 'success',
 				'slds-not-selected': !active,
-				'slds-is-selected': active,
+				// SLDS uses one or the other: `:focus` on `slds-is-selected` would win
+				'slds-is-selected': active && !isClicked,
+				'slds-is-selected-clicked': active && isClicked,
 				'slds-max-small-button_stretch': responsive,
 				'slds-button_icon-border': variant === 'icon',
 				'slds-button_icon-border-filled': variant === 'icon-filled',
 			}),
-		[className, variant, responsive]
-	);
-
-	const handleBlur = useCallback(
-		(e: FocusEvent<HTMLButtonElement> | MouseEvent<HTMLButtonElement>) => {
-			if (onBlur) onBlur(e as FocusEvent<HTMLButtonElement>);
-			// SLDS shows `slds-text-selected-focus` on `.slds-is-selected:focus`, so
-			// drop focus left behind by a mouse click. Keyboard focus is
-			// `:focus-visible` and stays put.
-			if (!e.currentTarget.matches(':focus-visible')) e.currentTarget.blur();
-		},
-		[onBlur]
+		[className, variant, responsive, isClicked]
 	);
 
 	const handleClick = useCallback(
 		(e: MouseEvent<HTMLButtonElement>) => {
+			setIsClicked(e.detail > 0);
 			onClick?.(e, { isActive: !isActive });
 		},
 		[onClick, isActive]
+	);
+
+	const handleBlur = useCallback(
+		(e: FocusEvent<HTMLButtonElement>) => {
+			setIsClicked(false);
+			onBlur?.(e);
+		},
+		[onBlur]
 	);
 
 	const defaultIconProps = {
@@ -256,7 +263,6 @@ const ButtonStateful = ({
 				onKeyUp={onKeyUp}
 				onMouseDown={onMouseDown}
 				onMouseEnter={onMouseEnter}
-				onMouseLeave={handleBlur}
 				tabIndex={tabIndex ? parseInt(tabIndex, 10) : undefined}
 				type="button"
 			>
@@ -305,8 +311,8 @@ const ButtonStateful = ({
 			onKeyDown={onKeyDown}
 			onKeyPress={onKeyPress}
 			onKeyUp={onKeyUp}
+			onMouseDown={onMouseDown}
 			onMouseEnter={onMouseEnter}
-			onMouseLeave={handleBlur}
 			tabIndex={tabIndex ? parseInt(tabIndex, 10) : undefined}
 			type="button"
 		>
