@@ -1,6 +1,5 @@
 {
 	"undocumented": [
-		"components/builder-header/nav-dropdown: BuilderHeaderNavDropdownProps.assistiveText.icon",
 		"components/input/index: InputLabelProps.label",
 		"components/pill/index: PillContentProps.labels.label",
 		"components/popover/popover: PopoverAssistiveText.closeButton",
