@@ -82,15 +82,7 @@
 		"components/tree/tree: TreeDeprecatedHeadingProps.assistiveText",
 		"components/tree/tree: TreeDeprecatedHeadingProps.labels",
 		"components/tree/tree: TreeHiddenHeadingProps.labels",
-		"components/tree/tree: TreeVisibleHeadingProps.assistiveText",
-		"components/utilities/menu-list/item-label: ListItemLabelProps.checkmark",
-		"components/utilities/menu-list/item-label: ListItemLabelProps.data",
-		"components/utilities/menu-list/item-label: ListItemLabelProps.icon",
-		"components/utilities/menu-list/item-label: ListItemLabelProps.index",
-		"components/utilities/menu-list/item-label: ListItemLabelProps.inverted",
-		"components/utilities/menu-list/item-label: ListItemLabelProps.isSelected",
-		"components/utilities/menu-list/item-label: ListItemLabelProps.label",
-		"components/utilities/menu-list/item-label: ListItemLabelProps.value"
+		"components/tree/tree: TreeVisibleHeadingProps.assistiveText"
 	],
 	"deprecated": [
 		"components/date-picker: onBlur",
