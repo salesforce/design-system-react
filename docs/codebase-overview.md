@@ -621,7 +621,7 @@ npm run api:check          # Fail if the public API snapshot in api/ is stale
 npm run api:update         # Regenerate it after an intentional type change
 ```
 
-The public TypeScript API is snapshotted in `api/` (`scripts/api-report.ts`): the emitted `.d.ts` for every public file under `components/` and `utilities/`, comments stripped, one file per component. `private/` files appear only when a public type references them. Review the `api/` diff like the story snapshot diff: it's the type change consumers will see. The pre-push hook and a PR-only CI job run `api:check`. On pull requests, `scripts/api-compat.ts` then compares the types against the base branch with the TypeScript checker and labels each change breaking, possibly breaking or additive. It's advisory and never fails the job (run it locally with `npx tsx scripts/api-compat.ts`).
+The public TypeScript API is snapshotted in `api/` (`scripts/api-report.ts`): the emitted `.d.ts` for every public file under `components/` and `utilities/`, comments stripped, one file per component. `private/` files appear only when a public type references them. Review the `api/` diff like the story snapshot diff: it's the type change consumers will see. The pre-push hook and a PR-only CI job run `api:check`. On pull requests, `scripts/api-compat.ts` then compares the types against the base branch with the TypeScript checker and labels each change breaking, possibly breaking or additive. It's advisory and never fails the job (run it locally with `npm run api:compat`).
 
 ---
 

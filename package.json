@@ -23,6 +23,7 @@
     "test:snapshots": "vitest run --project unit --update=none components/__tests__/story-snapshots.test.jsx",
     "api:check": "tsx scripts/api-report.ts --check",
     "api:update": "tsx scripts/api-report.ts --update",
+    "api:compat": "tsx scripts/api-compat.ts",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
     "lint": "eslint .",

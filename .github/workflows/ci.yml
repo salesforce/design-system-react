@@ -64,7 +64,7 @@ jobs:
       # (skipped for fork PRs, whose token can't comment).
       - name: Classify public type changes
         if: always() && steps.install.outcome == 'success'
-        run: npx tsx scripts/api-compat.ts
+        run: npm run --silent api:compat
         env:
           BASE_REF: ${{ github.base_ref }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
