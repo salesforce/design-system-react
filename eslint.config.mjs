@@ -284,6 +284,24 @@ export default tseslint.config(
 		},
 	},
 
+	// Deprecated props in component source. Mostly a component reading its own
+	// deprecated prop to honor it, which is expected, so warn rather than error.
+	// A component passing another component's deprecated prop is a real bug.
+	// Tests exercise the deprecated paths on purpose.
+	{
+		files: ['components/**/*.{ts,tsx}'],
+		ignores: [
+			'**/__tests__/**',
+			'**/*.test.{ts,tsx}',
+			'**/*.type-test.{ts,tsx}',
+			'**/__examples__/**',
+			'**/__docs__/**',
+		],
+		rules: {
+			'@typescript-eslint/no-deprecated': 'warn',
+		},
+	},
+
 	// Deprecated props in examples and stories. Agents and consumers copy these
 	// files verbatim, so a deprecated prop here spreads; make it an error. The
 	// rule needs type information, so re-enable the project for the `.js`/`.jsx`
