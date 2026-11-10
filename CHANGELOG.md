@@ -100,7 +100,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - **BREAKING**: `Checkbox`: Enter no longer toggles the box and `onChange` is never called with a `KeyboardEvent` (Space still toggles through the native click). `readOnly` is applied: it sets `aria-readonly`, keeps the box focusable and blocks `onChange`. Handlers that relied on Enter should listen to `onKeyDown`
 - **BREAKING**: `VerticalNavigation` items without `url` render `<button type="button" class="slds-button_reset slds-nav-vertical__action">` instead of `<a href="#">`, and `NavigationItem.url` is optional. `onSelect`'s event is typed `MouseEvent<HTMLAnchorElement | HTMLButtonElement>`; widen handlers annotated with an anchor event, and update selectors that target `a.slds-nav-vertical__action`
 - **BREAKING**: `VisualPickerLink` `href` is required (and warns once when missing); without it the `<a>` was not a link. Use a `Checkbox` or `Radio` visual picker for options that do not navigate
-- `SimpleDataTable`: `fixedLayout` no longer adds the vestigial `slds-table_resizable-cols` class. `role="grid"` and `role="gridcell"` are set only with both `fixedLayout` and `keyboardNavigation`, when arrow-key cell navigation runs. Fixed headers follow the scroller and table size through a `ResizeObserver` instead of a `window` resize listener
+- `SimpleDataTable`: `role="grid"` and `role="gridcell"` are set only with both `fixedLayout` and `keyboardNavigation`, when arrow-key cell navigation runs. Fixed headers follow the scroller and table size through a `ResizeObserver` instead of a `window` resize listener
 - `ProgressIndicator`: a step `id` of `0` is used in DOM ids instead of falling back to the step index, so the ids of such steps change
 
 ### Deprecated

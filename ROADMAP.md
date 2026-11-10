@@ -687,8 +687,8 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
       actions; `SimpleDataTableRowActionsProps` and the column props are defined twice
       (`types.ts` vs `column.tsx`/`row-actions.tsx`); remove the deprecated
       `assistiveTextFor*` props; `fixedLayout` still adds the vestigial `slds-table_resizable-cols`
-      class and `role="grid"` after resizing was removed.
-      **Done (behavior-fixes):** `fixedLayout` no longer adds `slds-table_resizable-cols`; `role="grid"`/`gridcell` need `fixedLayout` and `keyboardNavigation`; fixed headers use a `ResizeObserver` on the scroller and table, and `onToggleFixedHeaderListeners`/`onFixedHeaderResize` are deprecated (still called).
+      class (kept: SLDS uses it for header padding) and `role="grid"` after resizing was removed.
+      **Done (behavior-fixes):** `role="grid"`/`gridcell` need `fixedLayout` and `keyboardNavigation`; fixed headers use a `ResizeObserver` on the scroller and table, and `onToggleFixedHeaderListeners`/`onFixedHeaderResize` are deprecated (still called).
       **Done (removals):** the table and column `assistiveTextFor*` props are removed and warn once.
 
 - [ ] `slider` — `value` + `defaultValue` twin (`index.tsx:34-35,119,169-171`) and
