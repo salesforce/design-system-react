@@ -299,7 +299,10 @@ export interface SimpleDataTableCellProps {
 
 export interface SimpleDataTableRowActionsProps {
 	/** Description of the menu for screenreaders */
-	assistiveText?: { icon?: string };
+	assistiveText?: {
+		/** Label for the actions menu button. Defaults to the English text `Actions`. */
+		icon?: string;
+	};
 	/** Class names to be added to the actions menu */
 	className?: string;
 	/** Disable hint styling */
