@@ -16,8 +16,6 @@
 		"components/checkbox/index: CheckboxLabels.label",
 		"components/checkbox/index: CheckboxLabels.toggleDisabled",
 		"components/checkbox/index: CheckboxLabels.toggleEnabled",
-		"components/color-picker/color-picker: ColorPickerEventsProps.disabled",
-		"components/color-picker/color-picker: ColorPickerEventsProps.events",
 		"components/combobox/combobox: ComboboxAssistiveText.label",
 		"components/combobox/combobox: ComboboxAssistiveText.loadingMenuItems",
 		"components/combobox/combobox: ComboboxAssistiveText.optionSelectedInMenu",

@@ -140,7 +140,12 @@ export type ColorPickerEventsProps =
 			/** Event callbacks. `events.onChange` is required unless `disabled` is set. */
 			events: ColorPickerEvents & { onChange: ColorPickerChangeHandler };
 	  }
-	| { disabled: true; events?: ColorPickerEvents };
+	| {
+			/** Disables the color picker. */
+			disabled: true;
+			/** Event callbacks. `events.onChange` is optional while disabled. */
+			events?: ColorPickerEvents;
+	  };
 
 export type ColorPickerProps = ColorPickerBaseProps &
 	ColorPickerVariantProps &
