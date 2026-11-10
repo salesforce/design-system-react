@@ -300,17 +300,5 @@ export default tseslint.config(
 		rules: {
 			'@typescript-eslint/no-deprecated': 'error',
 		},
-	},
-	// Files still waiting on their fix. Remove an entry when its example moves to
-	// the replacement API.
-	{
-		files: [
-			'components/setup-assistant/__docs__/SetupAssistant.stories.jsx',
-			'components/setup-assistant/__examples__/card.jsx',
-			'components/setup-assistant/__examples__/hub-expandable-steps.jsx',
-		],
-		rules: {
-			'@typescript-eslint/no-deprecated': 'off',
-		},
 	}
 );
