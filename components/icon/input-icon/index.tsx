@@ -53,11 +53,15 @@ export interface InputIconClickableProps
 			'children' | 'className' | 'onClick' | 'style' | 'title' | 'type'
 		> {
 	/** Assistive text for the icon button */
-	assistiveText: { icon: string };
+	assistiveText: {
+		/** Label of the icon button. */
+		icon: string;
+	};
 	/** This event fires when the icon is clicked. */
 	onClick: (event: MouseEvent<HTMLButtonElement>) => void;
 	/** Receives the button node */
 	buttonRef?: (node: HTMLButtonElement | null) => void;
+	/** The button's `type`. */
 	type?: 'button' | 'submit' | 'reset';
 }
 
@@ -66,6 +70,7 @@ export interface InputIconDecorativeProps
 	extends
 		InputIconBaseProps,
 		Omit<UtilityIconProps, 'category' | 'name' | 'path' | 'onClick'> {
+	/** Unset for a decorative icon; pass `onClick` for a button. */
 	onClick?: undefined;
 	/** Tooltip text */
 	title?: string;
