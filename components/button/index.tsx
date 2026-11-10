@@ -72,6 +72,7 @@ export type IconPosition = 'left' | 'right';
  * Assistive text for button
  */
 export interface ButtonAssistiveText {
+	/** Visually hidden label of an icon-only button. Required when there is no `label`. */
 	icon?: string;
 }
 
@@ -174,11 +175,17 @@ interface ButtonIconProps {
  */
 export type ButtonProps = ButtonBaseProps &
 	(
-		| ({ /** Button variant */ variant: 'icon' } & ButtonIconProps)
+		| ({
+				/** Button variant: an icon button. */
+				variant: 'icon';
+		  } & ButtonIconProps)
 		| ({
 				/** Button variant */
 				variant?: Exclude<ButtonVariant, 'icon'>;
-		  } & Pick<ButtonIconProps, 'iconSize'> & { iconVariant?: undefined })
+		  } & Pick<ButtonIconProps, 'iconSize'> & {
+					/** Only for `variant="icon"`. */
+					iconVariant?: undefined;
+				})
 	);
 
 const defaultAssistiveText: ButtonAssistiveText = { icon: '' };

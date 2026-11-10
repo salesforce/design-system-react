@@ -1,9 +1,6 @@
 {
 	"undocumented": [
 		"components/builder-header/nav-dropdown: BuilderHeaderNavDropdownProps.assistiveText.icon",
-		"components/button/index: ButtonAssistiveText.icon",
-		"components/button/index: ButtonProps.iconVariant",
-		"components/button/index: ButtonProps.variant",
 		"components/icon/index: IconProps.assistiveText.label",
 		"components/icon/input-icon/index: InputIconClickableProps.assistiveText.icon",
 		"components/icon/input-icon/index: InputIconClickableProps.type",
