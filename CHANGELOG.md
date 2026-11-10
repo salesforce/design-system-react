@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- JSDoc on every public prop in the published `.d.ts`, including `labels` and `assistiveText` members (with their English defaults) and the `(event, data)` shape of callbacks, and a `@deprecated` tag on every prop that warns at runtime. Types and behavior are unchanged. `npm run check:prop-docs`, part of `test:ci`, keeps it complete
 - `DockedComposer` `defaultIsOpen`, for an uncontrolled composer. The body stays unmounted while it is closed
 - `Tooltip` `isDisabled`, which turns the tooltip off whatever `isOpen` is
 - `Button`: `xx-small` icon size ([#3228](https://github.com/salesforce/design-system-react/pull/3228))

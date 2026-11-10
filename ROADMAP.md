@@ -34,6 +34,10 @@
       `DataTable` rename, module format, and every breaking prop change with before/after
       code; the React 19.2 / Node 24 / SLDS 2 CSS requirements; a "deprecated but still
       works" section. Ship it with 11.0.0, not after.
+- [x] Document every public prop. Each prop of the exported `*Props` types (unions,
+      intersections and `labels`/`assistiveText` members included) has JSDoc, and every
+      `deprecatedProperty()` prop is tagged `@deprecated`. `scripts/check-prop-docs.ts`
+      checks the emitted `dist/types` in `test:ci`.
 - [ ] Publish hosted docs for v11. `react.lightningdesignsystem.com` redirects to
       GitHub, and there is no public v11 documentation site (Chromatic builds Storybook
       on push, but only for review). Keep the 0.10 docs reachable at a stable URL.
