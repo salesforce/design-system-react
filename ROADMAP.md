@@ -39,6 +39,10 @@
     11.0.0-alpha.11; remove the prop, the `ProductTheme` type,
     `utilities/product-tokens/` and the `ProductThemes1` story in a later 11.0
     prerelease, before the first rc, as `feat(icon)!:`.
+- [x] Document every public prop. Each prop of the exported `*Props` types (unions,
+      intersections and `labels`/`assistiveText` members included) has JSDoc, and every
+      `deprecatedProperty()` prop is tagged `@deprecated`. `scripts/check-prop-docs.ts`
+      checks the emitted `dist/types` in `test:ci`.
 - [ ] Publish hosted docs for v11. `react.lightningdesignsystem.com` redirects to
       GitHub, and there is no public v11 documentation site (Chromatic builds Storybook
       on push, but only for review). Keep the 0.10 docs reachable at a stable URL.
