@@ -449,6 +449,8 @@ const compare = (baseDir: string, headDir: string, sourceRoot?: string) => {
 						.split(`import("${headDir}/`)
 						.join('import("new:')
 						.replace(/import\("(old|new):[^"]*"\)\./g, '$1 ')
+						// tsc truncates long types, sometimes mid-path.
+						.replace(/import\("[^"']*\.\.\./g, '...')
 						.replace(/__old_\d+/g, 'old type')
 						.replace(/__new_\d+/g, 'new type')
 						.replace(/Props<old type>/g, 'old props')
