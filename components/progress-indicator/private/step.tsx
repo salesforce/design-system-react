@@ -196,7 +196,7 @@ class Step extends React.Component<StepProps> {
 		} = {
 			align: 'top',
 			id: `progress-indicator-tooltip-${
-				this.props.step.id || this.props.index
+				this.props.step.id ?? this.props.index
 			}`,
 			content: this.props.step.label,
 			theme: 'info',

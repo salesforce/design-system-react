@@ -651,6 +651,52 @@ describe('SLDSWelcomeMat', () => {
 			);
 		});
 
+		it('renders the complete check only when complete', () => {
+			const { container, rerender } = render(
+				<IconSettings iconPath="/assets/icons">
+					<WelcomeMatInfoBadge image="/badge.png" />
+				</IconSettings>
+			);
+
+			expect(container.querySelector('.slds-icon-action-check')).toBeNull();
+			expect(container).not.toHaveTextContent('Completed');
+
+			rerender(
+				<IconSettings iconPath="/assets/icons">
+					<WelcomeMatInfoBadge image="/badge.png" isComplete />
+				</IconSettings>
+			);
+
+			expect(
+				container.querySelector('.slds-icon-action-check')
+			).toBeInTheDocument();
+			expect(container).toHaveTextContent('Completed');
+		});
+
+		it('uses assistiveText.image as the badge alt text', () => {
+			const { container, rerender } = render(
+				<IconSettings iconPath="/assets/icons">
+					<WelcomeMatInfoBadge image="/badge.png" />
+				</IconSettings>
+			);
+
+			expect(container.querySelector('img')).toHaveAttribute('alt', '');
+
+			rerender(
+				<IconSettings iconPath="/assets/icons">
+					<WelcomeMatInfoBadge
+						image="/badge.png"
+						assistiveText={{ image: 'Trailhead badge' }}
+					/>
+				</IconSettings>
+			);
+
+			expect(container.querySelector('img')).toHaveAttribute(
+				'alt',
+				'Trailhead badge'
+			);
+		});
+
 		it('renders the completeActions slot only when complete', () => {
 			const { container, rerender } = render(
 				<IconSettings iconPath="/assets/icons">
@@ -720,7 +766,10 @@ describe('WelcomeMatInfoBadge', () => {
 		// SLDS 2 only sizes and positions the welcome mat check inside a tile.
 		const { container } = render(
 			<IconSettings iconPath="/assets/icons">
-				<WelcomeMatInfoBadge image="/assets/images/welcome-mat/trailhead_badge@2x.png" />
+				<WelcomeMatInfoBadge
+					image="/assets/images/welcome-mat/trailhead_badge@2x.png"
+					isComplete
+				/>
 			</IconSettings>
 		);
 

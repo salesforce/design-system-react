@@ -17,6 +17,7 @@ import type { FilterProps } from '../../filter';
 import type { ChildrenOf } from '../../../types/common';
 
 import generateId from '../../../utilities/generate-id';
+import FilterErrorIdContext from '../../filter/private/error-id-context';
 
 export interface PanelFilterListProps {
 	/**
@@ -47,7 +48,7 @@ class PanelFilterList extends Component<PanelFilterListProps> {
 			const childProps = child.props;
 			const id = childProps.id || `${this.generatedId}-${index}`;
 
-			// The filter's `aria-describedby` points at `${id}-error`, so it needs this id
+			const errorId = childProps.errorLabel ? `${id}-error` : undefined;
 			const clonedChild = childProps.errorLabel
 				? React.cloneElement(child, {
 						id,
@@ -57,7 +58,9 @@ class PanelFilterList extends Component<PanelFilterListProps> {
 
 			return (
 				<li className="slds-item slds-hint-parent">
-					{clonedChild || child}
+					<FilterErrorIdContext.Provider value={errorId}>
+						{clonedChild || child}
+					</FilterErrorIdContext.Provider>
 					{childProps.errorLabel ? (
 						<p
 							id={`${id}-error`}

@@ -32,47 +32,32 @@ export interface ItemProps {
 	 * Function that will run whenever an item is selected.
 	 */
 	onSelect?: (
-		event: React.MouseEvent<HTMLAnchorElement>,
+		event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>,
 		data: NavigationSelectData
 	) => void;
 }
 
-const handleClick = (
-	event: React.MouseEvent<HTMLAnchorElement>,
-	{ item, onSelect }: Pick<ItemProps, 'item' | 'onSelect'>
-) => {
-	if (!item.url) {
-		event.preventDefault();
-	}
-
-	if (isFunction(onSelect)) {
-		onSelect(event, {
-			item,
-		});
-	}
-};
+type ItemElement = HTMLAnchorElement | HTMLButtonElement;
 
 const Item = ({
 	isSelected = false,
 	item,
 	categoryId,
 	onSelect,
-}: ItemProps) => (
-	<li
-		className={classNames('slds-nav-vertical__item', {
-			'slds-is-active': isSelected,
-		})}
-	>
-		<a
-			data-id={item.id}
-			href={item.url || '#'}
-			className="slds-nav-vertical__action"
-			aria-describedby={categoryId}
-			aria-current={isSelected ? 'page' : undefined}
-			onClick={(event) => {
-				handleClick(event, { item, onSelect });
-			}}
-		>
+}: ItemProps) => {
+	const actionProps = {
+		'aria-describedby': categoryId,
+		'aria-current': isSelected ? ('page' as const) : undefined,
+		onClick: (event: React.MouseEvent<ItemElement>) => {
+			if (isFunction(onSelect)) {
+				onSelect(event, {
+					item,
+				});
+			}
+		},
+	};
+	const contents = (
+		<React.Fragment>
 			{item.icon ? (
 				<React.Fragment>
 					{React.cloneElement(item.icon, {
@@ -96,9 +81,38 @@ const Item = ({
 			) : (
 				<React.Fragment />
 			)}
-		</a>
-	</li>
-);
+		</React.Fragment>
+	);
+
+	return (
+		<li
+			className={classNames('slds-nav-vertical__item', {
+				'slds-is-active': isSelected,
+			})}
+		>
+			{/* An item without a `url` goes nowhere, so it is a button rather than a `href="#"` link. */}
+			{item.url ? (
+				<a
+					data-id={item.id}
+					href={item.url}
+					className="slds-nav-vertical__action"
+					{...actionProps}
+				>
+					{contents}
+				</a>
+			) : (
+				<button
+					data-id={item.id}
+					type="button"
+					className="slds-button_reset slds-nav-vertical__action"
+					{...actionProps}
+				>
+					{contents}
+				</button>
+			)}
+		</li>
+	);
+};
 
 // ### Display Name
 // Always use the canonical component name as the React display name.

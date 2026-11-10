@@ -218,7 +218,7 @@ interface ComboboxBaseProps {
 	 * set.
 	 */
 	defaultIsOpen?: boolean;
-	/** Whether component is disabled */
+	/** Disables the input and keeps the menu closed. Applies to every variant. */
 	disabled?: boolean;
 	/** Entity combobox for grouped comboboxes */
 	entityCombobox?: ReactNode;
@@ -286,7 +286,7 @@ interface ComboboxBaseProps {
 	selection: ComboboxOption[];
 	/** Callback to get selected listbox ref */
 	selectedListboxRef?: (ref: HTMLUListElement | null) => void;
-	/** Whether single input is disabled */
+	/** @deprecated Use `disabled`, which now disables the input in every variant. */
 	singleInputDisabled?: boolean;
 	/**
 	 * A `Tooltip` element shown on disabled menu items. Its props win over the combobox's
@@ -480,6 +480,8 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 	}, []);
 
 	// Derived state
+	// `singleInputDisabled` is the deprecated name for `disabled`.
+	const isInputDisabled = !!(disabled || singleInputDisabled);
 	const getIsOpen = useCallback(() => !!isOpen, [isOpen]);
 
 	const getIsActiveOption = useCallback(() => {
@@ -1216,7 +1218,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 		({ menuRenderer }: { menuRenderer: ReactNode }) => {
 			const position = menuPosition;
 
-			if (!disabled && getIsOpen()) {
+			if (!isInputDisabled && getIsOpen()) {
 				const dialogProps = {
 					align: 'bottom left' as const,
 					context: iconSettingsContext,
@@ -1242,7 +1244,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 		},
 		[
 			menuPosition,
-			disabled,
+			isInputDisabled,
 			getIsOpen,
 			iconSettingsContext,
 			hasStaticAlignment,
@@ -1387,6 +1389,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 								title={labels.inputIconTitle}
 							/>
 						}
+						disabled={isInputDisabled}
 						id={getId()}
 						onFocus={handleInputFocus}
 						onBlur={handleInputBlur}
@@ -1555,6 +1558,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 								title={labels.inputIconTitle}
 							/>
 						}
+						disabled={isInputDisabled}
 						id={getId()}
 						onFocus={handleInputFocus}
 						onBlur={handleInputBlur}
@@ -1635,7 +1639,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 								className: 'slds-combobox__form-element',
 								role: 'none',
 							}}
-							disabled={singleInputDisabled}
+							disabled={isInputDisabled}
 							hasSpinner={hasInputSpinner}
 							iconRight={
 								selection.length ? (
@@ -1741,6 +1745,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 										variant="combobox"
 									/>
 								}
+								disabled={isInputDisabled}
 								id={getId()}
 								onFocus={handleInputFocus}
 								onBlur={handleInputBlur}
@@ -1815,6 +1820,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 							iconRight={
 								<InputIcon category="utility" name="down" variant="combobox" />
 							}
+							disabled={isInputDisabled}
 							id={getId()}
 							onFocus={handleInputFocus}
 							onBlur={handleInputBlur}
@@ -1936,7 +1942,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 								className: 'slds-combobox__form-element',
 								role: 'none',
 							}}
-							disabled={singleInputDisabled}
+							disabled={isInputDisabled}
 							iconRight={
 								<InputIcon category="utility" name="down" variant="combobox" />
 							}

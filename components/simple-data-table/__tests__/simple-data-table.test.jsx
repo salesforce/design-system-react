@@ -858,6 +858,9 @@ describe('SimpleDataTable', () => {
 		it('Renders a fixedHeader table as expected', () => {
 			const onFixedHeaderResize = vi.fn();
 			const onToggleFixedHeaderListeners = vi.fn();
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
 
 			const { container } = renderTable(
 				<SimpleDataTable
@@ -939,6 +942,54 @@ describe('SimpleDataTable', () => {
 					) >= 0
 				).toBe(true);
 			}
+
+			const warnings = consoleError.mock.calls.map(([message]) => message);
+			expect(
+				warnings.some((message) =>
+					message.includes('`onFixedHeaderResize` will be removed')
+				)
+			).toBe(true);
+			expect(
+				warnings.some((message) =>
+					message.includes('`onToggleFixedHeaderListeners` will be removed')
+				)
+			).toBe(true);
+			consoleError.mockRestore();
+		});
+	});
+
+	describe('Grid role', () => {
+		const renderWith = (props) =>
+			renderTable(
+				<SimpleDataTable {...defaultProps} {...props}>
+					{columns.map((columnProps) => (
+						<SimpleDataTableColumn
+							{...columnProps}
+							key={columnProps.property}
+						/>
+					))}
+				</SimpleDataTable>
+			);
+
+		it('fixedLayout alone renders a plain table', () => {
+			const { container } = renderWith({ fixedLayout: true });
+			const table = container.querySelector('table');
+
+			expect(table).not.toHaveAttribute('role');
+			expect(table).not.toHaveClass('slds-table_resizable-cols');
+			expect(container.querySelector('[role="gridcell"]')).toBeNull();
+		});
+
+		it('fixedLayout with keyboardNavigation renders a grid', () => {
+			const { container } = renderWith({
+				fixedLayout: true,
+				keyboardNavigation: true,
+			});
+
+			expect(container.querySelector('table')).toHaveAttribute('role', 'grid');
+			expect(
+				container.querySelectorAll('tbody [role="gridcell"]').length
+			).toBeGreaterThan(0);
 		});
 	});
 
@@ -986,10 +1037,27 @@ describe('SimpleDataTable', () => {
 			expect(onLoadMore).toHaveBeenCalled();
 		});
 
-		it('onLoadMore callback is called when window is resized', () => {
+		it('onLoadMore callback is called when the scroller is resized', () => {
 			const onLoadMore = vi.fn();
+			const observers = [];
+			const OriginalResizeObserver = global.ResizeObserver;
+			global.ResizeObserver = class {
+				constructor(callback) {
+					this.callback = callback;
+					this.observed = [];
+					observers.push(this);
+				}
 
-			renderTable(
+				observe(node) {
+					this.observed.push(node);
+				}
+
+				disconnect() {
+					this.observed = [];
+				}
+			};
+
+			const { container, unmount } = renderTable(
 				<SimpleDataTable
 					{...defaultProps}
 					fixedHeader
@@ -1006,9 +1074,22 @@ describe('SimpleDataTable', () => {
 				</SimpleDataTable>
 			);
 
-			window.dispatchEvent(new Event('resize'));
+			const scroller = container.querySelector(
+				'.slds-table_header-fixed_scroller'
+			);
+			const [observer] = observers;
+			expect(observer.observed).toContain(scroller);
 
+			onLoadMore.mockClear();
+			window.dispatchEvent(new Event('resize'));
+			expect(onLoadMore).not.toHaveBeenCalled();
+
+			observer.callback([]);
 			expect(onLoadMore).toHaveBeenCalled();
+
+			unmount();
+			expect(observer.observed).toEqual([]);
+			global.ResizeObserver = OriginalResizeObserver;
 		});
 
 		it('onLoadMore callback is called when the component is updated', () => {

@@ -127,9 +127,7 @@ const SimpleDataTableRow: React.FC<SimpleDataTableRowProps> = (props) => {
 		return (
 			<RadioComponent
 				assistiveText={{
-					label: `${props.assistiveText?.selectRow} ${
-						Number(props.index) + 1
-					}`,
+					label: `${props.assistiveText?.selectRow} ${Number(props.index) + 1}`,
 				}}
 				aria-labelledby={`${props.id}-SelectRow-label ${props.tableId}-SLDSSimpleDataTableHead-column-group-header-row-select`}
 				checked={isSelected}
@@ -157,9 +155,7 @@ const SimpleDataTableRow: React.FC<SimpleDataTableRowProps> = (props) => {
 		return (
 			<CheckboxComponent
 				assistiveText={{
-					label: `${props.assistiveText?.selectRow} ${
-						Number(props.index) + 1
-					}`,
+					label: `${props.assistiveText?.selectRow} ${Number(props.index) + 1}`,
 				}}
 				aria-labelledby={`${props.id}-SelectRow-label ${props.tableId}-SLDSSimpleDataTableHead-column-group-header-row-select`}
 				checked={isSelected}
@@ -194,7 +190,7 @@ const SimpleDataTableRow: React.FC<SimpleDataTableRowProps> = (props) => {
 					<>
 						{props.canSelectRows ? (
 							<td
-								role={props.fixedLayout ? 'gridcell' : undefined}
+								role={tableContext.isGrid ? 'gridcell' : undefined}
 								className="slds-text-align_right"
 								data-label={props.stacked ? 'Select Row' : undefined}
 								style={{ width: '3.25rem' }}

@@ -21,6 +21,13 @@ if (process.env.NODE_ENV !== 'production') {
 		);
 		deprecatedProperty(
 			COMPONENT,
+			props.singleInputDisabled,
+			'singleInputDisabled',
+			'disabled',
+			createDocUrl('disabled')
+		);
+		deprecatedProperty(
+			COMPONENT,
 			props.isInline,
 			'isInline',
 			'menuPosition="relative"',

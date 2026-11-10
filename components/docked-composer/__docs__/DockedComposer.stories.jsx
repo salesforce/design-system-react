@@ -7,7 +7,10 @@ export default {
 	component: DockedComposer,
 	decorators: [
 		(Story) => (
-			<div className="slds-p-around_medium" style={{ minHeight: '300px', position: 'relative' }}>
+			<div
+				className="slds-p-around_medium"
+				style={{ minHeight: '300px', position: 'relative' }}
+			>
 				<IconSettings iconPath="/assets/icons">
 					<Story />
 				</IconSettings>
@@ -74,7 +77,10 @@ export const Interactive = {
 							</div>
 						</div>
 						<div className="slds-form-element slds-m-top_small">
-							<label className="slds-form-element__label" htmlFor="subject-field">
+							<label
+								className="slds-form-element__label"
+								htmlFor="subject-field"
+							>
 								Subject
 							</label>
 							<div className="slds-form-element__control">

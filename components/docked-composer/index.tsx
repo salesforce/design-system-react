@@ -1,7 +1,13 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { useId, type ReactNode, type MouseEvent } from 'react';
+import React, {
+	useEffect,
+	useId,
+	useRef,
+	type ReactNode,
+	type MouseEvent,
+} from 'react';
 import Button from '../button';
 
 /**
@@ -73,6 +79,75 @@ const DockedComposer = ({
 
 	const sectionClassName = isOpen ? 'slds-is-open' : 'slds-is-closed';
 
+	// An open composer behaves like a dialog: when it mounts open, or the parent opens it without
+	// a click, focus the dialog and return focus to where it was when the composer unmounts. A
+	// minimized composer is only a bar and leaves focus alone.
+	const dialogRef = useRef<HTMLElement | null>(null);
+	const returnFocusRef = useRef<HTMLElement | null>(null);
+
+	// The minimize and expand buttons replace each other, so the clicked one unmounts and focus
+	// would fall to <body>. When the parent accepts the request, move focus to the button that
+	// took its place.
+	const toggleButtonRef = useRef<HTMLButtonElement | null>(null);
+	const shouldFocusToggleRef = useRef(false);
+	const setToggleButtonRef = (node: HTMLButtonElement | null) => {
+		toggleButtonRef.current = node;
+	};
+
+	// Runs after every render. `false` before the first render, so mounting open counts as opening.
+	const previousIsOpenRef = useRef<boolean | undefined>(false);
+	useEffect(() => {
+		if (previousIsOpenRef.current !== isOpen) {
+			if (shouldFocusToggleRef.current) {
+				toggleButtonRef.current?.focus();
+			} else if (isOpen && dialogRef.current) {
+				const active = document.activeElement as HTMLElement | null;
+				if (
+					!returnFocusRef.current &&
+					active &&
+					active !== document.body &&
+					!dialogRef.current.contains(active)
+				) {
+					returnFocusRef.current = active;
+				}
+				dialogRef.current.focus();
+			}
+		}
+		previousIsOpenRef.current = isOpen;
+		shouldFocusToggleRef.current = false;
+	});
+
+	useEffect(() => {
+		// Read the node here: refs are already detached when the cleanup runs.
+		const dialog = dialogRef.current;
+		return () => {
+			// Only restore focus the composer took, and only if it is not already somewhere else.
+			const returnFocus = returnFocusRef.current;
+			const active = document.activeElement;
+			if (
+				returnFocus?.isConnected &&
+				(!active || active === document.body || dialog?.contains(active))
+			) {
+				returnFocus.focus();
+			}
+			returnFocusRef.current = null;
+			// Let a remount (React StrictMode replays effects) focus the dialog again.
+			previousIsOpenRef.current = false;
+		};
+	}, []);
+
+	const handleToggle =
+		(handler?: (event: MouseEvent<HTMLButtonElement>) => void) =>
+		(event: MouseEvent<HTMLButtonElement>) => {
+			shouldFocusToggleRef.current = true;
+			handler?.(event);
+			// A click's effects run before this timeout. If the parent rejected the request there was
+			// no render, so clear the flag here; a later, unrelated `isOpen` change must not take focus.
+			setTimeout(() => {
+				shouldFocusToggleRef.current = false;
+			});
+		};
+
 	return (
 		<div
 			id={`${id}-container`}
@@ -80,9 +155,11 @@ const DockedComposer = ({
 		>
 			<section
 				className={`slds-docked-composer slds-grid slds-grid_vertical ${sectionClassName}`}
+				ref={dialogRef}
 				role="dialog"
+				tabIndex={-1}
 				aria-labelledby={`${id}-dialog-heading`}
-				aria-describedby={`${id}-body`}
+				aria-describedby={isOpen ? `${id}-body` : undefined}
 			>
 				<header
 					className="slds-docked-composer__header slds-grid slds-shrink-none"
@@ -105,7 +182,8 @@ const DockedComposer = ({
 								id={`${id}-minimize-button`}
 								title={assistiveText.minimizeButton}
 								assistiveText={{ icon: assistiveText.minimizeButton }}
-								onClick={events.onRequestMinimize}
+								buttonRef={setToggleButtonRef}
+								onClick={handleToggle(events.onRequestMinimize)}
 								iconCategory="utility"
 								iconName="minimize_window"
 								iconVariant="bare"
@@ -116,7 +194,8 @@ const DockedComposer = ({
 								id={`${id}-expand-button`}
 								title={assistiveText.expandButton}
 								assistiveText={{ icon: assistiveText.expandButton }}
-								onClick={events.onRequestExpand}
+								buttonRef={setToggleButtonRef}
+								onClick={handleToggle(events.onRequestExpand)}
 								iconCategory="utility"
 								iconName="expand_alt"
 								iconVariant="bare"
@@ -148,17 +227,3 @@ const DockedComposer = ({
 DockedComposer.displayName = 'SLDSDockedComposer';
 
 export default DockedComposer;
-
-
-
-
-
-
-
-
-
-
-
-
-
-

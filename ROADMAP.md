@@ -145,6 +145,12 @@ moves to `latest`.
 8. **Fix now (bugs, not breaking).** Done: simple-data-table `getAssistiveText` argument
    order, grid `"undefined slds-col"` (#3239), split-view `bottomRightText` title,
    vertical-navigation `aria-current`, tabs `disabled` type, toast timer re-arm (#3251).
+   **Behavior-fixes theme:** runtime and a11y fixes inside the current API in
+   button-stateful, combobox `disabled`, date-picker `input` merge,
+   checkbox (Enter/`readOnly`), docked-composer focus, filter, page-header, pill, popover
+   trigger handlers, edit-dialog, progress-indicator ids, simple-data-table grid markup and
+   `ResizeObserver`, tree leaf keys, vertical-navigation buttons, visual-picker `href` and
+   welcome-mat info badge; accordion's initial tab stop is decided (no change).
 
 _Reviewed: accordion, alert, avatar, badge, breadcrumb, builder-header, button, button-group, button-stateful, card, carousel, checkbox, color-picker, combobox, date-picker, docked-composer, dynamic-icon, expandable-section, files, filter, forms, grid, icon, icon-settings, illustration, input, media-object, menu-dropdown, menu-list, modal, page-header, panel, pill, pill-container, popover, portal-settings, progress-bar, progress-indicator, progress-ring, radio, radio-button-group, radio-group, scoped-notification, setup-assistant, simple-data-table, slider, spinner, split-view, tabs, textarea, toast, tooltip, tree, trial-bar, vertical-navigation, visual-picker, welcome-mat._
 
@@ -155,16 +161,18 @@ _Reviewed: accordion, alert, avatar, badge, breadcrumb, builder-header, button, 
       **Re-scoped by the child-contract rule:** children here are library components, so the `cloneElement`/child-props contract is allowed. Keep the other findings. Child contract done (theme 3): children are typed, injected props are internal, and no child is matched by `displayName`.
       **Partly done:** `icon` is typed and the consumer's own `inverse`/`size`/`className` win
       over the injected values.
-- [ ] `alert` — decide whether focusing the close button on mount (and restoring focus on
+- [x] `alert` — decide whether focusing the close button on mount (and restoring focus on
       unmount) stays the default or becomes opt-in.
+      **Decided (behavior-fixes):** focusing the close button on mount, and restoring focus on unmount, stays the default. No `autoFocus` prop.
 - [ ] `accordion` — replace the `cloneElement` + `Children.count` child contract (implicit
       `refs`/`onClickSummary`/`onKeyDownSummary` injection) with context or an `items` prop.
       **Re-scoped by the child-contract rule:** children here are library components, so the `cloneElement`/child-props contract is allowed. Keep the other findings. Child contract done (theme 3): children are typed, injected props are internal, and no child is matched by `displayName`.
       **Partly done:** children are typed (`ChildrenOf<AccordionPanelProps>`).
-- [ ] `accordion` — decide whether the first summary button should be focused on mount
+- [x] `accordion` — decide whether the first summary button should be focused on mount
       (currently it is, from `currButtonIndex` starting at `0`).
       **Partly done:** focus no longer moves on mount, only when the focused index changes; the
       first button is still the initial tab stop.
+      **Decided (behavior-fixes):** the first summary button stays the initial tab stop (roving tabindex, as in the APG accordion pattern). No code change.
 - [ ] `breadcrumb` — decide `trail: ReactNode[]` (positional, index keys) vs `items` with ids;
       replace `styleContainer` with `className` on the root `nav`.
 - [x] `avatar`, `breadcrumb` — drop the `assistiveText: string | object` union (object only).
@@ -180,10 +188,11 @@ _Reviewed: accordion, alert, avatar, badge, breadcrumb, builder-header, button, 
 - [ ] `button-stateful` — replace `stateOne`/`stateTwo`/`stateThree` (positional names) with
       named states; move the English defaults (`Follow`/`Following`/`Unfollow`) into
       `labels` and decide whether they stay as defaults.
-- [ ] `button-stateful` — stop calling `currentTarget.blur()` on mouse leave and blur (it
+- [x] `button-stateful` — stop calling `currentTarget.blur()` on mouse leave and blur (it
       drops keyboard focus); `onMouseDown` is accepted but ignored outside the icon variants.
       **Partly done:** blur only drops focus when it is not `:focus-visible`, so keyboard focus
       is kept.
+      **Done (behavior-fixes):** the button never blurs itself, and `onMouseDown` is wired in the text variants.
 - [ ] `button` — `requestFocus`/`onRequestFocus` misuse the `onRequest*` prefix.
 - [ ] `button` — pick one ref API (`ref` vs `buttonRef`); model `variant: 'icon'` +
       `iconVariant`/`iconSize` as a discriminated union; give the deprecated `tooltip` prop a
@@ -266,8 +275,9 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
       runtime); `value` + `defaultValue` feed one input and flip controlled/uncontrolled (resolved by dropping `defaultValue`).
       **Done:** `ComboboxVariantProps` is a discriminated union over `popover`, `options` and
       `assistiveText` (#3252).
-- [ ] `combobox` — `disabled` does not reach the input at all (only suppresses the dialog);
+- [x] `combobox` — `disabled` does not reach the input at all (only suppresses the dialog);
       decide whether to drop `singleInputDisabled`.
+      **Done (behavior-fixes):** `disabled` disables the input in every variant; `singleInputDisabled` is a deprecated alias that warns once.
 - [x] `combobox` — type `popover`, `input` and `tooltipMenuItemDisabled` as the library components
       (today all three are bare `ReactElement`): `ReactElement<Partial<PopoverProps>>`,
       `ReactElement<Partial<InputProps>>`, `ReactElement<Partial<TooltipProps>>`; the child-contract
@@ -301,24 +311,27 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
       "invalid" (decide `Date | null` return now).
       **Partly done:** `date` is `Date | null` (`null` on clear, and when `parser` does not
       return a `Date`).
-- [ ] `date-picker` — `onRequestOpen`/`onRequestClose`/`onClose` take no `(event, data)`;
+- [x] `date-picker` — `onRequestOpen`/`onRequestClose`/`onClose` take no `(event, data)`;
       `onRequestClose` fires when already closed and sets internal state even when `isOpen` is
       controlled; keyboard handling bypasses `onRequest*` entirely.
       **Partly done:** all open/close callbacks take `(event, data)` with a typed `trigger`;
       `onRequestClose` only fires while open; a controlled `isOpen` is respected (#3251).
+      **Done:** keyboard open and close already route through `requestOpen`/`requestClose(event, data)` (#3251).
 - [ ] `date-picker` — `className` lands on the dialog and `triggerClassName` on the trigger:
       move to `className` (root) + `classNameTrigger` + `classNameMenu`. `forwardRef` in
       `index.tsx` drops the ref; the `input` prop's merge order lets a consumer's `onChange`/
       `inputRef` override the picker's (breaking focus-on-close). Type `onCalendarFocus`'s
       `direction` as `'next' | 'previous'`. Settle `children`, `label`, `placeholder`,
       `assistiveTextOpenCalendar`, `formattedValue`: remove at GA or keep permanently.
+      **Done (behavior-fixes):** the picker's `onChange` and `inputRef` are composed with the `input` prop's (consumer first) instead of replaced.
 - [ ] `date-picker` — range selection: do not widen `date`/`value` to `Date | [Date, Date]`;
       plan a separate `DateRangePicker` (or `mode="range"` with distinct props).
 - [x] `checkbox` — `checked` is data: controlled only. Remove `defaultChecked` (the
       `onChange` data computes `!checked` from the prop, which is wrong without it). Keep
       `indeterminate` controlled and clear it from the DOM when it goes back to `undefined`.
-- [ ] `checkbox` — remove the Enter/Space `handleKeyDown` that fakes a `ChangeEvent`; wire or
+- [x] `checkbox` — remove the Enter/Space `handleKeyDown` that fakes a `ChangeEvent`; wire or
       remove `readOnly` (destructured, never applied). (`oldEventParameterOrder`: removed in #3248.)
+      **Done (behavior-fixes):** the handler is removed (Space toggles natively, Enter does not); `readOnly` sets `aria-readonly` and blocks `onChange`.
 - [ ] `checkbox` — `variant` (`base | toggle | button-group | visual-picker`) as a discriminated
       union (`indeterminate` with `toggle`, and `errorText`/`className`/`required`/`tabIndex`
       on `button-group`/`visual-picker`, compile but are dropped); `requestFocus`/`onRequestFocus` → delete (use `ref`);
@@ -341,6 +354,7 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
       add a `data` argument to `onRequestMinimize`/`onRequestExpand`/`onRequestClose`
       (currently `(event)` only); `role="dialog"` on a non-modal bar needs a focus decision,
       and `aria-describedby` points at a body id that does not exist when closed.
+      **Done (behavior-fixes):** `role="dialog"` stays (SLDS) with no focus move on mount; minimize/expand moves focus to the button that replaced the clicked one; `aria-describedby` is set only while open.
 - [ ] `dynamic-icon` — `variant` + `scorePolarity`/`strengthLevel`/`trendDirection` as a
       discriminated union; the `waffle` variant renders a `<button>` with no `type`, no
       `onClick` and no rest props (it submits forms and cannot be wired up), so decide its
@@ -368,6 +382,7 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
       `predicate = 'New Filter'` default are English outside `labels`.
       **Partly done:** the `${id}-error` element is rendered when the Filter sits in a
       `PanelFilterList` with `errorLabel`.
+      **Done (behavior-fixes):** `aria-describedby` is set only when the error element is rendered (via `FilterErrorIdContext` from `PanelFilterList`).
 
 - [x] Remove the deprecated `forms/input/inline` (`InlineEdit`, also exported as
       `SLDSInlineEdit`) in 11.0. It already warns and points to a read-only `Input` swapped
@@ -475,6 +490,7 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
       (index keys); remove the
       unreachable legacy props (`iconCategory`, `iconName`, `contentRight`, `navRight`, …)
       and branches. Hardcoded `h1` title (add a heading-level prop) and `title` of `0` drops.
+      **Done (behavior-fixes):** a `title` of `0` renders.
 - [ ] `panel` — `PanelFilterGroup` `variant?: 'panel'` is a one-value variant that changes
       structure (built-in header/footer vs `header`/`footer` slots): make it a union or
       two components; flat `addFilterLabel`/`cancelLabel`/
@@ -497,6 +513,7 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
       role, `href` is link-only and defaults to `'#'`, and the link variant nests an `<a>`
       in a `role="button"` span; `tabIndex: number | string` → `number`; the ref is an
       imperative handle (`PillRef`), not the root element.
+      **Done (behavior-fixes):** the link variant no longer has `role="button"` on its root span.
 - [ ] `pill-container` — `PillOption` has `[key: string]: unknown` and an optional `id` used as the React key (make it required);
       `avatar`/`icon` are `ReactNode | { config }` detected at runtime (pick one);
       `onRequestRemove`'s `index` is
@@ -522,6 +539,7 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
       leaves such an anchor untouched; the parent drives `isOpen`. Still open: merge rather
       than overwrite a trigger's own handlers, and `tabIndex: child.tabIndex || 0` cannot
       express `-1`.
+      **Done (behavior-fixes):** the trigger's own `onFocus`/`onMouseDown`/`onMouseEnter`/`onMouseLeave` are merged with `merge-props` instead of overwritten, and `tabIndex: child.tabIndex ?? 0` keeps `-1`.
 - [ ] `popover` — naming: `ariaLabelledby` → `aria-labelledby`/`labels`;
       `overlay: boolean | function` (the function receives a shared DOM element); remove
       deprecated `footerClassName`, `closeButtonAssistiveText`, `offset`; `heading` vs
@@ -530,6 +548,7 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
       `handleOpen` → `onClick`/`onRequestOpen`; a consumer
       `onClose`/`onOpen` silently replaces EditDialog's own handlers (spread last); stale
       `popover` doc and an unused internal `isOpen`.
+      **Done (behavior-fixes):** a consumer `onOpen`/`onClose`/`onRequestClose` runs after EditDialog's own handler instead of replacing it.
 
 - [ ] `progress-indicator` — step status is three parallel `ProgressStep[]` arrays
       (`completedSteps`/`disabledSteps`/`errorSteps`) matched by `id` then by
@@ -546,6 +565,7 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
       `step.id || index` treats an id of `0` as missing (bug: changes DOM ids when fixed).
       **Partly done:** `setupAssistantAction` and `setupAssistantEstimatedTime` are on the
       public `ProgressStep` type; `onRenderSetupAssistantAction` is deprecated.
+      **Done (behavior-fixes):** `step.id ?? index`, so an id of `0` is used in DOM ids.
 - [ ] `progress-bar` — `color: 'success'` and `radius: 'circular'` are one-value unions: decide
       a wider `variant` before GA. `className` lands on the inner
       `role="progressbar"` div while `id`/`style` go on the root: move `className` to the root
@@ -650,6 +670,7 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
       (`types.ts` vs `column.tsx`/`row-actions.tsx`); remove the deprecated
       `assistiveTextFor*` props; `fixedLayout` still adds the vestigial `slds-table_resizable-cols`
       class and `role="grid"` after resizing was removed.
+      **Done (behavior-fixes):** `fixedLayout` no longer adds `slds-table_resizable-cols`; `role="grid"`/`gridcell` need `fixedLayout` and `keyboardNavigation`; fixed headers use a `ResizeObserver` on the scroller and table, and `onToggleFixedHeaderListeners`/`onFixedHeaderResize` are deprecated (still called).
 
 - [ ] `slider` — `value` + `defaultValue` twin (`index.tsx:34-35,119,169-171`) and
       `displayValue = value ?? defaultValue ?? 0` goes stale when uncontrolled. Require `value` +
@@ -701,8 +722,9 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
       once from `node.selected`. Recommended: required `selectedId` + `onSelect`, `expandedIds`
       (+ optional `defaultExpandedIds`), and immutable nodes.
       **Control model done (theme 2).** `selectedIds` (an array, because the tree supports multi-select) and `expandedIds`/`defaultExpandedIds`; nodes are never mutated, and `node.selected`/`node.expanded` are read-only deprecated fallbacks. Still open: the node field renames.
-- [ ] `tree` — leaf items are keyed with `key={generateId()}` (`private/branch.tsx:128`), a new key on
+- [x] `tree` — leaf items are keyed with `key={generateId()}` (`private/branch.tsx:128`), a new key on
       every render, so every leaf remounts whenever the tree renders. Key by `node.id`.
+      **Done (behavior-fixes).**
 - [x] `tree` callbacks — `onClick` is really selection and also fires from Enter/arrows/focus
       with `{ node, select, treeIndex }` (`select` derives from the mutated field; `treeIndex` is a
       positional string) → `onSelect(event, { node, isSelected })`. `onExpandClick` also fires for
@@ -735,6 +757,7 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
       `<nav>` has no `aria-label` → `assistiveText.label`; `displayName`; `lodash.isfunction`.
       **Control model done (theme 2); `NavigationItem` index signature dropped and `icon`/`notificationBadge` declared (#3252).** Still open: the `icon`/`notificationBadge` contract, `href="#"` items, the `<nav>` label, `displayName` and `lodash.isfunction`.
       **Re-scoped by the child-contract rule:** children here are library components, so the `cloneElement`/child-props contract is allowed. Keep the other findings. Child contract already met: `icon`/`notificationBadge` are typed and only get `className` joined.
+      **Done (behavior-fixes):** items without `url` render a `<button type="button">` with `slds-button_reset slds-nav-vertical__action`; `url` is optional.
 
 - [ ] `split-view` — `isOpen` is hybrid (mode by `typeof === 'boolean'`, uncontrolled start
       hard-coded `true`, no `defaultIsOpen`) → `value !== undefined` detection + `defaultIsOpen`.
@@ -799,6 +822,7 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
       type is `unknown[] | Record<string, unknown> | string`; unused `id`/rest pass-through
       (`onClick`, `target`, `rel` are not accepted, so SPA routing is impossible) → extend
       `AnchorHTMLAttributes`; `<h2>` hard-coded (heading level should be configurable).
+      **Done (behavior-fixes):** `href` is required in the type and warns once at runtime when missing.
 - [ ] `welcome-mat` — the component is always a modal; `onRequestClose: () => void` has no `(event, data)` (modal passes none) → align with
       the modal decision; `onRenderInfoActions` → `renderInfoActions`/slot; `doNotShowAgainCheckbox`
       and `infoBadge` are ReactNode slots with `infoBadge` `cloneElement`ed to inject `isComplete`
@@ -824,6 +848,7 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
       `className` on `InfoBadge` replaces the root class entirely.
       **Partly done:** the tile's `variant` is an internal injected prop
       (`WelcomeMatTileInjectedProps`); `completeActions` replaces `onCompleteRenderActions`.
+      **Done (behavior-fixes):** the check icon renders only when `isComplete`; `assistiveText.image` sets the badge `alt` (default `''`).
 
 ### P2 — Additive hardening (safe after GA)
 

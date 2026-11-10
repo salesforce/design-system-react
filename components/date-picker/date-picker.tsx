@@ -750,13 +750,36 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 			},
 		};
 
-		const inputRenderProps = input?.props || {};
+		const inputRenderProps = (input?.props || {}) as Record<string, unknown>;
+
+		// The `input` element's (or deprecated `children`'s) props win, except `onChange` and
+		// `inputRef`: the picker needs its own to track typed text and to return focus to the input
+		// on close, so both are called.
+		const consumerProps = { ...childrenProps, ...inputRenderProps };
+		const consumerOnChange = consumerProps.onChange as
+			((...args: unknown[]) => void) | undefined;
+		const consumerInputRef = consumerProps.inputRef as
+			React.Ref<HTMLInputElement> | undefined;
 
 		return {
 			...defaultInputProps,
 			...topLevelDeprecatedComponentProps,
 			...childrenPropInputProps,
 			...inputRenderProps,
+			onChange: (event: ChangeEvent<HTMLInputElement>, ...rest: unknown[]) => {
+				consumerOnChange?.(event, ...rest);
+				handleInputChange(event);
+			},
+			inputRef: (component: HTMLInputElement | null) => {
+				if (typeof consumerInputRef === 'function') {
+					consumerInputRef(component);
+				} else if (consumerInputRef) {
+					(
+						consumerInputRef as React.RefObject<HTMLInputElement | null>
+					).current = component;
+				}
+				setInputRefCallback(component);
+			},
 		};
 	}, [
 		assistiveTextOpenCalendar,

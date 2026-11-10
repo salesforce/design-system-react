@@ -158,7 +158,7 @@ class StepVertical extends React.Component<StepVerticalProps> {
 			return (
 				<div
 					id={`progress-indicator-vertical-label-${
-						this.props.step.id || this.props.index
+						this.props.step.id ?? this.props.index
 					}`}
 					className="slds-progress__item_content slds-grid slds-grid_align-spread"
 				>
@@ -179,7 +179,7 @@ class StepVertical extends React.Component<StepVerticalProps> {
 		return (
 			<div
 				id={`progress-indicator-vertical-label-${
-					this.props.step.id || this.props.index
+					this.props.step.id ?? this.props.index
 				}`}
 				className="slds-progress__item_content slds-grid slds-grid_align-spread"
 			>
