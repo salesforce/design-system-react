@@ -33,6 +33,10 @@
 - [x] Write a 0.10.x → v11 migration guide (removed components, `DataTable` rename,
       React 19, module format). [docs/migration-v11.md](docs/migration-v11.md), with its
       snippets type-checked by `docs/__tests__/migration-v11.type-test.tsx`.
+- [x] Document every public prop. Each prop of the exported `*Props` types (unions,
+      intersections and `labels`/`assistiveText` members included) has JSDoc, and every
+      `deprecatedProperty()` prop is tagged `@deprecated`. `scripts/check-prop-docs.ts`
+      checks the emitted `dist/types` in `test:ci`.
 - [ ] Publish hosted docs for v11. `react.lightningdesignsystem.com` redirects to
       GitHub, and there is no public v11 documentation site (Chromatic builds Storybook
       on push, but only for review).
