@@ -62,7 +62,6 @@
 		"components/panel/filtering/group: PanelFilterGroupSlotProps.variant",
 		"components/pill/index: PillContentProps.labels.label",
 		"components/popover/popover: PopoverAssistiveText.closeButton",
-		"components/progress-indicator/index: ProgressIndicatorSetupAssistantProps.type",
 		"components/progress-ring/index: ProgressRingWithoutIconProps.hasIcon",
 		"components/radio-group/index: RadioGroupChangeProps.disabled",
 		"components/radio-group/index: RadioGroupChangeProps.onChange",
