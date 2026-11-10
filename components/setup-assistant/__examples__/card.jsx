@@ -25,6 +25,7 @@ const ToggleAction = ({ id, initialChecked = false }) => {
 const subSteps = (step) => [
 	{
 		id: `step-${step}-substep0`,
+		status: 'completed',
 		label: 'Turn on Lightning for all users.',
 		setupAssistantAction: (
 			<ToggleAction id={`step-${step}-substep0-action`} initialChecked />
@@ -58,6 +59,7 @@ const subSteps = (step) => [
 const subStepsComplete = (step) => [
 	{
 		id: `step-${step}-substep0`,
+		status: 'completed',
 		label: 'Turn on Lightning for all users.',
 		setupAssistantAction: (
 			<ToggleAction id={`step-${step}-substep0-action`} initialChecked />
@@ -65,6 +67,7 @@ const subStepsComplete = (step) => [
 	},
 	{
 		id: `step-${step}-substep1`,
+		status: 'completed',
 		label:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 		setupAssistantAction: (
@@ -128,7 +131,6 @@ class Example extends React.Component {
 						isExpandable
 						content={
 							<ProgressIndicator
-								completedSteps={subStepsComplete('complete')}
 								id="card-step-1-progress-indicator"
 								orientation="vertical"
 								steps={subStepsComplete('complete')}
@@ -146,7 +148,6 @@ class Example extends React.Component {
 						content={
 							<React.Fragment>
 								<ProgressIndicator
-									completedSteps={[subSteps('2')[0]]}
 									id="card-step-2-progress-indicator"
 									orientation="vertical"
 									steps={subSteps('2')}
@@ -174,7 +175,6 @@ class Example extends React.Component {
 						isExpandable
 						content={
 							<ProgressIndicator
-								completedSteps={subStepsComplete('complete2')}
 								id="card-step-3-progress-indicator"
 								orientation="vertical"
 								steps={subStepsComplete('complete2')}
