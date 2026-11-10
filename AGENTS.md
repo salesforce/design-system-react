@@ -52,6 +52,8 @@ Salesforce employees can opt in to an advisory AI review on `git push` ([guide](
 
 Maintainers: `npm run release-pr -- next` (or an explicit version such as `11.0.0-alpha.4`) bumps `package.json` on `chore/release-<version>` cut from `origin/master`, commits, pushes, and opens the PR (add `--dry-run` to preview). Once it merges, create the GitHub Release with `gh release create v<version> --target master --generate-notes` (add `--prerelease` for alpha/beta/rc), which triggers `.github/workflows/npm-publish.yml` to publish to npm. See `scripts/release.ts` for details.
 
+For a maintenance line, add `--base <branch>`: `npm run release-pr -- next --base 0.10.x` cuts `chore/release-0.10.66` from `origin/0.10.x` (`next` patch-bumps a stable version there) and opens the PR against that branch. After it merges, `gh release create v<version> --target 0.10.x --generate-notes` runs that branch's own publish workflow. A stable maintenance release publishes under npm's `latest` dist-tag, which is right while the current major is in prerelease.
+
 ## Scratch files
 
 Agent-generated notes, plans, and analyses go in `.planning/` (gitignored). Don't commit them.

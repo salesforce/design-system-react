@@ -233,6 +233,69 @@ describe('release script', () => {
 		).toBe('11.0.0-alpha.3');
 	});
 
+	describe('--base (maintenance branch)', () => {
+		/** Push a 0.10.x-style branch: stable version, tab-indented package.json. */
+		const seedMaintenance = (version) => {
+			git('switch', '-c', '0.10.x', 'master');
+			const { publishConfig: _publishConfig, ...pkg } = BASE_PACKAGE;
+			writeFileSync(
+				join(work, 'package.json'),
+				`${JSON.stringify({ ...pkg, version }, null, '\t')}\n`
+			);
+			git('commit', '-am', 'chore: maintenance baseline');
+			git('tag', `v${version}`);
+			writeFileSync(join(work, 'fix.txt'), 'x\n');
+			git('add', '-A');
+			git('commit', '-m', 'fix: a maintenance fix');
+			git('push', '-u', 'origin', '0.10.x', '--tags');
+			git('switch', 'master');
+		};
+
+		it('"next" patch-bumps a stable version from origin/<base> and targets it', () => {
+			seedMaintenance('0.10.65');
+
+			const r = release('next', '--base', '0.10.x');
+			expect(r.status, r.stderr).toBe(0);
+
+			const branch = 'chore/release-0.10.66';
+			git('fetch', 'origin', branch);
+			const pkg = releasedPackage(branch);
+			expect(pkg.version).toBe('0.10.66');
+			expect(pkg).not.toHaveProperty('publishConfig');
+
+			// Cut from the maintenance branch, only package.json changed, tabs kept
+			expect(
+				git('diff', '--name-only', 'origin/0.10.x', `origin/${branch}`)
+			).toBe('package.json');
+			expect(git('show', `origin/${branch}:package.json`)).toContain(
+				'\n\t"version": "0.10.66"'
+			);
+			expect(git('branch', '--show-current')).toBe('master');
+
+			const args = readFileSync(env.GH_ARGS_FILE, 'utf8').split('\n');
+			expect(args[args.indexOf('--base') + 1]).toBe('0.10.x');
+			const body = readFileSync(env.GH_BODY_FILE, 'utf8');
+			expect(body).toContain('`0.10.65` to `0.10.66`');
+			expect(body).toContain('fix: a maintenance fix');
+			expect(body).not.toContain('feat: a change shipped since the last tag');
+
+			expect(r.stdout).toContain(
+				'gh release create v0.10.66 --target 0.10.x --generate-notes'
+			);
+			expect(r.stdout).not.toContain('--prerelease');
+		});
+
+		it('accepts an explicit version with the flag before it', () => {
+			seedMaintenance('0.10.65');
+			const r = release('--base', '0.10.x', '0.10.70', '--dry-run');
+			expect(r.status, r.stderr).toBe(0);
+			expect(r.stdout).toContain(
+				'[dry-run] 0.10.65 -> 0.10.70 (dist-tag: latest)'
+			);
+			expect(r.stdout).toContain('from origin/0.10.x');
+		});
+	});
+
 	describe('refuses to run', () => {
 		const expectFailure = (r, message) => {
 			expect(r.status).toBe(1);
@@ -271,6 +334,10 @@ describe('release script', () => {
 			git('commit', '-am', 'chore: stable');
 			git('push', 'origin', 'master');
 			expectFailure(release('next'), '"next" needs a prerelease version');
+		});
+
+		it('when --base has no branch', () => {
+			expectFailure(release('next', '--base'), 'usage:');
 		});
 
 		it('when tracked files are modified', () => {
