@@ -56,6 +56,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `ColorPicker` `events.onOpen`, `events.onClose`, `events.onRequestOpen` and `events.onRequestClose`, which were typed but never called. `onRequestClose` data `trigger` is typed `ColorPickerRequestCloseTrigger`, exported with `ColorPickerRequestCloseData`
 - `ColorPicker` `validateColor` and `validateWorkingColor` props (see Deprecated)
 - `useLatestRef` hook in `utilities/hooks/use-latest-ref`, for reading the latest consumer callbacks from stable handlers
+- Docs: [Catch deprecated props with ESLint](docs/lint-deprecated-props.md), with the `@typescript-eslint/no-deprecated` config for consumer repos (also in the README). Deprecated props still compile; the rule turns a use into a lint error that names the replacement
 
 ### Changed
 
@@ -221,6 +222,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `PopoverEditDialog`: a consumer `onOpen`, `onClose` or `onRequestClose` no longer replaces the dialog's own handlers, so it still opens and closes
 - `Tree`: leaf items are keyed by `node.id`, so they no longer remount on every render
 - `WelcomeMatInfoBadge`: the check icon (and its "Completed" text) renders only when `isComplete`
+- `ColorPicker` no longer passes the deprecated `checked` to its swatch `Radio`s, so opening it doesn't log a deprecation warning. `File` styles its loading spinner without `Spinner`'s deprecated `containerStyle`
+- Examples and stories use no deprecated props: accordion `base-open` passes the panel's event to its handler instead of `window.event`, builder-header labels its edit dialog by a heading id (the old value was not an element id), radio groups derive their error id, and setup-assistant marks steps with `status: 'completed'`
 
 ### Removed
 
