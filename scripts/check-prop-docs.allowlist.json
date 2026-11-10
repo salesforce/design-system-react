@@ -77,12 +77,7 @@
 		"components/tooltip/index: TooltipTriggerProps.onFocus",
 		"components/tooltip/index: TooltipTriggerProps.onKeyDown",
 		"components/tooltip/index: TooltipTriggerProps.onMouseEnter",
-		"components/tooltip/index: TooltipTriggerProps.onMouseLeave",
-		"components/tree/tree: TreeDeprecatedAssistiveLabelProps.labels",
-		"components/tree/tree: TreeDeprecatedHeadingProps.assistiveText",
-		"components/tree/tree: TreeDeprecatedHeadingProps.labels",
-		"components/tree/tree: TreeHiddenHeadingProps.labels",
-		"components/tree/tree: TreeVisibleHeadingProps.assistiveText"
+		"components/tooltip/index: TooltipTriggerProps.onMouseLeave"
 	],
 	"deprecated": [
 		"components/date-picker: onBlur",
