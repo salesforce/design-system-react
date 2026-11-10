@@ -10,11 +10,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - [Versioning & Support Policy](docs/codebase-overview.md#versioning--support-policy): what a major, minor and patch can change, how long a deprecation lasts, and fix-forward support for 11.x (no long-lived maintenance branches; use `~11.y.0` and the `rc` dist-tag to control upgrades)
 - `npm run release-pr -- next --rc` (maintainers): moves `11.0.0-alpha.N` or `-beta.N` to `11.0.0-rc.0`, and `rc.N` to `rc.N+1`
+- Docs: [Catch deprecated props with ESLint](docs/lint-deprecated-props.md), with the `@typescript-eslint/no-deprecated` config for consumer repos (also in the README). Deprecated props still compile; the rule turns a use into a lint error that names the replacement
 - Types used in public prop signatures are exported by name, so they can be named without a deep import: `TriggerRender`, `ChildrenOf` and `IconCategory` from the root; `TriggerRender` from `components/tooltip` and `components/menu-dropdown`; `IconCategory` from `components/icon`; `ComboboxOptionIcon`, `ComboboxOptionLabelRenderer`, `ComboboxActionOptionFields` and `ComboboxMenuRenderMenuItemData` from `components/combobox`; `CarouselItemProps` from `components/carousel`; `SplitViewListItem` from `components/split-view/listbox`; and `PageHeaderInfoProps`, `PageHeaderTitleProps`, `PageHeaderDetailRowProps` and `PageHeaderDetailBlockProps` from `components/page-header`
 
 ### Changed
 
 - The [Breaking-Change Taxonomy](docs/codebase-overview.md#breaking-change-taxonomy) also lists callback signatures, exported type narrowing, entry points and peer dependency minimums as breaking
+
+### Fixed
+
+- `ColorPicker` no longer passes the deprecated `checked` to its swatch `Radio`s. The `RadioGroup` `value` already set it, so nothing changes at runtime. `File` styles its loading spinner without `Spinner`'s deprecated `containerStyle`
+- Examples and stories use no deprecated props: accordion `base-open` passes the panel's event to its handler instead of `window.event`, builder-header labels its edit dialog by a heading id (the old value was not an element id), radio groups derive their error id, and setup-assistant marks steps with `status: 'completed'`
 
 ### Removed
 
