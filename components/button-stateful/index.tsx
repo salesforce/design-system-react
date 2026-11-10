@@ -191,6 +191,7 @@ const ButtonStateful = ({
 	triggerClassName: _triggerClassName,
 	...rest
 }: ButtonStatefulProps & {
+	/** Set by `ButtonGroup` on its last child. Ignored. */
 	triggerClassName?: unknown;
 }): React.ReactElement => {
 	useEffect(() => {
