@@ -33,7 +33,9 @@ export type CheckboxSize = 'medium' | 'large';
  * Assistive text for Checkbox
  */
 export interface CheckboxAssistiveText {
+	/** Visually hidden heading of the `visual-picker` variant, read when `label` is unset. */
 	heading?: string;
+	/** Visually hidden label, for a checkbox without a visible `labels.label`. */
 	label?: string;
 }
 
@@ -41,9 +43,16 @@ export interface CheckboxAssistiveText {
  * Labels for Checkbox
  */
 export interface CheckboxLabels {
+	/** Heading of the `visual-picker` variant. */
 	heading?: string;
+	/** Visible label. */
 	label?: string;
+	/**
+	 * Off-state text of the `toggle` variant. Defaults to the English text `Disabled`: the state of
+	 * what the toggle controls, not of the checkbox itself.
+	 */
 	toggleDisabled?: string;
+	/** On-state text of the `toggle` variant. Defaults to the English text `Enabled`. */
 	toggleEnabled?: string;
 }
 
@@ -78,8 +87,18 @@ export type CheckboxChangeProps =
 			 */
 			onChange: CheckboxChangeHandler;
 	  }
-	| { disabled: true; onChange?: CheckboxChangeHandler }
-	| { readOnly: true; onChange?: CheckboxChangeHandler };
+	| {
+			/** Disables the checkbox. */
+			disabled: true;
+			/** Called on change. Optional while disabled. */
+			onChange?: CheckboxChangeHandler;
+	  }
+	| {
+			/** Renders the checkbox read-only. */
+			readOnly: true;
+			/** Called on change. Optional while read-only. */
+			onChange?: CheckboxChangeHandler;
+	  };
 
 interface CheckboxCommonProps {
 	/** aria-controls for related regions */
