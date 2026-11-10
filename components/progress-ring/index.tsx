@@ -122,18 +122,3 @@ const ProgressRing = ({
 ProgressRing.displayName = PROGRESS_RING;
 
 export default ProgressRing;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
