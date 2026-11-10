@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- JSDoc on every public prop in the published `.d.ts`, including `labels` and `assistiveText` members (with their English defaults) and the `(event, data)` shape of callbacks, and a `@deprecated` tag on every prop that warns at runtime. Types and behavior are unchanged. `npm run check:prop-docs`, part of `test:ci`, keeps it complete
 - [Versioning & Support Policy](docs/codebase-overview.md#versioning--support-policy): what a major, minor and patch can change, how long a deprecation lasts, and fix-forward support for 11.x (no long-lived maintenance branches; use `~11.y.0` and the `rc` dist-tag to control upgrades)
 - `npm run release-pr -- next --rc` (maintainers): moves `11.0.0-alpha.N` or `-beta.N` to `11.0.0-rc.0`, and `rc.N` to `rc.N+1`
 - Docs: [Catch deprecated props with ESLint](docs/lint-deprecated-props.md), with the `@typescript-eslint/no-deprecated` config for consumer repos (also in the README). Deprecated props still compile; the rule turns a use into a lint error that names the replacement
