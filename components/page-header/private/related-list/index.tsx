@@ -26,21 +26,13 @@ const RelatedList = (props: PageHeaderVariantProps) => (
 					}
 				/>
 			</div>
-			<Controls
-				contentRight={props.contentRight}
-				actions={props.actions}
-				type="actions"
-			/>
+			<Controls actions={props.actions} type="actions" />
 		</div>
 		<div className="slds-page-header__row">
 			<div className="slds-page-header__col-meta">
 				<Info content={props.info} variant={props.variant} />
 			</div>
-			<Controls
-				navRight={props.navRight}
-				controls={props.controls}
-				type="controls"
-			/>
+			<Controls controls={props.controls} type="controls" />
 		</div>
 	</React.Fragment>
 );

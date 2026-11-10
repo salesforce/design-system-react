@@ -15,46 +15,6 @@ if (process.env.NODE_ENV !== 'production') {
 	checkProps = function checkPropsFunction(COMPONENT, props, jsonDoc) {
 		const createDocUrl = getComponentDocFn(jsonDoc);
 
-		deprecatedProperty(
-			COMPONENT,
-			props.iconCategory,
-			'iconCategory',
-			'icon',
-			createDocUrl('icon')
-		);
-
-		deprecatedProperty(
-			COMPONENT,
-			props.iconName,
-			'iconName',
-			'icon',
-			createDocUrl('icon')
-		);
-
-		deprecatedProperty(
-			COMPONENT,
-			props.iconPosition,
-			'iconPosition',
-			'icon',
-			createDocUrl('icon')
-		);
-
-		deprecatedProperty(
-			COMPONENT,
-			props.iconSize,
-			'iconSize',
-			'icon',
-			createDocUrl('icon')
-		);
-
-		deprecatedProperty(
-			COMPONENT,
-			props.iconVariant,
-			'iconVariant',
-			'icon',
-			createDocUrl('icon')
-		);
-
 		if (props.variant === 'objectHome') {
 			deprecatedPropertyValue(
 				COMPONENT,
@@ -102,22 +62,6 @@ if (process.env.NODE_ENV !== 'production') {
 
 		deprecatedProperty(
 			COMPONENT,
-			props.contentRight,
-			'contentRight',
-			'actions',
-			createDocUrl('actions')
-		);
-
-		deprecatedProperty(
-			COMPONENT,
-			props.navRight,
-			'navRight',
-			'controls',
-			createDocUrl('controls')
-		);
-
-		deprecatedProperty(
-			COMPONENT,
 			props.onRenderActions,
 			'onRenderActions',
 			'actions',
@@ -142,14 +86,6 @@ if (process.env.NODE_ENV !== 'production') {
 				[PAGE_HEADER_CONTROL],
 				true
 			);
-		} else if (props.contentRight) {
-			renderFunctionReturnContentsLackDisplayName(
-				COMPONENT,
-				'contentRight',
-				props.contentRight,
-				[PAGE_HEADER_CONTROL],
-				true
-			);
 		}
 
 		if (props.controls) {
@@ -157,14 +93,6 @@ if (process.env.NODE_ENV !== 'production') {
 				COMPONENT,
 				'controls',
 				props.controls,
-				[PAGE_HEADER_CONTROL],
-				true
-			);
-		} else if (props.navRight) {
-			renderFunctionReturnContentsLackDisplayName(
-				COMPONENT,
-				'navRight',
-				props.navRight,
 				[PAGE_HEADER_CONTROL],
 				true
 			);

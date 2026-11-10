@@ -14,20 +14,15 @@ if (process.env.NODE_ENV !== 'production') {
 		const createDocUrl = getComponentDocFn(jsonDoc);
 		/* eslint-disable max-len */
 		// Deprecated and changed to another property
-		deprecatedProperty(
+		sunsetProperty(
 			COMPONENT,
 			props.onChange,
 			'onChange',
-			'onRowChange',
-			'The callback parameters have been changed: `onRowChange(event, { selection })` reports the requested selection in the same `(event, data)` shape as other components.'
+			'Use `onRowChange(event, { selection })` instead: it reports the requested selection in the same `(event, data)` shape as other components.'
 		);
-		// The deprecated `onChange` still fires, so it satisfies the requirement
-		// at runtime (and warns above).
 		requiredProperty(
 			COMPONENT,
-			!props.selectRows ||
-				props.onRowChange !== undefined ||
-				props.onChange !== undefined,
+			!props.selectRows || props.onRowChange !== undefined,
 			'onRowChange',
 			`Row selection is controlled: without \`onRowChange\`, clicking a row's checkbox does nothing. Update \`selection\` from \`data.selection\` in \`onRowChange\`, or remove \`selectRows\`. ${createDocUrl(
 				'onRowChange'
@@ -108,47 +103,53 @@ if (process.env.NODE_ENV !== 'production') {
 			'renderSubHeadingRow',
 			createDocUrl('renderSubHeadingRow')
 		);
-		deprecatedProperty(
+		sunsetProperty(
 			COMPONENT,
 			props.assistiveTextForActionsHeader,
 			'assistiveTextForActionsHeader',
-			"assistiveText['actionsHeader']",
-			createDocUrl('assistiveText')
+			`Use \`assistiveText={{ actionsHeader: '...' }}\` instead. ${createDocUrl(
+				'assistiveText'
+			)}`
 		);
-		deprecatedProperty(
+		sunsetProperty(
 			COMPONENT,
 			props.assistiveTextForColumnSort,
 			'assistiveTextForColumnSort',
-			"assistiveText['columnSort']",
-			createDocUrl('assistiveText')
+			`Use \`assistiveText={{ columnSort: '...' }}\` instead. ${createDocUrl(
+				'assistiveText'
+			)}`
 		);
-		deprecatedProperty(
+		sunsetProperty(
 			COMPONENT,
 			props.assistiveTextForColumnSortedAscending,
 			'assistiveTextForColumnSortedAscending',
-			"assistiveText['columnSortedAscending']",
-			createDocUrl('assistiveText')
+			`Use \`assistiveText={{ columnSortedAscending: '...' }}\` instead. ${createDocUrl(
+				'assistiveText'
+			)}`
 		);
-		deprecatedProperty(
+		sunsetProperty(
 			COMPONENT,
 			props.assistiveTextForColumnSortedDescending,
 			'assistiveTextForColumnSortedDescending',
-			"assistiveText['columnSortedDescending']",
-			createDocUrl('assistiveText')
+			`Use \`assistiveText={{ columnSortedDescending: '...' }}\` instead. ${createDocUrl(
+				'assistiveText'
+			)}`
 		);
-		deprecatedProperty(
+		sunsetProperty(
 			COMPONENT,
 			props.assistiveTextForSelectAllRows,
 			'assistiveTextForSelectAllRows',
-			"assistiveText['selectAllRows']",
-			createDocUrl('assistiveText')
+			`Use \`assistiveText={{ selectAllRows: '...' }}\` instead. ${createDocUrl(
+				'assistiveText'
+			)}`
 		);
-		deprecatedProperty(
+		sunsetProperty(
 			COMPONENT,
 			props.assistiveTextForSelectRow,
 			'assistiveTextForSelectRow',
-			"assistiveText['selectRow']",
-			createDocUrl('assistiveText')
+			`Use \`assistiveText={{ selectRow: '...' }}\` instead. ${createDocUrl(
+				'assistiveText'
+			)}`
 		);
 	};
 }

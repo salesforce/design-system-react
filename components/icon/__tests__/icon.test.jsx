@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 
 import Icon from '../index';
 import IconSettings from '../../icon-settings';
@@ -392,6 +392,26 @@ describe('SLDSIcon', () => {
 				'aria-hidden',
 				'true'
 			);
+		});
+	});
+
+	describe('Removed string assistiveText', () => {
+		it('ignores and warns about a string assistiveText', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<DemoIcon assistiveText="Old text" category="utility" name="info" />
+				</IconSettings>
+			);
+
+			expect(container.querySelector('.slds-assistive-text')).toBeNull();
+			expect(container.innerHTML).not.toContain('Old text');
+			expect(consoleError).toHaveBeenCalledWith(
+				expect.stringContaining('`assistiveText` has reached End-of-Life')
+			);
+			consoleError.mockRestore();
 		});
 	});
 });

@@ -105,38 +105,11 @@ const createItemMatcher = (list: SimpleDataTableItem[]) => {
 
 const getAssistiveText = memoize(
 	(
-		assistiveText: SimpleDataTableAssistiveText | undefined,
-		actionsHeaderText: string | undefined,
-		columnSortText: string | undefined,
-		columnSortedAscendingText: string | undefined,
-		columnSortedDescendingText: string | undefined,
-		selectAllRowsText: string | undefined,
-		selectRowText: string | undefined
-	): SimpleDataTableAssistiveText => {
-		const result: SimpleDataTableAssistiveText = {
-			...defaultProps.assistiveText,
-			...assistiveText,
-		};
-		if (actionsHeaderText) {
-			result.actionsHeader = actionsHeaderText;
-		}
-		if (selectAllRowsText) {
-			result.selectAllRows = selectAllRowsText;
-		}
-		if (columnSortedAscendingText) {
-			result.columnSortedAscending = columnSortedAscendingText;
-		}
-		if (columnSortedDescendingText) {
-			result.columnSortedDescending = columnSortedDescendingText;
-		}
-		if (columnSortText) {
-			result.columnSort = columnSortText;
-		}
-		if (selectRowText) {
-			result.selectRow = selectRowText;
-		}
-		return result;
-	},
+		assistiveText: SimpleDataTableAssistiveText | undefined
+	): SimpleDataTableAssistiveText => ({
+		...defaultProps.assistiveText,
+		...assistiveText,
+	}),
 	isEqual
 );
 
@@ -417,12 +390,6 @@ class SimpleDataTable extends React.Component<
 		event: React.SyntheticEvent,
 		selection: SimpleDataTableItem[]
 	) => {
-		// `onChange(selection, event)` is deprecated in favor of
-		// `onRowChange(event, { selection })`. It still fires (and warns once).
-		if (typeof this.props.onChange === 'function') {
-			this.props.onChange(selection, event);
-		}
-
 		if (typeof this.props.onRowChange === 'function') {
 			this.props.onRowChange(event, { selection });
 		}
@@ -880,15 +847,7 @@ class SimpleDataTable extends React.Component<
 			this.props.search
 		);
 
-		const assistiveText = getAssistiveText(
-			this.props.assistiveText,
-			this.props.assistiveTextForActionsHeader,
-			this.props.assistiveTextForColumnSort,
-			this.props.assistiveTextForColumnSortedAscending,
-			this.props.assistiveTextForColumnSortedDescending,
-			this.props.assistiveTextForSelectAllRows,
-			this.props.assistiveTextForSelectRow
-		);
+		const assistiveText = getAssistiveText(this.props.assistiveText);
 
 		if (this.props.selectRows && this.props.selectRows !== 'radio') {
 			ariaProps['aria-multiselectable'] = 'true';
@@ -923,6 +882,9 @@ class SimpleDataTable extends React.Component<
 							{
 								'slds-table_fixed-layout': this.props.fixedLayout,
 								'slds-table_header-fixed': this.props.fixedHeader,
+								// Not vestigial: SLDS uses it to zero the `thead th` padding,
+								// which `.slds-th__action` then supplies.
+								'slds-table_resizable-cols': this.props.fixedLayout,
 								'slds-table_bordered': !this.props.unborderedRow,
 								'slds-table_cell-buffer':
 									!this.props.fixedLayout && !this.props.unbufferedCell,

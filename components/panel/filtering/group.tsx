@@ -110,10 +110,6 @@ export interface PanelFilterGroupProps {
 	 * Adds in default Panel header and footer
 	 */
 	variant?: 'panel';
-	/**
-	 * Localized description of the close button for the panel for screen readers
-	 */
-	assistiveTextCloseFilterPanel?: string;
 	[key: string]: unknown;
 }
 
@@ -127,6 +123,14 @@ const defaultProps: Partial<PanelFilterGroupProps> = {
 	saveLabel: 'Save',
 	removeAllLabel: 'Remove All',
 };
+
+/**
+ * Props removed from the public API. Still destructured so they never reach
+ * the DOM, and reported by `checkProps`.
+ */
+interface PanelFilterGroupRemovedProps {
+	assistiveTextCloseFilterPanel?: unknown;
+}
 
 /**
  * A filtering panel contextual filtering options.
@@ -151,7 +155,8 @@ const PanelFilterGroup = ({
 	assistiveText = defaultProps.assistiveText,
 	assistiveTextCloseFilterPanel,
 	...rest
-}: PanelFilterGroupProps): React.ReactElement => {
+}: PanelFilterGroupProps &
+	PanelFilterGroupRemovedProps): React.ReactElement => {
 	(checkProps as (name: string, props: unknown, doc?: unknown) => void)(
 		PANEL_FILTER_GROUP,
 		{
@@ -181,9 +186,6 @@ const PanelFilterGroup = ({
 		...defaultProps.assistiveText,
 		...assistiveText,
 	};
-	if (assistiveTextCloseFilterPanel) {
-		mergedAssistiveText.closeButton = assistiveTextCloseFilterPanel;
-	}
 	return (
 		<div className="slds-filters">
 			{variant === 'panel' ? (

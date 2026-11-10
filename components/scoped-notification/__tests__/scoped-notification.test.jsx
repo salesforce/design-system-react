@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 
 import ScopedNotification from '../';
 import Icon from '../../icon';
@@ -17,7 +17,13 @@ const renderNotification = (props) =>
 describe('ScopedNotification icon', () => {
 	it("uses a string assistiveText on the icon as the icon's label", () => {
 		const { container } = renderNotification({
-			icon: <Icon category="utility" name="info" assistiveText="Information" />,
+			icon: (
+				<Icon
+					category="utility"
+					name="info"
+					assistiveText={{ label: 'Information' }}
+				/>
+			),
 		});
 		expect(container.querySelector('.slds-assistive-text').textContent).toBe(
 			'Information'
@@ -38,5 +44,20 @@ describe('ScopedNotification icon', () => {
 		expect(container.querySelector('.slds-assistive-text').textContent).toBe(
 			'From icon'
 		);
+	});
+
+	it('ignores and warns about the removed iconName prop', () => {
+		const consoleError = vi
+			.spyOn(console, 'error')
+			.mockImplementation(() => {});
+		const { container } = renderNotification({ iconName: 'announcement' });
+
+		expect(container.querySelector('use').getAttribute('href')).toContain(
+			'#info'
+		);
+		expect(consoleError).toHaveBeenCalledWith(
+			expect.stringContaining('`iconName` has reached End-of-Life')
+		);
+		consoleError.mockRestore();
 	});
 });

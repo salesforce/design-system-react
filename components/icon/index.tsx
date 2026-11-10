@@ -1,17 +1,22 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { type CSSProperties } from 'react';
+import React, { useEffect, type CSSProperties } from 'react';
 import classNames from '../../utilities/class-names';
-import UtilityIcon, { type InlineIconData } from '../utilities/utility-icon/index';
+import UtilityIcon, {
+	type InlineIconData,
+} from '../utilities/utility-icon/index';
 import IconBackgrounds from '../../utilities/product-tokens/icon-backgrounds';
 import { ICON } from '../../utilities/constants';
+import checkProps from './check-props';
+import componentDoc from './component.json';
 import type { IconCategory } from '../../types/common';
 
 /**
  * Icon color variant types
  */
-export type IconColorVariant = 'base' | 'default' | 'error' | 'light' | 'warning' | 'success';
+export type IconColorVariant =
+	'base' | 'default' | 'error' | 'light' | 'warning' | 'success';
 
 /**
  * Icon size types
@@ -36,7 +41,7 @@ export type ProductTheme =
  */
 export interface IconProps {
 	/** Assistive text for accessibility */
-	assistiveText?: { label?: string } | string;
+	assistiveText?: { label?: string };
 	/** Icon category from SLDS */
 	category?: IconCategory;
 	/** CSS classes for the SVG element */
@@ -65,7 +70,9 @@ export interface IconProps {
 	title?: string;
 }
 
-const defaultProps: Required<Pick<IconProps, 'assistiveText' | 'category' | 'colorVariant' | 'size'>> = {
+const defaultProps: Required<
+	Pick<IconProps, 'assistiveText' | 'category' | 'colorVariant' | 'size'>
+> = {
 	assistiveText: {},
 	category: 'standard',
 	colorVariant: 'default',
@@ -100,14 +107,15 @@ const Icon = ({
 		};
 	}
 
-	let mergedAssistiveText: string | undefined;
-	if (typeof assistiveText === 'string') {
-		mergedAssistiveText = assistiveText;
-	} else {
-		const defaultText = defaultProps.assistiveText as { label?: string };
-		const propsText = assistiveText as { label?: string };
-		mergedAssistiveText = propsText?.label ?? defaultText?.label;
-	}
+	useEffect(() => {
+		checkProps(ICON, { assistiveText }, componentDoc);
+	}, [assistiveText]);
+
+	// A string `assistiveText` was removed in v11; it is ignored and warns.
+	const mergedAssistiveText =
+		typeof assistiveText === 'object'
+			? (assistiveText?.label ?? defaultProps.assistiveText.label)
+			: undefined;
 
 	const kebabCaseName = name ? name.replace(/_/g, '-') : '';
 
@@ -122,30 +130,28 @@ const Icon = ({
 	);
 
 	return (
-		<span
-			className={containerClasses}
-			style={containerStyle}
-			title={title}
-		>
+		<span className={containerClasses} style={containerStyle} title={title}>
 			<UtilityIcon
 				aria-hidden={true}
 				category={category}
-				className={classNames(className, 'slds-icon', {
-					'slds-icon_xx-small': size === 'xx-small',
-					'slds-icon_x-small': size === 'x-small',
-					'slds-icon_small': size === 'small',
-					// medium intentionally not present
-					'slds-icon_large': size === 'large',
-					// Color logic for utility vs other categories
-					'slds-icon-text-default':
-						colorVariant === 'default' && category === 'utility'
-							? !inverse
-							: inverse,
-					'slds-icon-text-success': colorVariant === 'success',
-					'slds-icon-text-warning': colorVariant === 'warning',
-					'slds-icon-text-error': colorVariant === 'error',
-					'slds-icon-text-light': colorVariant === 'light',
-				}) as string}
+				className={
+					classNames(className, 'slds-icon', {
+						'slds-icon_xx-small': size === 'xx-small',
+						'slds-icon_x-small': size === 'x-small',
+						'slds-icon_small': size === 'small',
+						// medium intentionally not present
+						'slds-icon_large': size === 'large',
+						// Color logic for utility vs other categories
+						'slds-icon-text-default':
+							colorVariant === 'default' && category === 'utility'
+								? !inverse
+								: inverse,
+						'slds-icon-text-success': colorVariant === 'success',
+						'slds-icon-text-warning': colorVariant === 'warning',
+						'slds-icon-text-error': colorVariant === 'error',
+						'slds-icon-text-light': colorVariant === 'light',
+					}) as string
+				}
 				icon={icon}
 				name={name}
 				path={path}
@@ -161,4 +167,3 @@ const Icon = ({
 Icon.displayName = ICON;
 
 export default Icon;
-

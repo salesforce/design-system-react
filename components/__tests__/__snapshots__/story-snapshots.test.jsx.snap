@@ -3967,63 +3967,6 @@ exports[`Story HTML snapshots > IconSettings > BaseSpriteImportsNoTest 1`] = `
 </div>"
 `;
 
-exports[`Story HTML snapshots > Illustration > HeadingAndMessage 1`] = `
-"<div class="slds-p-around_medium">
-  <div class="slds-illustration slds-illustration_small">
-    <div class="slds-text-longform">
-      <h3 class="slds-text-heading_medium">Lorem ipsum dolor</h3>
-      <p class="slds-text-body_regular">Lorem ipsum dolor sit amet, consectetur</p>
-    </div>
-  </div>
-</div>"
-`;
-
-exports[`Story HTML snapshots > Illustration > HeadingOnly1 1`] = `
-"<div class="slds-p-around_medium">
-  <div class="slds-illustration slds-illustration_small">
-    <div class="slds-text-longform">
-      <h3 class="slds-text-heading_medium">Lorem ipsum dolor</h3>
-    </div>
-  </div>
-</div>"
-`;
-
-exports[`Story HTML snapshots > Illustration > LargeImageAndText 1`] = `
-"<div class="slds-p-around_medium">
-  <div class="slds-illustration slds-illustration_large"><svg class="slds-illustration__svg" aria-hidden="true" name="no-access" style="height:400px">
-      <use xlink:href="/assets/images/illustrations/empty-state-no-access.svg#no-access"></use>
-    </svg>
-    <div class="slds-text-longform">
-      <h3 class="slds-text-heading_medium">Lorem ipsum dolor</h3>
-      <p class="slds-text-body_regular">Lorem ipsum dolor sit amet, consectetur</p>
-    </div>
-  </div>
-</div>"
-`;
-
-exports[`Story HTML snapshots > Illustration > MessageOnly1 1`] = `
-"<div class="slds-p-around_medium">
-  <div class="slds-illustration slds-illustration_small">
-    <div class="slds-text-longform">
-      <p class="slds-text-body_regular">Lorem ipsum dolor sit amet, consectetur</p>
-    </div>
-  </div>
-</div>"
-`;
-
-exports[`Story HTML snapshots > Illustration > SmallImageAndText 1`] = `
-"<div class="slds-p-around_medium">
-  <div class="slds-illustration slds-illustration_small"><svg class="slds-illustration__svg" aria-hidden="true" name="no-access">
-      <use xlink:href="/assets/images/illustrations/empty-state-no-access.svg#no-access"></use>
-    </svg>
-    <div class="slds-text-longform">
-      <h3 class="slds-text-heading_medium">Lorem ipsum dolor</h3>
-      <p class="slds-text-body_regular">Lorem ipsum dolor sit amet, consectetur</p>
-    </div>
-  </div>
-</div>"
-`;
-
 exports[`Story HTML snapshots > Input > AssistiveTextLabel 1`] = `
 "<div class="slds-p-around_medium">
   <div class="slds-form-element"><label class="slds-form-element__label slds-assistive-text" for="assistive-label-input">Hidden label for screen readers</label>
@@ -6412,7 +6355,7 @@ exports[`Story HTML snapshots > SetupAssistant > WithCard 1`] = `
 exports[`Story HTML snapshots > SimpleDataTable > AdvancedFixedLayout 1`] = `
 "<div class="slds-p-around_medium">
   <div>
-    <table aria-multiselectable="true" class="slds-table slds-table_fixed-layout slds-table_bordered" id="SimpleDataTableExample-2" role="grid">
+    <table aria-multiselectable="true" class="slds-table slds-table_fixed-layout slds-table_resizable-cols slds-table_bordered" id="SimpleDataTableExample-2" role="grid">
       <thead class="">
         <tr class="slds-line-height_reset">
           <th class="slds-text-align_right" scope="col" style="width:3.25rem">
@@ -6551,7 +6494,7 @@ exports[`Story HTML snapshots > SimpleDataTable > AdvancedSingleSelectFixedHeade
   <div>
     <div class="slds-table_header-fixed_container" style="border-top:1px solid var(--slds-g-color-border-1);height:100%">
       <div class="slds-table_header-fixed_scroller" style="height:100%;overflow:auto">
-        <table class="slds-table slds-table_fixed-layout slds-table_header-fixed slds-table_bordered" id="SimpleDataTableExample-SingleRequiredSelect" role="grid">
+        <table class="slds-table slds-table_fixed-layout slds-table_header-fixed slds-table_resizable-cols slds-table_bordered" id="SimpleDataTableExample-SingleRequiredSelect" role="grid">
           <thead class="">
             <tr class="slds-line-height_reset">
               <th class="slds-text-align_right" scope="col" style="height:0;line-height:0;width:3.25rem">
@@ -6695,7 +6638,7 @@ exports[`Story HTML snapshots > SimpleDataTable > AdvancedSingleSelectFixedHeade
 exports[`Story HTML snapshots > SimpleDataTable > AdvancedSingleSelectFixedLayout 1`] = `
 "<div class="slds-p-around_medium">
   <div>
-    <table class="slds-table slds-table_fixed-layout slds-table_bordered" id="SimpleDataTableExample-SingleRequiredSelect" role="grid">
+    <table class="slds-table slds-table_fixed-layout slds-table_resizable-cols slds-table_bordered" id="SimpleDataTableExample-SingleRequiredSelect" role="grid">
       <thead class="">
         <tr class="slds-line-height_reset">
           <th class="slds-text-align_right" scope="col" style="width:3.25rem">
@@ -6814,7 +6757,7 @@ exports[`Story HTML snapshots > SimpleDataTable > AdvancedSingleSelectFixedLayou
 exports[`Story HTML snapshots > SimpleDataTable > AdvancedWithHeaderRow 1`] = `
 "<div class="slds-p-around_medium">
   <div>
-    <table aria-multiselectable="true" class="slds-table slds-table_fixed-layout slds-table_bordered" id="SimpleDataTableExample-2">
+    <table aria-multiselectable="true" class="slds-table slds-table_fixed-layout slds-table_resizable-cols slds-table_bordered" id="SimpleDataTableExample-2">
       <thead class="">
         <tr class="slds-line-height_reset">
           <th class="slds-text-align_right" scope="col" style="width:3.25rem">
@@ -6998,7 +6941,7 @@ exports[`Story HTML snapshots > SimpleDataTable > AdvancedWithHeaderRow 1`] = `
 exports[`Story HTML snapshots > SimpleDataTable > BasicFixedLayoutStory 1`] = `
 "<div class="slds-p-around_medium">
   <div style="overflow:auto">
-    <table class="slds-table slds-table_fixed-layout slds-table_bordered" id="SimpleDataTableExample-1-default">
+    <table class="slds-table slds-table_fixed-layout slds-table_resizable-cols slds-table_bordered" id="SimpleDataTableExample-1-default">
       <thead class="">
         <tr class="slds-line-height_reset">
           <th id="SimpleDataTableExample-1-default-opportunityName-th" aria-label="Opportunity Name" aria-sort="none" class="" scope="col" style="width:6em"><span class="slds-p-horizontal_x-small slds-th__action" style="display:flex"><span class="slds-truncate" title="Opportunity Name">Opportunity Name</span></span></th>
@@ -7721,7 +7664,7 @@ exports[`Story HTML snapshots > SimpleDataTable > FixedHeaderHorizontalScrolling
   <div style="height:200px;width:400px">
     <div class="slds-table_header-fixed_container" style="border-top:1px solid var(--slds-g-color-border-1);height:100%">
       <div class="slds-table_header-fixed_scroller" style="height:100%;overflow:auto">
-        <table aria-multiselectable="true" class="slds-table slds-table_fixed-layout slds-table_header-fixed slds-table_bordered" id="SimpleDataTableExample-FixedHeaders" role="grid" style="min-width:800px">
+        <table aria-multiselectable="true" class="slds-table slds-table_fixed-layout slds-table_header-fixed slds-table_resizable-cols slds-table_bordered" id="SimpleDataTableExample-FixedHeaders" role="grid" style="min-width:800px">
           <thead class="">
             <tr class="slds-line-height_reset">
               <th class="slds-text-align_right" scope="col" style="height:0;line-height:0;width:3.25rem">
@@ -8185,7 +8128,7 @@ exports[`Story HTML snapshots > SimpleDataTable > FixedHeaderStory 1`] = `
   <div style="height:200px">
     <div class="slds-table_header-fixed_container" style="border-top:1px solid var(--slds-g-color-border-1);height:100%">
       <div class="slds-table_header-fixed_scroller" style="height:100%;overflow:auto">
-        <table aria-multiselectable="true" class="slds-table slds-table_fixed-layout slds-table_header-fixed slds-table_bordered" id="SimpleDataTableExample-FixedHeaders" role="grid">
+        <table aria-multiselectable="true" class="slds-table slds-table_fixed-layout slds-table_header-fixed slds-table_resizable-cols slds-table_bordered" id="SimpleDataTableExample-FixedHeaders" role="grid">
           <thead class="">
             <tr class="slds-line-height_reset">
               <th class="slds-text-align_right" scope="col" style="height:0;line-height:0;width:3.25rem">
@@ -8649,7 +8592,7 @@ exports[`Story HTML snapshots > SimpleDataTable > InfiniteScrollingStory 1`] = `
   <div style="height:200px">
     <div class="slds-table_header-fixed_container" style="border-top:1px solid var(--slds-g-color-border-1);height:100%">
       <div class="slds-table_header-fixed_scroller" style="height:100%;overflow:auto">
-        <table aria-multiselectable="true" class="slds-table slds-table_fixed-layout slds-table_header-fixed slds-table_bordered" id="SimpleDataTableExample-FixedHeaders">
+        <table aria-multiselectable="true" class="slds-table slds-table_fixed-layout slds-table_header-fixed slds-table_resizable-cols slds-table_bordered" id="SimpleDataTableExample-FixedHeaders">
           <thead class="">
             <tr class="slds-line-height_reset">
               <th class="slds-text-align_right" scope="col" style="height:0;line-height:0;width:3.25rem">
@@ -9118,7 +9061,7 @@ exports[`Story HTML snapshots > SimpleDataTable > InteractiveElementsStory 1`] =
 "<div class="slds-p-around_medium">
   <div style="overflow:auto">
     <h3 class="slds-text-heading_medium slds-m-vertical_medium">Default Fluid Layout</h3>
-    <table class="slds-table slds-table_fixed-layout slds-table_bordered" id="SimpleDataTableExample-1-default" role="grid">
+    <table class="slds-table slds-table_fixed-layout slds-table_resizable-cols slds-table_bordered" id="SimpleDataTableExample-1-default" role="grid">
       <thead class="">
         <tr class="slds-line-height_reset">
           <th id="SimpleDataTableExample-1-default-opportunityName-th" aria-label="Opportunity Name" aria-sort="none" class="" scope="col"><span class="slds-p-horizontal_x-small slds-th__action" style="display:flex"><span class="slds-truncate" title="Opportunity Name">Opportunity Name</span></span></th>
@@ -9203,7 +9146,7 @@ exports[`Story HTML snapshots > SimpleDataTable > InteractiveElementsStory 1`] =
       </tbody>
     </table>
     <h3 class="slds-text-heading_medium slds-m-vertical_medium">Striped</h3>
-    <table class="slds-table slds-table_fixed-layout slds-table_bordered slds-table_striped" id="SimpleDataTableExample-1-striped" role="grid">
+    <table class="slds-table slds-table_fixed-layout slds-table_resizable-cols slds-table_bordered slds-table_striped" id="SimpleDataTableExample-1-striped" role="grid">
       <thead class="">
         <tr class="slds-line-height_reset">
           <th id="SimpleDataTableExample-1-striped-opportunityName-th" aria-label="Opportunity Name" aria-sort="none" class="" scope="col"><span class="slds-p-horizontal_x-small slds-th__action" style="display:flex"><span class="slds-truncate" title="Opportunity Name">Opportunity Name</span></span></th>
@@ -9288,7 +9231,7 @@ exports[`Story HTML snapshots > SimpleDataTable > InteractiveElementsStory 1`] =
       </tbody>
     </table>
     <h3 class="slds-text-heading_medium slds-m-vertical_medium">No Row Hover</h3>
-    <table class="slds-table slds-table_fixed-layout slds-table_bordered slds-no-row-hover" id="SimpleDataTableExample-noRowHover" role="grid">
+    <table class="slds-table slds-table_fixed-layout slds-table_resizable-cols slds-table_bordered slds-no-row-hover" id="SimpleDataTableExample-noRowHover" role="grid">
       <thead class="">
         <tr class="slds-line-height_reset">
           <th id="SimpleDataTableExample-noRowHover-opportunityName-th" aria-label="Opportunity Name" aria-sort="none" class="" scope="col"><span class="slds-p-horizontal_x-small slds-th__action" style="display:flex"><span class="slds-truncate" title="Opportunity Name">Opportunity Name</span></span></th>
@@ -9373,7 +9316,7 @@ exports[`Story HTML snapshots > SimpleDataTable > InteractiveElementsStory 1`] =
       </tbody>
     </table>
     <h3 class="slds-text-heading_medium slds-m-vertical_medium">Column Bordered</h3>
-    <table class="slds-table slds-table_fixed-layout slds-table_bordered slds-table_col-bordered" id="SimpleDataTableExample-columnBordered" role="grid">
+    <table class="slds-table slds-table_fixed-layout slds-table_resizable-cols slds-table_bordered slds-table_col-bordered" id="SimpleDataTableExample-columnBordered" role="grid">
       <thead class="">
         <tr class="slds-line-height_reset">
           <th id="SimpleDataTableExample-columnBordered-opportunityName-th" aria-label="Opportunity Name" aria-sort="none" class="" scope="col"><span class="slds-p-horizontal_x-small slds-th__action" style="display:flex"><span class="slds-truncate" title="Opportunity Name">Opportunity Name</span></span></th>
@@ -9537,7 +9480,7 @@ exports[`Story HTML snapshots > SimpleDataTable > JoinedWithPageHeaderStory 1`] 
     </div>
     <div class="slds-table_header-fixed_container" style="border-top:none;height:100%;border-bottom:1px solid var(--slds-g-color-border-1);border-left:1px solid var(--slds-g-color-border-1);border-right:1px solid var(--slds-g-color-border-1);border-radius:0 0 var(--slds-g-radius-border-2) var(--slds-g-radius-border-2)">
       <div class="slds-table_header-fixed_scroller" style="height:100%;overflow:auto">
-        <table aria-multiselectable="true" class="slds-table slds-table_fixed-layout slds-table_header-fixed slds-table_bordered" id="SimpleDataTableExample-JoinedWithPageHeader" role="grid">
+        <table aria-multiselectable="true" class="slds-table slds-table_fixed-layout slds-table_header-fixed slds-table_resizable-cols slds-table_bordered" id="SimpleDataTableExample-JoinedWithPageHeader" role="grid">
           <thead class="">
             <tr class="slds-line-height_reset">
               <th class="slds-text-align_right" scope="col" style="height:0;line-height:0;width:3.25rem">
