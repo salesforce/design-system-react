@@ -94,6 +94,7 @@ interface TabsValueProps {
  * Select the tab by index (deprecated).
  */
 interface TabsSelectedIndexProps {
+	/** Unset when the deprecated `selectedIndex` is used. */
 	value?: undefined;
 	/**
 	 * @deprecated Use `value` instead (set `value` on each `TabsPanel`, or use the index as a
