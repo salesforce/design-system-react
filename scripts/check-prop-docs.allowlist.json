@@ -38,7 +38,6 @@
 		"components/progress-ring/index: ProgressRingWithoutIconProps.hasIcon",
 		"components/radio-group/index: RadioGroupChangeProps.disabled",
 		"components/radio-group/index: RadioGroupChangeProps.onChange",
-		"components/scoped-notification/index: <anonymous>.iconName",
 		"components/slider/index: SliderChangeProps.disabled",
 		"components/slider/index: SliderChangeProps.onChange",
 		"components/tabs/index: TabsSelectedIndexProps.value",
