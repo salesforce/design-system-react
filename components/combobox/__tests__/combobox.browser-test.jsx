@@ -573,6 +573,88 @@ describe('SLDSCombobox', function describeFunction() {
 		});
 	});
 
+	// axe `aria-required-attr`: an expanded role="combobox" must have
+	// `aria-controls` pointing at the element it opens (W-24839159).
+	describe('aria-controls on the combobox element', () => {
+		beforeEach(() => {
+			mountNode = createMountNode({ context: this });
+		});
+
+		afterEach(() => {
+			destroyMountNode({ wrapper, mountNode });
+		});
+
+		[
+			['base', {}],
+			['base multiple', { multiple: true }],
+			['inline-listbox', { variant: 'inline-listbox' }],
+			[
+				'inline-listbox multiple',
+				{ variant: 'inline-listbox', multiple: true },
+			],
+			['readonly', { variant: 'readonly' }],
+			['readonly multiple', { variant: 'readonly', multiple: true }],
+		].forEach(([name, props]) => {
+			it(`${name}: points at the rendered listbox while open`, () => {
+				wrapper = mount(<DemoComponent {...props} isOpen />, {
+					attachTo: mountNode,
+				});
+				const controlsId = getNodes({ wrapper })
+					.combobox.getDOMNode()
+					.getAttribute('aria-controls');
+				expect(controlsId).to.equal(`${defaultProps.id}-listbox`);
+				expect(
+					document.getElementById(controlsId).getAttribute('role')
+				).to.equal('listbox');
+			});
+
+			it(`${name}: is absent while closed or disabled`, () => {
+				wrapper = mount(<DemoComponent {...props} />, {
+					attachTo: mountNode,
+				});
+				expect(
+					getNodes({ wrapper })
+						.combobox.getDOMNode()
+						.hasAttribute('aria-controls')
+				).to.equal(false);
+				wrapper.setProps({ isOpen: true, disabled: true });
+				expect(
+					getNodes({ wrapper })
+						.combobox.getDOMNode()
+						.hasAttribute('aria-controls')
+				).to.equal(false);
+			});
+		});
+
+		it('popover: points at the rendered dialog while open', () => {
+			wrapper = mount(
+				<DemoComponent variant="popover" popover={<Popover />} isOpen />,
+				{ attachTo: mountNode }
+			);
+			const controlsId = getNodes({ wrapper })
+				.combobox.getDOMNode()
+				.getAttribute('aria-controls');
+			expect(controlsId).to.equal(`${defaultProps.id}-popover`);
+			expect(document.getElementById(controlsId)).to.exist;
+		});
+
+		it('popover: follows an id set through popover props', () => {
+			wrapper = mount(
+				<DemoComponent
+					variant="popover"
+					popover={<Popover id="custom-popover-id" />}
+					isOpen
+				/>,
+				{ attachTo: mountNode }
+			);
+			const controlsId = getNodes({ wrapper })
+				.combobox.getDOMNode()
+				.getAttribute('aria-controls');
+			expect(controlsId).to.equal('custom-popover-id-popover');
+			expect(document.getElementById(controlsId)).to.exist;
+		});
+	});
+
 	describe('Optional Props', () => {
 		beforeEach(() => {
 			mountNode = createMountNode({ context: this });

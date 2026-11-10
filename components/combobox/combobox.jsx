@@ -559,6 +559,13 @@ class Combobox extends React.Component {
 		return popoverProps;
 	};
 
+	// The listbox only renders while open and enabled (see `getDialog`), so
+	// `aria-controls` must not point at it otherwise.
+	getListboxControlsId = () =>
+		!this.props.disabled && this.getIsOpen()
+			? `${this.getId()}-listbox`
+			: undefined;
+
 	getDialog({ menuRenderer }) {
 		// FOR BACKWARDS COMPATIBILITY
 		const menuPosition = this.props.isInline
@@ -1125,17 +1132,16 @@ class Combobox extends React.Component {
 						props.className
 					)}
 					// Not in ARIA 1.2 spec, temporary for SLDS styles
-					role="combobox" // eslint-disable-line jsx-a11y/role-supports-aria-props, jsx-a11y/role-has-required-aria-props
+					role="combobox" // eslint-disable-line jsx-a11y/role-supports-aria-props
 					aria-expanded={this.getIsOpen()}
 					aria-haspopup="listbox" // eslint-disable-line jsx-a11y/aria-proptypes
+					aria-controls={this.getListboxControlsId()}
 					// used on menu's listbox
 					aria-owns={this.getIsOpen() ? `${this.getId()}-listbox` : undefined} // eslint-disable-line jsx-a11y/aria-proptypes
 				>
 					<InnerInput
 						aria-autocomplete="list"
-						aria-controls={
-							this.getIsOpen() ? `${this.getId()}-listbox` : undefined
-						}
+						aria-controls={this.getListboxControlsId()}
 						aria-activedescendant={
 							this.state.activeOption
 								? `${this.getId()}-listbox-option-${this.state.activeOption.id}`
@@ -1267,15 +1273,14 @@ class Combobox extends React.Component {
 						props.className
 					)}
 					// Not in ARIA 1.2 spec, temporary for SLDS styles
-					role="combobox" // eslint-disable-line jsx-a11y/role-supports-aria-props, jsx-a11y/role-has-required-aria-props
+					role="combobox" // eslint-disable-line jsx-a11y/role-supports-aria-props
 					aria-expanded={this.getIsOpen()}
 					aria-haspopup="listbox" // eslint-disable-line jsx-a11y/aria-proptypes
+					aria-controls={this.getListboxControlsId()}
 				>
 					<InnerInput
 						aria-autocomplete="list"
-						aria-controls={
-							this.getIsOpen() ? `${this.getId()}-listbox` : undefined
-						}
+						aria-controls={this.getListboxControlsId()}
 						aria-activedescendant={
 							this.state.activeOption
 								? `${this.getId()}-listbox-option-${this.state.activeOption.id}`
@@ -1368,16 +1373,15 @@ class Combobox extends React.Component {
 							props.className
 						)}
 						// Not in ARIA 1.2 spec, temporary for SLDS styles
-						role="combobox" // eslint-disable-line jsx-a11y/role-supports-aria-props, jsx-a11y/role-has-required-aria-props
+						role="combobox" // eslint-disable-line jsx-a11y/role-supports-aria-props
 						aria-expanded={this.getIsOpen()}
 						aria-haspopup="listbox" // eslint-disable-line jsx-a11y/aria-proptypes
+						aria-controls={this.getListboxControlsId()}
 					>
 						<InnerInput
 							defaultValue={props.defaultValue}
 							aria-autocomplete="list"
-							aria-controls={
-								this.getIsOpen() ? `${this.getId()}-listbox` : undefined
-							}
+							aria-controls={this.getListboxControlsId()}
 							aria-activedescendant={
 								this.state.activeOption
 									? `${this.getId()}-listbox-option-${
@@ -1519,6 +1523,11 @@ class Combobox extends React.Component {
 			this.props.popover.props.body,
 			{ assistiveText, labels }
 		);
+		// Popover renders its dialog as `${id}-popover`, and `popover` props may
+		// override the id.
+		const popoverControlsId = this.getIsOpen()
+			? `${popoverProps.id || this.getId()}-popover`
+			: undefined;
 
 		return (
 			<div className="slds-form-element__control">
@@ -1538,16 +1547,15 @@ class Combobox extends React.Component {
 							props.className
 						)}
 						// Not in ARIA 1.2 spec, temporary for SLDS styles
-						role="combobox" // eslint-disable-line jsx-a11y/role-supports-aria-props, jsx-a11y/role-has-required-aria-props
+						role="combobox" // eslint-disable-line jsx-a11y/role-supports-aria-props
 						aria-expanded={this.getIsOpen()}
 						aria-haspopup="dialog" // eslint-disable-line jsx-a11y/aria-proptypes
+						aria-controls={popoverControlsId}
 					>
 						<Popover {...popoverProps}>
 							<InnerInput
 								aria-autocomplete="none"
-								aria-controls={
-									this.getIsOpen() ? `${this.getId()}-popover` : undefined
-								}
+								aria-controls={popoverControlsId}
 								aria-describedby={this.getErrorId()}
 								autoComplete="off"
 								className="slds-combobox__input"
@@ -1624,16 +1632,15 @@ class Combobox extends React.Component {
 							props.className
 						)}
 						// Not in ARIA 1.2 spec, temporary for SLDS styles
-						role="combobox" // eslint-disable-line jsx-a11y/role-supports-aria-props, jsx-a11y/role-has-required-aria-props
+						role="combobox" // eslint-disable-line jsx-a11y/role-supports-aria-props
 						aria-expanded={this.getIsOpen()}
 						aria-haspopup="listbox" // eslint-disable-line jsx-a11y/aria-proptypes
+						aria-controls={this.getListboxControlsId()}
 					>
 						<InnerInput
 							defaultValue={props.defaultValue}
 							aria-autocomplete="list"
-							aria-controls={
-								this.getIsOpen() ? `${this.getId()}-listbox` : undefined
-							}
+							aria-controls={this.getListboxControlsId()}
 							aria-activedescendant={
 								this.state.activeOption
 									? `${this.getId()}-listbox-option-${
@@ -1743,16 +1750,15 @@ class Combobox extends React.Component {
 							props.className
 						)}
 						// Not in ARIA 1.2 spec, temporary for SLDS styles
-						role="combobox" // eslint-disable-line jsx-a11y/role-supports-aria-props, jsx-a11y/role-has-required-aria-props
+						role="combobox" // eslint-disable-line jsx-a11y/role-supports-aria-props
 						aria-expanded={this.getIsOpen()}
 						aria-haspopup="listbox" // eslint-disable-line jsx-a11y/aria-proptypes
+						aria-controls={this.getListboxControlsId()}
 					>
 						<InnerInput
 							defaultValue={props.defaultValue}
 							aria-autocomplete="list"
-							aria-controls={
-								this.getIsOpen() ? `${this.getId()}-listbox` : undefined
-							}
+							aria-controls={this.getListboxControlsId()}
 							aria-activedescendant={
 								this.state.activeOption
 									? `${this.getId()}-listbox-option-${

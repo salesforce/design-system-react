@@ -373,6 +373,7 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
           className="slds-combobox_container"
         >
           <div
+            aria-controls="combobox-base-inherit-menu-width-listbox"
             aria-expanded={true}
             aria-haspopup="listbox"
             aria-owns="combobox-base-inherit-menu-width-listbox"
@@ -1552,6 +1553,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
         className="slds-combobox_container"
       >
         <div
+          aria-controls="combobox-base-listbox"
           aria-expanded={true}
           aria-haspopup="listbox"
           aria-owns="combobox-base-listbox"
@@ -2525,6 +2527,7 @@ exports[`DOM snapshots SLDSCombobox Base With Input 1`] = `
         className="slds-combobox_container"
       >
         <div
+          aria-controls="combobox-base-listbox"
           aria-expanded={true}
           aria-haspopup="listbox"
           aria-owns="combobox-base-listbox"
@@ -3582,6 +3585,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Search/Add Entities - Open 1`]
         className="slds-combobox_container"
       >
         <div
+          aria-controls="combobox-unique-id-listbox"
           aria-expanded={true}
           aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
@@ -5178,6 +5182,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Custom Menu Item Open 1`] = `
         className="slds-combobox_container"
       >
         <div
+          aria-controls="combobox-base-custom-menu-item-listbox"
           aria-expanded={true}
           aria-haspopup="listbox"
           aria-owns="combobox-base-custom-menu-item-listbox"
@@ -5543,6 +5548,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open 1`] = `
         className="slds-combobox_container"
       >
         <div
+          aria-controls="combobox-unique-id-listbox"
           aria-expanded={true}
           aria-haspopup="listbox"
           aria-owns="combobox-unique-id-listbox"
@@ -5728,6 +5734,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu Sub Header Separator
         className="slds-combobox_container"
       >
         <div
+          aria-controls="combobox-unique-id-listbox"
           aria-expanded={true}
           aria-haspopup="listbox"
           aria-owns="combobox-unique-id-listbox"
@@ -5853,6 +5860,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu inheritWidthOf prop 
         className="slds-combobox_container"
       >
         <div
+          aria-controls="combobox-unique-id-listbox"
           aria-expanded={true}
           aria-haspopup="listbox"
           aria-owns="combobox-unique-id-listbox"
@@ -6119,6 +6127,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Dialog Open 1`] = `
         className="slds-combobox_container"
       >
         <div
+          aria-controls="combobox-unique-id-popover"
           aria-expanded={true}
           aria-haspopup="dialog"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
@@ -6273,6 +6282,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Open Loading 1`] = 
         className="slds-combobox_container"
       >
         <div
+          aria-controls="combobox-unique-id-listbox"
           aria-expanded={true}
           aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
@@ -7053,6 +7063,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Search/Add Entities O
         className="slds-combobox_container"
       >
         <div
+          aria-controls="combobox-unique-id-listbox"
           aria-expanded={true}
           aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
@@ -7979,6 +7990,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
         className="slds-combobox_container"
       >
         <div
+          aria-controls="combobox-readonly-single-custom-item-listbox"
           aria-expanded={true}
           aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
@@ -8748,6 +8760,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
         className="slds-combobox_container"
       >
         <div
+          aria-controls="combobox-unique-id-listbox"
           aria-expanded={true}
           aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
