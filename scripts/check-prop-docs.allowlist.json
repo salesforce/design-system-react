@@ -40,12 +40,7 @@
 		"components/slider/index: SliderChangeProps.disabled",
 		"components/slider/index: SliderChangeProps.onChange",
 		"components/tabs/index: TabsSelectedIndexProps.value",
-		"components/tabs/panel: TabsPanelProps.assistiveText.withErrorIcon",
-		"components/tooltip/index: TooltipTriggerProps.onBlur",
-		"components/tooltip/index: TooltipTriggerProps.onFocus",
-		"components/tooltip/index: TooltipTriggerProps.onKeyDown",
-		"components/tooltip/index: TooltipTriggerProps.onMouseEnter",
-		"components/tooltip/index: TooltipTriggerProps.onMouseLeave"
+		"components/tabs/panel: TabsPanelProps.assistiveText.withErrorIcon"
 	],
 	"deprecated": [
 		"components/date-picker: onBlur",
