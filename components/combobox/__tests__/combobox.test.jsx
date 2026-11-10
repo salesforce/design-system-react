@@ -674,6 +674,91 @@ describe('SLDSCombobox', () => {
 		});
 	});
 
+	// axe `aria-required-attr`: an expanded role="combobox" must have
+	// `aria-controls` pointing at the element it opens (W-24839159).
+	describe('aria-controls on the combobox element', () => {
+		const listboxVariants = [
+			['base', {}],
+			['base multiple', { multiple: true }],
+			['inline-listbox', { variant: 'inline-listbox' }],
+			[
+				'inline-listbox multiple',
+				{ variant: 'inline-listbox', multiple: true },
+			],
+			['readonly', { variant: 'readonly' }],
+			['readonly multiple', { variant: 'readonly', multiple: true }],
+		];
+
+		it.each(listboxVariants)(
+			'%s: points at the rendered listbox while open',
+			(name, props) => {
+				const { container } = render(<DemoComponent {...props} isOpen />);
+				const { combobox } = getNodes(container);
+				const controlsId = combobox.getAttribute('aria-controls');
+				expect(controlsId).toBe(`${defaultProps.id}-listbox`);
+				expect(document.getElementById(controlsId)).toHaveAttribute(
+					'role',
+					'listbox'
+				);
+			}
+		);
+
+		it.each(listboxVariants)(
+			'%s: is absent while closed or disabled',
+			(name, props) => {
+				const { container, rerender } = render(<DemoComponent {...props} />);
+				expect(getNodes(container).combobox).not.toHaveAttribute(
+					'aria-controls'
+				);
+				rerender(<DemoComponent {...props} isOpen disabled />);
+				expect(getNodes(container).combobox).not.toHaveAttribute(
+					'aria-controls'
+				);
+			}
+		);
+
+		it('popover: points at the rendered dialog while open', () => {
+			const { container } = render(
+				<DemoComponent
+					variant="popover"
+					popover={<Popover />}
+					isOpen
+					assistiveText={{ popoverLabel: 'Options' }}
+				/>
+			);
+			const controlsId =
+				getNodes(container).combobox.getAttribute('aria-controls');
+			expect(controlsId).toBe(`${defaultProps.id}-popover`);
+			expect(document.getElementById(controlsId)).toBeInTheDocument();
+		});
+
+		it('popover: follows an id set through popover props', () => {
+			const { container } = render(
+				<DemoComponent
+					variant="popover"
+					popover={<Popover id="custom-popover-id" />}
+					isOpen
+					assistiveText={{ popoverLabel: 'Options' }}
+				/>
+			);
+			const controlsId =
+				getNodes(container).combobox.getAttribute('aria-controls');
+			expect(controlsId).toBe('custom-popover-id-popover');
+			expect(document.getElementById(controlsId)).toBeInTheDocument();
+		});
+
+		it('popover: is absent while closed', () => {
+			const { container } = render(
+				<DemoComponent
+					variant="popover"
+					popover={<Popover />}
+					assistiveText={{ popoverLabel: 'Options' }}
+				/>
+			);
+			expect(getNodes(container).combobox).not.toHaveAttribute('aria-controls');
+		});
+	});
+
 	describe('Optional Props', () => {
 		it('Displays No match found', () => {
 			const { container } = render(<DemoComponent isOpen />);
