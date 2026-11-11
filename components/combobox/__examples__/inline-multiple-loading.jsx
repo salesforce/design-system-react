@@ -1,3 +1,5 @@
+// Deprecated: `variant="inline-listbox"` with `multiple`. Use `variant="base"`
+// with `multiple` (see base.jsx), which lists the selections after the input.
 /* eslint-disable no-console, react/prop-types */
 import React from 'react';
 import Combobox from '~/components/combobox';

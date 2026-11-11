@@ -1144,6 +1144,12 @@ enhancement issues, not story fill-ins:
 - [ ] Delete the vendored `assets/styles/slds-plus.css`; nothing outside planning docs
       references it.
 - [ ] Work down the lint warning backlog.
+- [ ] `combobox` — remove `variant="inline-listbox"` with `multiple` in the next major
+      (deprecated in v11, warns once; use `variant="base"` with `multiple`). SLDS deprecated the
+      inline listbox, it puts the selected pills before the input for screen readers, and its
+      pill listbox has no accessible name (axe `aria-input-field-name`). Remove
+      `renderInlineMultiple`, its `slds-has-inline-listbox` usage, the `InlineMultiple` stories
+      and examples, and `SelectedListBox`'s `containerRole`/`containerAriaOrientation`.
 
 ## Done since the 2026-08-11 snapshot
 
