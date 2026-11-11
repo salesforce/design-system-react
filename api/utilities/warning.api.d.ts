@@ -4,6 +4,10 @@
 declare let checkAppElementIsSet: () => void;
 export default checkAppElementIsSet;
 
+// ── @salesforce/design-system-react/utilities/warning/children-as-trigger ──
+declare let childrenAsTrigger: (control: string, usesChildrenAsTrigger: boolean, comment?: string) => void;
+export default childrenAsTrigger;
+
 // ── @salesforce/design-system-react/utilities/warning/component-has-moved ──
 interface ComponentHasMovedOptions {
     oldFileLocation: string;

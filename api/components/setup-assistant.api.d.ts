@@ -7,19 +7,15 @@ export default checkProps;
 // ── @salesforce/design-system-react/components/setup-assistant ──
 import React, { type ReactNode, type MouseEvent } from "react";
 import { SETUP_ASSISTANT } from "../../utilities/constants";
-import type { StepProps } from "./step";
+import type { ChildrenOf } from "../../types/common";
+import { type StepProps } from "./step";
 export interface StepToggleEventData {
     index: number;
     isOpen: boolean;
     step: StepProps;
 }
-export interface SetupAssistantStepChildProps {
-    index?: number;
-    onToggleIsOpen?: (event: MouseEvent, data: StepToggleEventData) => void;
-    stepNumber?: number;
-}
 export interface SetupAssistantProps {
-    children?: ReactNode;
+    children?: ChildrenOf<StepProps>;
     className?: string | string[] | Record<string, boolean>;
     id?: string;
     isCard?: boolean;
@@ -49,7 +45,6 @@ export interface StepProps {
     estimatedTime?: string | ReactNode;
     heading?: string | ReactNode;
     id?: string;
-    index?: number;
     isExpandable?: boolean;
     isOpen?: boolean;
     defaultIsOpen?: boolean;
@@ -63,19 +58,8 @@ export interface StepProps {
     progress?: number;
     stepNumber?: number;
 }
-interface StepState {
-    isOpen: boolean;
+export interface StepInjectedProps {
+    index?: number;
 }
-declare class Step extends React.Component<StepProps, StepState> {
-    static displayName: string;
-    static defaultProps: Partial<StepProps>;
-    generatedId: string;
-    constructor(props: StepProps);
-    getId(): string;
-    getIsOpen(): boolean;
-    toggleIsOpen: (event: SyntheticEvent) => void;
-    renderMediaContent(): React.JSX.Element;
-    renderSummary(): React.JSX.Element;
-    render(): React.JSX.Element;
-}
-export default Step;
+declare const _default: React.ComponentType<StepProps>;
+export default _default;

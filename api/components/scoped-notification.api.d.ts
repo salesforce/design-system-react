@@ -6,6 +6,7 @@ export default checkProps;
 
 // ── @salesforce/design-system-react/components/scoped-notification ──
 import React, { type ReactNode, type ReactElement } from "react";
+import { type IconProps } from "../icon";
 import { SCOPED_NOTIFICATION } from "../../utilities/constants";
 export type ScopedNotificationTheme = "dark" | "light";
 export interface ScopedNotificationAssistiveText {
@@ -15,11 +16,12 @@ export interface ScopedNotificationProps {
     assistiveText?: ScopedNotificationAssistiveText;
     className?: string | string[] | Record<string, boolean>;
     children?: ReactNode;
-    icon?: ReactElement;
-    iconName?: string;
+    icon?: ReactElement<IconProps>;
     theme?: ScopedNotificationTheme;
 }
-declare function ScopedNotification({ assistiveText, className, children, icon: propIcon, iconName, theme, }: ScopedNotificationProps): React.ReactElement;
+declare function ScopedNotification({ assistiveText, className, children, icon: propIcon, iconName, theme, }: ScopedNotificationProps & {
+    iconName?: unknown;
+}): React.ReactElement;
 declare namespace ScopedNotification {
     export { SCOPED_NOTIFICATION as displayName };
 }

@@ -26,9 +26,9 @@ declare let checkProps: () => void;
 export default checkProps;
 
 // ── @salesforce/design-system-react/components/simple-data-table/column ──
-import React, { ReactNode } from "react";
+import React, { ReactElement, ReactNode } from "react";
 export interface SimpleDataTableColumnProps {
-    children?: ReactNode;
+    children?: ReactElement;
     isDefaultSortDescending?: boolean;
     isSorted?: boolean;
     label?: string | ReactNode;
@@ -91,6 +91,7 @@ declare class SimpleDataTable extends React.Component<SimpleDataTableProps, Simp
         select: (HTMLElement | null)[];
     };
     scrollerRef: HTMLElement | null;
+    resizeObserver?: ResizeObserver;
     interactiveElements: Record<number, Record<number, string[]>>;
     tableRef?: HTMLTableElement | null;
     constructor(props: SimpleDataTableProps);
@@ -99,7 +100,8 @@ declare class SimpleDataTable extends React.Component<SimpleDataTableProps, Simp
     componentWillUnmount(): void;
     getId(): string;
     getFirstInteractiveElement(rowIndex: number, columnIndex: number): string | null;
-    getTableContext: import("memoize-one").MemoizedFn<(state: SimpleDataTableState, isKeyboardNavigation: boolean | undefined) => {
+    getTableContext: import("memoize-one").MemoizedFn<(state: SimpleDataTableState, isKeyboardNavigation: boolean | undefined, isGrid: boolean) => {
+        isGrid: boolean;
         activeCell: {
             rowIndex: number;
             columnIndex: number;
@@ -131,6 +133,7 @@ declare class SimpleDataTable extends React.Component<SimpleDataTableProps, Simp
     handleKeyDownUp(): void;
     handleKeyDownDown(): void;
     handleKeyDownLeft(): void;
+    getCellCount(): number;
     handleKeyDownRight(): void;
     handleKeyDownEnter(): void;
     handleKeyDownEscape(): void;
@@ -159,22 +162,11 @@ export type ModeType = (typeof Mode)[keyof typeof Mode];
 export default Mode;
 
 // ── @salesforce/design-system-react/components/simple-data-table/row-actions ──
-import React, { ReactNode } from "react";
-export interface SimpleDataTableRowActionsProps {
-    assistiveText?: {
-        icon?: string;
-    };
-    className?: string;
-    id?: string;
-    item?: Record<string, unknown>;
-    noHint?: boolean;
-    onAction?: (item: Record<string, unknown>, selection: unknown) => void;
-    options?: unknown[];
-    dropdown?: ReactNode;
-    fixedLayout?: boolean;
-}
-declare const SimpleDataTableRowActions: React.FC<SimpleDataTableRowActionsProps>;
-export default SimpleDataTableRowActions;
+import React from "react";
+import type { SimpleDataTableRowActionsProps } from "./types";
+export type { SimpleDataTableRowActionsProps };
+declare const _default: React.FC<SimpleDataTableRowActionsProps>;
+export default _default;
 
 // ── @salesforce/design-system-react/components/simple-data-table/simple-data-table ──
 export { default } from "./index";
@@ -187,7 +179,9 @@ export { default as SimpleDataTableInteractiveLink } from "./interactive-link";
 export * from "./types";
 
 // ── @salesforce/design-system-react/components/simple-data-table/types ──
-import { ReactNode, CSSProperties, SyntheticEvent } from "react";
+import { ReactElement, ReactNode, CSSProperties, SyntheticEvent } from "react";
+import type { MenuDropdownProps } from "../menu-dropdown";
+import type { ChildrenOf } from "../../types/common";
 export interface SimpleDataTableItem {
     id: string;
     classNameRow?: string;
@@ -243,7 +237,7 @@ export interface SimpleDataTableNonSelectableProps {
 }
 export interface SimpleDataTableBaseProps {
     assistiveText?: SimpleDataTableAssistiveText;
-    children?: ReactNode;
+    children?: ChildrenOf<SimpleDataTableColumnProps | SimpleDataTableRowActionsProps>;
     className?: string | string[] | Record<string, boolean>;
     columnBordered?: boolean;
     fixedHeader?: boolean;
@@ -265,7 +259,6 @@ export interface SimpleDataTableBaseProps {
         scrollerRef: HTMLElement | null;
     }) => void;
     onLoadMore?: () => void;
-    onChange?: (selection: SimpleDataTableItem[], event: SyntheticEvent) => void;
     onSort?: (data: SimpleDataTableSortData, event: SyntheticEvent) => void;
     onToggleFixedHeaderListeners?: (event: Record<string, unknown>, data: {
         attach: boolean;
@@ -280,16 +273,10 @@ export interface SimpleDataTableBaseProps {
     unborderedRow?: boolean;
     unbufferedCell?: boolean;
     search?: string;
-    assistiveTextForActionsHeader?: string;
-    assistiveTextForSelectAllRows?: string;
-    assistiveTextForColumnSortedAscending?: string;
-    assistiveTextForColumnSortedDescending?: string;
-    assistiveTextForColumnSort?: string;
-    assistiveTextForSelectRow?: string;
 }
 export type SimpleDataTableProps = SimpleDataTableBaseProps & (SimpleDataTableSelectableProps | SimpleDataTableNonSelectableProps);
 export interface SimpleDataTableColumnProps {
-    children?: ReactNode;
+    children?: ReactElement;
     isDefaultSortDescending?: boolean;
     isSorted?: boolean;
     label?: string | ReactNode;
@@ -326,13 +313,10 @@ export interface SimpleDataTableRowActionsProps {
         icon?: string;
     };
     className?: string;
-    id?: string;
-    item?: SimpleDataTableItem;
     noHint?: boolean;
     onAction?: (item: SimpleDataTableItem, selection: unknown) => void;
     options?: unknown[];
-    dropdown?: ReactNode;
-    fixedLayout?: boolean;
+    dropdown?: ReactElement<Partial<MenuDropdownProps>>;
 }
 export interface SimpleDataTableHeadProps {
     assistiveText?: SimpleDataTableAssistiveText;
@@ -380,9 +364,6 @@ export interface SimpleDataTableHeaderCellProps {
     sortable?: boolean;
     sortDirection?: "desc" | "asc";
     width?: string;
-    assistiveTextForColumnSort?: string;
-    assistiveTextForColumnSortedAscending?: string;
-    assistiveTextForColumnSortedDescending?: string;
 }
 export type SimpleDataTableMode = "NAVIGATION" | "ACTIONABLE";
 export interface SimpleDataTableActiveCell {

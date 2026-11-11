@@ -17,7 +17,8 @@ declare class ToastContainer extends React.Component<ToastContainerProps> {
 export default ToastContainer;
 
 // ── @salesforce/design-system-react/components/toast ──
-import React, { type ReactNode, type CSSProperties } from "react";
+import React, { type ReactElement, type ReactNode, type CSSProperties } from "react";
+import { type IconProps } from "../icon";
 import { TOAST } from "../../utilities/constants";
 export type ToastVariant = "error" | "info" | "success" | "warning";
 export interface ToastAssistiveText {
@@ -40,7 +41,7 @@ export interface ToastProps {
     assistiveText?: ToastAssistiveText;
     className?: string | string[] | Record<string, boolean>;
     duration?: number;
-    icon?: ReactNode;
+    icon?: ReactElement<IconProps>;
     labels?: ToastLabels;
     onClickHeadingLink?: (event: React.MouseEvent) => void;
     onRequestClose?: (event: React.MouseEvent<HTMLButtonElement> | undefined, data: ToastRequestCloseData) => void;

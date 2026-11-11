@@ -17,7 +17,8 @@ declare class AlertContainer extends React.Component<AlertContainerProps> {
 export default AlertContainer;
 
 // ── @salesforce/design-system-react/components/alert ──
-import React, { type ReactNode, type CSSProperties } from "react";
+import React, { type ReactElement, type ReactNode, type CSSProperties } from "react";
+import { type IconProps } from "../icon";
 import { ALERT } from "../../utilities/constants";
 export type AlertVariant = "error" | "info" | "offline" | "warning";
 export interface AlertAssistiveText {
@@ -31,7 +32,7 @@ export interface AlertProps {
     assistiveText?: AlertAssistiveText;
     className?: string | string[] | Record<string, boolean>;
     dismissible?: boolean;
-    icon?: ReactNode;
+    icon?: ReactElement<IconProps>;
     labels?: AlertLabels;
     onClickHeadingLink?: (event: React.MouseEvent) => void;
     onRequestClose?: (event: React.MouseEvent) => void;

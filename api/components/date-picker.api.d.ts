@@ -47,7 +47,6 @@ interface DatePickerBaseProps {
     assistiveText?: DatePickerAssistiveText;
     align?: "left" | "right";
     className?: string | string[] | Record<string, boolean>;
-    children?: ReactElement;
     disabled?: boolean;
     dateDisabled?: (data: {
         date: Date;
@@ -79,9 +78,6 @@ interface DatePickerBaseProps {
     relativeYearTo?: number;
     triggerClassName?: string | string[] | Record<string, boolean>;
     value: Date | null;
-    label?: string;
-    placeholder?: string;
-    assistiveTextOpenCalendar?: string;
     required?: boolean;
     onBlur?: (event: React.FocusEvent) => void;
     onFocus?: (event: React.FocusEvent) => void;

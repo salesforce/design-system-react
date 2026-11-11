@@ -14,6 +14,9 @@ export default checkProps;
 // ── @salesforce/design-system-react/components/combobox/combobox ──
 import React, { type ReactNode, type ReactElement } from "react";
 import { type ComboboxOption, type ComboboxItemOption, type ComboboxDeselectOption, type MenuRenderMenuItemData } from "./private/menu";
+import { type PopoverProps } from "../popover";
+import type { InputProps } from "../input";
+import type { TooltipProps } from "../tooltip";
 export interface ComboboxAssistiveText {
     label?: string;
     loadingMenuItems?: string;
@@ -95,7 +98,7 @@ interface ComboboxBaseProps {
     hasStaticAlignment?: boolean;
     id?: string;
     inheritWidthOf?: "target" | "menu" | "none";
-    input?: ReactElement;
+    input?: ReactElement<Partial<InputProps>>;
     inputRef?: (ref: HTMLInputElement | null) => void;
     isOpen?: boolean;
     labels?: ComboboxLabels;
@@ -111,7 +114,7 @@ interface ComboboxBaseProps {
     selection: ComboboxOption[];
     selectedListboxRef?: (ref: HTMLUListElement | null) => void;
     singleInputDisabled?: boolean;
-    tooltipMenuItemDisabled?: ReactElement;
+    tooltipMenuItemDisabled?: ReactElement<Partial<TooltipProps>>;
     value?: string;
     renderMenuItem?: (data: ComboboxRenderMenuItemData) => ReactNode;
     menuItem?: ComboboxLegacyMenuItem;
@@ -127,7 +130,7 @@ export type ComboboxVariantProps = {
         popoverLabel: string;
     };
     options?: never;
-    popover: ReactElement;
+    popover: ReactElement<Partial<PopoverProps>>;
 };
 export type ComboboxProps = ComboboxBaseProps & ComboboxVariantProps;
 declare const Combobox: React.FC<ComboboxProps>;
@@ -152,6 +155,7 @@ export default _default;
 
 // ── components/combobox/private/menu (internal; referenced by public types) ──
 import React, { type ReactNode, type ReactElement } from "react";
+import type { TooltipProps } from "../../tooltip";
 type ComboboxOptionLabelRenderer = (searchTerm: string) => ReactNode;
 export interface ComboboxItemOption {
     type?: undefined;
@@ -247,7 +251,7 @@ export interface MenuProps {
     }) => void;
     options: ComboboxOption[];
     selection: ComboboxOption[];
-    tooltipMenuItemDisabled?: ReactElement;
+    tooltipMenuItemDisabled?: ReactElement<Partial<TooltipProps>>;
     variant?: "icon-title-subtitle" | "checkbox";
 }
 declare const Menu: React.FC<MenuProps>;

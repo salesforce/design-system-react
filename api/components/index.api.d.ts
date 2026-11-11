@@ -83,8 +83,6 @@ export { default as Icon } from "./icon";
 export { default as SLDSIcon } from "./icon";
 export { default as IconSettings } from "./icon-settings";
 export { default as SLDSIconSettings } from "./icon-settings";
-export { default as Illustration } from "./illustration";
-export { default as SLDSIllustration } from "./illustration";
 export { default as Input } from "./input";
 export { default as SLDSInput } from "./input";
 export { default as InputIcon } from "./icon/input-icon";

@@ -2,6 +2,7 @@
 
 // ── @salesforce/design-system-react/components/button/check-props ──
 declare let checkProps: () => void;
+export declare let checkRemovedProps: () => void;
 export default checkProps;
 
 // ── @salesforce/design-system-react/components/button ──
@@ -50,7 +51,6 @@ export interface ButtonProps {
     style?: CSSProperties;
     tabIndex?: number | string;
     title?: string;
-    tooltip?: ReactNode;
     type?: ButtonType;
     variant?: ButtonVariant;
     [key: `aria-${string}`]: string | boolean | undefined;

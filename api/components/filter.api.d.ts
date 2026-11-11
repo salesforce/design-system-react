@@ -8,6 +8,7 @@ export interface FilterProps {
     assistiveText?: FilterAssistiveText;
     children?: React.ReactNode;
     className?: string | string[] | Record<string, boolean>;
+    errorLabel?: string;
     isError?: boolean;
     id?: string;
     isLocked?: boolean;

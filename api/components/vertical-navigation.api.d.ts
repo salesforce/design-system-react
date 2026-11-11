@@ -12,7 +12,7 @@ import type { IconProps } from "../icon";
 export interface NavigationItem {
     id: string;
     label: string;
-    url: string;
+    url?: string;
     icon?: ReactElement<IconProps>;
     notificationBadge?: ReactElement<BadgeProps>;
 }
@@ -28,7 +28,7 @@ export interface VerticalNavigationProps {
     categories: NavigationCategory[];
     className?: string | string[] | Record<string, boolean>;
     id?: string;
-    onSelect: (event: MouseEvent<HTMLAnchorElement>, data: NavigationSelectData) => void;
+    onSelect: (event: MouseEvent<HTMLAnchorElement | HTMLButtonElement>, data: NavigationSelectData) => void;
     selectedId: string | null;
 }
 declare const VerticalNavigation: import("react").ForwardRefExoticComponent<VerticalNavigationProps & import("react").RefAttributes<HTMLElement>>;

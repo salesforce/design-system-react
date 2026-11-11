@@ -6,6 +6,7 @@ export default checkProps;
 
 // ── @salesforce/design-system-react/components/popover/edit-dialog ──
 import React, { type ReactNode } from "react";
+import { type PopoverProps } from "./index";
 export interface EditDialogLabels {
     cancel?: ReactNode;
     save?: ReactNode;
@@ -29,8 +30,9 @@ declare class EditDialog extends React.Component<EditDialogProps, EditDialogStat
     static displayName: string;
     static defaultProps: Partial<EditDialogProps>;
     state: EditDialogState;
-    handleOpen: () => void;
-    handleClose: () => void;
+    handleOpen: (...args: Parameters<NonNullable<PopoverProps["onOpen"]>>) => void;
+    handleClose: (...args: Parameters<NonNullable<PopoverProps["onClose"]>>) => void;
+    handleRequestClose: (...args: Parameters<NonNullable<PopoverProps["onRequestClose"]>>) => void;
     render(): React.JSX.Element;
 }
 export default EditDialog;
@@ -89,7 +91,6 @@ export interface PopoverProps {
     id?: string;
     isOpen?: boolean;
     defaultIsOpen?: boolean;
-    offset?: string;
     onClick?: (event: MouseEvent) => void;
     onClose?: (event: undefined, data: PopoverCloseData) => void;
     onFocus?: (event: FocusEvent) => void;
@@ -101,7 +102,7 @@ export interface PopoverProps {
     onRequestOpen?: (event: MouseEvent | FocusEvent, data: PopoverRequestOpenData) => void;
     onRequestClose?: (event: MouseEvent | KeyboardEvent | undefined, data: PopoverRequestCloseData) => void;
     onRequestTargetElement?: () => HTMLElement | null;
-    openOn?: "click" | "hover" | "hybrid";
+    openOn?: "click" | "hover" | "hybrid" | "none";
     overlay?: boolean | ((isOpen: boolean, overlayElement: HTMLElement) => void);
     position?: PopoverPosition;
     stepText?: string;
@@ -111,7 +112,6 @@ export interface PopoverProps {
     triggerClassName?: string | string[] | Record<string, boolean>;
     variant?: PopoverVariant;
     hoverCloseDelay?: number;
-    closeButtonAssistiveText?: string;
 }
 export declare const PopoverNubbinPositions: string[];
 declare const Popover: React.ForwardRefExoticComponent<PopoverProps & React.RefAttributes<HTMLDivElement>>;

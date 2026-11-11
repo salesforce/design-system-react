@@ -89,7 +89,6 @@ export declare const HIGHLIGHTER = "SLDSHighlighter";
 export declare const ICON = "SLDSIcon";
 export declare const ICON_SETTINGS = "SLDSIconSettings";
 export declare const ICON_INPUT = "SLDSIconInput";
-export declare const ILLUSTRATION = "SLDSIllustration";
 export declare const LIST = "SLDSList";
 export declare const LIST_ITEM = "SLDSListItem";
 export declare const LIST_ITEM_LABEL = "SLDSListItemLabel";

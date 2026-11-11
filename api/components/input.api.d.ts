@@ -7,6 +7,7 @@ export default checkProps;
 // ── @salesforce/design-system-react/components/input ──
 import React, { type ReactNode, type ReactElement, type ChangeEvent, type FocusEvent, type KeyboardEvent, type MouseEvent, type FormEvent, type CSSProperties, type AriaAttributes } from "react";
 import type { TooltipProps } from "../tooltip/index";
+import type { InputIconProps } from "../icon/input-icon";
 export type InputType = "text" | "password" | "datetime" | "datetime-local" | "date" | "month" | "time" | "week" | "number" | "email" | "url" | "search" | "tel" | "color";
 export type InputVariant = "base" | "counter";
 export interface InputAssistiveText {
@@ -14,7 +15,6 @@ export interface InputAssistiveText {
     spinner?: string;
     decrement?: string;
     increment?: string;
-    fieldLevelHelpButton?: string;
 }
 export interface InputChangeData {
     value: string;
@@ -40,8 +40,8 @@ export interface InputProps {
     fixedTextLeft?: ReactNode;
     fixedTextRight?: ReactNode;
     hasSpinner?: boolean;
-    iconLeft?: ReactNode;
-    iconRight?: ReactNode;
+    iconLeft?: ReactElement<InputIconProps> | null;
+    iconRight?: ReactElement<InputIconProps> | null;
     id?: string;
     inlineHelpText?: ReactNode;
     inlineEditTrigger?: ReactNode;

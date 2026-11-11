@@ -6,7 +6,7 @@ export default checkProps;
 
 // ── @salesforce/design-system-react/components/tooltip ──
 import React, { type ReactNode, type CSSProperties, type KeyboardEvent, type FocusEvent, type MouseEvent } from "react";
-import { POPOVER_TOOLTIP } from "../../utilities/constants";
+import { type TriggerRender } from "../../utilities/merge-props";
 export type TooltipAlign = "top" | "top left" | "top right" | "right" | "right top" | "right bottom" | "bottom" | "bottom left" | "bottom right" | "left" | "left top" | "left bottom";
 export type TooltipPosition = "absolute" | "overflowBoundaryElement" | "relative";
 export type TooltipTheme = "info" | "error";
@@ -27,6 +27,14 @@ export interface TooltipRequestOpenData {
 export type TooltipRequestCloseTrigger = "blur" | "cancel" | "clickOutside" | "mouseLeave";
 export interface TooltipRequestCloseData {
     trigger: TooltipRequestCloseTrigger;
+}
+export interface TooltipTriggerProps {
+    "aria-describedby"?: string;
+    onBlur: (event: FocusEvent<HTMLElement>) => void;
+    onFocus: (event: FocusEvent<HTMLElement>) => void;
+    onKeyDown: (event: KeyboardEvent<HTMLElement>) => void;
+    onMouseEnter: (event: MouseEvent<HTMLElement>) => void;
+    onMouseLeave: (event: MouseEvent<HTMLElement>) => void;
 }
 export interface TooltipProps {
     align?: TooltipAlign;
@@ -51,10 +59,11 @@ export interface TooltipProps {
     position?: TooltipPosition;
     triggerStyle?: CSSProperties;
     theme?: TooltipTheme;
+    trigger?: TriggerRender<TooltipTriggerProps>;
     variant?: TooltipVariant;
 }
-declare function Tooltip({ align, assistiveText: assistiveTextProp, children, content, dialogClassName, hasAnchoredNubbin, hasStaticAlignment, hoverCloseDelay, hoverOpenDelay, iconVariant, id: idProp, labels: labelsProp, isOpen: isOpenProp, defaultIsOpen, onRequestOpen, onRequestClose, onRequestTargetElement, onClickTrigger, triggerClassName, position, triggerStyle, theme, variant, }: TooltipProps): React.ReactElement;
-declare namespace Tooltip {
-    export { POPOVER_TOOLTIP as displayName };
+export interface TooltipInjectedProps {
+    silenceTriggerTabbableWarning?: boolean;
 }
-export default Tooltip;
+declare const _default: React.FC<TooltipProps>;
+export default _default;

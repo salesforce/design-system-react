@@ -2,6 +2,8 @@
 
 // ── @salesforce/design-system-react/components/files/file ──
 import React, { type ReactElement, type ReactNode } from "react";
+import type { IconProps } from "../icon";
+import type { MenuDropdownProps } from "../menu-dropdown";
 export interface FileAssistiveText {
     download?: string;
     image?: string;
@@ -13,21 +15,17 @@ export interface FileProps {
     assistiveText?: FileAssistiveText;
     className?: unknown[] | Record<string, unknown> | string;
     crop?: "16-by-9" | "4-by-3" | "1-by-1";
-    externalIcon?: ReactElement<{
-        containerClassName?: string;
-    }>;
+    externalIcon?: ReactElement<IconProps>;
     hasNoVisibleTitle?: boolean;
     href?: string;
-    icon?: ReactElement<{
-        size?: string | null;
-    }>;
+    icon?: ReactElement<IconProps>;
     id?: string;
     image?: string;
     isLoading?: boolean;
     labels?: {
         title?: string;
     };
-    moreActionsDropdown?: ReactElement<Record<string, unknown>>;
+    moreActionsDropdown?: ReactElement<Partial<MenuDropdownProps>>;
     onClickDownload?: (event: React.MouseEvent) => void;
     onClickImage?: (event: React.MouseEvent) => void;
 }
@@ -44,14 +42,14 @@ declare class File extends React.Component<FileProps> {
 export default File;
 
 // ── @salesforce/design-system-react/components/files ──
-import React, { type ReactNode } from "react";
+import React from "react";
 import { FILES } from "../../utilities/constants";
+import type { FileProps } from "./file";
+import type { ChildrenOf } from "../../types/common";
 export type FilesCropRatio = "16-by-9" | "4-by-3" | "1-by-1";
-export interface FileChildProps {
-    crop?: FilesCropRatio;
-}
+export type FileChildProps = Pick<FileProps, "crop">;
 export interface FilesProps {
-    children?: ReactNode;
+    children?: ChildrenOf<FileProps>;
     className?: string | string[] | Record<string, boolean>;
     columnClassName?: string;
     crop?: FilesCropRatio;

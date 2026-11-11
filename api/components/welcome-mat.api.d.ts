@@ -5,8 +5,11 @@ declare let checkProps: () => void;
 export default checkProps;
 
 // ── @salesforce/design-system-react/components/welcome-mat ──
-import React, { type ReactNode } from "react";
+import React, { type ReactNode, type ReactElement } from "react";
 import { type ModalRequestCloseData, type ModalRequestCloseEvent, type ModalRequestCloseTrigger } from "../modal";
+import type { WelcomeMatTileProps } from "./tile";
+import type { WelcomeMatInfoBadgeProps } from "./info-badge";
+import type { ChildrenOf } from "../../types/common";
 export type WelcomeMatVariant = "steps" | "info-only" | "splash" | "trailhead-connected";
 export interface WelcomeMatLabels {
     title?: string;
@@ -25,21 +28,21 @@ interface WelcomeMatBaseProps {
 }
 export type WelcomeMatVariantProps = {
     variant?: "steps";
-    children: ReactNode;
+    children: ChildrenOf<WelcomeMatTileProps>;
     doNotShowAgainCheckbox?: never;
     infoBadge?: never;
     infoActions?: never;
     onRenderInfoActions?: never;
 } | {
     variant: "trailhead-connected";
-    children: ReactNode;
+    children: ChildrenOf<WelcomeMatTileProps>;
     doNotShowAgainCheckbox?: never;
-    infoBadge?: ReactNode;
+    infoBadge?: ReactElement<WelcomeMatInfoBadgeProps>;
     infoActions?: never;
     onRenderInfoActions?: never;
 } | {
     variant: "info-only";
-    children: ReactNode;
+    children: ChildrenOf<WelcomeMatTileProps>;
     doNotShowAgainCheckbox?: ReactNode;
     infoBadge?: never;
     infoActions?: ReactNode;
@@ -61,6 +64,7 @@ import React, { type ReactNode } from "react";
 export interface WelcomeMatInfoBadgeProps {
     assistiveText?: {
         completed?: string;
+        image?: string;
     };
     children?: ReactNode;
     completeActions?: ReactNode;
@@ -97,14 +101,9 @@ export interface WelcomeMatTileProps {
     id?: string;
     isComplete?: boolean;
     title?: string;
+}
+export interface WelcomeMatTileInjectedProps {
     variant?: WelcomeMatTileVariant;
 }
-declare class Tile extends React.Component<WelcomeMatTileProps> {
-    static displayName: string;
-    static defaultProps: Partial<WelcomeMatTileProps>;
-    generatedId: string;
-    constructor(props: WelcomeMatTileProps);
-    getId(): string;
-    render(): React.JSX.Element;
-}
-export default Tile;
+declare const _default: React.ComponentType<WelcomeMatTileProps>;
+export default _default;

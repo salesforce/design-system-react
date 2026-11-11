@@ -2,12 +2,24 @@
 
 // ── @salesforce/design-system-react/components/menu-dropdown/button-trigger ──
 import React, { type ReactElement, type ReactNode } from "react";
+import { type ButtonProps } from "../button";
+import { type TriggerRender } from "../../utilities/merge-props";
+export interface MenuDropdownTriggerProps {
+    "aria-expanded"?: boolean;
+    "aria-haspopup": true;
+    className?: string;
+    disabled?: boolean;
+    ref: (element: HTMLElement | null) => void;
+    tabIndex?: number;
+}
+export interface ButtonTriggerInjectedProps {
+    trigger?: TriggerRender<MenuDropdownTriggerProps>;
+}
 export interface ButtonTriggerProps {
     assistiveText?: Record<string, unknown>;
-    children?: ReactElement;
+    children?: ReactElement<ButtonProps>;
     className?: string | string[] | Record<string, boolean>;
     id?: string;
-    isInline?: boolean;
     isOpen?: boolean;
     menu?: ReactNode;
     onBlur?: React.FocusEventHandler<HTMLDivElement>;
@@ -30,12 +42,11 @@ export interface ButtonTriggerProps {
     inverse?: boolean;
     label?: string | ReactNode;
     disabled?: boolean;
-    tooltip?: ReactNode;
     tabIndex?: string;
     style?: React.CSSProperties;
 }
-declare const ButtonTrigger: React.ForwardRefExoticComponent<ButtonTriggerProps & React.RefAttributes<HTMLDivElement>>;
-export default ButtonTrigger;
+declare const _default: React.ForwardRefExoticComponent<ButtonTriggerProps & React.RefAttributes<HTMLDivElement>>;
+export default _default;
 
 // ── @salesforce/design-system-react/components/menu-dropdown/check-props ──
 declare let checkProps: () => void;
@@ -44,7 +55,7 @@ export default checkProps;
 // ── @salesforce/design-system-react/components/menu-dropdown ──
 import MenuDropdown from "./menu-dropdown";
 export default MenuDropdown;
-export type { MenuDropdownProps, MenuDropdownOption, MenuDropdownItemOption, MenuDropdownHeaderOption, MenuDropdownDividerOption, MenuDropdownOptionIcon, DropdownNubbinPosition, MenuDropdownRenderMenuItemData, MenuDropdownSelectData, MenuDropdownOpenData, MenuDropdownOpenEvent, MenuDropdownCloseData, MenuDropdownCloseEvent, MenuDropdownRequestOpenData, MenuDropdownRequestCloseData, MenuDropdownValue, } from "./menu-dropdown";
+export type { MenuDropdownProps, MenuDropdownOption, MenuDropdownItemOption, MenuDropdownHeaderOption, MenuDropdownDividerOption, MenuDropdownOptionIcon, DropdownNubbinPosition, MenuDropdownRenderMenuItemData, MenuDropdownSelectData, MenuDropdownOpenData, MenuDropdownOpenEvent, MenuDropdownCloseData, MenuDropdownCloseEvent, MenuDropdownRequestOpenData, MenuDropdownRequestCloseData, MenuDropdownValue, MenuDropdownTriggerProps, } from "./menu-dropdown";
 export { DropdownNubbinPositions, ListItem, ListItemLabel, } from "./menu-dropdown";
 
 // ── @salesforce/design-system-react/components/menu-dropdown/menu-dropdown ──
@@ -52,6 +63,9 @@ import React, { type ReactNode, type MouseEvent, type KeyboardEvent, type FocusE
 import ListItem from "../utilities/menu-list/item";
 import ListItemLabel from "../utilities/menu-list/item-label";
 import type { IconCategory } from "../../types/common";
+import type { TriggerRender } from "../../utilities/merge-props";
+import type { MenuDropdownTriggerProps } from "./button-trigger";
+export type { MenuDropdownTriggerProps };
 declare const DropdownNubbinPositionsArray: readonly [
     "top left",
     "top",
@@ -147,7 +161,6 @@ export interface MenuDropdownProps {
     id?: string;
     inheritTargetWidth?: boolean;
     inverse?: boolean;
-    isInline?: boolean;
     isOpen?: boolean;
     label?: string | ReactNode;
     listItemRenderer?: (props: Record<string, unknown>) => ReactNode;
@@ -156,7 +169,6 @@ export interface MenuDropdownProps {
     menuStyle?: React.CSSProperties;
     multiple?: boolean;
     nubbinPosition?: DropdownNubbinPosition;
-    offset?: string;
     onBlur?: (event: FocusEvent) => void;
     onClick?: (event: MouseEvent) => void;
     onClose?: (event: MenuDropdownCloseEvent, data: MenuDropdownCloseData) => void;
@@ -175,7 +187,7 @@ export interface MenuDropdownProps {
     renderMenuItem?: (data: MenuDropdownRenderMenuItemData) => ReactNode;
     style?: React.CSSProperties;
     tabIndex?: string;
-    tooltip?: ReactNode;
+    trigger?: TriggerRender<MenuDropdownTriggerProps>;
     tooltipMenuItem?: ReactNode;
     triggerClassName?: string | string[] | Record<string, boolean>;
     value?: MenuDropdownValue;

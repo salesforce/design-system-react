@@ -5,8 +5,10 @@ declare let checkProps: () => void;
 export default checkProps;
 
 // ── @salesforce/design-system-react/components/radio-group ──
-import React, { type ReactNode, type CSSProperties, type ChangeEvent } from "react";
+import React, { type CSSProperties, type ChangeEvent } from "react";
 import { RADIO_GROUP } from "../../utilities/constants";
+import type { RadioGroupItemProps } from "../radio/index";
+import type { ChildrenOf } from "../../types/common";
 export type RadioGroupVariant = "base" | "button-group";
 export interface RadioGroupAssistiveText {
     label?: string;
@@ -29,7 +31,7 @@ export type RadioGroupChangeProps = {
 };
 interface RadioGroupBaseProps {
     assistiveText?: RadioGroupAssistiveText;
-    children: ReactNode;
+    children: ChildrenOf<RadioGroupItemProps>;
     className?: string | string[] | Record<string, boolean>;
     disabled?: boolean;
     errorId?: string;

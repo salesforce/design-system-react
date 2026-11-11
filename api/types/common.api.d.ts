@@ -58,6 +58,7 @@ export interface SelectOption<T = string> {
 export type RequireAtLeastOne<T, Keys extends keyof T = keyof T> = Pick<T, Exclude<keyof T, Keys>> & {
     [K in Keys]-?: Required<Pick<T, K>> & Partial<Pick<T, Exclude<Keys, K>>>;
 }[Keys];
+export type ChildrenOf<P> = React.ReactElement<P> | false | null | undefined | ChildrenOf<P>[];
 export type PolymorphicRef<C extends React.ElementType> = React.ComponentPropsWithRef<C>["ref"];
 export type PolymorphicComponentProps<C extends React.ElementType, Props = object> = Props & {
     as?: C;

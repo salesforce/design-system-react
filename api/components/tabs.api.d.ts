@@ -5,20 +5,12 @@ declare let checkProps: () => void;
 export default checkProps;
 
 // ── @salesforce/design-system-react/components/tabs ──
-import React, { type ReactNode, type MouseEvent, type KeyboardEvent } from "react";
+import React, { type MouseEvent, type KeyboardEvent } from "react";
+import type { TabsPanelProps } from "./panel";
+import type { ChildrenOf } from "../../types/common";
 import { TABS } from "../../utilities/constants";
 export type TabsVariant = "default" | "scoped" | "vertical";
-export interface TabChildProps {
-    label: ReactNode;
-    value?: string;
-    disabled?: boolean;
-    hasError?: boolean;
-    assistiveText?: {
-        withErrorIcon?: string;
-    };
-    children?: ReactNode;
-    key?: string | number;
-}
+export type TabChildProps = TabsPanelProps;
 export interface TabsSelectData {
     value: string;
     previousValue: string | undefined;
@@ -26,7 +18,7 @@ export interface TabsSelectData {
     previousIndex: number;
 }
 interface TabsBaseProps {
-    children: ReactNode;
+    children: ChildrenOf<TabsPanelProps>;
     className?: string | string[] | Record<string, boolean>;
     id?: string;
     onSelect: (event: MouseEvent<HTMLDivElement> | KeyboardEvent<HTMLDivElement>, data: TabsSelectData) => void;

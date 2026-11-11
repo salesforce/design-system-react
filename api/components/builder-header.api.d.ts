@@ -5,7 +5,12 @@ declare let checkProps: () => void;
 export default checkProps;
 
 // ── @salesforce/design-system-react/components/builder-header ──
-import React, { type ReactNode, type CSSProperties, type MouseEvent } from "react";
+import React, { type CSSProperties, type MouseEvent } from "react";
+import { type BuilderHeaderMiscProps } from "./misc";
+import { type BuilderHeaderNavProps } from "./nav";
+import { type BuilderHeaderToolbarProps } from "./toolbar";
+import { type BuilderHeaderUtilitiesProps } from "./utilities";
+import type { ChildrenOf } from "../../types/common";
 import { BUILDER_HEADER } from "../../utilities/constants";
 export interface BuilderHeaderAssistiveText {
     backIcon?: string;
@@ -24,7 +29,7 @@ export interface BuilderHeaderLabels {
 }
 export interface BuilderHeaderProps {
     assistiveText?: BuilderHeaderAssistiveText;
-    children?: ReactNode;
+    children?: ChildrenOf<BuilderHeaderNavProps | BuilderHeaderToolbarProps | BuilderHeaderMiscProps | BuilderHeaderUtilitiesProps>;
     className?: string | string[] | Record<string, boolean>;
     events?: BuilderHeaderEvents;
     iconCategory?: string;
@@ -97,10 +102,13 @@ declare namespace BuilderHeaderNavLink {
 export default BuilderHeaderNavLink;
 
 // ── @salesforce/design-system-react/components/builder-header/nav ──
-import React, { type ReactNode } from "react";
+import React from "react";
 import { BUILDER_HEADER_NAV } from "../../utilities/constants";
+import type { ChildrenOf } from "../../types/common";
+import { type BuilderHeaderNavDropdownProps } from "./nav-dropdown";
+import { type BuilderHeaderNavLinkProps } from "./nav-link";
 export interface BuilderHeaderNavProps {
-    children?: ReactNode;
+    children?: ChildrenOf<BuilderHeaderNavLinkProps | BuilderHeaderNavDropdownProps>;
 }
 declare function BuilderHeaderNav(props: BuilderHeaderNavProps): React.ReactElement;
 declare namespace BuilderHeaderNav {
@@ -111,13 +119,15 @@ export default BuilderHeaderNav;
 // ── @salesforce/design-system-react/components/builder-header/toolbar ──
 import React, { type ReactNode } from "react";
 import { BUILDER_HEADER_TOOLBAR } from "../../utilities/constants";
+import type { ChildrenOf } from "../../types/common";
+import { type ButtonGroupProps } from "../button-group";
 export interface BuilderHeaderToolbarAssistiveText {
     actions?: string;
 }
 export interface BuilderHeaderToolbarProps {
     actions?: ReactNode;
     assistiveText?: BuilderHeaderToolbarAssistiveText;
-    children?: ReactNode;
+    children?: ChildrenOf<ButtonGroupProps>;
     onRenderActions?: () => ReactNode;
 }
 declare function BuilderHeaderToolbar({ actions, assistiveText, children, onRenderActions, }: BuilderHeaderToolbarProps): React.ReactElement;
@@ -127,10 +137,13 @@ declare namespace BuilderHeaderToolbar {
 export default BuilderHeaderToolbar;
 
 // ── @salesforce/design-system-react/components/builder-header/utilities ──
-import React, { type ReactNode } from "react";
+import React from "react";
 import { BUILDER_HEADER_UTILITIES } from "../../utilities/constants";
+import type { ChildrenOf } from "../../types/common";
+import { type BuilderHeaderNavDropdownProps } from "./nav-dropdown";
+import { type BuilderHeaderNavLinkProps } from "./nav-link";
 export interface BuilderHeaderUtilitiesProps {
-    children?: ReactNode;
+    children?: ChildrenOf<BuilderHeaderNavLinkProps | BuilderHeaderNavDropdownProps>;
 }
 declare function BuilderHeaderUtilities(props: BuilderHeaderUtilitiesProps): React.ReactElement;
 declare namespace BuilderHeaderUtilities {

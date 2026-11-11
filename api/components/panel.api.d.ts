@@ -28,10 +28,12 @@ export interface PanelFilterGroupProps {
     removeAllLabel?: ReactNode;
     saveLabel?: string;
     variant?: "panel";
-    assistiveTextCloseFilterPanel?: string;
     [key: string]: unknown;
 }
-declare function PanelFilterGroup({ children, errorLabel, footer, header, variant, addFilterLabel, onClickAdd, onClickRemoveAll, removeAllLabel, cancelLabel, heading, modified, onRequestCancel, onRequestClose, onRequestSave, saveLabel, assistiveText, assistiveTextCloseFilterPanel, ...rest }: PanelFilterGroupProps): React.ReactElement;
+interface PanelFilterGroupRemovedProps {
+    assistiveTextCloseFilterPanel?: unknown;
+}
+declare function PanelFilterGroup({ children, errorLabel, footer, header, variant, addFilterLabel, onClickAdd, onClickRemoveAll, removeAllLabel, cancelLabel, heading, modified, onRequestCancel, onRequestClose, onRequestSave, saveLabel, assistiveText, assistiveTextCloseFilterPanel, ...rest }: PanelFilterGroupProps & PanelFilterGroupRemovedProps): React.ReactElement;
 declare namespace PanelFilterGroup {
     export { PANEL_FILTER_GROUP as displayName };
 }
@@ -52,9 +54,11 @@ declare namespace PanelFilterListHeading {
 export default PanelFilterListHeading;
 
 // ── @salesforce/design-system-react/components/panel/filtering/list ──
-import React, { Component, type ReactNode } from "react";
+import React, { Component } from "react";
+import type { FilterProps } from "../../filter";
+import type { ChildrenOf } from "../../../types/common";
 export interface PanelFilterListProps {
-    children?: ReactNode;
+    children?: ChildrenOf<FilterProps>;
 }
 declare class PanelFilterList extends Component<PanelFilterListProps> {
     static displayName: string;

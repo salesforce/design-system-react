@@ -35,7 +35,6 @@ export interface RadioProps {
     id?: string;
     labelId?: string;
     labels?: RadioLabels;
-    label?: string;
     name?: string;
     onChange: RadioChangeHandler;
     onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
@@ -61,8 +60,9 @@ export interface RadioGroupItemProps extends Omit<RadioProps, "checked" | "onCha
     checked?: boolean;
     onChange?: RadioChangeHandler;
 }
-declare function Radio({ assistiveText: propAssistiveText, "aria-describedby": ariaDescribedBy, "aria-labelledby": ariaLabelledBy, checked, className, defaultChecked, deselectable, disabled, id: propId, labelId, labels: propLabels, label: deprecatedLabel, name, onChange, onFocus, onRequestFocus, requestFocus, tabIndex, value, variant, coverable, vertical, visualPickerFigure, visualPickerFigureSelected, visualPickerFigureNotSelected, onRenderVisualPicker, onRenderVisualPickerSelected, onRenderVisualPickerNotSelected, size, refs, style, ...rest }: RadioProps & {
+declare function Radio({ assistiveText: propAssistiveText, "aria-describedby": ariaDescribedBy, "aria-labelledby": ariaLabelledBy, checked, className, defaultChecked, deselectable, disabled, id: propId, labelId, labels: propLabels, label, name, onChange, onFocus, onRequestFocus, requestFocus, tabIndex, value, variant, coverable, vertical, visualPickerFigure, visualPickerFigureSelected, visualPickerFigureNotSelected, onRenderVisualPicker, onRenderVisualPickerSelected, onRenderVisualPickerNotSelected, size, refs, style, ...rest }: RadioProps & {
     defaultChecked?: boolean;
+    label?: unknown;
 }): React.ReactElement;
 declare namespace Radio {
     export { RADIO as displayName };

@@ -41,7 +41,7 @@ export type ProductTheme = "global-setup" | "service-cloud" | "industry-cloud" |
 export interface IconProps {
     assistiveText?: {
         label?: string;
-    } | string;
+    };
     category?: IconCategory;
     className?: string | string[] | Record<string, boolean>;
     colorVariant?: IconColorVariant;
