@@ -1214,16 +1214,33 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 		]
 	);
 
-	// The listbox only renders while open and enabled (see `getDialog`), so
-	// `aria-controls` must not point at it otherwise.
+	// The listbox only renders while open and enabled (see `getDialog`), so the
+	// input must not report it as expanded or point `aria-controls` at it
+	// otherwise.
+	const getIsListboxRendered = useCallback(
+		() => !isInputDisabled && getIsOpen(),
+		[isInputDisabled, getIsOpen]
+	);
 	const getListboxControlsId = () =>
-		!disabled && getIsOpen() ? `${getId()}-listbox` : undefined;
+		getIsListboxRendered() ? `${getId()}-listbox` : undefined;
+
+	// ARIA 1.2 combobox role and state for the input. `popupId` is the id of the
+	// rendered popup, or `undefined` while it isn't rendered.
+	const getComboboxAriaProps = (
+		popup: 'listbox' | 'dialog',
+		popupId: string | undefined
+	) => ({
+		'aria-controls': popupId,
+		'aria-expanded': !!popupId,
+		'aria-haspopup': popup,
+		role: 'combobox',
+	});
 
 	const getDialog = useCallback(
 		({ menuRenderer }: { menuRenderer: ReactNode }) => {
 			const position = menuPosition;
 
-			if (!isInputDisabled && getIsOpen()) {
+			if (getIsListboxRendered()) {
 				const dialogProps = {
 					align: 'bottom left' as const,
 					context: iconSettingsContext,
@@ -1249,8 +1266,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 		},
 		[
 			menuPosition,
-			isInputDisabled,
-			getIsOpen,
+			getIsListboxRendered,
 			iconSettingsContext,
 			hasStaticAlignment,
 			inheritWidthOf,
@@ -1366,15 +1382,10 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 						},
 						className
 					)}
-					role="combobox"
-					aria-expanded={getIsOpen()}
-					aria-haspopup="listbox"
-					aria-controls={getListboxControlsId()}
-					aria-owns={getIsOpen() ? `${getId()}-listbox` : undefined}
 				>
 					<InnerInput
 						aria-autocomplete="list"
-						aria-controls={getListboxControlsId()}
+						{...getComboboxAriaProps('listbox', getListboxControlsId())}
 						aria-activedescendant={
 							activeOption
 								? `${getId()}-listbox-option-${activeOption.id}`
@@ -1406,7 +1417,6 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 						placeholder={labels.placeholder}
 						readOnly={!!(predefinedOptionsOnly && activeOption)}
 						required={required}
-						role="textbox"
 						value={
 							predefinedOptionsOnly
 								? (activeOption?.label as string) || value
@@ -1537,14 +1547,10 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 						},
 						className
 					)}
-					role="combobox"
-					aria-expanded={getIsOpen()}
-					aria-haspopup="listbox"
-					aria-controls={getListboxControlsId()}
 				>
 					<InnerInput
 						aria-autocomplete="list"
-						aria-controls={getListboxControlsId()}
+						{...getComboboxAriaProps('listbox', getListboxControlsId())}
 						aria-activedescendant={
 							activeOption
 								? `${getId()}-listbox-option-${activeOption.id}`
@@ -1576,7 +1582,6 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 						placeholder={labels.placeholder}
 						readOnly={!!(predefinedOptionsOnly && activeOption)}
 						required={required}
-						role="textbox"
 						value={
 							predefinedOptionsOnly
 								? (activeOption?.label as string) || value
@@ -1627,14 +1632,10 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 							},
 							className
 						)}
-						role="combobox"
-						aria-expanded={getIsOpen()}
-						aria-haspopup="listbox"
-						aria-controls={getListboxControlsId()}
 					>
 						<InnerInput
 							aria-autocomplete="list"
-							aria-controls={getListboxControlsId()}
+							{...getComboboxAriaProps('listbox', getListboxControlsId())}
 							aria-activedescendant={
 								activeOption
 									? `${getId()}-listbox-option-${activeOption.id}`
@@ -1688,7 +1689,6 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 								!!(predefinedOptionsOnly && activeOption) || !!selection.length
 							}
 							required={required}
-							role="textbox"
 							value={
 								predefinedOptionsOnly
 									? (activeOption?.label as string) || value
@@ -1735,16 +1735,11 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 							},
 							className
 						)}
-						role="combobox"
-						aria-expanded={getIsOpen()}
-						aria-haspopup="dialog"
-						aria-controls={popoverControlsId}
 					>
 						{/* @ts-expect-error - popoverProps contains body from getCustomPopoverProps */}
 						<Popover {...popoverProps}>
 							<InnerInput
-								aria-autocomplete="none"
-								aria-controls={popoverControlsId}
+								{...getComboboxAriaProps('dialog', popoverControlsId)}
 								aria-describedby={getErrorId()}
 								autoComplete="off"
 								className="slds-combobox__input"
@@ -1770,7 +1765,6 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 								placeholder={labels.placeholder}
 								readOnly
 								required={required}
-								role="textbox"
 								value={value}
 							/>
 						</Popover>
@@ -1812,14 +1806,9 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 							},
 							className
 						)}
-						role="combobox"
-						aria-expanded={getIsOpen()}
-						aria-haspopup="listbox"
-						aria-controls={getListboxControlsId()}
 					>
 						<InnerInput
-							aria-autocomplete="list"
-							aria-controls={getListboxControlsId()}
+							{...getComboboxAriaProps('listbox', getListboxControlsId())}
 							aria-activedescendant={
 								activeOption
 									? `${getId()}-listbox-option-${activeOption.id}`
@@ -1850,7 +1839,6 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 							placeholder={labels.placeholderReadOnly}
 							readOnly
 							required={required}
-							role="textbox"
 							value={displayValue}
 							{...userDefinedInputProps}
 						/>
@@ -1938,14 +1926,9 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 							},
 							className
 						)}
-						role="combobox"
-						aria-expanded={getIsOpen()}
-						aria-haspopup="listbox"
-						aria-controls={getListboxControlsId()}
 					>
 						<InnerInput
-							aria-autocomplete="list"
-							aria-controls={getListboxControlsId()}
+							{...getComboboxAriaProps('listbox', getListboxControlsId())}
 							aria-activedescendant={
 								activeOption
 									? `${getId()}-listbox-option-${activeOption.id}`
@@ -1976,7 +1959,6 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 							placeholder={labels.placeholderReadOnly}
 							readOnly
 							required={required}
-							role="textbox"
 							value={inputValue}
 							{...userDefinedInputProps}
 						/>
