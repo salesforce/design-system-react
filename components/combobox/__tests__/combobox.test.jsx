@@ -159,7 +159,9 @@ DemoComponent.displayName = 'ComboboxDemoComponent';
 DemoComponent.defaultProps = defaultProps;
 
 const getNodes = (container) => ({
-	combobox: container.querySelector('.slds-combobox'),
+	// ARIA 1.2: the input is the combobox, not the `.slds-combobox` wrapper
+	combobox: container.querySelector('[role="combobox"]'),
+	wrapper: container.querySelector('.slds-combobox'),
 	input: container.querySelector('.slds-combobox input'),
 	menuListbox: container.querySelector(
 		'.slds-combobox .slds-listbox.slds-dropdown'
@@ -671,6 +673,166 @@ describe('SLDSCombobox', () => {
 			fireEvent.click(nodes.input);
 			nodes = getNodes(container);
 			expect(nodes.popover).toBeInTheDocument();
+		});
+	});
+
+	// axe `aria-required-attr`: an expanded role="combobox" must have
+	// `aria-controls` pointing at the element it opens (W-24839159).
+	// ARIA 1.2 combobox pattern, as in the SLDS blueprint: the focusable input
+	// owns the combobox role and state, and the wrapper is presentational.
+	describe('ARIA 1.2 combobox ownership', () => {
+		const variants = [
+			['base', {}, 'listbox'],
+			['inline-listbox', { variant: 'inline-listbox' }, 'listbox'],
+			['readonly', { variant: 'readonly' }, 'listbox'],
+			[
+				'popover',
+				{
+					variant: 'popover',
+					popover: <Popover />,
+					assistiveText: { popoverLabel: 'Options' },
+				},
+				'dialog',
+			],
+		];
+
+		it.each(variants)(
+			'%s: the input is the combobox and the wrapper has no role',
+			(name, props, popup) => {
+				const { container } = render(<DemoComponent {...props} isOpen />);
+				const { combobox, input, wrapper } = getNodes(container);
+				expect(combobox).toBe(input);
+				expect(input).toHaveAttribute('aria-expanded', 'true');
+				expect(input).toHaveAttribute('aria-haspopup', popup);
+				expect(wrapper).not.toHaveAttribute('role');
+				expect(wrapper).not.toHaveAttribute('aria-expanded');
+				expect(wrapper).not.toHaveAttribute('aria-haspopup');
+				expect(wrapper).not.toHaveAttribute('aria-controls');
+				expect(wrapper).not.toHaveAttribute('aria-owns');
+			}
+		);
+
+		it('only autocomplete variants set aria-autocomplete', () => {
+			const { container, rerender } = render(<DemoComponent />);
+			expect(getNodes(container).input).toHaveAttribute(
+				'aria-autocomplete',
+				'list'
+			);
+			rerender(<DemoComponent variant="readonly" />);
+			expect(getNodes(container).input).not.toHaveAttribute(
+				'aria-autocomplete'
+			);
+		});
+
+		it('is not expanded while disabled', () => {
+			const { container } = render(<DemoComponent isOpen disabled />);
+			expect(getNodes(container).combobox).toHaveAttribute(
+				'aria-expanded',
+				'false'
+			);
+		});
+
+		it.each([
+			['base', {}],
+			['readonly', { variant: 'readonly' }],
+		])(
+			'%s: is not expanded and has no aria-controls with the deprecated singleInputDisabled',
+			(name, props) => {
+				const consoleError = vi
+					.spyOn(console, 'error')
+					.mockImplementation(() => {});
+				const { container } = render(
+					<DemoComponent {...props} isOpen singleInputDisabled />
+				);
+				consoleError.mockRestore();
+				const nodes = getNodes(container);
+				expect(nodes.menuListbox).not.toBeInTheDocument();
+				expect(nodes.combobox).toHaveAttribute('aria-expanded', 'false');
+				expect(nodes.combobox).not.toHaveAttribute('aria-controls');
+			}
+		);
+	});
+
+	describe('aria-controls on the combobox element', () => {
+		const listboxVariants = [
+			['base', {}],
+			['base multiple', { multiple: true }],
+			['inline-listbox', { variant: 'inline-listbox' }],
+			[
+				'inline-listbox multiple',
+				{ variant: 'inline-listbox', multiple: true },
+			],
+			['readonly', { variant: 'readonly' }],
+			['readonly multiple', { variant: 'readonly', multiple: true }],
+		];
+
+		it.each(listboxVariants)(
+			'%s: points at the rendered listbox while open',
+			(name, props) => {
+				const { container } = render(<DemoComponent {...props} isOpen />);
+				const { combobox } = getNodes(container);
+				const controlsId = combobox.getAttribute('aria-controls');
+				expect(controlsId).toBe(`${defaultProps.id}-listbox`);
+				expect(document.getElementById(controlsId)).toHaveAttribute(
+					'role',
+					'listbox'
+				);
+			}
+		);
+
+		it.each(listboxVariants)(
+			'%s: is absent while closed or disabled',
+			(name, props) => {
+				const { container, rerender } = render(<DemoComponent {...props} />);
+				expect(getNodes(container).combobox).not.toHaveAttribute(
+					'aria-controls'
+				);
+				rerender(<DemoComponent {...props} isOpen disabled />);
+				expect(getNodes(container).combobox).not.toHaveAttribute(
+					'aria-controls'
+				);
+			}
+		);
+
+		it('popover: points at the rendered dialog while open', () => {
+			const { container } = render(
+				<DemoComponent
+					variant="popover"
+					popover={<Popover />}
+					isOpen
+					assistiveText={{ popoverLabel: 'Options' }}
+				/>
+			);
+			const controlsId =
+				getNodes(container).combobox.getAttribute('aria-controls');
+			expect(controlsId).toBe(`${defaultProps.id}-popover`);
+			expect(document.getElementById(controlsId)).toBeInTheDocument();
+		});
+
+		it('popover: follows an id set through popover props', () => {
+			const { container } = render(
+				<DemoComponent
+					variant="popover"
+					popover={<Popover id="custom-popover-id" />}
+					isOpen
+					assistiveText={{ popoverLabel: 'Options' }}
+				/>
+			);
+			const controlsId =
+				getNodes(container).combobox.getAttribute('aria-controls');
+			expect(controlsId).toBe('custom-popover-id-popover');
+			expect(document.getElementById(controlsId)).toBeInTheDocument();
+		});
+
+		it('popover: is absent while closed', () => {
+			const { container } = render(
+				<DemoComponent
+					variant="popover"
+					popover={<Popover />}
+					assistiveText={{ popoverLabel: 'Options' }}
+				/>
+			);
+			expect(getNodes(container).combobox).not.toHaveAttribute('aria-controls');
 		});
 	});
 
