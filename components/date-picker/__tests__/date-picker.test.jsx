@@ -481,6 +481,7 @@ describe('SLDSDatepicker', () => {
 				await waitFor(() => {
 					expect(onCalendarFocus).toHaveBeenCalledTimes(1);
 					const callArgs = onCalendarFocus.mock.calls[0];
+					expect(callArgs[0].type).toBe('keydown');
 					expect(callArgs[1].date.getTime()).toBe(
 						new Date(2007, 0, 13).getTime()
 					);
@@ -590,6 +591,8 @@ describe('SLDSDatepicker', () => {
 				await waitFor(() => {
 					expect(onCalendarFocus).toHaveBeenCalledTimes(1);
 					const callArgs = onCalendarFocus.mock.calls[0];
+					// The previous month rendered, so there is no event
+					expect(callArgs[0]).toBeUndefined();
 					expect(callArgs[1].date.getTime()).toBe(
 						new Date(2006, 11, 30).getTime()
 					);

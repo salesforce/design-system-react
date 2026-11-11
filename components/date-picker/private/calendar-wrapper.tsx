@@ -40,7 +40,7 @@ export interface CalendarWrapperProps {
 	monthLabels: string[];
 	/** Called when keyboard moves focus on calendar */
 	onCalendarFocus?: (
-		event: SyntheticEvent | null,
+		event: SyntheticEvent | undefined,
 		data: { date?: Date; ref?: HTMLElement; direction?: string }
 	) => void;
 	/** Called when calendar should close */
@@ -156,7 +156,7 @@ class DatepickerCalendarWrapper extends React.Component<
 		if (this.props.onCalendarFocus && data.triggerCallback) {
 			// eslint-disable-next-line @typescript-eslint/no-unused-vars
 			const { triggerCallback, ref, ...rest } = data;
-			this.props.onCalendarFocus(event ?? null, {
+			this.props.onCalendarFocus(event, {
 				...rest,
 				ref: ref ?? undefined,
 			});

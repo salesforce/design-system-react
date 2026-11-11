@@ -161,9 +161,12 @@ interface DatePickerBaseProps {
 	labels?: DatePickerLabels;
 	/** Menu position strategy */
 	menuPosition?: 'absolute' | 'overflowBoundaryElement' | 'relative';
-	/** Called when calendar focus changes */
+	/**
+	 * Called when keyboard focus moves to another day. `event` is the keyboard event, or
+	 * `undefined` when focus moves because a new month rendered.
+	 */
 	onCalendarFocus?: (
-		event: React.SyntheticEvent | null,
+		event: React.SyntheticEvent | undefined,
 		data: { date?: Date; ref?: HTMLElement; direction?: string }
 	) => void;
 	/**
