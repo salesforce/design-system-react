@@ -417,7 +417,18 @@ export const InlineSingle: Story = {
 	},
 };
 
+const inlineMultipleDeprecation = {
+	docs: {
+		description: {
+			story:
+				'Deprecated: SLDS deprecated the inline listbox, and it puts the selections before the input for screen reader users. Use `variant="base"` with `multiple`, which lists them after the input.',
+		},
+	},
+};
+
 export const InlineMultiple: Story = {
+	name: 'Inline Multiple (deprecated)',
+	parameters: inlineMultipleDeprecation,
 	render: () => {
 		const [inputValue, setInputValue] = useState('');
 		const [selection, setSelection] = useState<ComboboxOption[]>([]);
@@ -581,6 +592,8 @@ export const ControlledOpenState: Story = {
 // Simulates async option loading: while `hasMenuSpinner` is active, a
 // smaller "loading" subset of options is shown.
 export const InlineMultipleLoading: Story = {
+	name: 'Inline Multiple Loading (deprecated)',
+	parameters: inlineMultipleDeprecation,
 	render: () => {
 		const [inputValue, setInputValue] = useState('');
 		const [selection, setSelection] = useState<ComboboxOption[]>([]);

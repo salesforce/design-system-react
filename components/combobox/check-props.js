@@ -3,6 +3,7 @@
 /* eslint-disable import/no-mutable-exports */
 
 import deprecatedProperty from '../../utilities/warning/deprecated-property';
+import deprecatedPropertyValue from '../../utilities/warning/deprecated-property-value';
 import oneOfRequiredProperty from '../../utilities/warning/one-of-required-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
 import sunsetProperty from '../../utilities/warning/sunset-property';
@@ -66,6 +67,19 @@ if (process.env.NODE_ENV !== 'production') {
 				`Until then, if both are set, both are called. ${createDocUrl('events')}`
 			);
 		});
+		// SLDS deprecated the inline listbox. It puts the selected pills before
+		// the input; `base` lists them after it.
+		deprecatedPropertyValue(
+			COMPONENT,
+			{
+				propAsString: 'variant',
+				propValue: props.multiple ? props.variant : undefined,
+				deprecatedPropValue: 'inline-listbox',
+				replacementPropAsString: 'variant',
+				replacementPropAsValue: 'base',
+			},
+			`This only applies with \`multiple\`: the inline listbox is deprecated in SLDS and screen readers reach the selections before the input. ${createDocUrl('variant')}`
+		);
 		/* eslint-enable max-len */
 
 		// `type` is reserved for structural rows. Item options used it to

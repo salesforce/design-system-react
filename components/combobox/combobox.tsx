@@ -313,7 +313,11 @@ interface ComboboxBaseProps {
  */
 export type ComboboxVariantProps =
 	| {
-			/** Listbox variants. Defaults to `base`. */
+			/**
+			 * Listbox variants. Defaults to `base`. `inline-listbox` with
+			 * `multiple` is deprecated (SLDS deprecated the inline listbox):
+			 * use `base` with `multiple`, which lists the selections after the input.
+			 */
 			variant?: 'base' | 'inline-listbox' | 'readonly';
 			/** Assistive text for accessibility */
 			assistiveText?: ComboboxAssistiveText;

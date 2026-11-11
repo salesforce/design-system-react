@@ -137,6 +137,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Passing a trigger as `children` to `Tooltip`, or a `DropdownTrigger` child to `MenuDropdown` (use `trigger`). Both keep working and log a one-time warning
 - `TabChildProps` (use `TabsPanelProps`) and `FileChildProps` (use `FileProps`)
 - `Combobox` `singleInputDisabled` (use `disabled`, which now disables the input in every variant)
+- `Combobox` `variant="inline-listbox"` with `multiple` (use `variant="base"` with `multiple`). SLDS deprecated the inline listbox, and it renders the selected pills before the input, so screen reader users hear the selections before reaching the field; its pill listbox also has no accessible name (axe `aria-input-field-name`). `base` lists the selections after the input in a labelled listbox. It keeps working and logs a one-time warning. `inline-listbox` without `multiple` is unaffected
 - `SimpleDataTable` `onFixedHeaderResize` and `onToggleFixedHeaderListeners`, which only existed to replace the `window` resize listener. They are still called and warn once
 
 ### Fixed

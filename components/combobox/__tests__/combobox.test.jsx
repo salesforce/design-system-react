@@ -642,6 +642,48 @@ describe('SLDSCombobox', () => {
 		});
 	});
 
+	describe('deprecated inline-listbox multiple', () => {
+		it('warns once for inline-listbox with multiple, recommending base', async () => {
+			vi.resetModules();
+			const { default: checkProps } = await import('../check-props');
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			try {
+				const props = { variant: 'inline-listbox', multiple: true };
+				checkProps('Combobox', props, {});
+				checkProps('Combobox', props, {});
+				const warnings = consoleError.mock.calls.filter(([message]) =>
+					String(message).includes('`inline-listbox`')
+				);
+				expect(warnings).toHaveLength(1);
+				expect(String(warnings[0][0])).toContain('`variant="base"`');
+			} finally {
+				consoleError.mockRestore();
+			}
+		});
+
+		it.each([
+			['inline-listbox single', { variant: 'inline-listbox' }],
+			['base multiple', { multiple: true }],
+		])('does not warn for %s', async (name, props) => {
+			vi.resetModules();
+			const { default: checkProps } = await import('../check-props');
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			try {
+				checkProps('Combobox', props, {});
+				const warnings = consoleError.mock.calls.filter(([message]) =>
+					String(message).includes('`inline-listbox`')
+				);
+				expect(warnings).toHaveLength(0);
+			} finally {
+				consoleError.mockRestore();
+			}
+		});
+	});
+
 	describe('Dialog variant', () => {
 		it('popover opens when down arrow is pressed', () => {
 			const { container } = render(
