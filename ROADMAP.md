@@ -30,16 +30,71 @@
 - [x] Loosen the `@salesforce-ux/design-system` peer dependency. It was pinned to
       `2.25.0-alpha.2`, which conflicted with any newer version already in the
       consumer's tree. It is now `^2.25.0-alpha.2`.
-- [ ] Write a 0.10.x → v11 migration guide (removed components, `DataTable` rename,
-      React 19, module format).
+- [ ] Write a 0.10.x → v11 migration guide (`docs/migration-v11.md`): removed components,
+      `DataTable` rename, module format, and every breaking prop change with before/after
+      code; the React 19.2 / Node 24 / SLDS 2 CSS requirements; a "deprecated but still
+      works" section. Ship it with 11.0.0, not after.
 - [ ] Publish hosted docs for v11. `react.lightningdesignsystem.com` redirects to
       GitHub, and there is no public v11 documentation site (Chromatic builds Storybook
-      on push, but only for review).
+      on push, but only for review). Keep the 0.10 docs reachable at a stable URL.
 - [x] Use one tag format for releases. `scripts/release.ts` creates `v<version>` tags,
       and every release since 11.0.0-alpha.5 uses them. Only the old `11.0.0-alpha.4`
       tag lacks the `v` prefix.
-- [ ] At GA: change `publishConfig.tag` from `alpha` to `latest` and update the
-      README's version table.
+- [ ] At GA: publish 11.0.0 as `latest`. `scripts/release.ts` already strips
+      `publishConfig.tag` for a stable version on master; the README change is in the
+      release checklist below.
+- [ ] Consider a codemod for the mechanical renames (callback shapes, `className*`,
+      `labels`/`assistiveText` moves). Teams have been on 0.10 for about five years.
+
+**Before GA (blockers).**
+
+- [ ] Move 0.10.x off `latest`: on the `0.10.x` branch, set
+      `"publishConfig": { "tag": "legacy" }` in `package.json` (npm rejects semver-range
+      tags like `v0.10`). Must land before 11.0.0 ships, or the next 0.10.x patch takes
+      `latest` back from v11. Small change.
+- [ ] `scripts/release.ts --base`: keep an existing non-prerelease `publishConfig.tag`
+      (e.g. `legacy`) instead of stripping it. Master stable releases still strip it so
+      11.0.0 publishes as `latest`. Cover both in `scripts/__tests__/release.test.mjs`;
+      `npm run release-pr -- next --base 0.10.x --dry-run` should show `legacy`.
+- [ ] Export `SimpleDataTableItem` (`components/simple-data-table/types.ts`) and
+      `TreeNodeId` (`components/tree/types.ts`) from the public entry points
+      (`components/simple-data-table/index.tsx`, `components/tree/index.tsx`).
+- [ ] `.github/workflows/npm-publish.yml`: remove `NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}`
+      and publish with OIDC trusted publishing only (0.10.66 already did), so 11.0.0 gets
+      provenance.
+- [ ] `CHANGELOG.md`: a dated `[11.0.0]` section with a breaking-changes summary at the
+      top that links to the migration guide. Add the three missing breaking lines
+      (Combobox `events.onSelectActionItem`, Badge `style`/`styleIcon`, Combobox option
+      `category`) and use `v`-prefixed compare links.
+- [ ] `README.md`: rewrite the install section and Versions table for GA (a plain
+      install gets 11.x; 0.10.x via `@salesforce/design-system-react@legacy`), and drop
+      the alpha `--legacy-peer-deps` note.
+
+**Release checklist (in order).**
+
+- [ ] Cut the release candidate: `npm run release-pr -- 11.0.0-rc.0`, then
+      `gh release create v11.0.0-rc.0 --target master --generate-notes --prerelease`
+      (publishes under `rc`). `next` refuses prerelease → stable, so pass versions
+      explicitly throughout.
+- [ ] Announce the RC: dates, requirements (React 19.2, Node 24, SLDS 2), migration guide.
+- [ ] Pilot: 2–3 internal consuming apps upgrade a real app against the RC within a set
+      window. Bug fixes only; cut `rc.N` as needed. Check `npm pack` of the RC in a fresh
+      React 19 app (`exports`, types, `dist/llms`, CSS instructions).
+- [ ] Go/no-go: no open P0/P1 regressions; pilot apps run in staging or production;
+      `npm run test:ci` and Chromatic green; pilots have validated the migration guide.
+- [ ] GA: `npm run release-pr -- 11.0.0`, then
+      `gh release create v11.0.0 --target master --generate-notes`. Verify with
+      `npm view @salesforce/design-system-react dist-tags` (`latest: 11.0.0`,
+      `legacy: 0.10.x`) and provenance on the npm page.
+- [ ] GA communication: GitHub Release notes with a short "why upgrade" and the
+      breaking-changes summary, an internal post, a docs-site banner. Say that `^0.10`
+      ranges won't move to 11; only unversioned installs and `@latest` pick it up.
+
+**After GA (cleanup).**
+
+- [ ] Delete the `NPM_TOKEN` repository secret.
+- [ ] Remove the stale `beta` dist-tag (0.8.21-beta.0):
+      `npm dist-tag rm @salesforce/design-system-react beta`.
 
 ### P1 — Prop API freeze review (before GA)
 
@@ -680,8 +735,8 @@ complete`) and `THEME_OPTIONS` is a second public surface; `icon` is only honore
 - [ ] `scoped-notification` — `icon` is a `ReactElement` that gets `cloneElement`ed to merge
       `assistiveText` (`:71`): render an icon node, or take `iconName`/`iconCategory` and
       build it; the deprecated `iconName` is still live (`:83`), remove or keep; `theme:
-**Done (slots):** the `assistiveText`merge onto the`icon` element is the documented contract.
 'dark' | 'light'` has an implicit third state (no default).
+      **Done (slots):** the `assistiveText` merge onto the `icon` element is the documented contract.
       **Re-scoped by the child-contract rule:** children here are library components, so the `cloneElement`/child-props contract is allowed. Keep the other findings. Child contract done (theme 3): children are typed, injected props are internal, and no child is matched by `displayName`.
       **Partly done:** `iconName` is kept but deprecated with a warning; `icon` is typed
       `ReactElement<IconProps>`.
