@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- `DockedComposer` `defaultIsOpen`, for an uncontrolled composer. The body stays unmounted while it is closed
+- `Tooltip` `isDisabled`, which turns the tooltip off whatever `isOpen` is
 - `Button`: `xx-small` icon size ([#3228](https://github.com/salesforce/design-system-react/pull/3228))
 - `ButtonStateful`: `success` and `text` variants ([#3234](https://github.com/salesforce/design-system-react/pull/3234))
 - `Tree`: `onSelect(event, { node, isSelected })` and `onRequestToggle(event, { node, isExpanded })`, both reporting the requested state. `onRequestToggle` fires only for real expand/collapse requests; Left arrow on an item or collapsed branch selects the parent through `onSelect` and leaves it expanded
@@ -54,6 +56,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- `ProgressIndicator` `selectedStep` takes a step `id`; a step object is still accepted and matched by its `id`. Each step can have one `status` (`'completed' | 'disabled' | 'error'`), which wins over the deprecated step arrays
+- `Accordion`, `Breadcrumb`, `DatePicker`, `Tabs`, `VisualPicker` and `WelcomeMat`: reviewed for data models, no change
 - `Card`, `Input`, `Textarea`: the `header` merge, `iconLeft`/`iconRight` `iconPosition` and `children` placement are documented in the prop types
 - **BREAKING**: `Tabs` `onSelect` is called as `onSelect(event, { selectedIndex, previousIndex })` instead of `onSelect(selectedIndex, lastIndex)`. Returning `false` no longer cancels the selection; to stop a tab change, update `value` from `onSelect` only when the change should happen
 - **BREAKING**: `MenuDropdown` `onSelect` is called as `onSelect(event, { option, optionIndex })`; the first argument was the option. Change `(option) => …` to `(event, { option }) => …`; handlers that read the second argument need no change. Clicking custom (non-`List`) content no longer calls `onSelect` with an empty option; use `onClose` instead. `SimpleDataTableRowActions` `onAction` changed separately (below)
@@ -126,6 +130,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Deprecated
 
+- `ProgressIndicator` `completedSteps`, `disabledSteps` and `errorSteps` (use `steps[].status`), and a `selectedStep` object without an `id`, which is still matched by its whole content (pass the step's `id`). Each logs a warning
 - `Tree` `onClick` (use `onSelect`) and `onExpandClick` (use `onRequestToggle`). They keep their old payloads and behavior, log a one-time warning, and are ignored when the replacement is passed. Neither is required in the types any more
 - `Tree` `onScroll` data `percentage` (use `ratio`)
 - `SplitView` `events.onOpen` and `events.onClose` (use `events.onToggle`). They are called only when `onToggle` is absent
@@ -166,6 +171,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Fixed
 
+- `Filter`: a custom `popover`'s `isOpen` was read only on the first render. It now controls the open state when set, and `defaultIsOpen` starts the popover open otherwise. A popover that sets `isOpen` must update it to open or close; leave it unset for click-to-open
 - `Combobox`: while open, the input sets `aria-controls` to the listbox (or, for `variant="popover"`, the dialog), fixing the axe `aria-required-attr` violation (W-24839159). It is omitted, and `aria-expanded` is `false`, while the listbox isn't rendered, including with the deprecated `singleInputDisabled`
 - The `@salesforce-ux/design-system` peer dependency accepts `^2.25.0-alpha.2` instead of exactly `2.25.0-alpha.2`, so installing into a project that already has a newer version no longer fails with `ERESOLVE`
 - `Popover`: apply `classNameFooter` (and deprecated `footerClassName`) when rendering walkthrough footers via `footerWalkthroughActions` / `stepText` ([#2744](https://github.com/salesforce/design-system-react/issues/2744))
