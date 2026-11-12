@@ -2,7 +2,7 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 // ### React
-import React, { type MouseEvent } from 'react';
+import React, { type ButtonHTMLAttributes, type MouseEvent } from 'react';
 
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
@@ -14,17 +14,18 @@ import isFunction from 'lodash.isfunction';
 
 // ## Children
 import UtilityIcon from '../../utilities/utility-icon';
+import type { UtilityIconProps } from '../../utilities/utility-icon';
 import Button from '../../button';
 import type { IconCategory } from '../../../types/common';
 
 // ## Constants
 import { ICON_INPUT } from '../../../utilities/constants';
 
-export interface InputIconProps {
+interface InputIconBaseProps {
 	/**
 	 * Icon category from [lightningdesignsystem.com/icons/](https://www.lightningdesignsystem.com/icons/)
 	 */
-	category?: string;
+	category?: IconCategory;
 	/**
 	 * This is only needed if an input contains two icons, the Input component handles this prop for you.
 	 */
@@ -38,15 +39,40 @@ export interface InputIconProps {
 	 */
 	path?: string;
 	/**
-	 * This event fires when the icon is clicked.
-	 */
-	onClick?: (event: MouseEvent) => void;
-	/**
 	 * Changes styles of the InputIcon.
 	 */
 	variant?: 'base' | 'combobox';
-	[key: string]: unknown;
 }
+
+/** A clickable icon, rendered as an icon `Button`. */
+export interface InputIconClickableProps
+	extends
+		InputIconBaseProps,
+		Omit<
+			ButtonHTMLAttributes<HTMLButtonElement>,
+			'children' | 'className' | 'onClick' | 'style' | 'title' | 'type'
+		> {
+	/** Assistive text for the icon button */
+	assistiveText?: { icon?: string };
+	/** This event fires when the icon is clicked. */
+	onClick: (event: MouseEvent<HTMLButtonElement>) => void;
+	/** Receives the button node */
+	buttonRef?: (node: HTMLButtonElement | null) => void;
+	type?: 'button' | 'submit' | 'reset';
+}
+
+/** A decorative icon, rendered as a `UtilityIcon`. */
+export interface InputIconDecorativeProps
+	extends
+		InputIconBaseProps,
+		Omit<UtilityIconProps, 'category' | 'name' | 'path' | 'onClick'> {
+	onClick?: undefined;
+	/** Tooltip text */
+	title?: string;
+}
+
+/** Props for InputIcon: `onClick` selects between a button and a decorative icon. */
+export type InputIconProps = InputIconClickableProps | InputIconDecorativeProps;
 
 /**
  * A wrapper for icons that will be rendered inside of an Input
@@ -62,8 +88,9 @@ const InputIcon = ({
 	name,
 	path,
 	onClick,
-	...rest
+	...restProps
 }: InputIconProps): React.ReactElement => {
+	const rest = restProps as Record<string, unknown>;
 	// SLDS 1 let clicks pass through a decorative icon to the input with
 	// `.slds-input-has-icon .slds-input__icon:not(button)`; SLDS 2 dropped it.
 	const passThroughStyle = {
@@ -79,7 +106,7 @@ const InputIcon = ({
 			>
 				<UtilityIcon
 					aria-hidden
-					category={category as IconCategory}
+					category={category}
 					className={classNames(
 						'slds-icon slds-icon_x-small slds-icon-text-default'
 					)}
@@ -92,7 +119,7 @@ const InputIcon = ({
 		base: (
 			<UtilityIcon
 				aria-hidden
-				category={category as IconCategory}
+				category={category}
 				className={classNames('slds-input__icon slds-icon-text-default', {
 					[`slds-input__icon_${iconPosition}`]: iconPosition,
 				})}
@@ -109,7 +136,7 @@ const InputIcon = ({
 			className={classNames('slds-input__icon', {
 				[`slds-input__icon_${iconPosition}`]: iconPosition,
 			})}
-			iconCategory={category as IconCategory}
+			iconCategory={category}
 			iconName={name}
 			iconPath={path}
 			onClick={onClick}
