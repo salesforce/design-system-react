@@ -41,6 +41,28 @@ describe('SLDSTooltip', () => {
 		});
 	});
 
+	describe('isDisabled', () => {
+		it('never opens when isDisabled', async () => {
+			renderTooltip({ align: 'top', isDisabled: true });
+			await userEvent.hover(
+				screen.getByRole('button', { name: 'Hover me for tooltip' })
+			);
+			await new Promise((resolve) => setTimeout(resolve, 50));
+
+			expect(
+				document.querySelector('.slds-popover_tooltip')
+			).not.toBeInTheDocument();
+		});
+
+		it('does not open when isDisabled even with isOpen', () => {
+			renderTooltip({ align: 'top', isDisabled: true, isOpen: true });
+
+			expect(
+				document.querySelector('.slds-popover_tooltip')
+			).not.toBeInTheDocument();
+		});
+	});
+
 	describe('component basic props render', () => {
 		it('is not open initially', () => {
 			renderTooltip({ align: 'top' });
