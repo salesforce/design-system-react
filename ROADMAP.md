@@ -157,6 +157,16 @@ moves to `latest`.
    `listItemRenderer`), split-view listbox `renderListItem` (replaces `listItem`). Still open:
    the tree heading XOR as a union type (theme 7), and `errorText` on input, checkbox and
    combobox.
+   **Deferred past GA (2026-11-12):** the rest of this theme is additive (new optional props, or
+   new names with the old ones still working and warning once), so none of it needs to land
+   before 11.0 and it can ship in a minor. Deferred: English defaults into `labels`/`assistiveText`
+   (avatar, button-stateful `states`, card, expandable-section, filter, panel filtering,
+   progress-ring, toast, welcome-mat `unitsCompleted` and Tile); renames (input `required` over
+   `aria-required`, popover `aria-labelledby`, progress-indicator `tooltip` grouping,
+   simple-data-table `selectionMode`, split-view `ascending`/`descending`, tabs `errorIcon`);
+   heading-level props (page-header, tree, visual-picker link); accessible names
+   (vertical-navigation `nav` label, visual-picker legend, radio-group `hasError` and legend
+   order); and dropping tooltip's default `content`. Removing any old name stays a major.
 7. **Typing the contract.** Discriminated unions (tree nodes, welcome-mat variants, combobox,
    menu-dropdown and color-picker variants/options), no index signatures
    (vertical-navigation, split-view), textarea `maxLength` as a number.
@@ -670,7 +680,7 @@ complete`) and `THEME_OPTIONS` is a second public surface; `icon` is only honore
 - [ ] `scoped-notification` — `icon` is a `ReactElement` that gets `cloneElement`ed to merge
       `assistiveText` (`:71`): render an icon node, or take `iconName`/`iconCategory` and
       build it; the deprecated `iconName` is still live (`:83`), remove or keep; `theme:
-  **Done (slots):** the `assistiveText`merge onto the`icon` element is the documented contract.
+**Done (slots):** the `assistiveText`merge onto the`icon` element is the documented contract.
 'dark' | 'light'` has an implicit third state (no default).
       **Re-scoped by the child-contract rule:** children here are library components, so the `cloneElement`/child-props contract is allowed. Keep the other findings. Child contract done (theme 3): children are typed, injected props are internal, and no child is matched by `displayName`.
       **Partly done:** `iconName` is kept but deprecated with a warning; `icon` is typed
