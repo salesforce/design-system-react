@@ -186,6 +186,11 @@ export interface TooltipProps {
 	 */
 	defaultIsOpen?: boolean;
 	/**
+	 * Turns the tooltip off: it never opens and renders no dialog, whatever `isOpen` or
+	 * `defaultIsOpen` is. The trigger still renders.
+	 */
+	isDisabled?: boolean;
+	/**
 	 * Called when the tooltip requests to open (hover after `hoverOpenDelay`, or focus), controlled or
 	 * not. `data.trigger` says why. A controlled tooltip opens only if the parent sets `isOpen` to `true`.
 	 */
@@ -286,6 +291,7 @@ const Tooltip = ({
 	labels: labelsProp,
 	isOpen: isOpenProp,
 	defaultIsOpen = false,
+	isDisabled = false,
 	onRequestOpen,
 	onRequestClose,
 	onRequestTargetElement,
@@ -367,7 +373,10 @@ const Tooltip = ({
 		return idProp || generatedIdRef.current;
 	}, [idProp]);
 
-	const getIsOpen = useCallback(() => isOpen, [isOpen]);
+	const getIsOpen = useCallback(
+		() => !isDisabled && isOpen,
+		[isDisabled, isOpen]
+	);
 
 	const getTooltipTarget = useCallback(() => {
 		if (onRequestTargetElement) {
@@ -389,13 +398,13 @@ const Tooltip = ({
 			event: MouseEvent<HTMLElement> | FocusEvent<HTMLElement>,
 			trigger: TooltipRequestOpenTrigger
 		) => {
-			if (isUnmountingRef.current || isOpenRef.current) {
+			if (isUnmountingRef.current || isDisabled || isOpenRef.current) {
 				return;
 			}
 			onRequestOpen?.(event, { trigger });
 			setIsOpen(true);
 		},
-		[onRequestOpen, setIsOpen]
+		[isDisabled, onRequestOpen, setIsOpen]
 	);
 
 	const requestClose = useCallback(
