@@ -46,8 +46,8 @@ class Example extends React.Component {
 					<Modal
 						isOpen={this.state.isOpen}
 						footer={[
-							<Button label="Cancel" onClick={this.toggleOpen} />,
-							<Button label="Save" variant="brand" onClick={this.toggleOpen} />,
+							<Button key="cancel" label="Cancel" onClick={this.toggleOpen} />,
+							<Button key="save" label="Save" variant="brand" onClick={this.toggleOpen} />,
 						]}
 						onRequestClose={this.toggleOpen}
 						heading="New Opportunity"

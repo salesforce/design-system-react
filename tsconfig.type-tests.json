@@ -1,0 +1,7 @@
+{
+  // Type-level regression tests (`*.type-test.tsx`). The build config excludes
+  // `__tests__`, so these get their own project; `npm run typecheck` runs both.
+  "extends": "./tsconfig.json",
+  "include": ["components/**/__tests__/*.type-test.tsx", "types/**/*"],
+  "exclude": ["node_modules", "dist", ".tmp-npm"]
+}

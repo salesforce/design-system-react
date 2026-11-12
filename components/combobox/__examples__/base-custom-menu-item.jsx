@@ -10,44 +10,44 @@ const accounts = [
 		id: '1',
 		label: 'Acme',
 		subTitle: 'Account • San Francisco',
-		type: 'account',
+		category: 'account',
 	},
 	{
 		id: '2',
 		label: 'Salesforce.com, Inc.',
 		subTitle: 'Account • San Francisco',
-		type: 'account',
+		category: 'account',
 	},
 	{
 		id: '3',
 		label: "Paddy's Pub",
 		subTitle: 'Account • Boston, MA',
-		type: 'account',
+		category: 'account',
 	},
 	{
 		id: '4',
 		label: 'Tyrell Corp',
 		subTitle: 'Account • San Francisco, CA',
-		type: 'account',
+		category: 'account',
 	},
 	{
 		id: '5',
 		label: 'Paper St. Soap Company',
 		subTitle: 'Account • Beloit, WI',
-		type: 'account',
+		category: 'account',
 	},
 	{
 		id: '6',
 		label: 'Nakatomi Investments',
 		subTitle: 'Account • Chicago, IL',
-		type: 'account',
+		category: 'account',
 	},
-	{ id: '7', label: 'Acme Landscaping', type: 'account' },
+	{ id: '7', label: 'Acme Landscaping', category: 'account' },
 	{
 		id: '8',
 		label: 'Acme Construction',
 		subTitle: 'Account • Grand Marais, MN',
-		type: 'account',
+		category: 'account',
 	},
 ];
 
@@ -59,23 +59,22 @@ const accountsWithIcon = accounts.map((elem) => ({
 				assistiveText={{ label: 'Account' }}
 				category="standard"
 				size="x-small"
-				name={elem.type}
+				name={elem.category}
 			/>
 		),
 	},
 }));
 
-const CustomMenuItem = (props) => (
+const renderMenuItem = ({ option }) => (
 	<span>
 		<span className="slds-listbox__option-text slds-listbox__option-text_entity">
-			{props.option.label}
+			{option.label}
 		</span>
 		<span className="slds-listbox__option-meta slds-listbox__option-meta_entity">
-			{props.option.subTitle || '\u00A0'}
+			{option.subTitle || '\u00A0'}
 		</span>
 	</span>
 );
-CustomMenuItem.displayName = 'CustomMenuItem';
 
 class Example extends React.Component {
 	constructor(props) {
@@ -150,7 +149,7 @@ class Example extends React.Component {
 						label: 'Search',
 						placeholder: 'Search Salesforce',
 					}}
-					onRenderMenuItem={CustomMenuItem}
+					renderMenuItem={renderMenuItem}
 					multiple
 					options={comboboxFilterAndLimit({
 						inputValue: this.state.inputValue,

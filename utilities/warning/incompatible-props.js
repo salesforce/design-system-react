@@ -19,25 +19,14 @@ if (process.env.NODE_ENV !== 'production') {
 		comment
 	) {
 		let checkPassed = true;
-		let propOneConditionMet = false;
-		let propTwoConditionMet = false;
 
 		if (props[propOneName] && props[propTwoName]) {
-			if (propOneValues) {
-				propOneValues.forEach((value) => {
-					propOneConditionMet = props[propOneName] === value;
-				});
-			} else {
-				propOneConditionMet = true;
-			}
-
-			if (propTwoValues) {
-				propTwoValues.forEach((value) => {
-					propTwoConditionMet = props[propTwoName] === value;
-				});
-			} else {
-				propTwoConditionMet = true;
-			}
+			const propOneConditionMet = propOneValues
+				? propOneValues.includes(props[propOneName])
+				: true;
+			const propTwoConditionMet = propTwoValues
+				? propTwoValues.includes(props[propTwoName])
+				: true;
 
 			checkPassed = !(propOneConditionMet && propTwoConditionMet);
 		}

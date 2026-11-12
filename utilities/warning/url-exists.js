@@ -2,7 +2,6 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 /* eslint-disable import/no-mutable-exports */
-/* global XMLHttpRequest, window */
 
 // This function does an "AJAX" request to warn users on how to setup their icon path.
 import warning from 'warning';

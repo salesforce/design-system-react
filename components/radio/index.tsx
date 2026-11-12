@@ -1,0 +1,400 @@
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
+/* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+import React, {
+	useRef,
+	useId,
+	useCallback,
+	useEffect,
+	type ChangeEvent,
+	type FocusEvent,
+	type KeyboardEvent,
+	type CSSProperties,
+} from 'react';
+import classNames from 'classnames';
+import KEYS from '../../utilities/key-code';
+import { RADIO } from '../../utilities/constants';
+import getAriaProps from '../../utilities/get-aria-props';
+import getDataProps from '../../utilities/get-data-props';
+import Swatch from '../../components/color-picker/private/swatch';
+import Icon from '../icon';
+import { checkDeprecatedProps } from './check-props';
+import componentDoc from './component.json';
+
+/**
+ * Radio variant types
+ */
+export type RadioVariant = 'base' | 'button-group' | 'swatch' | 'visual-picker';
+export type RadioSize = 'medium' | 'large';
+
+/**
+ * Assistive text for Radio
+ */
+export interface RadioAssistiveText {
+	/** Visually hidden label */
+	label?: string;
+}
+
+/**
+ * Labels for Radio
+ */
+export interface RadioLabels {
+	/** Heading for visual picker variant */
+	heading?: string;
+	/** Label for the radio input */
+	label?: string;
+}
+
+/**
+ * Refs for Radio
+ */
+export interface RadioRefs {
+	/** Ref callback for input element */
+	input?: (input: HTMLInputElement | null) => void;
+}
+
+/**
+ * Change event data for Radio
+ */
+export interface RadioChangeData {
+	/**
+	 * The requested checked state: `true` when the user selects the radio,
+	 * `false` when a `deselectable` radio that is checked is clicked again.
+	 */
+	checked: boolean;
+}
+
+/**
+ * Change handler for Radio
+ */
+export type RadioChangeHandler = (
+	event: ChangeEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>,
+	data: RadioChangeData
+) => void;
+
+/**
+ * Props for the Radio component
+ */
+export interface RadioProps {
+	/** Assistive text for accessibility */
+	assistiveText?: RadioAssistiveText;
+	/** ARIA describedby attribute */
+	'aria-describedby'?: string;
+	/** ARIA labelledby attribute */
+	'aria-labelledby'?: string;
+	/**
+	 * Whether the radio is checked. Radio is controlled: update this prop from
+	 * `onChange`. Inside a `RadioGroup`/`RadioButtonGroup`, pass `value` to the
+	 * group instead and the group derives `checked` for each radio.
+	 */
+	checked: boolean;
+	/** CSS classes */
+	className?: string | string[] | Record<string, boolean>;
+	/** Whether radio can be deselected */
+	deselectable?: boolean;
+	/** Whether radio is disabled */
+	disabled?: boolean;
+	/** Unique ID for the input */
+	id?: string;
+	/** ID for the label element */
+	labelId?: string;
+	/** Text labels */
+	labels?: RadioLabels;
+	/** Input name attribute */
+	name?: string;
+	/**
+	 * Called with the requested checked state in `data.checked`. The rendered
+	 * state only changes when `checked` is updated.
+	 */
+	onChange: RadioChangeHandler;
+	/** Focus handler */
+	onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
+	/**
+	 * @deprecated Focus the radio through `refs.input` instead. Called with the `<input>`
+	 * when `requestFocus` is set. Still works, and warns.
+	 */
+	onRequestFocus?: (input: HTMLInputElement) => void;
+	/** @deprecated Focus the radio through `refs.input` instead. Still works, and warns. */
+	requestFocus?: boolean;
+	/** Tab index */
+	tabIndex?: string;
+	/** Input value */
+	value?: string;
+	/** Radio variant */
+	variant?: RadioVariant;
+	/** Visual picker: coverable when selected */
+	coverable?: boolean;
+	/** Visual picker: vertical layout */
+	vertical?: boolean;
+	/** Visual picker: figure content, rendered inside `.slds-visual-picker__figure` when not `coverable` */
+	visualPickerFigure?: React.ReactNode;
+	/** Visual picker: coverable figure content shown when selected */
+	visualPickerFigureSelected?: React.ReactNode;
+	/** Visual picker: coverable figure content shown when not selected */
+	visualPickerFigureNotSelected?: React.ReactNode;
+	/** @deprecated Use `visualPickerFigure` instead. */
+	onRenderVisualPicker?: () => React.ReactNode;
+	/** @deprecated Use `visualPickerFigureSelected` instead. */
+	onRenderVisualPickerSelected?: () => React.ReactNode;
+	/** @deprecated Use `visualPickerFigureNotSelected` instead. */
+	onRenderVisualPickerNotSelected?: () => React.ReactNode;
+	/** Visual picker: description text */
+	description?: string;
+	/** Visual picker: size */
+	size?: RadioSize;
+	/** Ref callbacks */
+	refs?: RadioRefs;
+	/** Custom styles (for swatch variant) */
+	style?: CSSProperties;
+}
+
+/**
+ * Props for a `Radio` rendered as a child of `RadioGroup` or
+ * `RadioButtonGroup`. The group injects `checked` (derived from its `value`)
+ * and `onChange`, so neither is required here.
+ */
+export interface RadioGroupItemProps extends Omit<
+	RadioProps,
+	'checked' | 'onChange'
+> {
+	/**
+	 * @deprecated Pass `value` to the `RadioGroup`/`RadioButtonGroup` instead.
+	 * Only used when the group has no `value`.
+	 */
+	checked?: boolean;
+	/** Ignored inside a group: the group's `onChange` is called instead. */
+	onChange?: RadioChangeHandler;
+}
+
+const defaultAssistiveText: RadioAssistiveText = {};
+const defaultLabels: RadioLabels = {};
+
+/**
+ * A radio input that can have a single input checked at any one time.
+ * Radios should be wrapped with a RadioGroup or RadioButtonGroup.
+ */
+const Radio = ({
+	assistiveText: propAssistiveText,
+	'aria-describedby': ariaDescribedBy,
+	'aria-labelledby': ariaLabelledBy,
+	checked,
+	className,
+	// Removed in v11. Destructured so they never reach the DOM;
+	// `checkDeprecatedProps` warns about them.
+	defaultChecked,
+	deselectable,
+	disabled,
+	id: propId,
+	labelId,
+	labels: propLabels,
+	label,
+	name,
+	onChange,
+	onFocus,
+	onRequestFocus,
+	requestFocus,
+	tabIndex,
+	value,
+	variant = 'base',
+	coverable = false,
+	vertical,
+	visualPickerFigure,
+	visualPickerFigureSelected,
+	visualPickerFigureNotSelected,
+	onRenderVisualPicker,
+	onRenderVisualPickerSelected,
+	onRenderVisualPickerNotSelected,
+	size,
+	refs,
+	style,
+	...rest
+}: RadioProps & {
+	defaultChecked?: boolean;
+	label?: unknown;
+}): React.ReactElement => {
+	const generatedId = useId();
+	const preventDuplicateRef = useRef(false);
+
+	const id = propId || generatedId;
+	const assistiveText = { ...defaultAssistiveText, ...propAssistiveText };
+	const labels = { ...defaultLabels, ...propLabels };
+
+	useEffect(() => {
+		checkDeprecatedProps(
+			RADIO,
+			{
+				defaultChecked,
+				label,
+				onRenderVisualPicker,
+				onRenderVisualPickerSelected,
+				onRenderVisualPickerNotSelected,
+				onRequestFocus,
+				requestFocus,
+			},
+			componentDoc
+		);
+	}, [
+		defaultChecked,
+		label,
+		onRequestFocus,
+		requestFocus,
+		onRenderVisualPicker,
+		onRenderVisualPickerSelected,
+		onRenderVisualPickerNotSelected,
+	]);
+
+	const ariaProps = getAriaProps(rest);
+	const dataProps = getDataProps(rest);
+
+	const handleChange = useCallback(
+		(
+			event: ChangeEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>,
+			preventDuplicate?: boolean
+		) => {
+			if (!preventDuplicateRef.current) {
+				preventDuplicateRef.current = Boolean(preventDuplicate);
+				onChange?.(event, { checked: !checked });
+			} else {
+				preventDuplicateRef.current = false;
+			}
+		},
+		[checked, onChange]
+	);
+
+	const handleInputRef = useCallback(
+		(input: HTMLInputElement | null) => {
+			refs?.input?.(input);
+			if (input && requestFocus && onRequestFocus) {
+				onRequestFocus(input);
+			}
+		},
+		[refs, requestFocus, onRequestFocus]
+	);
+
+	// Render the label based on variant
+	let radioLabel: React.ReactNode;
+
+	if (variant === 'swatch') {
+		radioLabel = (
+			<label
+				style={{ border: '1px' }}
+				className="slds-radio_button__label"
+				htmlFor={id}
+			>
+				<span>
+					<Swatch label={labels.label} style={style} color={value ?? ''} />
+				</span>
+			</label>
+		);
+	} else if (variant === 'button-group') {
+		radioLabel = (
+			<label className="slds-radio_button__label" htmlFor={id}>
+				<span className="slds-radio_faux">{labels.label}</span>
+			</label>
+		);
+	} else if (variant === 'visual-picker') {
+		radioLabel = (
+			<label htmlFor={id}>
+				{coverable ? (
+					<div className="slds-visual-picker__figure slds-visual-picker__icon slds-align_absolute-center">
+						<span className="slds-is-selected">
+							{visualPickerFigureSelected ?? onRenderVisualPickerSelected?.()}
+						</span>
+						<span className="slds-is-not-selected">
+							{visualPickerFigureNotSelected ??
+								onRenderVisualPickerNotSelected?.()}
+						</span>
+					</div>
+				) : (
+					<span className="slds-visual-picker__figure slds-visual-picker__text slds-align_absolute-center">
+						{visualPickerFigure ?? onRenderVisualPicker?.()}
+					</span>
+				)}
+				{!vertical && (
+					<span className="slds-visual-picker__body">
+						{labels.heading && (
+							<span className="slds-text-heading_small">{labels.heading}</span>
+						)}
+						<span className="slds-text-title">{labels.label}</span>
+					</span>
+				)}
+				{!coverable && (
+					<span className="slds-icon_container slds-visual-picker__text-check">
+						<Icon
+							assistiveText={assistiveText}
+							category="utility"
+							name="check"
+							colorVariant="base"
+							size="x-small"
+						/>
+					</span>
+				)}
+			</label>
+		);
+	} else {
+		// Base variant
+		radioLabel = (
+			<label className="slds-radio__label" htmlFor={id} id={labelId}>
+				<span className="slds-radio_faux" />
+				<span className="slds-form-element__label">{labels.label}</span>
+				{assistiveText.label && (
+					<span className="slds-assistive-text">{assistiveText.label}</span>
+				)}
+			</label>
+		);
+	}
+
+	return (
+		<span
+			className={classNames(
+				variant === 'visual-picker' ? `slds-visual-picker_${size}` : null,
+				{
+					'slds-radio': variant === 'base' || variant === 'swatch',
+					'slds-button slds-radio_button': variant === 'button-group',
+					'slds-visual-picker': variant === 'visual-picker',
+					'slds-visual-picker_vertical':
+						variant === 'visual-picker' && vertical,
+				},
+				className as string
+			)}
+		>
+			<input
+				type="radio"
+				id={id}
+				name={name}
+				value={value}
+				checked={!!checked}
+				onFocus={onFocus}
+				onChange={(event) => handleChange(event)}
+				onClick={(event) => {
+					if (checked && deselectable) {
+						handleChange(event as unknown as ChangeEvent<HTMLInputElement>);
+					}
+				}}
+				onKeyPress={(event) => {
+					const { charCode } = event;
+					if (charCode === KEYS.SPACE && checked && deselectable) {
+						handleChange(event, true);
+					} else if (
+						(charCode === KEYS.ENTER && checked && deselectable) ||
+						!checked
+					) {
+						handleChange(event);
+					}
+				}}
+				disabled={disabled}
+				tabIndex={tabIndex ? parseInt(tabIndex, 10) : undefined}
+				aria-describedby={ariaDescribedBy}
+				aria-labelledby={ariaLabelledBy}
+				{...ariaProps}
+				{...dataProps}
+				ref={handleInputRef}
+			/>
+			{radioLabel}
+		</span>
+	);
+};
+
+Radio.displayName = RADIO;
+
+export default Radio;

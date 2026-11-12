@@ -1,0 +1,19 @@
+declare const checkProps: (
+	componentName: string,
+	props: Record<string, unknown>,
+	jsonDoc?: Record<string, unknown>
+) => void;
+
+export declare const checkDeprecatedProps: (
+	componentName: string,
+	props: Record<string, unknown>,
+	jsonDoc?: Record<string, unknown>
+) => void;
+
+export declare const checkRequiredProps: (
+	componentName: string,
+	props: Record<string, unknown>,
+	jsonDoc?: Record<string, unknown>
+) => void;
+
+export default checkProps;

@@ -36,6 +36,7 @@ class Example extends React.Component {
 		super(props);
 		this.state = {
 			selectedOptionIndex: 0,
+			value: 'A0',
 		};
 	}
 
@@ -52,15 +53,16 @@ class Example extends React.Component {
 							iconName="down"
 							id="checkmark-menu-dropdown"
 							iconVariant="border-filled"
-							onSelect={(value) => {
-								console.log('selected: ', value);
+							onSelect={(event, { option, value }) => {
+								console.log('selected: ', option);
+								this.setState({ value });
 							}}
 							options={[
 								{ label: 'Menu Item One', value: 'A0' },
 								{ label: 'Menu Item Two', value: 'B0' },
 								{ label: 'Menu Item Three', value: 'C0' },
 							]}
-							value="A0"
+							value={this.state.value}
 							{...this.props}
 						/>
 					</div>
@@ -77,11 +79,8 @@ class Example extends React.Component {
 							iconSize="large"
 							iconVariant="more"
 							id="checkmark-menu-dropdown-right-icon"
-							onSelect={(option) => {
-								const selectedOptionIndex = options.findIndex(
-									(currenOption) => currenOption.value === option.value
-								);
-								this.setState({ selectedOptionIndex });
+							onSelect={(event, { optionIndex }) => {
+								this.setState({ selectedOptionIndex: optionIndex });
 							}}
 							options={options}
 							value={options[this.state.selectedOptionIndex].value}

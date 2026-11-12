@@ -1,4 +1,3 @@
-import React from 'react';
 import ProgressBar from '../../../components/progress-bar';
 
 export const PROGRESS_0 = () => <ProgressBar id="progress-bar-1" value={0} />;

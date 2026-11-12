@@ -1,0 +1,17 @@
+{
+  // Lint-only project. Extends the build tsconfig but WIDENS `include` to cover
+  // the files the build config intentionally excludes (stories, docs, examples,
+  // tests) plus the sidecar `.d.ts` files. The type-aware ESLint parser
+  // (`parserOptions.project`) needs every linted file to belong to a project;
+  // without this it emits "ESLint was configured to run on <file> ... however
+  // that TSConfig does not include this file" parse errors.
+  "extends": "./tsconfig.json",
+  "include": [
+    "components/**/*",
+    "utilities/**/*",
+    "types/**/*",
+    "vitest.setup.ts",
+    "vitest.setup.browser.ts"
+  ],
+  "exclude": ["node_modules", "dist", ".tmp-npm"]
+}

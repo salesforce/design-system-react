@@ -35,7 +35,7 @@ class Example extends React.Component {
 						<h1 className="slds-text-title_caps slds-p-vertical_medium">
 							1. Base Input with label
 						</h1>
-						<DemoSlider id="base-id" label="My Label" value={0} />
+						<DemoSlider id="base-id" labels={{ label: 'My Label' }} value={0} />
 					</li>
 					<li className="slds-p-bottom_large">
 						<h1 className="slds-text-title_caps slds-p-vertical_medium">
@@ -53,7 +53,7 @@ class Example extends React.Component {
 						</h1>
 						<DemoSlider
 							id="min-max-id"
-							label="My Label"
+							labels={{ label: 'My Label' }}
 							min={0}
 							max={400}
 							value={200}
@@ -65,7 +65,7 @@ class Example extends React.Component {
 						</h1>
 						<DemoSlider
 							id="min-max-step-id"
-							label="My Label"
+							labels={{ label: 'My Label' }}
 							min={0}
 							max={400}
 							step={100}

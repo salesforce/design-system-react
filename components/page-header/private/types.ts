@@ -1,0 +1,37 @@
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
+/* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+import { type ReactElement, type ReactNode } from 'react';
+
+import { type PageHeaderDetail, type PageHeaderVariant } from '../index';
+
+/**
+ * Props shared by the private page-header variant components (base,
+ * object-home, record-home, related-list). Individual variants read a subset.
+ *
+ * The `details`/`trail`/`variant` field types mirror the public
+ * `PageHeaderProps` so the parent `PageHeader` can assign each variant to a
+ * single `ComponentType` without contravariance errors.
+ */
+export interface PageHeaderVariantProps {
+	/** The page header icon element */
+	icon?: ReactElement;
+	/** The info content */
+	info?: ReactNode;
+	/** The label content */
+	label?: ReactNode;
+	/** The title content */
+	title?: ReactNode;
+	/** Detail blocks (record-home variant) */
+	details?: PageHeaderDetail[];
+	/** Dropdown for the object-home name switcher */
+	nameSwitcherDropdown?: ReactNode;
+	/** An array of react elements, presumably anchor <a> elements. */
+	trail?: ReactNode[];
+	/** The component variant */
+	variant?: PageHeaderVariant;
+	/** Content for the actions column */
+	actions?: ReactNode;
+	/** Content for the controls column */
+	controls?: ReactNode;
+}

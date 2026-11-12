@@ -1,4 +1,3 @@
-import React from 'react';
 import IconSettings from '../../icon-settings';
 import Button from '../../button';
 import ButtonGroup from '../../button-group';
@@ -48,20 +47,21 @@ const Example = (props) => (
 				assistiveText={{
 					actions: 'Document Actions',
 				}}
-				onRenderActions={() => (
+				actions={
 					<div>
 						<Tooltip
 							id="status-tooltip"
 							align="bottom"
 							content="Last modified on June 1, 2018 by SysAdmin"
-						>
-							<span
-								className="slds-color__text_gray-10 slds-align-middle slds-m-right_small"
-								tabIndex={0} // eslint-disable-line jsx-a11y/no-noninteractive-tabindex
-							>
-								Saved 5 mins ago
-							</span>
-						</Tooltip>
+							trigger={
+								<span
+									className="slds-color__text_gray-10 slds-align-middle slds-m-right_small"
+									tabIndex={0} // eslint-disable-line jsx-a11y/no-noninteractive-tabindex
+								>
+									Saved 5 mins ago
+								</span>
+							}
+						/>
 						<Button
 							iconCategory="utility"
 							iconName="right"
@@ -71,7 +71,7 @@ const Example = (props) => (
 						<Button label="Save As" />
 						<Button label="Save" variant="brand" />
 					</div>
-				)}
+				}
 			>
 				<ButtonGroup label="Canvas Actions" id="button-group-canvas-actions">
 					<Button

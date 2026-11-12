@@ -50,7 +50,7 @@
 			"path": "/__examples__/inline-single-search-add-entities.jsx"
 		},
 		{
-			"heading": "Inline: Multiple Selection with Loading State",
+			"heading": "Inline: Multiple Selection with Loading State (deprecated, use Base)",
 			"path": "/__examples__/inline-multiple-loading.jsx"
 		},
 		{

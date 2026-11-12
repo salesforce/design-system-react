@@ -1,0 +1,8 @@
+# Story HTML snapshots are the most commonly missed update. Fail fast here
+# (~3s) rather than in CI. Fix with `npm test -- --run -u`, review, commit.
+refs=$(cat)
+npm run --silent test:snapshots </dev/null
+
+# Optional advisory TinyNod review for opted-in Salesforce developers; never
+# blocks the push. See docs/tinynod-local-review.md.
+printf '%s\n' "$refs" | tsx scripts/tinynod-pre-push-review.ts || true

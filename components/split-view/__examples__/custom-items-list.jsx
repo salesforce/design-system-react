@@ -1,9 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 
 import Button from '~/components/button';
 import Dropdown from '~/components/menu-dropdown';
-import DropdownTrigger from '~/components/menu-dropdown/button-trigger';
 import Icon from '~/components/icon';
 import IconSettings from '~/components/icon-settings';
 import PageHeaderControl from '~/components/page-header/control';
@@ -71,43 +69,52 @@ const headerActions = () => (
 	</PageHeaderControl>
 );
 
+// MenuDropdown selection is controlled, so the view switcher keeps its own state.
+const DisplayAsDropdown = () => {
+	const [value, setValue] = useState('B0');
+	return (
+		<Dropdown
+			id="header-right-refresh"
+			assistiveText={{ icon: 'Checkmark with right icon' }}
+			buttonVariant="icon"
+			checkmark
+			iconCategory="utility"
+			iconName="side_list"
+			iconSize="large"
+			iconVariant="more"
+			align="right"
+			onSelect={(event, data) => {
+				console.log('selected: ', data.option);
+				setValue(data.value);
+			}}
+			options={[
+				{ label: 'Display As', type: 'header' },
+				{
+					label: 'Table View',
+					value: 'A0',
+					rightIcon: {
+						category: 'utility',
+						name: 'table',
+					},
+				},
+				{
+					label: 'List View',
+					value: 'B0',
+					rightIcon: {
+						category: 'utility',
+						name: 'side_list',
+					},
+				},
+			]}
+			value={value}
+		/>
+	);
+};
+
 const headerControls = () => (
 	<React.Fragment>
 		<PageHeaderControl>
-			<Dropdown
-				id="header-right-refresh"
-				assistiveText={{ icon: 'Checkmark with right icon' }}
-				buttonVariant="icon"
-				checkmark
-				iconCategory="utility"
-				iconName="side_list"
-				iconSize="large"
-				iconVariant="more"
-				align="right"
-				onSelect={(value) => {
-					console.log('selected: ', value);
-				}}
-				options={[
-					{ label: 'Display As', type: 'header' },
-					{
-						label: 'Table View',
-						value: 'A0',
-						rightIcon: {
-							category: 'utility',
-							name: 'table',
-						},
-					},
-					{
-						label: 'List View',
-						value: 'B0',
-						rightIcon: {
-							category: 'utility',
-							name: 'side_list',
-						},
-					},
-				]}
-				value="B0"
-			/>
+			<DisplayAsDropdown />
 		</PageHeaderControl>
 		<PageHeaderControl>
 			<Button
@@ -133,8 +140,7 @@ const headerTitle = (
 					{ type: 'divider' },
 					{ label: 'Menu Item Four', value: 'D0' },
 				]}
-			>
-				<DropdownTrigger>
+				trigger={
 					<Button
 						className="slds-button_reset slds-type-focus"
 						iconCategory="utility"
@@ -144,8 +150,8 @@ const headerTitle = (
 						responsive
 						variant="base"
 					/>
-				</DropdownTrigger>
-			</Dropdown>
+				}
+			/>
 		</h1>
 	</div>
 );
@@ -154,27 +160,18 @@ const headerTitle = (
  * Custom list item
  * @param props
  */
-const CustomListItem = (props) => (
+const renderListItem = ({ item }) => (
 	<div>
 		<Icon
 			category="action"
-			name={props.item.status === 'Contacted' ? 'check' : 'call'}
+			name={item.status === 'Contacted' ? 'check' : 'call'}
 			size="x-small"
 		/>
 		<span className="slds-text-heading_small slds-m-left_medium">
-			{props.item.name}
+			{item.name}
 		</span>
 	</div>
 );
-
-CustomListItem.propsTypes = {
-	item: PropTypes.shape({
-		status: PropTypes.string,
-		name: PropTypes.string,
-	}),
-};
-
-CustomListItem.displayName = 'CustomListItem';
 
 class Example extends React.Component {
 	constructor(props) {
@@ -182,8 +179,8 @@ class Example extends React.Component {
 
 		this.state = {
 			options: listOptions,
-			selected: [listOptions[listOptions.length - 2]],
-			unread: [listOptions[0], listOptions[2]],
+			selected: [listOptions[listOptions.length - 2].id],
+			unread: [listOptions[0].id, listOptions[2].id],
 			sortDirection: SORT_OPTIONS.DOWN,
 		};
 
@@ -210,8 +207,8 @@ class Example extends React.Component {
 		return [
 			<SplitViewHeader
 				key="1"
-				onRenderActions={headerActions}
-				onRenderControls={headerControls}
+				actions={headerActions()}
+				controls={headerControls()}
 				icon={
 					<Icon
 						assistiveText={{ label: 'User' }}
@@ -233,23 +230,29 @@ class Example extends React.Component {
 				options={this.state.options}
 				events={{
 					onSort: this.sortList,
-					onSelect: (event, { selectedItems, item }) => {
+					onSelect: (event, { selection, item }) => {
 						this.setState({
-							unread: this.state.unread.filter((i) => i !== item),
-							selected: selectedItems,
+							unread: this.state.unread.filter((id) => id !== item.id),
+							selected: selection,
 						});
 					},
 				}}
 				selection={this.state.selected}
 				unread={this.state.unread}
-				listItem={CustomListItem}
+				renderListItem={renderListItem}
 			/>,
 		];
 	}
 
+	selectedOptions() {
+		return this.state.options.filter((option) =>
+			this.state.selected.includes(option.id)
+		);
+	}
+
 	detailView() {
 		return this.state.selected.length ? (
-			this.state.selected.map((item) => (
+			this.selectedOptions().map((item) => (
 				<dl
 					key={item.id}
 					className="slds-box slds-m-left_medium slds-m-bottom_medium slds-list_horizontal slds-wrap"

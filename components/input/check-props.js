@@ -3,13 +3,12 @@
 /* eslint-disable import/no-mutable-exports */
 /* eslint-disable max-len */
 
-import deprecatedProperty from '../../utilities/warning/deprecated-property';
-import sunsetProperty from '../../utilities/warning/sunset-property';
 // import oneOfRequiredProperty from '../../../utilities/warning/one-of-required-property';
 import onlyOneOfProperties from '../../utilities/warning/only-one-of-properties';
+import sunsetProperty from '../../utilities/warning/sunset-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
 
-import { INPUT, SEARCH } from '../../utilities/constants';
+import { INPUT } from '../../utilities/constants';
 
 let checkProps = function checkPropsFunction() {};
 
@@ -18,62 +17,21 @@ if (process.env.NODE_ENV !== 'production') {
 		const createDocUrl = getComponentDocFn(jsonDoc);
 
 		if (COMPONENT === INPUT) {
-			const iconDeprecatedMessage = `Please use \`iconLeft\` and \`iconRight\` to pass in a customized <Icon> component. ${createDocUrl()}`;
+			sunsetProperty(
+				COMPONENT,
+				props.defaultValue !== undefined,
+				'defaultValue',
+				'Input is controlled: pass `value` and update it in `onChange`.'
+			);
 
-			// Deprecated and changed to another property
-			deprecatedProperty(
+			sunsetProperty(
 				COMPONENT,
 				props.assistiveText && props.assistiveText.fieldLevelHelpButton,
 				'assistiveText.fieldLevelHelpButton',
-				undefined,
-				`Please pass a \`Tooltip\` component into \`fieldLevelHelpTooltip\` with \`assistiveText.triggerLearnMoreIcon\`.`
+				`Pass a \`Tooltip\` to \`fieldLevelHelpTooltip\` and set its \`assistiveText.triggerLearnMoreIcon\`. ${createDocUrl(
+					'fieldLevelHelpTooltip'
+				)}`
 			);
-			deprecatedProperty(
-				COMPONENT,
-				props.iconCategory,
-				'iconCategory',
-				undefined,
-				iconDeprecatedMessage
-			);
-			deprecatedProperty(
-				COMPONENT,
-				props.iconName,
-				'iconName',
-				undefined,
-				iconDeprecatedMessage
-			);
-			deprecatedProperty(
-				COMPONENT,
-				props.iconPosition,
-				'iconPosition',
-				undefined,
-				iconDeprecatedMessage
-			);
-			deprecatedProperty(
-				COMPONENT,
-				props.iconAssistiveText,
-				'iconAssistiveText',
-				undefined,
-				iconDeprecatedMessage
-			);
-			deprecatedProperty(
-				COMPONENT,
-				props.onIconClick,
-				'onIconClick',
-				undefined,
-				iconDeprecatedMessage
-			);
-
-			if (typeof props.assistiveText === 'string') {
-				sunsetProperty(
-					COMPONENT,
-					props.assistiveText,
-					'assistiveText',
-					`AssistiveText as a string has been deprecated and is now an object to allow for multiple uses in the component. Please use either assistiveText.label or assistiveText.spinner. ${createDocUrl(
-						'assistiveText'
-					)}`
-				);
-			}
 
 			onlyOneOfProperties(
 				COMPONENT,
@@ -104,17 +62,6 @@ if (process.env.NODE_ENV !== 'production') {
 				});
 			}
 			*/
-		} else if (COMPONENT === SEARCH) {
-			if (typeof props.assistiveText === 'string') {
-				sunsetProperty(
-					COMPONENT,
-					props.assistiveText,
-					'assistiveText',
-					`\`assistiveText\` as a string has been deprecated and is now an object to allow for multiple uses in the component. Please use \`assistiveText.label\` instead. ${createDocUrl(
-						'assistiveText'
-					)}`
-				);
-			}
 		}
 	};
 }

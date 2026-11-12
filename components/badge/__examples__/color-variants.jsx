@@ -34,6 +34,19 @@ class Example extends React.Component {
 					}
 				/>
 				<Badge
+					id="badge-base-example-info"
+					color="info"
+					content="423 Credits Available"
+					icon={
+						<Icon
+							category="utility"
+							name="moneybag"
+							size="xx-small"
+							colorVariant="base"
+						/>
+					}
+				/>
+				<Badge
 					id="badge-base-example-success"
 					color="success"
 					content="423 Credits Available"

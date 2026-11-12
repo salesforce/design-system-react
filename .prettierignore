@@ -2,7 +2,6 @@
 package.json
 package-lock.json
 components/component-docs.json
-utilities/design-tokens/dist
 icons
 coverage
 storybook

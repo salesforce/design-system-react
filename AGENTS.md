@@ -1,0 +1,70 @@
+# Agent Guide: Design System React
+
+Instructions for AI coding agents (and a quick-start for humans) working in this repo. For conventions and rationale, read [docs/codebase-overview.md](docs/codebase-overview.md) — start at [Creating a New Component](docs/codebase-overview.md#creating-a-new-component) before writing component code. Human contributor setup is in [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Commands
+
+Setup: Node >= 24 (`.nvmrc`), `npm install`, then `npx playwright install chromium` for the browser test project.
+
+Never run bare `npm test` — it starts Vitest in watch mode and will not exit.
+
+| Command                  | Purpose                                                                        |
+| ------------------------ | ------------------------------------------------------------------------------ |
+| `npm run typecheck`      | `tsc --noEmit`                                                                 |
+| `npm run lint`           | ESLint; must be 0 errors (warnings are the tracked migration backlog)          |
+| `npm test -- --run`      | All tests: jsdom `unit` project, real-browser `browser` project, and snapshots |
+| `npm test -- --run -u`   | Same, and regenerate story HTML snapshots                                      |
+| `npm run build`          | Type-check, library build, `.d.ts`, entry shims                                |
+| `npm run test:snapshots` | Story HTML snapshot suite only (~3s)                                           |
+| `npm run test:ci`        | Everything CI runs: typecheck, test, build, lint                               |
+
+Run `npm run test:ci` before requesting review. A husky pre-push hook runs `test:snapshots` and blocks the push if snapshots are stale.
+
+## Things that are easy to miss
+
+- **Stories are test fixtures, not just demos.** Every story in `components/**/__docs__/*.stories.{jsx,tsx}` (except portal-rendered ones, which need component tests instead) is rendered into `components/__tests__/__snapshots__/story-snapshots.test.jsx.snap`. If you add, remove, or change a story, or change a component's rendered markup, run `npm test -- --run -u`, review the snapshot diff, and commit it in the same PR.
+- **A filtered test run does not run the snapshot suite.** `npm test -- --run components/combobox` skips `components/__tests__/story-snapshots.test.jsx`. Always finish with an unfiltered run.
+- **Local runs write new snapshots silently.** Outside CI, a plain `npm test -- --run` passes and writes snapshots for new stories without failing; CI then fails if they aren't committed. `test:ci` and `test:snapshots` pass `--update=none` to behave like CI. Check `git status` for `.snap` changes before pushing.
+- **Stories must use the component's real prop API.** Cross-check against `components/<name>/__examples__` and `types.ts`; stories written against an assumed API are a common source of "component looks broken" reports.
+- **jsdom vs. browser tests.** Tests that need a real browser (focus traversal, layout/measurement) go in `*.browser.test.jsx`; everything else is jsdom.
+- **New scripts in `scripts/` are TypeScript.** Write `.ts` and run it with `tsx` (as `release.ts` and `tinynod-pre-push-review.ts` are); `npm run typecheck` covers them via `tsconfig.scripts.json`. The remaining `.mjs`/`.js` scripts predate this rule; convert one when you substantially change it. Tests in `scripts/__tests__/` stay `*.test.mjs`, the pattern the `scripts` Vitest project picks up.
+- **Types are the contract.** Runtime PropTypes were removed in the TypeScript migration; the generated `.d.ts` files are what consumers get.
+- **Restoring or mirroring existing behavior** (stories lost in a rewrite, parity with another implementation): build the inventory from git (`git show <old-ref>:<path>`, `git log --follow`), not from memory, and list the before/after set in the PR description.
+
+## Git and pull requests
+
+- **Maintainers:** push branches to `salesforce/design-system-react`, not a personal fork. Chromatic runs on push, so fork PRs get no visual review. External contributors fork as described in CONTRIBUTING.md.
+- **Conventional commits** are enforced by commitlint (`fix:`, `feat:`, `docs:`, `chore:`, `test:`, `style:`, …). Public API removals or renames are breaking: use `!` and a `BREAKING CHANGE:` footer.
+- **Keep lint/format-only changes in their own commit** (`style:`), separate from the `fix:`/`feat:` commit, so the functional diff is reviewable.
+- **Rebase on `master` and resolve conflicts before requesting review.**
+- Fill in [docs/PULL_REQUEST_TEMPLATE.md](docs/PULL_REQUEST_TEMPLATE.md). For bug fixes, state the root cause, not just the symptom, and add a regression test.
+
+## Optional TinyNod review
+
+Salesforce employees can opt in to an advisory AI review on `git push` ([guide](docs/tinynod-local-review.md); adapter `scripts/tinynod-pre-push-review.ts`). If you are an agent working for one, suggest it when you are about to push or open a PR and `git config --get dsr.tinynod.enabled` is unset; don't enable it or edit TinyNod config yourself, since it sends the diff to an internal gateway.
+
+- When the hook printed a `pre-push: tinynod review` line, report its status (`clean`, `findings`, `partial`, `no_changes`, `warning`) or skip reason in your handoff. Fix or triage findings before requesting review, and list the ones you judged false positives.
+- Never claim a change was reviewed by TinyNod when the review was skipped, timed out, or ended in `warning`.
+- Never use `TINYNOD_SKIP_HOOK=1` to hide findings, and never use `HUSKY=0` or `--no-verify` to skip the snapshot check.
+- Don't run `tinynod hooks install` or change `core.hooksPath`; husky owns the hooks.
+
+## Releasing
+
+Maintainers: `npm run release-pr -- next` (or an explicit version such as `11.0.0-alpha.4`) bumps `package.json` on `chore/release-<version>` cut from `origin/master`, commits, pushes, and opens the PR (add `--dry-run` to preview). Once it merges, create the GitHub Release with `gh release create v<version> --target master --generate-notes` (add `--prerelease` for alpha/beta/rc), which triggers `.github/workflows/npm-publish.yml` to publish to npm. See `scripts/release.ts` for details.
+
+For a maintenance line, add `--base <branch>`: `npm run release-pr -- next --base 0.10.x` cuts `chore/release-0.10.66` from `origin/0.10.x` (`next` patch-bumps a stable version there) and opens the PR against that branch. After it merges, `gh release create v<version> --target 0.10.x --generate-notes` runs that branch's own publish workflow. A stable maintenance release publishes under npm's `latest` dist-tag, which is right while the current major is in prerelease.
+
+## Scratch files
+
+Agent-generated notes, plans, and analyses go in `.planning/` (gitignored). Don't commit them.
+
+## Reference
+
+Sections of [docs/codebase-overview.md](docs/codebase-overview.md) to check when a decision is ambiguous:
+
+- [Props Conventions](docs/codebase-overview.md#props-conventions) — naming, callbacks, `labels`/`assistiveText`, boolean defaults
+- [TypeScript Patterns](docs/codebase-overview.md#typescript-patterns)
+- [SLDS Alignment](docs/codebase-overview.md#slds-alignment) — only SLDS-approved components and markup
+- [Accessibility](docs/codebase-overview.md#accessibility) — focus management, keyboard navigation, ARIA
+- [Testing](docs/codebase-overview.md#testing)
+- [Breaking-Change Taxonomy](docs/codebase-overview.md#breaking-change-taxonomy)

@@ -1,0 +1,397 @@
+import { createRef, useState } from 'react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { describe, it, expect, vi, afterEach } from 'vitest';
+
+import VerticalNavigation from '../index';
+import { sampleReportCategories } from '../../../utilities/sample-data/vertical-navigation';
+
+const defaultProps = {
+	id: 'sample-navigation',
+	className: 'sample-navigation',
+	categories: sampleReportCategories,
+	onSelect: () => {},
+	selectedId: 'recent_reports',
+};
+
+describe('SLDSVerticalNavigation', () => {
+	describe('Assistive technology', () => {
+		it('has items described by category headers', () => {
+			const { container } = render(<VerticalNavigation {...defaultProps} />);
+
+			const structure = { reports: 5, folders: 3 };
+			Object.entries(structure).forEach(([categoryId, itemCount]) => {
+				// Find category header
+				const header = container.querySelector(
+					`#sample-navigation-${categoryId}`
+				);
+				expect(header).toBeInTheDocument();
+				expect(header.tagName).toBe('H2');
+
+				// Find items described by this header
+				const links = container.querySelectorAll(
+					`[aria-describedby="sample-navigation-${categoryId}"]`
+				);
+				expect(links).toHaveLength(itemCount);
+			});
+		});
+
+		it('has proper navigation structure', () => {
+			const { container } = render(<VerticalNavigation {...defaultProps} />);
+
+			// Root should be a nav element
+			const nav = container.querySelector('nav#sample-navigation');
+			expect(nav).toBeInTheDocument();
+			expect(nav).toHaveClass('slds-nav-vertical', 'sample-navigation');
+
+			// Should have sections for each category
+			const sections = container.querySelectorAll(
+				'.slds-nav-vertical__section'
+			);
+			expect(sections).toHaveLength(2); // reports and folders
+
+			// Each section should have a title and list
+			sections.forEach((section) => {
+				expect(
+					section.querySelector('h2.slds-nav-vertical__title')
+				).toBeInTheDocument();
+				expect(section.querySelector('ul')).toBeInTheDocument();
+			});
+		});
+
+		it('uses aria-current for selected item', () => {
+			const { container } = render(
+				<VerticalNavigation {...defaultProps} selectedId="my_folders" />
+			);
+
+			const selectedLink = container.querySelector('a[data-id="my_folders"]');
+			expect(selectedLink).toHaveAttribute('aria-current', 'page');
+
+			// Other links should not have aria-current
+			const otherLink = container.querySelector('[data-id="recent_reports"]');
+			expect(otherLink).not.toHaveAttribute('aria-current');
+		});
+	});
+
+	describe('selectedId prop', () => {
+		const selectedId = 'my_folders';
+
+		it('is used to select an item', () => {
+			const { container } = render(
+				<VerticalNavigation {...defaultProps} selectedId={selectedId} />
+			);
+
+			// Find the selected item
+			const selectedItem = container.querySelector('li.slds-is-active');
+			expect(selectedItem).toBeInTheDocument();
+
+			// Verify it's the correct item
+			const link = selectedItem.querySelector('a[data-id="my_folders"]');
+			expect(link).toBeInTheDocument();
+		});
+
+		it('selects no item when selectedId is null', () => {
+			const { container } = render(
+				<VerticalNavigation {...defaultProps} selectedId={null} />
+			);
+
+			expect(container.querySelector('li.slds-is-active')).toBeNull();
+			expect(container.querySelector('[aria-current]')).toBeNull();
+		});
+
+		describe('when selectedId is missing', () => {
+			afterEach(() => {
+				vi.restoreAllMocks();
+			});
+
+			it('no longer defaults to the first item, and warns', () => {
+				const consoleError = vi
+					.spyOn(console, 'error')
+					.mockImplementation(() => {});
+				const { container } = render(
+					<VerticalNavigation {...defaultProps} selectedId={undefined} />
+				);
+
+				expect(container.querySelector('li.slds-is-active')).toBeNull();
+				expect(consoleError).toHaveBeenCalledWith(
+					expect.stringContaining('`selectedId` is required')
+				);
+			});
+		});
+
+		it('honors the controlled selectedId: clicking does not change the selection', async () => {
+			const onSelect = vi.fn((event) => event.preventDefault());
+			const { container } = render(
+				<VerticalNavigation {...defaultProps} onSelect={onSelect} />
+			);
+
+			await userEvent.click(container.querySelector('a[data-id="my_folders"]'));
+
+			expect(onSelect).toHaveBeenCalledTimes(1);
+			expect(onSelect.mock.calls[0][1].item.id).toBe('my_folders');
+			expect(
+				container
+					.querySelector('li.slds-is-active .slds-nav-vertical__action')
+					.getAttribute('data-id')
+			).toBe('recent_reports');
+		});
+
+		it('changes the selection when the parent updates selectedId from onSelect', async () => {
+			const Controlled = () => {
+				const [selectedId, setSelectedId] = useState('recent_reports');
+				return (
+					<VerticalNavigation
+						{...defaultProps}
+						onSelect={(event, { item }) => {
+							event.preventDefault();
+							setSelectedId(item.id);
+						}}
+						selectedId={selectedId}
+					/>
+				);
+			};
+			const { container } = render(<Controlled />);
+
+			await userEvent.click(container.querySelector('a[data-id="my_folders"]'));
+
+			expect(
+				container
+					.querySelector('li.slds-is-active .slds-nav-vertical__action')
+					.getAttribute('data-id')
+			).toBe('my_folders');
+		});
+
+		it('marks only one item as selected', () => {
+			const { container } = render(
+				<VerticalNavigation {...defaultProps} selectedId="my_folders" />
+			);
+
+			const selectedItems = container.querySelectorAll('li.slds-is-active');
+			expect(selectedItems).toHaveLength(1);
+		});
+	});
+
+	describe('Item rendering', () => {
+		it('renders all categories and items', () => {
+			const { container } = render(<VerticalNavigation {...defaultProps} />);
+
+			// Check Reports category
+			expect(screen.getByText('Reports')).toBeInTheDocument();
+			expect(screen.getByText('Recent')).toBeInTheDocument();
+			expect(screen.getByText('Private Reports')).toBeInTheDocument();
+			expect(screen.getByText('Public Reports')).toBeInTheDocument();
+			expect(screen.getByText('All Reports')).toBeInTheDocument();
+
+			// Check Folders category
+			expect(screen.getByText('Folders')).toBeInTheDocument();
+			expect(screen.getByText('Shared with Me')).toBeInTheDocument();
+			expect(screen.getByText('All Folders')).toBeInTheDocument();
+
+			// Check both "Created by Me" items exist (one in Reports, one in Folders)
+			const createdByMeLinks = screen.getAllByText('Created by Me');
+			expect(createdByMeLinks).toHaveLength(2);
+		});
+
+		it('renders items with correct structure', () => {
+			const { container } = render(<VerticalNavigation {...defaultProps} />);
+
+			// Each item should be an li with proper classes
+			const items = container.querySelectorAll('li.slds-nav-vertical__item');
+			expect(items.length).toBeGreaterThan(0);
+
+			// Each item should have a link with proper class
+			items.forEach((item) => {
+				const link = item.querySelector('.slds-nav-vertical__action');
+				expect(link).toBeInTheDocument();
+			});
+		});
+
+		it('renders links with href from item.url', () => {
+			const { container } = render(<VerticalNavigation {...defaultProps} />);
+
+			// The "my_folders" item has a url in the sample data
+			const myFoldersLink = container.querySelector('a[data-id="my_folders"]');
+			expect(myFoldersLink).toHaveAttribute('href', 'http://www.google.com');
+		});
+
+		it('renders items without url as buttons', () => {
+			const { container } = render(
+				<VerticalNavigation {...defaultProps} selectedId="recent_reports" />
+			);
+
+			expect(container.querySelector('[href="#"]')).toBeNull();
+			const recent = container.querySelector('[data-id="recent_reports"]');
+			expect(recent.tagName).toBe('BUTTON');
+			expect(recent).toHaveAttribute('type', 'button');
+			expect(recent).toHaveClass('slds-nav-vertical__action');
+			expect(recent).toHaveAttribute('aria-current', 'page');
+		});
+	});
+
+	describe('Item interaction', () => {
+		it('calls onSelect when item is clicked', async () => {
+			const onSelect = vi.fn();
+			const { container } = render(
+				<VerticalNavigation {...defaultProps} onSelect={onSelect} />
+			);
+
+			const link = container.querySelector('a[data-id="my_folders"]');
+			await userEvent.click(link);
+
+			expect(onSelect).toHaveBeenCalledTimes(1);
+			expect(onSelect).toHaveBeenCalledWith(
+				expect.any(Object), // event
+				expect.objectContaining({
+					item: expect.objectContaining({
+						id: 'my_folders',
+						label: 'Created by Me',
+					}),
+				})
+			);
+		});
+
+		it('calls onSelect for items without url', async () => {
+			const onSelect = vi.fn();
+			const { container } = render(
+				<VerticalNavigation {...defaultProps} onSelect={onSelect} />
+			);
+
+			const button = container.querySelector(
+				'button[data-id="recent_reports"]'
+			);
+			await userEvent.click(button);
+
+			expect(onSelect).toHaveBeenCalledTimes(1);
+			expect(onSelect).toHaveBeenCalledWith(
+				expect.any(Object),
+				expect.objectContaining({
+					item: expect.objectContaining({
+						id: 'recent_reports',
+						label: 'Recent',
+					}),
+				})
+			);
+		});
+
+		it('selects items without url from the keyboard', async () => {
+			const onSelect = vi.fn();
+			const { container } = render(
+				<VerticalNavigation {...defaultProps} onSelect={onSelect} />
+			);
+
+			container.querySelector('button[data-id="recent_reports"]').focus();
+			await userEvent.keyboard('{Enter}');
+			await userEvent.keyboard(' ');
+
+			expect(onSelect).toHaveBeenCalledTimes(2);
+		});
+	});
+
+	describe('className prop', () => {
+		it('applies custom className', () => {
+			const { container } = render(
+				<VerticalNavigation {...defaultProps} className="custom-class" />
+			);
+
+			const nav = container.querySelector('nav');
+			expect(nav).toHaveClass('slds-nav-vertical', 'custom-class');
+		});
+
+		it('works without className', () => {
+			const { container } = render(
+				<VerticalNavigation {...defaultProps} className={undefined} />
+			);
+
+			const nav = container.querySelector('nav');
+			expect(nav).toHaveClass('slds-nav-vertical');
+			expect(nav).not.toHaveClass('undefined');
+		});
+	});
+
+	describe('id prop', () => {
+		it('uses provided id', () => {
+			const { container } = render(
+				<VerticalNavigation {...defaultProps} id="custom-nav-id" />
+			);
+
+			const nav = container.querySelector('nav#custom-nav-id');
+			expect(nav).toBeInTheDocument();
+
+			// Category IDs should be based on the nav id
+			expect(
+				container.querySelector('#custom-nav-id-reports')
+			).toBeInTheDocument();
+			expect(
+				container.querySelector('#custom-nav-id-folders')
+			).toBeInTheDocument();
+		});
+
+		it('generates id when not provided', () => {
+			const { container } = render(
+				<VerticalNavigation
+					categories={sampleReportCategories}
+					onSelect={() => {}}
+					selectedId={null}
+				/>
+			);
+
+			const nav = container.querySelector('nav');
+			expect(nav).toBeInTheDocument();
+			expect(nav.id).toBeTruthy(); // Should have some generated ID
+		});
+	});
+
+	describe('Empty categories', () => {
+		it('handles empty categories array', () => {
+			const { container } = render(
+				<VerticalNavigation
+					id="empty-nav"
+					categories={[]}
+					onSelect={() => {}}
+					selectedId={null}
+				/>
+			);
+
+			const nav = container.querySelector('nav#empty-nav');
+			expect(nav).toBeInTheDocument();
+			expect(
+				nav.querySelector('.slds-nav-vertical__section')
+			).not.toBeInTheDocument();
+		});
+
+		it('handles category with empty items', () => {
+			const emptyCategory = [
+				{
+					id: 'empty',
+					label: 'Empty Category',
+					items: [],
+				},
+			];
+
+			render(
+				<VerticalNavigation
+					id="nav-empty-items"
+					categories={emptyCategory}
+					onSelect={() => {}}
+					selectedId={null}
+				/>
+			);
+
+			expect(screen.getByText('Empty Category')).toBeInTheDocument();
+			// Should render the category but no items
+		});
+	});
+
+	describe('className and ref', () => {
+		it('puts className and ref on the root nav.slds-nav-vertical element', () => {
+			const ref = createRef();
+			const { container } = render(
+				<VerticalNavigation {...defaultProps} ref={ref} />
+			);
+			const root = container.firstChild;
+			expect(root.tagName).toBe('NAV');
+			expect(root).toHaveClass('slds-nav-vertical', 'sample-navigation');
+			expect(ref.current).toBe(root);
+		});
+	});
+});

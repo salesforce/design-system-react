@@ -3,7 +3,6 @@ import React from 'react';
 import Button from '~/components/button';
 import ButtonGroup from '~/components/button-group';
 import Dropdown from '~/components/menu-dropdown';
-import DropdownTrigger from '~/components/menu-dropdown/button-trigger';
 import IconSettings from '~/components/icon-settings';
 import PageHeader from '~/components/page-header';
 import PageHeaderControl from '~/components/page-header/control';
@@ -63,8 +62,7 @@ class Example extends React.Component {
 							{ type: 'divider' },
 							{ label: 'Menu Item Four', value: 'D0' },
 						]}
-					>
-						<DropdownTrigger>
+						trigger={
 							<Button
 								assistiveText={{ icon: 'Change view' }}
 								iconCategory="utility"
@@ -72,8 +70,8 @@ class Example extends React.Component {
 								iconVariant="more"
 								variant="icon"
 							/>
-						</DropdownTrigger>
-					</Dropdown>
+						}
+					/>
 				</PageHeaderControl>
 				<PageHeaderControl>
 					<ButtonGroup variant="list" id="button-group-page-header-controls">
@@ -113,16 +111,20 @@ class Example extends React.Component {
 		);
 
 		const trail = [
-			<a href="#accounts">Accounts</a>,
-			<a href="#company-one">Company One</a>,
+			<a key="accounts" href="#accounts">
+				Accounts
+			</a>,
+			<a key="company-one" href="#company-one">
+				Company One
+			</a>,
 		];
 
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<PageHeader
 					info="10 items • sorted by name"
-					onRenderActions={actions}
-					onRenderControls={controls}
+					actions={actions()}
+					controls={controls()}
 					title="Contacts (will truncate)"
 					trail={trail}
 					truncate

@@ -2,7 +2,6 @@ import React from 'react';
 
 import IconSettings from '~/components/icon-settings';
 import Dropdown from '~/components/menu-dropdown'; // `~` is replaced with design-system-react at runtime
-import DropdownTrigger from '~/components/menu-dropdown/button-trigger'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button/'; // `~` is replaced with design-system-react at runtime
 
 class Example extends React.Component {
@@ -25,16 +24,18 @@ class Example extends React.Component {
 						{ type: 'divider' },
 						{ label: 'Menu Item Seven', value: 'G0' },
 					]}
-				>
-					<DropdownTrigger>
+					// `trigger` is the element that opens the menu. A `Button` takes MenuDropdown's
+					// button props as defaults, which its own props override. Any other focusable
+					// element works too, or a function that receives the trigger props and places them.
+					trigger={
 						<Button
 							iconCategory="utility"
 							iconName="down"
 							iconPosition="right"
 							label="Dropdown"
 						/>
-					</DropdownTrigger>
-				</Dropdown>
+					}
+				/>
 			</IconSettings>
 		);
 	}

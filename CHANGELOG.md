@@ -1,0 +1,308 @@
+# Changelog
+
+All notable changes to this project are documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html). v11 is in alpha and published under the `alpha` npm tag; breaking changes can land in any `11.0.0-alpha.*` release. The stable 0.10.x line is maintained on the [`0.10.x` branch](https://github.com/salesforce/design-system-react/tree/0.10.x).
+
+## [Unreleased]
+
+### Added
+
+- `Button`: `xx-small` icon size ([#3228](https://github.com/salesforce/design-system-react/pull/3228))
+- `ButtonStateful`: `success` and `text` variants ([#3234](https://github.com/salesforce/design-system-react/pull/3234))
+- `Tree`: `onSelect(event, { node, isSelected })` and `onRequestToggle(event, { node, isExpanded })`, both reporting the requested state. `onRequestToggle` fires only for real expand/collapse requests; Left arrow on an item or collapsed branch selects the parent through `onSelect` and leaves it expanded
+- `SplitView`: `events.onToggle(event, { isOpen })`, where `isOpen` is the requested state
+- `PillContainer`: `events` prop (`{ onClickPill, onRequestRemovePill }`), with the same `(event, { index, option })` signatures as the flat props
+- `Tree`: `onScroll` data includes `ratio` (0–1, `0` when the list cannot scroll)
+- Callbacks that took no arguments now receive `(event, data)`, so existing handlers keep working:
+  - `Toast` `onRequestClose(event, { trigger })`: `trigger` is `'close-button'`, or `'timeout'` with `event` `undefined`
+  - `Modal` and `WelcomeMat` `onRequestClose(event, { trigger })`: `'close-button' | 'escape' | 'click-outside'`
+  - `DatePicker` `onRequestOpen(event, { trigger })` (`'input-click' | 'icon-click' | 'keyboard'`), `onRequestClose(event, { trigger })` (`'date-select' | 'escape' | 'enter' | 'click-outside'`; the outside-click event is the native `mousedown`/`touchstart`), and `onClose(undefined, { componentWillUnmount })`
+  - `MenuDropdown` `onOpen(event, {})` and `onClose(event, {})`
+- Exported data types for these callbacks, such as `TabsSelectData`, `MenuDropdownSelectData`, `ToastRequestCloseData`, `ModalRequestCloseData`, `PopoverRequestCloseTrigger`, `TreeNodeSelectData` and `SplitViewToggleData`
+- Uncontrolled starting state for ephemeral UI state. A component is controlled when the value prop (`isOpen`, `currentPanel`, `isAutoplayOn`, `expandedIds`) is not `undefined`, and manages its own state otherwise:
+  - `defaultIsOpen` on `Popover`, `Tooltip`, `DatePicker`, `ColorPicker`, `Combobox`, `MenuDropdown` and `SetupAssistantStep`
+  - `defaultIsOpen` on `ExpandableSection` and `SplitView`, which defaults to `true` so they still start open
+  - `Carousel` `defaultCurrentPanel` and `defaultIsAutoplayOn`
+  - `Tree` `defaultExpandedIds`
+- Request callbacks that fire for every open or close request, controlled or not:
+  - `Popover` `onRequestOpen(event, { trigger })`, with `'triggerClick' | 'mouseEnter' | 'focus'`
+  - `Tooltip` `onRequestOpen(event, { trigger })` (`'mouseEnter' | 'focus'`) and `onRequestClose(event, { trigger })` (`'mouseLeave' | 'blur' | 'cancel' | 'clickOutside'`)
+  - `MenuDropdown` `onRequestOpen` and `onRequestClose`
+  - New triggers: `DatePicker` `onRequestClose` `'input-change'` when the user types, and `ColorPicker` `onRequestClose` `'submit'` from Done
+- `Tree` `selectedIds` and `expandedIds`, reported as `data.selectedIds` in `onSelect` and `data.expandedIds` in `onRequestToggle`
+- `TabsPanel` `value`, and `value` and `previousValue` in `Tabs` `onSelect` data
+- `MenuDropdown` `onSelect` data `value`: the requested value, which is the option's value or, with `multiple`, the current array with that value toggled. New types `MenuDropdownValue`, `MenuDropdownRequestOpenData` and `MenuDropdownRequestCloseData`
+- `SplitViewListbox` `events.onSelect` data `selection`, the requested list of selected item ids
+- `Textarea` `onChange(event, { value })`, with the `TextareaChangeData` type
+- `RadioGroupItemProps`, the props type for a `Radio` inside `RadioGroup` or `RadioButtonGroup`, which doesn't need `checked` or `onChange`
+- `useControllableState` hook in `utilities/hooks/use-controllable-state`, for state that is controlled when its prop is not `undefined`
+- `Slider`, `Spinner`, `Tree`, `Modal`, `Popover`, `WelcomeMat` and `VerticalNavigation` forward `ref` to their root element: the outermost element each one renders, which is also where `className` goes. For `Modal` that is `section.slds-modal`, for `Popover` the trigger wrapper `div`, and for `Spinner` the `.slds-spinner_container` (or `.slds-spinner` with `hasContainer={false}`)
+- Suffixed class and style props for inner nodes, following the `className*` convention:
+  - `Slider` `className` on the root `.slds-form-element`
+  - `Spinner` `className` and `style` on the root, and `classNameSpinner` on `.slds-spinner`
+  - `Tree` `classNameList` and `styleList` on the top-level `ul.slds-tree`
+  - `Modal` `classNameContainer`, `classNameContent`, `classNameFooter`, `classNameHeader`, `classNamePortal` and `styleContent`
+  - `Popover` `classNameDialog` and `styleDialog` on the `.slds-popover` dialog, and `styleFooter` (applied to walkthrough footers too, like `classNameFooter`)
+- `trigger` prop on `Tooltip` and `MenuDropdown`. Pass an element, which the component merges its trigger props into, or a function that receives them (`TooltipTriggerProps`, `MenuDropdownTriggerProps`) for full control. With an element, your props win, event handlers are composed (yours runs first), and `className`, `aria-describedby` and `aria-labelledby` are joined. For `MenuDropdown`, a `Button` element takes the dropdown's button props as defaults
+- `Filter` `errorLabel` is declared in the types. `PanelFilterList` already read it
+- `Popover` `openOn="none"`: the first child is only an anchor the popover points at, such as a walkthrough step's target, and the parent opens and closes it through `isOpen`. Popover adds no `id`, `aria-haspopup`, `tabIndex` or handlers to it
+- `WelcomeMatInfoBadge` `assistiveText.image`, alt text for the badge image (default `''`, decorative)
+- `ColorPicker` `events.onOpen`, `events.onClose`, `events.onRequestOpen` and `events.onRequestClose`, which were typed but never called. `onRequestClose` data `trigger` is typed `ColorPickerRequestCloseTrigger`, exported with `ColorPickerRequestCloseData`
+- `ColorPicker` `validateColor` and `validateWorkingColor` props (see Deprecated)
+- `useLatestRef` hook in `utilities/hooks/use-latest-ref`, for reading the latest consumer callbacks from stable handlers
+
+### Changed
+
+- `Card`, `Input`, `Textarea`: the `header` merge, `iconLeft`/`iconRight` `iconPosition` and `children` placement are documented in the prop types
+- **BREAKING**: `Tabs` `onSelect` is called as `onSelect(event, { selectedIndex, previousIndex })` instead of `onSelect(selectedIndex, lastIndex)`. Returning `false` no longer cancels the selection; to stop a tab change, update `value` from `onSelect` only when the change should happen
+- **BREAKING**: `MenuDropdown` `onSelect` is called as `onSelect(event, { option, optionIndex })`; the first argument was the option. Change `(option) => …` to `(event, { option }) => …`; handlers that read the second argument need no change. Clicking custom (non-`List`) content no longer calls `onSelect` with an empty option; use `onClose` instead. `SimpleDataTableRowActions` `onAction` changed separately (below)
+- **BREAKING**: `SimpleDataTable` `onSort` is called as `onSort(event, { property, sortDirection })` instead of `onSort({ property, sortDirection }, event)`, and `SimpleDataTableRowActions` `onAction` as `onAction(event, { item, option })` instead of `onAction(item, option)`. Change `(data) => …` to `(event, data) => …` and `(item, option) => …` to `(event, { item, option }) => …`. `onLoadMore`, which took no arguments, now receives `(event, { trigger })` (`'scroll'`, `'resize'` or `'update'`; `event` is `undefined` for `'update'` and for a `ResizeObserver` resize). The deprecated `onFixedHeaderResize` gets `undefined` instead of `null` when there is no event, to match. Adds the `SimpleDataTableLoadMoreData` and `SimpleDataTableRowActionData` types
+- **BREAKING**: `DatePicker` `onCalendarFocus` gets `undefined` instead of `null` as `event` when focus moves because a new month rendered, so `event === null` checks no longer match. Use `!event`, or `event === undefined`. Keyboard moves still pass the keydown event
+- **BREAKING**: `Carousel` `onRequestAutoplayToggle` data `isAutoplayOn` is the requested state, not the current one. Replace `setIsAutoplayOn(!data.isAutoplayOn)` with `setIsAutoplayOn(data.isAutoplayOn)`. Timer-driven `onRequestAutoplayToggle` and `onRequestPanelChange` calls pass `undefined` as the event instead of `{}`, and `onRenderItem` is typed as `({ item }) => ReactElement`, the shape it is called with
+- **BREAKING**: `SetupAssistant` `onStepToggleIsOpen` and `SetupAssistantStep` `onToggleIsOpen` data `isOpen` is the requested state. Replace `expanded[data.index] = !data.isOpen` with `expanded[data.index] = data.isOpen`. `data.step` is typed as the step's props, which is what it has always been at runtime
+- **BREAKING**: `Popover` `onRequestClose` data always includes a `trigger` from `PopoverRequestCloseTrigger`. A trigger click while open reports `'triggerClick'` and a hover close reports `'mouseLeave'` (both passed `{}` before), and Escape passes the keydown event instead of `undefined`. `onOpen(undefined, { portal })` and `onClose(undefined, { componentWillUnmount })` have exported data types
+- **BREAKING**: Data and selection are controlled only. Each component renders its value prop as passed, keeps no internal copy, and reports the requested value through its callback, so update the prop from the callback. A parent that doesn't update it keeps the old value. The removed `default*` props are listed under Removed:
+  - `Checkbox`: `checked` is required, and `indeterminate` stays set by the prop after a click
+  - `Radio`: `checked` and `onChange` are required
+  - `RadioGroup` and `RadioButtonGroup`: `value: string | null` is required and sets each child's `checked`, and `onChange(event, { value, checked })` reports the selected value (`null` on deselect). Pass `value` to the group instead of `checked` to each `Radio`
+  - `ButtonStateful`: renders from the required `isActive` (renamed from `active`) and calls `onClick(event, { isActive })` with the requested state instead of toggling itself
+  - `Input`: the counter variant no longer changes the input when its buttons are pressed; set `value` from `data.value` in `onChange`
+  - `Textarea`: `value` and `onChange` are required, and `onChange` is called as `onChange(event, { value })`
+  - `Slider`: `value` is required, and a slider without it no longer displays `0`
+  - `Tabs`: `value` and `onSelect` are required. `value` is matched against each `TabsPanel` `value`, or the panel's index as a string (`'0'`, `'1'`, …) when it has none. Without `value` (or the deprecated `selectedIndex`) no tab is selected. `onSelect` no longer fires for the selected tab or for keys other than the arrows
+  - `MenuDropdown`: the checkmark and `multiple` selection come only from `value`; update it from `data.value` in `onSelect`. Without `value` nothing is selected (before, the first option without a value matched)
+  - `VerticalNavigation`: `selectedId: string | null` and `onSelect` are required, and omitting `selectedId` no longer selects the first item
+  - `SimpleDataTable`: `selection` is required when `selectRows` is set, so `SimpleDataTableProps` is a union type alias and can no longer be extended with `interface … extends`. `selection` and `disabledSelection` are matched to `items` by `id` (by identity for items without one) instead of a deep partial match, so fresh item objects from a store match. Columns render `sortDirection` only: a column with `isSorted` and no `sortDirection` no longer flips its own direction, so update `sortDirection` from `onSort`
+  - `Tree`: `selectedIds` is required, and `nodes` are never mutated. Apply `data.selectedIds` and `data.expandedIds` instead of relying on `selected` and `expanded` being written to nodes; for example, arrow keys in a multi-select tree no longer clear other nodes' `selected`. The tree has a single tab stop
+  - `SplitViewListbox`: `selection` and `events.onSelect` are required, `selection` and `unread` are lists of item ids, and items need an `id`
+  - `DatePicker`: `value: Date | null` is required (`undefined` is treated as `null` and warns), and `onChange` `data.date` can be `null`. The typed text re-syncs whenever `value` changes
+  - `ColorPicker`: `value` is required, and typing and Done report through `events.onChange` without changing the color. The working color re-syncs from `value`, a controlled `valueWorking` wins over edits, and `errorText` falls back to validating the current `value`
+- **BREAKING**: Controlled data components require the callback that reports changes, since without it the control can't change. TypeScript requires it unless the control is `disabled` (or `readOnly` for `Checkbox`), and a missing callback warns once in development. Pass the callback, or set `disabled` if the control should never change:
+  - `Checkbox`, `RadioGroup`, `RadioButtonGroup`, `Slider` and `DatePicker`: `onChange`
+  - `ButtonStateful`: `onClick`
+  - `ColorPicker`: `events.onChange`
+  - `SimpleDataTable`: `onRowChange` when `selectRows` is set
+  - `Tree`: `onSelect`. The deprecated `onClick` still satisfies it at runtime
+  - The props types of these components are now type aliases, so they can no longer be extended with `interface … extends`
+- **BREAKING**: Ephemeral UI state is controlled when its prop is not `undefined`, whether or not a callback is passed. A controlled value is always honored, and callbacks always report the requested state:
+  - `ExpandableSection`: `onToggleOpen` `data.isOpen` is the requested state, so replace `setIsOpen(!data.isOpen)` with `setIsOpen(data.isOpen)`. A section without `isOpen` now toggles itself when `onToggleOpen` is passed; before, the callback froze it. This change can't be detected at runtime, so there is no warning
+  - `SetupAssistantStep`: a step without `isOpen` toggles itself when `onToggleIsOpen` or `SetupAssistant` `onStepToggleIsOpen` is passed, and its state is no longer seeded from `isOpen`
+  - `Carousel`: `onRequestPanelChange` and `onRequestAutoplayToggle` no longer make the carousel controlled. `isAutoplayOn` has no effect without `hasAutoplay`, which also renders the pause button. With `hasAutoplay` and neither `isAutoplayOn` nor `defaultIsAutoplayOn`, autoplay still starts
+  - `Tree`: a tree without `expandedIds` expands and collapses on its own
+  - `MenuDropdown`: `isOpen` is controlled whenever it is not `undefined` (before, only when it was a boolean). With a controlled `isOpen`, clicks, keys, hover and outside clicks call `onRequestOpen`/`onRequestClose`, so code that set `isOpen` from `onOpen`/`onClose` must use the request callbacks. `onOpen` and `onClose` fire only when the menu actually opens or closes
+  - `Combobox`: `events.onRequestOpen` and `events.onRequestClose` fire for every open and close path (Escape, blur, select and Done included), and `events.onOpen` and `events.onClose` only on real transitions. `events.onRequestOpen` is called as `(event, {})`, and only while closed
+  - `DatePicker`: passing `onRequestOpen` without `isOpen` no longer stops the calendar from opening itself, and typing requests a close with the `'input-change'` trigger
+  - `ColorPicker`: `isOpen` is honored (it only set the initial state before). The swatch button no longer calls `onRequestOpen` when it closes the popover, and Done calls `onRequestClose` with `'submit'`
+- `DatePicker`: Down/Up in the closed input go through `onRequestOpen`, and Escape/Enter in the input go through `onRequestClose`, instead of setting internal state directly, so controlled pickers now open from the keyboard
+- Content props that are only rendered are typed `ReactNode` instead of `ReactElement`, so strings, fragments, arrays and `null` type-check: `SplitView` `master`/`detail`, `PageHeader` `trail`, `TabsPanel` `label`, `SetupAssistantStep` `figure` (an `Icon` is still resized to `small`), and the return type of the deprecated `Carousel` `onRenderItem`, `SetupAssistantStep` `onRenderFigure` and `MenuDropdown` `listItemRenderer`
+- **BREAKING**: `Popover` `className` and `style` apply to the root trigger wrapper `div` instead of the `.slds-popover` dialog. Move dialog classes and styles to `classNameDialog` and `styleDialog`
+- **BREAKING**: `WelcomeMat` `className` applies to the root `.slds-welcome-mat` element instead of the inner `.slds-welcome-mat__info-content`
+- **BREAKING**: Children and slots that take library components are typed with those components' props, for example `Tabs` children as `TabsPanel` elements, `Combobox` `input` as `ReactElement<Partial<InputProps>>`, and `Alert`/`Toast` `icon` as `ReactElement<IconProps>`. The props a parent injects into its children (`index`, `onToggleIsOpen`, `isError`, …) are no longer in the public child types
+- **BREAKING**: `BuilderHeader`, `MenuDropdown`, `PageHeader` controls, `SetupAssistant` and `SimpleDataTable` match their children by component, not by `displayName`. A wrapper component that copies a library component's `displayName` is no longer treated as that component; render the library component inside it instead
+- **BREAKING**: `Tooltip` and `MenuDropdown` merge their trigger props into the trigger instead of overwriting them, including for the deprecated `children` trigger. The trigger's own `onBlur`, `onFocus`, `onKeyDown` and `onMouseEnter`/`onMouseLeave` now run, before the component's; its `aria-describedby` is joined with `Tooltip`'s; and its `className` is joined with `MenuDropdown`'s (which keeps the dropdown's `ignore-click-*` class on a `Button` trigger). `Popover` still takes the element it attaches to as `children`, which need not be a button
+- **BREAKING**: `Combobox` `popover`, `input` and `tooltipMenuItemDisabled` props win over the combobox's defaults. `input`'s `onChange` is called with `(event, { value })` alongside the combobox's handler, and `popover`'s `children` are replaced with the combobox input
+- **BREAKING**: `Combobox` follows the ARIA 1.2 combobox pattern and the SLDS blueprint. `role="combobox"`, `aria-expanded`, `aria-haspopup` and `aria-controls` moved from the `.slds-combobox` wrapper to the input (`.slds-combobox__input`), which was `role="textbox"`; the wrapper has no role and no `aria-owns`. Queries such as `getByRole('combobox')` now return the input. `aria-autocomplete` is only set on the autocomplete variants (`base`, `inline-listbox`), and `aria-expanded` is `false` while `disabled`
+- `TrialBarDropdown` passes its `children` to the menu as custom content instead of dropping them
+- **BREAKING**: `Checkbox`: Enter no longer toggles the box and `onChange` is never called with a `KeyboardEvent` (Space still toggles through the native click). `readOnly` is applied: it sets `aria-readonly`, keeps the box focusable and blocks `onChange`. Handlers that relied on Enter should listen to `onKeyDown`
+- **BREAKING**: `VerticalNavigation` items without `url` render `<button type="button" class="slds-button_reset slds-nav-vertical__action">` instead of `<a href="#">`, and `NavigationItem.url` is optional. `onSelect`'s event is typed `MouseEvent<HTMLAnchorElement | HTMLButtonElement>`; widen handlers annotated with an anchor event, and update selectors that target `a.slds-nav-vertical__action`
+- **BREAKING**: `VisualPickerLink` `href` is required (and warns once when missing); without it the `<a>` was not a link. Use a `Checkbox` or `Radio` visual picker for options that do not navigate
+- `SimpleDataTable`: `role="grid"` and `role="gridcell"` are set only with both `fixedLayout` and `keyboardNavigation`, when arrow-key cell navigation runs. Fixed headers follow the scroller and table size through a `ResizeObserver` instead of a `window` resize listener
+- `ProgressIndicator`: a step `id` of `0` is used in DOM ids instead of falling back to the step index, so the ids of such steps change
+- `ColorPicker` `onRequestClose` fires before the picker changes its own state. Uncontrolled, it still closes itself; with `isOpen` passed, the parent decides
+- `Combobox` reads `events` through a ref, so its internal handlers no longer change identity when a new `events` object is passed on each render
+- `Toast` `onClickHeadingLink` is typed `(event: React.MouseEvent<HTMLAnchorElement>) => void`. It takes only the click event, like a native `onClick`
+
+### Deprecated
+
+- `Tree` `onClick` (use `onSelect`) and `onExpandClick` (use `onRequestToggle`). They keep their old payloads and behavior, log a one-time warning, and are ignored when the replacement is passed. Neither is required in the types any more
+- `Tree` `onScroll` data `percentage` (use `ratio`)
+- `SplitView` `events.onOpen` and `events.onClose` (use `events.onToggle`). They are called only when `onToggle` is absent
+- `PillContainer` flat `onClickPill` and `onRequestRemovePill` props (use `events.onClickPill` and `events.onRequestRemovePill`)
+- Old ways of passing controlled data. They keep working, log a one-time warning, and are ignored when the replacement is passed:
+  - `ButtonStateful` `active` (use `isActive`)
+  - `Tabs` `selectedIndex` (use `value`)
+  - `checked` on each `Radio` inside `RadioGroup` or `RadioButtonGroup` (use the group's `value`)
+  - `Tree` node `selected` and `expanded` fields (use `selectedIds` and `expandedIds`), which are read but never written
+  - Item objects in `SplitViewListbox` `selection` and `unread` (use item ids), which are still matched by `id`
+- Props renamed to follow the v11 naming rules. The old names keep working, log a one-time warning, and are ignored when the new name is passed:
+  - `SplitView` `assistiveText.toggleButtonOpen` and `toggleButtonClose`, which were inverted (use `closeToggle` and `openToggle`)
+  - `Tree` `heading` and `assistiveText.label` (use `labels.heading` and `assistiveText.heading`)
+  - `TrialBar` `labels.timeLeftUnit` and `labels.timeLeftUnitAfter` (use `labels.timeLeftAfter`)
+  - `Slider` and `Textarea` `label` and `errorText` (use `labels.label`, and `labels.error` with `hasError`)
+- Zero-argument `onRender*` functions, replaced by `ReactNode` slots: `PageHeader` `onRenderActions`/`onRenderControls` (use `actions`/`controls`), `BuilderHeaderToolbar` and `TrialBar` `onRenderActions` (use `actions`), `WelcomeMat` `onRenderInfoActions` (use `infoActions`), `WelcomeMatInfoBadge` `onCompleteRenderActions` (use `completeActions`), `SetupAssistantStep` `onRenderAction`/`onRenderContent`/`onRenderFigure` (use `action`/`content`/`figure`), `ProgressIndicator` `steps[].onRenderSetupAssistantAction` (use `steps[].setupAssistantAction`), and `Checkbox`/`Radio` `onRenderVisualPicker*` (use `visualPickerFigure*`)
+- Render props that take data, replaced by `render<Part>(data) => ReactNode` functions. They are called with one data object rather than mounted as components, so pass a component as `(data) => <MyItem {...data} />`:
+  - `Carousel` `onRenderItem` (use `renderItem({ item })`)
+  - `Combobox` `onRenderMenuItem` and `menuItem`, which took a component (use `renderMenuItem({ assistiveText, isSelected, option })`; `selected` is now `isSelected`)
+  - `SimpleDataTable` `onRenderSubHeadingRow` (use `renderSubHeadingRow`, which gets the same data without `key`; the table sets the row's key)
+  - `MenuDropdown` `listItemRenderer`, which took a component (use `renderMenuItem({ icon, isSelected, option, optionIndex })`)
+  - `SplitViewListbox` `listItem`, which took a component (use `renderListItem({ isFocused, isSelected, isUnread, item })`)
+- Class and style props named for the old convention. Each one still works (merged with its replacement), logs a one-time warning in development, and will be removed in the next major version:
+  - `Slider` `classNameContainer` (use `className`)
+  - `Spinner` `containerClassName` and `containerStyle` (use `className` and `style`)
+  - `Tree` `listClassName` and `listStyle` (use `classNameList` and `styleList`)
+  - `Modal` `containerClassName`, `contentClassName`, `contentStyle`, `footerClassName`, `headerClassName` and `portalClassName` (use `classNameContainer`, `classNameContent`, `styleContent`, `classNameFooter`, `classNameHeader` and `classNamePortal`)
+  - `Popover` `contentsClassName` (use `classNameDialog`), `triggerClassName` (use `className`), `footerClassName` (use `classNameFooter`) and `footerStyle` (use `styleFooter`)
+- Passing a trigger as `children` to `Tooltip`, or a `DropdownTrigger` child to `MenuDropdown` (use `trigger`). Both keep working and log a one-time warning
+- `TabChildProps` (use `TabsPanelProps`) and `FileChildProps` (use `FileProps`)
+- `Combobox` `singleInputDisabled` (use `disabled`, which now disables the input in every variant)
+- `Combobox` `variant="inline-listbox"` with `multiple` (use `variant="base"` with `multiple`). SLDS deprecated the inline listbox, and it renders the selected pills before the input, so screen reader users hear the selections before reaching the field; its pill listbox also has no accessible name (axe `aria-input-field-name`). `base` lists the selections after the input in a labelled listbox. It keeps working and logs a one-time warning. `inline-listbox` without `multiple` is unaffected
+- `SimpleDataTable` `onFixedHeaderResize` and `onToggleFixedHeaderListeners`, which only existed to replace the `window` resize listener. They are still called and warn once
+- Callback props renamed to follow the v11 callback rules (`on*` for events, `get*`/`validate*` for functions that return a value). The old names keep working, log a one-time warning, and are ignored when the new name is passed:
+  - `ColorPicker` `events.onValidateColor` and `events.onValidateWorkingColor` (use `validateColor` and `validateWorkingColor`)
+  - `ColorPicker` top-level `onOpen`, `onClose`, `onRequestOpen` and `onRequestClose` (use the `events` keys). If both are set, both are called
+- `requestFocus` and `onRequestFocus` on `Button`, `Checkbox` and `Radio`. They keep working and log a one-time development warning. Focus through a ref instead: `ref` (or `buttonRef`) on `Button`, `ref` on `Checkbox` (forwarded to the `<input>`), and `refs.input` on `Radio`, then call `.focus()`. `SimpleDataTableInteractiveElement` focuses `forwardRef` components through `ref`, and still passes `requestFocus`/`onRequestFocus` to other wrapped components
+
+### Fixed
+
+- `Combobox`: while open, the input sets `aria-controls` to the listbox (or, for `variant="popover"`, the dialog), fixing the axe `aria-required-attr` violation (W-24839159). It is omitted, and `aria-expanded` is `false`, while the listbox isn't rendered, including with the deprecated `singleInputDisabled`
+- The `@salesforce-ux/design-system` peer dependency accepts `^2.25.0-alpha.2` instead of exactly `2.25.0-alpha.2`, so installing into a project that already has a newer version no longer fails with `ERESOLVE`
+- `Popover`: apply `classNameFooter` (and deprecated `footerClassName`) when rendering walkthrough footers via `footerWalkthroughActions` / `stepText` ([#2744](https://github.com/salesforce/design-system-react/issues/2744))
+- `SimpleDataTable`: with `fixedHeader`, the inline border and (with `joined`) border radius use the SLDS 2 hooks `--slds-g-color-border-1` and `--slds-g-radius-border-2` instead of hardcoded SLDS 1 values, so they follow the theme and dark mode
+- `Toast`: an inline `onRequestClose` no longer restarts the `duration` timer on every parent render, so the toast auto-dismisses
+- `Popover`: opening another popover closes the one already open (`onRequestClose` with `trigger: 'newPopover'` never fired)
+- `MenuDropdown`: `onClose` fires once per close instead of twice, and `onSelect` receives the click event for mouse selection
+- `DatePicker`: `onRequestClose` no longer fires when the calendar is already closed
+- `Tree`: `onScroll` no longer reports `NaN` or `Infinity` when the list cannot scroll
+- `SimpleDataTable`: ascending sorted columns have the `slds-is-sorted_asc` class
+- `SimpleDataTable`: in development, re-rendering the table with unchanged column children no longer overflows the stack, so a stateful parent can update `selection`
+- `SimpleDataTable`: the select-all checkbox counts only selected items that are in `items`
+- `Carousel`: autoplay advances through every panel instead of stalling after the first tick, and the slides follow the panel on previous/next, indicator and arrow key navigation instead of lagging a click behind (or staying put) while the indicators move
+- `Combobox`: passing only `events.onRequestOpen` no longer leaves the menu unable to open
+- `Popover`: a controlled popover no longer writes internal state, which took over if `isOpen` went back to `undefined`
+- `SplitViewListbox`: a Shift-click range orders rows numerically and starts at the first selected item when nothing was clicked yet, and Ctrl+A deselects whenever every option is selected
+- `Input`: holding a counter button steps from the latest `value`
+- Visual regressions under SLDS 2, where the markup relied on SLDS 1-only CSS or the rewrite changed it:
+  - `Tree`: leaf items no longer show a chevron, and branch chevrons rotate when expanded under SLDS 1 again (`aria-controls` and `aria-hidden` are restored on the toggle)
+  - `Avatar`: the fallback icon is sized to the avatar instead of a fixed default size
+  - `Modal`: `prompt` modals no longer render a close button
+  - `ToastContainer` and `AlertContainer` use `slds-notify_container`, so they are fixed to the top of the viewport again
+  - `InputIcon`: clicks on a decorative (non-button) icon reach the input
+  - `Checkbox`: the `visual-picker` variant no longer draws a border and background around the whole picker
+  - `WelcomeMatInfoBadge`: the complete check is a small circle on the badge's edge instead of a large one below it
+  - `TrialBarDropdown`, and any `MenuDropdown` whose trigger `Button` child has a `label`: the label shows even when the dropdown has `assistiveText.icon`
+- `Accordion`: no longer moves focus to the first panel on mount
+- `DatePicker`: `dateDisabled` is typed as `({ date }) => boolean`, which is how it is called
+- `PanelFilterList`: a filter with `errorLabel` and no `id` gets the id its error message uses, so its `aria-describedby` points at the message
+- `ButtonGroup`: the last-child class goes on the last rendered child when some children are conditional (`null` or `false`)
+- `ScopedNotification`: a string `assistiveText` on the `icon` element is used as the icon label instead of being lost
+- `SimpleDataTable`: custom cells without a `displayName` render, conditional columns don't break keyboard navigation, and a `RowActions` `menuPosition` passed by the consumer is kept in a `fixedHeader` table
+- `RadioGroup`: a `Radio`'s own `name` is kept, and its `aria-describedby` is joined with the group's error id instead of replaced; `VisualPicker` keeps a child's `name`
+- `MenuDropdown`: custom (non-`List`) content no longer remounts on every render
+- `Tooltip`: the trigger keeps its own event handlers and `aria-describedby`, and passing several children no longer throws
+- `ButtonStateful`: no longer blurs itself on mouse leave or blur, so focus stays on the button and the next Tab continues from it; `onBlur` is never called with a `MouseEvent`, and `onMouseDown` is called in the text variants too
+- `Combobox`: `disabled` disables the input, not just the menu
+- `DatePicker`: an `input` prop with its own `onChange` or `inputRef` no longer replaces the picker's, which broke typing a date and focus on close; both run, the consumer's first
+- `DockedComposer`: an open composer focuses its `role="dialog"` section when it mounts or the parent opens it, and returns focus when it unmounts; a minimized one leaves focus alone. Minimizing or expanding moves focus to the button that replaced the clicked one instead of dropping it to `<body>`, and `aria-describedby` is only set while the body is rendered
+- `Filter`: `isError` sets `aria-describedby` only when the `${id}-error` element is rendered (inside a `PanelFilterList` with `errorLabel`)
+- `PageHeader`: a `title` of `0` is rendered
+- `Pill`: the link variant no longer wraps its `<a>` in a `role="button"` span
+- `Popover`: the trigger's own `onFocus`, `onMouseDown`, `onMouseEnter` and `onMouseLeave` run alongside the popover's instead of being replaced
+- `PopoverEditDialog`: a consumer `onOpen`, `onClose` or `onRequestClose` no longer replaces the dialog's own handlers, so it still opens and closes
+- `Tree`: leaf items are keyed by `node.id`, so they no longer remount on every render
+- `WelcomeMatInfoBadge`: the check icon (and its "Completed" text) renders only when `isComplete`
+
+### Removed
+
+- **BREAKING**: `utilities/design-tokens`, a stale 2018 copy of SLDS 1 token values. The deep imports `@salesforce/design-system-react/utilities/design-tokens/dist/palette-colors.common` and `.../salesforce-skin.common` no longer exist; use SLDS 2 styling hooks (`var(--slds-g-*)`) instead
+- **BREAKING**: Uncontrolled props for data. They are removed from the types; at runtime they are ignored, kept off the DOM, and log a development warning that names the replacement:
+  - `Checkbox` and `Radio` `defaultChecked` (pass `checked`)
+  - `Input`, `Combobox`, `Textarea` and `Slider` `defaultValue` (pass `value`)
+  - `Tabs` `defaultSelectedIndex` (pass `value`)
+  - `DatePicker` `formattedValue` (pass `value`; the input text is formatted from it with `formatter`)
+- **BREAKING**: Surface deprecated in 0.10.x, which already warned in development:
+  - `InlineEdit` (`components/forms/input/inline`) and its `SLDSInlineEdit` alias. The `inlineEditTrigger` prop on `Input` stays.
+  - `ModalTrigger` and its `SLDSModalTrigger` alias. Render `Modal` with `isOpen`; it already portals to `body`.
+  - `Modal` props `title` (use `heading`) and `closeButtonAssistiveText` (use `assistiveText.closeButton`).
+  - `Tooltip` prop `target` (use `onRequestTargetElement`) and the `variant` values `info` and `error` (use `theme`).
+  - String `assistiveText` on `Avatar`, `Breadcrumb`, `Button`, `ButtonStateful`, `Checkbox`, `Search`, `Spinner`, `Textarea`, and `Tree`. Pass an object, such as `assistiveText={{ label: 'Loading' }}`; see each component's `assistiveText` type for its keys.
+  - The `components/forms/checkbox` and `components/tabs/pane` aliases, which v11 never shipped as JavaScript, and the `Checkbox` prop `oldEventParameterOrder`, which v11 ignored. Import `components/checkbox` and `components/tabs/panel`.
+  - The `FORMS_INLINE_EDIT` constant in `utilities/constants`.
+- **BREAKING**: Props and components deprecated in 0.10.x, settled for v11. Each prop is removed from the types; at runtime it is ignored, kept off the DOM, and logs a one-time development warning that names the replacement:
+  - `Button` `tooltip`. Wrap the button instead: `<Tooltip content={…} trigger={<Button … />} />`
+  - `DatePicker` `children` (use `input`), `label` (use `labels.label`), `placeholder` (use `labels.placeholder`) and `assistiveTextOpenCalendar` (use `assistiveText.openCalendar`)
+  - `Icon` string `assistiveText`. Pass an object: `assistiveText={{ label: '…' }}`
+  - `Illustration` and its `SLDSIllustration` alias (`components/illustration`), and the `ILLUSTRATION` constant. Copy the markup from the [SLDS Illustration blueprint](https://www.lightningdesignsystem.com/components/illustration/) instead
+  - `Input` `assistiveText.fieldLevelHelpButton` (set `assistiveText.triggerLearnMoreIcon` on the `Tooltip` passed to `fieldLevelHelpTooltip`)
+  - `MenuDropdown` `tooltip` (wrap the trigger in a `Tooltip`), `offset` (no replacement; positioning is automatic) and `isInline` (use `menuPosition="relative"`)
+  - `PanelFilterGroup` `assistiveTextCloseFilterPanel` (use `assistiveText.closeButton`)
+  - `Popover` `closeButtonAssistiveText` (use `assistiveText.closeButton`) and `offset` (no replacement)
+  - `Radio` `label` (use `labels.label`)
+  - `ScopedNotification` `iconName` (pass an `Icon` to `icon`)
+  - `SimpleDataTable` `onChange(selection, event)` (use `onRowChange(event, { selection })`; `onChange` no longer satisfies the `onRowChange` requirement), and `assistiveTextForActionsHeader`, `assistiveTextForColumnSort`, `assistiveTextForColumnSortedAscending`, `assistiveTextForColumnSortedDescending`, `assistiveTextForSelectAllRows` and `assistiveTextForSelectRow` on the table, plus the three column-sort ones on `SimpleDataTableColumn` (use the matching `assistiveText` key on the table)
+
+## [11.0.0-alpha.4] - 2026-10-06
+
+### Changed
+
+- **BREAKING**: `DataTable` is renamed to `SimpleDataTable`, with no aliases for the old names. The import path moves from `components/data-table` to `components/simple-data-table`; every subcomponent (`DataTableColumn` → `SimpleDataTableColumn`, `DataTableCell`, `DataTableHighlightCell`, `DataTableRowActions`, `DataTableInteractiveElement`, `DataTableInteractiveLink`), its `SLDS`-prefixed alias, and every exported `DataTable*` type gets the same prefix. The display names change from `SLDSDataTable*` to `SLDSSimpleDataTable*` and the `DATA_TABLE*` constants in `utilities/constants` to `SIMPLE_DATA_TABLE*`, so update any custom cell that copies a display name by hand. ([#3226](https://github.com/salesforce/design-system-react/pull/3226))
+
+### Removed
+
+- **BREAKING**: DataTable column resizing. The `resizable` and `resizableOptions` props, the `DataTableResizableOptions` and `DataTableColumnWidth` types, `assets/styles/table.css`, and the `column-resizer` dependency are removed. `resizable` also implied `fixedHeader`, `fixedLayout`, and `keyboardNavigation`; set those props explicitly to keep the same layout and behavior. ([#3226](https://github.com/salesforce/design-system-react/pull/3226))
+
+## [11.0.0-alpha.3] - 2026-09-28
+
+### Changed
+
+- `alpha` is now the package's default publish tag (`publishConfig.tag`), so a plain `npm install @salesforce/design-system-react` keeps resolving to 0.10.x. Earlier alphas set the tag only in the publish workflow. ([#3220](https://github.com/salesforce/design-system-react/pull/3220))
+
+### Removed
+
+- **BREAKING**: These components and their subcomponents ([#3195](https://github.com/salesforce/design-system-react/pull/3195)):
+  - `AppLauncher` (`AppLauncherExpandableSection`, `AppLauncherLink`, `AppLauncherTile`)
+  - `BrandBand`
+  - `Expression` (`ExpressionCondition`, `ExpressionFormula`, `ExpressionGroup`)
+  - `GlobalHeader` (`GlobalHeaderButton`, `GlobalHeaderDropdown`, `GlobalHeaderFavorites`, `GlobalHeaderHelp`, `GlobalHeaderNotifications`, `GlobalHeaderProfile`, `GlobalHeaderSearch`, `GlobalHeaderSetup`, `GlobalHeaderTask`)
+  - `GlobalNavigationBar` (`GlobalNavigationBarButton`, `GlobalNavigationBarDropdown`, `GlobalNavigationBarLabel`, `GlobalNavigationBarLink`, `GlobalNavigationBarRegion`)
+  - `LocationMap`
+  - The `SLDS`-prefixed alias of each component above (`SLDSAppLauncher`, `SLDSBrandBand`, and so on)
+
+### Fixed
+
+- `DatePicker`: the calendar closes on an outside click when the component is uncontrolled ([#3199](https://github.com/salesforce/design-system-react/pull/3199))
+- Dialog-based popups compute their floating position once per open instead of on every render ([#3210](https://github.com/salesforce/design-system-react/pull/3210))
+- `Combobox`: restored focus on selected pills and multi-selection semantics ([#3213](https://github.com/salesforce/design-system-react/pull/3213))
+
+## [11.0.0-alpha.2] - 2026-09-16
+
+First v11 release on npm: a rewrite for React 19, TypeScript, and SLDS 2.
+
+### Added
+
+- Dependency on [`@salesforce-ux/design-system-2`](https://www.npmjs.com/package/@salesforce-ux/design-system-2), the SLDS 2 stylesheet package
+- Light, dark, and system color schemes through the SLDS 2 `slds-color-scheme--*` body classes
+- `useClickOutside` hook in `utilities/hooks/use-click-outside`
+
+### Changed
+
+- **BREAKING**: Requires React and React DOM ^19.2.0 (previously >= 16.8)
+- **BREAKING**: Requires Node.js >= 24
+- **BREAKING**: The package ships ES modules and CommonJS from `dist/`, with a package `exports` map, instead of the `lib/` and `module/` folders. Imports outside the `exports` map no longer resolve. The `@salesforce/babel-preset-design-system-react` preset is no longer needed.
+- Components are migrated to TypeScript, many of them rewritten as function components, and the `.d.ts` files are generated from the source
+- Popups are positioned with `@floating-ui/dom` instead of `popper.js`
+
+### Removed
+
+- **BREAKING**: These components and their subcomponents:
+  - `Lookup` (`LookupDefaultFooter`, `LookupDefaultHeader`, `LookupDefaultSectionDivider`)
+  - `Notification`
+  - `Picklist` (and its `SLDSMenuPicklist` alias)
+  - `TimePicker` (and its `Timepicker` alias)
+  - The `SLDS`-prefixed alias of each component above (`SLDSLookup`, `SLDSNotification`, and so on)
+- The `create-react-class`, `lodash.isequal`, `popper.js`, `react-onclickoutside`, `react-required-if`, and `react-text-truncate` dependencies
+- IE11 support and polyfills
+
+## [11.0.0-alpha.1] - 2026-09-16
+
+Tagged on GitHub but never published to npm; the publish job failed. 11.0.0-alpha.2 has the same content.
+
+## 0.10.65 and earlier
+
+Release notes for the 0.10.x line are in [RELEASENOTES.md on the `0.10.x` branch](https://github.com/salesforce/design-system-react/blob/0.10.x/RELEASENOTES.md) and on [GitHub Releases](https://github.com/salesforce/design-system-react/releases).
+
+[Unreleased]: https://github.com/salesforce/design-system-react/compare/11.0.0-alpha.4...HEAD
+[11.0.0-alpha.4]: https://github.com/salesforce/design-system-react/compare/v11.0.0-alpha.3...11.0.0-alpha.4
+[11.0.0-alpha.3]: https://github.com/salesforce/design-system-react/compare/v11.0.0-alpha.2...v11.0.0-alpha.3
+[11.0.0-alpha.2]: https://github.com/salesforce/design-system-react/releases/tag/v11.0.0-alpha.2
+[11.0.0-alpha.1]: https://github.com/salesforce/design-system-react/releases/tag/v11.0.0-alpha.1

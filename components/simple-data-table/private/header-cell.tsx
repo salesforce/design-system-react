@@ -1,0 +1,264 @@
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
+/* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+import React, { useContext, useEffect, SyntheticEvent, ReactNode } from 'react';
+import classNames from 'classnames';
+import isFunction from 'lodash.isfunction';
+
+import CellFixed from './cell-fixed';
+import Icon from '../../icon';
+
+import checkProps from '../column-check-props';
+
+import Link from './link';
+import InteractiveLink from '../interactive-link';
+import CellContext from './cell-context';
+import TableContext from './table-context';
+import useContextHelper from './context-helper';
+
+import {
+	SIMPLE_DATA_TABLE_HEADER_CELL,
+	SIMPLE_DATA_TABLE_COLUMN,
+} from '../../../utilities/constants';
+
+interface AssistiveText {
+	actionsHeader?: string;
+	columnSort?: string;
+	columnSortedAscending?: string;
+	columnSortedDescending?: string;
+	selectAllRows?: string;
+	selectRow?: string;
+}
+
+export interface SimpleDataTableHeaderCellProps {
+	assistiveText?: AssistiveText;
+	cellRef?: (ref: HTMLElement | null) => void;
+	fixedHeader?: boolean;
+	fixedLayout?: boolean;
+	id: string;
+	isDefaultSortDescending?: boolean;
+	isSorted?: boolean;
+	label?: string | ReactNode;
+	onSort?: (
+		event: SyntheticEvent,
+		data: { property: string; sortDirection: 'asc' | 'desc' }
+	) => void;
+	property?: string;
+	sortable?: boolean;
+	sortDirection?: 'desc' | 'asc';
+	width?: string;
+}
+
+/**
+ * Used internally, renders each individual column heading.
+ */
+const SimpleDataTableHeaderCell: React.FC<SimpleDataTableHeaderCellProps> = (
+	props
+) => {
+	const tableContext = useContext(TableContext);
+	const cellContext = useContext(CellContext);
+	const { tabIndex, hasFocus, handleFocus, handleKeyDown } = useContextHelper(
+		tableContext,
+		cellContext,
+		props.fixedLayout
+	);
+
+	useEffect(() => {
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		(checkProps as any)(SIMPLE_DATA_TABLE_COLUMN, props);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
+	const handleSort = (e: SyntheticEvent) => {
+		e.preventDefault();
+
+		// Sort is data: the next direction is derived from the `sortDirection`
+		// prop only. The column keeps no copy, so a parent that ignores `onSort`
+		// keeps the rendered state and gets the same request on the next click.
+		const oldSortDirection = props.sortDirection || null;
+		const newSortDirection = (function sortDirectionFunction(
+			direction: 'asc' | 'desc' | null,
+			isDefaultSortDescending?: boolean
+		): 'asc' | 'desc' {
+			switch (direction) {
+				case 'asc':
+					return 'desc';
+				case 'desc':
+					return 'asc';
+				case null:
+					return isDefaultSortDescending ? 'desc' : 'asc';
+				default:
+					return 'asc';
+			}
+		})(oldSortDirection, props.isDefaultSortDescending);
+
+		const data = {
+			property: props.property || '',
+			sortDirection: newSortDirection,
+		};
+
+		if (isFunction(props.onSort)) {
+			props.onSort(e, data);
+		}
+	};
+
+	const { fixedHeader, isSorted, label, sortable, width, property } = props;
+
+	const labelType = typeof label;
+	const effectiveSortDirection =
+		props.sortDirection || (props.isDefaultSortDescending ? 'desc' : undefined);
+	const expandedSortDirection =
+		effectiveSortDirection === 'desc' ? 'descending' : 'ascending';
+	const ariaSort = isSorted ? expandedSortDirection : 'none';
+
+	const getFixedLayoutSubRenders = (isHidden?: boolean) => {
+		if (sortable) {
+			const SortLink = isHidden ? Link : InteractiveLink;
+			return (
+				<SortLink
+					href="#"
+					className="slds-th__action slds-text-link_reset"
+					onClick={handleSort}
+					role="button"
+				>
+					<span className="slds-assistive-text">
+						{props.assistiveText?.columnSort}{' '}
+					</span>
+					<span
+						className="slds-truncate"
+						title={labelType === 'string' ? (label as string) : undefined}
+					>
+						{label}
+					</span>
+					{/* Always the down arrow: SLDS turns it up with `slds-is-sorted_asc`
+					    on the `th`, so swapping the glyph as well would flip it twice. */}
+					<Icon
+						className="slds-is-sortable__icon"
+						category="utility"
+						name="arrowdown"
+						size="x-small"
+					/>
+					{effectiveSortDirection ? (
+						<span className="slds-assistive-text" aria-atomic="true">
+							{effectiveSortDirection === 'asc'
+								? props.assistiveText?.columnSortedAscending
+								: props.assistiveText?.columnSortedDescending}
+						</span>
+					) : null}
+				</SortLink>
+			);
+		}
+		return (
+			<span
+				className="slds-p-horizontal_x-small slds-th__action"
+				style={{ display: 'flex' }}
+			>
+				<span
+					className="slds-truncate"
+					title={labelType === 'string' ? (label as string) : undefined}
+				>
+					{label}
+				</span>
+			</span>
+		);
+	};
+
+	// `getFixedLayoutSubRenders` already returns a single element (a sort link or a
+	// span), so return it directly rather than wrapping it in a Fragment. The
+	// callers below `cloneElement` this result to inject `style`, which React only
+	// applies to real elements — a Fragment silently drops it (and warns).
+	const getHeaderCellContent = (isHidden?: boolean): React.ReactElement =>
+		props.fixedLayout ? (
+			getFixedLayoutSubRenders(isHidden)
+		) : (
+			<div
+				className="slds-truncate"
+				title={labelType === 'string' ? (label as string) : undefined}
+			>
+				{label}
+			</div>
+		);
+
+	return (
+		<th
+			id={`${props.id}-${property}-th`}
+			aria-label={labelType === 'string' ? (label as string) : undefined}
+			aria-sort={ariaSort}
+			className={classNames({
+				'slds-is-sortable': sortable,
+				'slds-is-sorted': isSorted,
+				// One key per class: a computed `slds-is-sorted_${direction}` key
+				// followed by a literal `slds-is-sorted_asc` key overwrote it, so
+				// ascending columns never got `slds-is-sorted_asc`.
+				'slds-is-sorted_asc':
+					effectiveSortDirection === 'asc' ||
+					(isSorted && !effectiveSortDirection),
+				'slds-is-sorted_desc': effectiveSortDirection === 'desc',
+				'slds-has-focus': hasFocus,
+			})}
+			onFocus={handleFocus}
+			onKeyDown={handleKeyDown}
+			ref={(ref) => {
+				if (props.cellRef) {
+					props.cellRef(ref);
+				}
+				if (ref && hasFocus) {
+					ref.focus();
+				}
+			}}
+			scope="col"
+			style={
+				fixedHeader || width
+					? {
+							height: fixedHeader ? 0 : undefined,
+							lineHeight: fixedHeader ? 0 : undefined,
+							width: width || undefined,
+						}
+					: undefined
+			}
+			tabIndex={tabIndex}
+		>
+			{fixedHeader
+				? React.cloneElement(
+						getHeaderCellContent(true) as React.ReactElement<{
+							style?: React.CSSProperties;
+						}>,
+						{
+							style: {
+								display: 'flex',
+								height: 0,
+								overflow: 'hidden',
+								paddingBottom: 0,
+								paddingTop: 0,
+								visibility: 'hidden' as const,
+							},
+						}
+					)
+				: getHeaderCellContent()}
+			{fixedHeader ? (
+				<CellFixed>
+					{React.cloneElement(
+						getHeaderCellContent() as React.ReactElement<{
+							style?: React.CSSProperties;
+							tabIndex?: number;
+						}>,
+						{
+							style: {
+								alignItems: 'center',
+								display: 'flex',
+								flex: '1 1 auto',
+								lineHeight: 1.25,
+								width: '100%',
+							},
+							tabIndex: sortable ? 0 : undefined,
+						}
+					)}
+				</CellFixed>
+			) : null}
+		</th>
+	);
+};
+
+SimpleDataTableHeaderCell.displayName = SIMPLE_DATA_TABLE_HEADER_CELL;
+
+export default SimpleDataTableHeaderCell;

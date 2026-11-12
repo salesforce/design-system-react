@@ -6,15 +6,23 @@ import Textarea from '~/components/textarea'; // `~` is replaced with design-sys
 class Example extends React.Component {
 	static displayName = 'TextareaExample';
 
+	state = { value: '' };
+
+	handleChange = (event, data) => {
+		this.setState({ value: data.value });
+	};
+
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Textarea
 					name="disabled"
 					id="text-area-disabled"
-					label="Textarea Label"
+					labels={{ label: 'Textarea Label' }}
 					disabled
+					onChange={this.handleChange}
 					placeholder="Placeholder Text"
+					value={this.state.value}
 				/>
 			</IconSettings>
 		);

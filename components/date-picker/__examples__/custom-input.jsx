@@ -10,6 +10,7 @@ class Example extends React.Component {
 
 	state = {
 		isOpen: false,
+		value: null,
 	};
 
 	render() {
@@ -20,13 +21,24 @@ class Example extends React.Component {
 				}}
 				input={<Input placeholder="With custom Input" />}
 				isOpen={this.state.isOpen}
-				onRequestClose={() => {
+				onRequestClose={(event, data) => {
+					if (this.props.action) {
+						this.props.action('onRequestClose')(event, data);
+					} else if (console) {
+						console.log('onRequestClose', event, data);
+					}
 					this.setState({ isOpen: false });
 				}}
-				onRequestOpen={() => {
+				onRequestOpen={(event, data) => {
+					if (this.props.action) {
+						this.props.action('onRequestOpen')(event, data);
+					} else if (console) {
+						console.log('onRequestOpen', event, data);
+					}
 					this.setState({ isOpen: true });
 				}}
 				onChange={(event, data) => {
+					this.setState({ value: data.date });
 					if (this.props.action) {
 						const dataAsArray = Object.keys(data).map((key) => data[key]);
 						this.props.action('onChange')(event, data, ...dataAsArray);
@@ -40,6 +52,7 @@ class Example extends React.Component {
 				parser={(dateString) => {
 					return moment(dateString, 'MM-DD-YYYY').toDate();
 				}}
+				value={this.state.value}
 			/>
 		);
 	}

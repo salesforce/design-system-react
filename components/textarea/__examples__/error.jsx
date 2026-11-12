@@ -6,17 +6,25 @@ import Textarea from '~/components/textarea'; // `~` is replaced with design-sys
 class Example extends React.Component {
 	static displayName = 'TextareaExample';
 
+	state = { value: '' };
+
+	handleChange = (event, data) => {
+		this.setState({ value: data.value });
+	};
+
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Textarea
 					aria-describedby="error-1"
 					id="text-area-error"
+					hasError
+					labels={{ label: 'Textarea Label', error: 'This field is required' }}
 					name="required-textarea-error"
-					label="Textarea Label"
 					required
-					errorText="This field is required"
+					onChange={this.handleChange}
 					placeholder="Placeholder Text"
+					value={this.state.value}
 				/>
 			</IconSettings>
 		);

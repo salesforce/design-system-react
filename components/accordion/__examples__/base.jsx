@@ -40,7 +40,7 @@ class Example extends React.Component {
 				iconCategory="utility"
 				iconName="down"
 				iconVariant="border-filled"
-				onSelect={(option) => {
+				onSelect={(event, { option }) => {
 					if (option.label === 'delete') {
 						this.setState((state) => ({
 							...state,

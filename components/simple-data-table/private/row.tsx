@@ -1,0 +1,292 @@
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
+/* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+import React, {
+	useCallback,
+	useContext,
+	useMemo,
+	SyntheticEvent,
+	ReactNode,
+} from 'react';
+import classNames from 'classnames';
+
+import Checkbox from '../../checkbox';
+import Radio from '../../radio';
+
+import {
+	SIMPLE_DATA_TABLE_ROW,
+	SIMPLE_DATA_TABLE_ROW_ACTIONS,
+	SIMPLE_DATA_TABLE_CELL,
+} from '../../../utilities/constants';
+
+import InteractiveElement from '../interactive-element';
+import CellContext from './cell-context';
+import TableContext from './table-context';
+import useContextHelper from './context-helper';
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+const InteractiveCheckbox = InteractiveElement(
+	Checkbox as any
+) as React.ComponentType<any>;
+const InteractiveRadio = InteractiveElement(
+	Radio as any
+) as React.ComponentType<any>;
+/* eslint-enable @typescript-eslint/no-explicit-any */
+
+interface SimpleDataTableItem {
+	id: string;
+	[key: string]: unknown;
+}
+
+interface SimpleDataTableColumnConfig {
+	Cell: React.ComponentType<Record<string, unknown>>;
+	props: {
+		property?: string;
+		truncate?: boolean;
+		primaryColumn?: boolean;
+		width?: string;
+		[key: string]: unknown;
+	};
+}
+
+interface AssistiveText {
+	selectRow?: string;
+	[key: string]: unknown;
+}
+
+export interface SimpleDataTableRowProps {
+	assistiveText?: AssistiveText;
+	canSelectRows?: boolean | 'checkbox' | 'radio';
+	className?: string;
+	columns?: SimpleDataTableColumnConfig[];
+	fixedLayout?: boolean;
+	id: string;
+	index?: number;
+	item: SimpleDataTableItem;
+	onToggle?: (
+		item: SimpleDataTableItem,
+		selected: boolean,
+		event: SyntheticEvent
+	) => void;
+	rowActions?: ReactNode;
+	/** Whether the row's item is in the table's `selection` (matched by `id`) */
+	isSelected?: boolean;
+	/** Whether the row's item is in the table's `disabledSelection` (matched by `id`) */
+	isDisabled?: boolean;
+	tableId?: string;
+	rowIndex?: number;
+	stacked?: boolean;
+}
+
+/**
+ * Used internally, provides row rendering to the SimpleDataTable.
+ */
+const SimpleDataTableRow: React.FC<SimpleDataTableRowProps> = (props) => {
+	const tableContext = useContext(TableContext);
+	const selectRowCellContext = useMemo(
+		() => ({
+			rowIndex: props.rowIndex ?? 0,
+			columnIndex: 0,
+		}),
+		[props.rowIndex]
+	);
+	const { tabIndex, hasFocus, handleFocus, handleKeyDown } = useContextHelper(
+		tableContext,
+		selectRowCellContext,
+		props.fixedLayout
+	);
+
+	// Selection is controlled: the checkbox or radio always renders the table's
+	// `selection` prop (`checked` is always passed, never `defaultChecked`).
+	const isSelected = !!props.isSelected;
+	const isDisabled = !!props.isDisabled;
+
+	const { item, onToggle } = props;
+	const handleToggle = useCallback(
+		(_e: SyntheticEvent, { checked }: { checked: boolean }) => {
+			// A disabled row never requests a selection change.
+			if (onToggle && !isDisabled) {
+				onToggle(item, checked, _e);
+			}
+		},
+		[isDisabled, item, onToggle]
+	);
+
+	const ariaProps = useMemo(() => {
+		const result: { 'aria-selected'?: 'true' | 'false' } = {};
+
+		if (props.canSelectRows) {
+			result['aria-selected'] = isSelected ? 'true' : 'false';
+		}
+		return result;
+	}, [isSelected, props.canSelectRows]);
+
+	const radioSelection = useMemo(() => {
+		// Disabled rows are not registered for keyboard navigation.
+		const RadioComponent = isDisabled ? Radio : InteractiveRadio;
+		return (
+			<RadioComponent
+				assistiveText={{
+					label: `${props.assistiveText?.selectRow} ${Number(props.index) + 1}`,
+				}}
+				aria-labelledby={`${props.id}-SelectRow-label ${props.tableId}-SLDSSimpleDataTableHead-column-group-header-row-select`}
+				checked={isSelected}
+				className="slds-m-right_x-small"
+				id={`${props.id}-SelectRow`}
+				labelId={`${props.id}-SelectRow-label`}
+				name={`${props.tableId}-SelectRow`}
+				onChange={handleToggle}
+				disabled={isDisabled}
+			/>
+		);
+	}, [
+		handleToggle,
+		isSelected,
+		isDisabled,
+		props.assistiveText?.selectRow,
+		props.id,
+		props.index,
+		props.tableId,
+	]);
+
+	const checkboxSelection = useMemo(() => {
+		// Disabled rows are not registered for keyboard navigation.
+		const CheckboxComponent = isDisabled ? Checkbox : InteractiveCheckbox;
+		return (
+			<CheckboxComponent
+				assistiveText={{
+					label: `${props.assistiveText?.selectRow} ${Number(props.index) + 1}`,
+				}}
+				aria-labelledby={`${props.id}-SelectRow-label ${props.tableId}-SLDSSimpleDataTableHead-column-group-header-row-select`}
+				checked={isSelected}
+				id={`${props.id}-SelectRow`}
+				labelId={`${props.id}-SelectRow-label`}
+				name={`SelectRow${(props.index ?? 0) + 1}`}
+				onChange={handleToggle}
+				disabled={isDisabled}
+			/>
+		);
+	}, [
+		handleToggle,
+		isSelected,
+		isDisabled,
+		props.assistiveText?.selectRow,
+		props.id,
+		props.index,
+		props.tableId,
+	]);
+
+	return (
+		<tr
+			{...ariaProps}
+			className={classNames(props.className, {
+				'slds-hint-parent': props.rowActions,
+				'slds-is-selected': props.canSelectRows && isSelected,
+				'slds-has-focus': hasFocus,
+			})}
+		>
+			{useMemo(
+				() => (
+					<>
+						{props.canSelectRows ? (
+							<td
+								role={tableContext.isGrid ? 'gridcell' : undefined}
+								className="slds-text-align_right"
+								data-label={props.stacked ? 'Select Row' : undefined}
+								style={{ width: '3.25rem' }}
+								onFocus={handleFocus}
+								onKeyDown={handleKeyDown}
+								ref={(ref) => {
+									if (ref && hasFocus) {
+										ref.focus();
+									}
+								}}
+								tabIndex={tabIndex}
+							>
+								<CellContext.Provider value={selectRowCellContext}>
+									{props.canSelectRows === 'radio'
+										? radioSelection
+										: checkboxSelection}
+								</CellContext.Provider>
+							</td>
+						) : null}
+						{props.columns?.map((column, index) => {
+							const { Cell } = column;
+							const cellId = `${props.id}-${SIMPLE_DATA_TABLE_CELL}-${column.props.property}`;
+
+							return (
+								<CellContext.Provider
+									key={cellId}
+									value={{
+										columnIndex: props.canSelectRows ? index + 1 : index,
+										rowIndex: props.rowIndex ?? 0,
+									}}
+								>
+									<Cell
+										{...column.props}
+										className={
+											column.props.truncate ? 'slds-truncate' : undefined
+										}
+										fixedLayout={props.fixedLayout}
+										rowHeader={column.props.primaryColumn}
+										id={cellId}
+										item={item}
+										width={column.props.width}
+										headerId={item.headerId}
+										columns={props.columns}
+									>
+										{item[column.props.property || '']}
+									</Cell>
+								</CellContext.Provider>
+							);
+						})}
+						<CellContext.Provider
+							value={{
+								columnIndex: props.canSelectRows
+									? (props.columns?.length ?? 0) + 1
+									: (props.columns?.length ?? 0),
+								rowIndex: props.rowIndex ?? 0,
+							}}
+						>
+							{props.rowActions
+								? React.cloneElement(
+										props.rowActions as React.ReactElement<{
+											id?: string;
+											item?: SimpleDataTableItem;
+											fixedLayout?: boolean;
+										}>,
+										{
+											id: `${props.id}-${SIMPLE_DATA_TABLE_ROW_ACTIONS}`,
+											item,
+											fixedLayout: props.fixedLayout,
+										}
+									)
+								: null}
+						</CellContext.Provider>
+					</>
+				),
+				[
+					handleFocus,
+					handleKeyDown,
+					hasFocus,
+					item,
+					tabIndex,
+					props.canSelectRows,
+					props.columns,
+					props.fixedLayout,
+					props.id,
+					props.rowActions,
+					props.rowIndex,
+					props.stacked,
+					selectRowCellContext,
+					checkboxSelection,
+					radioSelection,
+				]
+			)}
+		</tr>
+	);
+};
+
+SimpleDataTableRow.displayName = SIMPLE_DATA_TABLE_ROW;
+
+export default SimpleDataTableRow;

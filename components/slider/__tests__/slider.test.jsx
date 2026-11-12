@@ -1,0 +1,568 @@
+import { createRef } from 'react';
+import { render, fireEvent } from '@testing-library/react';
+import { describe, it, expect, vi, afterEach } from 'vitest';
+
+import Slider from '../';
+
+describe('SLDSSlider', () => {
+	describe('Standard Slider with Label', () => {
+		it('has type of "range"', () => {
+			const { container } = render(
+				<Slider labels={{ label: 'Slider Label' }} id="custom-id" />
+			);
+
+			const slider = container.querySelector('input');
+			expect(slider).toHaveAttribute('type', 'range');
+		});
+
+		it('is wrapped in div with class "slds-form-element"', () => {
+			const { container } = render(
+				<Slider labels={{ label: 'Slider Label' }} id="custom-id" />
+			);
+
+			const wrapper = container.querySelector('.slds-form-element');
+			expect(wrapper).toHaveClass('slds-form-element');
+		});
+
+		it('renders label', () => {
+			const { container } = render(
+				<Slider labels={{ label: 'Slider Label' }} id="custom-id" />
+			);
+
+			const labelText = container.querySelector('.slds-slider-label__label');
+			expect(labelText.textContent).toBe('Slider Label');
+		});
+
+		it('renders slider element with class "slds-slider"', () => {
+			const { container } = render(
+				<Slider labels={{ label: 'Slider Label' }} id="custom-id" />
+			);
+
+			const slider = container.querySelector('input');
+			// NOTE: The input element has class slds-slider__range, not slds-slider
+			expect(slider).toHaveClass('slds-slider__range');
+		});
+
+		it('has an id', () => {
+			const { container } = render(
+				<Slider labels={{ label: 'Slider Label' }} id="custom-id" />
+			);
+
+			const slider = container.querySelector('input');
+			expect(slider).toHaveAttribute('id');
+		});
+
+		it('can pass custom id', () => {
+			const { container } = render(
+				<Slider labels={{ label: 'Slider Label' }} id="custom-id" />
+			);
+
+			const slider = container.querySelector('input');
+			expect(slider).toHaveAttribute('id', 'custom-id');
+		});
+
+		it('has associated label for tag pointing to id of slider', () => {
+			const { container } = render(
+				<Slider labels={{ label: 'Slider Label' }} id="custom-id" />
+			);
+
+			const label = container.querySelector('.slds-form-element__label');
+			const slider = container.querySelector('input');
+			const labelForTag = label.getAttribute('for');
+			const sliderId = slider.getAttribute('id');
+			expect(labelForTag).toBe(sliderId);
+		});
+	});
+
+	describe('Component basic props', () => {
+		it('has min', () => {
+			const { container } = render(
+				<Slider
+					labels={{ label: 'Slider Label' }}
+					id="custom-id"
+					value={200}
+					min={0}
+					max={400}
+					step={100}
+				/>
+			);
+
+			const slider = container.querySelector('input');
+			expect(slider).toHaveAttribute('min', '0');
+		});
+
+		it('has max', () => {
+			const { container } = render(
+				<Slider
+					labels={{ label: 'Slider Label' }}
+					id="custom-id"
+					value={200}
+					min={0}
+					max={400}
+					step={100}
+				/>
+			);
+
+			const slider = container.querySelector('input');
+			expect(slider).toHaveAttribute('max', '400');
+		});
+
+		it('min/max matches label range', () => {
+			const { container } = render(
+				<Slider
+					labels={{ label: 'Slider Label' }}
+					id="custom-id"
+					value={200}
+					min={0}
+					max={400}
+					step={100}
+				/>
+			);
+
+			const labelRange = container.querySelector('.slds-slider-label__range');
+			expect(labelRange.textContent).toBe('0 - 400');
+		});
+
+		it('has step', () => {
+			const { container } = render(
+				<Slider
+					labels={{ label: 'Slider Label' }}
+					id="custom-id"
+					value={200}
+					min={0}
+					max={400}
+					step={100}
+				/>
+			);
+
+			const slider = container.querySelector('input');
+			expect(slider).toHaveAttribute('step', '100');
+		});
+
+		it('has value', () => {
+			const { container } = render(
+				<Slider
+					labels={{ label: 'Slider Label' }}
+					id="custom-id"
+					value={200}
+					min={0}
+					max={400}
+					step={100}
+				/>
+			);
+
+			const slider = container.querySelector('input');
+			expect(slider).toHaveAttribute('value', '200');
+		});
+
+		it('value matches slider value label', () => {
+			const { container } = render(
+				<Slider
+					labels={{ label: 'Slider Label' }}
+					id="custom-id"
+					value={200}
+					min={0}
+					max={400}
+					step={100}
+				/>
+			);
+
+			const slider = container.querySelector('input');
+			const sliderValue = container.querySelector('.slds-slider__value');
+			expect(slider.value).toBe(sliderValue.textContent);
+		});
+	});
+
+	describe('onInput, onChange callbacks are set', () => {
+		it('onChange trigged callback', () => {
+			let callbackCalled = false;
+			const { container } = render(
+				<Slider
+					value={200}
+					min={0}
+					max={400}
+					step={100}
+					onChange={(e, { value }) => {
+						expect(value).toBe(300);
+						callbackCalled = true;
+					}}
+				/>
+			);
+
+			const trigger = container.querySelector('input');
+			fireEvent.change(trigger, { target: { value: 300 } });
+			expect(callbackCalled).toBe(true);
+		});
+
+		it('onInput trigged callback', () => {
+			let callbackCalled = false;
+			const { container } = render(
+				<Slider
+					value={200}
+					min={0}
+					max={400}
+					step={100}
+					onInput={(e, { value }) => {
+						expect(value).toBe(300);
+						callbackCalled = true;
+					}}
+				/>
+			);
+
+			const trigger = container.querySelector('input');
+			fireEvent.input(trigger, { target: { value: '300' } });
+			expect(callbackCalled).toBe(true);
+		});
+	});
+
+	describe('Controlled value', () => {
+		it('reports `{ value }` and only moves when the parent updates `value`', () => {
+			const onChange = vi.fn();
+			const { container, rerender } = render(
+				<Slider
+					labels={{ label: 'Slider Label' }}
+					onChange={onChange}
+					value={10}
+				/>
+			);
+			const input = container.querySelector('input');
+			const display = container.querySelector('.slds-slider__value');
+
+			fireEvent.change(input, { target: { value: '40' } });
+			expect(onChange).toHaveBeenCalledTimes(1);
+			expect(onChange.mock.calls[0][1]).toEqual({ value: 40 });
+			expect(input.value).toBe('10');
+			expect(display.textContent).toBe('10');
+
+			rerender(
+				<Slider
+					labels={{ label: 'Slider Label' }}
+					onChange={onChange}
+					value={40}
+				/>
+			);
+			expect(input.value).toBe('40');
+			expect(display.textContent).toBe('40');
+		});
+	});
+
+	describe('Removed props', () => {
+		it('ignores `defaultValue` and warns once', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			try {
+				const { container, rerender } = render(
+					<Slider
+						defaultValue={70}
+						labels={{ label: 'Slider Label' }}
+						value={20}
+					/>
+				);
+				rerender(
+					<Slider
+						defaultValue={70}
+						labels={{ label: 'Slider Label' }}
+						value={20}
+					/>
+				);
+
+				expect(container.querySelector('input').value).toBe('20');
+				expect(container.querySelector('.slds-slider__value').textContent).toBe(
+					'20'
+				);
+				const sunsetCalls = consoleError.mock.calls.filter((args) =>
+					args.join(' ').includes('defaultValue')
+				);
+				expect(sunsetCalls).toHaveLength(1);
+			} finally {
+				consoleError.mockRestore();
+			}
+		});
+
+		it('takes the display value only from `value`', () => {
+			const { container } = render(
+				<Slider defaultValue={70} labels={{ label: 'Slider Label' }} />
+			);
+			expect(container.querySelector('.slds-slider__value').textContent).toBe(
+				''
+			);
+		});
+	});
+
+	describe('Slider with Assistive Text Label', () => {
+		it('renders label (assitive)', () => {
+			const { container } = render(
+				<Slider assistiveText={{ label: 'Assistive Label' }} />
+			);
+
+			const labelText = container.querySelector('.slds-slider-label__label');
+			expect(labelText.textContent).toBe('Assistive Label');
+		});
+
+		it('label has class "slds-assistive-text"', () => {
+			const { container } = render(
+				<Slider assistiveText={{ label: 'Assistive Label' }} />
+			);
+
+			const label = container.querySelector('.slds-form-element__label');
+			expect(label).toHaveClass('slds-assistive-text');
+		});
+
+		it('has associated label for tag pointing to id of slider', () => {
+			const { container } = render(
+				<Slider assistiveText={{ label: 'Assistive Label' }} />
+			);
+
+			const label = container.querySelector('.slds-form-element__label');
+			const slider = container.querySelector('input');
+			const labelForTag = label.getAttribute('for');
+			const sliderId = slider.getAttribute('id');
+			expect(labelForTag).toBe(sliderId);
+		});
+	});
+
+	describe('Disabled slider', () => {
+		it('slider has attribute "disabled"', () => {
+			const { container } = render(
+				<Slider labels={{ label: 'Slider Label' }} disabled />
+			);
+
+			const slider = container.querySelector('input');
+			expect(slider).toHaveAttribute('disabled');
+		});
+	});
+
+	describe('Slider size', () => {
+		it('renders size class', () => {
+			const { container } = render(
+				<Slider
+					id="custom-id"
+					labels={{ label: 'Slider Label' }}
+					size="medium"
+				/>
+			);
+
+			const sliderContainer = container.querySelector('.slds-slider');
+			expect(sliderContainer).toHaveClass('slds-size_medium');
+		});
+	});
+
+	describe('Multiple sliders', () => {
+		it('each slider has unique generated id', () => {
+			const { container: container1 } = render(
+				<Slider labels={{ label: 'Slider One' }} />
+			);
+			const { container: container2 } = render(
+				<Slider labels={{ label: 'Slider Two' }} />
+			);
+
+			const slider1 = container1.querySelector('input');
+			const slider2 = container2.querySelector('input');
+
+			expect(slider1.getAttribute('id')).not.toBe(slider2.getAttribute('id'));
+		});
+	});
+
+	describe('Required slider in Error State', () => {
+		it('slider wrapper has class "slds-has-error"', () => {
+			const { container } = render(
+				<Slider
+					hasError
+					labels={{ label: 'Slider Label', error: 'Error Message' }}
+					required
+				/>
+			);
+
+			const wrapper = container.querySelector('.slds-form-element');
+			expect(wrapper).toHaveClass('slds-has-error');
+		});
+
+		it('renders error message', () => {
+			const { container } = render(
+				<Slider
+					hasError
+					labels={{ label: 'Slider Label', error: 'Error Message' }}
+					required
+				/>
+			);
+
+			const error = container.querySelector('.slds-form-element__help');
+			expect(error.textContent).toBe('Error Message');
+		});
+
+		it('has associated aria-describedby pointing to id of error message', () => {
+			const { container } = render(
+				<Slider
+					hasError
+					labels={{ label: 'Slider Label', error: 'Error Message' }}
+					required
+				/>
+			);
+
+			const slider = container.querySelector('input');
+			const error = container.querySelector('.slds-form-element__help');
+			const sliderDescribedBy = slider.getAttribute('aria-describedby');
+			const errorId = error.getAttribute('id');
+			expect(sliderDescribedBy).toBe(errorId);
+		});
+	});
+
+	describe('Vertical slider', () => {
+		it('slider has class "slds-slider_vertical"', () => {
+			const { container } = render(
+				<Slider labels={{ label: 'Slider Label' }} vertical />
+			);
+
+			const sliderContainer = container.querySelector('.slds-slider');
+			expect(sliderContainer).toHaveClass('slds-slider_vertical');
+		});
+	});
+
+	describe('Error labels', () => {
+		afterEach(() => {
+			vi.restoreAllMocks();
+		});
+
+		it('does not show labels.error until hasError is true', () => {
+			const { container, rerender } = render(
+				<Slider labels={{ label: 'Slider Label', error: 'Error Message' }} />
+			);
+
+			expect(container.querySelector('.slds-form-element')).not.toHaveClass(
+				'slds-has-error'
+			);
+			expect(container.querySelector('.slds-form-element__help')).toBeNull();
+
+			rerender(
+				<Slider
+					hasError
+					labels={{ label: 'Slider Label', error: 'Error Message' }}
+				/>
+			);
+
+			expect(container.querySelector('.slds-form-element')).toHaveClass(
+				'slds-has-error'
+			);
+			expect(
+				container.querySelector('.slds-form-element__help')
+			).toHaveTextContent('Error Message');
+		});
+
+		it('shows the error state without a message', () => {
+			const { container } = render(
+				<Slider hasError labels={{ label: 'Slider Label' }} />
+			);
+
+			expect(container.querySelector('.slds-form-element')).toHaveClass(
+				'slds-has-error'
+			);
+			expect(container.querySelector('.slds-form-element__help')).toBeNull();
+			expect(container.querySelector('input')).not.toHaveAttribute(
+				'aria-describedby'
+			);
+		});
+
+		it('still accepts the deprecated label and errorText props and warns', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+
+			const { container } = render(
+				<Slider label="Old Label" errorText="Old Error" />
+			);
+
+			expect(
+				container.querySelector('.slds-slider-label__label')
+			).toHaveTextContent('Old Label');
+			expect(container.querySelector('.slds-form-element')).toHaveClass(
+				'slds-has-error'
+			);
+			expect(
+				container.querySelector('.slds-form-element__help')
+			).toHaveTextContent('Old Error');
+
+			const messages = consoleError.mock.calls.map((args) => args.join(' '));
+			expect(messages.some((m) => m.includes('`errorText`'))).toBe(true);
+			expect(
+				messages.some(
+					(m) => m.includes('`label`') && m.includes('labels.label')
+				)
+			).toBe(true);
+		});
+	});
+
+	describe('className and ref', () => {
+		afterEach(() => {
+			vi.restoreAllMocks();
+		});
+
+		it('puts className and ref on the root .slds-form-element', () => {
+			const ref = createRef();
+			const { container } = render(
+				<Slider
+					className="root-class"
+					labels={{ label: 'Slider Label' }}
+					ref={ref}
+				/>
+			);
+			const root = container.firstChild;
+			expect(root).toHaveClass('slds-form-element', 'root-class');
+			expect(ref.current).toBe(root);
+		});
+
+		it('still applies deprecated classNameContainer, and warns', async () => {
+			// Fresh modules so the once-per-session warning state is reset
+			vi.resetModules();
+			const { default: FreshSlider } = await import('../');
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+
+			const { container } = render(
+				<FreshSlider
+					className="new-class"
+					classNameContainer="old-class"
+					labels={{ label: 'Slider Label' }}
+				/>
+			);
+			expect(container.firstChild).toHaveClass(
+				'slds-form-element',
+				'old-class',
+				'new-class'
+			);
+
+			const messages = consoleError.mock.calls.map((call) => call.join(' '));
+			expect(
+				messages.some(
+					(m) =>
+						m.includes('`classNameContainer` will be removed') &&
+						m.includes('Use `className` instead.')
+				)
+			).toBe(true);
+		});
+	});
+});
+
+describe('Slider: required `onChange`', () => {
+	it('warns once when `onChange` is missing, and not when exempt', async () => {
+		// Fresh modules so the once-per-session warning state is reset
+		vi.resetModules();
+		const { default: FreshSlider } = await import('../');
+		const consoleError = vi
+			.spyOn(console, 'error')
+			.mockImplementation(() => {});
+		const requiredWarnings = () =>
+			consoleError.mock.calls
+				.map((call) => call.join(' '))
+				.filter((m) => m.includes('`onChange` is required by'));
+
+		// `disabled` doesn't need `onChange`
+		render(<FreshSlider disabled labels={{ label: 'A' }} value={1} />);
+		expect(requiredWarnings()).toHaveLength(0);
+		render(<FreshSlider labels={{ label: 'B' }} value={1} />);
+		expect(requiredWarnings()).toHaveLength(1);
+
+		consoleError.mockRestore();
+	});
+});

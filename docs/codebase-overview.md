@@ -1,642 +1,753 @@
 # Codebase Overview
 
-### This page will give you an overview of the library codebase organization, conventions, and implementation. Components will always be moving toward this specification, but may not comply currently.
+This document provides an overview of the library's organization, conventions, and implementation patterns.
 
-If you want to [contribute](/CONTRIBUTING.md), we hope that this overview will help you feel more comfortable.
+## Table of Contents
 
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+- [Creating a New Component](#creating-a-new-component) — **start here if you're implementing one**
+- [Project Structure](#project-structure)
+- [Component Architecture](#component-architecture)
+- [Props Conventions](#props-conventions)
+- [TypeScript Patterns](#typescript-patterns)
+- [Compatibility & Support](#compatibility--support)
+- [Performance & Bundle Size](#performance--bundle-size)
+- [SLDS Alignment](#slds-alignment)
+- [Testing](#testing)
+- [Accessibility](#accessibility)
+- [Best Practices](#best-practices)
+- [Maintainability & Versioning](#maintainability--versioning)
+- [Contributing](#contributing)
 
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+Everything after [Creating a New Component](#creating-a-new-component) is reference material: the _why_ and the edge cases behind each step. The walkthrough links to the relevant part of it as you go — you don't need to read it all up front.
 
-* [Top-Level folders](#top-level-folders)
-* [Introduction to presentational components](#introduction-to-presentational-components)
-  * [Your audience is intermediate to advanced engineers](#your-audience-is-intermediate-to-advanced-engineers)
-  * [Write clear prop comment descriptions for documentation website](#write-clear-prop-comment-descriptions-for-documentation-website)
-  * [Prop changes need console warnings](#prop-changes-need-console-warnings)
-* [External architecture](#external-architecture)
-  * [No prop breaking changes without backwards compatibility](#no-prop-breaking-changes-without-backwards-compatibility)
-  * [Review similar components before proposing a feature](#review-similar-components-before-proposing-a-feature)
-  * [Rendered text needs a prop. Group assistive text and labels](#rendered-text-needs-a-prop-group-assistive-text-and-labels)
-  * [Use `isRequired` PropType when possible](#use-isrequired-proptype-when-possible)
-  * [Prefix `onRequest[ACTION]` to pre-state-change callbacks functions](#prefix-onrequestaction-to-pre-state-change-callbacks-functions)
-  * [Prefix `on[EVENT]` to post-event callback functions](#prefix-onevent-to-post-event-callback-functions)
-  * [No return values in event callback functions](#no-return-values-in-event-callback-functions)
-  * [Allow `id` to be set and unique to the page](#allow-id-to-be-set-and-unique-to-the-page)
-  * [Callback props should be tested to see if they exist](#callback-props-should-be-tested-to-see-if-they-exist)
-  * [Prefix render props with `onRender`](#prefix-render-props-with-onrender)
-  * [Reuse existing component props by using component. No `<Button iconClassName />`.](#reuse-existing-component-props-by-using-component-no-button-iconclassname-)
-  * [Put private components in `private` folder](#put-private-components-in-private-folder)
-  * [No global DOM or `window` access](#no-global-dom-or-window-access)
-  * [Limit global event listeners usage](#limit-global-event-listeners-usage)
-  * [Limit use of DOM `ref`](#limit-use-of-dom-ref)
-  * [Use `refs` object for external DOM callbacks](#use-refs-object-for-external-dom-callbacks)
-  * [`className` class is rendered on `.slds-[COMPONENT]`](#classname-class-is-rendered-on-slds-component)
-  * [Use `className[NODE]` prefix for other nodes](#use-classnamenode-prefix-for-other-nodes)
-  * [Boolean props: Use `is`, `has`, and `can` prefixes or `-able` suffix](#boolean-props-use-is-has-and-can-prefixes-or--able-suffix)
-  * [No truthy defaults for boolean type props](#no-truthy-defaults-for-boolean-type-props)
-  * [Adding a default prop may be a breaking change](#adding-a-default-prop-may-be-a-breaking-change)
-  * [Use `event, { key: value }` in callback parameters](#use-event--key-value--in-callback-parameters)
-  * [Transpile this library before using](#transpile-this-library-before-using)
-  * [Only propose SLDS components](#only-propose-slds-components)
-* [Internal Architecture](#internal-architecture)
-  * [Example Class](#example-class)
-  * [Limit component state](#limit-component-state)
-  * [Use controlled components](#use-controlled-components)
-  * [React component can differ from DOM hierarchy](#react-component-can-differ-from-dom-hierarchy)
-  * [Group form elements in the same component](#group-form-elements-in-the-same-component)
-  * [Use loose coupling and weak connascence](#use-loose-coupling-and-weak-connascence)
-  * [Use a single return](#use-a-single-return)
-  * [Define defaults in one location](#define-defaults-in-one-location)
-  * [Use functions instead of loops](#use-functions-instead-of-loops)
-  * [No mixins](#no-mixins)
-  * [Use one stateful component and many stateless sub-components](#use-one-stateful-component-and-many-stateless-sub-components)
-  * [No DOM node queries](#no-dom-node-queries)
-  * [Limit external production dependencies.](#limit-external-production-dependencies)
-  * [Avoid inline styles and non-SLDS classes.](#avoid-inline-styles-and-non-slds-classes)
-  * [Only extend from `React.Component`](#only-extend-from-reactcomponent)
-  * [Use `classnames` for conditional CSS classes](#use-classnames-for-conditional-css-classes)
-  * [Use design tokens for inline styles](#use-design-tokens-for-inline-styles)
-  * [500+ line files should be avoided](#500-line-files-should-be-avoided)
-  * [Render style preference: 1) `?:`, 2) `&&`, 3) Enum, 4) Sub-component](#render-style-preference-1--2--3-enum-4-sub-component)
-  * [Use `handle` prefix on internal callbacks](#use-handle-prefix-on-internal-callbacks)
-  * [Use entire class name string when rendering conditional class names](#use-entire-class-name-string-when-rendering-conditional-class-names)
-  * [No variable mutation](#no-variable-mutation)
-  * [No spread operator on DOM nodes](#no-spread-operator-on-dom-nodes)
-  * [No props in initial state](#no-props-in-initial-state)
-* [Write tests](#write-tests)
-  * [Test all props](#test-all-props)
-  * [Components should have 90%+ test coverage](#components-should-have-90%25-test-coverage)
-* [Components should be accessible](#components-should-be-accessible)
-  * [Components should be keyboard accessible](#components-should-be-keyboard-accessible)
-  * [Use DOM ref to control focus if needed](#use-dom-ref-to-control-focus-if-needed)
-* [Writing documentation site examples](#writing-documentation-site-examples)
-* [Converting SLDS to Design System React](#converting-slds-to-design-system-react)
-* [Babel Preset folder](#babel-preset-folder)
-* [Benefits of open source software](#benefits-of-open-source-software)
+---
 
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+## Creating a New Component
 
-### Top-Level folders
+Follow these steps in order. Each links to the reference section with the full rule and rationale — check it when a decision here is ambiguous, otherwise keep moving.
 
-* `components` - React components
-  * `[COMPONENT]` - components that are part of the public API
-    * `__tests__` - Mocha and Jest tests
-    * `__examples__` Examples used in storybook and documentation website
-    * `__docs__` - storybook and documentation website imports of examples
-    * `private` - components that are not a part of the public API
-  * `utilities` - components that are shared between other components (not public API)
-* `icons` - Inline icons \[legacy\]
-* `preset` - Babel preset published to `@salesforce/babel-preset-design-system-react`
-* `scripts` - Build and release tasks
-* `styles` - Temporary location for styles (use sparingly)
-* `utilities` - Scripts that are not React components including `checkProp` warnings, DOM, and event helpers. (not public API)
+### Before you start
 
-### Introduction to presentational components
+1. Confirm the component maps to an approved SLDS pattern — see [Only Propose SLDS-Approved Components](#only-propose-slds-approved-components). If it doesn't exist in SLDS, stop and raise that before writing code.
+2. Search `components/` for something with an overlapping shape (form element, overlay, composite list, etc.) and follow its conventions rather than inventing new ones — see [Do](#do).
 
-If you are new to React, you may be trained to design components in a more complicated way than they need to be. The goal is for engineers to not have to think about markup and stylesheets. Please prioritize the simple and the flexible.
+### 1. Scaffold the folder
 
-The gist of presentational components is to be a template that takes in data and passes out user events and related data to callback functions. One over-simplified way to approach it is to consider these components as [Handlebars templates](http://handlebarsjs.com/) with event listeners.
-
-* Take data and UI data, such as disabled buttons, from parent via props to display data and UI state correctly. Don't manipulate props with string concatenations, array pushes, and sorting within components.
-* Pass mouse and keyboard events and related event data, such as the item data for the item that was clicked, up to parent state machine, so it can decide how to manipulate it's child components' props.
-* Parent components should be the only components that change data. Components should be data stateless and only reflect the data they have been given. Only UI state, such as "is this dialog open?" or "is this option active/focused" should be within components. Focus and active state should be maintained internally in order to not introduce these into your state engine store (e.g.- Redux).
-
-#### Your audience is intermediate to advanced engineers
-
-This project is not Bootstrap, and we've built [frameworks on top of Bootstrap](https://github.com/ExactTarget/fuelux). The primary audience for this project is software engineers wanting to easily implement the design artifact handed to them. Yes, contributors should over-document and explain as much as you need to, but you do _not_ need to have components just work when you drop them on the page. In short, think functionally and limiting internal component state.
-
-#### Write clear prop comment descriptions for documentation website
-
-"I just updated. What just broke and why?" Why does the React child component become the DOM parent node? Write as long of a prop description comment that is needed to understand the concept. These comments are used for the prop tables on the library documentation website.
-
-#### Prop changes need console warnings
-
-Need to sunset a prop or change the variable type accepted? Write backward compatible code and add console warnings that will _only run in development_. Use a `checkProp` function to communicate to the developer that they are not using the library correctly. If the warning can become an independent module and work in multiple components, add it to the `design-system-react/utilities` folder. Some examples include:
-
-* A component has children without a specified `displayName`
-* Determine if the trigger can be tabbed to
-* Require one of multiple props, but not both or only one of the specified properties
-* Warnings of property deprecation, sunsetting, and future changes
-
-### External architecture
-
-#### No prop breaking changes without backward compatibility
-
-Except on rare occasions with considerable thought breaking changes will be denied. Non-backward compatible changes to component props or a new design system version that has breaking changes within it _is_ a breaking change and this library will have to release a major version.
-
-SLDS markup alignment and class changes within the current design system release cycle are _not_ considered breaking changes in this library although they may break markup queries. When upgrading the design system CSS, please create an archive/stale branch labeled similar to `spring-17-2.2.x`, except using the correct Salesforce release date and SLDS version that the code was intended to support.
-
-If you need an existing prop changes, please consider some alternatives such as deprecated the old prop and proposing a new prop name (`onChange` to `onRowChange` for instance).
-
-#### Review similar components before proposing a feature
-
-Familiarize yourself with concepts used in the rest of the library.
-
-#### Rendered text needs a prop. Group assistive text and labels
-
-Be inclusive of non-English users. Any text the user can read (including hidden assistive text for screenreaders) should be able to be set via a prop for internationalization purposes. Within the component, **do not concatenate strings.** This assumes that you know the word order of all languages. Strings should be passed into props in their entirety. Non-visible programmatic keys can be concatenated.
-
-If the text has a mix of data and words, use a before/after key name or a callback with a return value. All assistive text for accessibility and visible text should be grouped in an object and passed in with a prop, `assistiveText` and `labels` respectively. This will allow consuming developers to easily find and map text to localize it. All visible text labels should allow a propType of `node`. This allows for italics, bold, other inline styling, and adding tooltips.
-
-#### Use `isRequired` PropType when possible
-
-Similar to limiting internal state, `isRequired` is explicit and determines the minimal API of each component. It simplifies a component's internal code and removes conditionals.
-
-#### Prefix `onRequest[ACTION]` to pre-state-change callbacks functions
-
-Pre-state-change events are events that _request_ a state change from the parent component. Pre-state-change events callbacks should check for an invalid state and prevent the invalid state. For example
-
-* Pill's `onRequestRemove` would be called before the Pill is removed. A pill is requesting that itself be removed, but it hasn't been removed yet. \* `onRemove` would be called after the Pill is removed.
-* "Native" events, like `onClick`, `onKeyDown`, `onFocus` do not have the prefix `onRequest`, since the callback occurs after the specified event.
-* `onRequestRemove` occurs _before_ the event of removal, while `onKeyDown` (delete or backspace) on a Pill occurs after a key is pressed down.
-
-#### Prefix `on[EVENT]` to post-event callback functions
-
-This is fairly standard React convention. Post-state-change or post-user-action events are called after a state change or a user event and should have the `on` prefix.
-
-#### No return values in event callback functions
-
-Event callback props should not communicate with the parent component through return values. To increase clarity, do use `event.preventDefault()` or `return false` within a callback prop to communicate information back to the component. Trapping event bubbling is good, but components should only be communicated with by props cycling back through the state engine. All data needed to change the state or communicate an invalid state should be explicitly provided by a key in the data object of the function parameter. The data object is always the second parameter of the callback.
-
-#### Allow `id` to be set and unique to the page
-
-All `id` attributes in a component's DOM should be unique to the page, especially if the same component is used multiple times. A top-level component's `id` prop should be `shortid` generated by default _and_ also be able to be controlled by the consuming developer. `shortid` generated `id` attributes are needed to enable accessibility and sometimes used for a React `key`. Letting the developer set a component's `id` allows library and consuming application DOM snapshots tests to be deterministic. Sub-component `id` props and nodes within a component can be concatenated strings such as `` <div id={`tab-panel-${props.componentId}-${props.panelId}`} role="tabpanel" /> ``. Every `id` should contain the component's `id` prop, since multiple components on the same page could use the same data objects and all HTML element `id`'s should be unique to the page.
-
-#### Callback props should be tested to see if they exist
-
-Public callback/handler function props should be tested to see if they exist before execution. Within private child components use `.isRequired` PropType if the callback is needed internally for the component to function.
-
-#### Prefix render props with `onRender`
-
-Render props are essentially a callback function that occurs at render and should be given all data that the default render function has access to. Use an `onRender` prefix to signal that it is a standard [render prop](https://reactjs.org/docs/render-props.html) function (e.g.- `onRender[nodeOrComponentName]`). In a menu item render, this would be the `options` object. This functional is always swapped out with a DOM node.
-
-#### Reuse existing component props by using component. No `<Button iconClassName />`.
-
-Another kind of render prop is when a prop accepts an existing Design System React component class with a prop API such as the `dropdown` prop of `DataTableRowActions`. _Component composition with prop spread_ is a similar pattern to render props, but differs in that it does an element clone with a shallow prop/object merge in which it is assumed that the prop component passed in overrides any props from its parent.
-
-In a way, this is "grandparent control" in that it surfaces the internal API of sub-components to the consuming developer in a way that the parent of the parent can control it. The parent component (such as `DataTableRowActions`) shallow merges the props from itself with the component props provided from the developer. The developer's passed in component controlled by the "grandparent" takes precedence and **\*merges in last** which is what you typically want, since a grandparent component controls the parent. That said, overriding internal logic can easily break a component. _Use with caution._
-
-This pattern creates a separation of concern and a more declarative approach that relies on child components with their own documented props instead of additional props on the parent component such as `<Button iconClassName />`. Passing in `<Dropdown options={} />` to a `dropdown` prop limits the aliasing of props for child components that already exist (`dropdownOptions` is discouraged) and reduces duplication of `PropType` documentation and increases library maintainability.
-
-#### Put private components in `private` folder
-
-React components not in a `private` folder are considered public and are considered within the scope of semantic versioning for breaking changes.
-
-#### No global DOM or `window` access
-
-Encapsulate your components. No DOM queries. If `window`, `document` and event listeners are needed for events, you should test for their existence. Their existence is not guaranteed.
-
-#### Limit global event listeners usage
-
-The component should not be listening to window events directly. If a menu needs to be smaller to be responsive, consuming applications should listen for the resize event and change the correct props to make the component responsive--or a CSS solution should be found.
-
-#### Limit use of DOM `ref`
-
-DOM references should only be used for tasks such as measurement.
-
-#### Use `refs` object for external DOM callbacks
-
-If you need to provide a DOM node reference, create an object called `refs` with keys that are semantic names of DOM nodes: `refs: { triggerButton: ()=>{}, triggerInput: ()=>{} }`. `ref` is a reserved prop name. This will return the component React object, _not_ the DOM node. If you use a `refs` object, you may need shallow merge the object with default props. For more information, please review [Exposing DOM Refs to Parent Components](https://facebook.github.io/react/docs/refs-and-the-dom.html#exposing-dom-refs-to-parent-components).
-
-```javascript
-const CustomTextInput (props) => (
-  <div><input ref={props.refs.input} /></div>
-);
-
-const Parent () => (
-  <CustomTextInput
-    refs={{
-      input: (el) => {
-        this.inputElement = el;
-      },
-    }}
-  />
-);
+```
+components/[component-name]/          # kebab-case
+├── index.tsx                         # public export
+├── [component-name].tsx              # implementation
+├── types.ts                          # prop types
+├── private/                          # internal-only sub-components (if any)
+├── __docs__/
+│   └── [Component].stories.tsx
+└── __tests__/
+    └── [component-name].test.tsx
 ```
 
-#### `className` class is rendered on `.slds-[COMPONENT]`
+Full rationale: [Project Structure](#project-structure), [Component Folder Structure](#component-folder-structure).
 
-The `className` prop should be on a consistent node. The classes passed into `className` should be present on the `.slds-[COMPONENT]` node and not on a container node--nor on a child of `.slds-[COMPONENT]`. All other `className` props should be suffixed--such as `classNameMenu` or `classNameContainer`.
+### 2. Write `types.ts` first
 
-#### Use `className[NODE]` prefix for other nodes
+Commit to the prop contract before implementing:
 
-Use `classNameInput` for the classname on an `input` within a component.
+- Extend the matching HTML attributes interface — [Extending HTML Attributes](#extending-html-attributes).
+- Every prop with no safe default is required, not optional — [Required Props](#required-props).
+- Mutually exclusive forms (e.g. `base`/`inline`/`popover`) are a discriminated union, never independent booleans — [Illegal States Unrepresentable](#illegal-states-unrepresentable).
+- Name props by convention — `is*`/`has*`/`can*` booleans, `on*`/`onRequest*` callbacks, `className*` class targets — [Naming Conventions](#naming-conventions).
+- Group all visible and assistive text into `labels`/`assistiveText` objects typed `ReactNode` — [Assistive Text and Labels](#assistive-text-and-labels).
+- Never default a boolean to `true`; adding a default to an existing prop later is a breaking change — [Boolean Props & Defaults](#boolean-props--defaults).
 
-#### Boolean props: Use `is`, `has`, and `can` prefixes or `-able` suffix
+### 3. Implement `[component-name].tsx`
 
-If a prop is a boolean, please prefix with `is` or `can`, `has`, or suffix it with `-able`. Never default a prop to `true`.
+- Functional component, `forwardRef` typed to the **actual rendered root element** (`HTMLButtonElement`, not generic `HTMLElement`) — [Functional Components with Hooks](#functional-components-with-hooks).
+- `className`, `style`, and the forwarded `ref` land on the outermost element the component renders; every other node's class prop is suffixed (`classNameMenu`, `styleMenu`) — [DOM Node & Ref Conventions](#dom-node--ref-conventions).
+- No local state for anything the parent could hold as a prop, and never mirror a prop into `useState` — [State & Coupling Principles](#state--coupling-principles).
+- Use SLDS markup/classes, not bespoke CSS; follow the `variant`/`theme` split and don't render CSS-hidden elements — [Converting SLDS Markup to React](#converting-slds-markup-to-react).
+- Callbacks are `(event, data) => void`, existence-checked before calling, never used for return-value contracts — [Callback Details](#callback-details).
+- If this component composes others, it owns the single tab stop and roving/active-descendant focus — the consumer shouldn't have to — [Composed-Component Focus Behavior](#composed-component-focus-behavior).
+- If rendered content must escape an ancestor's `overflow: hidden` (menu, dialog, tooltip, popover), portal it — [Portal-Based Overflow Escape](#portal-based-overflow-escape).
 
-#### No truthy defaults for boolean type props
+### 4. Add dev-time guardrails
 
-This will prevent consumers from having to write `propName={false}`. HTML defaults many attributes to true if no value is provided, such as `checked` instead of `checked="true"`. To maintain JSX's HTML-like syntax, please avoid asking a developer to use `propName={false}`. This may require using the opposite word, such as `isInline` instead of `isModal`.
+Wire any deprecated prop, unrepresentable-by-types constraint, or `"prototype"`-status warning through `utilities/warning/*`, dev-only — [Deprecation Warnings](#deprecation-warnings), [Development Diagnostics Scope](#development-diagnostics-scope).
 
-#### Adding a default prop may be a breaking change
+### 5. Write tests in `__tests__/`
 
-If adding a default prop changes the component visually from what it was without the default prop, it is considered a breaking change. Default props are very helpful and welcome if there are no changes to the component or are part of a new component. One alternative option is to create a value not specified by the design system that results in the originally rendered markup.
+- Cover every prop, every callback (assert the data payload, not just that it fired), and all keyboard/mouse interactions — [What to Test](#what-to-test).
+- Target 90%+ coverage — [Coverage Expectations](#coverage-expectations).
+- Add rendered-DOM accessibility assertions alongside RTL tests if `axe`/`jest-axe`/`vitest-axe` is available in the repo — [Automated Accessibility Assertions](#automated-accessibility-assertions).
 
-#### Use `event, { key: value }` in callback parameters
+### 6. Write the Storybook story
 
-Use consistent callback parameters and names. All render callbacks, that is callbacks that determine what to render, should pass a data object with named key/values as the second parameter. Event callbacks should pass in the synthetic event, then a data object with named key/values that relate to the event. If an event callback doesn't have a user event that triggered it, pass `undefined` as the event. This will look something like `this.props.onCallback(event, { extraInfo: true })`.
+`__docs__/[Component].stories.tsx` doubles as the documentation source. Prop descriptions belong as JSDoc comments in `types.ts` — [Write clear prop descriptions](#props-interface) — don't hand-duplicate them in the story.
 
-#### Transpile this library before using
+### 7. Export and verify
 
-This library will not, and is not, intended to be run in a browser as-is. This library is targeted at engineers that can optimize their builds for performance and target the browsers and environments they need to support with appropriate polyfills. Polyfills should be added at application build time.
+- Add the export to `index.tsx`.
+- Confirm you haven't introduced a module-level side effect (`package.json`'s `"sideEffects": false` must stay accurate) — [Bundle Footprint](#bundle-footprint).
+- No new runtime dependency without a bundle-size/risk writeup — [Runtime Dependency Budget](#runtime-dependency-budget).
 
-#### Only propose SLDS components
+### Reference implementation
 
-This library should include only components which have approved patterns in Salesforce's [design system](https://www.lightningdesignsystem.com/). If there is a use case from a designer that conforms to a design pattern, that component should be able to be implemented with this library. This library does NOT conform to Salesforce production per se, but is open to being customized to support patterns in production if they remain generic and flexible. If you are a Salesforce employee and need a component not in SLDS, please email Stephen James.
+A single component showing the conventions above applied together:
 
-### Internal Architecture
+```tsx
+// components/rating/types.ts
+import type { HTMLAttributes, ReactNode } from 'react';
 
-Internal architecture should promote readability and easy maintainance.
-
-#### Example Class
-
-```javascript
-import React from 'react';
-import PropTypes from 'prop-types';
-import checkProps from './check-props';
-import { EXTERNAL_CONSTANT } from '../../utilities/constants';
-import generateId from '../../utilities/generate-id';
-
-const propTypes = {
-	/**
-	 * The description of this prop (will appear in the documentation site).
-	 */
-	title: PropTypes.string.isRequired,
-};
-
-// These values will also be visible in the documentation site.
-const defaultProps = {};
-
-/**
- * The description of this component (will appear in the documentation site).
- */
-class DemoComponent extends React.Component {
-	static displayName = EXTERNAL_CONSTANT_NAME;
-	static propTypes = propTypes;
-	static defaultProps = defaultProps;
-
-	constructor(props) {
-		super(props);
-
-		// useful for unique DOM IDs
-		this.generatedId = this.props.id || generateId();
-
-		// initial state
-		this.state = {};
-
-		// Not required. This function issues console warnings to developers about props and is helpful in upgrading. All breaking changes to props must have a warning for developers when they upgrade.
-		checkProps(EXTERNAL_CONSTANT, this.props);
-	}
-
-	// Class property bound to instance. Class methods that are not React lifecycle methods should use "fat-arrow" syntax if `this` binding is needed.
-	toggleOpen = (event, { eventDataKey }) => {
-		// you can use `this` here
+export interface RatingProps extends Omit<
+	HTMLAttributes<HTMLDivElement>,
+	'onChange'
+> {
+	/** Current rating value. */
+	value: number;
+	/** Maximum number of stars. */
+	max: number;
+	/** Whether the rating can be changed by the user. */
+	isReadOnly?: boolean;
+	/** Visible and assistive text, grouped for i18n. */
+	labels?: {
+		heading?: ReactNode;
 	};
-
-	// Minimize use of multiple renders. More HTML-like JSX is preferred with ternary statements
-	renderSubComponent = () => null;
-
-	// Render should be last
-	render() {
-		return null;
-	}
+	assistiveText?: {
+		star?: (data: { position: number }) => string;
+	};
+	/** Fires after the user commits a new value. */
+	onChange?: (
+		event: React.MouseEvent<HTMLButtonElement>,
+		data: { value: number }
+	) => void;
+	/** Additional class name for the star row (root carries `.slds-rating`). */
+	classNameStars?: string;
 }
-
-export default DemoComponent;
 ```
 
-#### Limit component state
+```tsx
+// components/rating/rating.tsx
+import React, { forwardRef, useCallback } from 'react';
+import classNames from 'classnames';
+import type { RatingProps } from './types';
 
-If the parent application's state engine can handle it with a `prop`, then don't use state. _New components should always start out as controlled by their parent and only be uncontrolled (that has state) if a use case presents itself._ It's better to have a component that needs 20 props set and outputs the correct markup, than to have a component that works with no props set, yet maintains multiple internal states. We like to think of this project as design system templates with minimal logic that happen to work with the React framework. Let the library consumer create a simple _container component_ with state. Read more about [controlled components](#use-controlled-components).
+const Rating = forwardRef<HTMLDivElement, RatingProps>(
+	(
+		{
+			value,
+			max,
+			isReadOnly = false,
+			labels,
+			assistiveText,
+			onChange,
+			className,
+			classNameStars,
+			...rest
+		},
+		ref
+	) => {
+		const handleStarClick = useCallback(
+			(event: React.MouseEvent<HTMLButtonElement>, position: number) => {
+				if (!isReadOnly) {
+					onChange?.(event, { value: position });
+				}
+			},
+			[isReadOnly, onChange]
+		);
 
-#### Use controlled components
-
-* Components should be able to be "controlled"--that exposes a callback and expect their parent to control them with props. Components should be controlled at first and then uncontrolled support added later if needed.
-* Prefix callbacks that occur before an event with `onRequest`. Prefix callbacks that occur as a result of an event with `on`. The close button in a Popover will call `onRequestClose` while the Popover will call `onClose` after the Popover has been closed. This is because closing isn't guaranteed with `onRequestClose`, since the parent component will decide.
-* Please note that if controlled by its parent, a component will appear broken if just copied and pasted into an application without a parent to control its props.
-* Controlled components can be stateless components, but entirely stateless components do complicate DOM selectors for the consuming applications.
-
-A **controlled** `<input>` has a `value` prop. Rendering a controlled `<input>` will reflect the value of the `value` prop.
-
-```javascript
-  render() {
-    return <input type="text" value="Hello!" />;
-  }
-```
-
-User input will have no effect on the rendered element because React has declared the value to be `Hello!`. To update the value in response to user input, you could use the `onChange` event:
-
-```javascript
-class MyForm extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = { value: 'Hello!' };
-	}
-
-	handleChange = (event) => {
-		this.setState({ value: event.target.value });
-	};
-
-	render() {
 		return (
-			<input
-				type="text"
-				value={this.state.value}
-				onChange={this.handleChange}
-			/>
+			<div ref={ref} className={classNames('slds-rating', className)} {...rest}>
+				{labels?.heading && (
+					<span className="slds-rating__heading">{labels.heading}</span>
+				)}
+				<div className={classNames('slds-rating__stars', classNameStars)}>
+					{Array.from({ length: max }, (_, index) => {
+						const position = index + 1;
+						return (
+							<button
+								key={position}
+								type="button"
+								disabled={isReadOnly}
+								className={classNames('slds-rating__star', {
+									'slds-is-selected': position <= value,
+								})}
+								aria-label={assistiveText?.star?.({ position })}
+								onClick={(event) => handleStarClick(event, position)}
+							/>
+						);
+					})}
+				</div>
+			</div>
 		);
 	}
+);
+
+Rating.displayName = 'Rating';
+
+export default Rating;
+```
+
+Notice what this example does and why, tying back to the steps above: `value`/`max` are required (step 2), `isReadOnly` defaults to `false` not `true` (step 2), the ref is typed to `HTMLDivElement` because that's the actual root node (step 3), `className` lands on `.slds-rating` while the star row uses a suffixed `classNameStars` (step 3), text is passed via `labels`/`assistiveText` rather than hardcoded (step 2), and `onChange` is existence-checked and carries a data payload rather than relying on a return value (step 3).
+
+### Before opening a PR — checklist
+
+- [ ] Component maps to an approved SLDS pattern
+- [ ] `types.ts`: no unnecessary optional props; mutually exclusive forms are a discriminated union
+- [ ] `forwardRef` typed to the real root element, not a generic one
+- [ ] `className`, `style`, and `ref` on the outermost rendered element; other targets use suffixed `className*`/`style*` props
+- [ ] No prop mirrored into state; no `useState(props.x)`
+- [ ] All visible/assistive text is a prop, grouped under `labels`/`assistiveText`
+- [ ] Callbacks are `(event, data) => void`, existence-checked, no return-value contract
+- [ ] Keyboard interaction and focus management implemented (and owned by the composing component if applicable)
+- [ ] Overlay content, if any, portals rather than relying on consumer `overflow` overrides
+- [ ] Tests cover every prop, callback, and interaction; ≥90% coverage
+- [ ] Story HTML snapshots regenerated (`npm test -- --run -u`) and the diff reviewed
+- [ ] No new dependency added without a bundle-size/risk writeup
+- [ ] File(s) under 500 lines; split into `private/` sub-components if not
+- [ ] Docs status (`component.json`, Storybook) reflects reality (`prod` vs. `prototype`)
+
+---
+
+## Project Structure
+
+```
+design-system-react/
+├── components/           # React components
+│   └── [component]/
+│       ├── index.tsx           # Public export
+│       ├── [component].tsx     # Main implementation
+│       ├── types.ts            # TypeScript interfaces
+│       ├── private/            # Internal sub-components
+│       └── __docs__/
+│           └── Component.stories.tsx
+├── utilities/            # Shared utilities (not public API)
+│   ├── hooks/            # Custom React hooks
+│   └── constants.ts      # Component display names
+├── types/                # Shared TypeScript types
+├── .storybook/           # Storybook configuration
+└── docs/                 # Documentation
+```
+
+### Component Folder Structure
+
+Each component follows this structure:
+
+| File                     | Purpose                                            |
+| ------------------------ | -------------------------------------------------- |
+| `index.tsx`              | Public export, typically re-exports main component |
+| `[component].tsx`        | Main component implementation                      |
+| `types.ts`               | TypeScript interfaces for props                    |
+| `private/`               | Sub-components not part of public API              |
+| `__docs__/*.stories.tsx` | Storybook stories                                  |
+
+Components not in a `private` folder are considered public API and fall within the scope of semantic versioning for breaking changes.
+
+### Other Top-Level Directories
+
+- `scripts/` - Build and release tooling. New scripts are TypeScript (`.ts`, run with `tsx`, type-checked by `tsconfig.scripts.json`); older `.mjs`/`.js` ones are converted when substantially changed
+- `styles/` - Supplemental styles; use sparingly, prefer SLDS classes (see [SLDS Alignment](#slds-alignment))
+- `utilities/` - Shared, non-component helpers (DOM/event helpers, ID generation, dev-only prop warnings — see [Deprecation Warnings](#deprecation-warnings))
+
+---
+
+## Component Architecture
+
+### Presentational Components
+
+Components in this library are **presentational** - they receive data via props and emit events via callbacks. Think of them as templates with event handling.
+
+**Core principles:**
+
+1. **Stateless by default**: Prefer controlled components where parent manages state
+2. **Props in, events out**: Data flows down, events bubble up
+3. **No side effects**: Components should be pure functions of their props
+
+### Functional Components with Hooks
+
+All new components should be functional components using React hooks:
+
+```tsx
+import React, { useState, useCallback, forwardRef } from 'react';
+import type { MyComponentProps } from './types';
+
+const MyComponent = forwardRef<HTMLDivElement, MyComponentProps>(
+	({ label, onClick, className, ...rest }, ref) => {
+		const [isActive, setIsActive] = useState(false);
+
+		const handleClick = useCallback(
+			(event: React.MouseEvent<HTMLButtonElement>) => {
+				setIsActive(true);
+				onClick?.(event, { isActive: true });
+			},
+			[onClick]
+		);
+
+		return (
+			<div ref={ref} className={className} {...rest}>
+				<button onClick={handleClick}>{label}</button>
+			</div>
+		);
+	}
+);
+
+MyComponent.displayName = 'MyComponent';
+
+export default MyComponent;
+```
+
+### Key Patterns
+
+- Use `forwardRef` for ref forwarding
+- Always set `displayName` for debugging
+- Use `useCallback` for event handlers passed to children
+- Spread remaining props onto the root element
+
+### State & Coupling Principles
+
+- **Data is controlled; ephemeral UI state may be uncontrolled.** Anything that is app state (values, `checked`, dates, and any selection that drives other parts of the UI, such as the selected tab, row, or list item) is a required controlled prop with an `onChange` — no `default*` twin, no internal copy. The change callback is required too, since without it the control can't change, unless the control is `disabled` (or `readOnly`, where that prop exists): type it as a union such as `{ onChange: H } | { disabled: true; onChange?: H }` (see `CheckboxChangeProps`), and warn when it is missing through `utilities/warning/required-property` in `check-props.js`. Ephemeral UI state (`isOpen`, current carousel panel, hover/focus) may live inside the component (selection that is only a visual state of a menu, such as `aria-selected` on a highlighted option, also qualifies), with an optional controlled prop and optional `default*` prop. Rule of thumb: if the value would reasonably be stored in app (Redux) state, it is controlled. Decide controlled-vs-uncontrolled by whether the value prop is `!== undefined`, never by whether a callback was passed. In function components, use `useControllableState(props.isOpen, props.defaultIsOpen ?? false)` from `utilities/hooks`, and always call the callback with the requested state. A removed `default*` data prop is destructured so it never reaches the DOM, and warns through `check-props.js` with `utilities/warning/sunset-property`.
+- **Limit component state.** If the parent application's state can handle it via a prop, don't introduce local state. New components should start out controlled and only add internal (uncontrolled) state if a real use case requires it.
+- **One stateful component, many stateless sub-components.** Prefer a single top-level component that owns state, with child components driven purely by props (e.g. a `Tree` holds state, a `TreeNode` does not; frequently reused primitives like badges, pills, and icons generally shouldn't have state).
+- **Group related form elements together.** Variants of the same underlying element (e.g. checkbox styles) belong in one component rather than duplicated across components, so fixes in one visual variant carry over to the others.
+- **Favor loose coupling and weak connascence.** A contributor should be able to understand and change one piece of code without having to understand another. Prefer named-key objects over positional parameters (Connascence of Position) to keep coupling weak and refactor-safe.
+- **Use a single return per function** rather than short-circuiting with multiple return statements.
+- **Prefer functions over imperative loops** (e.g. `cats.filter(isKitten).map(getName)`) to avoid mutating variables outside functional scope.
+- **Avoid variable mutation.** Don't use bare `push`, `pop`, `shift`, `splice`, `sort`, `reverse`, or `delete` on arrays/objects that are passed by reference — use the spread operator or `Array.concat()` instead. Unexpected mutation is a common cause of components not re-rendering with new props.
+- **No DOM node queries.** Don't reach into the library's rendered output with `querySelectorAll()` from application tests. If a DOM node needs to be testable, surface it via a `ref` — once surfaced, that ref becomes part of the public API.
+- **Limit production dependencies.** Adding a new external dependency to `dependencies` requires discussion — always weigh the total cost of ownership.
+- **Don't seed state from props.** Initializing `useState(props.x)` couples the initial render to a prop value that may change later without the component reacting to it; treat this as an anti-pattern the same way `getInitialState` from props was in the class-component era.
+
+---
+
+## Props Conventions
+
+### Naming Conventions
+
+| Pattern               | Use Case                   | Example                           |
+| --------------------- | -------------------------- | --------------------------------- |
+| `is*`, `has*`, `can*` | Boolean props              | `isOpen`, `hasError`, `canEdit`   |
+| `on*`                 | Event callbacks            | `onClick`, `onChange`, `onClose`  |
+| `onRequest*`          | Pre-state-change callbacks | `onRequestClose`, `onRequestOpen` |
+| `*Ref`                | Ref callbacks              | `inputRef`, `buttonRef`           |
+| `className*`          | Additional class names     | `className`, `classNameContainer` |
+
+**Exception:** props that pass straight through to a DOM element keep their HTML attribute name and take no `is*`/`has*` prefix (`disabled`, `checked`, `required`, `readOnly`, `hidden`). The prefix applies to library-defined booleans such as `isDismissible` or `isInverse`.
+
+### Callback Conventions
+
+Event callbacks should follow this signature:
+
+```tsx
+// Pattern: (event, data) => void
+onChange?: (
+  event: React.ChangeEvent<HTMLInputElement>,
+  data: { value: string }
+) => void;
+```
+
+**Guidelines:**
+
+- First parameter: the event (or `undefined` if no event)
+- Second parameter: object with named data properties
+- Never use return values to communicate back to the component
+
+### Pre-state vs Post-event Callbacks
+
+| Prefix       | Timing              | Example                                           |
+| ------------ | ------------------- | ------------------------------------------------- |
+| `onRequest*` | Before state change | `onRequestClose` - requests close, parent decides |
+| `on*`        | After event         | `onClose` - fires after component closed          |
+
+### Assistive Text and Labels
+
+Group text props in objects for internationalization:
+
+```tsx
+interface Props {
+	assistiveText?: {
+		closeButton?: string;
+		icon?: string;
+	};
+	labels?: {
+		heading?: string;
+		cancel?: string;
+		save?: string;
+	};
 }
 ```
 
-In this example, we are accepting the value provided by the user and updating the `value` prop of the `<input>` component. This pattern makes it easy to implement interfaces that respond to or validate user interactions. For example:
+Don't concatenate strings within a component to build visible text — that assumes you know every language's word order. Pass full strings in via props; only non-visible, programmatic keys may be concatenated. If text mixes data and words, use a before/after key or a callback that returns the composed value. Visible text props should generally accept `ReactNode` (not just `string`) so consumers can pass italics, bold, or tooltips.
 
-```javascript
-handleChange = (event) => {
-	this.setState({ value: event.target.value.substr(0, 140) });
-};
+### Required Props
+
+Use non-optional (required) properties in your `types.ts` interface whenever a prop has no sensible default. This is the TypeScript equivalent of the old `PropTypes.isRequired` convention: it keeps a component's API explicit, minimizes internal conditionals, and pushes complexity to the caller rather than hiding it in fallback logic.
+
+### Boolean Props & Defaults
+
+- Never default a boolean prop to `true`. HTML attributes like `checked` default to a truthy presence, but JSX should not force consumers to write `propName={false}`; prefer the inverse wording instead (`isInline` rather than `isModal`, defaulting to `false`).
+- Adding a _default_ value to an existing prop is a breaking change if it visibly changes existing output. Defaults are safe for brand-new props or props that don't affect current markup.
+
+### DOM Node & Ref Conventions
+
+- `className`, `style`, and the forwarded `ref` all land on the same node: the outermost element the component renders. For most components that's the node carrying `.slds-[COMPONENT]`. Where the component adds a wrapper around it (Popover's trigger wrapper, Spinner's `.slds-spinner_container`), the wrapper is the root and the SLDS node gets a suffixed prop (`classNameDialog`, `classNameSpinner`). For portal-rendered components, the root is the outermost element the component renders inside the portal (Modal's `section.slds-modal`), and the portal node gets `classNamePortal`.
+- Every other node's classes and inline styles use a suffixed prop named for the part: `classNameMenu`, `classNameContainer`, `styleFooter`. Never prefix (`menuClassName`, `footerStyle`).
+- Limit `ref` usage to tasks like measuring or focusing a DOM node — not as a general escape hatch.
+- No global `window`/`document` access without checking for existence first; their presence isn't guaranteed (e.g. SSR).
+- Don't attach listeners directly to `window` inside a component. If a component needs to respond to viewport changes, let the consuming application listen and drive it via props.
+- When a component needs to expose multiple internal DOM nodes to a parent, use a `refs` object with semantic keys (`refs={{ triggerButton: (el) => {...} }}`) rather than overloading the reserved `ref` prop. This pattern is still used in components like `Accordion`.
+
+### Callback Details
+
+- Event callbacks should never communicate back to the component via a return value — use `event.preventDefault()` or explicit data-object keys instead.
+- Public callback props should be checked for existence before being invoked (`props.onClick?.(...)`). Use required props internally for callbacks a private child component can't function without.
+- `on*` names are for events only. Consumer-supplied content is a slot or a render prop, following shadcn/Radix (slots), React Aria and Base UI (render props):
+  - **Slot**: content that doesn't depend on the component's state. Accept a `ReactNode` with a noun name (`actions`, `content`, `figure`), not a zero-argument function.
+  - **Render prop**: content that depends on the component's data or state. Name it `render<Part>` and type it `(data) => ReactNode`, e.g. `renderItem({ item })` or `renderMenuItem({ isSelected, option })`. Pass one data object, with `is*` names for state, so fields can be added later. The component calls the function; it doesn't mount it as a component, so don't accept `ComponentType` props for content. Consumers with a component write `renderMenuItem={(data) => <MyItem {...data} />}`.
+  - **Element prop**: an element the component configures, not just renders, by cloning it or reading its props (e.g. Combobox `input` and `popover`, Input `fieldLevelHelpTooltip`, File `icon`). Type it `ReactElement<XProps>`. Everything else that is only rendered, including slots and render prop return values, is `ReactNode`, even when an example passes a single element.
+  - The component keeps the element that carries roles, ARIA, focus, and `key`; the render prop returns what goes inside it. Table rows are the exception: `renderSubHeadingRow` returns the `<tr>`, because the table body has no wrapper to keep.
+- All DOM `id` attributes should be unique to the page. A top-level component's `id` prop should be generated by default (this codebase uses `nanoid` via `utilities/generate-id`) but remain overridable by the consumer, which keeps DOM snapshots deterministic. Sub-component IDs should be derived from the parent's `id`, e.g. `` `tab-panel-${componentId}-${panelId}` ``.
+
+### Component Composition Over Prop Drilling
+
+Prefer accepting a pre-configured child component instance over adding new props that just alias an existing component's API — e.g. `<SimpleDataTableRowActions dropdown={<Dropdown options={...} />} />` rather than inventing `dropdownOptions` on the parent. The parent shallow-merges its own props into the passed component, with the caller's props taking precedence. This keeps each piece separately documented and avoids duplicate PropType/interface surface area, at the cost of being easier to misuse — use with caution, since overriding internal logic this way can break a component.
+
+### Illegal States Unrepresentable
+
+When a component has mutually exclusive forms (e.g. an input that's either `base`, `readonly`, or rendered inside a `popover`), model that as a discriminated union in `types.ts` rather than a set of independently optional booleans:
+
+```tsx
+type ComboboxVariantProps =
+	| { variant: 'base' }
+	| { variant: 'inline-listbox' }
+	| { variant: 'popover'; popoverProps: PopoverProps }
+	| { variant: 'readonly' };
 ```
 
-This would accept user input and truncate the value to the first 140 characters.
+Independently optional booleans (`isPopover?: boolean; isReadonly?: boolean; ...`) let invalid combinations compile even though they can't be rendered correctly. A discriminated union makes the illegal combination a type error instead of a runtime bug. This is the same problem the `variant`/`theme` conventions in [SLDS Alignment](#slds-alignment) exist to prevent — the union is how you enforce it in the type system rather than just in prose.
 
-A **Controlled** component does not maintain its own internal state; the component renders purely based on props.
+### Named Props Over Positional Contracts
 
-_from [Controlled Components](https://facebook.github.io/react/docs/forms.html#controlled-components) in the React documentation._
+Expose behavior-determining structure through named props, not through the order of `children` (e.g. `<Tabs><Tab /><Tab /></Tabs>` where position implies meaning). Positional contracts are strongly connascent — reordering children silently changes behavior, and you can't deprecate one "slot" independently of the others. Prefer named props (`primaryTab`, `items={[...]}`) or named slot props (`renderHeader`) so each piece of the contract can evolve on its own.
 
-* If a component needs the ability to also manage its own state (that is to be an "uncontrolled" component) in particular situations the parent should still be able to take over and make it controlled simply by passing in a value for the prop. For instance, an `onModalClose` callback could change `isModalOpen` to `false` when it is ready to close the modal.
-* For more detail and examples of this pattern, visit [DIMOC: Do It Myself or Callback](https://gist.github.com/jamesgpearce/53a6fc57677870f93248).
+**Exception — library-component children.** A parent may read or `cloneElement` props on its children when every accepted child is an existing library component with typed props (e.g. `Tabs` → `TabsPanel`, `RadioGroup` → `Radio`, `Accordion` → `AccordionPanel`). Type the accepted children (`ChildrenOf<XProps>` from `types/common`, `ReactElement<XProps>`, or exported subcomponents), keep injected props out of the child's public type (an internal `XInjectedProps` interface that the implementation takes alongside `XProps`), and match by component reference with `isElementOfType` (`utilities/is-element-of-type`) rather than `displayName`. When the parent merges a child element's props with its own, the consumer's props win when present; `mergeProps` (`utilities/merge-props`) does this and also composes handlers and refs and joins `className`. Slots that accept arbitrary consumer elements (a popover or tooltip trigger, a custom menu trigger) are not covered; use a named prop, render prop, or slot instead. Triggers use a `trigger` prop typed `TriggerRender<TriggerProps>`: an element, merged with `mergeProps`, or a function that receives the trigger props (`renderTrigger` handles both). `Popover` is the exception: its `children` is the element it attaches to, which may be a non-interactive anchor such as a walkthrough target (`openOn="none"`, which leaves the anchor untouched), so it stays a child.
 
-#### React component can differ from DOM hierarchy
+### Decoupled Interactive Behavior
 
-React component hierarchy doesn't always mean HTML tag hierarchy. Sometimes children become the wrapping component.
+Complex interactive logic — focus management, roving `tabindex`, keyboard navigation, ARIA state transitions — should be authored once as a shared hook in `utilities/hooks/` and consumed by every component that needs it, not reimplemented per component. This keeps behavior consistent across components that share a UX pattern (e.g. menu-like keyboard navigation in `Combobox`, `MenuDropdown`, and `RadioButtonGroup`) and means a fix or an a11y improvement only has to happen in one place.
 
-#### Group form elements in the same component
+### Deprecation Warnings
 
-Unless only style changes are needed, variants of form elements types such as checkboxes, radios, and inputs should be grouped in the same component. The underlying structure of a radio or checkbox do not change. All input `type=checkbox` nodes should be in the Checkbox component as a variant. This should be done, so that implementations of the same form elements that have different visual design can more easily be debugged. Bugs in one visual design of a form element are often found in another visual design.
+When sunsetting or renaming a prop, keep the old prop working and emit a development-only console warning rather than removing it outright. This codebase's `utilities/warning/*` helpers (`deprecated-property`, `sunset-property`, `only-one-of-properties`, `if-one-then-both-required-property`, `has-children-without-display-name-of`) exist for exactly this — wire new deprecations through them (guarded by `process.env.NODE_ENV !== 'production'`) instead of inventing ad hoc warnings per component.
 
-#### Use loose coupling and weak connascence
+Breaking changes to props, or a new SLDS version that changes markup in a breaking way, require a major version release — this library treats backward compatibility seriously and denies breaking changes except in rare, well-considered cases. Note that SLDS markup/class updates within the current design system release cycle are _not_ considered breaking, even though they may break consumers' markup-based test queries.
 
-The goal should be that a contributor can understand one piece of code without understanding another and be able to easily make updates in the future. You want weak connascence between components or components and the application (such as events) and not strong connascence. This makes it easier to update one component when modifying another in the future. How easy it will be to change in the future depends on which of the nine [types of connascence](<https://en.wikipedia.org/wiki/Connascence_(computer_programming)>) is being used. For instance, _Connascence of Name_ can be simply updated with Find/Replace. PropTypes and type systems help with _Connascence of Type_. _Connascence of Position_ with parameters is bad because it relies on the correct order of parameters. Objects with named keys should be used to avoid Connascence of Position.
+---
 
-#### Use a single return
+## TypeScript Patterns
 
-Please do not short-circuit functions with multiple returns.
+### Props Interface
 
-#### Define defaults in one location
+Define props in a separate `types.ts` file:
 
-Default props or any default variable value should be defined in one location. Many objects are merged in this library and this simplifies the logic and ensures defaults are not overriding non-defaults.
+```tsx
+// types.ts
+import type { ReactNode, HTMLAttributes } from 'react';
 
-#### Use functions instead of loops
-
-`const getKittenNames = (cats) => cats.filter(isKitten).map(getName)` is a great example of how to get a list of kitten names from a `cats` collection without a `for`, `while`, or `until` loop while only modifying variables within the functional scope.
-
-#### No mixins
-
-Avoid implied mixins. Instead, import and use shared code and external libraries as libraries, or use higher-order components in order to more easily trace the code execution.
-
-#### Use one stateful component and many stateless sub-components
-
-It is preferable to only have one stateful top-level class per component in this library. For these top-level components, it’s preferable to use `class`. All sub-components should be stateless and manipulated with props if possible.
-
-* A `Tree` should have state. A `TreeNode` should not.
-* A `DataTable` should have state, a `TableColumn` should not.
-* Frequently used items such as badges, pills, buttons or icons should probably not have state.
-
-* Know how smart/stateful React components [work together](https://gist.github.com/trevordmiller/a7791c11228b48f0366b) with [pure/dumb stateless function components](https://facebook.github.io/react/docs/reusable-components.html#stateless-functions).
-
-#### No DOM node queries
-
-A `ref` callback is React's [link to a DOM node](https://facebook.github.io/react/docs/refs-and-the-dom.html). It is triggered on render and allows access to the DOM node asynchronously. In most cases within a component, you only need a `ref` for setting focus, but `refs` make testing easier. If you find yourself using `querySelectorAll()` to query parts of this library within your application tests, please stop and submit a contribution that surfaces the DOM node you are needing to test. If you control the contents or children yourself, please use a `ref` bound to your own JSX DOM node to test. For an example, review the `renderDialog` method of `Popover` and its `body` ref. Once surfaced, a DOM `ref` becomes part of the public API and will be treated as such.
-
-#### Limit external production dependencies.
-
-Do not add external dependencies _to production dependencies_ list unless absolutely necessary. Always consider the "total cost of ownership" for all dependencies.
-
-#### Avoid inline styles and non-SLDS classes.
-
-We are blessed to have a team of great CSS developers working on our design system. Use their CSS or contribute code back to them. Some rare or temporary implementations will be approved.
-
-#### Only extend from `React.Component`
-
-Use `class/extend`, but only extend from `React.Component` and never another `class`. This prevents class hierarchies and tight coupling being created beyond the basic `React.Component`. This completely avoids the gorilla-banana problem (“what you wanted was a banana, what you got was a gorilla holding the banana, and the entire jungle” - Joe Armstrong).
-
-#### Use `classnames` for conditional CSS classes
-
-This library makes extensive use of the [classnames](https://github.com/JedWatson/classnames) library for feeding conditional CSS classes into `className` attributes and allows a variety of types such as `string`, `object`, and `arrays`. Although longer, static classname strings are preferred more than dynamic classnames (dynamic object keys) due to searchability when updating markup. See [Classnames](#classnames) section for more details.
-
-#### Use design tokens for inline styles
-
-Inline styles should be kept to a minimum. The best option is to file a bug either in the internal bug system or at the [SLDS repository](https://github.com/salesforce-ux/design-system). This library contains a copy of design tokens available on the [SLDS site](https://www.lightningdesignsystem.com/design-tokens/). See [here](https://github.com/salesforce/design-system-react/blob/master/utilities/design-tokens/README.md) for more details.
-
-#### 500+ line files should be avoided
-
-These files should be broken into sub-components or utility libraries.
-
-#### Render style preference: 1) `?:`, 2) `&&`, 3) Enum, 4) Sub-component
-
-Once your data is in a correct structure, your rendering should just respond to changes in your data. Here is a list of ways to render:
-
-1. Inline ternary operator
-   * Preferred more than a simple if-else statement
-   * It is more concise than if-else and can be used within JSX since it’s an expression
-1. Logical `&&` operator
-   * Alternative to ternary. Use when one side of the ternary operation would return null
-   * Be careful that you don’t run into bugs when using multiple conditions (truthy/falsey values, especially array length of zero)
-1. Inline Enum objects
-   * Great to map different states
-   * Great to map nested conditions ({prop1: { }}[prop1][prop2])
-1. Higher Order Components or Sub-components
-   * Create another stateless component and use it to shield away complex conditional rendering
-   * Components can focus on their main purpose
-   * This is an abstraction and can only return one node (in React 15)
-1. Switch case
-   * Verbose (break!)
-   * Can only be JSX-inlined with self-invoking function
-   * Avoid it, enums are preferred
-1. If-else
-   * Is the most basic conditional rendering
-   * Beginner friendly
-   * Cannot be inlined in JSX (needs variables)
-1. Multi-level/nested conditional renderings
-   * Avoid them for the sake of readability
-   * Split up components into stateless components with their own simple conditional rendering
-   * Use HOCs instead
-1. External templating components
-   * Avoid them and be comfortable with JSX and JavaScript
-
-**Sub-render versus ternary example**
-
-Keep variables inside the `render` function.
-
-```javascript
-// bad
-renderSmilingStatement () {
-  return <div>{this.props.name}{(this.state.isSmiling) ? <span> is smiling</span> : ""}</div>;
-},
-
-render () {
-  return <div>{this.props.name}{this.renderSmilingStatement()}</div>;
+export interface MyComponentProps extends Omit<
+	HTMLAttributes<HTMLDivElement>,
+	'onChange'
+> {
+	/** The component label */
+	label: string;
+	/** Optional icon to display */
+	icon?: ReactNode;
+	/** Whether the component is disabled */
+	isDisabled?: boolean;
+	/** Callback when value changes */
+	onChange?: (
+		event: React.ChangeEvent<HTMLInputElement>,
+		data: { value: string }
+	) => void;
 }
 ```
 
-```javascript
-// good
-render () {
-  return (
-    <div>
-      {this.props.name}
-      {this.state.isSmiling
-        ? <span> is smiling</span>
-        : null
-      }
-    </div>
-  );
+### Extending HTML Attributes
+
+Extend from appropriate HTML element attributes:
+
+```tsx
+// For button-like components
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+
+// For input-like components
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
+
+// For div containers
+interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {}
+```
+
+### Generic Components
+
+For components with generic data:
+
+```tsx
+interface DataTableProps<T extends { id: string }> {
+	items: T[];
+	onSelect?: (event: React.MouseEvent, data: { item: T }) => void;
+}
+
+function DataTable<T extends { id: string }>({
+	items,
+	onSelect,
+}: DataTableProps<T>) {
+	// ...
 }
 ```
 
-#### Use `handle` prefix on internal callbacks
+---
 
-Name the handler methods after their triggering event. Handler names should:
+## Compatibility & Support
 
-* begin with `handle`
-* end with the name of the event they handle (eg, `Click`, `Change`)
-* be present-tense
+### Server-Side Rendering Readiness
 
-```javascript
-// bad
-punchABadger () { /*...*/ },
+Treat "no direct DOM/global access without an existence check" (see [State & Coupling Principles](#state--coupling-principles) and [DOM Node & Ref Conventions](#dom-node--ref-conventions)) as the thing that keeps SSR/RSC compatibility tractable: a component that never unconditionally touches `window`/`document` has no structural reason to require a client boundary except where it holds genuine interactivity. If this library is consumed inside an RSC-capable framework (e.g. Next.js App Router), that needs to be exercised by at least one integration test before being claimed as supported — an untested SSR claim fails the same way an untested React-version floor does.
 
-render () {
-  return <div onClick={this.punchABadger} />;
-}
+---
+
+## Performance & Bundle Size
+
+### Bundle Footprint
+
+`package.json` sets `"sideEffects": false`, which is the tree-shaking signal bundlers rely on to drop unused components — preserve it, and verify with a bundler analysis (not just by inspection) that importing one component doesn't pull in unrelated ones. Adding a top-level side effect anywhere in `components/` silently breaks this guarantee for the whole package, not just that component.
+
+### Runtime Dependency Budget
+
+The default is zero _new_ runtime dependencies beyond what's already in `dependencies` — the current lodash single-function packages, `classnames`, `react-modal`, `nanoid`, and similar are the existing budget, not a precedent for adding more of the same kind freely. Anything new (a headless interaction primitive, a date library, etc.) is a per-adoption exception that should come with its own bundle-size and transitive-risk note, not be added as a convenience. Check `package.json`'s dependency count as part of reviewing any PR that touches it, so an exception can't land unreviewed.
+
+---
+
+## SLDS Alignment
+
+### Only Propose SLDS-Approved Components
+
+This library should include only components that have an approved pattern in [Salesforce's Lightning Design System](https://www.lightningdesignsystem.com/). If a designer's use case conforms to an existing SLDS pattern, it should be implementable with this library. The library does not need to mirror Salesforce production exactly, but is open to customization that supports production patterns as long as they remain generic and flexible. If you're a Salesforce employee and need a component that doesn't exist in SLDS, please follow up with the Design Systems team rather than adding a bespoke, non-SLDS component.
+
+### Converting SLDS Markup to React
+
+- Use `variant` for structural/markup changes that are mutually exclusive (what SLDS usually calls a variant or modifier). Never let the mere presence of an event callback imply a markup change beyond the event itself — e.g. adding `onClick` shouldn't turn a `span` into an `a`.
+- Use `theme` for a single mutually-exclusive `className` swap — typically an SLDS state or theme (`warning`, `error`, `offline`, `success`).
+- Modifiers/states that _can_ coexist should be separate boolean props, so any combination is possible.
+- Controlled/uncontrolled props like `isOpen` on dialogs and menus should be settable by the parent.
+- SLDS hides certain elements purely with CSS (menus, dialogs, tab/accordion panels) — don't render them into the DOM when hidden.
+- If a component is used incorrectly (e.g. a required `id` is missing from option items), prefer erroring via a `checkProps`-style warning over silently falling back (e.g. to an array index).
+- ESLint may flag SLDS markup as suspicious. Ask the SLDS team or core maintainers before changing markup — it's often intentional — and disable the specific rule inline (`eslint-disable-line`) rather than removing the check globally.
+- All filenames use kebab-case (`this-is-the-file`); convert spaces and camelCase to hyphens.
+
+### Avoid Inline Styles and Non-SLDS Classes
+
+Prefer existing SLDS CSS over inline styles or bespoke classes. If SLDS is missing something you need, file a bug against the [SLDS repository](https://github.com/salesforce-ux/design-system) (or the internal bug system) rather than working around it locally — some rare or temporary exceptions are approved case by case. When inline styles are unavoidable, use SLDS 2 global styling hooks (`var(--slds-g-*)`) rather than hardcoded values, so the style follows the active theme and dark mode.
+
+---
+
+## Testing
+
+### Test Framework
+
+This project uses:
+
+- [Vitest](https://vitest.dev/) - Test runner
+- [React Testing Library](https://testing-library.com/react) - DOM testing
+- [@testing-library/user-event](https://testing-library.com/docs/user-event/intro) - User interaction simulation
+
+### Writing Tests
+
+```tsx
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { describe, it, expect, vi } from 'vitest';
+import Button from '../';
+
+describe('Button', () => {
+	it('renders with label', () => {
+		render(<Button label="Click me" />);
+		expect(
+			screen.getByRole('button', { name: 'Click me' })
+		).toBeInTheDocument();
+	});
+
+	it('calls onClick with event data', async () => {
+		const onClick = vi.fn();
+		render(<Button label="Test" onClick={onClick} />);
+
+		await userEvent.click(screen.getByRole('button'));
+
+		expect(onClick).toHaveBeenCalledWith(
+			expect.any(Object), // event
+			expect.objectContaining({/* data */})
+		);
+	});
+
+	it('is disabled when disabled is true', () => {
+		render(<Button label="Test" disabled />);
+		expect(screen.getByRole('button')).toBeDisabled();
+	});
+});
 ```
 
-```javascript
-// good
-handleClick () { /*...*/ },
+### What to Test
 
-render () {
-  return <div onClick={this.handleClick} />;
-}
+- All props render correctly
+- Event callbacks fire with correct data
+- Keyboard interactions work
+- ARIA attributes are present
+- Focus management is correct
+
+A breaking change should always cause at least one test to fail — if it wouldn't, add a test for it.
+
+### Coverage Expectations
+
+Aim for 90%+ test coverage per component, checked via the coverage summary from `npm run test:coverage`. High coverage doesn't guarantee correct logic, but low coverage is a reliable signal of insufficient testing. Components should also be able to render without a DOM available — guard any `document`/`window` access accordingly.
+
+### Running Tests
+
+```bash
+npm test -- --run           # Run all tests once (bare `npm test` is watch mode)
+npm test -- --run -u        # Also regenerate story HTML snapshots
+npm run test:ui             # Run with Vitest UI
+npm run test:coverage       # Run once with coverage
 ```
 
-If you need to disambiguate handlers, add additional information between
-`handle` and the event name. For example, you can distinguish between `onChange`
-handlers: `handleNameChange` and `handleAgeChange`. When you do this, ask
-yourself if you should be creating a new component.
+Every Storybook story (except portal-rendered ones, which can't be server-rendered) is also rendered into an HTML snapshot (`components/__tests__/__snapshots__/story-snapshots.test.jsx.snap`), so stories are test fixtures as well as documentation. A run filtered to one component's folder does not include that suite — finish with an unfiltered run.
 
-#### Use entire class name string when rendering conditional class names
+---
 
-Use [classNames](https://www.npmjs.com/package/classnames) to manage conditional classes. This allows you to search the source code for the entire class name in order to update it. Dynamic classnames are difficult to locate.
+## Accessibility
 
-```javascript
-// best
-render () {
-  return (
-    <div className={classnames('MyComponent', {
-      'MyComponent--active': this.props.active,
-      'MyComponent--link': this.props.variant === 'link',
-   })} />
-}
+### Requirements
+
+All components must be:
+
+- Keyboard navigable
+- Screen reader compatible
+- WCAG 2.2 AA compliant
+
+### ARIA Guidelines
+
+- Use semantic HTML elements when possible
+- Add ARIA attributes only when needed
+- Test with screen readers (NVDA, VoiceOver)
+
+### Focus Management
+
+```tsx
+// Use refs for programmatic focus
+const inputRef = useRef<HTMLInputElement>(null);
+
+useEffect(() => {
+	if (isOpen) {
+		inputRef.current?.focus();
+	}
+}, [isOpen]);
 ```
 
-#### No variable mutation
+### Keyboard Navigation
 
-React tries to [optimize and prevent re-rendering the DOM when possible](https://facebook.github.io/react/docs/optimizing-performance.html#the-power-of-not-mutating-data). Many times this is not what you want. Avoid solitary use of `push`, `pop`, `shift`, `unshift`, `sort`, `reverse`, `splice` and `delete` when mutating arrays. If you ever have to ask yourself, why isn't my component rendering with new props, this is likely the reason. Use the [spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) on objects and arrays--or [`Array.concat()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat) on arrays instead of directly modifying these variables that are accessed by reference. You may consider exploring some new ES6 types such as [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) which are collections that help store unique values of any type.
+Implement standard keyboard patterns:
 
-#### No spread operator on DOM nodes
+- `Enter`/`Space` - Activate buttons
+- `Escape` - Close dialogs
+- `Arrow keys` - Navigate menus
+- `Tab` - Move between focusable elements
 
-Be careful with [rest operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters) when passively applying unnamed and unknown props to JSX nodes. This concept allows flexibility to the consuming developer, but is difficult to track for maintainers. If rest operators should be used, be sure to deconstruct each one that is actually needed by the JSX nodes, so that the rest operator only handles "unknown props" passed in from the outside developer. In short, don't utilize any properties in the `...props` object within the component. After using `const { active, className, ...rest } = props;` do not go back to using `this.prop.*` anywhere in the render function.
+### Portal-Based Overflow Escape
 
-#### No props in initial state
+Components whose rendered output must escape an ancestor's `overflow: hidden` — menus, dialogs, tooltips, popovers — must render through a portal rather than ask consumers to work around clipping with a manual `overflow` CSS override. This is already established practice in this library: `Modal` renders through `react-modal`'s portal (`portalClassName` prop), `DatePicker` exposes a `portalMount` prop so the consumer controls the mount point, and `Tooltip`'s default positioning modes use a portal (its `relative` mode explicitly opts out). Follow this pattern for any new overlay component instead of introducing a new clipping workaround.
 
-Please review [props in getInitialState is an anti-pattern.](https://facebook.github.io/react/tips/props-in-getInitialState-as-anti-pattern.html)
+### Composed-Component Focus Behavior
 
-### Write tests
+When a component composes others (e.g. a component rendering `Icon` internally, or a `Combobox`/`MenuDropdown` composing list items), the composing component owns keyboard/focus coordination: a single tab stop for the whole composite, plus correct roving/active-descendant behavior for its internal items. Don't push focus-management workarounds onto the consumer to make a composed component behave like one accessible widget — this is the accessibility corollary of [one stateful component, many stateless sub-components](#state--coupling-principles).
 
-#### Test all props
+### Automated Accessibility Assertions
 
-This allows breaking changes to be detected. If a breaking change doesn't cause at least one test to fail, then add a test.
+Manual ARIA guidelines and keyboard-pattern review (above) catch source-shape problems, but they can't prove that rendered ARIA relationships (`aria-controls`, `aria-activedescendant`, roving `tabindex`) actually resolve correctly once the DOM is rendered — composition and portals can put the rendered DOM in a different tree than the source JSX. Rendered-DOM accessibility assertions (e.g. `axe`/`jest-axe`/`vitest-axe`) should run as part of a component's test suite in addition to manual review.
 
-* All `props` should be tested. It is OK to test multiple props in the same test for optimization as long as they are isolated and do not affect each other (for instance `id`, `classname`, and `style`).
-* All event callbacks should be tested along with any data object keys outside of the synthetic event to confirm the data. The data object, if present, is typically the second parameter of an event callback.
-* All mouse and keyboard interactions should be tested.
+### Non-Accessible Contributions
 
-#### Components should have 90%+ test coverage
+Contributions that don't yet follow an approved accessible UX pattern are permitted but discouraged, and should be labeled `"prototype"` status (see each component's `component.json`) rather than `"prod"` — file a follow-up issue to close the accessibility gap.
 
-Coverage can be determined by reviewing the coverage summary at the end of `npm test`. High test coverage does not imply correct logic, but low coverage implies low test quality/quantity.
+### Resources
 
-* Test should run in headless browsers (`npm test`) and within a "real" browser (`npm start` -> `http://localhost:8001/`)
-* Components should be capable to be rendered without a `DOM`. Test for the existence of `document` and `window` before using them.
-* For more specifics about testing please review the [testing walkthough](../tests/README.md).
+- [ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- [WAI-ARIA](https://www.w3.org/TR/wai-aria-1.2/)
+- [ARIA in HTML](https://www.w3.org/TR/html-aria/) - reference for "should I put ARIA on this?"
+- [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/) - SLDS and this library target AA compliance
 
-### Components should be accessible
+---
 
-* Non-accessible component contributions are permitted but discouraged. These are labeled "prototypes" and do not follow an approved accessible user-experience pattern. Please create an additional issue to follow up with the contribution.
+## Best Practices
 
-* [ARIA-1.1 Authoring Practices guide](http://w3c.github.io/aria-practices/)
-* [ARIA 1.1](https://www.w3.org/TR/wai-aria-1.1/) - Recommendation Candidate for the new ARIA Spec.
-* [ARIA in HTML](http://w3c.github.io/html-aria/) - Reference to answer the question "Should I put ARIA on this?".
-* [HTML 5.1](https://www.w3.org/TR/html51/) - Please notice the places where it informs of ARIA role for each element.
-* [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/) - SLDS and this library should be AA compliant.
+### Do
 
-#### Components should be keyboard accessible
+- Keep components focused on one responsibility
+- Use SLDS CSS classes (no custom inline styles)
+- Make components work without JavaScript for SSR
+- Document all props with JSDoc comments
+- Handle edge cases gracefully
+- Review similar existing components before proposing a new pattern — familiarize yourself with conventions already used elsewhere in the library
+- Name internal (non-prop) event handlers with a `handle` prefix followed by the event, present-tense (`handleClick`, `handleNameChange`) — if you need to disambiguate two handlers for the same event, consider whether that's a sign you should split the component
+- When rendering conditionally, prefer in this order: inline ternary, then `&&`, then an enum/lookup object, then a dedicated sub-component — each step trades conciseness for readability as the condition gets more complex
 
-* Follow the accessibility guidelines for keyboard events on the SLDS website.
+### Don't
 
-#### Use DOM ref to control focus if needed
+- Mutate props or state directly
+- Use `findDOMNode` (deprecated in React 18+)
+- Add external dependencies without discussion
+- Create components not in SLDS
+- Use global DOM queries
+- Short-circuit a function with multiple `return` statements — use a single return
+- Spread unknown/rest props (`{...rest}`) onto a DOM node and then keep referencing the original destructured object elsewhere in the same render — once you've pulled named props out, use those variables consistently rather than reaching back into `props`
 
-* One of the key aspects of accessibility with React components is managing a DOM node's `focus` and `blur`. This should be implemented with callback references to DOM nodes and should _not_ use `ReactDOM.findDOMNode()`. Use the current DOM node `ref` prop to create a function that passes the DOM node to a callback that is provided by the parent which will control the focus once the DOM node has been rendered.
+### File Size
 
-* If a component has a focusable element, such as a button or an input, write a callback function that will pass the `ref` back to its parent. `buttonRef` or `inputRef` are possible prop names.
+Keep files under 500 lines. Split large components into sub-components.
 
-## Writing documentation site examples
+### CSS
 
-* Documentation site code is located in a [private repository](https://github.com/salesforce-ux/design-system-react-site).
-* The NPM module for this library is used for component documentation. Therefore, changes to documentation require a new version to be published.
-* Documentation site examples use [CodeMirror](https://codemirror.net/) to `eval()` site examples from the NPM module. `import` and `export` statements are ignored by CodeMirror. Exports from `components/index.js` are the only variables available to code examples. Do not `import` any other variables or the site examples will not work.
+- Use SLDS utility classes
+- Use [classnames](https://github.com/JedWatson/classnames) for conditional classes
+- Avoid inline styles - use CSS custom properties if needed
 
-## Converting SLDS to Design System React
+```tsx
+import classNames from 'classnames';
 
-* `variant` should be used for significant structure and markup or UX pattern changes that cannot exist at the same time. This may include examples, modifiers, but are usually labeled variants in SLDS. In order to clear, never make the presence of an event callback imply a markup change, other than the event attribute specified. Example: Do not make the addition of `onClick` turn a `span` into an `a` tag.
-* `theme` should be used for a single `className` change that cannot exist at the same time as another `className`. These are typically SLDS states or themes, but could be modifiers. Examples: `warning`, `error`, `offline`, `success`.
-* Modifiers and states that can exist at the same time and should be props by themselves, so that any combination of them is possible.
-* `isOpen` on dialogs and menus should be able to be controlled by their parent component, but _also_ work with internal state if it is value is `undefined`
-* SLDS uses styling to hide hidden elements. Please do not render these elements. Examples: menus, dialogs, tab and accordion content panels.
-* In order to promote best practices, if components are used in a wrong or suboptimal way, the component should error. For instance, if `id` is a required key in option items, then the component should error out and not fall back to an array index. Custom `checkProps` warnings are the best way to provide a clear error to consuming developers.
-* `propType` comments are used in the property tables on the documentation site. Please write in markdown paragraphs.
-* ESLint may find errors in SLDS markup. Feel free to ask questions to the SLDS team or core maintainers of this library, but most likely the markup is intentional and well-tested. You may need to disable the error with `eslint-disable-line` or `eslint-disable-next-line`. Consider ESlint lint there to catch the rule, but not the well thought-out exception.
-* All filenames should be "kabob case," `this-is-the-file`. Spaces and camel-case should be converted to hyphens.
+const buttonClass = classNames('slds-button', {
+	'slds-button_brand': variant === 'brand',
+	'slds-button_destructive': variant === 'destructive',
+});
+```
 
-# Babel Preset folder
+---
 
-`/preset` folder contains a Babel 6 preset that makes Design System React compatible with Salesforce’s supported browsers. This is a temporary location until a repository is created.
+## Maintainability & Versioning
 
-This preset enables a module bundler, such as Webpack, to transpile Design System React. Using this will make it easier to upgrade in the future without having to manually reconfigure your Babel settings to be compatible with new language features Design System React may use.
+### Breaking-Change Taxonomy
 
-# Benefits of open source software
+Publish this taxonomy alongside any SemVer policy so consumers know what a minor/patch release can and cannot change:
 
-* More efficient and effective development
-  * Faster Time-to-Market
-  * Reduced development costs
-* Overcoming organizational unit boundaries
-  * Cost and risk sharing among organizational units
-  * Collaboration across organizational unit boundaries
-  * Program-wide information exchange
-* More successful reuse
-  * Use of competences missing at component providers
-  * Independence between re-users and providers
-  * Relief of component providers
-* Better software product
-  * Increased code quality
-  * More innovative development
-* More flexible utilization of developers
-  * Simplified developer deployment
-  * Collaboration of detached developers
-* Enhanced knowledge management
-  * Community-based learning
-  * Openness and availability of knowledge
-* Higher employee motivation
-  * Shareable work \* Opportunity to lead engineering community
+- **Breaking:** prop rename, prop type narrowing, or prop removal.
+- **Breaking:** removing or renaming a styling hook (a `className*` target or documented SLDS class consumers style against).
+- **Breaking:** adding a default value to a prop that was previously required or had no default, if it changes rendered output for existing callers (see [Boolean Props & Defaults](#boolean-props--defaults)).
+- **Not breaking:** markup/DOM-structure changes, _provided_ any externally exposed `ref` continues to resolve to an equivalent element. This is also why [Ref Typing](#compatibility--support) matters — a ref typed to the wrong element makes "equivalent element" ambiguous.
+
+This is the concrete version of the general backward-compatibility policy already stated under [Deprecation Warnings](#deprecation-warnings) — that section covers the _process_ (console warnings, major-version bump); this taxonomy covers _what counts_.
+
+### Private-Component Enforcement
+
+The `private/` folder exemption (see [Component Folder Structure](#component-folder-structure)) is currently a naming convention, not a lint-enforced boundary — there's no rule today that fails a build if code outside a component imports from another component's `private/` path. Treat closing that gap (e.g. an ESLint `no-restricted-imports` rule scoped to `**/private/**`) as a maintainability requirement, not a nice-to-have: without it, the exemption can be silently violated and the "private" folder stops meaning what it claims to.
+
+### Development Diagnostics Scope
+
+The [Deprecation Warnings](#deprecation-warnings) pattern (`utilities/warning/*`, gated on `process.env.NODE_ENV !== 'production'`) shouldn't be limited to prop deprecation. The same mechanism should fire for: a prop combination that violates a runtime constraint the type system can't express (e.g. "provide at least one of X or Y"), a violation of an accessibility rule that can't be statically checked, and a consumer using a component still marked `"prototype"` status (see [Non-Accessible Contributions](#non-accessible-contributions)). In every case, the warning must be dev-only — never ship as console noise in a production build.
+
+---
+
+## Contributing
+
+See [CONTRIBUTING.md](../CONTRIBUTING.md) for detailed contribution guidelines.

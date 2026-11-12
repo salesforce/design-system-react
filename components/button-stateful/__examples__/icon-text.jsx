@@ -7,11 +7,18 @@ import ButtonStateful from '~/components/button-stateful'; // `~` is replaced wi
 class Example extends React.Component {
 	static displayName = 'ButtonStatefulExample';
 
+	state = { isActive: false, isInverseActive: false };
+
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div className="slds-x-small-buttons_horizontal">
-					<ButtonStateful />
+					<ButtonStateful
+						isActive={this.state.isActive}
+						onClick={(event, data) =>
+							this.setState({ isActive: data.isActive })
+						}
+					/>
 
 					<div
 						style={{
@@ -23,6 +30,10 @@ class Example extends React.Component {
 					>
 						<ButtonStateful
 							inverse
+							isActive={this.state.isInverseActive}
+							onClick={(event, data) =>
+								this.setState({ isInverseActive: data.isActive })
+							}
 							stateOne={{ icon: <ButtonIcon name="add" />, label: 'Join' }}
 							stateTwo={{ icon: <ButtonIcon name="check" />, label: 'Member' }}
 							stateThree={{ icon: <ButtonIcon name="close" />, label: 'Leave' }}

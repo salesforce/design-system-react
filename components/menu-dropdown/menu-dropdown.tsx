@@ -1,0 +1,1441 @@
+/* eslint-disable max-lines */
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
+/* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+// Implements the [Dropdown design pattern](https://www.lightningdesignsystem.com/components/menus/#flavor-dropdown) in React.
+
+import React, {
+	useState,
+	useRef,
+	useCallback,
+	useEffect,
+	useContext,
+	useMemo,
+	type ReactNode,
+	type ReactElement,
+	type MouseEvent,
+	type KeyboardEvent,
+	type FocusEvent,
+} from 'react';
+import classNames from 'classnames';
+import isFunction from 'lodash.isfunction';
+
+// Children
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore - Legacy JS module
+import Dialog from '../utilities/dialog';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore - Legacy JS module
+import BaseList from '../utilities/menu-list';
+import ListItem from '../utilities/menu-list/item';
+import ListItemLabel, {
+	type ListItemLabelProps,
+} from '../utilities/menu-list/item-label';
+
+// The menu-list `List` accepts additional legacy consumer props (`onCancel`) and
+// is passed a callback `ref` typed against the DOM element by historical callers.
+// Alias to a permissive type here rather than widen the public MenuListProps.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const List = BaseList as unknown as React.ComponentType<any>;
+
+// This is the default Dropdown Trigger, which expects one button as a child.
+import DefaultTrigger from './button-trigger';
+
+// This component's `checkProps` which issues warnings to developers about properties
+import checkProps from './check-props';
+import componentDoc from './component.json';
+
+import EventUtil from '../../utilities/event';
+import generateId from '../../utilities/generate-id';
+import keyboardNavigate from '../../utilities/keyboard-navigate';
+import KeyBuffer from '../../utilities/key-buffer';
+import KEYS from '../../utilities/key-code';
+import {
+	MENU_DROPDOWN,
+	MENU_DROPDOWN_TRIGGER,
+} from '../../utilities/constants';
+import { useControllableState } from '../../utilities/hooks/use-controllable-state';
+import { IconSettingsContext } from '../icon-settings';
+import type { IconCategory } from '../../types/common';
+import isElementOfType from '../../utilities/is-element-of-type';
+import type { TriggerRender } from '../../utilities/merge-props';
+import type { MenuDropdownTriggerProps } from './button-trigger';
+
+export type { MenuDropdownTriggerProps };
+
+const documentDefined = typeof document !== 'undefined';
+
+// The overlay is an optional way to allow the dropdown to close on outside
+// clicks even when those clicks are over areas that wouldn't normally fire
+// click or touch events (for example, iframes).
+const overlay = documentDefined
+	? document.createElement('span')
+	: ({ style: {} } as HTMLSpanElement);
+
+if (documentDefined) {
+	overlay.style.top = '0';
+	overlay.style.left = '0';
+	overlay.style.width = '100%';
+	overlay.style.height = '100%';
+	overlay.style.position = 'absolute';
+}
+
+// Global state for tracking open dropdown
+let currentOpenDropdown:
+	{ handleClose: (event?: MenuDropdownCloseEvent) => void } | undefined;
+
+const DropdownNubbinPositionsArray = [
+	'top left',
+	'top',
+	'top right',
+	'bottom left',
+	'bottom',
+	'bottom right',
+] as const;
+
+export type DropdownNubbinPosition =
+	(typeof DropdownNubbinPositionsArray)[number];
+
+export const DropdownNubbinPositions: readonly DropdownNubbinPosition[] =
+	DropdownNubbinPositionsArray;
+
+const noop = () => {};
+
+export interface MenuDropdownOptionIcon {
+	name: string;
+	category: IconCategory;
+}
+
+/** A selectable menu item. `type` may be omitted. */
+export interface MenuDropdownItemOption {
+	type?: 'item';
+	className?: string;
+	disabled?: boolean;
+	divider?: never;
+	href?: string;
+	id?: string;
+	label?: string;
+	leftIcon?: MenuDropdownOptionIcon;
+	rightIcon?: MenuDropdownOptionIcon;
+	tooltipContent?: string;
+	value?: string | number;
+}
+
+/** A non-selectable group heading */
+export interface MenuDropdownHeaderOption {
+	type: 'header';
+	className?: string;
+	disabled?: never;
+	/** Adds a divider above or below the heading */
+	divider?: 'top' | 'bottom';
+	href?: never;
+	id?: string;
+	label?: string;
+	leftIcon?: never;
+	rightIcon?: never;
+	tooltipContent?: never;
+	value?: never;
+}
+
+/** A separator line between items */
+export interface MenuDropdownDividerOption {
+	type: 'divider';
+	className?: string;
+	disabled?: never;
+	divider?: never;
+	href?: never;
+	id?: string;
+	label?: never;
+	leftIcon?: never;
+	rightIcon?: never;
+	tooltipContent?: never;
+	value?: never;
+}
+
+export type MenuDropdownOption =
+	MenuDropdownItemOption | MenuDropdownHeaderOption | MenuDropdownDividerOption;
+
+/** The `value` of a MenuDropdown: one option value, or an array when `multiple`. */
+export type MenuDropdownValue = number | string | (number | string)[];
+
+/**
+ * Data passed as the second argument of `onSelect`.
+ */
+export interface MenuDropdownSelectData {
+	/** The selected item object from `options`. */
+	option: MenuDropdownOption;
+	/** Index of the selected item within `options`. */
+	optionIndex: number;
+	/**
+	 * The requested next `value`. Without `multiple` this is the selected
+	 * option's `value`. With `multiple` it is the current `value` array with the
+	 * option's `value` added or removed (unchanged if the option has no `value`).
+	 * Pass it back as `value` to update the selection.
+	 */
+	value: MenuDropdownValue | undefined;
+}
+
+/**
+ * Data passed to `renderMenuItem`.
+ */
+export interface MenuDropdownRenderMenuItemData {
+	/** The item's left icon, or the checkmark when `checkmark` is set. Render it to keep the default layout. */
+	icon: ReactNode;
+	/** Whether the item is selected (`value`). */
+	isSelected: boolean;
+	/** The item object from `options`. */
+	option: MenuDropdownOption;
+	/** Index of the item within `options`. */
+	optionIndex: number;
+}
+
+/**
+ * Data passed as the second argument of `onOpen`. Currently has no fields; it
+ * is an object so fields can be added without changing the callback shape.
+ */
+export type MenuDropdownOpenData = Record<string, never>;
+
+/**
+ * Data passed as the second argument of `onClose`. Currently has no fields; it
+ * is an object so fields can be added without changing the callback shape.
+ */
+export type MenuDropdownCloseData = Record<string, never>;
+
+/**
+ * Data passed as the second argument of `onRequestOpen`. Currently has no
+ * fields; it is an object so fields can be added without changing the
+ * callback shape.
+ */
+export type MenuDropdownRequestOpenData = Record<string, never>;
+
+/**
+ * Data passed as the second argument of `onRequestClose`. Currently has no
+ * fields; it is an object so fields can be added without changing the
+ * callback shape.
+ */
+export type MenuDropdownRequestCloseData = Record<string, never>;
+
+/**
+ * Event passed to `onOpen` and `onRequestOpen`: the trigger click, hover
+ * (`mouseenter`) or keydown that opened (or asked to open) the menu.
+ * `undefined` when there is no event (e.g. `onOpen` after a controlled
+ * `isOpen` change the component did not request).
+ */
+export type MenuDropdownOpenEvent = MouseEvent | KeyboardEvent | undefined;
+
+/**
+ * Event passed to `onClose` and `onRequestClose`: the React event that closed
+ * (or asked to close) the menu, the native DOM `mousedown`/`touchstart` event
+ * for an outside click, or `undefined` when there is no event (hover-close
+ * timeout, unmount, another menu opening, or a controlled `isOpen` change the
+ * component did not request).
+ */
+export type MenuDropdownCloseEvent = React.SyntheticEvent | Event | undefined;
+
+export interface MenuDropdownProps {
+	/** Aligns the menu center, right, or left respective to the trigger */
+	align?: 'center' | 'left' | 'right';
+	/** Text that is visually hidden but read aloud by screenreaders */
+	assistiveText?: Record<string, unknown>;
+	/** CSS classes to be added to triggering button */
+	buttonClassName?: string | string[] | Record<string, boolean>;
+	/** If true, button/icon is white. Meant for buttons on dark backgrounds */
+	buttonInverse?: boolean;
+	/** Determines variant of the Button component that triggers dropdown */
+	buttonVariant?: 'base' | 'neutral' | 'brand' | 'destructive' | 'icon';
+	/** If true, renders checkmark icon on the selected Menu Item */
+	checkmark?: boolean;
+	/**
+	 * Custom content to render in the dropdown. A `List` child is rendered as the menu of `options`
+	 * with its props. A `DropdownTrigger` child (or a custom trigger with its `displayName`) is used
+	 * as the trigger; this is deprecated, use `trigger`.
+	 */
+	children?: ReactNode;
+	/**
+	 * Initial open state when `isOpen` is not set (uncontrolled). Ignored when
+	 * `isOpen` is set.
+	 */
+	defaultIsOpen?: boolean;
+	/** CSS classes to be added to dropdown menu */
+	className?: string | string[] | Record<string, boolean>;
+	/** Class names added to the Dialog component */
+	containerClassName?: string | string[] | Record<string, boolean>;
+	/** Prevent dropdown menu from opening */
+	disabled?: boolean;
+	/** Prevents the dropdown from changing position based on the viewport */
+	hasStaticAlignment?: boolean;
+	/** Associates an icon button with another element on the page */
+	hint?: boolean;
+	/** Delay on menu closing in milliseconds */
+	hoverCloseDelay?: number;
+	/** Name of the icon category */
+	iconCategory?: 'action' | 'custom' | 'doctype' | 'standard' | 'utility';
+	/** Name of the icon */
+	iconName?: string;
+	/** Icon position relative to label */
+	iconPosition?: 'left' | 'right';
+	/**
+	 * Icon variant. `bare-inverse` and `border-inverse` match `lightning-button-menu`'s variants and are
+	 * equivalent to `bare` or `border` with `buttonInverse`. Meant for icon buttons on dark backgrounds.
+	 */
+	iconVariant?:
+		| 'bare'
+		| 'bare-inverse'
+		| 'container'
+		| 'border'
+		| 'border-filled'
+		| 'border-inverse'
+		| 'small'
+		| 'more';
+	/** Determines the size of the icon. `xx-small` requires an `iconVariant`. */
+	iconSize?: 'xx-small' | 'x-small' | 'small' | 'medium' | 'large';
+	/** A unique ID for keyboard navigation and ARIA support */
+	id?: string;
+	/** Whether to inherit target width */
+	inheritTargetWidth?: boolean;
+	/** Adds inverse class to the dropdown */
+	inverse?: boolean;
+	/**
+	 * Whether the menu is open. Setting it (`true` or `false`) makes the open
+	 * state controlled: clicks, keys, hover, outside clicks and selection call
+	 * `onRequestOpen`/`onRequestClose` but never open or close the menu
+	 * themselves, so update `isOpen` from those callbacks. Leave it `undefined`
+	 * to let the menu manage its own open state (see `defaultIsOpen`).
+	 */
+	isOpen?: boolean;
+	/** Text within the trigger button */
+	label?: string | ReactNode;
+	/**
+	 * @deprecated Use `renderMenuItem` instead, which is called as a function with `{ icon, isSelected, option, optionIndex }`.
+	 */
+	listItemRenderer?: (props: Record<string, unknown>) => ReactNode;
+	/** Menu list length */
+	length?: null | '5' | '7' | '10' | 5 | 7 | 10;
+	/** Position strategy for the menu */
+	menuPosition?: 'absolute' | 'overflowBoundaryElement' | 'relative';
+	/** Style applied to menu element */
+	menuStyle?: React.CSSProperties;
+	/** Whether this dropdown supports multi select */
+	multiple?: boolean;
+	/** Positions dropdown menu with a nubbin */
+	nubbinPosition?: DropdownNubbinPosition;
+	/** Called when the triggering button loses focus */
+	onBlur?: (event: FocusEvent) => void;
+	/** Triggered when the trigger button is clicked */
+	onClick?: (event: MouseEvent) => void;
+	/**
+	 * Triggered after the menu closes, in both modes. Receives the event that
+	 * closed it (see `MenuDropdownCloseEvent`) and a `MenuDropdownCloseData`
+	 * object. With a controlled `isOpen` it fires when the parent sets
+	 * `isOpen={false}`, with the event of the matching `onRequestClose` if
+	 * there was one. To close a controlled menu, use `onRequestClose`.
+	 */
+	onClose?: (
+		event: MenuDropdownCloseEvent,
+		data: MenuDropdownCloseData
+	) => void;
+	/** Called when the triggering button gains focus */
+	onFocus?: (event: FocusEvent) => void;
+	/** Called when a key is pressed */
+	onKeyDown?: (event: KeyboardEvent) => void;
+	/** Called when mouse clicks down on the trigger button */
+	onMouseDown?: (event: MouseEvent) => void;
+	/** Called when mouse hovers over the trigger button */
+	onMouseEnter?: (event: MouseEvent) => void;
+	/** Called when mouse hover leaves the trigger button */
+	onMouseLeave?: (event: MouseEvent) => void;
+	/**
+	 * Triggered after the menu opens, in both modes. Receives the click,
+	 * `mouseenter` or keydown event that opened it and a
+	 * `MenuDropdownOpenData` object. With a controlled `isOpen` it fires when
+	 * the parent sets `isOpen={true}`, with the event of the matching
+	 * `onRequestOpen` if there was one. To open a controlled menu, use
+	 * `onRequestOpen`.
+	 */
+	onOpen?: (event: MenuDropdownOpenEvent, data: MenuDropdownOpenData) => void;
+	/**
+	 * Called when the user asks to close the menu (trigger click, Escape, Tab,
+	 * outside click, hover leave, selecting an item, or another menu opening),
+	 * whether `isOpen` is controlled or not. With a controlled `isOpen`, set it
+	 * to `false` here to close the menu.
+	 */
+	onRequestClose?: (
+		event: MenuDropdownCloseEvent,
+		data: MenuDropdownRequestCloseData
+	) => void;
+	/**
+	 * Called when the user asks to open the menu (trigger click, hover, or
+	 * keyboard), whether `isOpen` is controlled or not. With a controlled
+	 * `isOpen`, set it to `true` here to open the menu.
+	 */
+	onRequestOpen?: (
+		event: MenuDropdownOpenEvent,
+		data: MenuDropdownRequestOpenData
+	) => void;
+	/**
+	 * Triggered when an item in the menu is selected by mouse or keyboard.
+	 * Receives the triggering event and `{ option, optionIndex, value }`, where
+	 * `value` is the requested next `value`. The selection shown in the menu
+	 * comes only from the `value` prop, so update it here. Clicking custom
+	 * (non-`List`) content does not call `onSelect`; use `onClose`.
+	 */
+	onSelect?: (
+		event: MouseEvent | KeyboardEvent | undefined,
+		data: MenuDropdownSelectData
+	) => void;
+	/** Determines if mouse hover or click opens the dropdown menu */
+	openOn?: 'hover' | 'click' | 'hybrid';
+	/** An array of menu item objects */
+	options?: MenuDropdownOption[];
+	/** If true, adds a transparent overlay when menu is open */
+	overlay?: boolean | ((isOpen: boolean, overlayEl: HTMLSpanElement) => void);
+	/**
+	 * Renders the contents of each menu item in place of the default label. Receives `{ icon, isSelected, option, optionIndex }`; render `icon` to keep the left icon or checkmark.
+	 */
+	renderMenuItem?: (data: MenuDropdownRenderMenuItemData) => ReactNode;
+	/** An object of CSS styles for the triggering button */
+	style?: React.CSSProperties;
+	/** Write "-1" if you don't want the user to tab to the button */
+	tabIndex?: string;
+	/**
+	 * The element that opens the menu, rendered inside the trigger `div` (which handles clicks,
+	 * focus, keys and hover). A `Button` element takes the button props of MenuDropdown (`label`,
+	 * `iconName`, `buttonVariant`, …) as defaults that its own props override. Any other element is
+	 * merged with `MenuDropdownTriggerProps`: its handlers run before MenuDropdown's and its other
+	 * props win. A function receives `MenuDropdownTriggerProps` and returns the trigger, for full
+	 * control. It must render a focusable element and pass it `ref`.
+	 */
+	trigger?: TriggerRender<MenuDropdownTriggerProps>;
+	/** Tooltip component template for menu items */
+	tooltipMenuItem?: ReactNode;
+	/** CSS classes to be added to wrapping trigger div */
+	triggerClassName?: string | string[] | Record<string, boolean>;
+	/**
+	 * The selected option `value` (an array of values when `multiple`). This
+	 * is the only source of the selection shown with `checkmark` or
+	 * `multiple`: selecting an item does not change it, so update it from
+	 * `onSelect` (`data.value`). Leave it `undefined` for a menu without
+	 * selection state.
+	 */
+	value?: MenuDropdownValue;
+	/** Width of the menu dropdown */
+	width?: 'xx-small' | 'x-small' | 'small' | 'medium' | 'bottom' | 'large';
+	/** Internal: Used for requesting focus */
+	requestFocus?: boolean;
+	/** Internal: Callback for focus request */
+	onRequestFocus?: (trigger: HTMLElement) => void;
+}
+
+interface NavigableItem {
+	index: number;
+	text: string;
+}
+
+interface NavigableItems extends Array<NavigableItem> {
+	indexes: number[];
+	keyBuffer: ReturnType<typeof KeyBuffer>;
+}
+
+const itemIsSelectable = (item: MenuDropdownOption): boolean =>
+	item.type !== 'header' && item.type !== 'divider' && !item.disabled;
+
+const getNavigableItems = (items?: MenuDropdownOption[]): NavigableItems => {
+	const navigableItems: NavigableItems = [] as unknown as NavigableItems;
+	navigableItems.indexes = [];
+	navigableItems.keyBuffer = new KeyBuffer();
+
+	if (Array.isArray(items)) {
+		items.forEach((item, index) => {
+			if (itemIsSelectable(item)) {
+				navigableItems.push({
+					index,
+					text: `${item.label}`.toLowerCase(),
+				});
+				navigableItems.indexes.push(index);
+			}
+		});
+	}
+
+	return navigableItems;
+};
+
+// Nubbin position mapping
+const DropdownToDialogNubbinMapping: Record<string, string> = {
+	top: 'bottom',
+	'top left': 'bottom left',
+	'top right': 'bottom right',
+	bottom: 'top',
+	'bottom left': 'top left',
+	'bottom right': 'top right',
+};
+
+/**
+ * The MenuDropdown component is a variant of the Lightning Design System Menu component.
+ * This is a React 19 compatible functional component that replaces the deprecated
+ * react-onclickoutside HOC with a custom click outside handler.
+ */
+const MenuDropdown: React.FC<MenuDropdownProps> & {
+	displayName: string;
+} = (props) => {
+	const {
+		align = 'left',
+		assistiveText,
+		buttonClassName,
+		buttonInverse,
+		buttonVariant,
+		checkmark,
+		children,
+		className,
+		containerClassName,
+		defaultIsOpen,
+		disabled,
+		hasStaticAlignment,
+		hint,
+		hoverCloseDelay = 300,
+		iconCategory,
+		iconName,
+		iconPosition,
+		iconSize,
+		iconVariant,
+		id,
+		inheritTargetWidth,
+		inverse = false,
+		isOpen: isOpenProp,
+		label,
+		length = '5',
+		listItemRenderer,
+		renderMenuItem,
+		menuPosition: menuPositionProp = 'absolute',
+		menuStyle,
+		multiple,
+		nubbinPosition,
+		onBlur,
+		onClick,
+		onClose,
+		onFocus,
+		onKeyDown,
+		onMouseDown,
+		onMouseEnter,
+		onMouseLeave,
+		onOpen,
+		onRequestClose,
+		onRequestOpen,
+		onSelect,
+		openOn = 'click',
+		options,
+		overlay: overlayProp,
+		requestFocus,
+		onRequestFocus,
+		style,
+		tabIndex,
+		tooltipMenuItem,
+		trigger,
+		triggerClassName,
+		value,
+		width = 'medium',
+	} = props;
+
+	const context = useContext(IconSettingsContext);
+
+	// Generate stable IDs
+	const generatedId = useMemo(() => generateId(), []);
+	const getId = useCallback(() => id || generatedId, [id, generatedId]);
+
+	// State. The open state is ephemeral: controlled when `isOpen` is set,
+	// otherwise internal (seeded by `defaultIsOpen`). The selection is data and
+	// always comes from `value`.
+	const [isOpenValue, setIsOpenValue, isOpenControlled] = useControllableState(
+		isOpenProp,
+		defaultIsOpen ?? false
+	);
+	const [focusedIndex, setFocusedIndex] = useState(-1);
+	const [triggerRendered, setTriggerRendered] = useState(false);
+
+	// Refs
+	const triggerRef = useRef<HTMLButtonElement | null>(null);
+	const triggerContainerRef = useRef<HTMLDivElement | null>(null);
+	const listRef = useRef<HTMLUListElement | null>(null);
+	const listItemsRef = useRef<Record<number, HTMLLIElement | null>>({});
+	const isHoverRef = useRef(false);
+	const isUnmountingRef = useRef(false);
+	const closingTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+	const overlayRef = useRef<HTMLSpanElement | null>(null);
+
+	// Navigable items
+	const navigableItems = useMemo(() => getNavigableItems(options), [options]);
+
+	// Check props in development
+	useEffect(() => {
+		checkProps(MENU_DROPDOWN, props, componentDoc);
+	}, [props]);
+
+	// Whether the menu is logically open (controlled `isOpen` or internal state)
+	const getIsOpen = useCallback((): boolean => !!isOpenValue, [isOpenValue]);
+
+	const isOpen = !disabled && getIsOpen() && triggerRendered;
+
+	// Helper to get index by value
+	const getIndexByValue = useCallback(
+		(val: string | number | undefined, opts?: MenuDropdownOption[]): number => {
+			if (val === undefined || !opts) {
+				return -1;
+			}
+			return opts.findIndex((element) => element && element.value === val);
+		},
+		[]
+	);
+
+	// The selected values, derived from `value` on every render
+	const selectedValues = useMemo((): (string | number)[] => {
+		if (Array.isArray(value)) {
+			return value;
+		}
+		return value !== undefined ? [value] : [];
+	}, [value]);
+
+	const selectedIndex =
+		!multiple && !Array.isArray(value) ? getIndexByValue(value, options) : -1;
+
+	const selectedIndices = useMemo(
+		() =>
+			multiple
+				? selectedValues
+						.map((v) => getIndexByValue(v, options))
+						.filter((index) => index !== -1)
+				: [],
+		[multiple, selectedValues, getIndexByValue, options]
+	);
+
+	// The `value` that selecting `option` requests, reported by `onSelect`
+	const getNextValue = useCallback(
+		(option: MenuDropdownOption | undefined): MenuDropdownValue | undefined => {
+			const optionValue = option?.value;
+			if (!multiple) {
+				return optionValue;
+			}
+			if (optionValue === undefined) {
+				return [...selectedValues];
+			}
+			return selectedValues.includes(optionValue)
+				? selectedValues.filter((v) => v !== optionValue)
+				: [...selectedValues, optionValue];
+		},
+		[multiple, selectedValues]
+	);
+
+	const menuPosition = menuPositionProp;
+
+	// Get list item ID
+	const getListItemId = useCallback(
+		(index?: number): string | undefined => {
+			if (index !== undefined) {
+				return `${getId()}-item-${index}`;
+			}
+			return undefined;
+		},
+		[getId]
+	);
+
+	// Get list item renderer
+	const getListItemRenderer = useCallback(() => {
+		return listItemRenderer ? listItemRenderer : ListItemLabel;
+	}, [listItemRenderer]);
+
+	const renderItemLabel = useMemo(
+		() =>
+			renderMenuItem
+				? ({ data, icon, index, isSelected }: ListItemLabelProps) =>
+						renderMenuItem({
+							icon,
+							isSelected: Boolean(isSelected),
+							option: data as MenuDropdownOption,
+							optionIndex: index ?? 0,
+						})
+				: undefined,
+		[renderMenuItem]
+	);
+
+	// Focus trigger
+	const setFocus = useCallback(() => {
+		if (!isHoverRef.current && !isUnmountingRef.current && triggerRef.current) {
+			triggerRef.current.focus();
+		}
+	}, []);
+
+	// Get menu element
+	const getMenu = useCallback((): HTMLUListElement | null => {
+		return listRef.current;
+	}, []);
+
+	// Get menu item element
+	const getMenuItem = useCallback((index: number): HTMLLIElement | null => {
+		if (index !== undefined && listItemsRef.current) {
+			return listItemsRef.current[index] || null;
+		}
+		return null;
+	}, []);
+
+	// Handle close
+	const handleCloseRef = useRef<(event?: MenuDropdownCloseEvent) => void>(
+		() => {}
+	);
+
+	// The open state `onOpen`/`onClose` last reported. It starts at the initial
+	// state, so a menu that renders open does not report an open on mount.
+	const notifiedOpenRef = useRef(Boolean(isOpenValue) && !disabled);
+	// With a controlled `isOpen`, the event of the last open/close request, so
+	// `onOpen`/`onClose` can report it once the parent applies the request.
+	const pendingRequestRef = useRef<{
+		isOpen: boolean;
+		event: MenuDropdownCloseEvent;
+	} | null>(null);
+	// The event that last opened the menu, passed on when it closes another menu
+	const openEventRef = useRef<MenuDropdownOpenEvent>(undefined);
+	const onOpenRef = useRef(onOpen);
+	const onCloseRef = useRef(onClose);
+	useEffect(() => {
+		onOpenRef.current = onOpen;
+		onCloseRef.current = onClose;
+	}, [onOpen, onClose]);
+
+	// Calls `onOpen`/`onClose` when the menu has actually opened or closed and
+	// that has not been reported yet. Uses refs only: the Dialog calls it from
+	// its unmount with a stale callback.
+	const notifyOpenChange = useCallback(
+		(nextIsOpen: boolean, event?: MenuDropdownCloseEvent) => {
+			if (notifiedOpenRef.current === nextIsOpen) {
+				return;
+			}
+			const pending = pendingRequestRef.current;
+			const reportedEvent =
+				event ??
+				(pending && pending.isOpen === nextIsOpen ? pending.event : undefined);
+			pendingRequestRef.current = null;
+			notifiedOpenRef.current = nextIsOpen;
+			if (nextIsOpen) {
+				openEventRef.current = reportedEvent as MenuDropdownOpenEvent;
+				onOpenRef.current?.(reportedEvent as MenuDropdownOpenEvent, {});
+			} else {
+				onCloseRef.current?.(reportedEvent, {});
+			}
+		},
+		[]
+	);
+
+	// Requests a close. With a controlled `isOpen` only `onRequestClose` runs;
+	// the menu closes (and `onClose` fires) when the parent sets `isOpen={false}`.
+	const handleClose = useCallback(
+		(event?: MenuDropdownCloseEvent) => {
+			if (getIsOpen()) {
+				isHoverRef.current = false;
+				if (isOpenControlled) {
+					pendingRequestRef.current = { isOpen: false, event };
+				}
+				onRequestClose?.(event, {});
+				if (!isOpenControlled) {
+					setIsOpenValue(false);
+					notifyOpenChange(false, event);
+				}
+			}
+		},
+		[
+			getIsOpen,
+			isOpenControlled,
+			onRequestClose,
+			setIsOpenValue,
+			notifyOpenChange,
+		]
+	);
+
+	// Dialog `onClose` fires for the Tab key and on Dialog unmount. Tab is
+	// already handled by `handleKeyDown` (the Dialog forwards the keydown), so
+	// only the unmount call is used: the menu has disappeared (closed, disabled,
+	// or MenuDropdown unmounting while open), so report the close if it has not
+	// been reported yet.
+	const handleDialogClose = useCallback(
+		(
+			event: MenuDropdownCloseEvent,
+			data?: { componentWillUnmount?: boolean }
+		) => {
+			if (data?.componentWillUnmount && notifiedOpenRef.current) {
+				isHoverRef.current = false;
+				setIsOpenValue(false);
+				notifyOpenChange(false, event);
+			}
+		},
+		[setIsOpenValue, notifyOpenChange]
+	);
+
+	// Update the ref so the open-dropdown registration always calls the latest
+	handleCloseRef.current = handleClose;
+
+	// Requests an open. With a controlled `isOpen` only `onRequestOpen` runs; the
+	// menu opens (and `onOpen` fires) when the parent sets `isOpen={true}`.
+	const handleOpen = useCallback(
+		(event?: MenuDropdownOpenEvent) => {
+			if (!getIsOpen()) {
+				if (isOpenControlled) {
+					pendingRequestRef.current = { isOpen: true, event };
+				}
+				onRequestOpen?.(event, {});
+				if (!isOpenControlled) {
+					setIsOpenValue(true);
+					notifyOpenChange(true, event);
+				}
+			}
+		},
+		[
+			getIsOpen,
+			isOpenControlled,
+			onRequestOpen,
+			setIsOpenValue,
+			notifyOpenChange,
+		]
+	);
+
+	// Report an open that did not come from an uncontrolled request: a
+	// controlled `isOpen` change, or the menu showing again after `disabled`
+	// is cleared. Closes are reported by the Dialog unmount.
+	useEffect(() => {
+		if (isOpen) {
+			notifyOpenChange(true);
+		}
+	}, [isOpen, notifyOpenChange]);
+
+	// Only one MenuDropdown is open at a time: when this one shows, ask the
+	// previously open one to close. The registration delegates to the latest
+	// `handleClose` so it never acts on a stale open state.
+	const openDropdownRef = useRef({
+		handleClose: (event?: MenuDropdownCloseEvent) =>
+			handleCloseRef.current(event),
+	});
+
+	useEffect(() => {
+		const self = openDropdownRef.current;
+		if (isOpen) {
+			if (currentOpenDropdown && currentOpenDropdown !== self) {
+				currentOpenDropdown.handleClose(openEventRef.current);
+			}
+			currentOpenDropdown = self;
+		} else if (currentOpenDropdown === self) {
+			currentOpenDropdown = undefined;
+		}
+	}, [isOpen]);
+
+	// Handle click outside - called via document event listener
+	const handleClickOutside = useCallback(
+		(event: Event) => {
+			const target = event.target as Node;
+			const container = triggerContainerRef.current;
+
+			// Check if click is outside the trigger container
+			if (container && !container.contains(target)) {
+				// Also check if it's in the dialog (for portal-rendered menus)
+				const outsideClickIgnoreClass = `ignore-click-${getId()}`;
+				if (target instanceof Element) {
+					if (target.classList?.contains(outsideClickIgnoreClass)) {
+						return;
+					}
+					if (target.closest(`.${outsideClickIgnoreClass}`)) {
+						return;
+					}
+					if (target.closest('.ignore-react-onclickoutside')) {
+						return;
+					}
+				}
+				handleClose(event);
+			}
+		},
+		[getId, handleClose]
+	);
+
+	// Set up click outside listener
+	useEffect(() => {
+		if (isOpen) {
+			document.addEventListener('mousedown', handleClickOutside);
+			document.addEventListener('touchstart', handleClickOutside);
+		}
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutside);
+			document.removeEventListener('touchstart', handleClickOutside);
+		};
+	}, [isOpen, handleClickOutside]);
+
+	// Toggle open
+	const toggleOpen = useCallback(
+		(event?: KeyboardEvent) => {
+			setFocus();
+			if (getIsOpen()) {
+				handleClose(event);
+			} else {
+				handleOpen(event);
+			}
+		},
+		[getIsOpen, handleClose, handleOpen, setFocus]
+	);
+
+	// Handle click
+	const handleClick = useCallback(
+		(event: MouseEvent) => {
+			if (!getIsOpen()) {
+				handleOpen(event);
+				setFocus();
+			} else {
+				handleClose(event);
+			}
+			onClick?.(event);
+		},
+		[getIsOpen, handleOpen, handleClose, setFocus, onClick]
+	);
+
+	// Handle focus
+	const handleFocus = useCallback(
+		(event: FocusEvent) => {
+			onFocus?.(event);
+		},
+		[onFocus]
+	);
+
+	// Handle mouse enter
+	const handleMouseEnter = useCallback(
+		(event: MouseEvent) => {
+			isHoverRef.current = true;
+			if (!getIsOpen() && openOn === 'hover') {
+				handleOpen(event);
+			} else {
+				if (closingTimeoutRef.current) {
+					clearTimeout(closingTimeoutRef.current);
+				}
+			}
+			onMouseEnter?.(event);
+		},
+		[getIsOpen, openOn, handleOpen, onMouseEnter]
+	);
+
+	// Handle mouse leave
+	const handleMouseLeave = useCallback(
+		(event: MouseEvent) => {
+			if (getIsOpen()) {
+				closingTimeoutRef.current = setTimeout(() => {
+					handleClose();
+				}, hoverCloseDelay);
+			}
+			onMouseLeave?.(event);
+		},
+		[getIsOpen, hoverCloseDelay, handleClose, onMouseLeave]
+	);
+
+	// Handle select
+	// `event` is the keydown from keyboard selection, or the click forwarded by
+	// the menu-list item.
+	// Selection is not stored: `onSelect` reports the requested `value` and the
+	// parent passes it back. Without `multiple`, selecting also requests a close.
+	const handleSelect = useCallback(
+		(index: number, event?: MouseEvent | KeyboardEvent) => {
+			if (!multiple) {
+				handleClose(event);
+				setFocus();
+			}
+
+			if (onSelect && options) {
+				const option = options[index];
+				onSelect(event, {
+					option,
+					optionIndex: index,
+					value: getNextValue(option),
+				});
+			}
+		},
+		[multiple, handleClose, setFocus, onSelect, options, getNextValue]
+	);
+
+	// Focus menu item
+	const focusMenuItem = useCallback((menuItem: HTMLLIElement) => {
+		const anchor = menuItem.getElementsByTagName('a')[0];
+		if (anchor) {
+			anchor.focus();
+		}
+	}, []);
+
+	// Scroll to menu item
+	const scrollToMenuItem = useCallback(
+		(menu: HTMLUListElement | null, menuItem: HTMLLIElement | null) => {
+			if (menu && menuItem) {
+				const menuHeight = menu.offsetHeight;
+				const menuTop = menu.scrollTop;
+				const menuItemTop = menuItem.offsetTop - menu.offsetTop;
+
+				if (menuItemTop < menuTop) {
+					menu.scrollTop = menuItemTop;
+				} else {
+					const menuBottom = menuTop + menuHeight + menu.offsetTop;
+					const menuItemBottom =
+						menuItemTop + menuItem.offsetHeight + menu.offsetTop;
+					if (menuItemBottom > menuBottom) {
+						menu.scrollTop = menuItemBottom - menuHeight - menu.offsetTop;
+					}
+				}
+			}
+		},
+		[]
+	);
+
+	// Handle keyboard focus
+	const handleKeyboardFocus = useCallback(
+		(newFocusedIndex: number | undefined) => {
+			if (focusedIndex !== newFocusedIndex && newFocusedIndex !== undefined) {
+				setFocusedIndex(newFocusedIndex);
+			}
+
+			const menu = getMenu();
+			const menuItem = getMenuItem(newFocusedIndex ?? -1);
+
+			if (menuItem) {
+				focusMenuItem(menuItem);
+				scrollToMenuItem(menu, menuItem);
+			}
+		},
+		[focusedIndex, getMenu, getMenuItem, focusMenuItem, scrollToMenuItem]
+	);
+
+	// Create a context object for keyboard navigation
+	const componentContext = useMemo(
+		() => ({
+			trigger: triggerRef.current,
+			handleClick: (event: Event) => {
+				handleClick(event as unknown as MouseEvent);
+			},
+		}),
+		[handleClick]
+	);
+
+	// Handle keyboard navigate
+	const handleKeyboardNavigate = useCallback(
+		({
+			event,
+			isOpen: menuIsOpen = true,
+			keyCode,
+			onFocus: focusCallback = handleKeyboardFocus,
+			onSelect: selectCallback,
+			target,
+			toggleOpen: toggleCallback = noop,
+		}: {
+			event: KeyboardEvent;
+			isOpen?: boolean;
+			keyCode: number;
+			onFocus?: (index: number | undefined) => void;
+			onSelect: (index: number) => void;
+			target: EventTarget | null;
+			toggleOpen?: () => void;
+		}) => {
+			keyboardNavigate({
+				componentContext,
+				currentFocusedIndex: focusedIndex,
+				event,
+				isOpen: menuIsOpen,
+				key: (event as unknown as { key?: string }).key,
+				keyCode,
+				navigableItems,
+				onFocus: focusCallback,
+				onSelect: selectCallback,
+				target,
+				toggleOpen: toggleCallback,
+			});
+		},
+		[componentContext, focusedIndex, handleKeyboardFocus, navigableItems]
+	);
+
+	// Handle cancel
+	const handleCancel = useCallback(
+		(event?: KeyboardEvent) => {
+			setFocus();
+			handleClose(event);
+		},
+		[setFocus, handleClose]
+	);
+
+	// Handle key down
+	const handleKeyDown = useCallback(
+		(event: KeyboardEvent) => {
+			if (event.keyCode) {
+				if (event.keyCode === KEYS.TAB) {
+					handleCancel(event);
+				} else if (
+					event.keyCode === KEYS.ENTER ||
+					event.keyCode === KEYS.SPACE ||
+					event.keyCode === KEYS.DOWN ||
+					event.keyCode === KEYS.UP ||
+					event.keyCode === KEYS.ESCAPE
+				) {
+					EventUtil.trap(event);
+					handleKeyboardNavigate({
+						event,
+						isOpen: getIsOpen(),
+						keyCode: event.keyCode,
+						onSelect: (index: number) => handleSelect(index, event),
+						target: event.target,
+						toggleOpen: () => toggleOpen(event),
+					});
+				}
+				onKeyDown?.(event);
+			}
+		},
+		[
+			handleCancel,
+			handleKeyboardNavigate,
+			getIsOpen,
+			handleSelect,
+			toggleOpen,
+			onKeyDown,
+		]
+	);
+
+	// Handle click custom content. This closes the menu but is not an option
+	// selection, so `onSelect` is not called (there is no option to report).
+	const handleClickCustomContent = useCallback(
+		(event?: React.SyntheticEvent) => {
+			setFocus();
+			handleClose(event);
+		},
+		[setFocus, handleClose]
+	);
+
+	// Save ref to trigger
+	const saveRefToTrigger = useCallback(
+		(trigger: HTMLButtonElement | null) => {
+			triggerRef.current = trigger;
+			if (!triggerRendered && trigger) {
+				setTriggerRendered(true);
+			}
+			if (trigger && requestFocus && onRequestFocus) {
+				onRequestFocus(trigger);
+			}
+		},
+		[triggerRendered, requestFocus, onRequestFocus]
+	);
+
+	// Save ref to trigger container
+	const saveRefToTriggerContainer = useCallback(
+		(container: HTMLDivElement | null) => {
+			triggerContainerRef.current = container;
+			if (!triggerRef.current) {
+				triggerRef.current = container?.querySelector('button') || null;
+			}
+		},
+		[]
+	);
+
+	// Save ref to list
+	const saveRefToList = useCallback((list: HTMLUListElement | null) => {
+		listRef.current = list;
+	}, []);
+
+	// Save ref to list item
+	const saveRefToListItem = useCallback(
+		(listItem: HTMLLIElement | null, index: number) => {
+			listItemsRef.current[index] = listItem;
+			if (index === focusedIndex && listItem) {
+				handleKeyboardFocus(focusedIndex);
+			}
+		},
+		[focusedIndex, handleKeyboardFocus]
+	);
+
+	// Render overlay
+	const renderOverlay = useCallback(
+		(shouldShow: boolean) => {
+			if (isFunction(overlayProp) && documentDefined) {
+				overlayProp(shouldShow, overlay);
+			} else if (
+				overlayProp &&
+				shouldShow &&
+				!overlayRef.current &&
+				documentDefined
+			) {
+				overlayRef.current = overlay;
+				document.querySelector('body')?.appendChild(overlay);
+			} else if (!shouldShow && overlayRef.current?.parentNode) {
+				overlayRef.current.parentNode.removeChild(overlayRef.current);
+				overlayRef.current = null;
+			}
+		},
+		[overlayProp]
+	);
+
+	// Effect for overlay
+	useEffect(() => {
+		renderOverlay(isOpen);
+	}, [isOpen, renderOverlay]);
+
+	// Cleanup on unmount
+	useEffect(() => {
+		const openDropdown = openDropdownRef.current;
+		return () => {
+			isUnmountingRef.current = true;
+			if (currentOpenDropdown === openDropdown) {
+				currentOpenDropdown = undefined;
+			}
+			renderOverlay(false);
+			if (closingTimeoutRef.current) {
+				clearTimeout(closingTimeoutRef.current);
+			}
+		};
+	}, [renderOverlay]);
+
+	// Render default menu content
+	const renderDefaultMenuContent = useCallback(
+		(customListProps?: Record<string, unknown>) => (
+			<List
+				key={`${getId()}-dropdown-list`}
+				checkmark={checkmark}
+				getListItemId={getListItemId}
+				itemRefs={saveRefToListItem}
+				itemRenderer={getListItemRenderer()}
+				renderItemLabel={renderItemLabel}
+				onCancel={handleCancel}
+				onSelect={handleSelect}
+				options={options}
+				ref={saveRefToList}
+				selectedIndex={!multiple ? selectedIndex : undefined}
+				selectedIndices={multiple ? selectedIndices : undefined}
+				tooltipMenuItem={tooltipMenuItem}
+				triggerId={getId()}
+				length={length}
+				{...customListProps}
+			/>
+		),
+		[
+			getId,
+			checkmark,
+			getListItemId,
+			saveRefToListItem,
+			getListItemRenderer,
+			renderItemLabel,
+			handleCancel,
+			handleSelect,
+			options,
+			saveRefToList,
+			multiple,
+			selectedIndex,
+			selectedIndices,
+			tooltipMenuItem,
+			length,
+		]
+	);
+
+	// Render menu content
+	const renderMenuContent = useCallback(
+		(customContent: ReactNode[] | null) => {
+			const customContentWithListPropInjection: ReactNode[] = [];
+
+			if (customContent) {
+				React.Children.forEach(customContent, (child, index) => {
+					if (isElementOfType<Record<string, unknown>>(child, BaseList)) {
+						customContentWithListPropInjection.push(
+							renderDefaultMenuContent(child.props)
+						);
+					} else if (React.isValidElement(child)) {
+						const clonedCustomContent = React.cloneElement(
+							child as ReactElement<{
+								onClick?: (event?: React.SyntheticEvent) => void;
+							}>,
+							{
+								onClick: handleClickCustomContent,
+								key: child.key ?? String(index),
+							}
+						);
+						customContentWithListPropInjection.push(clonedCustomContent);
+					} else if (child) {
+						customContentWithListPropInjection.push(child);
+					}
+				});
+			}
+
+			return customContentWithListPropInjection.length > 0
+				? customContentWithListPropInjection
+				: renderDefaultMenuContent();
+		},
+		[renderDefaultMenuContent, handleClickCustomContent]
+	);
+
+	// Render dialog
+	const renderDialog = useCallback(
+		(
+			customContent: ReactNode[] | null,
+			shouldShow: boolean,
+			outsideClickIgnoreClass: string
+		) => {
+			let dialogAlign = 'bottom';
+			let hasNubbin = false;
+			let positionClassName = '';
+
+			if (nubbinPosition) {
+				hasNubbin = true;
+				dialogAlign = DropdownToDialogNubbinMapping[nubbinPosition];
+			} else if (align) {
+				dialogAlign = align === 'center' ? 'bottom' : `bottom ${align}`;
+			}
+
+			const positions =
+				DropdownToDialogNubbinMapping[dialogAlign]?.split(' ') || [];
+			positionClassName = classNames(
+				positions.map((position) => `slds-dropdown_${position}`)
+			);
+
+			const menuStylesBase: React.CSSProperties = {};
+			if (align === 'center' && !hasNubbin) {
+				menuStylesBase.transform = 'none';
+			}
+
+			return shouldShow ? (
+				<Dialog
+					align={
+						dialogAlign as
+							| 'top'
+							| 'top left'
+							| 'top right'
+							| 'bottom'
+							| 'bottom left'
+							| 'bottom right'
+					}
+					className={classNames(containerClassName)}
+					closeOnTabKey
+					contentsClassName={classNames(
+						'slds-dropdown',
+						`slds-dropdown_${width}`,
+						'slds-text-align_left',
+						'ignore-react-onclickoutside',
+						className,
+						positionClassName,
+						{
+							'slds-dropdown_inverse': inverse,
+						}
+					)}
+					context={context}
+					hasNubbin={hasNubbin}
+					hasStaticAlignment={hasStaticAlignment}
+					inheritWidthOf={inheritTargetWidth ? 'target' : 'none'}
+					onClose={handleDialogClose}
+					onKeyDown={handleKeyDown}
+					outsideClickIgnoreClass={outsideClickIgnoreClass}
+					position={menuPosition}
+					style={{
+						...menuStylesBase,
+						...menuStyle,
+					}}
+					onRequestTargetElement={() => triggerRef.current}
+				>
+					{renderMenuContent(customContent)}
+				</Dialog>
+			) : null;
+		},
+		[
+			nubbinPosition,
+			align,
+			containerClassName,
+			className,
+			inverse,
+			context,
+			hasStaticAlignment,
+			inheritTargetWidth,
+			handleDialogClose,
+			handleKeyDown,
+			menuPosition,
+			menuStyle,
+			width,
+			renderMenuContent,
+		]
+	);
+
+	// Find custom trigger and content from children
+	let CurrentTrigger: React.ElementType = DefaultTrigger;
+	let CustomTriggerChildProps: Record<string, unknown> = {};
+	const customContent: ReactNode[] = [];
+
+	React.Children.forEach(children, (child) => {
+		if (
+			child &&
+			typeof child === 'object' &&
+			'type' in child &&
+			(child.type as { displayName?: string })?.displayName ===
+				MENU_DROPDOWN_TRIGGER
+		) {
+			CustomTriggerChildProps = (child as ReactElement).props as Record<
+				string,
+				unknown
+			>;
+			CurrentTrigger = (child as ReactElement).type as React.ElementType;
+		} else if (child) {
+			customContent.push(child);
+		}
+	});
+
+	// `trigger` replaces a trigger passed as a child
+	if (trigger !== undefined) {
+		CurrentTrigger = DefaultTrigger;
+		CustomTriggerChildProps = {};
+	}
+
+	const outsideClickIgnoreClass = `ignore-click-${getId()}`;
+
+	// `bare-inverse` and `border-inverse` are the inverse forms of `bare` and `border`
+	const isInverseIconVariant =
+		iconVariant === 'bare-inverse' || iconVariant === 'border-inverse';
+	const triggerIconVariant =
+		iconVariant === 'bare-inverse'
+			? 'bare'
+			: iconVariant === 'border-inverse'
+				? 'border'
+				: iconVariant;
+
+	return (
+		<CurrentTrigger
+			ref={saveRefToTriggerContainer}
+			{...(trigger === undefined ? {} : { trigger })}
+			aria-haspopup
+			assistiveText={assistiveText}
+			className={classNames(outsideClickIgnoreClass, buttonClassName)}
+			disabled={disabled}
+			hint={hint}
+			iconCategory={iconCategory}
+			iconName={iconName}
+			iconPosition={iconPosition}
+			iconSize={iconSize}
+			iconVariant={triggerIconVariant}
+			id={getId()}
+			inverse={buttonInverse || isInverseIconVariant}
+			isOpen={isOpen}
+			label={label}
+			menu={renderDialog(
+				customContent.length > 0 ? customContent : null,
+				isOpen,
+				outsideClickIgnoreClass
+			)}
+			onBlur={onBlur}
+			onClick={
+				openOn === 'click' || openOn === 'hybrid' ? handleClick : onClick
+			}
+			onFocus={handleFocus}
+			onKeyDown={handleKeyDown}
+			onMouseDown={onMouseDown}
+			onMouseEnter={
+				openOn === 'hover' || openOn === 'hybrid' ? handleMouseEnter : undefined
+			}
+			onMouseLeave={
+				openOn === 'hover' || openOn === 'hybrid' ? handleMouseLeave : undefined
+			}
+			openOn={openOn}
+			style={style}
+			tabIndex={tabIndex || (isOpen ? '-1' : '0')}
+			triggerClassName={triggerClassName}
+			triggerRef={saveRefToTrigger}
+			variant={buttonVariant}
+			{...CustomTriggerChildProps}
+		/>
+	);
+};
+
+MenuDropdown.displayName = MENU_DROPDOWN;
+
+export default MenuDropdown;
+export { ListItem, ListItemLabel };

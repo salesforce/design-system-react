@@ -4,6 +4,21 @@ import { Radio, Checkbox } from '~/components';
 import IconSettings from '~/components/icon-settings';
 
 class Example extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = { radio: null, checkboxes: {} };
+	}
+
+	handleRadioChange = (id) => () => {
+		this.setState({ radio: id });
+	};
+
+	handleCheckboxChange = (id) => (event, data) => {
+		this.setState((previous) => ({
+			checkboxes: { ...previous.checkboxes, [id]: data.checked },
+		}));
+	};
+
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
@@ -24,13 +39,19 @@ class Example extends React.Component {
 								label: 'Complete service CRM for teams of any size',
 							}}
 							id="visual-picker-non-coverable-radio-1"
+							checked={
+								this.state.radio === 'visual-picker-non-coverable-radio-1'
+							}
+							onChange={this.handleRadioChange(
+								'visual-picker-non-coverable-radio-1'
+							)}
 							value="30"
-							onRenderVisualPicker={() => (
+							visualPickerFigure={
 								<span>
 									<span className="slds-text-heading_large">$30</span>
 									<span className="slds-text-title">USD/user/month *</span>
 								</span>
-							)}
+							}
 						/>
 						<Radio
 							labels={{
@@ -38,13 +59,19 @@ class Example extends React.Component {
 								label: 'Everything you need to take support to the next level',
 							}}
 							id="visual-picker-non-coverable-radio-2"
+							checked={
+								this.state.radio === 'visual-picker-non-coverable-radio-2'
+							}
+							onChange={this.handleRadioChange(
+								'visual-picker-non-coverable-radio-2'
+							)}
 							value="150"
-							onRenderVisualPicker={() => (
+							visualPickerFigure={
 								<span>
 									<span className="slds-text-heading_large">$150</span>
 									<span className="slds-text-title">USD/user/month *</span>
 								</span>
-							)}
+							}
 						/>
 						<Radio
 							labels={{
@@ -52,14 +79,20 @@ class Example extends React.Component {
 								label: 'Complete support with enterprise-grade customization',
 							}}
 							id="visual-picker-non-coverable-radio-3"
+							checked={
+								this.state.radio === 'visual-picker-non-coverable-radio-3'
+							}
+							onChange={this.handleRadioChange(
+								'visual-picker-non-coverable-radio-3'
+							)}
 							disabled
 							value="300"
-							onRenderVisualPicker={() => (
+							visualPickerFigure={
 								<span>
 									<span className="slds-text-heading_large">$300</span>
 									<span className="slds-text-title">USD/user/month *</span>
 								</span>
-							)}
+							}
 						/>
 					</VisualPicker>
 					<hr />
@@ -74,13 +107,21 @@ class Example extends React.Component {
 								label: 'Complete service CRM for teams of any size',
 							}}
 							id="visual-picker-non-coverable-checkbox-1"
+							checked={
+								!!this.state.checkboxes[
+									'visual-picker-non-coverable-checkbox-1'
+								]
+							}
+							onChange={this.handleCheckboxChange(
+								'visual-picker-non-coverable-checkbox-1'
+							)}
 							value="30"
-							onRenderVisualPicker={() => (
+							visualPickerFigure={
 								<span>
 									<span className="slds-text-heading_large">$30</span>
 									<span className="slds-text-title">USD/user/month *</span>
 								</span>
-							)}
+							}
 						/>
 						<Checkbox
 							labels={{
@@ -88,13 +129,21 @@ class Example extends React.Component {
 								label: 'Everything you need to take support to the next level',
 							}}
 							id="visual-picker-non-coverable-checkbox-2"
+							checked={
+								!!this.state.checkboxes[
+									'visual-picker-non-coverable-checkbox-2'
+								]
+							}
+							onChange={this.handleCheckboxChange(
+								'visual-picker-non-coverable-checkbox-2'
+							)}
 							value="150"
-							onRenderVisualPicker={() => (
+							visualPickerFigure={
 								<span>
 									<span className="slds-text-heading_large">$150</span>
 									<span className="slds-text-title">USD/user/month *</span>
 								</span>
-							)}
+							}
 						/>
 						<Checkbox
 							labels={{
@@ -102,14 +151,22 @@ class Example extends React.Component {
 								label: 'Complete support with enterprise-grade customization',
 							}}
 							id="visual-picker-non-coverable-checkbox-3"
+							checked={
+								!!this.state.checkboxes[
+									'visual-picker-non-coverable-checkbox-3'
+								]
+							}
+							onChange={this.handleCheckboxChange(
+								'visual-picker-non-coverable-checkbox-3'
+							)}
 							disabled
 							value="300"
-							onRenderVisualPicker={() => (
+							visualPickerFigure={
 								<span>
 									<span className="slds-text-heading_large">$300</span>
 									<span className="slds-text-title">USD/user/month *</span>
 								</span>
-							)}
+							}
 						/>
 					</VisualPicker>
 				</div>

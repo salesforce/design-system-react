@@ -1,0 +1,567 @@
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
+/* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+// Implements the [Modal design pattern](https://lightningdesignsystem.com/components/modals/) in React.
+
+import {
+	forwardRef,
+	useState,
+	useEffect,
+	useCallback,
+	useMemo,
+	useRef,
+	CSSProperties,
+	ReactNode,
+	MouseEvent,
+	KeyboardEvent,
+} from 'react';
+import classNames from 'classnames';
+import ReactModal from 'react-modal';
+
+import checkAppElementIsSet from '../../utilities/warning/check-app-element-set';
+import Button from '../button';
+import { MODAL } from '../../utilities/constants';
+import generateId from '../../utilities/generate-id';
+import checkProps from './check-props';
+import componentDoc from './component.json';
+
+const documentDefined = typeof document !== 'undefined';
+const windowDefined = typeof window !== 'undefined';
+
+// Types
+export type ModalAlign = 'top' | 'center';
+export type ModalSize = 'small' | 'medium' | 'large';
+export type ModalPrompt =
+	'success' | 'warning' | 'error' | 'wrench' | 'offline' | 'info';
+
+export interface ModalAssistiveText {
+	/** This is a visually hidden label for the dialog. If not provided, `heading` is used. */
+	dialogLabel?: string;
+	/** This describes which node labels the dialog. If not provided and dialogLabel is unavailable, `id` is used. */
+	dialogLabelledBy?: string;
+	/** This is a visually hidden label for the close button. */
+	closeButton?: string;
+}
+
+/**
+ * What caused a Modal close request:
+ * - `'close-button'`: the header close button was clicked
+ * - `'escape'`: the Escape key was pressed
+ * - `'click-outside'`: a click landed outside the modal container (on the backdrop area)
+ */
+export type ModalRequestCloseTrigger =
+	'close-button' | 'escape' | 'click-outside';
+
+/**
+ * Data passed to `onRequestClose`
+ */
+export interface ModalRequestCloseData {
+	/** What caused the close request */
+	trigger: ModalRequestCloseTrigger;
+}
+
+/**
+ * Event passed to `onRequestClose`: the click (close button / outside click) or
+ * keydown (Escape) that caused the request
+ */
+export type ModalRequestCloseEvent = MouseEvent | KeyboardEvent;
+
+export interface ModalProps {
+	/** Vertical alignment of Modal. */
+	align?: ModalAlign;
+	/** Boolean indicating if the appElement should be hidden. */
+	ariaHideApp?: boolean;
+	/** Assistive text for accessibility. */
+	assistiveText?: ModalAssistiveText;
+	/** Modal content. */
+	children: ReactNode;
+	/** Custom CSS classes for the root `section.slds-modal` node. */
+	className?: string | string[] | Record<string, boolean>;
+	/** Custom CSS classes for the `.slds-modal__container` node. */
+	classNameContainer?: string | string[] | Record<string, boolean>;
+	/** Custom CSS classes for the `.slds-modal__content` (body) node. */
+	classNameContent?: string | string[] | Record<string, boolean>;
+	/** Custom CSS classes for the `footer.slds-modal__footer` node. */
+	classNameFooter?: string | string[] | Record<string, boolean>;
+	/** Custom CSS classes for the `header.slds-modal__header` node. */
+	classNameHeader?: string | string[] | Record<string, boolean>;
+	/** Custom CSS classes for the portal DOM node that react-modal appends to `parentSelector()`. */
+	classNamePortal?: string | string[] | Record<string, boolean>;
+	/** @deprecated Use `classNameContainer`. */
+	containerClassName?: string | string[] | Record<string, boolean>;
+	/** @deprecated Use `classNameContent`. */
+	contentClassName?: string | string[] | Record<string, boolean>;
+	/** @deprecated Use `styleContent`. */
+	contentStyle?: CSSProperties;
+	/** If true, modal footer buttons render left and right. */
+	directional?: boolean;
+	/** If true, Modals cannot be dismissed by clicking on the close icon or pressing esc key. */
+	disableClose?: boolean;
+	/** If true, Modals can be dismissed by clicking outside of modal. If unspecified, defaults to !disableClose. */
+	dismissOnClickOutside?: boolean;
+	/**
+	 * Callback to fire when the Modal requests to be dismissed. Receives the triggering
+	 * click or keydown event and `data.trigger`: `'close-button'`, `'escape'`, or `'click-outside'`.
+	 * Not called when `disableClose` (or `dismissOnClickOutside: false` for outside clicks) prevents it.
+	 */
+	onRequestClose?: (
+		event: ModalRequestCloseEvent,
+		data: ModalRequestCloseData
+	) => void;
+	/** Modal footer content, typically buttons. */
+	footer?: ReactNode | ReactNode[];
+	/** @deprecated Use `classNameFooter`. */
+	footerClassName?: string | string[] | Record<string, boolean>;
+	/** Allows for a custom modal header that does not scroll with modal content. */
+	header?: ReactNode;
+	/** @deprecated Use `classNameHeader`. */
+	headerClassName?: string | string[] | Record<string, boolean>;
+	/** Unique identifier for the modal. The id is automatically generated if not provided. */
+	id?: string;
+	/** Forces the modal to be open or closed. */
+	isOpen: boolean;
+	/** Function whose return value is the mount node to insert the Modal element into. */
+	parentSelector?: () => HTMLElement;
+	/** @deprecated Use `classNamePortal`. */
+	portalClassName?: string | string[] | Record<string, boolean>;
+	/** Styles the modal as a prompt. */
+	prompt?: ModalPrompt;
+	/** Specifies the modal's width. */
+	size?: ModalSize;
+	/** Custom styles for the `.slds-modal__content` (body) node. */
+	styleContent?: CSSProperties;
+	/** Content underneath the heading in the modal header. */
+	tagline?: ReactNode;
+	/** Text heading at the top of a modal. */
+	heading?: ReactNode;
+	/** Allows adding additional notifications within the modal. */
+	toast?: ReactNode;
+}
+
+const defaultAssistiveText: ModalAssistiveText = {
+	dialogLabelledBy: '',
+	closeButton: 'Close',
+};
+
+/**
+ * The Modal component is used for the Lightning Design System Modal and Notification > Prompt components.
+ * The Modal opens from a state change outside of the component itself (pass this state to the `isOpen` prop).
+ *
+ * By default, `Modal` will add `aria-hidden=true` to the `body` tag, but this disables some assistive technologies.
+ * To prevent this you can add the following to your application with `#mount` being the root node of your application:
+ * ```
+ * import settings from 'design-system-react/components/settings';
+ * settings.setAppElement('#mount');
+ * ```
+ */
+const Modal = forwardRef<HTMLElement, ModalProps>(
+	(
+		{
+			align = 'center',
+			ariaHideApp = true,
+			assistiveText: assistiveTextProp,
+			children,
+			className,
+			classNameContainer,
+			classNameContent,
+			classNameFooter,
+			classNameHeader,
+			classNamePortal,
+			containerClassName,
+			contentClassName,
+			contentStyle,
+			directional,
+			disableClose,
+			dismissOnClickOutside,
+			onRequestClose,
+			footer,
+			footerClassName,
+			header,
+			headerClassName,
+			id: idProp,
+			isOpen,
+			parentSelector,
+			portalClassName,
+			prompt,
+			size,
+			styleContent,
+			tagline,
+			heading,
+			toast,
+		},
+		ref
+	) => {
+		useEffect(() => {
+			checkProps(
+				MODAL,
+				{
+					containerClassName,
+					contentClassName,
+					contentStyle,
+					footerClassName,
+					headerClassName,
+					portalClassName,
+				},
+				componentDoc
+			);
+			// eslint-disable-next-line react-hooks/exhaustive-deps
+		}, []); // Only run on mount
+
+		// State
+		const [returnFocusTo, setReturnFocusTo] = useState<Element | null>(null);
+
+		// Refs
+		const generatedId = useRef(generateId());
+
+		// Merged assistive text
+		const assistiveText = useMemo(
+			() => ({
+				...defaultAssistiveText,
+				...assistiveTextProp,
+			}),
+			[assistiveTextProp]
+		);
+
+		// ID getter
+		const getId = useCallback(() => idProp || generatedId.current, [idProp]);
+
+		// Is this a prompt modal?
+		const isPrompt = prompt !== undefined;
+
+		// Warn in development if the app element isn't set
+		useEffect(() => {
+			if (ariaHideApp) {
+				checkAppElementIsSet();
+			}
+		}, []); // Only run on mount
+
+		// Set return focus on mount
+		useEffect(() => {
+			if (documentDefined) {
+				setReturnFocusTo(document.activeElement);
+			}
+		}, []);
+
+		// Update body scroll when isOpen changes
+		useEffect(() => {
+			if (windowDefined && documentDefined && document.body) {
+				if (isOpen) {
+					document.body.style.overflow = 'hidden';
+				} else {
+					document.body.style.overflow = 'inherit';
+				}
+			}
+
+			return () => {
+				// Clear body scroll on unmount
+				if (windowDefined && documentDefined && document.body) {
+					document.body.style.overflow = 'inherit';
+				}
+			};
+		}, [isOpen]);
+
+		// Dismiss modal handler
+		const dismissModal = useCallback(
+			(event: ModalRequestCloseEvent, data: ModalRequestCloseData) => {
+				if (
+					returnFocusTo &&
+					'focus' in returnFocusTo &&
+					typeof returnFocusTo.focus === 'function'
+				) {
+					returnFocusTo.focus();
+				}
+				if (onRequestClose) {
+					onRequestClose(event, data);
+				}
+			},
+			[returnFocusTo, onRequestClose]
+		);
+
+		// Close modal handler (respects disableClose)
+		const closeModal = useCallback(
+			(event: ModalRequestCloseEvent, data: ModalRequestCloseData) => {
+				if (!disableClose) {
+					dismissModal(event, data);
+				}
+			},
+			[disableClose, dismissModal]
+		);
+
+		// Close button click handler
+		const handleCloseButtonClick = useCallback(
+			(event: MouseEvent<HTMLButtonElement>) => {
+				closeModal(event, { trigger: 'close-button' });
+			},
+			[closeModal]
+		);
+
+		// react-modal's own close request: Escape keydown, or a click directly on its overlay
+		const handleReactModalRequestClose = useCallback(
+			(event: ModalRequestCloseEvent) => {
+				closeModal(event, {
+					trigger: event.type === 'keydown' ? 'escape' : 'click-outside',
+				});
+			},
+			[closeModal]
+		);
+
+		// Dismiss on click outside handler
+		const dismissModalOnClickOutside = useCallback(
+			(event: MouseEvent<HTMLElement>) => {
+				// if dismissOnClickOutside is not set, default its value to !disableClose
+				const shouldDismiss =
+					dismissOnClickOutside !== undefined
+						? dismissOnClickOutside
+						: !disableClose;
+
+				if (shouldDismiss) {
+					dismissModal(event, { trigger: 'click-outside' });
+				}
+			},
+			[dismissOnClickOutside, disableClose, dismissModal]
+		);
+
+		// Prevent click propagation inside modal
+		const handleModalClick = useCallback((event: MouseEvent) => {
+			if (event && event.stopPropagation) {
+				event.stopPropagation();
+			}
+		}, []);
+
+		// Calculate border radius based on header/footer presence
+		const getBorderRadius = useCallback((): CSSProperties => {
+			const borderRadiusValue = '.25rem';
+			const hasHeader = heading || header;
+			const borderTopRadius = hasHeader
+				? {}
+				: {
+						borderTopLeftRadius: borderRadiusValue,
+						borderTopRightRadius: borderRadiusValue,
+					};
+			const borderBottomRadius = footer
+				? {}
+				: {
+						borderBottomLeftRadius: borderRadiusValue,
+						borderBottomRightRadius: borderRadiusValue,
+					};
+			return {
+				...borderTopRadius,
+				...borderBottomRadius,
+			};
+		}, [heading, header, footer]);
+
+		// Get ARIA attributes
+		const getAriaAttributes = useCallback(() => {
+			const modalId = getId();
+			const ariaAttributes: {
+				describedby: string;
+				modal: boolean;
+				label?: string;
+				labelledby?: string;
+			} = {
+				describedby: `${modalId}-modal-content`,
+				modal: true,
+			};
+
+			if (assistiveText.dialogLabel) {
+				ariaAttributes.label = assistiveText.dialogLabel;
+				return ariaAttributes;
+			}
+
+			let dialogLabelledBy: string | undefined;
+
+			if (assistiveText.dialogLabelledBy) {
+				dialogLabelledBy = assistiveText.dialogLabelledBy;
+			} else if (heading) {
+				dialogLabelledBy = `${modalId}-heading`;
+			}
+
+			if (dialogLabelledBy) {
+				ariaAttributes.labelledby = dialogLabelledBy;
+			}
+
+			return ariaAttributes;
+		}, [getId, assistiveText, heading]);
+
+		// Render header
+		const renderHeader = () => {
+			let headerContent = header;
+			const headerEmpty = !headerContent && !heading && !tagline;
+			const closeButtonText = assistiveText.closeButton;
+
+			const closeButton = (
+				<Button
+					assistiveText={{ icon: closeButtonText }}
+					iconCategory="utility"
+					iconName="close"
+					iconSize="large"
+					className="slds-button_icon slds-modal__close"
+					onClick={handleCloseButtonClick}
+					title={closeButtonText}
+					variant="icon"
+				/>
+			);
+
+			if ((!headerContent && heading) || tagline) {
+				headerContent = (
+					<div>
+						{toast}
+						<h1
+							className={classNames({
+								'slds-text-heading_small': isPrompt,
+								'slds-text-heading_medium': !isPrompt,
+							})}
+							id={`${getId()}-heading`}
+						>
+							{heading}
+						</h1>
+						{tagline ? <p className="slds-m-top_x-small">{tagline}</p> : null}
+					</div>
+				);
+			}
+
+			return (
+				<header
+					className={classNames(
+						'slds-modal__header',
+						{
+							'slds-modal__header_empty': headerEmpty,
+							[`slds-theme_${prompt}`]: isPrompt,
+							'slds-theme_alert-texture': isPrompt,
+						},
+						headerClassName,
+						classNameHeader
+					)}
+					onClick={handleModalClick}
+				>
+					{disableClose || isPrompt ? null : closeButton}
+					{headerContent}
+				</header>
+			);
+		};
+
+		// Render footer
+		const renderFooter = () => {
+			if (!footer) {
+				return null;
+			}
+
+			const footerClasses = {
+				'slds-modal__footer': true,
+				'slds-modal__footer_directional': directional,
+				'slds-theme_default': isPrompt,
+			};
+
+			return (
+				<footer
+					className={classNames(
+						footerClasses,
+						footerClassName,
+						classNameFooter
+					)}
+					onClick={handleModalClick}
+				>
+					{footer}
+				</footer>
+			);
+		};
+
+		// Render modal content
+		const renderModal = () => {
+			const modalStyle =
+				align === 'top' ? { justifyContent: 'flex-start' } : undefined;
+			const borderRadius = getBorderRadius();
+			const mergedStyleContent: CSSProperties = {
+				...borderRadius,
+				...contentStyle,
+				...styleContent,
+			};
+
+			return (
+				<section
+					className={classNames(
+						'slds-modal',
+						'slds-fade-in-open',
+						size ? `slds-modal_${size}` : null,
+						{ 'slds-modal_prompt': isPrompt },
+						className
+					)}
+					onClick={dismissModalOnClickOutside}
+					ref={ref}
+				>
+					<div
+						className={classNames(
+							'slds-modal__container',
+							containerClassName,
+							classNameContainer
+						)}
+						style={modalStyle}
+					>
+						{renderHeader()}
+						<div
+							className={classNames(
+								'slds-modal__content',
+								contentClassName,
+								classNameContent
+							)}
+							id={`${getId()}-modal-content`}
+							style={mergedStyleContent}
+							onClick={handleModalClick}
+						>
+							{children}
+						</div>
+						{renderFooter()}
+					</div>
+				</section>
+			);
+		};
+
+		// Custom styles for ReactModal - using undefined to reset default styles
+		const customStyles: ReactModal.Styles = {
+			content: {
+				position: undefined,
+				top: undefined,
+				left: undefined,
+				right: undefined,
+				bottom: undefined,
+				border: undefined,
+				background: undefined,
+				overflow: undefined,
+				WebkitOverflowScrolling: undefined,
+				borderRadius: undefined,
+				outline: undefined,
+				padding: undefined,
+			},
+			overlay: {
+				zIndex: 8000, // following SLDS guideline for z-index overlay
+				backgroundColor: undefined,
+			},
+		};
+
+		const ariaAttributes = getAriaAttributes();
+
+		return (
+			<ReactModal
+				aria={ariaAttributes}
+				ariaHideApp={ariaHideApp}
+				isOpen={isOpen}
+				onRequestClose={handleReactModalRequestClose}
+				role={disableClose ? 'alertdialog' : 'dialog'}
+				style={customStyles}
+				parentSelector={parentSelector}
+				portalClassName={classNames(
+					'ReactModalPortal',
+					portalClassName,
+					classNamePortal
+				)}
+			>
+				{renderModal()}
+				<div className="slds-backdrop slds-backdrop_open" />
+			</ReactModal>
+		);
+	}
+);
+
+Modal.displayName = MODAL;
+
+export default Modal;

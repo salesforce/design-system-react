@@ -1,247 +1,91 @@
-# Unit testing
+# Testing
 
 Thank you for helping us make this library more robust and stable.
 
-* Tests reduce bugs in new features and existing features
-* Tests are good documentation
-* Tests reduce the cost of change and refactoring
-* Tests improve code design
+- Tests reduce bugs in new and existing features
+- Tests are good documentation
+- Tests reduce the cost of change and refactoring
+- Tests improve code design
 
-## Overview
+## Stack
 
-Testing is done using Mocha, Jest, and Storybook. Roughly speaking: Jest tests DOM structure and visual regression with images, Mocha tests user interaction and events, and Storybook allows you to visually inspect and interact with a component.
+Testing uses **[Vitest](https://vitest.dev/)** + **[React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)**
+running under **[jsdom](https://github.com/jsdom/jsdom)**. Storybook is used for manual
+visual inspection.
 
-### Running tests
+- **Vitest** — test runner and assertion library (`describe` / `it` / `expect`, `vi` for mocks)
+- **React Testing Library** — render components and query the DOM the way a user would
+- **@testing-library/jest-dom** — DOM matchers (`toBeInTheDocument`, `toHaveClass`, …)
+- **@testing-library/user-event** — realistic user interaction simulation
 
-* Run lint, Karma/Chromium environment, and snapshot tests with `npm test`.
-* Test Mocha tests interactively in your browser.
-  * Start server from terminal with `npm start`
-  * Browse to [http://localhost:8001](http://localhost:8001)
-* Run snapshot tests with `npm run test:snapshot` or, for just a specific file:
-  `npm run test:snapshot components/button/`.
-* The entire test suite may take up to 10 minutes to run. To update Jest DOM snapshots for a single component, use `npm run test:dom-snapshot:update -- -t=popover` where the test name contains `popover`.
+> The previous Karma / Mocha / Chai / Enzyme / Storyshots pipeline has been removed. All
+> suites were migrated to Vitest + RTL — see
+> `docs/superpowers/specs/enzyme-to-rtl-migration-guide.md` for the translation reference.
 
-### React Storybook
+## Running tests
 
-Add DOM snapshot, image snapshot, and documentation site examples to Storybook for manual testing.
+- `npm test` — run the full suite in watch mode
+- `npx vitest run` — run the full suite once (CI mode)
+- `npx vitest run components/button` — run a single component's suite
+- `npm run test:ui` — open the Vitest UI
+- `npm run test:coverage` — run with a V8 coverage report
 
-`npm start` and browse to [http://localhost:9001](http://localhost:9001) to view Storybook stories.
+## Where tests live
 
-### Style and quality linting
+Each component keeps its tests in `components/<name>/__tests__/<name>.test.jsx`. Only files
+matching `components/**/__tests__/*.{test,spec}.{ts,tsx,js,jsx}` are collected (see
+`vitest.config.ts`). Global setup (jsdom polyfills for `matchMedia`, `ResizeObserver`,
+`IntersectionObserver`, `scrollIntoView`, `getBoundingClientRect`, and RTL auto-cleanup)
+lives in `vitest.setup.ts`.
 
-There are two parts to code linting: style and quality. [Prettier](https://prettier.io/) formats JavaScript, markdown and JSON to a consistent style for increased readability. [ESLint](http://eslint.org/) checks for code quality. Many editors have `prettier` format-on-save options. Use `eslint-disable-line [RULE]` within tests for necessary exceptions.
+## Sample test file
 
-* `npm run lint` will check style and quality.
-* `npm run lint:fix` will fix most style issues.
-* `npm run lint:quality` will run `eslint`.
-* `npm run lint:style` will run `prettier`.
-
-### Story-based tests
-
-Story-based tests use [Jest](https://facebook.github.io/jest/), [React Storybook](https://storybook.js.org/), and [Storyshots](https://github.com/storybooks/storybook/tree/master/addons/storyshots) to automatically create DOM and image snapshots of each story example. Snapshot testing uses the Jest framework to take a snapshot of the state of the DOM when the component is rendered and save it as a string for future comparison. StoryShots utilizes Jest Image Snapshot to test the visual rendering of pages against previously correct versions for visual regression testing. These tests are run without a DOM. Most props that don't involve the user can be tested here.
-
-To create tests automatically, import examples in `/components/storybook-stories.js` into `/components/story-based-tests.js` also. Then, run `npm run test:snapshot`. Markup and image snapshots will be generated for each Storybook story. To update existing DOM snapshots, please use `npm run test:dom-snapshot:update`.
-
-Use Jest to test the presence of:
-
-* DOM/markup nodes
-* CSS classes
-* Styles
-* Accessiblity features of the DOM
-
-**Do not** use Jest for:
-
-* Mouse/keyboard user interaction (event callbacks)
-
-#### How to add new suites of tests
-
-Suites such as DOM snanpshot tests or accessibility tests should be added to all stories and the whole library at once. Stories that do not pass, should be excluded from continuous integration tests and an issue should be created to remove the component from exclusion. In short, add types of testing to all new components by excluding existing components that fail instead of adding existing components to a list of components to test. This forces new components to meet the requirements of the new tests and creates a list of components that need to be worked on instead of a list of components that currently pass.
-
-#### Source files
-
-Snapshot test suite source files that run stories present in `/components/story-based-tests.js`:
-
-* `/tests/story-based.accessibility-test.js`
-* `/tests/story-based.image-test.js`
-* `/tests/story-based.snapshot-test.js`
-
-#### Story removal from test suite
-
-If a Storybook story should not be tested by Storyshots, please add the suffix `NoTest` to the story's name.
-
-#### Snapshot requirements
-
-* Test if the markup of every state conforms to the [SLDS site](https://www.lightningdesignsystem.com/).
-* **Always pass HTML IDs in** - Many components have the optional `id` property but will generate a random id to use if not passed in. These randomly generated IDs will cause your snapshot tests to fail. The markup text diff may be easier to debug if you change one prop per snapshot and have many snapshots instead of changing many props in one snapshot.
-* Reuse code examples in `examples` folder for tests. This allows confirmation of the alignment of the documentation site examples with SLDS markup.
-
-### Additional tools
-
-* **[Mocha](http://mochajs.org/)** - Test framework ran in [Puppeteer](https://github.com/GoogleChrome/puppeteer)
-* **[Chai](http://chaijs.com/) w/[Expect Syntax](http://chaijs.com/api/bdd/)** - Test assertion library
-* **[Karma](https://karma-runner.github.io/1.0/index.html)** - Command line test runner for Mocha
-* **[Sinon](http://sinonjs.org)** - Stub/mock generator for callbacks and human interactions
-* **[Enzyme](http://airbnb.io/enzyme/)** - manipulate and traverse the DOM with syntax similar to jQuery
-* **[Chai Enzyme](https://github.com/producthunt/chai-enzyme)** - Chai assertions and convenience functions which eliminate asynchronous render complexities
-* **[Istanbul](https://github.com/gotwarlost/istanbul)** - Measures code coverage for Mocha framework
-* **[react-docgen](https://github.com/reactjs/react-docgen)** - Extracts information from React components and generates JSON used by the documentation site
-
-## General test requirements
-
-* Tests need to simulate user interactions as closely as possible.
-* Tests must work in both Chromium via the CLI and in your local browser at [http://localhost:8001](http://localhost:8001).
-* All pull requests must contain unit testing of:
-  * All components not in a `private` folder
-  * All props. This includes `children`, but only to check if `children` rendered.
-  * Correct parameters for all event callbacks
-  * Keyboard interactions specified at [SLDS site](https://www.lightningdesignsystem.com/) and possibly additional test for `tab` if DOM focus is involved
-  * Mouse interactions. This includes testing if the component gained focus or lost focus when another element is clicked.
-  * Correct DOM focus manipulation (if applicable)
-  * Jest snapshots for each [SLDS state and variant](https://www.lightningdesignsystem.com/) implemented and all documentation site example.
-* Tests must unmount and clean up the test fixture after each test or grouping of related tests. Do not allow unrelated tests to "bleed" into each other.
-* Add to the `PropType` description comments `_Tested with snapshot testing._` or `_Tested with Mocha testing._` to state to consumers how the prop is tested. _This will also give you starting list of what needs testing. `assistiveText`, `className`, `labels`, `id`, `isOpen`, `options`, `variant` are examples of props to test with snapshots._
-  eg:
-
-```
-const propTypes = {
-  /**
-   * CSS class names to be added to the accordion component. _Tested with snapshot testing._
-   */
-  className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
-  /**
-   * HTML id for accordion component. _Tested with snapshot testing._
-   */
-  id: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
-}
-```
-
-#### Test-driven development (TDD) with Jest DOM snapshots
-
-HTML Snapshots are a great way to compare markup with the [SLDS site](https://www.lightningdesignsystem.com/) examples.
-
-1. Copy markup from design system site
-1. [Convert to JSX](http://magic.reactjs.net/htmltojsx.htm). _SVGs may require extra attention and hand-conversion._
-1. Copy JSX into the new component's `render` function to feed the markup into the Jest snapshot
-1. `npm run test:snapshot` _(or `npm run test:snapshot -- -u` to overwrite the existing snapshot)_
-1. Return to the component and `npm run test:snapshot -- --watch`
-1. Modify your component until you get the markup correct.
-
-### Mocha
-
-Files ending in `.browser-test.jsx` will be run by CI server and in browser.
-
-* ARIA attribute states should be tested with in-browser Mocha tests.
-* All mouse/keyboard interactions and events must have Mocha tests.
-  * For components with user interactions events, real DOM testing is preferred. It is not recommended to use shallow rendering or to modify component prototypes with mock functions for these tests.
-  * Because they are often easier to debug in the browser, mouse/keyboard user interaction testing should be done using Mocha.
-
-Mocha test suite source file:
-
-* `/tests/browser-tests.js`
-
-## Sample Mocha Test File
-
-Here is a well-commented sample test file which you can copy/paste into a new file to get started:
-
-```
-// Import your external dependencies
+```jsx
 import React from 'react';
-import PropTypes from 'prop-types';
-import chai, { expect } from 'chai';
-import chaiEnzyme from 'chai-enzyme';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { describe, it, expect, vi } from 'vitest';
 
-/* Enzyme Helpers that can mount and unmount React component instances to
- * the DOM and set `this.wrapper` and `this.dom` within Mocha's `this`
- * context [full source here](tests/enzyme-helpers.js). `this` can
- * only be referenced if inside `function () {}`.
- */
-import { mountComponent, unmountComponent } from '../../../tests/enzyme-helpers';
+import Tree from '../';
+import IconSettings from '../../icon-settings';
 
-// Import your internal dependencies (for example):
-import Tree from '../../components/tree';
+describe('SLDSTree', () => {
+	it('calls the item click handler', () => {
+		const onClick = vi.fn();
+		const { container } = render(
+			<IconSettings iconPath="/assets/icons">
+				<Tree id="example-tree" onClick={onClick} nodes={/* … */ []} />
+			</IconSettings>
+		);
 
-/* Set Chai to use chaiEnzyme for enzyme compatible assertions:
- * https://github.com/producthunt/chai-enzyme
- */
-chai.use(chaiEnzyme());
-
-/* A re-usable demo component fixture outside of `describe` sections
- * can accept props within each test and be unmounted after each tests.
- * This wrapping component will be similar to your wrapping component
- * you will create in the React Storybook for manual testing.
- */
-const propTypes = {
-    sampleProp: PropTypes.string
-};
-
-class DemoComponent extends React.Component {
-  constructor (props) {
-    super(props);
-
-    this.state = {};
-  }
-
-  // event handlers
-
-  render () {
-    return (
-      <Tree />
-    );
-  }
-});
-
-DemoComponent.displayName = 'DemoComponent';
-DemoComponent.propTypes = propTypes;
-DemoComponent.defaultProps = defaultProps;
-
-/* All tests for component being tested should be wrapped in a root `describe`,
- * which should be named after the component being tested.
- * When read aloud, the cumulative `describe` and `it` names should form a coherent
- * sentence, eg "Date Picker default structure and css is present with expected
- * attributes set". If you are having trouble constructing a cumulative short
- * sentence, this may be an indicator that your test is poorly structured.
- * String provided as first parameter names the `describe` section. Limit to nouns
- * as much as possible/appropriate.`
- */
-describe('Component Name here', () => {
-  /* Below you will find some examples of minimum areas to be tested.
-   * This should not be considered an exhaustive list. Please ensure
-   * thorough testing of your code.
-   */
-
-  describe('Assistive technology and keyboard interactions', () => {
-    /* Detect if presence of accessibility features such as ARIA
-     * roles and screen reader text is present in the DOM.
-     * If your component has an ARIA role in application, and
-     * does not use `tab-index`, test that the correct keyboard
-     * navigation is present. Test event callback functions using
-     * Simulate. For more information, view
-     * https://github.com/airbnb/enzyme/blob/master/docs/api/ReactWrapper/simulate.md
-     */
-
-    // String provided as first parameter names the `it` section.
-    // Use short declarative sentences (sentence with "it").
-    describe('onClick', () => {
-      const itemClicked = sinon.spy();
-
-      beforeEach(mountComponent(
-        <DemoComponent itemClicked={itemClicked} />
-      ));
-
-      afterEach(unmountComponent);
-
-      /* Please notice the of `function () {}` and not () => {}.
-       * It allows access to the Mocha test context via `this`.
-       */
-      it('calls event handler', function () {
-        const item = this.wrapper.find('#example-tree-1').find('.slds-tree__item');
-        // If applicable, use second parameter to pass the data object
-
-        item.simulate('click', {});
-        expect(itemClicked.callCount).to.equal(1);
-        // If applicable, also test callback's data object for correct contents.
-      });
-   });
-  });
+		fireEvent.click(container.querySelector('.slds-tree__item'));
+		expect(onClick).toHaveBeenCalledTimes(1);
+	});
 });
 ```
+
+## Test requirements
+
+Pull requests should cover, for every non-`private` component:
+
+- Rendered DOM/markup, CSS classes, and styles for each SLDS state and variant
+- All props (including that `children` render)
+- Correct arguments for every event callback
+- Mouse and keyboard interactions specified on the
+  [SLDS site](https://www.lightningdesignsystem.com/), including focus management where applicable
+- Accessibility features (ARIA roles, assistive text)
+
+Prefer querying by role/text/label (accessible queries) over class selectors where practical.
+Wrap components that render icons in `<IconSettings iconPath="/assets/icons">`. For overlays
+(popover, tooltip, dialog, combobox), use `userEvent` + `waitFor` to open and assert.
+
+### jsdom limitations
+
+jsdom does not implement real layout, scrolling, focus traversal, or canvas. Where a test
+depends on those, assert what IS observable (classes, attributes, ARIA, presence) and add a
+`// NOTE:` comment, or `it.skip(...)` with a clear reason. Known pre-existing bugs surfaced by
+the migration are tracked in `docs/superpowers/specs/migration-discovered-bugs.md`.
+
+## Linting
+
+- `npm run lint` — check style and quality
+- `npm run lint:fix` — auto-fix style issues (Prettier) and quality issues (ESLint)

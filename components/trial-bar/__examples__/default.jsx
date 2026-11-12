@@ -11,10 +11,8 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<div>
 					<TrialBar
-						labels={{ timeLeft: '30', timeLeftUnit: 'days' }}
-						onRenderActions={() => (
-							<Button variant="success" label="Subscribe Now" />
-						)}
+						actions={<Button variant="success" label="Subscribe Now" />}
+						labels={{ timeLeft: '30', timeLeftAfter: 'days left in trial' }}
 					>
 						<TrialBarButton label="Take the salesforce tour" />
 						<TrialBarDropdown

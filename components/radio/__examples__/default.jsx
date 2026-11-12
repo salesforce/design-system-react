@@ -1,13 +1,20 @@
-import React from 'react';
+import { useState } from 'react';
 
 import Radio from '~/components/radio'; // `~` is replaced with design-system-react at runtime
 
-class Example extends React.Component {
-	static displayName = 'RadioExample';
+const Example = () => {
+	const [checked, setChecked] = useState(false);
 
-	render() {
-		return <Radio id="radioId1" labels={{ label: 'Radio Label' }} />;
-	}
-}
+	return (
+		<Radio
+			id="radioId1"
+			labels={{ label: 'Radio Label' }}
+			checked={checked}
+			onChange={(event, data) => setChecked(data.checked)}
+		/>
+	);
+};
+
+Example.displayName = 'RadioExample';
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

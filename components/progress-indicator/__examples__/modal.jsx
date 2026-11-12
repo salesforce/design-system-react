@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 
 import ProgressIndicator from '~/components/progress-indicator'; // `~` is replaced with design-system-react at runtime
 import Modal from '~/components/modal';
@@ -62,12 +62,12 @@ class Example extends React.Component {
 			<div style={{ height: '640px' }}>
 				{getModal({
 					isOpen: true,
-					title: 'Modal Header',
+					heading: 'Modal Header',
 					children: modalContent,
 					onRequestClose: action('modal closed'),
 					footer: modalFooter(),
 					size: 'large',
-					footerClassNames: 'slds-grid slds-grid_align-spread',
+					classNameFooter: 'slds-grid slds-grid_align-spread',
 				})}
 			</div>
 		);

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import IconSettings from '../../icon-settings';
 import Button from '../../button';
 import ButtonGroup from '../../button-group';
@@ -52,7 +50,7 @@ const Example = (props) => (
 				assistiveText={{
 					actions: 'Document Actions',
 				}}
-				onRenderActions={() => (
+				actions={
 					<div>
 						<Button
 							iconCategory="utility"
@@ -63,7 +61,7 @@ const Example = (props) => (
 						<Button label="Save As" />
 						<Button label="Save" variant="brand" />
 					</div>
-				)}
+				}
 			>
 				<ButtonGroup label="Canvas Actions" id="button-group-canvas-actions">
 					<Button

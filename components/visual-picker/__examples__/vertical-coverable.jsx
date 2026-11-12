@@ -5,6 +5,21 @@ import Icon from '~/components/icon';
 import IconSettings from '~/components/icon-settings';
 
 class Example extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = { radio: null, checkboxes: {} };
+	}
+
+	handleRadioChange = (id) => () => {
+		this.setState({ radio: id });
+	};
+
+	handleCheckboxChange = (id) => (event, data) => {
+		this.setState((previous) => ({
+			checkboxes: { ...previous.checkboxes, [id]: data.checked },
+		}));
+	};
+
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
@@ -23,7 +38,13 @@ class Example extends React.Component {
 					>
 						<Radio
 							id="visual-picker-vertical-coverable-radio-1"
-							onRenderVisualPickerSelected={() => (
+							checked={
+								this.state.radio === 'visual-picker-vertical-coverable-radio-1'
+							}
+							onChange={this.handleRadioChange(
+								'visual-picker-vertical-coverable-radio-1'
+							)}
+							visualPickerFigureSelected={
 								<Icon
 									assistiveText={{ label: 'Connected Apps' }}
 									category="utility"
@@ -31,19 +52,25 @@ class Example extends React.Component {
 									colorVariant="base"
 									size="large"
 								/>
-							)}
-							onRenderVisualPickerNotSelected={() => (
+							}
+							visualPickerFigureNotSelected={
 								<Icon
 									assistiveText={{ label: 'Connected Apps' }}
 									category="utility"
 									name="connected_apps"
 									size="large"
 								/>
-							)}
+							}
 						/>
 						<Radio
 							id="visual-picker-vertical-coverable-radio-2"
-							onRenderVisualPickerSelected={() => (
+							checked={
+								this.state.radio === 'visual-picker-vertical-coverable-radio-2'
+							}
+							onChange={this.handleRadioChange(
+								'visual-picker-vertical-coverable-radio-2'
+							)}
+							visualPickerFigureSelected={
 								<Icon
 									assistiveText={{ label: 'Custom Apps' }}
 									category="utility"
@@ -51,15 +78,15 @@ class Example extends React.Component {
 									colorVariant="base"
 									size="large"
 								/>
-							)}
-							onRenderVisualPickerNotSelected={() => (
+							}
+							visualPickerFigureNotSelected={
 								<Icon
 									assistiveText={{ label: 'Custom Apps' }}
 									category="utility"
 									name="custom_apps"
 									size="large"
 								/>
-							)}
+							}
 						/>
 					</VisualPicker>
 					<hr />
@@ -73,7 +100,15 @@ class Example extends React.Component {
 						<Checkbox
 							labels={{ label: 'Account' }}
 							id="visual-picker-vertical-coverable-checkbox-1"
-							onRenderVisualPickerSelected={() => (
+							checked={
+								!!this.state.checkboxes[
+									'visual-picker-vertical-coverable-checkbox-1'
+								]
+							}
+							onChange={this.handleCheckboxChange(
+								'visual-picker-vertical-coverable-checkbox-1'
+							)}
+							visualPickerFigureSelected={
 								<Icon
 									assistiveText={{ label: 'Account' }}
 									category="utility"
@@ -81,20 +116,28 @@ class Example extends React.Component {
 									colorVariant="base"
 									size="large"
 								/>
-							)}
-							onRenderVisualPickerNotSelected={() => (
+							}
+							visualPickerFigureNotSelected={
 								<Icon
 									assistiveText={{ label: 'Account' }}
 									category="standard"
 									name="account"
 									size="large"
 								/>
-							)}
+							}
 						/>
 						<Checkbox
 							labels={{ label: 'Lead' }}
 							id="visual-picker-vertical-coverable-checkbox-2"
-							onRenderVisualPickerSelected={() => (
+							checked={
+								!!this.state.checkboxes[
+									'visual-picker-vertical-coverable-checkbox-2'
+								]
+							}
+							onChange={this.handleCheckboxChange(
+								'visual-picker-vertical-coverable-checkbox-2'
+							)}
+							visualPickerFigureSelected={
 								<Icon
 									assistiveText={{ label: 'Lead' }}
 									category="utility"
@@ -102,20 +145,28 @@ class Example extends React.Component {
 									colorVariant="base"
 									size="large"
 								/>
-							)}
-							onRenderVisualPickerNotSelected={() => (
+							}
+							visualPickerFigureNotSelected={
 								<Icon
 									assistiveText={{ label: 'Lead' }}
 									category="standard"
 									name="lead"
 									size="large"
 								/>
-							)}
+							}
 						/>
 						<Checkbox
 							labels={{ label: 'Orders' }}
 							id="visual-picker-vertical-coverable-checkbox-3"
-							onRenderVisualPickerSelected={() => (
+							checked={
+								!!this.state.checkboxes[
+									'visual-picker-vertical-coverable-checkbox-3'
+								]
+							}
+							onChange={this.handleCheckboxChange(
+								'visual-picker-vertical-coverable-checkbox-3'
+							)}
+							visualPickerFigureSelected={
 								<Icon
 									assistiveText={{ label: 'Orders' }}
 									category="utility"
@@ -123,15 +174,15 @@ class Example extends React.Component {
 									colorVariant="base"
 									size="large"
 								/>
-							)}
-							onRenderVisualPickerNotSelected={() => (
+							}
+							visualPickerFigureNotSelected={
 								<Icon
 									assistiveText={{ label: 'Orders' }}
 									category="standard"
 									name="orders"
 									size="large"
 								/>
-							)}
+							}
 						/>
 					</VisualPicker>
 				</div>

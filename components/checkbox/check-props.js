@@ -3,9 +3,10 @@
 /* eslint-disable import/no-mutable-exports */
 /* eslint-disable max-len */
 
-import deprecatedEventParameter from '../../utilities/warning/deprecated-event-parameter';
+import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
 import onlyOneOfProperties from '../../utilities/warning/only-one-of-properties';
+import requiredProperty from '../../utilities/warning/required-property';
 import sunsetProperty from '../../utilities/warning/sunset-property';
 
 let checkProps = function checkPropsFunction() {};
@@ -21,18 +22,6 @@ if (process.env.NODE_ENV !== 'production') {
 			`Use \`labels.label\` instead.${createDocUrl('labels')}`
 		);
 
-		deprecatedEventParameter(
-			COMPONENT,
-			{
-				oldEventParameterOrder: props.oldEventParameterOrder,
-				propAsString: 'onChange',
-				propAsValue: props.onChange,
-			},
-			`\`components/forms/checkbox\` is deprecated. \`components/checkbox\` should be used. When this path update is made \`onChange\` event parameters will change from \`onChange(value, event, { value }) to \`onChange(event, { value }). Please update your event parameters when you change paths.\` If you are using the CommonJS named import, \`Checkbox\` events will break at v1.0 and this warning will be present until then. Please review https://github.com/salesforce/design-system-react/releases when you upgrade. ${createDocUrl(
-				'onChange'
-			)}`
-		);
-
 		if (props.variant === 'toggle' && props.indeterminate === true) {
 			onlyOneOfProperties(
 				COMPONENT,
@@ -45,6 +34,87 @@ if (process.env.NODE_ENV !== 'production') {
 				)}`
 			);
 		}
+	};
+}
+
+// v11 control-model removals, and deprecated focus and visual-picker render props.
+// Exported separately so the component can run these checks without enabling
+// the pre-existing `checkProps` warnings.
+export let checkDeprecatedProps = function checkDeprecatedPropsFunction() {};
+
+if (process.env.NODE_ENV !== 'production') {
+	checkDeprecatedProps = function checkDeprecatedPropsFunction(
+		COMPONENT,
+		props,
+		jsonDoc
+	) {
+		const createDocUrl = getComponentDocFn(jsonDoc);
+
+		sunsetProperty(
+			COMPONENT,
+			props.defaultChecked,
+			'defaultChecked',
+			'Checkbox is controlled: pass `checked` and update it in `onChange`.'
+		);
+
+		deprecatedProperty(
+			COMPONENT,
+			props.requestFocus,
+			'requestFocus',
+			undefined,
+			`Focus the checkbox through \`ref\`, which is forwarded to the \`<input>\`: \`ref.current.focus()\`. ${createDocUrl()}`
+		);
+
+		deprecatedProperty(
+			COMPONENT,
+			props.onRequestFocus,
+			'onRequestFocus',
+			undefined,
+			`Focus the checkbox through \`ref\` instead. ${createDocUrl()}`
+		);
+
+		deprecatedProperty(
+			COMPONENT,
+			props.onRenderVisualPicker,
+			'onRenderVisualPicker',
+			'visualPickerFigure',
+			createDocUrl('visualPickerFigure')
+		);
+		deprecatedProperty(
+			COMPONENT,
+			props.onRenderVisualPickerSelected,
+			'onRenderVisualPickerSelected',
+			'visualPickerFigureSelected',
+			createDocUrl('visualPickerFigureSelected')
+		);
+		deprecatedProperty(
+			COMPONENT,
+			props.onRenderVisualPickerNotSelected,
+			'onRenderVisualPickerNotSelected',
+			'visualPickerFigureNotSelected',
+			createDocUrl('visualPickerFigureNotSelected')
+		);
+	};
+}
+
+// Controlled-state checks. React's own "`checked` without `onChange`" warning
+// never fires, because Checkbox always attaches its own change handler.
+export let checkRequiredProps = function checkRequiredPropsFunction() {};
+
+if (process.env.NODE_ENV !== 'production') {
+	checkRequiredProps = function checkRequiredPropsFunction(
+		COMPONENT,
+		props,
+		jsonDoc
+	) {
+		const createDocUrl = getComponentDocFn(jsonDoc);
+
+		requiredProperty(
+			COMPONENT,
+			props.onChange !== undefined || !!props.disabled || !!props.readOnly,
+			'onChange',
+			`Checkbox is controlled: without \`onChange\`, clicking it does nothing. Update \`checked\` from \`data.checked\` in \`onChange\`, or set \`disabled\` or \`readOnly\`. ${createDocUrl('onChange')}`
+		);
 	};
 }
 

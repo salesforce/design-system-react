@@ -1,0 +1,59 @@
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
+/* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+/* eslint-disable import/no-mutable-exports */
+
+import deprecatedProperty from '../../utilities/warning/deprecated-property';
+import getComponentDocFn from '../../utilities/get-component-doc';
+
+let checkProps = function checkPropsFunction() {};
+
+if (process.env.NODE_ENV !== 'production') {
+	checkProps = function checkPropsFunction(COMPONENT, props, jsonDoc) {
+		const createDocUrl = getComponentDocFn(jsonDoc);
+
+		deprecatedProperty(
+			COMPONENT,
+			props.listItem,
+			'listItem',
+			'renderListItem',
+			`\`renderListItem\` is a function called with \`{ isFocused, isSelected, isUnread, item }\`, not a component. ${createDocUrl('renderListItem')}`
+		);
+	};
+}
+
+// `selection` and `unread` of item objects. Exported separately because it runs on every update:
+// consumers usually pass `[]` first and the first item object only after a click.
+export let checkSelectionProps = function checkSelectionPropsFunction() {};
+
+if (process.env.NODE_ENV !== 'production') {
+	const hasItemObjects = (entries) =>
+		Array.isArray(entries) &&
+		entries.some((entry) => entry !== null && typeof entry === 'object');
+
+	checkSelectionProps = function checkSelectionPropsFunction(
+		COMPONENT,
+		props,
+		jsonDoc
+	) {
+		const createDocUrl = getComponentDocFn(jsonDoc);
+
+		/* eslint-disable max-len */
+		deprecatedProperty(
+			COMPONENT,
+			hasItemObjects(props.selection) ? true : undefined,
+			'selection={[item]}',
+			'selection={[item.id]}',
+			`\`selection\` is a list of item ids. Item objects are still matched by \`id\`, or by identity when an item has no \`id\`. \`events.onSelect\` reports the requested ids as \`data.selection\`. ${createDocUrl('selection')}`
+		);
+		deprecatedProperty(
+			COMPONENT,
+			hasItemObjects(props.unread) ? true : undefined,
+			'unread={[item]}',
+			'unread={[item.id]}',
+			`\`unread\` is a list of item ids. Item objects are still matched by \`id\`, or by identity when an item has no \`id\`. ${createDocUrl('unread')}`
+		);
+		/* eslint-enable max-len */
+	};
+}
+
+export default checkProps;

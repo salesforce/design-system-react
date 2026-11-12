@@ -1,6 +1,5 @@
 /* eslint-disable max-lines */ // This object is imported into the documentation site. An example for the documentation site should be part of the pull request for the component. The object key is the component value listed in the component's component.json file. The following uses webpack's raw-loader plugin to get "text files" that will be eval()'d by CodeMirror within the documentation site on page load.
 
-/* eslint-env node */
 /* eslint-disable global-require */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable import/no-unresolved */
@@ -32,12 +31,6 @@ const documentationSiteLiveExamples = {
 		{
 			heading: 'Dismissable',
 			path: require('raw-loader!@salesforce/design-system-react/components/alert/__examples__/dismissable.jsx'),
-		},
-	],
-	'app-launcher': [
-		{
-			heading: 'Default',
-			path: require('raw-loader!@salesforce/design-system-react/components/app-launcher/__examples__/default.jsx'),
 		},
 	],
 	avatar: [
@@ -74,32 +67,6 @@ const documentationSiteLiveExamples = {
 		{
 			heading: 'With Icon',
 			path: require('raw-loader!@salesforce/design-system-react/components/badge/__examples__/with-icon.jsx'),
-		},
-	],
-	'brand-band': [
-		{
-			heading: 'Default',
-			path: require('raw-loader!@salesforce/design-system-react/components/brand-band/__examples__/default.jsx'),
-		},
-		{
-			heading: 'Small',
-			path: require('raw-loader!@salesforce/design-system-react/components/brand-band/__examples__/small.jsx'),
-		},
-		{
-			heading: 'large',
-			path: require('raw-loader!@salesforce/design-system-react/components/brand-band/__examples__/large.jsx'),
-		},
-		{
-			heading: 'No Image',
-			path: require('raw-loader!@salesforce/design-system-react/components/brand-band/__examples__/no-image.jsx'),
-		},
-		{
-			heading: 'User Image',
-			path: require('raw-loader!@salesforce/design-system-react/components/brand-band/__examples__/user-image.jsx'),
-		},
-		{
-			heading: 'Group Image',
-			path: require('raw-loader!@salesforce/design-system-react/components/brand-band/__examples__/group-image.jsx'),
 		},
 	],
 	breadcrumb: [
@@ -282,54 +249,50 @@ const documentationSiteLiveExamples = {
 			path: require('raw-loader!@salesforce/design-system-react/components/combobox/__examples__/required-input-error-state.jsx'),
 		},
 	],
-	'data-table': [
+	'simple-data-table': [
 		{
 			heading: 'Basic',
-			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/basic-fluid.jsx'),
+			path: require('raw-loader!@salesforce/design-system-react/components/simple-data-table/__examples__/basic-fluid.jsx'),
 		},
 		{
 			heading: 'Basic: Fluid and Striped',
-			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/basic-fluid-striped.jsx'),
+			path: require('raw-loader!@salesforce/design-system-react/components/simple-data-table/__examples__/basic-fluid-striped.jsx'),
 		},
 		{
 			heading: 'Basic: No row hover',
-			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/basic-fluid-no-row-hover.jsx'),
+			path: require('raw-loader!@salesforce/design-system-react/components/simple-data-table/__examples__/basic-fluid-no-row-hover.jsx'),
 		},
 		{
 			heading: 'Basic: Columns bordered',
-			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/basic-fluid-column-bordered.jsx'),
+			path: require('raw-loader!@salesforce/design-system-react/components/simple-data-table/__examples__/basic-fluid-column-bordered.jsx'),
 		},
 		{
 			heading: 'Basic: Headless',
-			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/basic-fluid-headless.jsx'),
+			path: require('raw-loader!@salesforce/design-system-react/components/simple-data-table/__examples__/basic-fluid-headless.jsx'),
 		},
 		{
 			heading: 'Fixed Layout',
-			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/basic-fixed-layout.jsx'),
+			path: require('raw-loader!@salesforce/design-system-react/components/simple-data-table/__examples__/basic-fixed-layout.jsx'),
 		},
 		{
 			heading: 'Advanced',
-			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/advanced.jsx'),
+			path: require('raw-loader!@salesforce/design-system-react/components/simple-data-table/__examples__/advanced.jsx'),
 		},
 		{
 			heading: 'Advanced: Single Selection',
-			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/advanced-single-select.jsx'),
+			path: require('raw-loader!@salesforce/design-system-react/components/simple-data-table/__examples__/advanced-single-select.jsx'),
 		},
 		{
 			heading: 'Advanced: Fixed Header',
-			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/fixed-header.jsx'),
+			path: require('raw-loader!@salesforce/design-system-react/components/simple-data-table/__examples__/fixed-header.jsx'),
 		},
 		{
 			heading: 'Advanced: Joined with Page Header',
-			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/joined-with-page-header.jsx'),
+			path: require('raw-loader!@salesforce/design-system-react/components/simple-data-table/__examples__/joined-with-page-header.jsx'),
 		},
 		{
 			heading: 'Infinite Scrolling',
-			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/infinite-scrolling.jsx'),
-		},
-		{
-			heading: 'Resizable Columns',
-			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/resizable-columns.jsx'),
+			path: require('raw-loader!@salesforce/design-system-react/components/simple-data-table/__examples__/infinite-scrolling.jsx'),
 		},
 	],
 	'date-picker': [
@@ -392,12 +355,6 @@ const documentationSiteLiveExamples = {
 			path: require('raw-loader!@salesforce/design-system-react/components/expandable-section/__examples__/non-collapsible.jsx'),
 		},
 	],
-	expression: [
-		{
-			heading: 'Default',
-			path: require('raw-loader!@salesforce/design-system-react/components/expression/__examples__/resource-selected.jsx'),
-		},
-	],
 	files: [
 		{
 			heading: 'Default',
@@ -446,18 +403,6 @@ const documentationSiteLiveExamples = {
 			path: require('raw-loader!@salesforce/design-system-react/components/filter/__examples__/locked.jsx'),
 		},
 	],
-	'global-header': [
-		{
-			heading: 'Default',
-			path: require('raw-loader!@salesforce/design-system-react/components/global-header/__examples__/default.jsx'),
-		},
-	],
-	'global-navigation-bar': [
-		{
-			heading: 'Default',
-			path: require('raw-loader!@salesforce/design-system-react/components/global-navigation-bar/__examples__/default.jsx'),
-		},
-	],
 	icon: [
 		{
 			heading: 'Category Options',
@@ -500,12 +445,6 @@ const documentationSiteLiveExamples = {
 		{
 			heading: 'Counter',
 			path: require('raw-loader!@salesforce/design-system-react/components/input/__examples__/counter-input.jsx'),
-		},
-	],
-	'location-map': [
-		{
-			heading: 'Multiple Locations',
-			path: require('raw-loader!@salesforce/design-system-react/components/location-map/__examples__/multiple-locations.jsx'),
 		},
 	],
 	'media-object': [
@@ -852,12 +791,6 @@ const documentationSiteLiveExamples = {
 		{
 			heading: 'Disabled',
 			path: require('raw-loader!@salesforce/design-system-react/components/textarea/__examples__/disabled.jsx'),
-		},
-	],
-	'time-picker': [
-		{
-			heading: 'Default',
-			path: require('raw-loader!@salesforce/design-system-react/components/time-picker/__examples__/default.jsx'),
 		},
 	],
 	toast: [

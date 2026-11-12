@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "allowJs": true,
+    "checkJs": false,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "forceConsistentCasingInFileNames": true,
+    // TypeScript 7 no longer implicitly includes every installed @types/*
+    // package's globals. A few source files reference `process.env.NODE_ENV`,
+    // so `node` must be declared explicitly for the `process` global to resolve.
+    "types": ["node"],
+    "paths": {
+      "~/*": ["./*"],
+      "@components/*": ["./components/*"],
+      "@utilities/*": ["./utilities/*"],
+      "@types/*": ["./types/*"]
+    }
+  },
+  "include": ["components/**/*", "utilities/**/*", "types/**/*"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    ".tmp-npm",
+    "**/*.test.*",
+    "**/*.spec.*",
+    "**/*.browser-test.*",
+    "**/__tests__/**",
+    "**/__docs__/**",
+    "**/__examples__/**"
+  ]
+}

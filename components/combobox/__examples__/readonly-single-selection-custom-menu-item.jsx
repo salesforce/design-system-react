@@ -9,44 +9,44 @@ const accounts = [
 		id: '1',
 		label: 'Acme',
 		subTitle: 'Account • San Francisco',
-		type: 'account',
+		category: 'account',
 	},
 	{
 		id: '2',
 		label: 'Salesforce.com, Inc.',
 		subTitle: 'Account • San Francisco',
-		type: 'account',
+		category: 'account',
 	},
 	{
 		id: '3',
 		label: "Paddy's Pub",
 		subTitle: 'Account • Boston, MA',
-		type: 'account',
+		category: 'account',
 	},
 	{
 		id: '4',
 		label: 'Tyrell Corp',
 		subTitle: 'Account • San Francisco, CA',
-		type: 'account',
+		category: 'account',
 	},
 	{
 		id: '5',
 		label: 'Paper St. Soap Company',
 		subTitle: 'Account • Beloit, WI',
-		type: 'account',
+		category: 'account',
 	},
 	{
 		id: '6',
 		label: 'Nakatomi Investments',
 		subTitle: 'Account • Chicago, IL',
-		type: 'account',
+		category: 'account',
 	},
-	{ id: '7', label: 'Acme Landscaping', type: 'account' },
+	{ id: '7', label: 'Acme Landscaping', category: 'account' },
 	{
 		id: '8',
 		label: 'Acme Construction',
 		subTitle: 'Account • Grand Marais, MN',
-		type: 'account',
+		category: 'account',
 	},
 ];
 
@@ -58,30 +58,29 @@ const accountsWithIcon = accounts.map((elem) => ({
 				assistiveText={{ label: 'Account' }}
 				category="standard"
 				size="x-small"
-				name={elem.type}
+				name={elem.category}
 			/>
 		),
 	},
 }));
 
-const CustomMenuItem = (props) => (
+const renderMenuItem = ({ assistiveText, isSelected, option }) => (
 	<span className="slds-media">
 		<span className="slds-m-left_x-small slds-m-right_x-small">
-			{props.option.icon}
+			{option.icon}
 		</span>
 		<span className="slds-media__body">
-			<span className="slds-truncate" title={props.option.label}>
-				{props.selected ? (
+			<span className="slds-truncate" title={option.label}>
+				{isSelected ? (
 					<span className="slds-assistive-text">
-						{props.assistiveText.optionSelectedInMenu}
+						{assistiveText.optionSelectedInMenu}
 					</span>
 				) : null}{' '}
-				{props.option.label}
+				{option.label}
 			</span>
 		</span>
 	</span>
 );
-CustomMenuItem.displayName = 'CustomMenuItem';
 
 class Example extends React.Component {
 	constructor(props) {
@@ -118,7 +117,7 @@ class Example extends React.Component {
 						label: 'Search',
 						placeholderReadOnly: 'Select company',
 					}}
-					onRenderMenuItem={CustomMenuItem}
+					renderMenuItem={renderMenuItem}
 					options={accountsWithIcon}
 					selection={this.state.selection}
 					value={this.state.inputValue}

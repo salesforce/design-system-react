@@ -12,12 +12,18 @@ import PageHeaderControl from '~/components/page-header/control';
 class Example extends React.Component {
 	static displayName = 'RecordHomePageHeaderExample';
 
+	state = { isFollowing: false };
+
 	render() {
 		const actions = () => (
 			<React.Fragment>
 				<PageHeaderControl>
 					<ButtonStateful
 						key="PageHeaderFollowButton"
+						isActive={this.state.isFollowing}
+						onClick={(event, data) =>
+							this.setState({ isFollowing: data.isActive })
+						}
 						iconSize="medium"
 						stateOne={{ iconName: 'add', label: 'Follow' }}
 						stateTwo={{ iconName: 'check', label: 'Following' }}
@@ -80,7 +86,7 @@ class Example extends React.Component {
 						/>
 					}
 					label="Record Type"
-					onRenderActions={actions}
+					actions={actions()}
 					title="Record Title"
 					variant="record-home"
 				/>

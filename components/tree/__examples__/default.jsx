@@ -3,7 +3,7 @@ import React from 'react';
 import IconSettings from '~/components/icon-settings';
 import Tree from '~/components/tree';
 import log from '~/utilities/log';
-import Search from '../../forms/input/search';
+import Search from '../../input/search';
 
 const sampleNodes = {
 	0: {
@@ -260,16 +260,20 @@ class Example extends React.Component {
 		id: 'example-tree',
 	};
 
+	// Tree never modifies `nodes`. Selection (`selectedIds`) and expansion (`expandedIds`) are
+	// state of their own, so the node data can stay as it is.
 	state = {
 		nodes: this.props.nodes || sampleNodes,
+		expandedIds: this.props.initialExpandedIds || [],
+		selectedIds: this.props.initialSelectedIds || [],
 		searchTerm: this.props.searchable ? 'fruit' : undefined,
 	};
 
 	getNodes = (node) =>
 		node.nodes ? node.nodes.map((id) => this.state.nodes[id]) : [];
 
-	// By default Tree can have multiple selected nodes and folders/branches can be selected. To disable either of these, you can use the following logic. However, `props` are immutable. The node passed in shouldn't be modified. Object and arrays are reference variables.
-	handleExpandClick = (event, data) => {
+	// `data.expandedIds` is the requested set of expanded branches
+	handleRequestToggle = (event, data) => {
 		log({
 			action: this.props.action,
 			customLog: this.props.log,
@@ -277,23 +281,11 @@ class Example extends React.Component {
 			eventName: 'Expand Branch',
 			data,
 		});
-		const selected = data.select ? true : data.node.selected;
-		this.setState((prevState) => ({
-			...prevState,
-			nodes: {
-				...prevState.nodes,
-				...{
-					[data.node.id]: {
-						...data.node,
-						expanded: data.expand,
-						selected,
-					},
-				},
-			},
-		}));
+		this.setState({ expandedIds: data.expandedIds });
 	};
 
-	handleClick = (event, data) => {
+	// By default Tree can have multiple selected nodes and folders/branches can be selected. To disable either of these, you can use the following logic.
+	handleSelect = (event, data) => {
 		log({
 			action: this.props.action,
 			customLog: this.props.log,
@@ -301,61 +293,20 @@ class Example extends React.Component {
 			eventName: 'Node Selected',
 			data,
 		});
-		if (this.props.multipleSelection) {
-			if (
-				!this.props.noBranchSelection ||
-				(this.props.noBranchSelection && data.node.type !== 'branch')
-			) {
-				// Take the previous state, expand it, overwrite the `nodes` key with the previous state's `nodes` key expanded with the id of the node just clicked selected
-				this.setState((prevState) => ({
-					...prevState,
-					nodes: {
-						...prevState.nodes,
-						...{
-							[data.node.id]: { ...data.node, selected: data.select },
-						},
-					},
-				}));
-			}
-		} else if (this.props.noBranchSelection && data.node.type === 'branch') {
+		if (this.props.noBranchSelection && data.node.type === 'branch') {
 			// OPEN BRANCH/FOLDER WHEN CLICKED
-			// Although not codified in SLDS, this takes the click callback and turns it into the expand callback, and should be used for item only selection.
+			// Although not codified in SLDS, this takes the select callback and turns it into an expand request, and should be used for item only selection.
 			this.setState((prevState) => ({
-				...prevState,
-				nodes: {
-					...prevState.nodes,
-					...{
-						[data.node.id]: { ...data.node, expanded: !data.node.expanded },
-					},
-				},
+				expandedIds: prevState.expandedIds.includes(data.node.id)
+					? prevState.expandedIds.filter((id) => id !== data.node.id)
+					: [...prevState.expandedIds, data.node.id],
 			}));
+		} else if (this.props.multipleSelection) {
+			// MULTIPLE SELECTION: `data.selectedIds` is the requested selection
+			this.setState({ selectedIds: data.selectedIds });
 		} else {
-			// SINGLE SELECTION
-			// Take the previous state, expand it, overwrite the `nodes` key with the previous state's `nodes` key expanded with the id of the node just clicked selected and the previously selected node unselected.
-			this.setState((prevState) => {
-				// Gaurd against no selection with the following. `selectedNode`
-				// is the previously selected "current state" that is about to
-				// be updated
-				const selectedNode = prevState.selectedNode
-					? {
-							[prevState.selectedNode.id]: {
-								...prevState.nodes[prevState.selectedNode.id],
-								selected: false,
-							},
-					  }
-					: {};
-				return {
-					...prevState,
-					nodes: {
-						...prevState.nodes,
-						...{
-							[data.node.id]: { ...data.node, selected: data.select },
-							...selectedNode,
-						},
-					},
-					selectedNode: data.node,
-				};
-			});
+			// SINGLE SELECTION: only the node just selected, or nothing if it was deselected
+			this.setState({ selectedIds: data.isSelected ? [data.node.id] : [] });
 		}
 	};
 
@@ -391,13 +342,19 @@ class Example extends React.Component {
 						assistiveText={this.props.assistiveText}
 						className={this.props.className}
 						getNodes={this.props.getNodes || this.getNodes}
-						heading={!this.props.noHeading && this.props.heading}
+						labels={
+							this.props.noHeading ? undefined : { heading: this.props.heading }
+						}
 						id={this.props.id}
-						listStyle={this.props.listStyle}
-						listClassName={this.props.listClassName}
+						styleList={this.props.styleList}
+						classNameList={this.props.classNameList}
 						nodes={this.state.nodes['0'].nodes}
-						onExpandClick={this.props.onExpandClick || this.handleExpandClick}
-						onClick={this.props.onClick || this.handleClick}
+						selectedIds={this.state.selectedIds}
+						expandedIds={this.state.expandedIds}
+						onRequestToggle={
+							this.props.onRequestToggle || this.handleRequestToggle
+						}
+						onSelect={this.props.onSelect || this.handleSelect}
 						onScroll={this.props.onScroll || this.handleScroll}
 						searchTerm={this.props.searchTerm || this.state.searchTerm}
 					/>

@@ -44,13 +44,19 @@ const ElementFocus = {
 			ancestor.contains(document.activeElement)),
 	returnFocusToStoredElement: () => {
 		if (canUseDOM) {
-			try {
-				focusLaterElement.focus();
-			} catch (e) {
-				// eslint-disable-next-line no-console
-				console.warn(
-					`You tried to return focus to ${focusLaterElement} but it is not in the DOM anymore`
-				);
+			// Only attempt to focus if element exists and is still in the DOM
+			// This prevents warnings in environments like Storybook where elements
+			// may be unmounted before focus can be restored
+			if (
+				focusLaterElement &&
+				typeof focusLaterElement.focus === 'function' &&
+				document.body.contains(focusLaterElement)
+			) {
+				try {
+					focusLaterElement.focus();
+				} catch (e) {
+					// Silently ignore - element may have been removed from DOM
+				}
 			}
 			focusLaterElement = null;
 		}

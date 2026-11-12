@@ -2,8 +2,9 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 /* eslint-disable import/no-mutable-exports */
 
+import deprecatedProperty from '../../utilities/warning/deprecated-property';
+import requiredProperty from '../../utilities/warning/required-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
-import sunsetProperty from '../../utilities/warning/sunset-property';
 
 let checkProps = function checkPropsFunction() {};
 
@@ -11,16 +12,22 @@ if (process.env.NODE_ENV !== 'production') {
 	checkProps = function checkPropsFunction(COMPONENT, props, jsonDoc) {
 		const createDocUrl = getComponentDocFn(jsonDoc);
 
-		if (typeof props.assistiveText === 'string') {
-			sunsetProperty(
-				COMPONENT,
-				props.assistiveText,
-				'assistiveText',
-				`\`assistiveText\` as a string has been deprecated and is now an object to allow for multiple uses in the component. Please use \`assistiveText.icon\` instead. ${createDocUrl(
-					'assistiveText'
-				)}`
-			);
-		}
+		deprecatedProperty(
+			COMPONENT,
+			props.active,
+			'active',
+			'isActive',
+			createDocUrl('isActive')
+		);
+
+		requiredProperty(
+			COMPONENT,
+			props.onClick !== undefined || !!props.disabled,
+			'onClick',
+			`ButtonStateful is controlled: without \`onClick\`, clicking it does nothing. Update \`isActive\` from \`data.isActive\` in \`onClick\`, or set \`disabled\`. ${createDocUrl(
+				'onClick'
+			)}`
+		);
 	};
 }
 
