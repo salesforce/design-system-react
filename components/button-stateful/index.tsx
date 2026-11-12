@@ -286,7 +286,6 @@ const ButtonStateful = ({
 					)
 				) : (
 					<ButtonIcon
-						disabled={disabled}
 						name={iconName}
 						size={iconSize as 'x-small' | 'small' | 'medium' | 'large'}
 						className="slds-button__icon_stateful"
@@ -339,7 +338,6 @@ const ButtonStateful = ({
 					)
 				) : (
 					<ButtonIcon
-						disabled={disabled}
 						name={stateOne.iconName}
 						size="small"
 						position="left"
@@ -361,7 +359,6 @@ const ButtonStateful = ({
 					)
 				) : (
 					<ButtonIcon
-						disabled={disabled}
 						name={stateTwo.iconName}
 						size="small"
 						position="left"
@@ -384,7 +381,6 @@ const ButtonStateful = ({
 					)
 				) : (
 					<ButtonIcon
-						disabled={disabled}
 						name={stateThree.iconName}
 						size="small"
 						position="left"

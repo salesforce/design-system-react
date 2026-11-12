@@ -55,8 +55,7 @@ export interface ButtonIconProps {
 	/**
 	 * Size of the icon. Visit [lightningdesignsystem.com/components/icons/#flavor-sizes](https://www.lightningdesignsystem.com/components/icons/#flavor-sizes)
 	 */
-	size?: 'x-small' | 'small' | 'medium' | 'large';
-	[key: string]: unknown;
+	size?: 'xx-small' | 'x-small' | 'small' | 'medium' | 'large';
 }
 
 /**
@@ -72,7 +71,6 @@ const ButtonIcon = ({
 	name,
 	path,
 	position,
-	...rest
 }: ButtonIconProps): React.ReactElement => {
 	(checkProps as (name: string, props: unknown, doc?: unknown) => void)(
 		BUTTON_ICON,
@@ -86,7 +84,6 @@ const ButtonIcon = ({
 			name,
 			path,
 			position,
-			...rest,
 		}
 	);
 
