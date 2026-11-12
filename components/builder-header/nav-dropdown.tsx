@@ -1,13 +1,13 @@
 import Button from '../button';
 import Icon from '../icon';
 import Dropdown from '../menu-dropdown';
-import { type MenuDropdownProps } from '../menu-dropdown/menu-dropdown';
+import { type MenuDropdownBaseProps } from '../menu-dropdown/menu-dropdown';
 import type { IconCategory } from '../../types/common';
 
 import { BUILDER_HEADER_NAV_DROPDOWN } from '../../utilities/constants';
 
 export interface BuilderHeaderNavDropdownProps extends Omit<
-	MenuDropdownProps,
+	MenuDropdownBaseProps,
 	'assistiveText'
 > {
 	/**
@@ -26,6 +26,8 @@ export interface BuilderHeaderNavDropdownProps extends Omit<
 	 * Text label shown next to the icon.
 	 */
 	label?: string;
+	/** Passed to the dropdown; the trigger is built by this component. */
+	buttonVariant?: 'base' | 'neutral' | 'brand' | 'destructive' | 'icon';
 }
 
 /**
@@ -36,7 +38,7 @@ const BuilderHeaderNavDropdown = (props: BuilderHeaderNavDropdownProps) => {
 	const { iconCategory, iconName, label, assistiveText, ...rest } = props;
 	return (
 		<Dropdown
-			{...rest}
+			{...(rest as MenuDropdownBaseProps)}
 			trigger={
 				<Button
 					className="slds-builder-header__item-action slds-media slds-media_center"
