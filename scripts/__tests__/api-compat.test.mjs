@@ -136,6 +136,22 @@ describe('api-compat', () => {
 		});
 	});
 
+	it('flags a removed prop when props have pattern index signatures', () => {
+		// Button's props, for example, accept `aria-*` and `data-*` keys.
+		const indexed = WIDGET.replace(
+			'onChange?: ChangeHandler;',
+			'onChange?: ChangeHandler; [key: `data-${string}`]: string | undefined;'
+		);
+		write('base', { 'components/widget/index.d.ts': indexed });
+		write('head', {
+			'components/widget/index.d.ts': indexed.replace('label?: string;', ''),
+		});
+		expect(verdictOf('default')).toMatchObject({
+			verdict: 'breaking',
+			reason: 'Removed props: `label`.',
+		});
+	});
+
 	it('flags swapped callback parameters as breaking', () => {
 		change((s) =>
 			s.replace(

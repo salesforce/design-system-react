@@ -222,7 +222,16 @@ const propNames = (
 		return names;
 	}
 	if (!(type.flags & ts.TypeFlags.Object)) return undefined;
-	if (checker.getIndexInfosOfType(type).length) return undefined;
+	// `[key: string]` accepts any prop name, so a removed prop still compiles
+	// and the name diff would be noise. Pattern indexes such as
+	// `[key: `aria-${string}`]` only accept matching names, so removing
+	// `requestFocus` is still a JSX error.
+	if (
+		checker
+			.getIndexInfosOfType(type)
+			.some((info) => info.keyType.flags & ts.TypeFlags.String)
+	)
+		return undefined;
 	return new Set(checker.getPropertiesOfType(type).map((p) => p.getName()));
 };
 
