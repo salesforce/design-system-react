@@ -16,9 +16,12 @@ Never run bare `npm test` — it starts Vitest in watch mode and will not exit.
 | `npm test -- --run -u`   | Same, and regenerate story HTML snapshots                                      |
 | `npm run build`          | Type-check, library build, `.d.ts`, entry shims                                |
 | `npm run test:snapshots` | Story HTML snapshot suite only (~3s)                                           |
+| `npm run api:check`      | Fail if the committed public API snapshot in `api/` is stale (~2s)             |
+| `npm run api:update`     | Regenerate `api/` from the emitted `.d.ts`                                     |
+| `npm run api:compat`     | Classify type changes vs. `origin/master` as breaking or additive (advisory)   |
 | `npm run test:ci`        | Everything CI runs: typecheck, test, build, lint                               |
 
-Run `npm run test:ci` before requesting review. A husky pre-push hook runs `test:snapshots` and blocks the push if snapshots are stale.
+Run `npm run test:ci` and `npm run api:check` before requesting review. A husky pre-push hook runs `test:snapshots` and `api:check` and blocks the push if either is stale.
 
 ## Things that are easy to miss
 
@@ -29,6 +32,7 @@ Run `npm run test:ci` before requesting review. A husky pre-push hook runs `test
 - **jsdom vs. browser tests.** Tests that need a real browser (focus traversal, layout/measurement) go in `*.browser.test.jsx`; everything else is jsdom.
 - **New scripts in `scripts/` are TypeScript.** Write `.ts` and run it with `tsx` (as `release.ts` is); `npm run typecheck` covers them via `tsconfig.scripts.json`. The remaining `.mjs`/`.js` scripts predate this rule; convert one when you substantially change it. Tests in `scripts/__tests__/` stay `*.test.mjs`, the pattern the `scripts` Vitest project picks up.
 - **Types are the contract.** Runtime PropTypes were removed in the TypeScript migration; the generated `.d.ts` files are what consumers get.
+- **The public API is snapshotted in `api/`.** It's the emitted `.d.ts` for every public file under `components/` and `utilities/`, with comments stripped. `private/` files are left out unless a public type references them. If a change touches types, run `npm run api:update`, review the `api/` diff (that's the API change consumers will see), and commit it in the same PR. A removed or renamed export, a narrowed or newly required prop, or reordered callback parameters is breaking: use `!` and a `BREAKING CHANGE:` footer. `api:check` runs in a separate PR-only CI job, not in `test:ci`. That job also runs `scripts/api-compat.ts`, which compares against the base branch and labels each change breaking, possibly breaking or additive. It's advisory: it never fails the job and reports through annotations on the `api/` diff, the job summary and one PR comment. It also warns when a breaking change has no `!` / `BREAKING CHANGE:`. Run it locally with `npm run api:compat` (add `-- --base <ref>` to compare against something other than `origin/master`).
 - **Restoring or mirroring existing behavior** (stories lost in a rewrite, parity with another implementation): build the inventory from git (`git show <old-ref>:<path>`, `git log --follow`), not from memory, and list the before/after set in the PR description.
 
 ## Git and pull requests

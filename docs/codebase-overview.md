@@ -616,6 +616,13 @@ npm run test:coverage       # Run once with coverage
 
 Every Storybook story (except portal-rendered ones, which can't be server-rendered) is also rendered into an HTML snapshot (`components/__tests__/__snapshots__/story-snapshots.test.jsx.snap`), so stories are test fixtures as well as documentation. A run filtered to one component's folder does not include that suite — finish with an unfiltered run.
 
+```bash
+npm run api:check          # Fail if the public API snapshot in api/ is stale
+npm run api:update         # Regenerate it after an intentional type change
+```
+
+The public TypeScript API is snapshotted in `api/` (`scripts/api-report.ts`): the emitted `.d.ts` for every public file under `components/` and `utilities/`, comments stripped, one file per component. `private/` files appear only when a public type references them. Review the `api/` diff like the story snapshot diff: it's the type change consumers will see. The pre-push hook and a PR-only CI job run `api:check`. On pull requests, `scripts/api-compat.ts` then compares the types against the base branch with the TypeScript checker and labels each change breaking, possibly breaking or additive. It's advisory and never fails the job (run it locally with `npm run api:compat`).
+
 ---
 
 ## Accessibility
@@ -735,6 +742,8 @@ Publish this taxonomy alongside any SemVer policy so consumers know what a minor
 - **Breaking:** removing or renaming a styling hook (a `className*` target or documented SLDS class consumers style against).
 - **Breaking:** adding a default value to a prop that was previously required or had no default, if it changes rendered output for existing callers (see [Boolean Props & Defaults](#boolean-props--defaults)).
 - **Not breaking:** markup/DOM-structure changes, _provided_ any externally exposed `ref` continues to resolve to an equivalent element. This is also why [Ref Typing](#compatibility--support) matters — a ref typed to the wrong element makes "equivalent element" ambiguous.
+
+The committed `api/` snapshot (see [Running Tests](#running-tests)) makes the type-level rows of this taxonomy visible in every PR diff, and the advisory `api-compat` check labels them on the PR. Defaults and styling hooks aren't expressed in types, so they still need review.
 
 This is the concrete version of the general backward-compatibility policy already stated under [Deprecation Warnings](#deprecation-warnings) — that section covers the _process_ (console warnings, major-version bump); this taxonomy covers _what counts_.
 
