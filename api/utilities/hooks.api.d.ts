@@ -3,6 +3,7 @@
 // ── @salesforce/design-system-react/utilities/hooks ──
 export { useClickOutside, type UseClickOutsideOptions, } from "./use-click-outside";
 export { useControllableState } from "./use-controllable-state";
+export { useLatestRef } from "./use-latest-ref";
 
 // ── @salesforce/design-system-react/utilities/hooks/use-click-outside ──
 import { type RefObject } from "react";
@@ -20,3 +21,7 @@ export declare function useControllableState<T>(value: T | undefined, defaultVal
     setValue: (next: T) => void,
     isControlled: boolean
 ];
+
+// ── @salesforce/design-system-react/utilities/hooks/use-latest-ref ──
+import { type RefObject } from "react";
+export declare function useLatestRef<T>(value: T): RefObject<T>;

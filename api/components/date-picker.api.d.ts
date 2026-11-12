@@ -61,7 +61,7 @@ interface DatePickerBaseProps {
     isIsoWeekday?: boolean;
     labels?: DatePickerLabels;
     menuPosition?: "absolute" | "overflowBoundaryElement" | "relative";
-    onCalendarFocus?: (event: React.SyntheticEvent | null, data: {
+    onCalendarFocus?: (event: React.SyntheticEvent | undefined, data: {
         date?: Date;
         ref?: HTMLElement;
         direction?: string;

@@ -23,17 +23,12 @@ interface ColorPickerBaseProps {
     menuPosition?: "absolute" | "overflowBoundaryElement" | "relative";
     value: string;
     valueWorking?: string;
-    onClose?: (event: React.SyntheticEvent, data: {
-        trigger?: string;
-        componentWillUnmount?: boolean;
-    }) => void;
-    onOpen?: (event: React.SyntheticEvent, data: {
-        portal?: HTMLElement;
-    }) => void;
-    onRequestClose?: (event: React.SyntheticEvent, data: {
-        trigger: string;
-    }) => void;
-    onRequestOpen?: () => void;
+    onClose?: ColorPickerEvents["onClose"];
+    onOpen?: ColorPickerEvents["onOpen"];
+    onRequestClose?: ColorPickerEvents["onRequestClose"];
+    onRequestOpen?: ColorPickerEvents["onRequestOpen"];
+    validateColor?: (hex: string) => boolean;
+    validateWorkingColor?: (hex: string) => boolean;
 }
 export type ColorPickerVariantProps = {
     variant?: "base";
@@ -64,7 +59,7 @@ export default ColorPicker;
 export { default } from "./color-picker";
 export { default as ColorPicker } from "./color-picker";
 export type { ColorPickerEventsProps, ColorPickerProps, ColorPickerVariantProps, } from "./color-picker";
-export type { WorkingColor, ColorPickerAssistiveText, ColorPickerLabels, ColorPickerChangeHandler, ColorPickerEvents, HSV, RGB, ColorErrors, } from "./types";
+export type { WorkingColor, ColorPickerAssistiveText, ColorPickerLabels, ColorPickerChangeHandler, ColorPickerEvents, ColorPickerRequestCloseData, ColorPickerRequestCloseTrigger, HSV, RGB, ColorErrors, } from "./types";
 
 // ── @salesforce/design-system-react/components/color-picker/types ──
 export interface HSV {
@@ -115,6 +110,10 @@ export type ColorPickerChangeHandler = (event: React.SyntheticEvent, data: {
     color: string;
     isValid?: boolean;
 }) => void;
+export type ColorPickerRequestCloseTrigger = "cancel" | "submit" | "clickOutside" | "triggerClick" | "newPopover";
+export interface ColorPickerRequestCloseData {
+    trigger: ColorPickerRequestCloseTrigger;
+}
 export interface ColorPickerEvents {
     onChange?: ColorPickerChangeHandler;
     onClose?: (event: React.SyntheticEvent, data: {
@@ -124,9 +123,7 @@ export interface ColorPickerEvents {
     onOpen?: (event: React.SyntheticEvent, data: {
         portal?: HTMLElement;
     }) => void;
-    onRequestClose?: (event: React.SyntheticEvent, data: {
-        trigger: string;
-    }) => void;
+    onRequestClose?: (event: React.SyntheticEvent, data: ColorPickerRequestCloseData) => void;
     onRequestOpen?: () => void;
     onValidateColor?: (hex: string) => boolean;
     onValidateWorkingColor?: (hex: string) => boolean;

@@ -36,8 +36,6 @@ export default RadioButtonGroup;
 // ── @salesforce/design-system-react/components/radio-button-group/radio ──
 import type { ReactElement } from "react";
 import { type RadioGroupItemProps } from "../radio/index";
-declare const GroupRadio: ((props: RadioGroupItemProps) => ReactElement) & {
-    displayName?: string;
-};
+declare const GroupRadio: (props: RadioGroupItemProps) => ReactElement;
 export type { RadioGroupItemProps };
 export default GroupRadio;

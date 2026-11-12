@@ -56,7 +56,7 @@ export default SimpleDataTableHighlightCell;
 // ── @salesforce/design-system-react/components/simple-data-table ──
 import React from "react";
 import { type ModeType } from "./private/mode";
-import type { SimpleDataTableProps, SimpleDataTableItem } from "./types";
+import type { SimpleDataTableProps, SimpleDataTableItem, SimpleDataTableLoadMoreData } from "./types";
 interface SimpleDataTableState {
     activeCell: {
         rowIndex: number;
@@ -124,7 +124,7 @@ declare class SimpleDataTable extends React.Component<SimpleDataTableProps, Simp
     }) => void;
     handleRowToggle: (item: SimpleDataTableItem, selected: boolean, e: React.SyntheticEvent) => void;
     resizeFixedHeaders: (event?: Event) => void;
-    loadMoreIfNeeded: () => void;
+    loadMoreIfNeeded: (event: Event | undefined, fallbackTrigger?: SimpleDataTableLoadMoreData["trigger"]) => void;
     toggleFixedHeaderListeners: (attach: boolean) => void;
     UNSAFE_componentWillUpdate(nextProps: SimpleDataTableProps): void;
     changeActiveCell(rowIndex: number, columnIndex: number): void;
@@ -210,6 +210,13 @@ export interface SimpleDataTableSortData {
     property: string;
     sortDirection: "asc" | "desc";
 }
+export interface SimpleDataTableLoadMoreData {
+    trigger: "scroll" | "resize" | "update";
+}
+export interface SimpleDataTableRowActionData {
+    item: SimpleDataTableItem;
+    option: unknown;
+}
 export interface SimpleDataTableRowChangeData {
     selection: SimpleDataTableItem[];
 }
@@ -254,12 +261,12 @@ export interface SimpleDataTableBaseProps {
     loadMoreOffset?: number;
     keyboardNavigation?: boolean;
     noRowHover?: boolean;
-    onFixedHeaderResize?: (event: Event | null, data: {
+    onFixedHeaderResize?: (event: Event | undefined, data: {
         headerRefs: HTMLElement[];
         scrollerRef: HTMLElement | null;
     }) => void;
-    onLoadMore?: () => void;
-    onSort?: (data: SimpleDataTableSortData, event: SyntheticEvent) => void;
+    onLoadMore?: (event: Event | undefined, data: SimpleDataTableLoadMoreData) => void;
+    onSort?: (event: SyntheticEvent, data: SimpleDataTableSortData) => void;
     onToggleFixedHeaderListeners?: (event: Record<string, unknown>, data: {
         attach: boolean;
         resizeHandler: (event?: Event) => void;
@@ -314,7 +321,7 @@ export interface SimpleDataTableRowActionsProps {
     };
     className?: string;
     noHint?: boolean;
-    onAction?: (item: SimpleDataTableItem, selection: unknown) => void;
+    onAction?: (event: SyntheticEvent, data: SimpleDataTableRowActionData) => void;
     options?: unknown[];
     dropdown?: ReactElement<Partial<MenuDropdownProps>>;
 }
@@ -330,7 +337,7 @@ export interface SimpleDataTableHeadProps {
     fixedLayout?: boolean;
     id?: string;
     onToggleAll?: (event: SyntheticEvent, data: SimpleDataTableToggleAllData) => void;
-    onSort?: (data: SimpleDataTableSortData, event: SyntheticEvent) => void;
+    onSort?: (event: SyntheticEvent, data: SimpleDataTableSortData) => void;
     showRowActions?: boolean;
 }
 export interface SimpleDataTableRowProps {
@@ -359,7 +366,7 @@ export interface SimpleDataTableHeaderCellProps {
     isDefaultSortDescending?: boolean;
     isSorted?: boolean;
     label?: string | ReactNode;
-    onSort?: (data: SimpleDataTableSortData, event: SyntheticEvent) => void;
+    onSort?: (event: SyntheticEvent, data: SimpleDataTableSortData) => void;
     property?: string;
     sortable?: boolean;
     sortDirection?: "desc" | "asc";
@@ -392,6 +399,5 @@ export interface SimpleDataTableHighlightCellProps extends SimpleDataTableCellPr
 export interface SimpleDataTableInteractiveElementProps {
     onFocus?: (event: React.FocusEvent) => void;
     onRequestFocus?: () => void;
-    requestFocus?: boolean;
     tabIndex?: number;
 }

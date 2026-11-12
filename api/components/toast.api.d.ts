@@ -43,7 +43,7 @@ export interface ToastProps {
     duration?: number;
     icon?: ReactElement<IconProps>;
     labels?: ToastLabels;
-    onClickHeadingLink?: (event: React.MouseEvent) => void;
+    onClickHeadingLink?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
     onRequestClose?: (event: React.MouseEvent<HTMLButtonElement> | undefined, data: ToastRequestCloseData) => void;
     style?: CSSProperties;
     variant: ToastVariant;
