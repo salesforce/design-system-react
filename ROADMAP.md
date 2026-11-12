@@ -189,6 +189,14 @@ moves to `latest`.
    menu-dropdown and progress-indicator and needs one cross-component rename (naming);
    icon already has `category: IconCategory` and no string `assistiveText`. Callback-shape
    items are done (callbacks) or deferred past GA (additive).
+   **Done (data-models, folded into theme 7, all additive):** docked-composer (`defaultIsOpen`),
+   filter (one open-state rule), progress-indicator (`status` per step, `selectedStep` by id,
+   old forms deprecated), tooltip (`isDisabled`). **No change:** accordion, breadcrumb,
+   date-picker, tabs, visual-picker, welcome-mat. **Kept:** carousel `hasAutoplay` still
+   starts autoplay (back-compat). **Cut:** tooltip `learnMore` text without `onClickTrigger`.
+   **Deferred past GA (2026-11-08 scope cut, additive):** setup-assistant `progressRingProps`,
+   simple-data-table table-level `sort`, split-view `isSortable`.
+   **Cut:** removing the menu-list deep-import aliases (no consumer-visible API).
 8. **Fix now (bugs, not breaking).** Done: simple-data-table `getAssistiveText` argument
    order, grid `"undefined slds-col"` (#3239), split-view `bottomRightText` title,
    vertical-navigation `aria-current`, tabs `disabled` type, toast timer re-arm (#3251).
@@ -212,17 +220,19 @@ _Reviewed: accordion, alert, avatar, badge, breadcrumb, builder-header, button, 
 - [x] `alert` — decide whether focusing the close button on mount (and restoring focus on
       unmount) stays the default or becomes opt-in.
       **Decided (behavior-fixes):** focusing the close button on mount, and restoring focus on unmount, stays the default. No `autoFocus` prop.
-- [ ] `accordion` — replace the `cloneElement` + `Children.count` child contract (implicit
+- [x] `accordion` — replace the `cloneElement` + `Children.count` child contract (implicit
       `refs`/`onClickSummary`/`onKeyDownSummary` injection) with context or an `items` prop.
       **Re-scoped by the child-contract rule:** children here are library components, so the `cloneElement`/child-props contract is allowed. Keep the other findings. Child contract done (theme 3): children are typed, injected props are internal, and no child is matched by `displayName`.
       **Partly done:** children are typed (`ChildrenOf<AccordionPanelProps>`).
+      **Decided (data-models):** the `cloneElement` contract stays (library-component children). No code change.
 - [x] `accordion` — decide whether the first summary button should be focused on mount
       (currently it is, from `currButtonIndex` starting at `0`).
       **Partly done:** focus no longer moves on mount, only when the focused index changes; the
       first button is still the initial tab stop.
       **Decided (behavior-fixes):** the first summary button stays the initial tab stop (roving tabindex, as in the APG accordion pattern). No code change.
-- [ ] `breadcrumb` — decide `trail: ReactNode[]` (positional, index keys) vs `items` with ids;
+- [x] `breadcrumb` — decide `trail: ReactNode[]` (positional, index keys) vs `items` with ids;
       replace `styleContainer` with `className` on the root `nav`.
+      **Decided (data-models):** `trail` stays a `ReactNode[]`; no code change.
 - [x] `avatar`, `breadcrumb` — drop the `assistiveText: string | object` union (object only).
       Done in #3248.
 - [ ] `badge` — decide `content` prop vs `children`; `style` currently lands on the icon
@@ -288,6 +298,7 @@ Callbacks stay grouped in an `events` object where components already use one
       value freezes the carousel). Add `defaultCurrentPanel`/`defaultIsAutoplayOn`, and stop
       `hasAutoplay` doubling as "start playing".
       **Control model done (theme 2).** Exception: with `hasAutoplay` and neither `isAutoplayOn` nor `defaultIsAutoplayOn`, autoplay still starts (back-compat); decide whether to require `defaultIsAutoplayOn`.
+      **Decided (data-models):** keep the back-compat; requiring `defaultIsAutoplayOn` would silently stop autoplay for existing callers.
 - [ ] `carousel` — `onRequestAutoplayToggle` reports the _current_ `isAutoplayOn`, not the
       requested one; `event` may be `{}` or a stale event; `onRenderItem` is typed
       `(item)` but called with `{ item, ... }`; `CarouselItemData.id` is `string` but
@@ -407,13 +418,14 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
       the component ever extends `HTMLAttributes`; consider `labels.title`/`heading`, typed
       `ReactNode`); `isOpen={false}` with `nonCollapsible` hides content forever (illegal
       combination: make it a union).
-- [ ] `docked-composer` — decide whether the body stays mounted when closed (it is unmounted,
+- [x] `docked-composer` — decide whether the body stays mounted when closed (it is unmounted,
       which drops any uncontrolled state inside it); `isOpen` is controlled-only today, so
       plan `defaultIsOpen` if it should also work uncontrolled; keep the `events` object but
       add a `data` argument to `onRequestMinimize`/`onRequestExpand`/`onRequestClose`
       (currently `(event)` only); `role="dialog"` on a non-modal bar needs a focus decision,
       and `aria-describedby` points at a body id that does not exist when closed.
       **Done (behavior-fixes):** `role="dialog"` stays (SLDS) with no focus move on mount; minimize/expand moves focus to the button that replaced the clicked one; `aria-describedby` is set only while open.
+      **Done (data-models):** the body stays unmounted when closed (documented); `defaultIsOpen` added.
 - [ ] `dynamic-icon` — `variant` + `scorePolarity`/`strengthLevel`/`trendDirection` as a
       discriminated union; the `waffle` variant renders a `<button>` with no `type`, no
       `onClick` and no rest props (it submits forms and cannot be wired up), so decide its
@@ -432,9 +444,10 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
       is documented as required but optional in the type; `href` defaults to `'#'`.
       **Re-scoped by the child-contract rule:** children here are library components, so the `cloneElement`/child-props contract is allowed. Keep the other findings. Child contract done (theme 3): children are typed, injected props are internal, and no child is matched by `displayName`.
       **Done (slots):** the `moreActionsDropdown` and `crop` injections are documented contracts (your props win).
-- [ ] `filter` — `popoverIsOpen` is seeded from `popover.props.isOpen` and never re-synced, then
+- [x] `filter` — `popoverIsOpen` is seeded from `popover.props.isOpen` and never re-synced, then
       overridden by the merged popover props; define one rule (ephemeral: uncontrolled with
       an `isOpen` override and `defaultIsOpen`). `onClick` takes no `(event, data)`.
+      **Done (data-models):** one rule through `useControllableState`: `popover.props.isOpen` controls, `defaultIsOpen` starts it.
 - [ ] `filter` — the default `removeFilter` text is built by interpolating `property` and
       `predicate` (both `ReactNode`), which renders `[object Object]` for non-strings: take a
       full string via `assistiveText.removeFilter` or a callback. `isError` points
@@ -538,6 +551,7 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
       (`item.tsx:221`), has index-based `onSelect(index)`, `checkmark?: boolean` (a
       tri-state with `null`), and `selectedIndex`/`selectedIndices` (indexes, not values):
       decide before exposing it.
+      **Cut (2026-11-08 scope cut):** removing the aliases changes no exported API.
 - [ ] `modal` — `onRequestClose: () => void` → `(event, data)`; `dismissOnClickOutside` has a derived default (`!disableClose`). (Deprecated `title`/`closeButtonAssistiveText`: removed in #3248.)
       **Partly done:** `onRequestClose` takes `(event, data)` (#3251).
       **Deferred past GA (additive):** `disableCloseOnClickOutside` with `dismissOnClickOutside` deprecated.
@@ -629,13 +643,14 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
       **Done (behavior-fixes):** a consumer `onOpen`/`onClose`/`onRequestClose` runs after EditDialog's own handler instead of replacing it.
       **Deferred past GA (additive):** deprecating `handleOpen` for `onRequestOpen`. Still open: the index signature cast, the stale `popover` doc and the unused `isOpen`.
 
-- [ ] `progress-indicator` — step status is three parallel `ProgressStep[]` arrays
+- [x] `progress-indicator` — step status is three parallel `ProgressStep[]` arrays
       (`completedSteps`/`disabledSteps`/`errorSteps`) matched by `id` then by
       `JSON.stringify` of the whole step (`findStep`, `index.tsx:126`); a step can be both
       error and completed (error silently wins). Move to one `status` per step (or one status
       map) before `StepEventData` (`isCompleted`/`isDisabled`/`isError`/`isSelected`) freezes.
       `selectedStep` is a required step object with the same matching and a silent fall back
       to index 0: use an id or index. `steps: invalid` silently falls back to `defaultSteps`.
+      **Done (data-models):** one `status` per step and `selectedStep` by id; the three arrays and an id-less `selectedStep` object are deprecated and warn.
 - [ ] `progress-indicator` — `orientation` and `variant` are independent, but
       `variant="setup-assistant"` forces vertical; make it a union. `onRenderSetupAssistantAction`
       (a `ReactNode`, not a render function) and `setupAssistantEstimatedTime` exist only on the
@@ -723,6 +738,7 @@ complete`) and `THEME_OPTIONS` is a second public surface; `icon` is only honore
       derives the ring theme from its value and ties the ring icon to `stepNumber`: decide a
       `status` and `progressRingProps` before freezing; `id`/`className` sit on the `ol`, which
       is not the root in card mode (`section`) or non-card mode (fragment).
+      **Deferred past GA (additive):** a step `progressRingProps` override.
 - [x] `simple-data-table` — columns are children matched by `displayName ===
 SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row actions are
       `cloneElement`ed, and keyboard nav sizes itself with `React.Children.count`
@@ -745,7 +761,8 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
       `sort={{ property, direction }}` + `onSort(event, data)` (today `onSort(data, event)`).
       **Partly done:** `header-cell` derives the sort direction from props instead of keeping
       its own copy.
-      **Done (callbacks):** `onSort(event, { property, sortDirection })`; the `sort` object is still open.
+      **Done (callbacks):** `onSort(event, { property, sortDirection })`.
+      **Deferred past GA (additive):** table-level `sort` with column `isSorted`/`sortDirection` deprecated.
 - [ ] `simple-data-table` — callbacks and types: `onLoadMore()` has no event; the
       `onToggleFixedHeaderListeners` and `onFixedHeaderResize` escape hatches (a fake `{}`
       event) exist because of a `window` resize listener; `onAction(item, selection)` →
@@ -811,6 +828,7 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
       **Control model done (theme 2).** `defaultIsOpen`, `onRequestOpen` and `onRequestClose` are added. Still open: `isDisabled`, the dead props and the trigger contract.
       **Deferred past GA:** renaming `onRequestTargetElement` to `getTargetElement` (non-breaking with an alias).
       **Done (slots):** `FieldLevelHelpTooltip` and the combobox menu keep their typed Tooltip-element contracts; `isDisabled` is left to root-and-refs/typing.
+      **Done (data-models):** `isDisabled` added. The `learnMore` text still needs `onClickTrigger`.
 - [ ] `tree` — selection and expansion live on mutated node objects: `TreeNode.expanded`/
       `selected`/`loading` (`types.ts:15-23`), `handleSelect` writes `node.selected = false` on the
       consumer's data (`tree.tsx:184-190`), and the tree keeps its own selection/focus copy seeded
@@ -865,6 +883,7 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
       focus/state — decide whether that is the contract. `master`/`detail` typed
       `ReactElement | ReactElement[]` → `ReactNode`.
       **Control model done (theme 2).** Still open: whether the closed state unmounting `master` is the contract.
+      **Deferred past GA (additive):** an explicit `isSortable` and documenting that `master` unmounts when closed.
 - [ ] `split-view` listbox — `selection` matches by object identity (`includes(item)`, also
       `unread`) and is optional with an internal `currentSelectedItem` copy feeding range/select-all
       logic → required `selection` of ids (`item.id`) + required `onSelect` (selection drives the detail pane, so it is controlled); `events.onSelect` is
@@ -898,6 +917,7 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
       `div`).
       **Re-scoped by the child-contract rule:** children here are library components, so the `cloneElement`/child-props contract is allowed. Keep the other findings. Child contract done (theme 3): children are typed, injected props are internal, and no child is matched by `displayName`.
       **Partly done:** `disabled` is on `TabsPanelProps`; `tabs/pane.ts` is removed (#3248).
+      **Decided (data-models):** library-component children keep the contract; no code change.
 
 - [ ] `visual-picker` — children contract: `VisualPicker` `cloneElement`s `index`, `coverable`,
       `variant: 'visual-picker'`, `name`, `size`, `vertical` into each `Checkbox`/`Radio` (recursing
@@ -914,6 +934,7 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
       **Re-scoped by the child-contract rule:** children here are library components, so the `cloneElement`/child-props contract is allowed. Keep the other findings. Child contract done (theme 3): children are typed, injected props are internal, and no child is matched by `displayName`.
       **Partly done:** children are typed; a consumer's `name`/`variant` win over the injected
       values; fragments are recursed into; `VisualPickerOptionProps` is no longer exported.
+      **Decided (data-models):** library-component children keep the contract; no code change.
 - [ ] `visual-picker` link — `VisualPickerLink` is a class with `displayName`; `title`/`description`
       are strings only (→ `ReactNode`); `href` optional renders an anchor with no href; `className`
       type is `unknown[] | Record<string, unknown> | string`; unused `id`/rest pass-through
@@ -936,6 +957,7 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
       `infoActions` replaces `onRenderInfoActions`; the variants are a discriminated union
       (#3252).
       **Done (slots):** the `infoBadge` `isComplete` merge and tile `variant` injection are the documented, typed contract.
+      **Decided (data-models):** no data-model change.
 - [ ] `welcome-mat` tile/info-badge — both are classes with `displayName` and `generateId()`;
       `Tile` `title`/`description` strings, `href` only (no `onClick`/`target`; the info-only
       variant renders a non-link) and `variant` is a duplicate prop injected by the parent
