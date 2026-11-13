@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Added
+
+- [Versioning & Support Policy](docs/codebase-overview.md#versioning--support-policy): what a major, minor and patch can change, how long a deprecation lasts, and fix-forward support for 11.x (no long-lived maintenance branches; use `~11.y.0` and the `rc` dist-tag to control upgrades)
+- `npm run release-pr -- next --rc` (maintainers): moves `11.0.0-alpha.N` or `-beta.N` to `11.0.0-rc.0`, and `rc.N` to `rc.N+1`
+
+### Changed
+
+- The [Breaking-Change Taxonomy](docs/codebase-overview.md#breaking-change-taxonomy) also lists callback signatures, exported type narrowing, entry points and peer dependency minimums as breaking
+
 ## [11.0.0-alpha.11] - 2026-11-13
 
 ### Added
