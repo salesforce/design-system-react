@@ -11,7 +11,8 @@
 		"utilities/**/*",
 		"types/**/*",
 		"vitest.setup.ts",
-		"vitest.setup.browser.ts"
+		"vitest.setup.browser.ts",
+		"tests/perf/**/*"
 	],
 	"exclude": ["node_modules", "dist", ".tmp-npm"]
 }

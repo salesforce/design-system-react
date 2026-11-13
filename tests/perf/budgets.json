@@ -1,0 +1,8 @@
+{
+	"tolerance": {
+		"domNodes": 0.1,
+		"ssrBytes": 0.1,
+		"gzipBytes": 0.05
+	},
+	"budgets": {}
+}

@@ -41,11 +41,14 @@ export default defineConfig({
 				'vitest.setup.browser.ts',
 			],
 		},
-		// Two projects:
+		// Projects:
 		//  - `unit`    : the fast jsdom suite (the vast majority of tests).
 		//  - `browser` : a small suite of `*.browser.test.*` files that need a real
 		//                browser — focus traversal and text-truncation measurement
 		//                — which jsdom cannot provide.
+		//  - `scripts` : Node tests for repo tooling.
+		//  - `perf`, `perf-bundle` : performance checks, excluded from `npm test`
+		//                (see the `test` script) and run by `npm run test:perf`.
 		projects: [
 			{
 				extends: true,
@@ -110,6 +113,75 @@ export default defineConfig({
 						headless: true,
 						instances: [{ browser: 'chromium' }],
 					},
+				},
+			},
+			{
+				extends: true,
+				optimizeDeps: {
+					include: [
+						'react',
+						'react-dom',
+						'react-dom/client',
+						'react-dom/server',
+						'react/jsx-dev-runtime',
+						'@floating-ui/dom',
+						'@storybook/react-vite',
+						'classnames',
+						'dequal',
+						'nanoid',
+						'prop-types',
+						'react-modal',
+						'warning',
+						'lodash.reject',
+						'memoize-one',
+					],
+				},
+				// Performance checks (see tests/perf/README.md). Deterministic counts
+				// (commits, renders, DOM nodes, listeners, timers, observers, layout
+				// reads) checked against `tests/perf/budgets.json`, plus report-only
+				// `*.bench.tsx` timings. Real Chromium, so layout, observers and
+				// memory are real; `--expose-gc` lets the leak check force a GC.
+				// Not part of `npm test`; run with `npm run test:perf`.
+				test: {
+					name: 'perf',
+					globals: true,
+					setupFiles: './vitest.setup.browser.ts',
+					include: [
+						'components/**/__perf__/*.perf.test.{jsx,tsx}',
+						'tests/perf/*.perf.test.tsx',
+					],
+					exclude: ['**/node_modules/**', '**/dist/**'],
+					benchmark: {
+						include: [
+							'components/**/__perf__/*.bench.tsx',
+							'tests/perf/*.bench.tsx',
+						],
+					},
+					testTimeout: 60000,
+					browser: {
+						enabled: true,
+						provider: playwright({
+							launchOptions: {
+								args: [
+									'--js-flags=--expose-gc',
+									'--enable-precise-memory-info',
+								],
+							},
+						}),
+						headless: true,
+						instances: [{ browser: 'chromium' }],
+					},
+				},
+			},
+			{
+				extends: true,
+				// Bundle checks (D3) against the built `dist/`. Run `npm run build`
+				// first; `npm run test:perf` assumes it.
+				test: {
+					name: 'perf-bundle',
+					environment: 'node',
+					include: ['tests/perf/*.perf.test.ts'],
+					testTimeout: 120000,
 				},
 			},
 		],
