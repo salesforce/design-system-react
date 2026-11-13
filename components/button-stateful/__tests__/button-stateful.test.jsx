@@ -23,7 +23,7 @@ describe('Button Stateful', () => {
 		it('button exists - is not undefined', () => {
 			const { container } = render(
 				<IconSettings iconPath="/assets/icons">
-					<ButtonStateful {...requiredProps} />
+					<ButtonStateful onClick={() => {}} {...requiredProps} />
 				</IconSettings>
 			);
 
@@ -34,7 +34,7 @@ describe('Button Stateful', () => {
 		it('if no isActive prop, is not active', () => {
 			const { container } = render(
 				<IconSettings iconPath="/assets/icons">
-					<ButtonStateful {...requiredProps} />
+					<ButtonStateful onClick={() => {}} {...requiredProps} />
 				</IconSettings>
 			);
 
@@ -51,7 +51,7 @@ describe('Button Stateful', () => {
 		it('renders isActive prop', () => {
 			const { container } = render(
 				<IconSettings iconPath="/assets/icons">
-					<ButtonStateful {...requiredProps} isActive />
+					<ButtonStateful onClick={() => {}} {...requiredProps} isActive />
 				</IconSettings>
 			);
 
@@ -140,6 +140,7 @@ describe('Button Stateful', () => {
 			const { container } = render(
 				<IconSettings iconPath="/assets/icons">
 					<ButtonStateful
+						onClick={() => {}}
 						{...requiredProps}
 						aria-pressed={true}
 						aria-label="abc"
@@ -159,7 +160,11 @@ describe('Button Stateful', () => {
 		it('gives correct aria default for buttons with icon', () => {
 			const { container } = render(
 				<IconSettings iconPath="/assets/icons">
-					<ButtonStateful {...requiredPropsNoVariant} variant="icon" />
+					<ButtonStateful
+						onClick={() => {}}
+						{...requiredPropsNoVariant}
+						variant="icon"
+					/>
 				</IconSettings>
 			);
 
@@ -172,7 +177,11 @@ describe('Button Stateful', () => {
 		it('gives correct aria default for buttons with icon-filled', () => {
 			const { container } = render(
 				<IconSettings iconPath="/assets/icons">
-					<ButtonStateful {...requiredPropsNoVariant} variant="icon-filled" />
+					<ButtonStateful
+						onClick={() => {}}
+						{...requiredPropsNoVariant}
+						variant="icon-filled"
+					/>
 				</IconSettings>
 			);
 
@@ -185,7 +194,11 @@ describe('Button Stateful', () => {
 		it('gives correct aria default for non-icon buttons', () => {
 			const { container } = render(
 				<IconSettings iconPath="/assets/icons">
-					<ButtonStateful {...requiredPropsNoVariant} variant="base" />
+					<ButtonStateful
+						onClick={() => {}}
+						{...requiredPropsNoVariant}
+						variant="base"
+					/>
 				</IconSettings>
 			);
 
@@ -202,6 +215,7 @@ describe('Button Stateful', () => {
 				const { container } = render(
 					<IconSettings iconPath="/assets/icons">
 						<ButtonStateful
+							onClick={() => {}}
 							{...requiredPropsNoVariant}
 							variant={variant}
 							onMouseDown={onMouseDown}
@@ -217,7 +231,7 @@ describe('Button Stateful', () => {
 			const onBlur = vi.fn();
 			const { container } = render(
 				<IconSettings iconPath="/assets/icons">
-					<ButtonStateful onBlur={onBlur} />
+					<ButtonStateful onBlur={onBlur} onClick={() => {}} />
 				</IconSettings>
 			);
 			fireEvent.mouseLeave(getButton(container));
@@ -230,7 +244,7 @@ describe('Button Stateful', () => {
 			getButton(
 				render(
 					<IconSettings iconPath="/assets/icons">
-						<ButtonStateful variant={variant} />
+						<ButtonStateful variant={variant} onClick={() => {}} />
 					</IconSettings>
 				).container
 			);

@@ -8,7 +8,11 @@ describe('SLDSSlider', () => {
 	describe('Standard Slider with Label', () => {
 		it('has type of "range"', () => {
 			const { container } = render(
-				<Slider labels={{ label: 'Slider Label' }} id="custom-id" />
+				<Slider
+					labels={{ label: 'Slider Label' }}
+					id="custom-id"
+					onChange={() => {}}
+				/>
 			);
 
 			const slider = container.querySelector('input');
@@ -17,7 +21,11 @@ describe('SLDSSlider', () => {
 
 		it('is wrapped in div with class "slds-form-element"', () => {
 			const { container } = render(
-				<Slider labels={{ label: 'Slider Label' }} id="custom-id" />
+				<Slider
+					labels={{ label: 'Slider Label' }}
+					id="custom-id"
+					onChange={() => {}}
+				/>
 			);
 
 			const wrapper = container.querySelector('.slds-form-element');
@@ -26,7 +34,11 @@ describe('SLDSSlider', () => {
 
 		it('renders label', () => {
 			const { container } = render(
-				<Slider labels={{ label: 'Slider Label' }} id="custom-id" />
+				<Slider
+					labels={{ label: 'Slider Label' }}
+					id="custom-id"
+					onChange={() => {}}
+				/>
 			);
 
 			const labelText = container.querySelector('.slds-slider-label__label');
@@ -35,7 +47,11 @@ describe('SLDSSlider', () => {
 
 		it('renders slider element with class "slds-slider"', () => {
 			const { container } = render(
-				<Slider labels={{ label: 'Slider Label' }} id="custom-id" />
+				<Slider
+					labels={{ label: 'Slider Label' }}
+					id="custom-id"
+					onChange={() => {}}
+				/>
 			);
 
 			const slider = container.querySelector('input');
@@ -45,7 +61,11 @@ describe('SLDSSlider', () => {
 
 		it('has an id', () => {
 			const { container } = render(
-				<Slider labels={{ label: 'Slider Label' }} id="custom-id" />
+				<Slider
+					labels={{ label: 'Slider Label' }}
+					id="custom-id"
+					onChange={() => {}}
+				/>
 			);
 
 			const slider = container.querySelector('input');
@@ -54,7 +74,11 @@ describe('SLDSSlider', () => {
 
 		it('can pass custom id', () => {
 			const { container } = render(
-				<Slider labels={{ label: 'Slider Label' }} id="custom-id" />
+				<Slider
+					labels={{ label: 'Slider Label' }}
+					id="custom-id"
+					onChange={() => {}}
+				/>
 			);
 
 			const slider = container.querySelector('input');
@@ -63,7 +87,11 @@ describe('SLDSSlider', () => {
 
 		it('has associated label for tag pointing to id of slider', () => {
 			const { container } = render(
-				<Slider labels={{ label: 'Slider Label' }} id="custom-id" />
+				<Slider
+					labels={{ label: 'Slider Label' }}
+					id="custom-id"
+					onChange={() => {}}
+				/>
 			);
 
 			const label = container.querySelector('.slds-form-element__label');
@@ -84,6 +112,7 @@ describe('SLDSSlider', () => {
 					min={0}
 					max={400}
 					step={100}
+					onChange={() => {}}
 				/>
 			);
 
@@ -100,6 +129,7 @@ describe('SLDSSlider', () => {
 					min={0}
 					max={400}
 					step={100}
+					onChange={() => {}}
 				/>
 			);
 
@@ -116,6 +146,7 @@ describe('SLDSSlider', () => {
 					min={0}
 					max={400}
 					step={100}
+					onChange={() => {}}
 				/>
 			);
 
@@ -132,6 +163,7 @@ describe('SLDSSlider', () => {
 					min={0}
 					max={400}
 					step={100}
+					onChange={() => {}}
 				/>
 			);
 
@@ -148,6 +180,7 @@ describe('SLDSSlider', () => {
 					min={0}
 					max={400}
 					step={100}
+					onChange={() => {}}
 				/>
 			);
 
@@ -164,6 +197,7 @@ describe('SLDSSlider', () => {
 					min={0}
 					max={400}
 					step={100}
+					onChange={() => {}}
 				/>
 			);
 
@@ -206,6 +240,7 @@ describe('SLDSSlider', () => {
 						expect(value).toBe(300);
 						callbackCalled = true;
 					}}
+					onChange={() => {}}
 				/>
 			);
 
@@ -282,7 +317,11 @@ describe('SLDSSlider', () => {
 
 		it('takes the display value only from `value`', () => {
 			const { container } = render(
-				<Slider defaultValue={70} labels={{ label: 'Slider Label' }} />
+				<Slider
+					defaultValue={70}
+					labels={{ label: 'Slider Label' }}
+					onChange={() => {}}
+				/>
 			);
 			expect(container.querySelector('.slds-slider__value').textContent).toBe(
 				''
@@ -293,7 +332,10 @@ describe('SLDSSlider', () => {
 	describe('Slider with Assistive Text Label', () => {
 		it('renders label (assitive)', () => {
 			const { container } = render(
-				<Slider assistiveText={{ label: 'Assistive Label' }} />
+				<Slider
+					assistiveText={{ label: 'Assistive Label' }}
+					onChange={() => {}}
+				/>
 			);
 
 			const labelText = container.querySelector('.slds-slider-label__label');
@@ -302,7 +344,10 @@ describe('SLDSSlider', () => {
 
 		it('label has class "slds-assistive-text"', () => {
 			const { container } = render(
-				<Slider assistiveText={{ label: 'Assistive Label' }} />
+				<Slider
+					assistiveText={{ label: 'Assistive Label' }}
+					onChange={() => {}}
+				/>
 			);
 
 			const label = container.querySelector('.slds-form-element__label');
@@ -311,7 +356,10 @@ describe('SLDSSlider', () => {
 
 		it('has associated label for tag pointing to id of slider', () => {
 			const { container } = render(
-				<Slider assistiveText={{ label: 'Assistive Label' }} />
+				<Slider
+					assistiveText={{ label: 'Assistive Label' }}
+					onChange={() => {}}
+				/>
 			);
 
 			const label = container.querySelector('.slds-form-element__label');
@@ -340,6 +388,7 @@ describe('SLDSSlider', () => {
 					id="custom-id"
 					labels={{ label: 'Slider Label' }}
 					size="medium"
+					onChange={() => {}}
 				/>
 			);
 
@@ -351,10 +400,10 @@ describe('SLDSSlider', () => {
 	describe('Multiple sliders', () => {
 		it('each slider has unique generated id', () => {
 			const { container: container1 } = render(
-				<Slider labels={{ label: 'Slider One' }} />
+				<Slider labels={{ label: 'Slider One' }} onChange={() => {}} />
 			);
 			const { container: container2 } = render(
-				<Slider labels={{ label: 'Slider Two' }} />
+				<Slider labels={{ label: 'Slider Two' }} onChange={() => {}} />
 			);
 
 			const slider1 = container1.querySelector('input');
@@ -371,6 +420,7 @@ describe('SLDSSlider', () => {
 					hasError
 					labels={{ label: 'Slider Label', error: 'Error Message' }}
 					required
+					onChange={() => {}}
 				/>
 			);
 
@@ -384,6 +434,7 @@ describe('SLDSSlider', () => {
 					hasError
 					labels={{ label: 'Slider Label', error: 'Error Message' }}
 					required
+					onChange={() => {}}
 				/>
 			);
 
@@ -397,6 +448,7 @@ describe('SLDSSlider', () => {
 					hasError
 					labels={{ label: 'Slider Label', error: 'Error Message' }}
 					required
+					onChange={() => {}}
 				/>
 			);
 
@@ -411,7 +463,11 @@ describe('SLDSSlider', () => {
 	describe('Vertical slider', () => {
 		it('slider has class "slds-slider_vertical"', () => {
 			const { container } = render(
-				<Slider labels={{ label: 'Slider Label' }} vertical />
+				<Slider
+					labels={{ label: 'Slider Label' }}
+					vertical
+					onChange={() => {}}
+				/>
 			);
 
 			const sliderContainer = container.querySelector('.slds-slider');
@@ -426,7 +482,10 @@ describe('SLDSSlider', () => {
 
 		it('does not show labels.error until hasError is true', () => {
 			const { container, rerender } = render(
-				<Slider labels={{ label: 'Slider Label', error: 'Error Message' }} />
+				<Slider
+					labels={{ label: 'Slider Label', error: 'Error Message' }}
+					onChange={() => {}}
+				/>
 			);
 
 			expect(container.querySelector('.slds-form-element')).not.toHaveClass(
@@ -438,6 +497,7 @@ describe('SLDSSlider', () => {
 				<Slider
 					hasError
 					labels={{ label: 'Slider Label', error: 'Error Message' }}
+					onChange={() => {}}
 				/>
 			);
 
@@ -451,7 +511,11 @@ describe('SLDSSlider', () => {
 
 		it('shows the error state without a message', () => {
 			const { container } = render(
-				<Slider hasError labels={{ label: 'Slider Label' }} />
+				<Slider
+					hasError
+					labels={{ label: 'Slider Label' }}
+					onChange={() => {}}
+				/>
 			);
 
 			expect(container.querySelector('.slds-form-element')).toHaveClass(
@@ -504,6 +568,7 @@ describe('SLDSSlider', () => {
 					className="root-class"
 					labels={{ label: 'Slider Label' }}
 					ref={ref}
+					onChange={() => {}}
 				/>
 			);
 			const root = container.firstChild;

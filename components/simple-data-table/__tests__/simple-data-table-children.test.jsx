@@ -15,7 +15,12 @@ const items = [
 const renderTable = (props, children) =>
 	render(
 		<IconSettings iconPath="/assets/icons">
-			<SimpleDataTable id="children-table" items={items} {...props}>
+			<SimpleDataTable
+				id="children-table"
+				items={items}
+				onRowChange={() => {}}
+				{...props}
+			>
 				{children}
 			</SimpleDataTable>
 		</IconSettings>

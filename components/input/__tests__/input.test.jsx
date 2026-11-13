@@ -256,7 +256,6 @@ describe('SLDSInput', () => {
 	describe('Input with Loading Spinner Icon', () => {
 		it('renders spinner with correct aria-describedby', () => {
 			const { container } = renderInput({
-				assistiveText: { label: 'Passed assistive text to icon' },
 				hasSpinner: true,
 				iconRight: (
 					<InputIcon
@@ -282,7 +281,6 @@ describe('SLDSInput', () => {
 	describe('Input with Loading Spinner Icon & Error', () => {
 		it('input aria-describedby points to both spinner and error message', () => {
 			const { container } = renderInput({
-				assistiveText: { label: 'Passed assistive text to icon' },
 				required: true,
 				errorText: 'Error Message',
 				hasSpinner: true,

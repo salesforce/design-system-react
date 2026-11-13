@@ -19,6 +19,7 @@ describe('Checkbox visual picker figure', () => {
 				variant="visual-picker"
 				labels={{ label: 'Option' }}
 				visualPickerFigure={<span className="figure-content">$30</span>}
+				onChange={() => {}}
 			/>
 		);
 
@@ -36,6 +37,7 @@ describe('Checkbox visual picker figure', () => {
 				variant="visual-picker"
 				labels={{ label: 'Option' }}
 				visualPickerFigure="$30"
+				onChange={() => {}}
 			/>
 		);
 
@@ -57,6 +59,7 @@ describe('Checkbox visual picker figure', () => {
 				visualPickerFigureNotSelected={
 					<span className="not-selected-content">Not selected</span>
 				}
+				onChange={() => {}}
 			/>
 		);
 
@@ -212,19 +215,38 @@ describe('Checkbox control model', () => {
 
 	it('applies indeterminate to the DOM and clears it when the prop goes back to undefined', () => {
 		const { container, rerender } = render(
-			<Checkbox id="cb-indeterminate" checked={false} indeterminate />
+			<Checkbox
+				id="cb-indeterminate"
+				checked={false}
+				indeterminate
+				onChange={() => {}}
+			/>
 		);
 		const input = getInput(container);
 		expect(input.indeterminate).toBe(true);
 
-		rerender(<Checkbox id="cb-indeterminate" checked={false} />);
+		rerender(
+			<Checkbox id="cb-indeterminate" checked={false} onChange={() => {}} />
+		);
 		expect(input.indeterminate).toBe(false);
 
-		rerender(<Checkbox id="cb-indeterminate" checked={false} indeterminate />);
+		rerender(
+			<Checkbox
+				id="cb-indeterminate"
+				checked={false}
+				indeterminate
+				onChange={() => {}}
+			/>
+		);
 		expect(input.indeterminate).toBe(true);
 
 		rerender(
-			<Checkbox id="cb-indeterminate" checked={false} indeterminate={false} />
+			<Checkbox
+				id="cb-indeterminate"
+				checked={false}
+				indeterminate={false}
+				onChange={() => {}}
+			/>
 		);
 		expect(input.indeterminate).toBe(false);
 	});

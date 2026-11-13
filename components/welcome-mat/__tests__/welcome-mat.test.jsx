@@ -262,6 +262,7 @@ describe('SLDSWelcomeMat', () => {
 								labels={{
 									label: `Don't show this again`,
 								}}
+								onChange={() => {}}
 							/>
 						}
 						infoActions={
@@ -313,6 +314,7 @@ describe('SLDSWelcomeMat', () => {
 								labels={{
 									label: `Don't show this again`,
 								}}
+								onChange={() => {}}
 							/>
 						}
 						infoActions={
@@ -362,6 +364,7 @@ describe('SLDSWelcomeMat', () => {
 								labels={{
 									label: `Don't show this again`,
 								}}
+								onChange={() => {}}
 							/>
 						}
 						infoActions={
@@ -403,6 +406,7 @@ describe('SLDSWelcomeMat', () => {
 								labels={{
 									label: `Don't show this again`,
 								}}
+								onChange={() => {}}
 							/>
 						}
 						infoActions={
@@ -440,6 +444,7 @@ describe('SLDSWelcomeMat', () => {
 								labels={{
 									label: `Don't show this again`,
 								}}
+								onChange={() => {}}
 							/>
 						}
 						infoActions={
