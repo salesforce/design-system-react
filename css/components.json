@@ -83,8 +83,7 @@
 		"unstyled": [
 			"slds-button__icon_xx-small",
 			"slds-global-header__button_icon",
-			"slds-global-header__icon",
-			"slds-tooltip-trigger"
+			"slds-global-header__icon"
 		]
 	},
 	"builder-header": {
@@ -171,8 +170,7 @@
 		"unstyled": [
 			"slds-button__icon_xx-small",
 			"slds-global-header__button_icon",
-			"slds-global-header__icon",
-			"slds-tooltip-trigger"
+			"slds-global-header__icon"
 		]
 	},
 	"button-stateful": {
@@ -492,8 +490,7 @@
 		"unstyled": [
 			"slds-button__icon_xx-small",
 			"slds-global-header__button_icon",
-			"slds-global-header__icon",
-			"slds-tooltip-trigger"
+			"slds-global-header__icon"
 		]
 	},
 	"filter": {
@@ -622,8 +619,7 @@
 		"unstyled": [
 			"slds-button__icon_xx-small",
 			"slds-global-header__button_icon",
-			"slds-global-header__icon",
-			"slds-tooltip-trigger"
+			"slds-global-header__icon"
 		]
 	},
 	"modal": {
@@ -674,8 +670,7 @@
 			"slds-global-header__button_icon",
 			"slds-global-header__icon",
 			"slds-page-header_record-home",
-			"slds-page-header_related-list",
-			"slds-tooltip-trigger"
+			"slds-page-header_related-list"
 		]
 	},
 	"panel": {
@@ -980,8 +975,7 @@
 			"slds-max-medium-table_stacked",
 			"slds-max-medium-table_stacked-horizontal",
 			"slds-table_header-fixed_scroller",
-			"slds-table_header-hidden",
-			"slds-tooltip-trigger"
+			"slds-table_header-hidden"
 		]
 	},
 	"slider": {
@@ -1041,8 +1035,7 @@
 			"slds-global-header__icon",
 			"slds-is-unread",
 			"slds-page-header_record-home",
-			"slds-page-header_related-list",
-			"slds-tooltip-trigger"
+			"slds-page-header_related-list"
 		]
 	},
 	"tabs": {
@@ -1167,8 +1160,7 @@
 		"unstyled": [
 			"slds-button__icon_xx-small",
 			"slds-global-header__button_icon",
-			"slds-global-header__icon",
-			"slds-tooltip-trigger"
+			"slds-global-header__icon"
 		]
 	},
 	"vertical-navigation": {
