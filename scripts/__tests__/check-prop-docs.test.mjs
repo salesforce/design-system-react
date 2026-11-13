@@ -11,6 +11,7 @@ import {
 	mkdtempSync,
 	readFileSync,
 	rmSync,
+	symlinkSync,
 	writeFileSync,
 } from 'fs';
 import { tmpdir } from 'os';
@@ -86,7 +87,7 @@ beforeEach(() => {
 	root = mkdtempSync(join(tmpdir(), 'check-prop-docs-'));
 	mkdirSync(join(root, 'node_modules', '@types'), { recursive: true });
 	// Resolve `react` from the fixture the way a consumer would.
-	spawnSync('ln', ['-s', REACT_TYPES, join(root, 'node_modules/@types/react')]);
+	symlinkSync(REACT_TYPES, join(root, 'node_modules/@types/react'), 'dir');
 	write(
 		'dist/types/components/index.d.ts',
 		"export { default as Widget } from './widget';\nexport type { WidgetProps } from './widget';\n"
@@ -144,6 +145,73 @@ describe('check-prop-docs', () => {
 		);
 		// `gone` isn't declared and `items[].label (string)` isn't a prop name.
 		expect(result.stderr).not.toMatch(/gone|items/);
+	});
+
+	it('requires @deprecated on every declaration of a deprecated prop', () => {
+		write(
+			'dist/types/components/widget/index.d.ts',
+			WIDGET.replace(
+				'readOnly?: never;',
+				'readOnly?: never;\n\t\t\t/** Old label. */\n\t\t\tlabel?: string;'
+			)
+		);
+		const result = run();
+		expect(result.status).toBe(1);
+		expect(result.stderr).toContain(
+			'deprecatedProperty() call without a @deprecated tag: components/widget: label'
+		);
+	});
+
+	it('checks each utility on its own', () => {
+		write(
+			'dist/types/components/index.d.ts',
+			"export type { AProps } from './utilities/a';\nexport type { BProps } from './utilities/b';\n"
+		);
+		write(
+			'dist/types/components/utilities/a/index.d.ts',
+			'export interface AProps {\n\t/** Old. */\n\tfoo?: string;\n}\n'
+		);
+		write(
+			'dist/types/components/utilities/b/index.d.ts',
+			'export interface BProps {\n\t/** @deprecated Gone. */\n\tfoo?: string;\n}\n'
+		);
+		write(
+			'components/utilities/a/check-props.js',
+			"deprecatedProperty('A', props.foo, 'foo', 'bar');\n"
+		);
+		rmSync(join(root, 'components/widget'), { recursive: true });
+		const result = run();
+		expect(result.status).toBe(1);
+		expect(result.stderr).toContain(
+			'deprecatedProperty() call without a @deprecated tag: components/utilities/a: foo'
+		);
+	});
+
+	it('expands labels of a props type that is also used as a labels type', () => {
+		// `PanelProps` is reached first as `HostProps.labels`, then as an
+		// exported props type, where its own `labels` must be expanded.
+		write(
+			'dist/types/components/index.d.ts',
+			"export type { HostProps, PanelProps } from './host';\n"
+		);
+		write(
+			'dist/types/components/host/index.d.ts',
+			`export interface PanelProps {
+	/** Labels. */
+	labels?: { title?: string };
+}
+export interface HostProps {
+	/** Labels. */
+	labels?: PanelProps;
+}
+`
+		);
+		rmSync(join(root, 'components/widget'), { recursive: true });
+		const result = run();
+		expect(result.status).toBe(1);
+		expect(result.stderr).toContain(
+			'no JSDoc: components/host/index: PanelProps.labels.title'
+		);
 	});
 
 	it('tolerates allowlisted gaps and rejects stale allowlist entries', () => {
