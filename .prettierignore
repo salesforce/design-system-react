@@ -9,3 +9,14 @@ storybook
 # Publishing and dist build
 storybook-based-tests
 .tmp*
+# Generated from the published SLDS 2 stylesheet; must stay byte-identical
+# (scripts/build-slds-modules.ts, `npm run css:refresh`)
+css/slds2.foundation.css
+css/components
+css/utilities
+css/scoped
+css/manifest.json
+css/components.json
+css/LICENSE-SLDS.txt
+css/*.css
+!css/dsr.css

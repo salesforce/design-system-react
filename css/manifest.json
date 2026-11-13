@@ -1,0 +1,1602 @@
+{
+	"source": {
+		"package": "@salesforce-ux/design-system-2",
+		"version": "2.264.1",
+		"commit": "ec4cc263b5df4eb6211f943f4183a601309b7fe9",
+		"tokens": "4.1.0",
+		"input": "dist/css/modular/slds2.base.css",
+		"index": "dist/components/**/*.css"
+	},
+	"order": [
+		"foundation",
+		"components/icon.type",
+		"components/activityTimeline",
+		"components/badge",
+		"components/breadcrumbs",
+		"components/buttonGroup",
+		"components/button",
+		"components/buttonStateful",
+		"components/buttonDualStateful",
+		"components/buttonIcon",
+		"components/colorPicker",
+		"components/icon",
+		"components/accordion",
+		"components/dynamicIcons",
+		"components/dynamicMenu",
+		"components/carousel",
+		"components/card",
+		"components/chat",
+		"components/datetimePicker",
+		"components/form-element",
+		"components/input",
+		"components/counter",
+		"components/textarea",
+		"components/radioGroup",
+		"components/radioButtonGroup",
+		"components/checkbox",
+		"components/checkboxToggle",
+		"components/checkboxButton",
+		"components/checkboxButtonGroup",
+		"components/select",
+		"components/dockedFormFooter",
+		"components/slider",
+		"components/fileSelector",
+		"components/pageHeader",
+		"components/brandBand",
+		"components/panel",
+		"components/popover",
+		"components/tooltip",
+		"components/menu",
+		"components/picklist",
+		"components/combobox",
+		"components/duelingPicklist",
+		"components/datepicker",
+		"components/dockedComposer",
+		"components/dockedUtilityBar",
+		"components/dropZone",
+		"components/globalHeader",
+		"components/globalNavigation",
+		"components/expression",
+		"components/builderHeader",
+		"components/publisher",
+		"components/feed",
+		"components/modal",
+		"components/map",
+		"components/appLauncher",
+		"components/visualPicker",
+		"components/pill",
+		"components/wizard",
+		"components/pathSimple",
+		"components/path",
+		"components/progressBar",
+		"components/progressIndicator",
+		"components/progressRing",
+		"components/richTextEditor",
+		"components/markdown",
+		"components/spinner",
+		"components/splitView",
+		"components/tile",
+		"components/tabs",
+		"components/verticalNavigation",
+		"components/alert",
+		"components/prompt",
+		"components/toast",
+		"components/scopedNotifications",
+		"components/notifications",
+		"components/trialBar",
+		"components/lookup",
+		"components/avatar",
+		"components/avatarGroup",
+		"components/file",
+		"components/dataTable",
+		"components/trees",
+		"components/treeGrid",
+		"components/expandableSection",
+		"components/illustration",
+		"components/regions",
+		"components/welcomeMat",
+		"components/summaryDetail",
+		"components/setupAssistant",
+		"components/template",
+		"utilities/deprecated",
+		"utilities/grid",
+		"utilities/alignment",
+		"utilities/mediaObject",
+		"utilities/margin",
+		"utilities/padding",
+		"utilities/floats",
+		"utilities/borders",
+		"utilities/interactions",
+		"utilities/verticalList",
+		"utilities/horizontalList",
+		"utilities/descriptionList",
+		"utilities/nameValueList",
+		"utilities/truncate",
+		"utilities/hyphenation",
+		"utilities/box",
+		"utilities/text",
+		"utilities/color",
+		"utilities/scrolling",
+		"utilities/sizing",
+		"utilities/layout",
+		"utilities/position",
+		"utilities/print",
+		"utilities/visibility",
+		"utilities/lineClamp",
+		"utilities/darkMode",
+		"components/agentforce"
+	],
+	"modules": {
+		"foundation": {
+			"path": "slds2.foundation.css",
+			"bytes": 3627,
+			"scopedBytes": 4503,
+			"sources": [],
+			"dependsOn": []
+		},
+		"components/icon.type": {
+			"path": "components/icon.type.css",
+			"bytes": 87588,
+			"scopedBytes": 100632,
+			"sources": [
+				"dist/components/icon/icon.type.css"
+			],
+			"dependsOn": []
+		},
+		"components/activityTimeline": {
+			"path": "components/activityTimeline.css",
+			"bytes": 3743,
+			"scopedBytes": 4187,
+			"sources": [
+				"dist/components/activityTimeline/activityTimeline.css"
+			],
+			"dependsOn": [
+				"components/buttonIcon",
+				"components/accordion",
+				"components/checkbox",
+				"utilities/mediaObject"
+			]
+		},
+		"components/badge": {
+			"path": "components/badge.css",
+			"bytes": 2211,
+			"scopedBytes": 2379,
+			"sources": [
+				"dist/components/badge/badge.css"
+			],
+			"dependsOn": []
+		},
+		"components/breadcrumbs": {
+			"path": "components/breadcrumbs.css",
+			"bytes": 2452,
+			"scopedBytes": 2656,
+			"sources": [
+				"dist/components/breadcrumbs/breadcrumbs.css"
+			],
+			"dependsOn": [
+				"components/menu"
+			]
+		},
+		"components/buttonGroup": {
+			"path": "components/buttonGroup.css",
+			"bytes": 10080,
+			"scopedBytes": 11688,
+			"sources": [
+				"dist/components/buttonGroup/buttonGroup.css"
+			],
+			"dependsOn": [
+				"components/button",
+				"components/buttonStateful",
+				"components/buttonIcon",
+				"components/menu"
+			]
+		},
+		"components/button": {
+			"path": "components/button.css",
+			"bytes": 24091,
+			"scopedBytes": 27115,
+			"sources": [
+				"dist/components/button/button.css",
+				"dist/components/button/button.deprecated.css"
+			],
+			"dependsOn": [
+				"components/buttonGroup"
+			]
+		},
+		"components/buttonStateful": {
+			"path": "components/buttonStateful.css",
+			"bytes": 4387,
+			"scopedBytes": 5011,
+			"sources": [
+				"dist/components/buttonStateful/buttonStateful.css"
+			],
+			"dependsOn": [
+				"components/button"
+			]
+		},
+		"components/buttonDualStateful": {
+			"path": "components/buttonDualStateful.css",
+			"bytes": 2284,
+			"scopedBytes": 2452,
+			"sources": [
+				"dist/components/buttonDualStateful/buttonDualStateful.css"
+			],
+			"dependsOn": []
+		},
+		"components/buttonIcon": {
+			"path": "components/buttonIcon.css",
+			"bytes": 19345,
+			"scopedBytes": 22549,
+			"sources": [
+				"dist/components/buttonIcon/buttonIcon.css",
+				"dist/components/buttonIcon/buttonIcon.deprecated.css"
+			],
+			"dependsOn": [
+				"components/button",
+				"components/buttonStateful"
+			]
+		},
+		"components/colorPicker": {
+			"path": "components/colorPicker.css",
+			"bytes": 8259,
+			"scopedBytes": 8835,
+			"sources": [
+				"dist/components/colorPicker/colorPicker.css"
+			],
+			"dependsOn": [
+				"components/button",
+				"components/form-element",
+				"components/input",
+				"components/popover",
+				"components/tabs"
+			]
+		},
+		"components/icon": {
+			"path": "components/icon.css",
+			"bytes": 3713,
+			"scopedBytes": 4205,
+			"sources": [
+				"dist/components/icon/icon.css"
+			],
+			"dependsOn": []
+		},
+		"components/accordion": {
+			"path": "components/accordion.css",
+			"bytes": 4618,
+			"scopedBytes": 4834,
+			"sources": [
+				"dist/components/accordion/accordion.css"
+			],
+			"dependsOn": [
+				"components/button"
+			]
+		},
+		"components/dynamicIcons": {
+			"path": "components/dynamicIcons.css",
+			"bytes": 19425,
+			"scopedBytes": 22545,
+			"sources": [
+				"dist/components/dynamicIcons/dynamicIcons.css"
+			],
+			"dependsOn": []
+		},
+		"components/dynamicMenu": {
+			"path": "components/dynamicMenu.css",
+			"bytes": 635,
+			"scopedBytes": 695,
+			"sources": [
+				"dist/components/dynamicMenu/dynamicMenu.css"
+			],
+			"dependsOn": [
+				"components/popover",
+				"components/menu"
+			]
+		},
+		"components/carousel": {
+			"path": "components/carousel.css",
+			"bytes": 2734,
+			"scopedBytes": 2974,
+			"sources": [
+				"dist/components/carousel/carousel.css"
+			],
+			"dependsOn": [
+				"components/button"
+			]
+		},
+		"components/card": {
+			"path": "components/card.css",
+			"bytes": 17246,
+			"scopedBytes": 19106,
+			"sources": [
+				"dist/components/card/card.css",
+				"dist/components/card/card.deprecated.css"
+			],
+			"dependsOn": [
+				"components/accordion",
+				"components/fileSelector",
+				"components/pageHeader",
+				"components/popover",
+				"components/modal",
+				"components/tabs",
+				"components/regions"
+			]
+		},
+		"components/chat": {
+			"path": "components/chat.css",
+			"bytes": 10945,
+			"scopedBytes": 12553,
+			"sources": [
+				"dist/components/chat/chat.css"
+			],
+			"dependsOn": [
+				"components/buttonIcon",
+				"components/icon",
+				"components/dynamicIcons",
+				"components/file"
+			]
+		},
+		"components/datetimePicker": {
+			"path": "components/datetimePicker.css",
+			"bytes": 323,
+			"scopedBytes": 347,
+			"sources": [
+				"dist/components/datetimePicker/datetimePicker.css"
+			],
+			"dependsOn": [
+				"components/form-element"
+			]
+		},
+		"components/form-element": {
+			"path": "components/form-element.css",
+			"bytes": 24954,
+			"scopedBytes": 28434,
+			"sources": [
+				"dist/components/form-element/form-element.css"
+			],
+			"dependsOn": [
+				"components/buttonIcon",
+				"components/icon",
+				"components/input",
+				"components/radioGroup",
+				"components/checkbox",
+				"components/panel",
+				"components/duelingPicklist",
+				"utilities/text"
+			]
+		},
+		"components/input": {
+			"path": "components/input.css",
+			"bytes": 8988,
+			"scopedBytes": 10068,
+			"sources": [
+				"dist/components/input/input.css"
+			],
+			"dependsOn": [
+				"components/button",
+				"components/buttonIcon",
+				"components/icon"
+			]
+		},
+		"components/counter": {
+			"path": "components/counter.css",
+			"bytes": 847,
+			"scopedBytes": 967,
+			"sources": [
+				"dist/components/counter/counter.css"
+			],
+			"dependsOn": []
+		},
+		"components/textarea": {
+			"path": "components/textarea.css",
+			"bytes": 3333,
+			"scopedBytes": 3537,
+			"sources": [
+				"dist/components/textarea/textarea.css"
+			],
+			"dependsOn": [
+				"components/buttonIcon",
+				"components/icon"
+			]
+		},
+		"components/radioGroup": {
+			"path": "components/radioGroup.css",
+			"bytes": 7954,
+			"scopedBytes": 8782,
+			"sources": [
+				"dist/components/radioGroup/radioGroup.css"
+			],
+			"dependsOn": [
+				"components/buttonIcon",
+				"components/form-element"
+			]
+		},
+		"components/radioButtonGroup": {
+			"path": "components/radioButtonGroup.css",
+			"bytes": 10067,
+			"scopedBytes": 11243,
+			"sources": [
+				"dist/components/radioButtonGroup/radioButtonGroup.css"
+			],
+			"dependsOn": [
+				"components/buttonGroup",
+				"components/radioGroup"
+			]
+		},
+		"components/checkbox": {
+			"path": "components/checkbox.css",
+			"bytes": 13151,
+			"scopedBytes": 14495,
+			"sources": [
+				"dist/components/checkbox/checkbox.css"
+			],
+			"dependsOn": [
+				"components/buttonIcon",
+				"components/form-element"
+			]
+		},
+		"components/checkboxToggle": {
+			"path": "components/checkboxToggle.css",
+			"bytes": 14890,
+			"scopedBytes": 16258,
+			"sources": [
+				"dist/components/checkboxToggle/checkboxToggle.css"
+			],
+			"dependsOn": [
+				"components/form-element",
+				"components/checkbox"
+			]
+		},
+		"components/checkboxButton": {
+			"path": "components/checkboxButton.css",
+			"bytes": 11937,
+			"scopedBytes": 13161,
+			"sources": [
+				"dist/components/checkboxButton/checkboxButton.css"
+			],
+			"dependsOn": [
+				"components/icon",
+				"components/checkbox"
+			]
+		},
+		"components/checkboxButtonGroup": {
+			"path": "components/checkboxButtonGroup.css",
+			"bytes": 11056,
+			"scopedBytes": 12232,
+			"sources": [
+				"dist/components/checkboxButtonGroup/checkboxButtonGroup.css"
+			],
+			"dependsOn": [
+				"components/buttonGroup",
+				"components/checkbox"
+			]
+		},
+		"components/select": {
+			"path": "components/select.css",
+			"bytes": 3895,
+			"scopedBytes": 4255,
+			"sources": [
+				"dist/components/select/select.css"
+			],
+			"dependsOn": [
+				"components/buttonIcon",
+				"components/icon"
+			]
+		},
+		"components/dockedFormFooter": {
+			"path": "components/dockedFormFooter.css",
+			"bytes": 598,
+			"scopedBytes": 622,
+			"sources": [
+				"dist/components/dockedFormFooter/dockedFormFooter.css"
+			],
+			"dependsOn": []
+		},
+		"components/slider": {
+			"path": "components/slider.css",
+			"bytes": 5636,
+			"scopedBytes": 5996,
+			"sources": [
+				"dist/components/slider/slider.css"
+			],
+			"dependsOn": []
+		},
+		"components/fileSelector": {
+			"path": "components/fileSelector.css",
+			"bytes": 4103,
+			"scopedBytes": 4523,
+			"sources": [
+				"dist/components/fileSelector/fileSelector.css"
+			],
+			"dependsOn": [
+				"components/icon"
+			]
+		},
+		"components/pageHeader": {
+			"path": "components/pageHeader.css",
+			"bytes": 4993,
+			"scopedBytes": 5449,
+			"sources": [
+				"dist/components/pageHeader/pageHeader.css",
+				"dist/components/pageHeader/pageHeader.deprecated.css"
+			],
+			"dependsOn": [
+				"components/button",
+				"components/icon",
+				"utilities/mediaObject",
+				"utilities/layout"
+			]
+		},
+		"components/brandBand": {
+			"path": "components/brandBand.css",
+			"bytes": 4159,
+			"scopedBytes": 4555,
+			"sources": [
+				"dist/components/brandBand/brandBand.css"
+			],
+			"dependsOn": []
+		},
+		"components/panel": {
+			"path": "components/panel.css",
+			"bytes": 3750,
+			"scopedBytes": 4242,
+			"sources": [
+				"dist/components/panel/panel.css"
+			],
+			"dependsOn": [
+				"components/accordion",
+				"components/tabs"
+			]
+		},
+		"components/popover": {
+			"path": "components/popover.css",
+			"bytes": 55361,
+			"scopedBytes": 64433,
+			"sources": [
+				"dist/components/popover/popover.css",
+				"dist/components/popover/popover.deprecated.css"
+			],
+			"dependsOn": [
+				"components/badge",
+				"components/button",
+				"components/buttonIcon",
+				"components/icon",
+				"components/input",
+				"components/textarea",
+				"components/select",
+				"utilities/text"
+			]
+		},
+		"components/tooltip": {
+			"path": "components/tooltip.css",
+			"bytes": 2519,
+			"scopedBytes": 2723,
+			"sources": [
+				"dist/components/tooltip/tooltip.css",
+				"dist/components/tooltip/tooltip.deprecated.css"
+			],
+			"dependsOn": [
+				"components/icon",
+				"components/popover"
+			]
+		},
+		"components/menu": {
+			"path": "components/menu.css",
+			"bytes": 11675,
+			"scopedBytes": 13187,
+			"sources": [
+				"dist/components/menu/menu.css"
+			],
+			"dependsOn": [
+				"components/buttonStateful",
+				"components/buttonIcon",
+				"components/icon",
+				"components/accordion",
+				"components/globalNavigation",
+				"components/splitView"
+			]
+		},
+		"components/picklist": {
+			"path": "components/picklist.css",
+			"bytes": 2256,
+			"scopedBytes": 2532,
+			"sources": [
+				"dist/components/picklist/picklist.deprecated.css"
+			],
+			"dependsOn": [
+				"components/button",
+				"components/buttonStateful",
+				"components/icon",
+				"components/menu",
+				"components/combobox",
+				"components/lookup",
+				"utilities/truncate"
+			],
+			"deprecated": true
+		},
+		"components/combobox": {
+			"path": "components/combobox.css",
+			"bytes": 17170,
+			"scopedBytes": 19426,
+			"sources": [
+				"dist/components/combobox/combobox.css"
+			],
+			"dependsOn": [
+				"components/button",
+				"components/buttonStateful",
+				"components/icon",
+				"components/accordion",
+				"components/input",
+				"components/menu",
+				"utilities/mediaObject",
+				"utilities/truncate",
+				"utilities/visibility"
+			]
+		},
+		"components/duelingPicklist": {
+			"path": "components/duelingPicklist.css",
+			"bytes": 3991,
+			"scopedBytes": 4519,
+			"sources": [
+				"dist/components/duelingPicklist/duelingPicklist.css",
+				"dist/components/duelingPicklist/duelingPicklist.deprecated.css"
+			],
+			"dependsOn": [
+				"components/button",
+				"components/icon",
+				"components/combobox"
+			]
+		},
+		"components/datepicker": {
+			"path": "components/datepicker.css",
+			"bytes": 5545,
+			"scopedBytes": 6049,
+			"sources": [
+				"dist/components/datepicker/datepicker.css",
+				"dist/components/datepicker/datepicker.deprecated.css"
+			],
+			"dependsOn": [
+				"components/button",
+				"components/buttonStateful",
+				"components/buttonIcon",
+				"components/icon",
+				"components/input",
+				"components/select",
+				"components/dataTable"
+			]
+		},
+		"components/dockedComposer": {
+			"path": "components/dockedComposer.css",
+			"bytes": 6277,
+			"scopedBytes": 6793,
+			"sources": [
+				"dist/components/dockedComposer/dockedComposer.css",
+				"dist/components/dockedComposer/dockedComposer.deprecated.css"
+			],
+			"dependsOn": [
+				"components/button",
+				"components/accordion",
+				"components/form-element",
+				"components/input",
+				"components/combobox",
+				"components/modal",
+				"components/richTextEditor",
+				"utilities/text"
+			]
+		},
+		"components/dockedUtilityBar": {
+			"path": "components/dockedUtilityBar.css",
+			"bytes": 5733,
+			"scopedBytes": 6189,
+			"sources": [
+				"dist/components/dockedUtilityBar/dockedUtilityBar.css"
+			],
+			"dependsOn": [
+				"components/buttonIcon",
+				"components/icon",
+				"components/accordion",
+				"components/carousel",
+				"components/globalNavigation",
+				"components/splitView"
+			]
+		},
+		"components/dropZone": {
+			"path": "components/dropZone.css",
+			"bytes": 3676,
+			"scopedBytes": 4096,
+			"sources": [
+				"dist/components/dropZone/dropZone.css"
+			],
+			"dependsOn": [
+				"utilities/mediaObject"
+			]
+		},
+		"components/globalHeader": {
+			"path": "components/globalHeader.css",
+			"bytes": 10636,
+			"scopedBytes": 11392,
+			"sources": [
+				"dist/components/globalHeader/globalHeader.css"
+			],
+			"dependsOn": [
+				"components/button",
+				"components/buttonStateful",
+				"components/icon",
+				"utilities/visibility"
+			]
+		},
+		"components/globalNavigation": {
+			"path": "components/globalNavigation.css",
+			"bytes": 24460,
+			"scopedBytes": 27496,
+			"sources": [
+				"dist/components/globalNavigation/globalNavigation.css"
+			],
+			"dependsOn": [
+				"components/button",
+				"components/buttonIcon",
+				"components/icon",
+				"components/dynamicIcons",
+				"components/carousel",
+				"components/menu",
+				"components/combobox",
+				"components/splitView",
+				"utilities/grid"
+			]
+		},
+		"components/expression": {
+			"path": "components/expression.css",
+			"bytes": 3022,
+			"scopedBytes": 3358,
+			"sources": [
+				"dist/components/expression/expression.css"
+			],
+			"dependsOn": [
+				"components/buttonIcon",
+				"components/form-element"
+			]
+		},
+		"components/builderHeader": {
+			"path": "components/builderHeader.css",
+			"bytes": 3429,
+			"scopedBytes": 3765,
+			"sources": [
+				"dist/components/builderHeader/builderHeader.css"
+			],
+			"dependsOn": [
+				"utilities/mediaObject"
+			]
+		},
+		"components/publisher": {
+			"path": "components/publisher.css",
+			"bytes": 3278,
+			"scopedBytes": 3578,
+			"sources": [
+				"dist/components/publisher/publisher.css"
+			],
+			"dependsOn": [
+				"components/button",
+				"components/carousel",
+				"components/combobox"
+			]
+		},
+		"components/feed": {
+			"path": "components/feed.css",
+			"bytes": 4379,
+			"scopedBytes": 4907,
+			"sources": [
+				"dist/components/feed/feed.css"
+			],
+			"dependsOn": [
+				"components/icon",
+				"components/carousel"
+			]
+		},
+		"components/modal": {
+			"path": "components/modal.css",
+			"bytes": 11276,
+			"scopedBytes": 12200,
+			"sources": [
+				"dist/components/modal/modal.css"
+			],
+			"dependsOn": [
+				"components/button"
+			]
+		},
+		"components/map": {
+			"path": "components/map.css",
+			"bytes": 1986,
+			"scopedBytes": 2226,
+			"sources": [
+				"dist/components/map/map.css"
+			],
+			"dependsOn": [
+				"utilities/mediaObject",
+				"utilities/interactions"
+			]
+		},
+		"components/appLauncher": {
+			"path": "components/appLauncher.css",
+			"bytes": 2332,
+			"scopedBytes": 2500,
+			"sources": [
+				"dist/components/appLauncher/appLauncher.css"
+			],
+			"dependsOn": [
+				"components/button",
+				"components/icon",
+				"components/input",
+				"components/duelingPicklist",
+				"components/modal",
+				"components/expandableSection"
+			]
+		},
+		"components/visualPicker": {
+			"path": "components/visualPicker.css",
+			"bytes": 7102,
+			"scopedBytes": 7798,
+			"sources": [
+				"dist/components/visualPicker/visualPicker.css"
+			],
+			"dependsOn": [
+				"components/icon.type",
+				"components/buttonStateful",
+				"components/icon",
+				"utilities/text"
+			]
+		},
+		"components/pill": {
+			"path": "components/pill.css",
+			"bytes": 6867,
+			"scopedBytes": 7491,
+			"sources": [
+				"dist/components/pill/pill.css"
+			],
+			"dependsOn": [
+				"components/buttonIcon",
+				"components/icon",
+				"components/tooltip",
+				"components/combobox",
+				"components/avatar"
+			]
+		},
+		"components/wizard": {
+			"path": "components/wizard.css",
+			"bytes": 1913,
+			"scopedBytes": 2117,
+			"sources": [
+				"dist/components/wizard/wizard.deprecated.css"
+			],
+			"dependsOn": [
+				"components/carousel"
+			],
+			"deprecated": true
+		},
+		"components/pathSimple": {
+			"path": "components/pathSimple.css",
+			"bytes": 9920,
+			"scopedBytes": 11300,
+			"sources": [
+				"dist/components/pathSimple/pathSimple.deprecated.css"
+			],
+			"dependsOn": [
+				"components/icon",
+				"components/carousel",
+				"components/path",
+				"utilities/visibility"
+			],
+			"deprecated": true
+		},
+		"components/path": {
+			"path": "components/path.css",
+			"bytes": 20502,
+			"scopedBytes": 22974,
+			"sources": [
+				"dist/components/path/path.css"
+			],
+			"dependsOn": [
+				"components/icon",
+				"components/carousel",
+				"components/pathSimple",
+				"utilities/visibility"
+			]
+		},
+		"components/progressBar": {
+			"path": "components/progressBar.css",
+			"bytes": 1937,
+			"scopedBytes": 2249,
+			"sources": [
+				"dist/components/progressBar/progressBar.css"
+			],
+			"dependsOn": []
+		},
+		"components/progressIndicator": {
+			"path": "components/progressIndicator.css",
+			"bytes": 9287,
+			"scopedBytes": 10379,
+			"sources": [
+				"dist/components/progressIndicator/progressIndicator.css"
+			],
+			"dependsOn": [
+				"components/buttonIcon",
+				"components/icon",
+				"components/carousel",
+				"components/progressBar"
+			]
+		},
+		"components/progressRing": {
+			"path": "components/progressRing.css",
+			"bytes": 3215,
+			"scopedBytes": 3623,
+			"sources": [
+				"dist/components/progressRing/progressRing.css"
+			],
+			"dependsOn": [
+				"components/icon"
+			]
+		},
+		"components/richTextEditor": {
+			"path": "components/richTextEditor.css",
+			"bytes": 22865,
+			"scopedBytes": 25865,
+			"sources": [
+				"dist/components/richTextEditor/richTextEditor.css"
+			],
+			"dependsOn": [
+				"components/buttonGroup",
+				"components/buttonIcon",
+				"components/icon",
+				"components/form-element",
+				"components/input",
+				"components/picklist",
+				"components/combobox",
+				"components/feed"
+			]
+		},
+		"components/markdown": {
+			"path": "components/markdown.css",
+			"bytes": 9590,
+			"scopedBytes": 10262,
+			"sources": [
+				"dist/components/markdown/markdown.css"
+			],
+			"dependsOn": []
+		},
+		"components/spinner": {
+			"path": "components/spinner.css",
+			"bytes": 16481,
+			"scopedBytes": 18929,
+			"sources": [
+				"dist/components/spinner/spinner.css"
+			],
+			"dependsOn": []
+		},
+		"components/splitView": {
+			"path": "components/splitView.css",
+			"bytes": 4256,
+			"scopedBytes": 4652,
+			"sources": [
+				"dist/components/splitView/splitView.css"
+			],
+			"dependsOn": [
+				"components/button",
+				"components/accordion",
+				"components/dockedComposer"
+			]
+		},
+		"components/tile": {
+			"path": "components/tile.css",
+			"bytes": 760,
+			"scopedBytes": 868,
+			"sources": [
+				"dist/components/tile/tile.css"
+			],
+			"dependsOn": []
+		},
+		"components/tabs": {
+			"path": "components/tabs.css",
+			"bytes": 23814,
+			"scopedBytes": 26166,
+			"sources": [
+				"dist/components/tabs/tabs.css"
+			],
+			"dependsOn": [
+				"components/button",
+				"components/buttonIcon",
+				"components/icon",
+				"components/accordion",
+				"components/carousel",
+				"components/panel",
+				"components/menu",
+				"components/globalNavigation",
+				"components/splitView"
+			]
+		},
+		"components/verticalNavigation": {
+			"path": "components/verticalNavigation.css",
+			"bytes": 10166,
+			"scopedBytes": 11282,
+			"sources": [
+				"dist/components/verticalNavigation/verticalNavigation.css",
+				"dist/components/verticalNavigation/verticalNavigation.deprecated.css"
+			],
+			"dependsOn": [
+				"components/button",
+				"components/carousel"
+			]
+		},
+		"components/alert": {
+			"path": "components/alert.css",
+			"bytes": 2972,
+			"scopedBytes": 3344,
+			"sources": [
+				"dist/components/alert/alert.css"
+			],
+			"dependsOn": [
+				"components/button",
+				"components/buttonIcon",
+				"components/icon"
+			]
+		},
+		"components/prompt": {
+			"path": "components/prompt.css",
+			"bytes": 898,
+			"scopedBytes": 970,
+			"sources": [
+				"dist/components/prompt/prompt.css"
+			],
+			"dependsOn": [
+				"components/modal"
+			]
+		},
+		"components/toast": {
+			"path": "components/toast.css",
+			"bytes": 2509,
+			"scopedBytes": 2725,
+			"sources": [
+				"dist/components/toast/toast.css"
+			],
+			"dependsOn": [
+				"components/buttonIcon",
+				"components/feed",
+				"components/alert",
+				"utilities/text"
+			]
+		},
+		"components/scopedNotifications": {
+			"path": "components/scopedNotifications.css",
+			"bytes": 1941,
+			"scopedBytes": 2253,
+			"sources": [
+				"dist/components/scopedNotifications/scopedNotifications.css"
+			],
+			"dependsOn": [
+				"components/icon",
+				"utilities/box"
+			]
+		},
+		"components/notifications": {
+			"path": "components/notifications.css",
+			"bytes": 2761,
+			"scopedBytes": 3013,
+			"sources": [
+				"dist/components/notifications/notifications.css"
+			],
+			"dependsOn": [
+				"components/buttonIcon",
+				"utilities/mediaObject"
+			]
+		},
+		"components/trialBar": {
+			"path": "components/trialBar.css",
+			"bytes": 1323,
+			"scopedBytes": 1455,
+			"sources": [
+				"dist/components/trialBar/trialBar.css"
+			],
+			"dependsOn": [
+				"components/button",
+				"components/icon",
+				"components/menu"
+			]
+		},
+		"components/lookup": {
+			"path": "components/lookup.css",
+			"bytes": 4118,
+			"scopedBytes": 4586,
+			"sources": [
+				"dist/components/lookup/lookup.deprecated.css"
+			],
+			"dependsOn": [
+				"components/icon",
+				"components/accordion",
+				"components/input",
+				"components/combobox",
+				"components/pill",
+				"utilities/mediaObject"
+			],
+			"deprecated": true
+		},
+		"components/avatar": {
+			"path": "components/avatar.css",
+			"bytes": 4384,
+			"scopedBytes": 4744,
+			"sources": [
+				"dist/components/avatar/avatar.css"
+			],
+			"dependsOn": []
+		},
+		"components/avatarGroup": {
+			"path": "components/avatarGroup.css",
+			"bytes": 5076,
+			"scopedBytes": 5676,
+			"sources": [
+				"dist/components/avatarGroup/avatarGroup.css"
+			],
+			"dependsOn": [
+				"components/icon"
+			]
+		},
+		"components/file": {
+			"path": "components/file.css",
+			"bytes": 11564,
+			"scopedBytes": 13676,
+			"sources": [
+				"dist/components/file/file.css"
+			],
+			"dependsOn": [
+				"components/spinner",
+				"utilities/mediaObject"
+			]
+		},
+		"components/dataTable": {
+			"path": "components/dataTable.css",
+			"bytes": 32891,
+			"scopedBytes": 37115,
+			"sources": [
+				"dist/components/dataTable/dataTable.css"
+			],
+			"dependsOn": [
+				"components/button",
+				"components/buttonStateful",
+				"components/buttonIcon",
+				"components/form-element",
+				"components/radioGroup",
+				"components/popover",
+				"components/combobox",
+				"utilities/grid",
+				"utilities/interactions",
+				"utilities/truncate",
+				"utilities/layout"
+			]
+		},
+		"components/trees": {
+			"path": "components/trees.css",
+			"bytes": 5426,
+			"scopedBytes": 6050,
+			"sources": [
+				"dist/components/trees/trees.css"
+			],
+			"dependsOn": [
+				"components/button",
+				"components/dropZone",
+				"components/pill"
+			]
+		},
+		"components/treeGrid": {
+			"path": "components/treeGrid.css",
+			"bytes": 5125,
+			"scopedBytes": 5881,
+			"sources": [
+				"dist/components/treeGrid/treeGrid.css"
+			],
+			"dependsOn": [
+				"components/button",
+				"components/dataTable",
+				"components/trees"
+			]
+		},
+		"components/expandableSection": {
+			"path": "components/expandableSection.css",
+			"bytes": 2011,
+			"scopedBytes": 2167,
+			"sources": [
+				"dist/components/expandableSection/expandableSection.css"
+			],
+			"dependsOn": [
+				"components/button",
+				"components/accordion"
+			]
+		},
+		"components/illustration": {
+			"path": "components/illustration.css",
+			"bytes": 1517,
+			"scopedBytes": 1673,
+			"sources": [
+				"dist/components/illustration/illustration.css"
+			],
+			"dependsOn": []
+		},
+		"components/regions": {
+			"path": "components/regions.css",
+			"bytes": 776,
+			"scopedBytes": 824,
+			"sources": [
+				"dist/components/regions/regions.css"
+			],
+			"dependsOn": []
+		},
+		"components/welcomeMat": {
+			"path": "components/welcomeMat.css",
+			"bytes": 6161,
+			"scopedBytes": 6821,
+			"sources": [
+				"dist/components/welcomeMat/welcomeMat.css"
+			],
+			"dependsOn": [
+				"components/icon.type",
+				"components/icon",
+				"components/progressBar",
+				"utilities/mediaObject",
+				"utilities/box"
+			]
+		},
+		"components/summaryDetail": {
+			"path": "components/summaryDetail.css",
+			"bytes": 879,
+			"scopedBytes": 951,
+			"sources": [
+				"dist/components/summaryDetail/summaryDetail.css"
+			],
+			"dependsOn": [
+				"components/accordion"
+			]
+		},
+		"components/setupAssistant": {
+			"path": "components/setupAssistant.css",
+			"bytes": 1785,
+			"scopedBytes": 1989,
+			"sources": [
+				"dist/components/setupAssistant/setupAssistant.css"
+			],
+			"dependsOn": [
+				"components/progressRing",
+				"utilities/mediaObject"
+			]
+		},
+		"components/template": {
+			"path": "components/template.css",
+			"bytes": 1514,
+			"scopedBytes": 1706,
+			"sources": [
+				"dist/components/template/template.css"
+			],
+			"dependsOn": [
+				"components/brandBand"
+			]
+		},
+		"utilities/deprecated": {
+			"path": "utilities/deprecated.css",
+			"bytes": 1138,
+			"scopedBytes": 1318,
+			"sources": [
+				"dist/components/utilities/utilities.deprecated.css"
+			],
+			"dependsOn": [
+				"utilities/mediaObject"
+			],
+			"deprecated": true
+		},
+		"utilities/grid": {
+			"path": "utilities/grid.css",
+			"bytes": 15307,
+			"scopedBytes": 18307,
+			"sources": [
+				"dist/components/utilities/grid.css"
+			],
+			"dependsOn": [
+				"utilities/text"
+			]
+		},
+		"utilities/alignment": {
+			"path": "utilities/alignment.css",
+			"bytes": 337,
+			"scopedBytes": 361,
+			"sources": [
+				"dist/components/utilities/alignment.css"
+			],
+			"dependsOn": []
+		},
+		"utilities/mediaObject": {
+			"path": "utilities/mediaObject.css",
+			"bytes": 1650,
+			"scopedBytes": 1986,
+			"sources": [
+				"dist/components/utilities/mediaObject.css"
+			],
+			"dependsOn": []
+		},
+		"utilities/margin": {
+			"path": "utilities/margin.css",
+			"bytes": 14053,
+			"scopedBytes": 16909,
+			"sources": [
+				"dist/components/utilities/margin.css"
+			],
+			"dependsOn": []
+		},
+		"utilities/padding": {
+			"path": "utilities/padding.css",
+			"bytes": 14262,
+			"scopedBytes": 17130,
+			"sources": [
+				"dist/components/utilities/padding.css"
+			],
+			"dependsOn": []
+		},
+		"utilities/floats": {
+			"path": "utilities/floats.css",
+			"bytes": 445,
+			"scopedBytes": 541,
+			"sources": [
+				"dist/components/utilities/floats.css"
+			],
+			"dependsOn": []
+		},
+		"utilities/borders": {
+			"path": "utilities/borders.css",
+			"bytes": 684,
+			"scopedBytes": 780,
+			"sources": [
+				"dist/components/utilities/borders.css"
+			],
+			"dependsOn": []
+		},
+		"utilities/interactions": {
+			"path": "utilities/interactions.css",
+			"bytes": 1960,
+			"scopedBytes": 2344,
+			"sources": [
+				"dist/components/utilities/interactions.css"
+			],
+			"dependsOn": []
+		},
+		"utilities/verticalList": {
+			"path": "utilities/verticalList.css",
+			"bytes": 9931,
+			"scopedBytes": 11335,
+			"sources": [
+				"dist/components/utilities/verticalList.css"
+			],
+			"dependsOn": [
+				"components/breadcrumbs",
+				"components/buttonStateful",
+				"utilities/nameValueList"
+			]
+		},
+		"utilities/horizontalList": {
+			"path": "utilities/horizontalList.css",
+			"bytes": 3819,
+			"scopedBytes": 4395,
+			"sources": [
+				"dist/components/utilities/horizontalList.css"
+			],
+			"dependsOn": [
+				"components/breadcrumbs",
+				"utilities/verticalList"
+			]
+		},
+		"utilities/descriptionList": {
+			"path": "utilities/descriptionList.css",
+			"bytes": 1821,
+			"scopedBytes": 2133,
+			"sources": [
+				"dist/components/utilities/descriptionList.css"
+			],
+			"dependsOn": [
+				"components/feed"
+			]
+		},
+		"utilities/nameValueList": {
+			"path": "utilities/nameValueList.css",
+			"bytes": 1120,
+			"scopedBytes": 1312,
+			"sources": [
+				"dist/components/utilities/nameValueList.css"
+			],
+			"dependsOn": [
+				"utilities/horizontalList"
+			]
+		},
+		"utilities/truncate": {
+			"path": "utilities/truncate.css",
+			"bytes": 720,
+			"scopedBytes": 864,
+			"sources": [
+				"dist/components/utilities/truncate.css"
+			],
+			"dependsOn": []
+		},
+		"utilities/hyphenation": {
+			"path": "utilities/hyphenation.css",
+			"bytes": 261,
+			"scopedBytes": 273,
+			"sources": [
+				"dist/components/utilities/hyphenation.css"
+			],
+			"dependsOn": []
+		},
+		"utilities/box": {
+			"path": "utilities/box.css",
+			"bytes": 11823,
+			"scopedBytes": 13947,
+			"sources": [
+				"dist/components/utilities/box.css"
+			],
+			"dependsOn": [
+				"components/button",
+				"components/icon"
+			]
+		},
+		"utilities/text": {
+			"path": "utilities/text.css",
+			"bytes": 3404,
+			"scopedBytes": 4100,
+			"sources": [
+				"dist/components/utilities/text.css"
+			],
+			"dependsOn": []
+		},
+		"utilities/color": {
+			"path": "utilities/color.css",
+			"bytes": 5878,
+			"scopedBytes": 7030,
+			"sources": [
+				"dist/components/utilities/color.css"
+			],
+			"dependsOn": []
+		},
+		"utilities/scrolling": {
+			"path": "utilities/scrolling.css",
+			"bytes": 583,
+			"scopedBytes": 667,
+			"sources": [
+				"dist/components/utilities/scrolling.css"
+			],
+			"dependsOn": []
+		},
+		"utilities/sizing": {
+			"path": "utilities/sizing.css",
+			"bytes": 64693,
+			"scopedBytes": 86893,
+			"sources": [
+				"dist/components/utilities/sizing.css"
+			],
+			"dependsOn": []
+		},
+		"utilities/layout": {
+			"path": "utilities/layout.css",
+			"bytes": 667,
+			"scopedBytes": 727,
+			"sources": [
+				"dist/components/utilities/layout.css"
+			],
+			"dependsOn": []
+		},
+		"utilities/position": {
+			"path": "utilities/position.css",
+			"bytes": 332,
+			"scopedBytes": 380,
+			"sources": [
+				"dist/components/utilities/position.css"
+			],
+			"dependsOn": []
+		},
+		"utilities/print": {
+			"path": "utilities/print.css",
+			"bytes": 230,
+			"scopedBytes": 242,
+			"sources": [
+				"dist/components/utilities/print.css"
+			],
+			"dependsOn": []
+		},
+		"utilities/visibility": {
+			"path": "utilities/visibility.css",
+			"bytes": 4690,
+			"scopedBytes": 5662,
+			"sources": [
+				"dist/components/utilities/visibility.css"
+			],
+			"dependsOn": []
+		},
+		"utilities/lineClamp": {
+			"path": "utilities/lineClamp.css",
+			"bytes": 1135,
+			"scopedBytes": 1243,
+			"sources": [
+				"dist/components/utilities/lineClamp.css"
+			],
+			"dependsOn": []
+		},
+		"utilities/darkMode": {
+			"path": "utilities/darkMode.css",
+			"bytes": 866,
+			"scopedBytes": 1082,
+			"sources": [
+				"dist/components/utilities/darkMode.css"
+			],
+			"dependsOn": []
+		},
+		"components/agentforce": {
+			"path": "components/agentforce.css",
+			"bytes": 14969,
+			"scopedBytes": 15965,
+			"sources": [],
+			"dependsOn": [
+				"components/buttonGroup",
+				"components/button",
+				"components/buttonIcon",
+				"components/card",
+				"components/form-element",
+				"components/input",
+				"components/modal"
+			]
+		}
+	},
+	"entries": {
+		"accordion": "accordion.css",
+		"alert": "alert.css",
+		"avatar": "avatar.css",
+		"badge": "badge.css",
+		"breadcrumb": "breadcrumb.css",
+		"builder-header": "builder-header.css",
+		"button": "button.css",
+		"button-group": "button-group.css",
+		"button-stateful": "button-stateful.css",
+		"card": "card.css",
+		"carousel": "carousel.css",
+		"checkbox": "checkbox.css",
+		"color-picker": "color-picker.css",
+		"combobox": "combobox.css",
+		"date-picker": "date-picker.css",
+		"docked-composer": "docked-composer.css",
+		"dynamic-icon": "dynamic-icon.css",
+		"expandable-section": "expandable-section.css",
+		"files": "files.css",
+		"filter": "filter.css",
+		"grid": "grid.css",
+		"icon": "icon.css",
+		"icon-settings": "icon-settings.css",
+		"input": "input.css",
+		"media-object": "media-object.css",
+		"menu-dropdown": "menu-dropdown.css",
+		"modal": "modal.css",
+		"page-header": "page-header.css",
+		"panel": "panel.css",
+		"pill": "pill.css",
+		"pill-container": "pill-container.css",
+		"popover": "popover.css",
+		"portal-settings": "portal-settings.css",
+		"progress-bar": "progress-bar.css",
+		"progress-indicator": "progress-indicator.css",
+		"progress-ring": "progress-ring.css",
+		"radio": "radio.css",
+		"radio-button-group": "radio-button-group.css",
+		"radio-group": "radio-group.css",
+		"scoped-notification": "scoped-notification.css",
+		"setup-assistant": "setup-assistant.css",
+		"simple-data-table": "simple-data-table.css",
+		"slider": "slider.css",
+		"spinner": "spinner.css",
+		"split-view": "split-view.css",
+		"tabs": "tabs.css",
+		"textarea": "textarea.css",
+		"toast": "toast.css",
+		"tooltip": "tooltip.css",
+		"tree": "tree.css",
+		"trial-bar": "trial-bar.css",
+		"vertical-navigation": "vertical-navigation.css",
+		"visual-picker": "visual-picker.css",
+		"welcome-mat": "welcome-mat.css"
+	}
+}

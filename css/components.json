@@ -1,0 +1,1243 @@
+{
+	"accordion": {
+		"modules": [
+			"components/button",
+			"components/buttonIcon",
+			"components/accordion",
+			"utilities/grid",
+			"utilities/padding",
+			"utilities/interactions",
+			"utilities/horizontalList",
+			"utilities/nameValueList",
+			"utilities/truncate",
+			"utilities/text",
+			"utilities/visibility"
+		],
+		"unstyled": [
+			"slds-button__icon_xx-small",
+			"slds-global-header__button_icon",
+			"slds-global-header__icon"
+		]
+	},
+	"alert": {
+		"modules": [
+			"components/button",
+			"components/buttonIcon",
+			"components/icon",
+			"components/tooltip",
+			"components/alert",
+			"components/toast",
+			"utilities/margin",
+			"utilities/padding",
+			"utilities/interactions",
+			"utilities/box",
+			"utilities/visibility"
+		],
+		"unstyled": [
+			"slds-button__icon_xx-small",
+			"slds-global-header__button_icon",
+			"slds-global-header__icon",
+			"slds-notify",
+			"slds-theme_alert-texture"
+		]
+	},
+	"avatar": {
+		"modules": [
+			"components/icon.type",
+			"components/icon",
+			"components/tooltip",
+			"components/avatar",
+			"utilities/padding",
+			"utilities/visibility"
+		],
+		"unstyled": []
+	},
+	"badge": {
+		"modules": [
+			"components/badge",
+			"components/icon",
+			"utilities/padding",
+			"utilities/box"
+		],
+		"unstyled": []
+	},
+	"breadcrumb": {
+		"modules": [
+			"components/breadcrumbs",
+			"components/button",
+			"components/buttonStateful",
+			"components/buttonIcon",
+			"components/icon",
+			"components/tooltip",
+			"components/menu",
+			"components/combobox",
+			"utilities/margin",
+			"utilities/padding",
+			"utilities/interactions",
+			"utilities/verticalList",
+			"utilities/horizontalList",
+			"utilities/truncate",
+			"utilities/text",
+			"utilities/visibility"
+		],
+		"unstyled": [
+			"slds-button__icon_xx-small",
+			"slds-global-header__button_icon",
+			"slds-global-header__icon",
+			"slds-tooltip-trigger"
+		]
+	},
+	"builder-header": {
+		"modules": [
+			"components/icon.type",
+			"components/buttonGroup",
+			"components/button",
+			"components/buttonStateful",
+			"components/buttonIcon",
+			"components/icon",
+			"components/form-element",
+			"components/checkbox",
+			"components/checkboxToggle",
+			"components/checkboxButtonGroup",
+			"components/tooltip",
+			"components/menu",
+			"components/combobox",
+			"components/builderHeader",
+			"components/visualPicker",
+			"utilities/grid",
+			"utilities/alignment",
+			"utilities/mediaObject",
+			"utilities/margin",
+			"utilities/padding",
+			"utilities/interactions",
+			"utilities/verticalList",
+			"utilities/truncate",
+			"utilities/text",
+			"utilities/color",
+			"utilities/visibility"
+		],
+		"unstyled": [
+			"slds-button__icon_xx-small",
+			"slds-global-header__button_icon",
+			"slds-global-header__icon",
+			"slds-icon-utility-builder",
+			"slds-icon-utility-chevrondown",
+			"slds-icon-utility-page",
+			"slds-icon-utility-settings",
+			"slds-tooltip-trigger"
+		]
+	},
+	"button": {
+		"modules": [
+			"components/button",
+			"components/buttonIcon",
+			"utilities/padding",
+			"utilities/interactions",
+			"utilities/box",
+			"utilities/visibility"
+		],
+		"unstyled": [
+			"slds-button__icon_xx-small",
+			"slds-global-header__button_icon",
+			"slds-global-header__icon",
+			"slds-x-small-buttons_horizontal"
+		]
+	},
+	"button-group": {
+		"modules": [
+			"components/buttonGroup",
+			"components/button",
+			"components/buttonStateful",
+			"components/buttonIcon",
+			"components/icon",
+			"components/form-element",
+			"components/checkbox",
+			"components/checkboxToggle",
+			"components/checkboxButtonGroup",
+			"components/tooltip",
+			"components/menu",
+			"components/combobox",
+			"components/visualPicker",
+			"utilities/grid",
+			"utilities/alignment",
+			"utilities/margin",
+			"utilities/padding",
+			"utilities/interactions",
+			"utilities/verticalList",
+			"utilities/truncate",
+			"utilities/text",
+			"utilities/visibility"
+		],
+		"unstyled": [
+			"slds-button__icon_xx-small",
+			"slds-global-header__button_icon",
+			"slds-global-header__icon",
+			"slds-tooltip-trigger"
+		]
+	},
+	"button-stateful": {
+		"modules": [
+			"components/button",
+			"components/buttonStateful",
+			"components/buttonIcon",
+			"utilities/margin",
+			"utilities/padding",
+			"utilities/visibility"
+		],
+		"unstyled": [
+			"slds-max-small-button_stretch"
+		]
+	},
+	"card": {
+		"modules": [
+			"components/icon.type",
+			"components/button",
+			"components/buttonIcon",
+			"components/icon",
+			"components/card",
+			"components/form-element",
+			"components/input",
+			"components/counter",
+			"components/checkbox",
+			"components/popover",
+			"components/tooltip",
+			"components/combobox",
+			"components/datepicker",
+			"components/spinner",
+			"components/dataTable",
+			"utilities/grid",
+			"utilities/mediaObject",
+			"utilities/margin",
+			"utilities/padding",
+			"utilities/interactions",
+			"utilities/verticalList",
+			"utilities/truncate",
+			"utilities/box",
+			"utilities/text",
+			"utilities/scrolling",
+			"utilities/sizing",
+			"utilities/visibility"
+		],
+		"unstyled": [
+			"slds-button__icon_xx-small",
+			"slds-global-header__button_icon",
+			"slds-global-header__icon",
+			"slds-tooltip-trigger"
+		]
+	},
+	"carousel": {
+		"modules": [
+			"components/button",
+			"components/buttonIcon",
+			"components/carousel",
+			"components/path",
+			"utilities/grid",
+			"utilities/margin",
+			"utilities/padding",
+			"utilities/interactions",
+			"utilities/horizontalList",
+			"utilities/text",
+			"utilities/position",
+			"utilities/visibility"
+		],
+		"unstyled": [
+			"slds-button__icon_xx-small",
+			"slds-carousel__button",
+			"slds-carousel__col-center",
+			"slds-global-header__button_icon",
+			"slds-global-header__icon"
+		]
+	},
+	"checkbox": {
+		"modules": [
+			"components/buttonGroup",
+			"components/button",
+			"components/buttonStateful",
+			"components/icon",
+			"components/form-element",
+			"components/checkbox",
+			"components/checkboxToggle",
+			"components/checkboxButtonGroup",
+			"components/tooltip",
+			"components/visualPicker",
+			"utilities/grid",
+			"utilities/alignment",
+			"utilities/margin",
+			"utilities/padding",
+			"utilities/text",
+			"utilities/visibility"
+		],
+		"unstyled": []
+	},
+	"color-picker": {
+		"modules": [
+			"components/button",
+			"components/buttonStateful",
+			"components/buttonIcon",
+			"components/colorPicker",
+			"components/icon",
+			"components/form-element",
+			"components/input",
+			"components/counter",
+			"components/radioGroup",
+			"components/radioButtonGroup",
+			"components/checkbox",
+			"components/popover",
+			"components/tooltip",
+			"components/combobox",
+			"components/datepicker",
+			"components/visualPicker",
+			"components/spinner",
+			"components/tabs",
+			"utilities/grid",
+			"utilities/alignment",
+			"utilities/mediaObject",
+			"utilities/margin",
+			"utilities/padding",
+			"utilities/floats",
+			"utilities/interactions",
+			"utilities/verticalList",
+			"utilities/truncate",
+			"utilities/box",
+			"utilities/text",
+			"utilities/visibility"
+		],
+		"unstyled": [
+			"slds-button__icon_xx-small",
+			"slds-color-picker__input-custom-b",
+			"slds-color-picker__input-custom-error",
+			"slds-color-picker__input-custom-g",
+			"slds-color-picker__input-custom-r",
+			"slds-color-picker__selector-cancel",
+			"slds-color-picker__selector-submit",
+			"slds-color-picker__summary",
+			"slds-disabled",
+			"slds-global-header__button_icon",
+			"slds-global-header__icon",
+			"slds-icon-utility-error",
+			"slds-tooltip-trigger"
+		]
+	},
+	"combobox": {
+		"modules": [
+			"components/icon.type",
+			"components/button",
+			"components/buttonStateful",
+			"components/buttonIcon",
+			"components/colorPicker",
+			"components/icon",
+			"components/form-element",
+			"components/input",
+			"components/counter",
+			"components/checkbox",
+			"components/popover",
+			"components/tooltip",
+			"components/menu",
+			"components/combobox",
+			"components/datepicker",
+			"components/pill",
+			"components/spinner",
+			"components/avatar",
+			"utilities/grid",
+			"utilities/alignment",
+			"utilities/mediaObject",
+			"utilities/margin",
+			"utilities/padding",
+			"utilities/floats",
+			"utilities/interactions",
+			"utilities/verticalList",
+			"utilities/truncate",
+			"utilities/box",
+			"utilities/text",
+			"utilities/visibility"
+		],
+		"unstyled": [
+			"slds-button__icon_xx-small",
+			"slds-global-header__button_icon",
+			"slds-global-header__icon",
+			"slds-listbox__item",
+			"slds-listbox__option-meta_entity",
+			"slds-listbox__option-text",
+			"slds-listbox__status",
+			"slds-tooltip-trigger"
+		]
+	},
+	"date-picker": {
+		"modules": [
+			"components/icon.type",
+			"components/button",
+			"components/buttonStateful",
+			"components/buttonIcon",
+			"components/colorPicker",
+			"components/icon",
+			"components/form-element",
+			"components/input",
+			"components/counter",
+			"components/checkbox",
+			"components/popover",
+			"components/tooltip",
+			"components/menu",
+			"components/combobox",
+			"components/datepicker",
+			"components/pill",
+			"components/spinner",
+			"components/avatar",
+			"utilities/deprecated",
+			"utilities/grid",
+			"utilities/alignment",
+			"utilities/mediaObject",
+			"utilities/margin",
+			"utilities/padding",
+			"utilities/floats",
+			"utilities/interactions",
+			"utilities/verticalList",
+			"utilities/truncate",
+			"utilities/box",
+			"utilities/text",
+			"utilities/visibility"
+		],
+		"unstyled": [
+			"slds-button__icon_xx-small",
+			"slds-global-header__button_icon",
+			"slds-global-header__icon",
+			"slds-listbox__item",
+			"slds-listbox__option-meta_entity",
+			"slds-listbox__option-text",
+			"slds-listbox__status",
+			"slds-tooltip-trigger"
+		]
+	},
+	"docked-composer": {
+		"modules": [
+			"components/button",
+			"components/buttonIcon",
+			"components/form-element",
+			"components/input",
+			"components/textarea",
+			"components/checkbox",
+			"components/dockedComposer",
+			"utilities/grid",
+			"utilities/mediaObject",
+			"utilities/margin",
+			"utilities/padding",
+			"utilities/interactions",
+			"utilities/truncate",
+			"utilities/visibility"
+		],
+		"unstyled": [
+			"slds-button__icon_xx-small",
+			"slds-global-header__button_icon",
+			"slds-global-header__icon"
+		]
+	},
+	"dynamic-icon": {
+		"modules": [
+			"components/button",
+			"components/dynamicIcons",
+			"components/globalNavigation",
+			"utilities/grid",
+			"utilities/margin",
+			"utilities/padding",
+			"utilities/text",
+			"utilities/visibility"
+		],
+		"unstyled": []
+	},
+	"expandable-section": {
+		"modules": [
+			"components/button",
+			"components/buttonIcon",
+			"components/expandableSection",
+			"utilities/grid",
+			"utilities/margin",
+			"utilities/padding",
+			"utilities/interactions",
+			"utilities/truncate",
+			"utilities/box",
+			"utilities/text",
+			"utilities/sizing",
+			"utilities/visibility"
+		],
+		"unstyled": [
+			"slds-button__icon_xx-small",
+			"slds-global-header__button_icon",
+			"slds-global-header__icon"
+		]
+	},
+	"files": {
+		"modules": [
+			"components/buttonGroup",
+			"components/button",
+			"components/buttonStateful",
+			"components/buttonIcon",
+			"components/icon",
+			"components/input",
+			"components/tooltip",
+			"components/menu",
+			"components/combobox",
+			"components/spinner",
+			"components/file",
+			"utilities/grid",
+			"utilities/alignment",
+			"utilities/mediaObject",
+			"utilities/margin",
+			"utilities/padding",
+			"utilities/interactions",
+			"utilities/verticalList",
+			"utilities/truncate",
+			"utilities/text",
+			"utilities/sizing",
+			"utilities/visibility"
+		],
+		"unstyled": [
+			"slds-button__icon_xx-small",
+			"slds-global-header__button_icon",
+			"slds-global-header__icon",
+			"slds-tooltip-trigger"
+		]
+	},
+	"filter": {
+		"modules": [
+			"components/button",
+			"components/buttonIcon",
+			"components/colorPicker",
+			"components/icon",
+			"components/popover",
+			"components/tooltip",
+			"components/combobox",
+			"components/expression",
+			"utilities/grid",
+			"utilities/mediaObject",
+			"utilities/margin",
+			"utilities/padding",
+			"utilities/floats",
+			"utilities/interactions",
+			"utilities/truncate",
+			"utilities/text",
+			"utilities/visibility"
+		],
+		"unstyled": [
+			"slds-button__icon_xx-small",
+			"slds-global-header__button_icon",
+			"slds-global-header__icon"
+		]
+	},
+	"grid": {
+		"modules": [
+			"utilities/grid"
+		],
+		"unstyled": []
+	},
+	"icon": {
+		"modules": [
+			"components/icon.type",
+			"components/button",
+			"components/buttonIcon",
+			"components/icon",
+			"components/input",
+			"components/tooltip",
+			"components/datepicker",
+			"utilities/grid",
+			"utilities/padding",
+			"utilities/interactions",
+			"utilities/visibility"
+		],
+		"unstyled": [
+			"slds-button__icon_xx-small",
+			"slds-global-header__button_icon",
+			"slds-global-header__icon"
+		]
+	},
+	"icon-settings": {
+		"modules": [
+			"components/icon.type",
+			"components/icon",
+			"components/tooltip",
+			"utilities/grid",
+			"utilities/padding",
+			"utilities/visibility"
+		],
+		"unstyled": []
+	},
+	"input": {
+		"modules": [
+			"components/button",
+			"components/buttonIcon",
+			"components/icon",
+			"components/form-element",
+			"components/input",
+			"components/counter",
+			"components/checkbox",
+			"components/popover",
+			"components/tooltip",
+			"components/combobox",
+			"components/datepicker",
+			"components/spinner",
+			"utilities/grid",
+			"utilities/margin",
+			"utilities/padding",
+			"utilities/interactions",
+			"utilities/verticalList",
+			"utilities/box",
+			"utilities/text",
+			"utilities/sizing",
+			"utilities/visibility"
+		],
+		"unstyled": [
+			"slds-button__icon_xx-small",
+			"slds-global-header__button_icon",
+			"slds-global-header__icon",
+			"slds-tooltip-trigger"
+		]
+	},
+	"media-object": {
+		"modules": [
+			"components/icon.type",
+			"components/icon",
+			"utilities/grid",
+			"utilities/mediaObject",
+			"utilities/padding"
+		],
+		"unstyled": []
+	},
+	"menu-dropdown": {
+		"modules": [
+			"components/button",
+			"components/buttonStateful",
+			"components/buttonIcon",
+			"components/icon",
+			"components/tooltip",
+			"components/menu",
+			"components/combobox",
+			"utilities/grid",
+			"utilities/margin",
+			"utilities/padding",
+			"utilities/interactions",
+			"utilities/verticalList",
+			"utilities/truncate",
+			"utilities/text",
+			"utilities/sizing",
+			"utilities/visibility"
+		],
+		"unstyled": [
+			"slds-button__icon_xx-small",
+			"slds-global-header__button_icon",
+			"slds-global-header__icon",
+			"slds-tooltip-trigger"
+		]
+	},
+	"modal": {
+		"modules": [
+			"components/button",
+			"components/buttonIcon",
+			"components/modal",
+			"components/prompt",
+			"utilities/margin",
+			"utilities/interactions",
+			"utilities/box",
+			"utilities/text",
+			"utilities/visibility"
+		],
+		"unstyled": [
+			"slds-button__icon_xx-small",
+			"slds-global-header__button_icon",
+			"slds-global-header__icon",
+			"slds-theme_alert-texture"
+		]
+	},
+	"page-header": {
+		"modules": [
+			"components/icon.type",
+			"components/breadcrumbs",
+			"components/buttonGroup",
+			"components/button",
+			"components/buttonStateful",
+			"components/buttonIcon",
+			"components/icon",
+			"components/pageHeader",
+			"components/tooltip",
+			"components/menu",
+			"components/combobox",
+			"utilities/grid",
+			"utilities/mediaObject",
+			"utilities/margin",
+			"utilities/padding",
+			"utilities/interactions",
+			"utilities/verticalList",
+			"utilities/horizontalList",
+			"utilities/truncate",
+			"utilities/text",
+			"utilities/visibility"
+		],
+		"unstyled": [
+			"slds-button__icon_xx-small",
+			"slds-global-header__button_icon",
+			"slds-global-header__icon",
+			"slds-page-header_record-home",
+			"slds-page-header_related-list",
+			"slds-tooltip-trigger"
+		]
+	},
+	"panel": {
+		"modules": [
+			"components/button",
+			"components/buttonIcon",
+			"components/colorPicker",
+			"components/icon",
+			"components/form-element",
+			"components/checkbox",
+			"components/select",
+			"components/panel",
+			"components/popover",
+			"components/tooltip",
+			"components/combobox",
+			"components/expression",
+			"utilities/grid",
+			"utilities/mediaObject",
+			"utilities/margin",
+			"utilities/padding",
+			"utilities/floats",
+			"utilities/interactions",
+			"utilities/verticalList",
+			"utilities/nameValueList",
+			"utilities/truncate",
+			"utilities/text",
+			"utilities/scrolling",
+			"utilities/visibility"
+		],
+		"unstyled": [
+			"slds-button__icon_xx-small",
+			"slds-global-header__button_icon",
+			"slds-global-header__icon"
+		]
+	},
+	"pill": {
+		"modules": [
+			"components/icon.type",
+			"components/icon",
+			"components/tooltip",
+			"components/pill",
+			"components/avatar",
+			"utilities/padding",
+			"utilities/visibility"
+		],
+		"unstyled": []
+	},
+	"pill-container": {
+		"modules": [
+			"components/icon.type",
+			"components/icon",
+			"components/tooltip",
+			"components/combobox",
+			"components/pill",
+			"components/avatar",
+			"utilities/margin",
+			"utilities/padding",
+			"utilities/text",
+			"utilities/visibility"
+		],
+		"unstyled": [
+			"slds-listbox__item"
+		]
+	},
+	"popover": {
+		"modules": [
+			"components/buttonGroup",
+			"components/button",
+			"components/buttonIcon",
+			"components/colorPicker",
+			"components/icon",
+			"components/card",
+			"components/popover",
+			"components/tooltip",
+			"components/combobox",
+			"utilities/grid",
+			"utilities/mediaObject",
+			"utilities/margin",
+			"utilities/padding",
+			"utilities/floats",
+			"utilities/interactions",
+			"utilities/truncate",
+			"utilities/text",
+			"utilities/visibility"
+		],
+		"unstyled": [
+			"slds-button__icon_xx-small",
+			"slds-global-header__button_icon",
+			"slds-global-header__icon"
+		]
+	},
+	"portal-settings": {
+		"modules": [
+			"components/icon.type",
+			"components/icon",
+			"components/form-element",
+			"components/input",
+			"components/checkbox",
+			"components/tooltip",
+			"components/menu",
+			"components/combobox",
+			"components/datepicker",
+			"components/pill",
+			"utilities/padding",
+			"utilities/visibility"
+		],
+		"unstyled": [
+			"slds-listbox__item"
+		]
+	},
+	"progress-bar": {
+		"modules": [
+			"components/progressBar",
+			"utilities/grid",
+			"utilities/padding",
+			"utilities/visibility"
+		],
+		"unstyled": []
+	},
+	"progress-indicator": {
+		"modules": [
+			"components/button",
+			"components/buttonIcon",
+			"components/icon",
+			"components/popover",
+			"components/tooltip",
+			"components/combobox",
+			"components/path",
+			"components/progressBar",
+			"components/progressIndicator",
+			"utilities/grid",
+			"utilities/mediaObject",
+			"utilities/margin",
+			"utilities/padding",
+			"utilities/interactions",
+			"utilities/box",
+			"utilities/text",
+			"utilities/sizing",
+			"utilities/visibility"
+		],
+		"unstyled": [
+			"slds-button__icon_xx-small",
+			"slds-global-header__button_icon",
+			"slds-global-header__icon",
+			"slds-tooltip-trigger"
+		]
+	},
+	"progress-ring": {
+		"modules": [
+			"components/icon",
+			"components/tooltip",
+			"components/progressRing",
+			"utilities/grid",
+			"utilities/margin",
+			"utilities/padding",
+			"utilities/text",
+			"utilities/sizing",
+			"utilities/visibility"
+		],
+		"unstyled": []
+	},
+	"radio": {
+		"modules": [
+			"components/button",
+			"components/colorPicker",
+			"components/icon",
+			"components/form-element",
+			"components/radioGroup",
+			"components/radioButtonGroup",
+			"components/checkbox",
+			"components/tooltip",
+			"components/visualPicker",
+			"utilities/alignment",
+			"utilities/padding",
+			"utilities/text",
+			"utilities/visibility"
+		],
+		"unstyled": []
+	},
+	"radio-button-group": {
+		"modules": [
+			"components/button",
+			"components/colorPicker",
+			"components/icon",
+			"components/form-element",
+			"components/radioGroup",
+			"components/radioButtonGroup",
+			"components/checkbox",
+			"components/tooltip",
+			"components/visualPicker",
+			"utilities/alignment",
+			"utilities/padding",
+			"utilities/text",
+			"utilities/visibility"
+		],
+		"unstyled": []
+	},
+	"radio-group": {
+		"modules": [
+			"components/button",
+			"components/colorPicker",
+			"components/icon",
+			"components/form-element",
+			"components/radioGroup",
+			"components/radioButtonGroup",
+			"components/checkbox",
+			"components/tooltip",
+			"components/visualPicker",
+			"utilities/alignment",
+			"utilities/padding",
+			"utilities/text",
+			"utilities/visibility"
+		],
+		"unstyled": []
+	},
+	"scoped-notification": {
+		"modules": [
+			"components/icon",
+			"components/tooltip",
+			"components/scopedNotifications",
+			"utilities/grid",
+			"utilities/mediaObject",
+			"utilities/padding",
+			"utilities/visibility"
+		],
+		"unstyled": []
+	},
+	"setup-assistant": {
+		"modules": [
+			"components/button",
+			"components/buttonIcon",
+			"components/icon",
+			"components/card",
+			"components/form-element",
+			"components/checkbox",
+			"components/checkboxToggle",
+			"components/tooltip",
+			"components/progressBar",
+			"components/progressIndicator",
+			"components/progressRing",
+			"components/scopedNotifications",
+			"components/summaryDetail",
+			"components/setupAssistant",
+			"utilities/grid",
+			"utilities/mediaObject",
+			"utilities/margin",
+			"utilities/padding",
+			"utilities/interactions",
+			"utilities/box",
+			"utilities/text",
+			"utilities/sizing",
+			"utilities/visibility"
+		],
+		"unstyled": [
+			"slds-button__icon_xx-small",
+			"slds-global-header__button_icon",
+			"slds-global-header__icon",
+			"slds-setup-assistant__step",
+			"slds-summary-detail__title"
+		]
+	},
+	"simple-data-table": {
+		"modules": [
+			"components/icon.type",
+			"components/buttonGroup",
+			"components/button",
+			"components/buttonStateful",
+			"components/buttonIcon",
+			"components/colorPicker",
+			"components/icon",
+			"components/form-element",
+			"components/input",
+			"components/radioGroup",
+			"components/radioButtonGroup",
+			"components/checkbox",
+			"components/checkboxToggle",
+			"components/checkboxButtonGroup",
+			"components/pageHeader",
+			"components/tooltip",
+			"components/menu",
+			"components/combobox",
+			"components/visualPicker",
+			"components/spinner",
+			"components/dataTable",
+			"utilities/grid",
+			"utilities/alignment",
+			"utilities/mediaObject",
+			"utilities/margin",
+			"utilities/padding",
+			"utilities/interactions",
+			"utilities/verticalList",
+			"utilities/truncate",
+			"utilities/text",
+			"utilities/position",
+			"utilities/visibility"
+		],
+		"unstyled": [
+			"slds-button__icon_xx-small",
+			"slds-global-header__button_icon",
+			"slds-global-header__icon",
+			"slds-is-sorted_desc",
+			"slds-max-medium-table_stacked",
+			"slds-max-medium-table_stacked-horizontal",
+			"slds-table_header-fixed_scroller",
+			"slds-table_header-hidden",
+			"slds-tooltip-trigger"
+		]
+	},
+	"slider": {
+		"modules": [
+			"components/form-element",
+			"components/checkbox",
+			"components/slider",
+			"utilities/grid",
+			"utilities/padding",
+			"utilities/sizing",
+			"utilities/visibility"
+		],
+		"unstyled": [
+			"slds-slider-label",
+			"slds-slider-label__range"
+		]
+	},
+	"spinner": {
+		"modules": [
+			"components/input",
+			"components/spinner",
+			"utilities/alignment",
+			"utilities/padding",
+			"utilities/visibility"
+		],
+		"unstyled": []
+	},
+	"split-view": {
+		"modules": [
+			"components/breadcrumbs",
+			"components/button",
+			"components/buttonStateful",
+			"components/buttonIcon",
+			"components/icon",
+			"components/card",
+			"components/pageHeader",
+			"components/tooltip",
+			"components/menu",
+			"components/combobox",
+			"components/splitView",
+			"utilities/grid",
+			"utilities/mediaObject",
+			"utilities/margin",
+			"utilities/padding",
+			"utilities/interactions",
+			"utilities/verticalList",
+			"utilities/horizontalList",
+			"utilities/truncate",
+			"utilities/text",
+			"utilities/scrolling",
+			"utilities/layout",
+			"utilities/visibility"
+		],
+		"unstyled": [
+			"slds-button__icon_xx-small",
+			"slds-global-header__button_icon",
+			"slds-global-header__icon",
+			"slds-is-unread",
+			"slds-page-header_record-home",
+			"slds-page-header_related-list",
+			"slds-tooltip-trigger"
+		]
+	},
+	"tabs": {
+		"modules": [
+			"components/icon",
+			"components/tooltip",
+			"components/tabs",
+			"utilities/margin",
+			"utilities/padding",
+			"utilities/text",
+			"utilities/visibility"
+		],
+		"unstyled": [
+			"slds-disabled",
+			"slds-icon-utility-error"
+		]
+	},
+	"textarea": {
+		"modules": [
+			"components/form-element",
+			"components/textarea",
+			"components/checkbox",
+			"utilities/padding",
+			"utilities/visibility"
+		],
+		"unstyled": []
+	},
+	"toast": {
+		"modules": [
+			"components/button",
+			"components/buttonIcon",
+			"components/icon",
+			"components/tooltip",
+			"components/alert",
+			"components/toast",
+			"utilities/grid",
+			"utilities/margin",
+			"utilities/padding",
+			"utilities/interactions",
+			"utilities/box",
+			"utilities/text",
+			"utilities/visibility"
+		],
+		"unstyled": [
+			"slds-button__icon_xx-small",
+			"slds-global-header__button_icon",
+			"slds-global-header__icon",
+			"slds-notify"
+		]
+	},
+	"tooltip": {
+		"modules": [
+			"components/icon.type",
+			"components/buttonGroup",
+			"components/button",
+			"components/buttonIcon",
+			"components/icon",
+			"components/form-element",
+			"components/popover",
+			"components/tooltip",
+			"components/combobox",
+			"utilities/grid",
+			"utilities/margin",
+			"utilities/padding",
+			"utilities/interactions",
+			"utilities/box",
+			"utilities/text",
+			"utilities/visibility"
+		],
+		"unstyled": [
+			"slds-button__icon_xx-small",
+			"slds-global-header__button_icon",
+			"slds-global-header__icon",
+			"slds-tooltip-trigger"
+		]
+	},
+	"tree": {
+		"modules": [
+			"components/button",
+			"components/buttonStateful",
+			"components/buttonIcon",
+			"components/icon",
+			"components/form-element",
+			"components/input",
+			"components/checkbox",
+			"components/tooltip",
+			"components/datepicker",
+			"components/trees",
+			"utilities/margin",
+			"utilities/padding",
+			"utilities/interactions",
+			"utilities/truncate",
+			"utilities/sizing",
+			"utilities/visibility"
+		],
+		"unstyled": [
+			"slds-button__icon_xx-small",
+			"slds-global-header__button_icon",
+			"slds-global-header__icon"
+		]
+	},
+	"trial-bar": {
+		"modules": [
+			"components/button",
+			"components/buttonStateful",
+			"components/buttonIcon",
+			"components/icon",
+			"components/tooltip",
+			"components/menu",
+			"components/combobox",
+			"components/trialBar",
+			"utilities/grid",
+			"utilities/margin",
+			"utilities/padding",
+			"utilities/interactions",
+			"utilities/verticalList",
+			"utilities/truncate",
+			"utilities/box",
+			"utilities/text",
+			"utilities/visibility"
+		],
+		"unstyled": [
+			"slds-button__icon_xx-small",
+			"slds-global-header__button_icon",
+			"slds-global-header__icon",
+			"slds-tooltip-trigger"
+		]
+	},
+	"vertical-navigation": {
+		"modules": [
+			"components/badge",
+			"components/button",
+			"components/icon",
+			"components/tooltip",
+			"components/verticalNavigation",
+			"utilities/grid",
+			"utilities/padding",
+			"utilities/box",
+			"utilities/visibility"
+		],
+		"unstyled": []
+	},
+	"visual-picker": {
+		"modules": [
+			"components/button",
+			"components/colorPicker",
+			"components/icon",
+			"components/form-element",
+			"components/radioGroup",
+			"components/radioButtonGroup",
+			"components/checkbox",
+			"components/checkboxToggle",
+			"components/checkboxButtonGroup",
+			"components/tooltip",
+			"components/visualPicker",
+			"utilities/grid",
+			"utilities/alignment",
+			"utilities/mediaObject",
+			"utilities/margin",
+			"utilities/padding",
+			"utilities/borders",
+			"utilities/truncate",
+			"utilities/box",
+			"utilities/text",
+			"utilities/visibility"
+		],
+		"unstyled": []
+	},
+	"welcome-mat": {
+		"modules": [
+			"components/button",
+			"components/buttonIcon",
+			"components/icon",
+			"components/tooltip",
+			"components/modal",
+			"components/progressBar",
+			"components/prompt",
+			"components/welcomeMat",
+			"utilities/grid",
+			"utilities/alignment",
+			"utilities/mediaObject",
+			"utilities/margin",
+			"utilities/padding",
+			"utilities/interactions",
+			"utilities/box",
+			"utilities/text",
+			"utilities/sizing",
+			"utilities/visibility"
+		],
+		"unstyled": [
+			"slds-button__icon_xx-small",
+			"slds-global-header__button_icon",
+			"slds-global-header__icon",
+			"slds-theme_alert-texture",
+			"slds-welcome-mat__info-actions"
+		]
+	}
+}

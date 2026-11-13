@@ -32,7 +32,8 @@
     "build-storybook": "storybook build",
     "prepack": "npm run build",
     "prepare": "husky",
-    "release-pr": "tsx scripts/release.ts"
+    "release-pr": "tsx scripts/release.ts",
+    "css:refresh": "tsx scripts/build-slds-modules.ts && vitest run --project unit --update=none components/__tests__/slds-css-modules.test.js components/__tests__/slds-css-coverage.test.jsx"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
@@ -67,9 +68,12 @@
   "main": "dist/cjs/components/index.cjs",
   "module": "dist/es/components/index.js",
   "types": "dist/types/components/index.d.ts",
-  "sideEffects": false,
+  "sideEffects": [
+    "**/*.css"
+  ],
   "files": [
     "dist",
+    "css",
     "README.md",
     "LICENSE.txt"
   ],
@@ -98,6 +102,7 @@
       "require": "./dist/cjs/utilities/*.cjs",
       "default": "./dist/es/utilities/*.js"
     },
+    "./css/*": "./css/*",
     "./package.json": "./package.json"
   },
   "homepage": "https://react.lightningdesignsystem.com",
@@ -172,6 +177,7 @@
     "jsdom": "^30.0.0",
     "lint-staged": "^17.5.0",
     "playwright": "^1.63.0",
+    "postcss": "^8.5.32",
     "prettier": "^3.2.5",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
