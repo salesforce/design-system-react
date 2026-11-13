@@ -728,6 +728,31 @@ const buttonClass = classNames('slds-button', {
 
 ## Maintainability & Versioning
 
+### Versioning & Support Policy
+
+DSR follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) from 11.0.0 on. The [Breaking-Change Taxonomy](#breaking-change-taxonomy) below defines what counts as breaking.
+
+| Release   | May contain                                                                                                                                                                                                |
+| --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Major** | Any API or behavior break as defined by the taxonomy, and removal of anything deprecated in an earlier minor.                                                                                              |
+| **Minor** | Additions (components, props, callback data, exported types, entry points), deprecations, and layout or visual changes, including bumps of the `@salesforce-ux/design-system-2` stylesheet DSR depends on. |
+| **Patch** | Fixes only: bugs, accessibility and security fixes that leave every documented contract in place.                                                                                                          |
+
+**Deprecation.** A deprecated prop, value, callback shape or component keeps working for at least one minor release before a major removes it. Each deprecation:
+
+- is listed under `### Deprecated` in [CHANGELOG.md](../CHANGELOG.md), with its replacement and the major that removes it (for 11.x, 12.0.0);
+- logs a one-time development warning through `utilities/warning/deprecated-property.js` (see [Deprecation Warnings](#deprecation-warnings)), and nothing in production builds;
+- is marked `@deprecated` in `types.ts`, so editors flag it in the generated `.d.ts`.
+
+**CHANGELOG.** Every release has a section in [CHANGELOG.md](../CHANGELOG.md), in [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) format. The section an entry sits under gives its level: `Added` and `Deprecated` are minor, `Fixed` is patch, `Removed` is major, and `Changed` is minor unless it starts with **BREAKING**. A **BREAKING** entry needs a major after 11.0.0 (during the 11.0.0 prereleases, any `alpha`/`beta`/`rc` can carry one) and says what to change.
+
+**Fix forward.** There are no long-lived maintenance branches for 11.x. Security, accessibility and bug fixes land on `master` and ship in the next patch or minor of the current major. This works because of the rules above and the [testing-query contract](#breaking-change-taxonomy): nothing is removed or renamed within 11, and role- and label-based tests keep passing, so upgrading to the latest 11.x is the way to get fixes. Consumers who want to control when changes arrive should:
+
+- depend on a tilde range (`~11.y.0`) to take patches automatically and minors deliberately;
+- run their own CI against the `rc` dist-tag (`npm install @salesforce/design-system-react@rc`) before each stable release.
+
+The 0.10.x line predates this policy and gets maintenance releases from the [`0.10.x` branch](https://github.com/salesforce/design-system-react/tree/0.10.x) only.
+
 ### Breaking-Change Taxonomy
 
 Publish this taxonomy alongside any SemVer policy so consumers know what a minor/patch release can and cannot change:
