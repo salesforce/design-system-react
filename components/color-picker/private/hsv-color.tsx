@@ -43,13 +43,14 @@ export interface HsvColorProps {
 }
 
 const selectedStyle = {
-	border: '1px solid #9e9e9e',
-	boxShadow: 'rgb(117, 112, 112) 1px 1px 1px',
+	border: '1px solid var(--slds-g-color-border-2, #9e9e9e)',
+	boxShadow:
+		'var(--slds-g-color-neutral-base-50, rgb(117, 112, 112)) 1px 1px 1px',
 	marginRight: '2px',
 };
 
 const unselectedStyle = {
-	border: '1px solid #9e9e9e',
+	border: '1px solid var(--slds-g-color-border-2, #9e9e9e)',
 	marginRight: '2px',
 };
 
