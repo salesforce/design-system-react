@@ -26,6 +26,7 @@ import { existsSync, readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import { fileURLToPath } from 'url';
 import { parseArgs } from 'util';
+import { format, resolveConfig } from 'prettier';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const budgetPath = join(root, 'tests/perf/budgets.json');
@@ -167,9 +168,13 @@ if (values['update-budgets']) {
 			sortKeys(metrics),
 		])
 	);
+	// Format as lint-staged would, so a recording commits without churn.
 	writeFileSync(
 		budgetPath,
-		`${JSON.stringify({ ...budgetFile, budgets: sorted, ...listFields }, null, '\t')}\n`
+		await format(
+			JSON.stringify({ ...budgetFile, budgets: sorted, ...listFields }),
+			{ ...(await resolveConfig(budgetPath)), filepath: budgetPath }
+		)
 	);
 	console.log(
 		`perf-report: wrote ${Object.keys(sorted).length} budget entries to tests/perf/budgets.json.`
