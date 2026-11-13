@@ -524,6 +524,9 @@
 			"portalNodes": 0,
 			"ssrBytes": 2739
 		},
+		"Combobox/Base/closed": { "closedOverlayNodes": 1 },
+		"Combobox/Base/leak": { "leaksMounts": 1 },
+		"Combobox/Base/open": { "openLayoutReads": 269 },
 		"Combobox/BaseWithMenuSubheader": {
 			"commits": 3,
 			"domNodes": 11,
@@ -1040,6 +1043,10 @@
 			"portalNodes": 0,
 			"ssrBytes": 1740
 		},
+		"IconSettings/parent-rerender": {
+			"consumerRenders": 1,
+			"contextChanges": 1
+		},
 		"Input/AssistiveTextLabel": {
 			"domNodes": 5,
 			"portalNodes": 0,
@@ -1099,6 +1106,7 @@
 			"portalNodes": 0,
 			"ssrBytes": 319
 		},
+		"MenuDropdown/Base/open": { "openLayoutReads": 461 },
 		"MenuDropdown/CenterAligned": {
 			"commits": 2,
 			"domNodes": 3,
@@ -1205,6 +1213,7 @@
 			"portalNodes": 0,
 			"ssrBytes": 335
 		},
+		"MenuDropdown/parent-rerender": { "itemRenders": 50 },
 		"Modal/AlwaysOpen": {
 			"commits": 3,
 			"consoleErrors": 2,
@@ -1316,6 +1325,7 @@
 			"portalNodes": 0,
 			"ssrBytes": 245
 		},
+		"Popover/Default/open": { "openLayoutReads": 256 },
 		"Popover/ErrorVariant": {
 			"commits": 2,
 			"domNodes": 3,
@@ -1386,6 +1396,10 @@
 			"nonPassiveScrollListeners": 1,
 			"portalNodes": 0,
 			"ssrBytes": 2781
+		},
+		"PortalSettings/parent-rerender": {
+			"consumerRenders": 1,
+			"contextChanges": 1
 		},
 		"ProgressBar/CircularRadius": {
 			"domNodes": 5,
@@ -1716,6 +1730,9 @@
 			"portalNodes": 0,
 			"ssrBytes": 45121
 		},
+		"SimpleDataTable/identical-props": { "rowRenders": 500 },
+		"SimpleDataTable/parent-rerender": { "rowRenders": 500 },
+		"SimpleDataTable/select-row": { "rowRenders": 500 },
 		"Slider/CustomRange": { "domNodes": 10, "portalNodes": 0, "ssrBytes": 544 },
 		"Slider/Default": { "domNodes": 10, "portalNodes": 0, "ssrBytes": 546 },
 		"Slider/Disabled": { "domNodes": 11, "portalNodes": 0, "ssrBytes": 611 },
@@ -1784,6 +1801,9 @@
 			"portalNodes": 0,
 			"ssrBytes": 1567
 		},
+		"Tabs/identical-props": { "tabRenders": 10 },
+		"Tabs/parent-rerender": { "tabRenders": 10 },
+		"Tabs/select": { "tabRenders": 10 },
 		"Textarea/AssistiveTextOnly": {
 			"domNodes": 5,
 			"portalNodes": 0,
@@ -1894,6 +1914,7 @@
 			"portalNodes": 0,
 			"ssrBytes": 279
 		},
+		"Tooltip/Default/open": { "openLayoutReads": 337 },
 		"Tooltip/DefaultTrigger": {
 			"commits": 2,
 			"domNodes": 7,
@@ -2000,6 +2021,9 @@
 			"portalNodes": 0,
 			"ssrBytes": 10727
 		},
+		"Tree/identical-props": { "itemRenders": 490 },
+		"Tree/parent-rerender": { "itemRenders": 490 },
+		"Tree/select-item": { "itemRenders": 490 },
 		"TrialBar/DefaultStory": {
 			"commits": 2,
 			"domNodes": 13,

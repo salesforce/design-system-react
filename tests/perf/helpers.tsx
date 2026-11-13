@@ -85,6 +85,16 @@ type AnyComponent = React.ComponentType<any> & {
 const FORWARD_REF = Symbol.for('react.forward_ref');
 const MEMO = Symbol.for('react.memo');
 
+// Copy statics (displayName, defaultProps, custom members), but not the
+// element-type internals that would replace the counting wrapper's own.
+const copyStatics = <T extends object>(target: T, source: object) => {
+	const statics: Record<string, unknown> = { ...source };
+	['$$typeof', 'render', 'type', 'compare'].forEach(
+		(key) => delete statics[key]
+	);
+	return Object.assign(target, statics);
+};
+
 /**
  * Wrap a component so each of its renders is counted under `name`, keeping
  * its memo/forwardRef/class behavior: a memoized component that bails out is
@@ -98,12 +108,11 @@ export function countRenders<T>(Component: T, name: string): T {
 	}
 	if (C.$$typeof === FORWARD_REF && C.render) {
 		const inner = C.render;
-		const Counted = React.forwardRef((props, ref) => {
+		const Counted = React.forwardRef(function Counted(props, ref) {
 			bump(name);
 			return inner(props, ref) as React.ReactElement;
 		});
-		Counted.displayName = C.displayName;
-		return Object.assign(Counted, C) as unknown as T;
+		return copyStatics(Counted, C) as unknown as T;
 	}
 	if (C.prototype?.isReactComponent) {
 		const Base = C as unknown as React.ComponentClass;
@@ -120,7 +129,7 @@ export function countRenders<T>(Component: T, name: string): T {
 		bump(name);
 		return fn(props, ref);
 	};
-	return Object.assign(Counted, C) as unknown as T;
+	return copyStatics(Counted, C) as unknown as T;
 }
 
 /**
