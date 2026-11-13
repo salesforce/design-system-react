@@ -18,6 +18,8 @@
 
 v11 is not a drop-in upgrade from 0.10.x: some components were removed or renamed. See [CHANGELOG.md](CHANGELOG.md) for the breaking changes.
 
+From 11.0.0 on, releases follow the [Versioning & Support Policy](docs/codebase-overview.md#versioning--support-policy): what a major, minor or patch can change, how deprecations work, and how fixes reach consumers. The [Breaking-Change Taxonomy](docs/codebase-overview.md#breaking-change-taxonomy) defines breaking changes by what `getByRole` and `getByLabelText` queries see.
+
 ## Highlights
 
 - **SLDS 2** — Styled by the [SLDS 2](https://www.lightningdesignsystem.com/) npm package, with the Cosmos (default) and Lightning Blue themes
