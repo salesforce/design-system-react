@@ -414,4 +414,30 @@ describe('SLDSIcon', () => {
 			consoleError.mockRestore();
 		});
 	});
+
+	describe('Deprecated productTheme', () => {
+		it('still sets the background color and warns', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<DemoIcon
+						assistiveText={{ label: 'Sales' }}
+						category="standard"
+						name="account"
+						productTheme="sales-cloud"
+					/>
+				</IconSettings>
+			);
+
+			expect(container.querySelector('svg').style.backgroundColor).toBe(
+				'rgb(0, 133, 125)'
+			);
+			expect(consoleError).toHaveBeenCalledWith(
+				expect.stringContaining('`productTheme` will be removed')
+			);
+			consoleError.mockRestore();
+		});
+	});
 });
