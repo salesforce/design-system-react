@@ -1,7 +1,8 @@
 import '@testing-library/jest-dom';
-// Load the real SLDS stylesheet so layout-dependent behavior (text truncation,
-// column widths, focus rings) matches production in the browser project.
-import '@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.min.css';
+// Load the bundled SLDS 2 stylesheet consumers use (see README) so
+// layout-dependent behavior (text truncation, column widths, focus rings)
+// matches production in the browser project.
+import '@salesforce-ux/design-system-2/dist/css/bundled/slds2.cosmos.css';
 import { expect, afterEach } from 'vitest';
 import { cleanup } from '@testing-library/react';
 import * as matchers from '@testing-library/jest-dom/matchers';
