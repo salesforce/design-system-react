@@ -233,6 +233,41 @@ describe('release script', () => {
 		).toBe('11.0.0-alpha.3');
 	});
 
+	describe('next --rc', () => {
+		const setVersion = (version) => {
+			writePackage({ ...BASE_PACKAGE, version });
+			git('commit', '-am', `chore: ${version}`);
+			git('push', 'origin', 'master');
+		};
+
+		it('starts the release candidate from an alpha', () => {
+			const r = release('next', '--rc');
+			expect(r.status, r.stderr).toBe(0);
+			git('fetch', 'origin', 'chore/release-11.0.0-rc.0');
+			const pkg = releasedPackage('chore/release-11.0.0-rc.0');
+			expect(pkg.version).toBe('11.0.0-rc.0');
+			expect(pkg.publishConfig.tag).toBe('rc');
+		});
+
+		it('starts the release candidate from a beta', () => {
+			setVersion('11.0.0-beta.2');
+			const r = release('next', '--rc', '--dry-run');
+			expect(r.status, r.stderr).toBe(0);
+			expect(r.stdout).toContain(
+				'[dry-run] 11.0.0-beta.2 -> 11.0.0-rc.0 (dist-tag: rc)'
+			);
+		});
+
+		it('increments an existing release candidate', () => {
+			setVersion('11.0.0-rc.0');
+			const r = release('--rc', 'next', '--dry-run');
+			expect(r.status, r.stderr).toBe(0);
+			expect(r.stdout).toContain(
+				'[dry-run] 11.0.0-rc.0 -> 11.0.0-rc.1 (dist-tag: rc)'
+			);
+		});
+	});
+
 	describe('--base (maintenance branch)', () => {
 		/** Push a 0.10.x-style branch: stable version, tab-indented package.json. */
 		const seedMaintenance = (version) => {
@@ -334,6 +369,20 @@ describe('release script', () => {
 			git('commit', '-am', 'chore: stable');
 			git('push', 'origin', 'master');
 			expectFailure(release('next'), '"next" needs a prerelease version');
+		});
+
+		it('when "next --rc" is used on a stable version', () => {
+			writePackage({ ...BASE_PACKAGE, version: '11.0.0' });
+			git('commit', '-am', 'chore: stable');
+			git('push', 'origin', 'master');
+			expectFailure(
+				release('next', '--rc'),
+				'"next --rc" needs a prerelease version, but master is at 11.0.0'
+			);
+		});
+
+		it('when --rc is passed with an explicit version', () => {
+			expectFailure(release('11.0.0-rc.0', '--rc'), 'usage:');
 		});
 
 		it('when --base has no branch', () => {
