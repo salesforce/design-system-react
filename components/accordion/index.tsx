@@ -97,31 +97,32 @@ const Accordion = ({
 
 	const handleKeyDownSummary = useCallback(
 		(e: KeyboardEvent<HTMLButtonElement>) => {
-			let buttonIndex = currButtonIndex;
+			if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') {
+				return;
+			}
+			e.preventDefault();
 
-			if (buttonIndex === null) {
-				buttonIndex = summaryButtonsRef.current.findIndex(
-					(el) => el && el.id === (e.target as HTMLElement).id
-				);
+			// Start from the button that has the key event, not the last index
+			// reached with the arrows: Tab or a click can move focus without
+			// updating currButtonIndex
+			const buttonIndex = summaryButtonsRef.current.indexOf(e.currentTarget);
+			if (buttonIndex === -1) {
+				return;
 			}
 
+			let nextIndex;
 			if (e.key === 'ArrowDown') {
-				e.preventDefault();
-				if (buttonIndex < childCount - 1) {
-					setCurrButtonIndex(buttonIndex + 1);
-				} else {
-					setCurrButtonIndex(0);
-				}
-			} else if (e.key === 'ArrowUp') {
-				e.preventDefault();
-				if (buttonIndex > 0) {
-					setCurrButtonIndex(buttonIndex - 1);
-				} else {
-					setCurrButtonIndex(childCount - 1);
-				}
+				nextIndex = buttonIndex < childCount - 1 ? buttonIndex + 1 : 0;
+			} else {
+				nextIndex = buttonIndex > 0 ? buttonIndex - 1 : childCount - 1;
 			}
+
+			setCurrButtonIndex(nextIndex);
+			// Focus here as well: the focus effect only runs when the index
+			// changes, and a stale index can already equal nextIndex
+			summaryButtonsRef.current[nextIndex]?.focus();
 		},
-		[currButtonIndex, childCount]
+		[childCount]
 	);
 
 	const addSummaryButton = useCallback(
