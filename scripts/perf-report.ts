@@ -74,6 +74,9 @@ interface BenchJson {
 }
 
 const REGRESSION = 0.2;
+// Browser timers have ~0.1 ms resolution; faster benchmarks are mostly noise,
+// so they're reported but never flagged.
+const MIN_FLAGGED_MS = 0.5;
 
 const { values } = parseArgs({
 	options: {
@@ -321,11 +324,11 @@ if (values.bench && existsSync(values.bench)) {
 	out();
 	out(
 		baseline
-			? `Compared with the baseline; over ${REGRESSION * 100} % slower is flagged.`
+			? `Compared with the baseline; over ${REGRESSION * 100} % slower is flagged (benchmarks under ${MIN_FLAGGED_MS} ms aren't).`
 			: 'No baseline given, so no comparison.'
 	);
 	out();
-	const ms = (n: number) => `${n.toFixed(3)} ms`;
+	const ms = (n: number) => `${n.toPrecision(3)} ms`;
 	const rows: (string | number)[][] = [];
 	for (const [name, result] of current) {
 		const before = baseline?.get(name);
@@ -333,7 +336,7 @@ if (values.bench && existsSync(values.bench)) {
 		if (before) {
 			const change = result.mean / before.mean - 1;
 			diff = `${change >= 0 ? '+' : ''}${(change * 100).toFixed(1)} %`;
-			if (change > REGRESSION) {
+			if (change > REGRESSION && before.mean >= MIN_FLAGGED_MS) {
 				diff += ' ⚠️';
 				// GitHub annotation; never fails the job.
 				console.log(
