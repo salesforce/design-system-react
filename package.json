@@ -30,7 +30,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix && prettier --write \"**/*.{js,jsx,ts,tsx}\"",
     "typecheck": "tsc --noEmit && tsc --noEmit -p tsconfig.type-tests.json && tsc --noEmit -p tsconfig.scripts.json",
-    "test:ci": "npm run typecheck && npm run test -- --run --update=none && npm run build && npm run lint",
+    "test:ci": "npm run typecheck && npm run test -- --run --update=none && npm run build && npm run test:perf && npm run lint",
     "start": "npm run dev",
     "storybook": "storybook dev -p 6007",
     "build-storybook": "storybook build",
