@@ -6551,7 +6551,7 @@ exports[`Story HTML snapshots > SimpleDataTable > AdvancedFixedLayout 1`] = `
 exports[`Story HTML snapshots > SimpleDataTable > AdvancedSingleSelectFixedHeaderStory 1`] = `
 "<div class="slds-p-around_medium">
   <div>
-    <div class="slds-table_header-fixed_container" style="border-top:1px solid var(--slds-g-color-border-1);height:100%">
+    <div class="slds-table_header-fixed_container" style="border-top:1px solid var(--slds-g-color-border-1, rgb(221, 219, 218));height:100%">
       <div class="slds-table_header-fixed_scroller" style="height:100%;overflow:auto">
         <table class="slds-table slds-table_fixed-layout slds-table_header-fixed slds-table_resizable-cols slds-table_bordered" id="SimpleDataTableExample-SingleRequiredSelect" role="grid">
           <thead class="">
@@ -7721,7 +7721,7 @@ exports[`Story HTML snapshots > SimpleDataTable > CustomClassesStory 1`] = `
 exports[`Story HTML snapshots > SimpleDataTable > FixedHeaderHorizontalScrolling 1`] = `
 "<div class="slds-p-around_medium">
   <div style="height:200px;width:400px">
-    <div class="slds-table_header-fixed_container" style="border-top:1px solid var(--slds-g-color-border-1);height:100%">
+    <div class="slds-table_header-fixed_container" style="border-top:1px solid var(--slds-g-color-border-1, rgb(221, 219, 218));height:100%">
       <div class="slds-table_header-fixed_scroller" style="height:100%;overflow:auto">
         <table aria-multiselectable="true" class="slds-table slds-table_fixed-layout slds-table_header-fixed slds-table_resizable-cols slds-table_bordered" id="SimpleDataTableExample-FixedHeaders" role="grid" style="min-width:800px">
           <thead class="">
@@ -8185,7 +8185,7 @@ exports[`Story HTML snapshots > SimpleDataTable > FixedHeaderHorizontalScrolling
 exports[`Story HTML snapshots > SimpleDataTable > FixedHeaderStory 1`] = `
 "<div class="slds-p-around_medium">
   <div style="height:200px">
-    <div class="slds-table_header-fixed_container" style="border-top:1px solid var(--slds-g-color-border-1);height:100%">
+    <div class="slds-table_header-fixed_container" style="border-top:1px solid var(--slds-g-color-border-1, rgb(221, 219, 218));height:100%">
       <div class="slds-table_header-fixed_scroller" style="height:100%;overflow:auto">
         <table aria-multiselectable="true" class="slds-table slds-table_fixed-layout slds-table_header-fixed slds-table_resizable-cols slds-table_bordered" id="SimpleDataTableExample-FixedHeaders" role="grid">
           <thead class="">
@@ -8649,7 +8649,7 @@ exports[`Story HTML snapshots > SimpleDataTable > FixedHeaderStory 1`] = `
 exports[`Story HTML snapshots > SimpleDataTable > InfiniteScrollingStory 1`] = `
 "<div class="slds-p-around_medium">
   <div style="height:200px">
-    <div class="slds-table_header-fixed_container" style="border-top:1px solid var(--slds-g-color-border-1);height:100%">
+    <div class="slds-table_header-fixed_container" style="border-top:1px solid var(--slds-g-color-border-1, rgb(221, 219, 218));height:100%">
       <div class="slds-table_header-fixed_scroller" style="height:100%;overflow:auto">
         <table aria-multiselectable="true" class="slds-table slds-table_fixed-layout slds-table_header-fixed slds-table_resizable-cols slds-table_bordered" id="SimpleDataTableExample-FixedHeaders">
           <thead class="">
@@ -9537,7 +9537,7 @@ exports[`Story HTML snapshots > SimpleDataTable > JoinedWithPageHeaderStory 1`] 
         </div>
       </div>
     </div>
-    <div class="slds-table_header-fixed_container" style="border-top:none;height:100%;border-bottom:1px solid var(--slds-g-color-border-1);border-left:1px solid var(--slds-g-color-border-1);border-right:1px solid var(--slds-g-color-border-1);border-radius:0 0 var(--slds-g-radius-border-2) var(--slds-g-radius-border-2)">
+    <div class="slds-table_header-fixed_container" style="border-top:none;height:100%;border-bottom:1px solid var(--slds-g-color-border-1, rgb(221, 219, 218));border-left:1px solid var(--slds-g-color-border-1, rgb(221, 219, 218));border-right:1px solid var(--slds-g-color-border-1, rgb(221, 219, 218));border-radius:0 0 var(--slds-g-radius-border-2, 0.25rem) var(--slds-g-radius-border-2, 0.25rem)">
       <div class="slds-table_header-fixed_scroller" style="height:100%;overflow:auto">
         <table aria-multiselectable="true" class="slds-table slds-table_fixed-layout slds-table_header-fixed slds-table_resizable-cols slds-table_bordered" id="SimpleDataTableExample-JoinedWithPageHeader" role="grid">
           <thead class="">
