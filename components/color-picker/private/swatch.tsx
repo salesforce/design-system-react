@@ -30,7 +30,7 @@ const Swatch: React.FC<SwatchProps> = ({ color, style, label, labels }) => {
 	// Falsey values output a transparent swatch
 	if (!color) {
 		innerStyle.backgroundImage =
-			'linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)';
+			'linear-gradient(-45deg, var(--slds-g-color-surface-1, white) 47%, var(--slds-g-color-error-1, #870500) 0, var(--slds-g-color-error-1, #870500) 53%, var(--slds-g-color-surface-1, white) 0)';
 		if (labels?.swatchTabTransparentSwatch) {
 			assistiveText = labels.swatchTabTransparentSwatch;
 		}
