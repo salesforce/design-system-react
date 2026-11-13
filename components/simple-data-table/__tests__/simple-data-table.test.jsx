@@ -89,6 +89,8 @@ describe('SimpleDataTable', () => {
 	const defaultProps = {
 		id: 'SimpleDataTableExample-default',
 		items,
+		// Row selection is controlled; tests that check it pass their own handler
+		onRowChange: () => {},
 		selectRows: true,
 	};
 

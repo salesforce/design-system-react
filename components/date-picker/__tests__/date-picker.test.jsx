@@ -19,6 +19,8 @@ const makeRtl = (component) => (
 
 const defaultProps = {
 	id: 'sample-datepicker',
+	// `value` is controlled; tests that check changes pass their own `onChange`
+	onChange: () => {},
 	value: new Date(2007, 0, 6),
 };
 
