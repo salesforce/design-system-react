@@ -1,172 +1,2150 @@
 {
-	"tolerance": {
-		"domNodes": 0.1,
-		"ssrBytes": 0.1,
-		"gzipBytes": 0.05
-	},
+	"tolerance": { "domNodes": 0.1, "ssrBytes": 0.1, "gzipBytes": 0.05 },
 	"budgets": {
-		"bundle:components/accordion": {
-			"gzipBytes": 1343
+		"Accordion/Default": { "domNodes": 32, "portalNodes": 0, "ssrBytes": 2573 },
+		"Accordion/MultipleExpanded": {
+			"domNodes": 32,
+			"portalNodes": 0,
+			"ssrBytes": 2567
 		},
-		"bundle:components/alert": {
-			"gzipBytes": 4641
+		"Accordion/WithRichContent": {
+			"domNodes": 30,
+			"portalNodes": 0,
+			"ssrBytes": 2377
 		},
-		"bundle:components/avatar": {
-			"gzipBytes": 2679
+		"Alert/AllVariants": { "domNodes": 26, "portalNodes": 0, "ssrBytes": 1608 },
+		"Alert/Dismissible": {
+			"commits": 2,
+			"domNodes": 11,
+			"portalNodes": 0,
+			"ssrBytes": 702
 		},
-		"bundle:components/badge": {
-			"gzipBytes": 1107
+		"Alert/DismissibleInteractive": {
+			"commits": 2,
+			"domNodes": 11,
+			"portalNodes": 0,
+			"ssrBytes": 757
 		},
-		"bundle:components/breadcrumb": {
-			"gzipBytes": 19419
+		"Alert/ErrorAlert": { "domNodes": 8, "portalNodes": 0, "ssrBytes": 474 },
+		"Alert/Info": { "domNodes": 7, "portalNodes": 0, "ssrBytes": 454 },
+		"Alert/Offline": { "domNodes": 7, "portalNodes": 0, "ssrBytes": 460 },
+		"Alert/Warning": { "domNodes": 7, "portalNodes": 0, "ssrBytes": 465 },
+		"Alert/WithHeadingLink": {
+			"domNodes": 8,
+			"portalNodes": 0,
+			"ssrBytes": 447
 		},
-		"bundle:components/builder-header": {
-			"gzipBytes": 20732
+		"Avatar/AllSizes": { "domNodes": 22, "portalNodes": 0, "ssrBytes": 1160 },
+		"Avatar/BaseWithImage": {
+			"domNodes": 4,
+			"portalNodes": 0,
+			"ssrBytes": 332
 		},
-		"bundle:components/button": {
-			"gzipBytes": 2760
+		"Avatar/EntityIcon": { "domNodes": 7, "portalNodes": 0, "ssrBytes": 352 },
+		"Avatar/EntityInitials": {
+			"domNodes": 4,
+			"portalNodes": 0,
+			"ssrBytes": 200
 		},
-		"bundle:components/button-group": {
-			"gzipBytes": 1379
+		"Avatar/UserCustomInitials": {
+			"domNodes": 4,
+			"portalNodes": 0,
+			"ssrBytes": 191
 		},
-		"bundle:components/button-stateful": {
-			"gzipBytes": 2680
+		"Avatar/UserIcon": { "domNodes": 7, "portalNodes": 0, "ssrBytes": 365 },
+		"Avatar/UserInitials": { "domNodes": 4, "portalNodes": 0, "ssrBytes": 210 },
+		"Avatar/UserInitialsInverse": {
+			"domNodes": 4,
+			"portalNodes": 0,
+			"ssrBytes": 238
 		},
-		"bundle:components/card": {
-			"gzipBytes": 1852
+		"Avatar/UserVsEntity": {
+			"domNodes": 12,
+			"portalNodes": 0,
+			"ssrBytes": 578
 		},
-		"bundle:components/carousel": {
-			"gzipBytes": 5501
+		"Badge/AllColorVariants": {
+			"domNodes": 9,
+			"portalNodes": 0,
+			"ssrBytes": 549
 		},
-		"bundle:components/checkbox": {
-			"gzipBytes": 3506
+		"Badge/Default": { "domNodes": 2, "portalNodes": 0, "ssrBytes": 94 },
+		"Badge/ErrorBadge": { "domNodes": 2, "portalNodes": 0, "ssrBytes": 105 },
+		"Badge/InfoBadge": { "domNodes": 2, "portalNodes": 0, "ssrBytes": 103 },
+		"Badge/InverseBadge": { "domNodes": 2, "portalNodes": 0, "ssrBytes": 115 },
+		"Badge/LightBadge": { "domNodes": 2, "portalNodes": 0, "ssrBytes": 114 },
+		"Badge/SuccessBadge": { "domNodes": 2, "portalNodes": 0, "ssrBytes": 109 },
+		"Badge/WarningBadge": { "domNodes": 2, "portalNodes": 0, "ssrBytes": 109 },
+		"Badge/WithIconLeft": { "domNodes": 6, "portalNodes": 0, "ssrBytes": 327 },
+		"Badge/WithIconRight": { "domNodes": 6, "portalNodes": 0, "ssrBytes": 328 },
+		"Breadcrumb/CustomAssistiveText": {
+			"domNodes": 7,
+			"portalNodes": 0,
+			"ssrBytes": 285
 		},
-		"bundle:components/color-picker": {
-			"gzipBytes": 34053
+		"Breadcrumb/CustomStyles": {
+			"domNodes": 9,
+			"portalNodes": 0,
+			"ssrBytes": 392
 		},
-		"bundle:components/combobox": {
-			"gzipBytes": 35310
+		"Breadcrumb/MultipleItems": {
+			"domNodes": 11,
+			"portalNodes": 0,
+			"ssrBytes": 397
 		},
-		"bundle:components/date-picker": {
-			"gzipBytes": 41267
+		"Breadcrumb/OneItem": { "domNodes": 5, "portalNodes": 0, "ssrBytes": 216 },
+		"Breadcrumb/TwoItems": { "domNodes": 7, "portalNodes": 0, "ssrBytes": 283 },
+		"BuilderHeader/AfterSuccessfulSave": {
+			"commits": 2,
+			"domNodes": 93,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 6048
 		},
-		"bundle:components/docked-composer": {
-			"gzipBytes": 3489
+		"BuilderHeader/CustomIcon": {
+			"domNodes": 34,
+			"portalNodes": 0,
+			"ssrBytes": 2105
 		},
-		"bundle:components/dynamic-icon": {
-			"gzipBytes": 1770
+		"BuilderHeader/CustomLabels": {
+			"domNodes": 34,
+			"portalNodes": 0,
+			"ssrBytes": 2081
 		},
-		"bundle:components/expandable-section": {
-			"gzipBytes": 3228
+		"BuilderHeader/Default": {
+			"domNodes": 34,
+			"portalNodes": 0,
+			"ssrBytes": 2061
 		},
-		"bundle:components/files": {
-			"gzipBytes": 1064
+		"BuilderHeader/FailedSave": {
+			"commits": 2,
+			"domNodes": 97,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 6338
 		},
-		"bundle:components/filter": {
-			"gzipBytes": 16648
+		"BuilderHeader/SuccessfulSave": {
+			"commits": 2,
+			"domNodes": 94,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 6141
 		},
-		"bundle:components/grid": {
-			"gzipBytes": 974
+		"BuilderHeader/WithToolbar": {
+			"commits": 2,
+			"domNodes": 90,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 5840
 		},
-		"bundle:components/icon": {
-			"gzipBytes": 2287
+		"BuilderHeader/WithUtilities": {
+			"commits": 2,
+			"domNodes": 61,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 4215
 		},
-		"bundle:components/icon-settings": {
-			"gzipBytes": 352
+		"Button/Base": { "domNodes": 2, "portalNodes": 0, "ssrBytes": 95 },
+		"Button/Brand": { "domNodes": 2, "portalNodes": 0, "ssrBytes": 114 },
+		"Button/Destructive": { "domNodes": 2, "portalNodes": 0, "ssrBytes": 126 },
+		"Button/Disabled": { "domNodes": 2, "portalNodes": 0, "ssrBytes": 131 },
+		"Button/DocSiteBaseNeutral": {
+			"domNodes": 8,
+			"portalNodes": 0,
+			"ssrBytes": 539
 		},
-		"bundle:components/input": {
-			"gzipBytes": 17660
+		"Button/DocSiteBrandDisabled": {
+			"domNodes": 8,
+			"portalNodes": 0,
+			"ssrBytes": 631
 		},
-		"bundle:components/media-object": {
-			"gzipBytes": 1025
+		"Button/DocSiteButtonIcons": {
+			"domNodes": 35,
+			"portalNodes": 0,
+			"ssrBytes": 2565
 		},
-		"bundle:components/menu-dropdown": {
-			"gzipBytes": 19239
+		"Button/DropdownButton": {
+			"domNodes": 7,
+			"portalNodes": 0,
+			"ssrBytes": 465
 		},
-		"bundle:components/modal": {
-			"gzipBytes": 11650
+		"Button/IconLarge": { "domNodes": 5, "portalNodes": 0, "ssrBytes": 316 },
+		"Button/IconOnly": { "domNodes": 5, "portalNodes": 0, "ssrBytes": 302 },
+		"Button/IconXXSmall": { "domNodes": 5, "portalNodes": 0, "ssrBytes": 333 },
+		"Button/InverseButton": {
+			"domNodes": 3,
+			"portalNodes": 0,
+			"ssrBytes": 268
 		},
-		"bundle:components/page-header": {
-			"gzipBytes": 21013
+		"Button/InverseIconButton": {
+			"domNodes": 6,
+			"portalNodes": 0,
+			"ssrBytes": 450
 		},
-		"bundle:components/panel": {
-			"gzipBytes": 987
+		"Button/InverseIconWithHint": {
+			"domNodes": 6,
+			"portalNodes": 0,
+			"ssrBytes": 504
 		},
-		"bundle:components/pill": {
-			"gzipBytes": 2640
+		"Button/LinkButton": { "domNodes": 2, "portalNodes": 0, "ssrBytes": 122 },
+		"Button/Neutral": { "domNodes": 2, "portalNodes": 0, "ssrBytes": 118 },
+		"Button/NeutralWithLeftIcon": {
+			"domNodes": 4,
+			"portalNodes": 0,
+			"ssrBytes": 270
 		},
-		"bundle:components/pill-container": {
-			"gzipBytes": 6311
+		"Button/NeutralWithRightIcon": {
+			"domNodes": 4,
+			"portalNodes": 0,
+			"ssrBytes": 271
 		},
-		"bundle:components/popover": {
-			"gzipBytes": 15816
+		"Button/OutlineBrandButton": {
+			"domNodes": 3,
+			"portalNodes": 0,
+			"ssrBytes": 280
 		},
-		"bundle:components/portal-settings": {
-			"gzipBytes": 293
+		"Button/Success": { "domNodes": 2, "portalNodes": 0, "ssrBytes": 118 },
+		"Button/WithAriaLabel": {
+			"domNodes": 2,
+			"portalNodes": 0,
+			"ssrBytes": 140
 		},
-		"bundle:components/progress-bar": {
-			"gzipBytes": 1327
+		"Button/WithCustomId": { "domNodes": 2, "portalNodes": 0, "ssrBytes": 142 },
+		"Button/WithDataAttribute": {
+			"domNodes": 2,
+			"portalNodes": 0,
+			"ssrBytes": 150
 		},
-		"bundle:components/progress-indicator": {
-			"gzipBytes": 22260
+		"ButtonGroup/Default": { "domNodes": 5, "portalNodes": 0, "ssrBytes": 329 },
+		"ButtonGroup/IconGroup": {
+			"domNodes": 14,
+			"portalNodes": 0,
+			"ssrBytes": 864
 		},
-		"bundle:components/progress-ring": {
-			"gzipBytes": 2905
+		"ButtonGroup/ListVariant": {
+			"domNodes": 8,
+			"portalNodes": 0,
+			"ssrBytes": 346
 		},
-		"bundle:components/radio": {
-			"gzipBytes": 3564
+		"ButtonGroup/MixedButtons": {
+			"domNodes": 8,
+			"portalNodes": 0,
+			"ssrBytes": 504
 		},
-		"bundle:components/radio-button-group": {
-			"gzipBytes": 1483
+		"ButtonGroup/SingleButton": {
+			"domNodes": 3,
+			"portalNodes": 0,
+			"ssrBytes": 185
 		},
-		"bundle:components/radio-group": {
-			"gzipBytes": 1430
+		"ButtonGroup/WithLabel": {
+			"domNodes": 8,
+			"portalNodes": 0,
+			"ssrBytes": 522
 		},
-		"bundle:components/scoped-notification": {
-			"gzipBytes": 2514
+		"ButtonStateful/Controlled": {
+			"domNodes": 13,
+			"portalNodes": 0,
+			"ssrBytes": 976
 		},
-		"bundle:components/setup-assistant": {
-			"gzipBytes": 6173
+		"ButtonStateful/CustomStates": {
+			"domNodes": 11,
+			"portalNodes": 0,
+			"ssrBytes": 913
 		},
-		"bundle:components/simple-data-table": {
-			"gzipBytes": 29384
+		"ButtonStateful/Default": {
+			"domNodes": 11,
+			"portalNodes": 0,
+			"ssrBytes": 920
 		},
-		"bundle:components/slider": {
-			"gzipBytes": 1608
+		"ButtonStateful/Disabled": {
+			"domNodes": 11,
+			"portalNodes": 0,
+			"ssrBytes": 932
 		},
-		"bundle:components/spinner": {
-			"gzipBytes": 1269
+		"ButtonStateful/IconFilledVariant": {
+			"domNodes": 5,
+			"portalNodes": 0,
+			"ssrBytes": 376
 		},
-		"bundle:components/split-view": {
-			"gzipBytes": 3400
+		"ButtonStateful/IconVariant": {
+			"domNodes": 5,
+			"portalNodes": 0,
+			"ssrBytes": 369
 		},
-		"bundle:components/tabs": {
-			"gzipBytes": 4149
+		"ButtonStateful/SuccessVariant": {
+			"domNodes": 11,
+			"portalNodes": 0,
+			"ssrBytes": 920
 		},
-		"bundle:components/textarea": {
-			"gzipBytes": 1527
+		"ButtonStateful/TextVariant": {
+			"domNodes": 11,
+			"portalNodes": 0,
+			"ssrBytes": 900
 		},
-		"bundle:components/toast": {
-			"gzipBytes": 4806
+		"Card/CustomHeader": {
+			"domNodes": 31,
+			"portalNodes": 0,
+			"ssrBytes": 1675,
+			"strictModeErrors": 1
 		},
-		"bundle:components/tooltip": {
-			"gzipBytes": 15042
+		"Card/CustomHeading": {
+			"domNodes": 32,
+			"portalNodes": 0,
+			"ssrBytes": 1777
 		},
-		"bundle:components/tree": {
-			"gzipBytes": 11874
+		"Card/EmptyCard": { "domNodes": 16, "portalNodes": 0, "ssrBytes": 999 },
+		"Card/InteractiveCard": {
+			"domNodes": 40,
+			"portalNodes": 0,
+			"ssrBytes": 2519
 		},
-		"bundle:components/trial-bar": {
-			"gzipBytes": 1163
+		"Card/SetHeightCard": {
+			"domNodes": 30,
+			"portalNodes": 0,
+			"ssrBytes": 1823
 		},
-		"bundle:components/vertical-navigation": {
-			"gzipBytes": 1430
+		"Card/SimpleCard": { "domNodes": 15, "portalNodes": 0, "ssrBytes": 787 },
+		"Card/WithItems": { "domNodes": 33, "portalNodes": 0, "ssrBytes": 1827 },
+		"Card/WithoutHeader": {
+			"domNodes": 23,
+			"portalNodes": 0,
+			"ssrBytes": 1171
 		},
-		"bundle:components/visual-picker": {
-			"gzipBytes": 1209
+		"Carousel/Controlled": {
+			"commits": 3,
+			"domNodes": 70,
+			"idleGlobalListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 6930
 		},
-		"bundle:components/welcome-mat": {
-			"gzipBytes": 12729
-		}
+		"Carousel/Default": {
+			"commits": 3,
+			"domNodes": 51,
+			"idleGlobalListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 5498
+		},
+		"Carousel/InfiniteLoop": {
+			"commits": 3,
+			"domNodes": 61,
+			"idleGlobalListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 6411
+		},
+		"Carousel/ThreeItemsPerPanel": {
+			"commits": 3,
+			"domNodes": 125,
+			"idleGlobalListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 13658
+		},
+		"Carousel/WithAutoplay": {
+			"commits": 3,
+			"domNodes": 56,
+			"idleGlobalListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 5873
+		},
+		"Carousel/WithAutoplayAndNavigation": {
+			"commits": 3,
+			"domNodes": 66,
+			"idleGlobalListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 6798
+		},
+		"Carousel/WithNavigation": {
+			"commits": 3,
+			"domNodes": 61,
+			"idleGlobalListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 6423
+		},
+		"Checkbox/Base": { "domNodes": 8, "portalNodes": 0, "ssrBytes": 386 },
+		"Checkbox/ButtonGroup": {
+			"domNodes": 25,
+			"portalNodes": 0,
+			"ssrBytes": 1433
+		},
+		"Checkbox/Checked": { "domNodes": 8, "portalNodes": 0, "ssrBytes": 408 },
+		"Checkbox/Disabled": { "domNodes": 8, "portalNodes": 0, "ssrBytes": 413 },
+		"Checkbox/DisabledChecked": {
+			"domNodes": 8,
+			"portalNodes": 0,
+			"ssrBytes": 453
+		},
+		"Checkbox/DocSiteDefault": {
+			"domNodes": 39,
+			"portalNodes": 0,
+			"ssrBytes": 1925
+		},
+		"Checkbox/DocSiteError": {
+			"domNodes": 40,
+			"portalNodes": 0,
+			"ssrBytes": 2148
+		},
+		"Checkbox/DocSiteToggle": {
+			"domNodes": 69,
+			"portalNodes": 0,
+			"ssrBytes": 4799
+		},
+		"Checkbox/Indeterminate": {
+			"domNodes": 15,
+			"portalNodes": 0,
+			"ssrBytes": 849
+		},
+		"Checkbox/Required": { "domNodes": 9, "portalNodes": 0, "ssrBytes": 478 },
+		"Checkbox/Toggle": { "domNodes": 9, "portalNodes": 0, "ssrBytes": 569 },
+		"Checkbox/ToggleChecked": {
+			"domNodes": 9,
+			"portalNodes": 0,
+			"ssrBytes": 618
+		},
+		"Checkbox/ToggleCustomLabels": {
+			"domNodes": 9,
+			"portalNodes": 0,
+			"ssrBytes": 601
+		},
+		"Checkbox/ToggleDisabled": {
+			"domNodes": 9,
+			"portalNodes": 0,
+			"ssrBytes": 628
+		},
+		"Checkbox/ToggleRequired": {
+			"domNodes": 10,
+			"portalNodes": 0,
+			"ssrBytes": 693
+		},
+		"Checkbox/ToggleWithError": {
+			"domNodes": 10,
+			"portalNodes": 0,
+			"ssrBytes": 759
+		},
+		"Checkbox/WithAssistiveText": {
+			"domNodes": 9,
+			"portalNodes": 0,
+			"ssrBytes": 507
+		},
+		"Checkbox/WithError": { "domNodes": 10, "portalNodes": 0, "ssrBytes": 628 },
+		"ColorPicker/CustomOnly": {
+			"commits": 2,
+			"domNodes": 15,
+			"portalNodes": 0,
+			"ssrBytes": 1195
+		},
+		"ColorPicker/CustomTabSelected": {
+			"commits": 2,
+			"domNodes": 15,
+			"portalNodes": 0,
+			"ssrBytes": 1223
+		},
+		"ColorPicker/CustomValidator": {
+			"commits": 2,
+			"domNodes": 15,
+			"portalNodes": 0,
+			"ssrBytes": 1215
+		},
+		"ColorPicker/DefaultStory": {
+			"commits": 2,
+			"domNodes": 15,
+			"portalNodes": 0,
+			"ssrBytes": 1195
+		},
+		"ColorPicker/Disabled": {
+			"commits": 2,
+			"domNodes": 15,
+			"portalNodes": 0,
+			"ssrBytes": 1171
+		},
+		"ColorPicker/DocSiteDefault": {
+			"commits": 2,
+			"domNodes": 15,
+			"portalNodes": 0,
+			"ssrBytes": 1179
+		},
+		"ColorPicker/HiddenInput": {
+			"commits": 2,
+			"domNodes": 12,
+			"portalNodes": 0,
+			"ssrBytes": 903
+		},
+		"ColorPicker/MenuOpen": {
+			"commits": 2,
+			"domNodes": 188,
+			"idleGlobalListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 15010
+		},
+		"ColorPicker/NoLabel": {
+			"commits": 2,
+			"domNodes": 15,
+			"portalNodes": 0,
+			"ssrBytes": 1223
+		},
+		"ColorPicker/OuterInputErrorState": {
+			"commits": 2,
+			"domNodes": 16,
+			"portalNodes": 0,
+			"ssrBytes": 1422
+		},
+		"ColorPicker/PredefinedColors": {
+			"commits": 2,
+			"domNodes": 15,
+			"portalNodes": 0,
+			"ssrBytes": 1127
+		},
+		"ColorPicker/PredefinedColorsOnly": {
+			"commits": 2,
+			"domNodes": 15,
+			"portalNodes": 0,
+			"ssrBytes": 1147
+		},
+		"ColorPicker/RightToLeft": {
+			"commits": 2,
+			"domNodes": 16,
+			"portalNodes": 0,
+			"ssrBytes": 1220
+		},
+		"ColorPicker/SwatchOnly": {
+			"commits": 2,
+			"domNodes": 15,
+			"portalNodes": 0,
+			"ssrBytes": 1195
+		},
+		"ColorPicker/WorkingColorErrorState": {
+			"commits": 2,
+			"domNodes": 15,
+			"portalNodes": 0,
+			"ssrBytes": 1251
+		},
+		"Combobox/Base": {
+			"commits": 3,
+			"domNodes": 37,
+			"idleGlobalListeners": 2,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 2739
+		},
+		"Combobox/BaseWithMenuSubheader": {
+			"commits": 3,
+			"domNodes": 11,
+			"idleGlobalListeners": 2,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 890
+		},
+		"Combobox/ControlledOpenState": {
+			"commits": 3,
+			"domNodes": 11,
+			"idleGlobalListeners": 2,
+			"nonPassiveScrollListeners": 2,
+			"portalNodes": 0,
+			"ssrBytes": 885
+		},
+		"Combobox/InlineMultiple": {
+			"commits": 3,
+			"domNodes": 11,
+			"idleGlobalListeners": 2,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 882
+		},
+		"Combobox/InlineMultipleLoading": {
+			"commits": 3,
+			"domNodes": 11,
+			"idleGlobalListeners": 2,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 898
+		},
+		"Combobox/InlineSingle": {
+			"commits": 3,
+			"domNodes": 11,
+			"idleGlobalListeners": 2,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 868
+		},
+		"Combobox/PopoverVariant": {
+			"commits": 3,
+			"domNodes": 13,
+			"idleGlobalListeners": 2,
+			"nonPassiveScrollListeners": 1,
+			"pendingTimers": 1,
+			"portalNodes": 0,
+			"ssrBytes": 993
+		},
+		"Combobox/PredefinedOptionsOnly": {
+			"commits": 3,
+			"domNodes": 11,
+			"idleGlobalListeners": 2,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 881
+		},
+		"Combobox/ReadonlyDisabled": {
+			"commits": 3,
+			"domNodes": 12,
+			"idleGlobalListeners": 2,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 982
+		},
+		"Combobox/ReadonlyMultiple": {
+			"commits": 3,
+			"domNodes": 12,
+			"idleGlobalListeners": 2,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 961
+		},
+		"Combobox/ReadonlyMultipleWithDeselect": {
+			"commits": 3,
+			"domNodes": 28,
+			"idleGlobalListeners": 2,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 2297
+		},
+		"Combobox/ReadonlySingle": {
+			"commits": 3,
+			"domNodes": 12,
+			"idleGlobalListeners": 2,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 956
+		},
+		"Combobox/ReadonlySingleWithSelection": {
+			"commits": 3,
+			"domNodes": 12,
+			"idleGlobalListeners": 2,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 984
+		},
+		"Combobox/ReadonlyWithCustomMenuItem": {
+			"commits": 3,
+			"domNodes": 12,
+			"idleGlobalListeners": 2,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 967
+		},
+		"Combobox/ReadonlyWithDeselect": {
+			"commits": 3,
+			"domNodes": 12,
+			"idleGlobalListeners": 2,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 970
+		},
+		"Combobox/ReadonlyWithDisabledOption": {
+			"commits": 3,
+			"domNodes": 12,
+			"idleGlobalListeners": 2,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 974
+		},
+		"Combobox/RightToLeft": {
+			"commits": 3,
+			"domNodes": 13,
+			"idleGlobalListeners": 2,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 988
+		},
+		"Combobox/SearchAndAddEntities": {
+			"commits": 3,
+			"domNodes": 11,
+			"idleGlobalListeners": 2,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 881
+		},
+		"Combobox/WithCustomInputComponent": {
+			"commits": 3,
+			"domNodes": 11,
+			"idleGlobalListeners": 2,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 884
+		},
+		"Combobox/WithCustomMenuItem": {
+			"commits": 3,
+			"domNodes": 11,
+			"idleGlobalListeners": 2,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 884
+		},
+		"Combobox/WithCustomMenuItemDisabledOption": {
+			"commits": 3,
+			"domNodes": 11,
+			"idleGlobalListeners": 2,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 902
+		},
+		"Combobox/WithDisabledOptionTooltip": {
+			"commits": 3,
+			"domNodes": 11,
+			"idleGlobalListeners": 2,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 898
+		},
+		"Combobox/WithDisabledOptions": {
+			"commits": 3,
+			"domNodes": 11,
+			"idleGlobalListeners": 2,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 884
+		},
+		"Combobox/WithErrorState": {
+			"commits": 3,
+			"domNodes": 14,
+			"idleGlobalListeners": 2,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 1097
+		},
+		"Combobox/WithInheritedMenuWidth": {
+			"commits": 3,
+			"domNodes": 11,
+			"idleGlobalListeners": 2,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 888
+		},
+		"Combobox/WithInlineHelpTooltip": {
+			"commits": 3,
+			"domNodes": 17,
+			"idleGlobalListeners": 2,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 1284
+		},
+		"Combobox/WithLoadingSpinner": {
+			"commits": 3,
+			"domNodes": 17,
+			"idleGlobalListeners": 2,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 1329
+		},
+		"Combobox/WithMenuSeparator": {
+			"commits": 3,
+			"domNodes": 11,
+			"idleGlobalListeners": 2,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 890
+		},
+		"Combobox/WithMenuSpinner": {
+			"commits": 3,
+			"domNodes": 11,
+			"idleGlobalListeners": 2,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 875
+		},
+		"Combobox/WithScrollableMenu": {
+			"commits": 3,
+			"domNodes": 11,
+			"idleGlobalListeners": 2,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 879
+		},
+		"DatePicker/CustomYearRange": {
+			"commits": 3,
+			"domNodes": 11,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 774
+		},
+		"DatePicker/Default": {
+			"commits": 3,
+			"domNodes": 11,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 774
+		},
+		"DatePicker/Disabled": {
+			"commits": 3,
+			"domNodes": 11,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 797
+		},
+		"DatePicker/DisabledDates": {
+			"commits": 3,
+			"domNodes": 11,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 794
+		},
+		"DatePicker/Error": {
+			"commits": 3,
+			"domNodes": 11,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 789
+		},
+		"DatePicker/ISOWeekdays": {
+			"commits": 3,
+			"domNodes": 11,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 774
+		},
+		"DatePicker/InlineMenu": {
+			"commits": 3,
+			"domNodes": 11,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 774
+		},
+		"DatePicker/Internationalized": {
+			"commits": 3,
+			"domNodes": 11,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 787
+		},
+		"DatePicker/PreselectedDate": {
+			"commits": 3,
+			"domNodes": 11,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 798
+		},
+		"DatePicker/RightAligned": {
+			"commits": 3,
+			"domNodes": 12,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 831
+		},
+		"DatePicker/RightToLeft": {
+			"commits": 3,
+			"domNodes": 12,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 799
+		},
+		"DockedComposer/Closed": {
+			"domNodes": 16,
+			"portalNodes": 0,
+			"ssrBytes": 1250
+		},
+		"DockedComposer/Interactive": {
+			"domNodes": 30,
+			"portalNodes": 0,
+			"ssrBytes": 2148
+		},
+		"DockedComposer/Open": {
+			"domNodes": 19,
+			"portalNodes": 0,
+			"ssrBytes": 1433
+		},
+		"DynamicIcon/Ellie": { "domNodes": 44, "portalNodes": 0, "ssrBytes": 1769 },
+		"DynamicIcon/Equalizer": {
+			"domNodes": 6,
+			"portalNodes": 0,
+			"ssrBytes": 268
+		},
+		"DynamicIcon/Paused": { "domNodes": 6, "portalNodes": 0, "ssrBytes": 297 },
+		"DynamicIcon/ScoreNegative": {
+			"domNodes": 7,
+			"portalNodes": 0,
+			"ssrBytes": 455
+		},
+		"DynamicIcon/ScorePositive": {
+			"domNodes": 7,
+			"portalNodes": 0,
+			"ssrBytes": 455
+		},
+		"DynamicIcon/Static": { "domNodes": 6, "portalNodes": 0, "ssrBytes": 265 },
+		"DynamicIcon/Strength": {
+			"domNodes": 26,
+			"portalNodes": 0,
+			"ssrBytes": 1392
+		},
+		"DynamicIcon/Trend": { "domNodes": 23, "portalNodes": 0, "ssrBytes": 1571 },
+		"DynamicIcon/Typing": { "domNodes": 6, "portalNodes": 0, "ssrBytes": 302 },
+		"DynamicIcon/Waffle": { "domNodes": 13, "portalNodes": 0, "ssrBytes": 518 },
+		"ExpandableSection/Controlled": {
+			"domNodes": 12,
+			"portalNodes": 0,
+			"ssrBytes": 876
+		},
+		"ExpandableSection/Default": {
+			"domNodes": 11,
+			"portalNodes": 0,
+			"ssrBytes": 869
+		},
+		"ExpandableSection/InitiallyCollapsed": {
+			"domNodes": 10,
+			"portalNodes": 0,
+			"ssrBytes": 762
+		},
+		"ExpandableSection/MultipleSections": {
+			"domNodes": 29,
+			"portalNodes": 0,
+			"ssrBytes": 2110
+		},
+		"ExpandableSection/NonCollapsible": {
+			"domNodes": 6,
+			"portalNodes": 0,
+			"ssrBytes": 440
+		},
+		"ExpandableSection/WithRichContent": {
+			"domNodes": 18,
+			"portalNodes": 0,
+			"ssrBytes": 1100
+		},
+		"Files/Crop16By9": { "domNodes": 28, "portalNodes": 0, "ssrBytes": 1731 },
+		"Files/Crop1By1": { "domNodes": 41, "portalNodes": 0, "ssrBytes": 2492 },
+		"Files/Default": { "domNodes": 41, "portalNodes": 0, "ssrBytes": 2549 },
+		"Filter/AlignRight": {
+			"commits": 2,
+			"domNodes": 13,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 985
+		},
+		"Filter/AssistiveText": {
+			"commits": 2,
+			"domNodes": 13,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 951
+		},
+		"Filter/Base": {
+			"commits": 2,
+			"domNodes": 13,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 984
+		},
+		"Filter/Error": {
+			"commits": 2,
+			"domNodes": 15,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 1122
+		},
+		"Filter/Locked": { "domNodes": 7, "portalNodes": 0, "ssrBytes": 446 },
+		"Filter/New": {
+			"commits": 2,
+			"domNodes": 13,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 996
+		},
+		"Filter/Permanent": {
+			"commits": 2,
+			"domNodes": 9,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 602
+		},
+		"Icon/BaseImported": { "domNodes": 7, "portalNodes": 0, "ssrBytes": 681 },
+		"Icon/BaseStandardCustomStyles": {
+			"domNodes": 5,
+			"portalNodes": 0,
+			"ssrBytes": 348
+		},
+		"Icon/CategoryAction": { "domNodes": 5, "portalNodes": 0, "ssrBytes": 335 },
+		"Icon/CategoryCustom": { "domNodes": 5, "portalNodes": 0, "ssrBytes": 324 },
+		"Icon/CategoryDoctype": {
+			"domNodes": 5,
+			"portalNodes": 0,
+			"ssrBytes": 256
+		},
+		"Icon/CategoryExternalPath": {
+			"domNodes": 5,
+			"portalNodes": 0,
+			"ssrBytes": 281
+		},
+		"Icon/CategoryStandard": {
+			"domNodes": 5,
+			"portalNodes": 0,
+			"ssrBytes": 326
+		},
+		"Icon/CategoryStandardRightToLeftRTL": {
+			"domNodes": 6,
+			"portalNodes": 0,
+			"ssrBytes": 351
+		},
+		"Icon/CategoryUtility": {
+			"domNodes": 5,
+			"portalNodes": 0,
+			"ssrBytes": 316
+		},
+		"Icon/ColorBase1": { "domNodes": 6, "portalNodes": 0, "ssrBytes": 336 },
+		"Icon/ColorDefault1": { "domNodes": 5, "portalNodes": 0, "ssrBytes": 284 },
+		"Icon/ColorError1": { "domNodes": 5, "portalNodes": 0, "ssrBytes": 286 },
+		"Icon/ColorLight1": { "domNodes": 5, "portalNodes": 0, "ssrBytes": 286 },
+		"Icon/ColorSuccess1": { "domNodes": 5, "portalNodes": 0, "ssrBytes": 288 },
+		"Icon/ColorWarning1": { "domNodes": 5, "portalNodes": 0, "ssrBytes": 288 },
+		"Icon/DocsSiteCategories": {
+			"domNodes": 27,
+			"portalNodes": 0,
+			"ssrBytes": 1530
+		},
+		"Icon/DocsSiteColors": {
+			"domNodes": 32,
+			"portalNodes": 0,
+			"ssrBytes": 1557
+		},
+		"Icon/DocsSiteSizes": {
+			"domNodes": 22,
+			"portalNodes": 0,
+			"ssrBytes": 1197
+		},
+		"Icon/ProductThemes1": {
+			"domNodes": 42,
+			"portalNodes": 0,
+			"ssrBytes": 2595
+		},
+		"Icon/SizeLarge": { "domNodes": 5, "portalNodes": 0, "ssrBytes": 298 },
+		"Icon/SizeMediumDefault": {
+			"domNodes": 5,
+			"portalNodes": 0,
+			"ssrBytes": 282
+		},
+		"Icon/SizeSmall": { "domNodes": 5, "portalNodes": 0, "ssrBytes": 298 },
+		"Icon/SizeXSmall": { "domNodes": 5, "portalNodes": 0, "ssrBytes": 273 },
+		"IconSettings/BaseIconPath": {
+			"domNodes": 27,
+			"portalNodes": 0,
+			"ssrBytes": 1530
+		},
+		"IconSettings/BaseOnRequestIconPathNoTest": {
+			"domNodes": 3470,
+			"portalNodes": 0,
+			"ssrBytes": 1322
+		},
+		"IconSettings/BaseSpriteImportsNoTest": {
+			"domNodes": 27,
+			"portalNodes": 0,
+			"ssrBytes": 1740
+		},
+		"Input/AssistiveTextLabel": {
+			"domNodes": 5,
+			"portalNodes": 0,
+			"ssrBytes": 354
+		},
+		"Input/Base": { "domNodes": 5, "portalNodes": 0, "ssrBytes": 282 },
+		"Input/Controlled": { "domNodes": 7, "portalNodes": 0, "ssrBytes": 398 },
+		"Input/Counter": { "domNodes": 13, "portalNodes": 0, "ssrBytes": 916 },
+		"Input/CounterDecimal": {
+			"domNodes": 13,
+			"portalNodes": 0,
+			"ssrBytes": 933
+		},
+		"Input/CounterStatic": { "domNodes": 5, "portalNodes": 0, "ssrBytes": 256 },
+		"Input/CustomStyling": { "domNodes": 5, "portalNodes": 0, "ssrBytes": 400 },
+		"Input/Disabled": { "domNodes": 5, "portalNodes": 0, "ssrBytes": 300 },
+		"Input/ErrorState": { "domNodes": 7, "portalNodes": 0, "ssrBytes": 474 },
+		"Input/FieldLevelHelp": {
+			"commits": 2,
+			"domNodes": 11,
+			"portalNodes": 0,
+			"ssrBytes": 701
+		},
+		"Input/FixedText": { "domNodes": 6, "portalNodes": 0, "ssrBytes": 353 },
+		"Input/InlineHelp": { "domNodes": 6, "portalNodes": 0, "ssrBytes": 416 },
+		"Input/InputTypes": { "domNodes": 42, "portalNodes": 0, "ssrBytes": 2463 },
+		"Input/ReadOnly": { "domNodes": 5, "portalNodes": 0, "ssrBytes": 308 },
+		"Input/Static": { "domNodes": 5, "portalNodes": 0, "ssrBytes": 317 },
+		"Input/WithClickableIcons": {
+			"domNodes": 13,
+			"portalNodes": 0,
+			"ssrBytes": 905
+		},
+		"Input/WithLeftIcon": { "domNodes": 7, "portalNodes": 0, "ssrBytes": 526 },
+		"Input/WithRightIcon": { "domNodes": 7, "portalNodes": 0, "ssrBytes": 542 },
+		"Input/WithSpinner": { "domNodes": 13, "portalNodes": 0, "ssrBytes": 995 },
+		"MediaObject/Base": { "domNodes": 7, "portalNodes": 0, "ssrBytes": 665 },
+		"MediaObject/DocsSiteDefault": {
+			"domNodes": 7,
+			"portalNodes": 0,
+			"ssrBytes": 511
+		},
+		"MediaObject/DocsSiteVerticallyCentered": {
+			"domNodes": 7,
+			"portalNodes": 0,
+			"ssrBytes": 699
+		},
+		"MediaObject/FigureVerticalCenter": {
+			"domNodes": 7,
+			"portalNodes": 0,
+			"ssrBytes": 683
+		},
+		"MenuDropdown/Base": {
+			"commits": 2,
+			"domNodes": 3,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 319
+		},
+		"MenuDropdown/CenterAligned": {
+			"commits": 2,
+			"domNodes": 3,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 323
+		},
+		"MenuDropdown/Controlled": {
+			"commits": 2,
+			"domNodes": 8,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 623
+		},
+		"MenuDropdown/CustomTrigger": {
+			"commits": 2,
+			"domNodes": 6,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 517
+		},
+		"MenuDropdown/HoverTrigger": {
+			"commits": 2,
+			"domNodes": 8,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 643
+		},
+		"MenuDropdown/IconButton": {
+			"commits": 2,
+			"domNodes": 6,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 507
+		},
+		"MenuDropdown/IconSizes": {
+			"commits": 2,
+			"domNodes": 32,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 2677
+		},
+		"MenuDropdown/Inverse": {
+			"commits": 2,
+			"domNodes": 4,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 400
+		},
+		"MenuDropdown/InverseIconVariants": {
+			"commits": 2,
+			"domNodes": 15,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 1242
+		},
+		"MenuDropdown/MultipleSelection": {
+			"commits": 2,
+			"domNodes": 6,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 501
+		},
+		"MenuDropdown/RenderInline": {
+			"commits": 2,
+			"domNodes": 3,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 324
+		},
+		"MenuDropdown/RightToLeft": {
+			"commits": 2,
+			"domNodes": 6,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 488
+		},
+		"MenuDropdown/WithCheckmark": {
+			"commits": 2,
+			"domNodes": 6,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 503
+		},
+		"MenuDropdown/WithIcon": {
+			"commits": 2,
+			"domNodes": 5,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 471
+		},
+		"MenuDropdown/WithNubbins": {
+			"commits": 2,
+			"domNodes": 32,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 2937
+		},
+		"Modal/AlwaysOpen": {
+			"commits": 3,
+			"consoleErrors": 2,
+			"domNodes": 1,
+			"idleGlobalListeners": 2,
+			"leakedListeners": 1,
+			"portalNodes": 33,
+			"strictModeErrors": 2
+		},
+		"Modal/CustomHeader": { "commits": 2, "domNodes": 2, "portalNodes": 1 },
+		"Modal/Default": { "commits": 2, "domNodes": 2, "portalNodes": 1 },
+		"Modal/DirectionalFooter": {
+			"commits": 2,
+			"domNodes": 2,
+			"portalNodes": 1
+		},
+		"Modal/Large": { "commits": 2, "domNodes": 2, "portalNodes": 1 },
+		"Modal/Medium": { "commits": 2, "domNodes": 2, "portalNodes": 1 },
+		"Modal/NoHeader": { "commits": 2, "domNodes": 2, "portalNodes": 1 },
+		"Modal/NotDismissible": { "commits": 2, "domNodes": 2, "portalNodes": 1 },
+		"Modal/PromptError": { "commits": 2, "domNodes": 2, "portalNodes": 1 },
+		"Modal/PromptInfo": { "commits": 2, "domNodes": 2, "portalNodes": 1 },
+		"Modal/PromptSuccess": { "commits": 2, "domNodes": 2, "portalNodes": 1 },
+		"Modal/PromptWarning": { "commits": 2, "domNodes": 2, "portalNodes": 1 },
+		"Modal/Small": { "commits": 2, "domNodes": 2, "portalNodes": 1 },
+		"Modal/TopAligned": { "commits": 2, "domNodes": 2, "portalNodes": 1 },
+		"Modal/WithFooter": { "commits": 2, "domNodes": 2, "portalNodes": 1 },
+		"PageHeader/Base": { "domNodes": 15, "portalNodes": 0, "ssrBytes": 815 },
+		"PageHeader/Joined": { "domNodes": 17, "portalNodes": 0, "ssrBytes": 840 },
+		"PageHeader/ObjectHome": {
+			"domNodes": 35,
+			"portalNodes": 0,
+			"ssrBytes": 1918
+		},
+		"PageHeader/RecordHome": {
+			"domNodes": 34,
+			"portalNodes": 0,
+			"ssrBytes": 1897
+		},
+		"PageHeader/RelatedList": {
+			"domNodes": 25,
+			"portalNodes": 0,
+			"ssrBytes": 1130
+		},
+		"Panel/Default": { "domNodes": 6, "portalNodes": 0, "ssrBytes": 414 },
+		"Panel/FiltersVariant": {
+			"domNodes": 19,
+			"portalNodes": 0,
+			"ssrBytes": 895
+		},
+		"Panel/ScrollableContent": {
+			"domNodes": 25,
+			"portalNodes": 0,
+			"ssrBytes": 2350
+		},
+		"Pill/BarePill": { "domNodes": 7, "portalNodes": 0, "ssrBytes": 462 },
+		"Pill/ErrorPill": { "domNodes": 7, "portalNodes": 0, "ssrBytes": 464 },
+		"Pill/LinkedPill": { "domNodes": 8, "portalNodes": 0, "ssrBytes": 515 },
+		"Pill/MultiplePills": {
+			"domNodes": 23,
+			"portalNodes": 0,
+			"ssrBytes": 1411
+		},
+		"Pill/TruncatedPill": { "domNodes": 9, "portalNodes": 0, "ssrBytes": 613 },
+		"Pill/UnlinkedPill": { "domNodes": 7, "portalNodes": 0, "ssrBytes": 455 },
+		"Pill/WithAvatar": { "domNodes": 12, "portalNodes": 0, "ssrBytes": 832 },
+		"Pill/WithIcon": { "domNodes": 13, "portalNodes": 0, "ssrBytes": 783 },
+		"PillContainer/BareVariant": {
+			"domNodes": 24,
+			"portalNodes": 0,
+			"ssrBytes": 1936
+		},
+		"PillContainer/Default": {
+			"domNodes": 24,
+			"portalNodes": 0,
+			"ssrBytes": 1891
+		},
+		"PillContainer/Empty": { "domNodes": 4, "portalNodes": 0, "ssrBytes": 220 },
+		"PillContainer/Interactive": {
+			"domNodes": 24,
+			"portalNodes": 0,
+			"ssrBytes": 1891
+		},
+		"PillContainer/WithError": {
+			"domNodes": 24,
+			"portalNodes": 0,
+			"ssrBytes": 1928
+		},
+		"PillContainer/WithIcons": {
+			"domNodes": 36,
+			"portalNodes": 0,
+			"ssrBytes": 2654
+		},
+		"Popover/Alignments": {
+			"commits": 2,
+			"domNodes": 14,
+			"portalNodes": 0,
+			"ssrBytes": 965
+		},
+		"Popover/Controlled": {
+			"commits": 2,
+			"domNodes": 5,
+			"portalNodes": 0,
+			"ssrBytes": 316
+		},
+		"Popover/Default": {
+			"commits": 2,
+			"domNodes": 3,
+			"portalNodes": 0,
+			"ssrBytes": 245
+		},
+		"Popover/ErrorVariant": {
+			"commits": 2,
+			"domNodes": 3,
+			"portalNodes": 0,
+			"ssrBytes": 244
+		},
+		"Popover/FeatureVariant": {
+			"commits": 2,
+			"domNodes": 3,
+			"portalNodes": 0,
+			"ssrBytes": 240
+		},
+		"Popover/NoCloseButton": {
+			"commits": 2,
+			"domNodes": 3,
+			"portalNodes": 0,
+			"ssrBytes": 237
+		},
+		"Popover/NoNubbin": {
+			"commits": 2,
+			"domNodes": 3,
+			"portalNodes": 0,
+			"ssrBytes": 238
+		},
+		"Popover/WalkthroughActionVariant": {
+			"commits": 2,
+			"domNodes": 3,
+			"portalNodes": 0,
+			"ssrBytes": 252
+		},
+		"Popover/WalkthroughOnAnchor": {
+			"commits": 2,
+			"domNodes": 33,
+			"idleGlobalListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 2495
+		},
+		"Popover/WalkthroughVariant": {
+			"commits": 2,
+			"domNodes": 3,
+			"portalNodes": 0,
+			"ssrBytes": 244
+		},
+		"Popover/WarningVariant": {
+			"commits": 2,
+			"domNodes": 3,
+			"portalNodes": 0,
+			"ssrBytes": 244
+		},
+		"Popover/WithFooter": {
+			"commits": 2,
+			"domNodes": 3,
+			"portalNodes": 0,
+			"ssrBytes": 235
+		},
+		"PortalSettings/DefaultNotUsed": {
+			"commits": 3,
+			"domNodes": 37,
+			"idleGlobalListeners": 2,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 2739
+		},
+		"PortalSettings/OverrideStory": {
+			"commits": 3,
+			"domNodes": 39,
+			"idleGlobalListeners": 2,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 2781
+		},
+		"ProgressBar/CircularRadius": {
+			"domNodes": 5,
+			"portalNodes": 0,
+			"ssrBytes": 391
+		},
+		"ProgressBar/Default": { "domNodes": 5, "portalNodes": 0, "ssrBytes": 364 },
+		"ProgressBar/Descriptive": {
+			"domNodes": 9,
+			"portalNodes": 0,
+			"ssrBytes": 574
+		},
+		"ProgressBar/ProgressValues": {
+			"domNodes": 42,
+			"portalNodes": 0,
+			"ssrBytes": 2745
+		},
+		"ProgressBar/SuccessColor": {
+			"domNodes": 9,
+			"portalNodes": 0,
+			"ssrBytes": 619
+		},
+		"ProgressBar/ThicknessVariants": {
+			"domNodes": 26,
+			"portalNodes": 0,
+			"ssrBytes": 1651
+		},
+		"ProgressBar/Vertical": {
+			"domNodes": 6,
+			"portalNodes": 0,
+			"ssrBytes": 435
+		},
+		"ProgressIndicator/AllComplete": {
+			"commits": 2,
+			"domNodes": 41,
+			"portalNodes": 0,
+			"ssrBytes": 2682
+		},
+		"ProgressIndicator/Default": {
+			"commits": 2,
+			"domNodes": 35,
+			"portalNodes": 0,
+			"ssrBytes": 2115
+		},
+		"ProgressIndicator/Interactive": {
+			"commits": 2,
+			"domNodes": 35,
+			"portalNodes": 0,
+			"ssrBytes": 1971
+		},
+		"ProgressIndicator/InteractivePath": {
+			"domNodes": 41,
+			"portalNodes": 0,
+			"ssrBytes": 2616
+		},
+		"ProgressIndicator/ModalVariant": {
+			"commits": 2,
+			"domNodes": 35,
+			"portalNodes": 0,
+			"ssrBytes": 2135
+		},
+		"ProgressIndicator/Path": {
+			"domNodes": 42,
+			"portalNodes": 0,
+			"ssrBytes": 2676
+		},
+		"ProgressIndicator/SetupAssistantVariant": {
+			"domNodes": 29,
+			"portalNodes": 0,
+			"ssrBytes": 2322
+		},
+		"ProgressIndicator/ShadeVariant": {
+			"commits": 2,
+			"domNodes": 36,
+			"portalNodes": 0,
+			"ssrBytes": 2192
+		},
+		"ProgressIndicator/Vertical": {
+			"domNodes": 29,
+			"portalNodes": 0,
+			"ssrBytes": 2201
+		},
+		"ProgressIndicator/WithDisabledSteps": {
+			"commits": 2,
+			"domNodes": 33,
+			"portalNodes": 0,
+			"ssrBytes": 2083
+		},
+		"ProgressIndicator/WithError": {
+			"commits": 2,
+			"domNodes": 37,
+			"portalNodes": 0,
+			"ssrBytes": 2279
+		},
+		"ProgressRing/Active": { "domNodes": 6, "portalNodes": 0, "ssrBytes": 433 },
+		"ProgressRing/AllThemes": {
+			"domNodes": 39,
+			"portalNodes": 0,
+			"ssrBytes": 2620
+		},
+		"ProgressRing/Complete": {
+			"domNodes": 9,
+			"portalNodes": 0,
+			"ssrBytes": 601
+		},
+		"ProgressRing/Default": {
+			"domNodes": 6,
+			"portalNodes": 0,
+			"ssrBytes": 403
+		},
+		"ProgressRing/Expired": {
+			"domNodes": 9,
+			"portalNodes": 0,
+			"ssrBytes": 599
+		},
+		"ProgressRing/FillDirection": {
+			"domNodes": 6,
+			"portalNodes": 0,
+			"ssrBytes": 481
+		},
+		"ProgressRing/Large": { "domNodes": 6, "portalNodes": 0, "ssrBytes": 457 },
+		"ProgressRing/Warning": {
+			"domNodes": 9,
+			"portalNodes": 0,
+			"ssrBytes": 614
+		},
+		"Radio/Checked": { "domNodes": 6, "portalNodes": 0, "ssrBytes": 286 },
+		"Radio/Default": { "domNodes": 6, "portalNodes": 0, "ssrBytes": 273 },
+		"Radio/Disabled": { "domNodes": 6, "portalNodes": 0, "ssrBytes": 289 },
+		"Radio/RadioGroup": { "domNodes": 19, "portalNodes": 0, "ssrBytes": 965 },
+		"Radio/WithAssistiveText": {
+			"domNodes": 7,
+			"portalNodes": 0,
+			"ssrBytes": 354
+		},
+		"RadioButtonGroup/Base2": {
+			"domNodes": 27,
+			"portalNodes": 0,
+			"ssrBytes": 1460
+		},
+		"RadioButtonGroup/Disabled": {
+			"domNodes": 27,
+			"portalNodes": 0,
+			"ssrBytes": 1524
+		},
+		"RadioButtonGroup/DocsSiteBase": {
+			"domNodes": 26,
+			"portalNodes": 0,
+			"ssrBytes": 1345
+		},
+		"RadioButtonGroup/Error": {
+			"domNodes": 28,
+			"portalNodes": 0,
+			"ssrBytes": 1690
+		},
+		"RadioButtonGroup/Required": {
+			"domNodes": 29,
+			"portalNodes": 0,
+			"ssrBytes": 1565
+		},
+		"RadioGroup/ButtonGroupVariant": {
+			"domNodes": 17,
+			"portalNodes": 0,
+			"ssrBytes": 936
+		},
+		"RadioGroup/Default": { "domNodes": 19, "portalNodes": 0, "ssrBytes": 953 },
+		"RadioGroup/Disabled": {
+			"domNodes": 19,
+			"portalNodes": 0,
+			"ssrBytes": 989
+		},
+		"RadioGroup/Required": {
+			"domNodes": 21,
+			"portalNodes": 0,
+			"ssrBytes": 1054
+		},
+		"RadioGroup/WithAssistiveText": {
+			"domNodes": 19,
+			"portalNodes": 0,
+			"ssrBytes": 985
+		},
+		"RadioGroup/WithError": {
+			"domNodes": 15,
+			"portalNodes": 0,
+			"ssrBytes": 850
+		},
+		"ScopedNotification/Dark": {
+			"domNodes": 10,
+			"portalNodes": 0,
+			"ssrBytes": 531
+		},
+		"ScopedNotification/Default": {
+			"domNodes": 10,
+			"portalNodes": 0,
+			"ssrBytes": 524
+		},
+		"ScopedNotification/Light": {
+			"domNodes": 10,
+			"portalNodes": 0,
+			"ssrBytes": 555
+		},
+		"ScopedNotification/MultipleNotifications": {
+			"domNodes": 26,
+			"portalNodes": 0,
+			"ssrBytes": 1382
+		},
+		"ScopedNotification/WithCustomIcon": {
+			"domNodes": 9,
+			"portalNodes": 0,
+			"ssrBytes": 501
+		},
+		"ScopedNotification/WithIconName": {
+			"domNodes": 9,
+			"portalNodes": 0,
+			"ssrBytes": 498
+		},
+		"Search/Base": { "domNodes": 9, "portalNodes": 0, "ssrBytes": 652 },
+		"Search/Clearable": { "domNodes": 9, "portalNodes": 0, "ssrBytes": 663 },
+		"Search/Controlled": { "domNodes": 10, "portalNodes": 0, "ssrBytes": 689 },
+		"Search/Disabled": { "domNodes": 7, "portalNodes": 0, "ssrBytes": 588 },
+		"Search/WithLabel": { "domNodes": 9, "portalNodes": 0, "ssrBytes": 649 },
+		"SetupAssistant/Default": {
+			"domNodes": 72,
+			"portalNodes": 0,
+			"ssrBytes": 4526
+		},
+		"SetupAssistant/ExpandableSteps": {
+			"domNodes": 200,
+			"portalNodes": 0,
+			"ssrBytes": 15575
+		},
+		"SetupAssistant/WithCard": {
+			"domNodes": 81,
+			"portalNodes": 0,
+			"ssrBytes": 5035
+		},
+		"SimpleDataTable/AdvancedFixedLayout": {
+			"commits": 2,
+			"domNodes": 147,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 11581
+		},
+		"SimpleDataTable/AdvancedSingleSelectFixedHeaderStory": {
+			"commits": 2,
+			"domNodes": 167,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 15555
+		},
+		"SimpleDataTable/AdvancedSingleSelectFixedLayout": {
+			"commits": 2,
+			"domNodes": 131,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 11304
+		},
+		"SimpleDataTable/AdvancedWithHeaderRow": {
+			"domNodes": 161,
+			"portalNodes": 0,
+			"ssrBytes": 12500
+		},
+		"SimpleDataTable/BasicFixedLayoutStory": {
+			"domNodes": 72,
+			"portalNodes": 0,
+			"ssrBytes": 4904
+		},
+		"SimpleDataTable/BasicFluidLayoutColumnBordered": {
+			"domNodes": 71,
+			"portalNodes": 0,
+			"ssrBytes": 3658
+		},
+		"SimpleDataTable/BasicFluidLayoutDefault": {
+			"domNodes": 71,
+			"portalNodes": 0,
+			"ssrBytes": 3594
+		},
+		"SimpleDataTable/BasicFluidLayoutHeadless": {
+			"domNodes": 71,
+			"portalNodes": 0,
+			"ssrBytes": 3630
+		},
+		"SimpleDataTable/BasicFluidLayoutNoRowHover": {
+			"domNodes": 71,
+			"portalNodes": 0,
+			"ssrBytes": 3620
+		},
+		"SimpleDataTable/BasicFluidLayoutStriped": {
+			"domNodes": 71,
+			"portalNodes": 0,
+			"ssrBytes": 3613
+		},
+		"SimpleDataTable/CustomClassesStory": {
+			"domNodes": 65,
+			"portalNodes": 0,
+			"ssrBytes": 3498
+		},
+		"SimpleDataTable/FixedHeaderHorizontalScrolling": {
+			"commits": 2,
+			"domNodes": 465,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 39153
+		},
+		"SimpleDataTable/FixedHeaderStory": {
+			"commits": 2,
+			"domNodes": 465,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 39115
+		},
+		"SimpleDataTable/InfiniteScrollingStory": {
+			"commits": 2,
+			"domNodes": 469,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 37272
+		},
+		"SimpleDataTable/InteractiveElementsStory": {
+			"domNodes": 418,
+			"portalNodes": 0,
+			"ssrBytes": 26722
+		},
+		"SimpleDataTable/JoinedWithPageHeaderStory": {
+			"commits": 2,
+			"domNodes": 537,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 45043
+		},
+		"Slider/CustomRange": { "domNodes": 10, "portalNodes": 0, "ssrBytes": 544 },
+		"Slider/Default": { "domNodes": 10, "portalNodes": 0, "ssrBytes": 546 },
+		"Slider/Disabled": { "domNodes": 11, "portalNodes": 0, "ssrBytes": 611 },
+		"Slider/Sizes": { "domNodes": 38, "portalNodes": 0, "ssrBytes": 2095 },
+		"Slider/Vertical": { "domNodes": 11, "portalNodes": 0, "ssrBytes": 602 },
+		"Slider/WithError": { "domNodes": 11, "portalNodes": 0, "ssrBytes": 685 },
+		"Slider/WithStep": { "domNodes": 10, "portalNodes": 0, "ssrBytes": 545 },
+		"Spinner/AllSizes": { "domNodes": 32, "portalNodes": 0, "ssrBytes": 1742 },
+		"Spinner/BrandLarge": { "domNodes": 6, "portalNodes": 0, "ssrBytes": 335 },
+		"Spinner/BrandMedium": { "domNodes": 6, "portalNodes": 0, "ssrBytes": 316 },
+		"Spinner/BrandXxSmall": {
+			"domNodes": 6,
+			"portalNodes": 0,
+			"ssrBytes": 318
+		},
+		"Spinner/Default": { "domNodes": 6, "portalNodes": 0, "ssrBytes": 297 },
+		"Spinner/InlineSpinner": {
+			"domNodes": 6,
+			"portalNodes": 0,
+			"ssrBytes": 341
+		},
+		"Spinner/InverseLarge": {
+			"domNodes": 7,
+			"portalNodes": 0,
+			"ssrBytes": 440
+		},
+		"Spinner/InverseMedium": {
+			"domNodes": 7,
+			"portalNodes": 0,
+			"ssrBytes": 441
+		},
+		"Spinner/NoContainer": { "domNodes": 6, "portalNodes": 0, "ssrBytes": 321 },
+		"Spinner/SizeLarge": { "domNodes": 6, "portalNodes": 0, "ssrBytes": 296 },
+		"Spinner/SizeMedium": { "domNodes": 6, "portalNodes": 0, "ssrBytes": 297 },
+		"Spinner/SizeSmall": { "domNodes": 6, "portalNodes": 0, "ssrBytes": 296 },
+		"Spinner/SizeXSmall": { "domNodes": 6, "portalNodes": 0, "ssrBytes": 298 },
+		"Spinner/SizeXxSmall": { "domNodes": 6, "portalNodes": 0, "ssrBytes": 299 },
+		"Spinner/WithDelay": { "domNodes": 6, "portalNodes": 0, "ssrBytes": 317 },
+		"SplitView/Controlled": {
+			"domNodes": 33,
+			"portalNodes": 0,
+			"ssrBytes": 2085
+		},
+		"SplitView/CustomWidth": {
+			"domNodes": 28,
+			"portalNodes": 0,
+			"ssrBytes": 1858
+		},
+		"SplitView/Default": { "domNodes": 28, "portalNodes": 0, "ssrBytes": 1858 },
+		"SplitView/InitiallyClosed": {
+			"domNodes": 20,
+			"portalNodes": 0,
+			"ssrBytes": 1466
+		},
+		"SplitView/WithEventHandlers": {
+			"domNodes": 28,
+			"portalNodes": 0,
+			"ssrBytes": 1858
+		},
+		"Tabs/Default": { "domNodes": 18, "portalNodes": 0, "ssrBytes": 1720 },
+		"Tabs/InitialValue": { "domNodes": 15, "portalNodes": 0, "ssrBytes": 1497 },
+		"Tabs/Scoped": { "domNodes": 18, "portalNodes": 0, "ssrBytes": 1721 },
+		"Tabs/Vertical": { "domNodes": 18, "portalNodes": 0, "ssrBytes": 1786 },
+		"Tabs/WithDisabledTab": {
+			"domNodes": 15,
+			"portalNodes": 0,
+			"ssrBytes": 1567
+		},
+		"Textarea/AssistiveTextOnly": {
+			"domNodes": 5,
+			"portalNodes": 0,
+			"ssrBytes": 408
+		},
+		"Textarea/Disabled": { "domNodes": 5, "portalNodes": 0, "ssrBytes": 355 },
+		"Textarea/DocSiteDefault": {
+			"domNodes": 5,
+			"portalNodes": 0,
+			"ssrBytes": 263
+		},
+		"Textarea/DocSiteDisabled": {
+			"domNodes": 5,
+			"portalNodes": 0,
+			"ssrBytes": 336
+		},
+		"Textarea/DocSiteError": {
+			"domNodes": 7,
+			"portalNodes": 0,
+			"ssrBytes": 518
+		},
+		"Textarea/Required": { "domNodes": 6, "portalNodes": 0, "ssrBytes": 405 },
+		"Textarea/Standard": { "domNodes": 5, "portalNodes": 0, "ssrBytes": 331 },
+		"Textarea/WithError": { "domNodes": 7, "portalNodes": 0, "ssrBytes": 538 },
+		"Textarea/WithMaxLength": {
+			"domNodes": 5,
+			"portalNodes": 0,
+			"ssrBytes": 356
+		},
+		"Textarea/WithValue": { "domNodes": 5, "portalNodes": 0, "ssrBytes": 350 },
+		"Toast/AllVariants": {
+			"commits": 2,
+			"domNodes": 50,
+			"portalNodes": 0,
+			"ssrBytes": 3031
+		},
+		"Toast/Error": {
+			"commits": 2,
+			"domNodes": 13,
+			"portalNodes": 0,
+			"ssrBytes": 808
+		},
+		"Toast/ErrorWithDetails": {
+			"commits": 2,
+			"domNodes": 13,
+			"portalNodes": 0,
+			"ssrBytes": 821
+		},
+		"Toast/Info": {
+			"commits": 2,
+			"domNodes": 13,
+			"portalNodes": 0,
+			"ssrBytes": 789
+		},
+		"Toast/Success": {
+			"commits": 2,
+			"domNodes": 13,
+			"portalNodes": 0,
+			"ssrBytes": 810
+		},
+		"Toast/Warning": {
+			"commits": 2,
+			"domNodes": 13,
+			"portalNodes": 0,
+			"ssrBytes": 811
+		},
+		"Toast/WithCloseCallback": {
+			"commits": 2,
+			"domNodes": 13,
+			"portalNodes": 0,
+			"ssrBytes": 816
+		},
+		"Toast/WithDuration": {
+			"commits": 2,
+			"domNodes": 13,
+			"portalNodes": 0,
+			"ssrBytes": 806
+		},
+		"Toast/WithHeadingLink": {
+			"commits": 2,
+			"domNodes": 13,
+			"portalNodes": 0,
+			"ssrBytes": 782
+		},
+		"Tooltip/AllAlignments": {
+			"commits": 4,
+			"domNodes": 62,
+			"idleGlobalListeners": 36,
+			"portalNodes": 0,
+			"ssrBytes": 5929
+		},
+		"Tooltip/AnchoredNubbin": {
+			"commits": 4,
+			"domNodes": 8,
+			"idleGlobalListeners": 3,
+			"portalNodes": 0,
+			"ssrBytes": 963
+		},
+		"Tooltip/Controlled": {
+			"commits": 2,
+			"domNodes": 7,
+			"portalNodes": 0,
+			"ssrBytes": 421
+		},
+		"Tooltip/Default": {
+			"commits": 2,
+			"domNodes": 4,
+			"portalNodes": 0,
+			"ssrBytes": 279
+		},
+		"Tooltip/DefaultTrigger": {
+			"commits": 2,
+			"domNodes": 7,
+			"portalNodes": 0,
+			"ssrBytes": 458
+		},
+		"Tooltip/ErrorTheme": {
+			"commits": 3,
+			"domNodes": 5,
+			"idleGlobalListeners": 3,
+			"portalNodes": 0,
+			"ssrBytes": 598
+		},
+		"Tooltip/IconVariants": {
+			"commits": 2,
+			"domNodes": 30,
+			"portalNodes": 0,
+			"ssrBytes": 1937
+		},
+		"Tooltip/InButtonGroup": {
+			"commits": 2,
+			"domNodes": 23,
+			"portalNodes": 0,
+			"ssrBytes": 1212
+		},
+		"Tooltip/InfoTheme": {
+			"commits": 3,
+			"domNodes": 5,
+			"idleGlobalListeners": 3,
+			"portalNodes": 0,
+			"ssrBytes": 552
+		},
+		"Tooltip/LearnMore": {
+			"commits": 2,
+			"domNodes": 8,
+			"portalNodes": 0,
+			"ssrBytes": 431
+		},
+		"Tooltip/Open": {
+			"commits": 3,
+			"domNodes": 5,
+			"idleGlobalListeners": 3,
+			"portalNodes": 0,
+			"ssrBytes": 677
+		},
+		"Tooltip/WithDelay": {
+			"commits": 2,
+			"domNodes": 4,
+			"portalNodes": 0,
+			"ssrBytes": 290
+		},
+		"Tooltip/WithIconTrigger": {
+			"commits": 3,
+			"domNodes": 8,
+			"idleGlobalListeners": 3,
+			"portalNodes": 0,
+			"ssrBytes": 675
+		},
+		"Tooltip/WithSpanTrigger": {
+			"commits": 3,
+			"domNodes": 5,
+			"idleGlobalListeners": 3,
+			"portalNodes": 0,
+			"ssrBytes": 577
+		},
+		"Tree/AssistiveHeading": {
+			"domNodes": 39,
+			"portalNodes": 0,
+			"ssrBytes": 3087
+		},
+		"Tree/Base": { "domNodes": 39, "portalNodes": 0, "ssrBytes": 3067 },
+		"Tree/BaseWithStencil": {
+			"domNodes": 39,
+			"portalNodes": 0,
+			"ssrBytes": 3067
+		},
+		"Tree/HighlightedSearch": {
+			"domNodes": 56,
+			"portalNodes": 0,
+			"ssrBytes": 3708
+		},
+		"Tree/InitialExpandedSelected": {
+			"domNodes": 105,
+			"portalNodes": 0,
+			"ssrBytes": 8577
+		},
+		"Tree/LargeDataset": {
+			"domNodes": 129,
+			"portalNodes": 0,
+			"ssrBytes": 10690
+		},
+		"Tree/MultipleSelection": {
+			"domNodes": 39,
+			"portalNodes": 0,
+			"ssrBytes": 3067
+		},
+		"Tree/NoBranchSelect": {
+			"domNodes": 39,
+			"portalNodes": 0,
+			"ssrBytes": 3067
+		},
+		"Tree/OverflowHidden": {
+			"domNodes": 129,
+			"portalNodes": 0,
+			"ssrBytes": 10727
+		},
+		"TrialBar/DefaultStory": {
+			"commits": 2,
+			"domNodes": 13,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 1011
+		},
+		"VerticalNavigation/Default": {
+			"domNodes": 24,
+			"portalNodes": 0,
+			"ssrBytes": 1699
+		},
+		"VerticalNavigation/Interactive": {
+			"domNodes": 24,
+			"portalNodes": 0,
+			"ssrBytes": 1699
+		},
+		"VerticalNavigation/MultipleCategories": {
+			"domNodes": 31,
+			"portalNodes": 0,
+			"ssrBytes": 2194
+		},
+		"VerticalNavigation/SingleCategory": {
+			"domNodes": 15,
+			"portalNodes": 0,
+			"ssrBytes": 1068
+		},
+		"VisualPicker/CheckboxPicker": {
+			"domNodes": 46,
+			"portalNodes": 0,
+			"ssrBytes": 2494
+		},
+		"VisualPicker/Coverable": {
+			"domNodes": 32,
+			"portalNodes": 0,
+			"ssrBytes": 1778
+		},
+		"VisualPicker/LargeSize": {
+			"domNodes": 46,
+			"portalNodes": 0,
+			"ssrBytes": 2474
+		},
+		"VisualPicker/RadioPicker": {
+			"domNodes": 46,
+			"portalNodes": 0,
+			"ssrBytes": 2597
+		},
+		"VisualPicker/VerticalLayout": {
+			"domNodes": 37,
+			"portalNodes": 0,
+			"ssrBytes": 2120
+		},
+		"WelcomeMat/Default2": {
+			"commits": 3,
+			"consoleErrors": 1,
+			"domNodes": 4,
+			"idleGlobalListeners": 2,
+			"leakedListeners": 1,
+			"portalNodes": 97,
+			"strictModeErrors": 2
+		},
+		"WelcomeMat/InfoOnly2": {
+			"commits": 3,
+			"consoleErrors": 1,
+			"domNodes": 4,
+			"idleGlobalListeners": 2,
+			"leakedListeners": 1,
+			"portalNodes": 93,
+			"strictModeErrors": 2
+		},
+		"WelcomeMat/Splash2": {
+			"commits": 3,
+			"consoleErrors": 1,
+			"domNodes": 4,
+			"idleGlobalListeners": 2,
+			"leakedListeners": 1,
+			"portalNodes": 32,
+			"strictModeErrors": 2
+		},
+		"WelcomeMat/StepsComplete2": {
+			"commits": 3,
+			"consoleErrors": 1,
+			"domNodes": 4,
+			"idleGlobalListeners": 2,
+			"leakedListeners": 1,
+			"portalNodes": 109,
+			"strictModeErrors": 2
+		},
+		"WelcomeMat/Trailhead": {
+			"commits": 3,
+			"consoleErrors": 1,
+			"domNodes": 4,
+			"idleGlobalListeners": 2,
+			"leakedListeners": 1,
+			"portalNodes": 101,
+			"strictModeErrors": 2
+		},
+		"WelcomeMat/TrailheadComplete": {
+			"commits": 3,
+			"consoleErrors": 1,
+			"domNodes": 4,
+			"idleGlobalListeners": 2,
+			"leakedListeners": 1,
+			"portalNodes": 114,
+			"strictModeErrors": 2
+		},
+		"bundle:components/accordion": { "gzipBytes": 1343 },
+		"bundle:components/alert": { "gzipBytes": 4641 },
+		"bundle:components/avatar": { "gzipBytes": 2679 },
+		"bundle:components/badge": { "gzipBytes": 1107 },
+		"bundle:components/breadcrumb": { "gzipBytes": 19419 },
+		"bundle:components/builder-header": { "gzipBytes": 20732 },
+		"bundle:components/button": { "gzipBytes": 2760 },
+		"bundle:components/button-group": { "gzipBytes": 1379 },
+		"bundle:components/button-stateful": { "gzipBytes": 2680 },
+		"bundle:components/card": { "gzipBytes": 1852 },
+		"bundle:components/carousel": { "gzipBytes": 5501 },
+		"bundle:components/checkbox": { "gzipBytes": 3506 },
+		"bundle:components/color-picker": { "gzipBytes": 34053 },
+		"bundle:components/combobox": { "gzipBytes": 35310 },
+		"bundle:components/date-picker": { "gzipBytes": 41267 },
+		"bundle:components/docked-composer": { "gzipBytes": 3489 },
+		"bundle:components/dynamic-icon": { "gzipBytes": 1770 },
+		"bundle:components/expandable-section": { "gzipBytes": 3228 },
+		"bundle:components/files": { "gzipBytes": 1064 },
+		"bundle:components/filter": { "gzipBytes": 16648 },
+		"bundle:components/grid": { "gzipBytes": 974 },
+		"bundle:components/icon": { "gzipBytes": 2287 },
+		"bundle:components/icon-settings": { "gzipBytes": 352 },
+		"bundle:components/input": { "gzipBytes": 17660 },
+		"bundle:components/media-object": { "gzipBytes": 1025 },
+		"bundle:components/menu-dropdown": { "gzipBytes": 19239 },
+		"bundle:components/modal": { "gzipBytes": 11650 },
+		"bundle:components/page-header": { "gzipBytes": 21013 },
+		"bundle:components/panel": { "gzipBytes": 987 },
+		"bundle:components/pill": { "gzipBytes": 2640 },
+		"bundle:components/pill-container": { "gzipBytes": 6311 },
+		"bundle:components/popover": { "gzipBytes": 15816 },
+		"bundle:components/portal-settings": { "gzipBytes": 293 },
+		"bundle:components/progress-bar": { "gzipBytes": 1327 },
+		"bundle:components/progress-indicator": { "gzipBytes": 22260 },
+		"bundle:components/progress-ring": { "gzipBytes": 2905 },
+		"bundle:components/radio": { "gzipBytes": 3564 },
+		"bundle:components/radio-button-group": { "gzipBytes": 1483 },
+		"bundle:components/radio-group": { "gzipBytes": 1430 },
+		"bundle:components/scoped-notification": { "gzipBytes": 2514 },
+		"bundle:components/setup-assistant": { "gzipBytes": 6173 },
+		"bundle:components/simple-data-table": { "gzipBytes": 29384 },
+		"bundle:components/slider": { "gzipBytes": 1608 },
+		"bundle:components/spinner": { "gzipBytes": 1269 },
+		"bundle:components/split-view": { "gzipBytes": 3400 },
+		"bundle:components/tabs": { "gzipBytes": 4149 },
+		"bundle:components/textarea": { "gzipBytes": 1527 },
+		"bundle:components/toast": { "gzipBytes": 4806 },
+		"bundle:components/tooltip": { "gzipBytes": 15042 },
+		"bundle:components/tree": { "gzipBytes": 11874 },
+		"bundle:components/trial-bar": { "gzipBytes": 1163 },
+		"bundle:components/vertical-navigation": { "gzipBytes": 1430 },
+		"bundle:components/visual-picker": { "gzipBytes": 1209 },
+		"bundle:components/welcome-mat": { "gzipBytes": 12729 }
 	},
 	"components": {
 		"bundle:components/accordion": ["accordion"],
