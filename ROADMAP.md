@@ -1077,6 +1077,15 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
 
 ### P2 — Additive hardening (safe after GA)
 
+- [ ] Declare per-component CSS (`css/`) stable. It ships as alpha in 11.0.0-alpha.11,
+      outside the versioning policy, to gather community feedback. Before declaring it
+      stable: review the feedback; narrow `exports` so only the entry files,
+      and `css/slds2.foundation.css` are public (`"./css/components/*": null`,
+      `"./css/utilities/*": null` and the `css/scoped/` equivalents; the entry files'
+      relative `@import`s don't go through `exports`); decide whether the scoped build
+      stays; then list it under CHANGELOG `Changed` and drop the README's alpha note.
+      From then on, module removals follow the stub rule in the AGENTS.md refresh runbook.
+
 From the same review; none of these change existing props.
 
 - [ ] `forwardRef` (typed to the real root element), `className`, and `...rest` on
@@ -1405,6 +1414,14 @@ is the path — evaluated and deferred, not precluded.
 
 - Add a Vitest + RTL test for a component that lacks one (template: `components/button/__tests__`)
 - Add a CSF story for `grid` or `menu-list`
+
+## Future
+
+Items that would be better fixed in SLDS. DSR doesn't depend on any of them; each has a DSR fallback. If SLDS ships one, DSR deprecates its own version for at least one minor before removing it.
+
+- **Compiled per-component CSS.** SLDS 2 publishes `dist/components/*/*.css`, but as raw source: `postcss-nested` and `@for` syntax, no `@layer component` wrapper, no `--` deprecated selector aliases, and no file holding the layer order, reset and shared hooks. If SLDS publishes per-component files compiled through its normal chain, `scripts/build-slds-modules.ts` becomes a copy step. Fallback: the splitter, which cuts the compiled `slds2.base.css` into `css/` modules.
+- **Gap utilities on the SLDS spacing scale.** SLDS 2 has no `gap` utilities. After #3215 (`Layout`/`LayoutItem`) merges, add typed `Layout` `gap`/`rowGap`/`columnGap` props on the `--slds-g-spacing-*` scale that set an inline `style` (additive, minor), so DSR ships no stylesheet for them. Fallback now: `gap: var(--slds-g-spacing-4)` in consumer CSS, which is supported.
+- **Typed hook names.** If consumers ask for typo-checked styling hook names, generate a type-only union from `@salesforce-ux/design-tokens` rather than shipping a runtime map, so an SLDS hook removal doesn't break a DSR export. Fallback now: plain CSS `var(--slds-g-*)`.
 
 ## Timeline
 

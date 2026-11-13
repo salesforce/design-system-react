@@ -45,6 +45,24 @@ Maintainers: `npm run release-pr -- next` (or an explicit version such as `11.0.
 
 For a maintenance line, add `--base <branch>`: `npm run release-pr -- next --base 0.10.x` cuts `chore/release-0.10.66` from `origin/0.10.x` (`next` patch-bumps a stable version there) and opens the PR against that branch. After it merges, `gh release create v<version> --target 0.10.x --generate-notes` runs that branch's own publish workflow. A stable maintenance release publishes under npm's `latest` dist-tag, which is right while the current major is in prerelease.
 
+### Refreshing the SLDS 2 CSS modules
+
+`css/` holds SLDS 2 split into per-component modules by `scripts/build-slds-modules.ts`. Refresh it when `@salesforce-ux/design-system-2` is bumped (about once a quarter, or sooner for a security fix):
+
+1. `npm install @salesforce-ux/design-system-2@<version>`.
+2. `npm run css:refresh`. It regenerates `css/`, `css/manifest.json` and `css/components.json`, checks that the modules reassemble `slds2.base.css` byte for byte, then runs the equivalence and coverage tests. Preview first with `npx tsx scripts/build-slds-modules.ts --dry-run`.
+3. Review the size table and the added and removed modules it prints, and the `css/` diff.
+4. `npm run test:ci`, then compare the monolith with the entry files in Storybook's **CSS** toolbar (Chromatic covers the monolith). If an entry looks wrong, the toolbar's debug option loads every module, which tells a splitter bug (it differs too) from a component-map gap (it matches).
+5. Commit as `feat: update SLDS 2 to <version>`. Visual changes from an SLDS bump are minor.
+
+The refresh stops, leaving `css/` unchanged, when:
+
+- **A published module is gone from SLDS.** Rerun with `--stub-removed` to keep an empty stub, so consumer imports still resolve, and list it in the CHANGELOG. While per-component CSS is alpha this goes under `Changed`, and the stub can be deleted in any later release. Once it's stable, module paths are entry points: list the stub under `Deprecated` and keep it until the next major.
+- **A class a DSR component renders loses its SLDS rules.** That's breaking for consumers, and DSR ships no stylesheet of its own to restore it. Hold the bump until the next major, change the component to markup SLDS still styles, or, if the class never mattered, rerun with `--accept-unstyled`.
+- **The modules don't reassemble `slds2.base.css`**, for example because SLDS changed its output format. Fix the splitter; the previously published `css/` stays as is.
+
+To try an unreleased SLDS build, pass `--base-dir <design-system-2>/dist/css/modular` and `--source <design-system-2>` (the source tree gives the module index and import order) with `--dry-run`.
+
 ## Scratch files
 
 Agent-generated notes, plans, and analyses go in `.planning/` (gitignored). Don't commit them.

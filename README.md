@@ -107,7 +107,7 @@ Without a bundler, serve the package's `dist/css` folder from your app and link 
 Here `/slds2` is wherever you serve `dist/css`, e.g.
 `app.use('/slds2', express.static('node_modules/@salesforce-ux/design-system-2/dist/css'))`.
 
-> **Note:** The stylesheet references a few images (avatar placeholders, Einstein
+> **Note:** The stylesheets (and the per-component CSS cut from them) reference a few images (avatar placeholders, Einstein
 > backgrounds) through `../../public/` URLs that `@salesforce-ux/design-system-2`
 > 2.264.x doesn't include. Vite warns and builds anyway; with webpack, set
 > `css-loader`'s `url` option to skip those paths. Components that don't use those
@@ -121,6 +121,53 @@ The package's `dist/css/bundled/` folder has these stylesheets:
 | `slds2.lightning-blue.css`        | Lightning Blue         |
 | `slds2.scoped.cosmos.css`         | Cosmos, scoped         |
 | `slds2.scoped.lightning-blue.css` | Lightning Blue, scoped |
+
+### Loading less CSS
+
+There are three ways to load SLDS 2. Pick one; each styles every component the same way.
+
+1. **Bundled** (above, simplest): one file with the theme built in, about 970 KB.
+2. **Modular, to swap themes:** the package's `dist/css/modular/slds2.base.css` plus one theme file. It's the same size, but you can switch themes by changing one file:
+
+   ```tsx
+   import '@salesforce-ux/design-system-2/dist/css/modular/slds2.base.css';
+   import '@salesforce-ux/design-system-2/dist/css/modular/slds2.theme.cosmos.css';
+   ```
+
+3. **Per-component CSS (smallest, alpha):** this package publishes SLDS 2 split per component under `css/`. Each component has an entry file that imports the SLDS foundation and only the modules that component renders. Import the entry files for the components you use, then a modular theme file:
+
+   ```tsx
+   import '@salesforce/design-system-react/css/combobox.css';
+   import '@salesforce/design-system-react/css/modal.css';
+   import '@salesforce-ux/design-system-2/dist/css/modular/slds2.theme.cosmos.css';
+   ```
+
+   A Vite app that uses only `Combobox` ships 408 KB of minified CSS this way, compared with 894 KB for the bundled file. Modules that two entry files share are bundled once. Import the entry files, not the files under `css/components/` or `css/utilities/` directly. The modules are cut from the published `slds2.base.css` without changes, and `css/components.json` lists each entry's modules. `css/scoped/` has the same files for the scoped build: they style only markup inside an `slds-scope` element, and use the same theme files. Loading every module at once isn't a supported mode; to style everything, use the bundled or modular file.
+
+   > **Alpha:** per-component CSS is released early to gather feedback, and it's outside the [versioning policy](docs/codebase-overview.md#versioning--support-policy) until it's declared stable. Until then, any release, including a minor after 11.0.0, may rename, merge or remove files under `css/` or change which modules an entry file imports; each change is listed in the CHANGELOG. Tell us how it works for you, including missing styles and bundle sizes, in a [GitHub Issue](https://github.com/salesforce/design-system-react/issues).
+
+In modes 2 and 3, load the base or foundation before the theme file. That's the order SLDS's bundled files use, and it keeps the `@layer` order the base declares.
+
+**Themes in modes 2 and 3.** The base and per-component files contain no theme. Their rules read styling hooks (`var(--slds-g-*)`), and the theme file sets every hook's value, so the same component files work with Cosmos or Lightning Blue. Pick a theme by loading `slds2.theme.cosmos.css` or `slds2.theme.lightning-blue.css`. To switch themes while the app runs, load the theme with a `<link>` and change its `href`. Keep importing the component files through your bundler, since an imported stylesheet can't easily be unloaded:
+
+```html
+<link
+	id="slds-theme"
+	rel="stylesheet"
+	href="/slds2/modular/slds2.theme.cosmos.css"
+/>
+```
+
+```ts
+document.getElementById('slds-theme').href =
+	'/slds2/modular/slds2.theme.lightning-blue.css';
+```
+
+Serve the theme files the way the bundled ones are served above. The theme only sets hook values, so the `<link>` can sit anywhere in `<head>`, before or after the styles your bundler injects.
+
+### Styling hooks
+
+Use SLDS 2 styling hooks in your own CSS or `style` props, for example `gap: var(--slds-g-spacing-4)` or `color: var(--slds-g-color-on-surface-2)`. Hooks are CSS-only: DSR doesn't export a JavaScript map of hook names, so a hook SLDS removes can't break your build. The theme files in `@salesforce-ux/design-system-2/dist/css/modular/` define the available `--slds-g-*` hooks.
 
 ### Dark mode
 
