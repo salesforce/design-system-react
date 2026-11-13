@@ -18,6 +18,7 @@ const recordHomeActions = (
 				key="PageHeaderFollowButton"
 				disabled={false}
 				iconSize="medium"
+				onClick={() => {}}
 				responsive={false}
 				stateOne={{ iconCategory: 'utility', iconName: 'add', label: 'Follow' }}
 				stateTwo={{

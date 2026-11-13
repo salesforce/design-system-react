@@ -52,6 +52,9 @@ const createNodes = () => [
 
 const renderTree = (props = {}) => {
 	const nodes = props.nodes || deepFreeze(createNodes());
+	// Selection is controlled, so pass a no-op `onSelect` unless the test
+	// covers the deprecated `onClick` path, which is used only without one
+	const selectProps = props.onClick ? {} : { onSelect: () => {} };
 	const utils = render(
 		<Tree
 			labels={{ heading: 'Foods' }}
@@ -59,6 +62,7 @@ const renderTree = (props = {}) => {
 			nodes={nodes}
 			selectedIds={[]}
 			defaultExpandedIds={['fruits']}
+			{...selectProps}
 			{...props}
 		/>
 	);
@@ -188,6 +192,7 @@ describe('Tree', () => {
 					labels={{ heading: 'Foods' }}
 					id="ref-tree"
 					nodes={createNodes()}
+					onSelect={() => {}}
 					ref={ref}
 				/>
 			);
@@ -710,7 +715,10 @@ describe('Tree', () => {
 		});
 
 		it('does not throw when no selection or toggle callback is passed', () => {
-			const { getItem, getToggle, getNode } = renderTree();
+			vi.spyOn(console, 'error').mockImplementation(() => {});
+			const { getItem, getToggle, getNode } = renderTree({
+				onSelect: undefined,
+			});
 
 			expect(() => {
 				fireEvent.click(getItem('grains'));
