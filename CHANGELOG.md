@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- Docs for LLM agents, generated from the `.d.ts` files and examples: `dist/llms/llms.txt` (an [llmstxt.org](https://llmstxt.org/) index), `dist/llms/llms-full.txt`, and `dist/llms/components/<name>.md` with each component's import lines, props table (required, allowed values, deprecated props and their replacements) and examples. They ship in the package, so an agent in a consumer repo can read `node_modules/@salesforce/design-system-react/dist/llms/llms.txt`, and are published with Storybook to GitHub Pages
 - `DockedComposer` `defaultIsOpen`, for an uncontrolled composer. The body stays unmounted while it is closed
 - `Tooltip` `isDisabled`, which turns the tooltip off whatever `isOpen` is
 - `Button`: `xx-small` icon size ([#3228](https://github.com/salesforce/design-system-react/pull/3228))

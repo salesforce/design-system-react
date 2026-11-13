@@ -1,0 +1,62 @@
+# Publishes the v11 docs to GitHub Pages: the Storybook build, with the
+# generated LLM docs (dist/llms) at the site root, so `/llms.txt`,
+# `/llms-full.txt` and `/components/<name>.md` sit next to Storybook's
+# index.html.
+#
+# Runs on push to master and when a GitHub Release is published. Pages must be
+# enabled for the repository with "GitHub Actions" as the source. The site is
+# served at https://salesforce.github.io/design-system-react/; pointing
+# react.lightningdesignsystem.com at it is a separate DNS change.
+name: Docs site
+
+on:
+  push:
+    branches: [master]
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deployment at a time; don't cancel one that is already publishing.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+          cache: 'npm'
+      - name: Install dependencies
+        run: npm ci
+
+      # `build` emits dist/llms (via build:llm-docs) along with the library.
+      - name: Build library and LLM docs
+        run: npm run build
+      - name: Build Storybook
+        run: npm run build-storybook -- --output-dir site
+      - name: Add LLM docs to the site root
+        run: cp -R dist/llms/. site/
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
