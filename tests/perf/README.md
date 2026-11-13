@@ -18,13 +18,15 @@ Timings are noisy on shared CI runners, so every gating check counts something d
 
 ## Ideal and budget
 
-Each check calls `checkBudget(key, metrics, ideal)` from `helpers.tsx`:
+Each check calls `checkBudget(key, metrics, ideal)` from `budget.ts` (re-exported by `helpers.tsx`); `recordPerf(key, metrics, lists)` records report-only values:
 
 - The **ideal** is in the test: what a well-behaved component reaches (1 mount commit, 0 leaked listeners, 0 console errors…).
 - The **budget** is in `budgets.json`, keyed by fixture (`Combobox/Base`, `bundle:components/button`…). A metric with no budget must meet its ideal, so the file lists only size metrics (DOM nodes, SSR bytes, gzip bytes) and the known violations.
 - Counts have no tolerance. Size metrics get the `tolerance` in `budgets.json` (DOM and SSR +10 %, gzip +5 %).
 
 A value over its ideal is a **violation**. It passes, because the budget records it, and `perf:report` lists it as a follow-up fix. A value over its budget is a **regression** and fails.
+
+The bundle checks also keep `components` in `budgets.json`: the component directories each entry pulled in at the last recording. An entry that starts pulling in another component (button importing combobox) fails until it's re-recorded.
 
 Changing a budget is a reviewed diff. After a fix, or a deliberate size change, run `npm run perf:budgets` and commit `budgets.json` with the change. `perf:budgets` merges, so a filtered run (`-- -t Combobox`) only touches the fixtures it measured. The full run (the npm script) also drops fixtures that no longer exist.
 

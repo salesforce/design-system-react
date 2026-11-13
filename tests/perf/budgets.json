@@ -4,5 +4,469 @@
 		"ssrBytes": 0.1,
 		"gzipBytes": 0.05
 	},
-	"budgets": {}
+	"budgets": {
+		"bundle:components/accordion": {
+			"gzipBytes": 1343
+		},
+		"bundle:components/alert": {
+			"gzipBytes": 4641
+		},
+		"bundle:components/avatar": {
+			"gzipBytes": 2679
+		},
+		"bundle:components/badge": {
+			"gzipBytes": 1107
+		},
+		"bundle:components/breadcrumb": {
+			"gzipBytes": 19419
+		},
+		"bundle:components/builder-header": {
+			"gzipBytes": 20732
+		},
+		"bundle:components/button": {
+			"gzipBytes": 2760
+		},
+		"bundle:components/button-group": {
+			"gzipBytes": 1379
+		},
+		"bundle:components/button-stateful": {
+			"gzipBytes": 2680
+		},
+		"bundle:components/card": {
+			"gzipBytes": 1852
+		},
+		"bundle:components/carousel": {
+			"gzipBytes": 5501
+		},
+		"bundle:components/checkbox": {
+			"gzipBytes": 3506
+		},
+		"bundle:components/color-picker": {
+			"gzipBytes": 34053
+		},
+		"bundle:components/combobox": {
+			"gzipBytes": 35310
+		},
+		"bundle:components/date-picker": {
+			"gzipBytes": 41267
+		},
+		"bundle:components/docked-composer": {
+			"gzipBytes": 3489
+		},
+		"bundle:components/dynamic-icon": {
+			"gzipBytes": 1770
+		},
+		"bundle:components/expandable-section": {
+			"gzipBytes": 3228
+		},
+		"bundle:components/files": {
+			"gzipBytes": 1064
+		},
+		"bundle:components/filter": {
+			"gzipBytes": 16648
+		},
+		"bundle:components/grid": {
+			"gzipBytes": 974
+		},
+		"bundle:components/icon": {
+			"gzipBytes": 2287
+		},
+		"bundle:components/icon-settings": {
+			"gzipBytes": 352
+		},
+		"bundle:components/input": {
+			"gzipBytes": 17660
+		},
+		"bundle:components/media-object": {
+			"gzipBytes": 1025
+		},
+		"bundle:components/menu-dropdown": {
+			"gzipBytes": 19239
+		},
+		"bundle:components/modal": {
+			"gzipBytes": 11650
+		},
+		"bundle:components/page-header": {
+			"gzipBytes": 21013
+		},
+		"bundle:components/panel": {
+			"gzipBytes": 987
+		},
+		"bundle:components/pill": {
+			"gzipBytes": 2640
+		},
+		"bundle:components/pill-container": {
+			"gzipBytes": 6311
+		},
+		"bundle:components/popover": {
+			"gzipBytes": 15816
+		},
+		"bundle:components/portal-settings": {
+			"gzipBytes": 293
+		},
+		"bundle:components/progress-bar": {
+			"gzipBytes": 1327
+		},
+		"bundle:components/progress-indicator": {
+			"gzipBytes": 22260
+		},
+		"bundle:components/progress-ring": {
+			"gzipBytes": 2905
+		},
+		"bundle:components/radio": {
+			"gzipBytes": 3564
+		},
+		"bundle:components/radio-button-group": {
+			"gzipBytes": 1483
+		},
+		"bundle:components/radio-group": {
+			"gzipBytes": 1430
+		},
+		"bundle:components/scoped-notification": {
+			"gzipBytes": 2514
+		},
+		"bundle:components/setup-assistant": {
+			"gzipBytes": 6173
+		},
+		"bundle:components/simple-data-table": {
+			"gzipBytes": 29384
+		},
+		"bundle:components/slider": {
+			"gzipBytes": 1608
+		},
+		"bundle:components/spinner": {
+			"gzipBytes": 1269
+		},
+		"bundle:components/split-view": {
+			"gzipBytes": 3400
+		},
+		"bundle:components/tabs": {
+			"gzipBytes": 4149
+		},
+		"bundle:components/textarea": {
+			"gzipBytes": 1527
+		},
+		"bundle:components/toast": {
+			"gzipBytes": 4806
+		},
+		"bundle:components/tooltip": {
+			"gzipBytes": 15042
+		},
+		"bundle:components/tree": {
+			"gzipBytes": 11874
+		},
+		"bundle:components/trial-bar": {
+			"gzipBytes": 1163
+		},
+		"bundle:components/vertical-navigation": {
+			"gzipBytes": 1430
+		},
+		"bundle:components/visual-picker": {
+			"gzipBytes": 1209
+		},
+		"bundle:components/welcome-mat": {
+			"gzipBytes": 12729
+		}
+	},
+	"components": {
+		"bundle:components/accordion": ["accordion"],
+		"bundle:components/alert": [
+			"alert",
+			"button",
+			"icon",
+			"icon-settings",
+			"utilities"
+		],
+		"bundle:components/avatar": [
+			"avatar",
+			"icon",
+			"icon-settings",
+			"utilities"
+		],
+		"bundle:components/badge": ["badge"],
+		"bundle:components/breadcrumb": [
+			"breadcrumb",
+			"button",
+			"icon",
+			"icon-settings",
+			"menu-dropdown",
+			"portal-settings",
+			"utilities"
+		],
+		"bundle:components/builder-header": [
+			"builder-header",
+			"button",
+			"button-group",
+			"icon",
+			"icon-settings",
+			"menu-dropdown",
+			"portal-settings",
+			"utilities"
+		],
+		"bundle:components/button": [
+			"button",
+			"icon",
+			"icon-settings",
+			"utilities"
+		],
+		"bundle:components/button-group": ["button-group"],
+		"bundle:components/button-stateful": [
+			"button-stateful",
+			"icon",
+			"icon-settings",
+			"utilities"
+		],
+		"bundle:components/card": ["card", "media-object"],
+		"bundle:components/carousel": [
+			"button",
+			"carousel",
+			"icon",
+			"icon-settings",
+			"utilities"
+		],
+		"bundle:components/checkbox": [
+			"checkbox",
+			"icon",
+			"icon-settings",
+			"utilities"
+		],
+		"bundle:components/color-picker": [
+			"button",
+			"color-picker",
+			"icon",
+			"icon-settings",
+			"input",
+			"media-object",
+			"popover",
+			"portal-settings",
+			"radio",
+			"radio-button-group",
+			"radio-group",
+			"spinner",
+			"tabs",
+			"tooltip",
+			"utilities"
+		],
+		"bundle:components/combobox": [
+			"avatar",
+			"button",
+			"combobox",
+			"forms",
+			"icon",
+			"icon-settings",
+			"input",
+			"media-object",
+			"pill",
+			"pill-container",
+			"popover",
+			"portal-settings",
+			"spinner",
+			"tooltip",
+			"utilities"
+		],
+		"bundle:components/date-picker": [
+			"avatar",
+			"button",
+			"combobox",
+			"date-picker",
+			"forms",
+			"icon",
+			"icon-settings",
+			"input",
+			"media-object",
+			"pill",
+			"pill-container",
+			"popover",
+			"portal-settings",
+			"spinner",
+			"tooltip",
+			"utilities"
+		],
+		"bundle:components/docked-composer": [
+			"button",
+			"docked-composer",
+			"icon",
+			"icon-settings",
+			"utilities"
+		],
+		"bundle:components/dynamic-icon": ["dynamic-icon"],
+		"bundle:components/expandable-section": [
+			"button",
+			"expandable-section",
+			"icon",
+			"icon-settings",
+			"utilities"
+		],
+		"bundle:components/files": ["files"],
+		"bundle:components/filter": [
+			"button",
+			"filter",
+			"icon",
+			"icon-settings",
+			"media-object",
+			"popover",
+			"portal-settings",
+			"utilities"
+		],
+		"bundle:components/grid": ["grid"],
+		"bundle:components/icon": ["icon", "icon-settings", "utilities"],
+		"bundle:components/icon-settings": ["icon-settings"],
+		"bundle:components/input": [
+			"button",
+			"icon",
+			"icon-settings",
+			"input",
+			"portal-settings",
+			"spinner",
+			"tooltip",
+			"utilities"
+		],
+		"bundle:components/media-object": ["media-object"],
+		"bundle:components/menu-dropdown": [
+			"button",
+			"icon",
+			"icon-settings",
+			"menu-dropdown",
+			"portal-settings",
+			"utilities"
+		],
+		"bundle:components/modal": [
+			"button",
+			"icon",
+			"icon-settings",
+			"modal",
+			"utilities"
+		],
+		"bundle:components/page-header": [
+			"breadcrumb",
+			"button",
+			"icon",
+			"icon-settings",
+			"media-object",
+			"menu-dropdown",
+			"page-header",
+			"portal-settings",
+			"utilities"
+		],
+		"bundle:components/panel": ["panel"],
+		"bundle:components/pill": ["icon-settings", "pill", "utilities"],
+		"bundle:components/pill-container": [
+			"avatar",
+			"icon",
+			"icon-settings",
+			"pill",
+			"pill-container",
+			"utilities"
+		],
+		"bundle:components/popover": [
+			"button",
+			"icon",
+			"icon-settings",
+			"media-object",
+			"popover",
+			"portal-settings",
+			"utilities"
+		],
+		"bundle:components/portal-settings": ["portal-settings"],
+		"bundle:components/progress-bar": ["progress-bar"],
+		"bundle:components/progress-indicator": [
+			"button",
+			"icon",
+			"icon-settings",
+			"portal-settings",
+			"progress-indicator",
+			"tooltip",
+			"utilities"
+		],
+		"bundle:components/progress-ring": [
+			"icon",
+			"icon-settings",
+			"progress-ring",
+			"utilities"
+		],
+		"bundle:components/radio": [
+			"color-picker",
+			"icon",
+			"icon-settings",
+			"radio",
+			"utilities"
+		],
+		"bundle:components/radio-button-group": [
+			"radio-button-group",
+			"radio-group"
+		],
+		"bundle:components/radio-group": ["radio-group"],
+		"bundle:components/scoped-notification": [
+			"icon",
+			"icon-settings",
+			"scoped-notification",
+			"utilities"
+		],
+		"bundle:components/setup-assistant": [
+			"button",
+			"icon",
+			"icon-settings",
+			"progress-ring",
+			"setup-assistant",
+			"utilities"
+		],
+		"bundle:components/simple-data-table": [
+			"button",
+			"checkbox",
+			"color-picker",
+			"icon",
+			"icon-settings",
+			"menu-dropdown",
+			"portal-settings",
+			"radio",
+			"simple-data-table",
+			"spinner",
+			"utilities"
+		],
+		"bundle:components/slider": ["slider"],
+		"bundle:components/spinner": ["spinner"],
+		"bundle:components/split-view": [
+			"button",
+			"icon",
+			"icon-settings",
+			"split-view",
+			"utilities"
+		],
+		"bundle:components/tabs": ["icon", "icon-settings", "tabs", "utilities"],
+		"bundle:components/textarea": ["textarea"],
+		"bundle:components/toast": [
+			"button",
+			"icon",
+			"icon-settings",
+			"toast",
+			"utilities"
+		],
+		"bundle:components/tooltip": [
+			"button",
+			"icon",
+			"icon-settings",
+			"portal-settings",
+			"tooltip",
+			"utilities"
+		],
+		"bundle:components/tree": [
+			"button",
+			"icon",
+			"icon-settings",
+			"tree",
+			"utilities"
+		],
+		"bundle:components/trial-bar": ["trial-bar"],
+		"bundle:components/vertical-navigation": ["vertical-navigation"],
+		"bundle:components/visual-picker": ["visual-picker"],
+		"bundle:components/welcome-mat": [
+			"button",
+			"icon",
+			"icon-settings",
+			"modal",
+			"progress-bar",
+			"utilities",
+			"welcome-mat"
+		]
+	}
 }

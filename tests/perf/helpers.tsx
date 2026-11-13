@@ -8,10 +8,6 @@
  */
 import React, { Profiler, type ProfilerOnRenderCallback } from 'react';
 import { render, act } from '@testing-library/react';
-import { expect } from 'vitest';
-import { getCurrentTest } from 'vitest/suite';
-
-import budgetFile from './budgets.json';
 
 // Captured before any tracker patches them, so the helpers' own waits are
 // never counted.
@@ -526,61 +522,4 @@ export const trackConsoleErrors = () => {
 	};
 };
 
-// --- Budgets -------------------------------------------------------------
-
-export type Metrics = Record<string, number>;
-
-interface BudgetFile {
-	tolerance: Record<string, number>;
-	budgets: Record<string, Metrics>;
-}
-
-const { tolerance, budgets } = budgetFile as BudgetFile;
-
-/** `npm run perf:budgets` records values without failing. */
-export const isUpdatingBudgets = Boolean(import.meta.env.VITE_PERF_UPDATE);
-
-export interface PerfRecord {
-	key: string;
-	metrics: Metrics;
-	ideal: Metrics;
-}
-
-/**
- * Check `metrics` against `budgets.json[key]` and record them on the test
- * (read by `scripts/perf-report.ts`).
- *
- * `ideal` is the value a well-behaved component reaches (e.g. 0 leaked
- * listeners). A metric with no recorded budget falls back to its ideal. Size
- * metrics have no ideal and must have a budget; their tolerance comes from
- * `budgets.json` `tolerance`. Counts have no tolerance.
- */
-export const checkBudget = (
-	key: string,
-	metrics: Metrics,
-	ideal: Metrics = {}
-) => {
-	const test = getCurrentTest();
-	if (test) {
-		const meta = test.meta as { perf?: PerfRecord[] };
-		meta.perf = [...(meta.perf ?? []), { key, metrics, ideal }];
-	}
-	if (isUpdatingBudgets) return;
-
-	for (const [metric, value] of Object.entries(metrics)) {
-		const budget = budgets[key]?.[metric] ?? ideal[metric];
-		if (budget === undefined) {
-			expect
-				.soft(
-					budget,
-					`${key} ${metric}: no budget, run \`npm run perf:budgets\``
-				)
-				.toBeDefined();
-			continue;
-		}
-		const limit = Math.floor(budget * (1 + (tolerance[metric] ?? 0)));
-		expect
-			.soft(value, `${key} ${metric} (budget ${budget})`)
-			.toBeLessThanOrEqual(limit);
-	}
-};
+export { checkBudget, recordPerf, isUpdatingBudgets } from './budget';
