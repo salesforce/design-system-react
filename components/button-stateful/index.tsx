@@ -79,7 +79,12 @@ export type ButtonStatefulClickProps =
 			 */
 			onClick: ButtonStatefulClickHandler;
 	  }
-	| { disabled: true; onClick?: ButtonStatefulClickHandler };
+	| {
+			/** Disables the button. */
+			disabled: true;
+			/** Called on click. Optional while disabled. */
+			onClick?: ButtonStatefulClickHandler;
+	  };
 
 interface ButtonStatefulBaseProps extends Omit<
 	ButtonHTMLAttributes<HTMLButtonElement>,
@@ -188,6 +193,7 @@ const ButtonStateful = ({
 	triggerClassName: _triggerClassName,
 	...rest
 }: ButtonStatefulProps & {
+	/** Set by `ButtonGroup` on its last child. Ignored. */
 	triggerClassName?: unknown;
 }): React.ReactElement => {
 	useEffect(() => {

@@ -19,12 +19,17 @@ import mergeProps, {
  * clicks, focus, keys and hover, so the trigger only needs to be focusable and take `ref`.
  */
 export interface MenuDropdownTriggerProps {
+	/** Whether the menu is open. */
 	'aria-expanded'?: boolean;
+	/** Always `true`: the trigger opens a menu. */
 	'aria-haspopup': true;
 	/** Includes the class MenuDropdown uses to ignore clicks on the trigger when closing */
 	className?: string;
+	/** MenuDropdown's `disabled`. */
 	disabled?: boolean;
+	/** Callback ref for the trigger's focusable element. MenuDropdown uses it for focus and positioning. */
 	ref: (element: HTMLElement | null) => void;
+	/** MenuDropdown's `tabIndex`. */
 	tabIndex?: number;
 }
 

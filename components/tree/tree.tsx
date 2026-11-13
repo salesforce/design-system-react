@@ -127,6 +127,7 @@ interface TreeVisibleHeadingProps {
 	 * * `heading`: Visible tree heading that describes its contents.
 	 */
 	labels: TreeLabels & { heading: ReactNode };
+	/** **Assistive text for accessibility**. Has no `heading` when `labels.heading` is set. */
 	assistiveText?: TreeAssistiveText & { heading?: never; label?: never };
 	heading?: never;
 }
@@ -138,6 +139,7 @@ interface TreeHiddenHeadingProps {
 	 * * `heading`: Visually hidden tree heading.
 	 */
 	assistiveText: TreeAssistiveText & { heading: string };
+	/** **Text labels for internationalization**. Has no `heading` when `assistiveText.heading` is set. */
 	labels?: TreeLabels & { heading?: never };
 	heading?: never;
 }
@@ -146,7 +148,9 @@ interface TreeHiddenHeadingProps {
 interface TreeDeprecatedHeadingProps {
 	/** @deprecated Use `labels.heading` instead. */
 	heading: ReactNode;
+	/** **Assistive text for accessibility**. Has no `heading` when `heading` is set. */
 	assistiveText?: TreeAssistiveText & { heading?: never };
+	/** **Text labels for internationalization**. Has no `heading` when `heading` is set. */
 	labels?: TreeLabels & { heading?: never };
 }
 
@@ -154,6 +158,7 @@ interface TreeDeprecatedHeadingProps {
 interface TreeDeprecatedAssistiveLabelProps {
 	/** **Assistive text for accessibility** */
 	assistiveText: TreeAssistiveText & { label: string; heading?: never };
+	/** **Text labels for internationalization**. Has no `heading` when `assistiveText.label` is set. */
 	labels?: TreeLabels & { heading?: never };
 	heading?: never;
 }

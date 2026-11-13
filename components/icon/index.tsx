@@ -41,7 +41,10 @@ export type ProductTheme =
  */
 export interface IconProps {
 	/** Assistive text for accessibility */
-	assistiveText?: { label?: string };
+	assistiveText?: {
+		/** Visually hidden label read in place of the icon. Leave unset for a decorative icon. */
+		label?: string;
+	};
 	/** Icon category from SLDS */
 	category?: IconCategory;
 	/** CSS classes for the SVG element */

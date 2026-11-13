@@ -13,7 +13,10 @@ export interface BuilderHeaderNavDropdownProps extends Omit<
 	/**
 	 * Assistive text for accessibility. `icon` labels the leading icon.
 	 */
-	assistiveText?: { icon?: string } & Record<string, unknown>;
+	assistiveText?: {
+		/** Label of the leading icon. */
+		icon?: string;
+	} & Record<string, unknown>;
 	/**
 	 * Category of the leading icon.
 	 */

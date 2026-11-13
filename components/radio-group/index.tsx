@@ -83,7 +83,12 @@ export type RadioGroupChangeProps =
 			 */
 			onChange: RadioGroupChangeHandler;
 	  }
-	| { disabled: true; onChange?: RadioGroupChangeHandler };
+	| {
+			/** Disables the radio group. */
+			disabled: true;
+			/** Called on change. Optional while disabled. */
+			onChange?: RadioGroupChangeHandler;
+	  };
 
 interface RadioGroupBaseProps {
 	/** Assistive text for accessibility */

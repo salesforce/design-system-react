@@ -51,6 +51,7 @@ interface ProgressRingBaseProps {
 
 /** No icon is rendered, so a custom `icon` would be ignored. */
 interface ProgressRingWithoutIconProps {
+	/** Whether to display the theme icon */
 	hasIcon?: false;
 	icon?: never;
 }
@@ -122,18 +123,3 @@ const ProgressRing = ({
 ProgressRing.displayName = PROGRESS_RING;
 
 export default ProgressRing;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

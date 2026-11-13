@@ -174,6 +174,7 @@ interface ProgressIndicatorBarProps
 /** Vertical steps with a bordered list, for Setup Assistant. Always vertical. */
 interface ProgressIndicatorSetupAssistantProps
 	extends ProgressIndicatorBaseProps, ProgressIndicatorMarkerProps {
+	/** Visual pattern. Setup Assistant uses the base progress indicator. */
 	type?: 'base';
 	/** Vertical steps with a bordered list, for Setup Assistant. */
 	variant: 'setup-assistant';
