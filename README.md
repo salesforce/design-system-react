@@ -16,7 +16,7 @@
 
 `@alpha` points to v11 pre-releases. Use `@latest` for the latest stable release. Releases and their notes are listed on the [GitHub Releases](https://github.com/salesforce/design-system-react/releases) page.
 
-v11 is not a drop-in upgrade from 0.10.x: some components were removed or renamed. See [CHANGELOG.md](CHANGELOG.md) for the breaking changes.
+v11 is not a drop-in upgrade from 0.10.x: some components were removed or renamed, and many props changed. The [migration guide](docs/migration-v11.md) maps each 0.10.x pattern to its v11 replacement; [CHANGELOG.md](CHANGELOG.md) has the full list.
 
 ## Highlights
 

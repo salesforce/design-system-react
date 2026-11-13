@@ -30,8 +30,9 @@
 - [x] Loosen the `@salesforce-ux/design-system` peer dependency. It was pinned to
       `2.25.0-alpha.2`, which conflicted with any newer version already in the
       consumer's tree. It is now `^2.25.0-alpha.2`.
-- [ ] Write a 0.10.x → v11 migration guide (removed components, `DataTable` rename,
-      React 19, module format).
+- [x] Write a 0.10.x → v11 migration guide (removed components, `DataTable` rename,
+      React 19, module format). [docs/migration-v11.md](docs/migration-v11.md), with its
+      snippets type-checked by `docs/__tests__/migration-v11.type-test.tsx`.
 - [ ] Publish hosted docs for v11. `react.lightningdesignsystem.com` redirects to
       GitHub, and there is no public v11 documentation site (Chromatic builds Storybook
       on push, but only for review).
