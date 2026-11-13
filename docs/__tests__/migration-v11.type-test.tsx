@@ -8,13 +8,11 @@
 
 import { useRef, useState } from 'react';
 import {
-	Badge,
 	Button,
 	Checkbox,
 	ExpandableSection,
 	Icon,
 	Input,
-	MediaObject,
 	MenuDropdown,
 	Modal,
 	PageHeader,
@@ -129,9 +127,6 @@ export function FocusAfter() {
 	return <Button ref={ref} label="Save" onClick={() => ref.current?.focus()} />;
 }
 
-// @ts-expect-error requestFocus was removed; focus through a ref
-export const focusBefore = <Button label="Save" requestFocus />;
-
 // ## Text goes in labels and assistiveText
 
 export const spinnerAfter = <Spinner assistiveText={{ label: 'Loading' }} />;
@@ -234,13 +229,7 @@ export const tooltipDisabled = (
 	<Tooltip content="Help" isDisabled trigger={<Button label="Save" />} />
 );
 
-// ## children instead of body and content
-
-export const mediaObjectAfter = (
-	<MediaObject figure={<Icon category="standard" name="account" />}>
-		Acme
-	</MediaObject>
-);
+// ## Slots instead of render functions
 
 export const pageHeaderAfter = (
 	<PageHeader
@@ -253,8 +242,6 @@ export const pageHeaderAfter = (
 		}
 	/>
 );
-
-export const badgeAfter = <Badge>New</Badge>;
 
 // ## Unions reject ignored props
 
