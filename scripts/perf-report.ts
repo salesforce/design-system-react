@@ -6,12 +6,14 @@
  *
  * `--results` is a `vitest run --reporter=json` file from the `perf` and
  * `perf-bundle` projects. Each test records `{ key, metrics, ideal }` entries
- * in `meta.perf` (see `checkBudget` in tests/perf/helpers.tsx).
+ * in `meta.perf` (see `checkBudget` and `recordPerf` in tests/perf/budget.ts).
  *
  * `--update-budgets` writes the measured values into `budgets` in
  * tests/perf/budgets.json. A metric equal to its ideal is left out, since the
  * ideal is the default, so the file lists only size metrics and the values
- * that differ from the ideal (the known violations). Add `--prune` after a
+ * that differ from the ideal (the known violations). Report-only metrics
+ * (`recordPerf`) aren't written; their `lists` go to `<list name>[key]`, e.g.
+ * `components` for the bundle checks. Add `--prune` after a
  * full run to drop fixtures that no longer exist.
  *
  * `--bench`/`--baseline-bench` are `vitest bench --outputJson` files. With a
@@ -34,11 +36,14 @@ interface PerfRecord {
 	key: string;
 	metrics: Metrics;
 	ideal: Metrics;
+	checked: boolean;
+	lists?: Record<string, string[]>;
 }
 
 interface BudgetFile {
 	tolerance: Record<string, number>;
 	budgets: Record<string, Metrics>;
+	[list: string]: unknown;
 }
 
 interface JsonResults {
@@ -87,18 +92,36 @@ const budgetFile = readJson<BudgetFile>(budgetPath);
 
 // --- Collect ---------------------------------------------------------------
 
-const records = new Map<string, { metrics: Metrics; ideal: Metrics }>();
+interface Collected {
+	/** Every metric, for the report. */
+	metrics: Metrics;
+	/** Checked metrics only, for the budgets. */
+	checked: Metrics;
+	ideal: Metrics;
+}
+const records = new Map<string, Collected>();
+const lists = new Map<string, Map<string, string[]>>();
 let failed = 0;
 if (values.results && existsSync(values.results)) {
 	const results = readJson<JsonResults>(values.results);
 	for (const file of results.testResults) {
 		for (const test of file.assertionResults) {
 			if (test.status === 'failed') failed += 1;
-			for (const { key, metrics, ideal } of test.meta?.perf ?? []) {
-				const entry = records.get(key) ?? { metrics: {}, ideal: {} };
-				Object.assign(entry.metrics, metrics);
-				Object.assign(entry.ideal, ideal);
-				records.set(key, entry);
+			for (const record of test.meta?.perf ?? []) {
+				const entry = records.get(record.key) ?? {
+					metrics: {},
+					checked: {},
+					ideal: {},
+				};
+				Object.assign(entry.metrics, record.metrics);
+				if (record.checked) Object.assign(entry.checked, record.metrics);
+				Object.assign(entry.ideal, record.ideal);
+				records.set(record.key, entry);
+				for (const [name, list] of Object.entries(record.lists ?? {})) {
+					const byKey = lists.get(name) ?? new Map<string, string[]>();
+					byKey.set(record.key, list);
+					lists.set(name, byKey);
+				}
 			}
 		}
 	}
@@ -116,30 +139,37 @@ if (values['update-budgets']) {
 	const budgets: Record<string, Metrics> = values.prune
 		? {}
 		: structuredClone(budgetFile.budgets);
-	for (const [key, { metrics, ideal }] of records) {
+	for (const [key, { checked, ideal }] of records) {
 		const kept: Metrics = { ...budgets[key] };
-		for (const [metric, value] of Object.entries(metrics)) {
+		for (const [metric, value] of Object.entries(checked)) {
 			if (value === ideal[metric]) delete kept[metric];
 			else kept[metric] = value;
 		}
 		if (Object.keys(kept).length) budgets[key] = kept;
 		else delete budgets[key];
 	}
+	const sortKeys = <T>(object: Record<string, T>) =>
+		Object.fromEntries(
+			Object.keys(object)
+				.sort()
+				.map((key) => [key, object[key]])
+		);
+	const listFields: Record<string, Record<string, string[]>> = {};
+	for (const [name, byKey] of lists) {
+		const existing = values.prune
+			? {}
+			: ((budgetFile[name] as Record<string, string[]>) ?? {});
+		listFields[name] = sortKeys({ ...existing, ...Object.fromEntries(byKey) });
+	}
 	const sorted = Object.fromEntries(
-		Object.keys(budgets)
-			.sort()
-			.map((key) => [
-				key,
-				Object.fromEntries(
-					Object.keys(budgets[key])
-						.sort()
-						.map((metric) => [metric, budgets[key][metric]])
-				),
-			])
+		Object.entries(sortKeys(budgets)).map(([key, metrics]) => [
+			key,
+			sortKeys(metrics),
+		])
 	);
 	writeFileSync(
 		budgetPath,
-		`${JSON.stringify({ ...budgetFile, budgets: sorted }, null, '\t')}\n`
+		`${JSON.stringify({ ...budgetFile, budgets: sorted, ...listFields }, null, '\t')}\n`
 	);
 	console.log(
 		`perf-report: wrote ${Object.keys(sorted).length} budget entries to tests/perf/budgets.json.`
