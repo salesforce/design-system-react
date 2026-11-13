@@ -103,9 +103,10 @@ export const WithCard = {
 const loremDescription =
 	'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
 
-const buildSubSteps = ({ toggleChecked, onToggle }) => [
+const buildSubSteps = ({ toggleChecked, onToggle, status }) => [
 	{
 		id: 'substep-0',
+		status,
 		label: 'Turn on Lightning for all users.',
 		setupAssistantAction: (
 			<Checkbox
@@ -121,6 +122,7 @@ const buildSubSteps = ({ toggleChecked, onToggle }) => [
 	},
 	{
 		id: 'substep-1',
+		status,
 		label:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 		setupAssistantAction: (
@@ -129,6 +131,7 @@ const buildSubSteps = ({ toggleChecked, onToggle }) => [
 	},
 	{
 		id: 'substep-2',
+		status,
 		label: 'Lorem ipsum dolor sit amet, lorem ipsum dolor.',
 		setupAssistantAction: (
 			<Button id="substep-2-action" label="Add Users" variant="outline-brand" />
@@ -164,8 +167,10 @@ export const ExpandableSteps = {
 							id="setup-assistant-step-1-progress"
 							variant="setup-assistant"
 							orientation="vertical"
-							steps={buildSubSteps({ toggleChecked: true })}
-							completedSteps={buildSubSteps({ toggleChecked: true })}
+							steps={buildSubSteps({
+								toggleChecked: true,
+								status: 'completed',
+							})}
 						/>
 					}
 				/>

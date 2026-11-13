@@ -1298,6 +1298,10 @@ enhancement issues, not story fill-ins:
 - [ ] Delete the vendored `assets/styles/slds-plus.css`; nothing outside planning docs
       references it.
 - [ ] Work down the lint warning backlog.
+      `@typescript-eslint/no-deprecated` is an error in `__examples__` and `__docs__` (0 left)
+      and a warning in component source, where most hits are a component reading its own
+      deprecated prop. Deprecated DOM APIs (`keyCode`, `substr`, `onKeyPress`, React's
+      `FormEvent` and `MutableRefObject`) account for about 70 of those warnings.
 - [ ] `combobox` — remove `variant="inline-listbox"` with `multiple` in the next major
       (deprecated in v11, warns once; use `variant="base"` with `multiple`). SLDS deprecated the
       inline listbox, it puts the selected pills before the input for screen readers, and its

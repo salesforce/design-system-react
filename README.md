@@ -94,6 +94,23 @@ import IconSettings from '@salesforce/design-system-react/components/icon-settin
 > **Known issue:** In 11.0.0-alpha.4, `ColorPicker`, `Filter`, and `Tree` have no
 > `components/<name>` entry point. Import them from `@salesforce/design-system-react`.
 
+### Catch deprecated props
+
+Deprecated props still compile in v11. Enable [`@typescript-eslint/no-deprecated`](https://typescript-eslint.io/rules/no-deprecated/) so that using one is a lint error that names the replacement. This matters most if coding agents work in your repo, because they read lint output, not editor strikethroughs:
+
+```js
+// eslint.config.mjs
+import tseslint from 'typescript-eslint';
+
+export default tseslint.config(tseslint.configs.base, {
+	files: ['**/*.{ts,tsx}'],
+	languageOptions: { parserOptions: { projectService: true } },
+	rules: { '@typescript-eslint/no-deprecated': 'error' },
+});
+```
+
+See [docs/lint-deprecated-props.md](docs/lint-deprecated-props.md).
+
 ## Styling
 
 The components render SLDS markup but don't ship CSS. Add an SLDS 2 stylesheet from

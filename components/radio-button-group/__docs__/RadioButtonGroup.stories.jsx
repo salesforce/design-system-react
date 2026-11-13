@@ -30,11 +30,6 @@ class RadioButtonGroupExample extends React.Component {
 					{this.props.heading}
 				</h1>
 				<RadioButtonGroup
-					errorId={
-						this.props.labels && this.props.labels.error
-							? 'error-id'
-							: undefined
-					}
 					labels={this.props.labels}
 					name="radio-button-group-name"
 					value={this.state.value}

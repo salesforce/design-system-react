@@ -94,6 +94,9 @@ class Example extends React.Component {
 		// Body of Edit Dialog that is shown when clicking on edit button (pencil icon)
 		const editDialogPopoverBody = (
 			<div className="slds-form slds-form_stacked slds-p-top_medium slds-p-right_small slds-p-left_small">
+				<h2 id="edit-page-type" className="slds-assistive-text">
+					Edit Page Type
+				</h2>
 				<Input
 					id="page-type"
 					inputRef={this.setInputRef}
@@ -159,7 +162,7 @@ class Example extends React.Component {
 								{this.state.prevPageType}
 							</span>
 							<EditDialog
-								ariaLabelledby="Edit Name"
+								ariaLabelledby="edit-page-type"
 								body={editDialogPopoverBody}
 								isModified={this.state.pageType !== this.state.prevPageType}
 								onCancel={this.handleRequestClose}
@@ -211,7 +214,7 @@ class Example extends React.Component {
 								{this.state.prevPageType}
 							</span>
 							<EditDialog
-								ariaLabelledby="Edit Name"
+								ariaLabelledby="edit-page-type"
 								body={editDialogPopoverBody}
 								isModified={this.state.pageType !== this.state.prevPageType}
 								onCancel={this.handleRequestClose}

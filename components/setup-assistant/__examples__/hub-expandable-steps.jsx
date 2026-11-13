@@ -26,6 +26,7 @@ const ToggleAction = ({ id, initialChecked = false }) => {
 const subStepsComplete = (step) => [
 	{
 		id: `step-${step}-substep0`,
+		status: 'completed',
 		label: 'Turn on Lightning for all users.',
 		setupAssistantAction: (
 			<ToggleAction id={`step-${step}-substep0-action`} initialChecked />
@@ -33,6 +34,7 @@ const subStepsComplete = (step) => [
 	},
 	{
 		id: `step-${step}-substep1`,
+		status: 'completed',
 		label:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 		setupAssistantAction: (
@@ -73,7 +75,6 @@ class Example extends React.Component {
 
 		this.state = {
 			expandedSteps: { 1: true },
-			stepTwoCompletedSubSteps: [],
 			stepTwoCompletedSubStepsStatus: [false, false, false],
 			stepTwoProgress: 0,
 		};
@@ -85,6 +86,9 @@ class Example extends React.Component {
 		return [
 			{
 				id: 0,
+				status: this.state.stepTwoCompletedSubStepsStatus[0]
+					? 'completed'
+					: undefined,
 				label: 'Turn on Lightning for all users.',
 				setupAssistantAction: (
 					<Checkbox
@@ -99,6 +103,9 @@ class Example extends React.Component {
 			},
 			{
 				id: 1,
+				status: this.state.stepTwoCompletedSubStepsStatus[1]
+					? 'completed'
+					: undefined,
 				label:
 					'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 				setupAssistantAction: (
@@ -118,6 +125,9 @@ class Example extends React.Component {
 			},
 			{
 				id: 2,
+				status: this.state.stepTwoCompletedSubStepsStatus[2]
+					? 'completed'
+					: undefined,
 				label: 'Lorem ipsum dolor sit amet, lorem ipsum dolor.',
 				setupAssistantAction: (
 					<Button
@@ -144,18 +154,9 @@ class Example extends React.Component {
 		const { stepTwoCompletedSubStepsStatus } = this.state;
 		const subSteps = this.getSubSteps();
 		let stepsCompleted = 0;
-		let { stepTwoCompletedSubSteps } = this.state;
 		let stepTwoSelectedSubStep;
 
-		if (completed) {
-			stepTwoCompletedSubSteps.push(subSteps[subStepId]);
-			stepTwoCompletedSubStepsStatus[subStepId] = true;
-		} else {
-			stepTwoCompletedSubSteps = stepTwoCompletedSubSteps.filter(
-				(subStep) => subStep.id !== subStepId
-			);
-			stepTwoCompletedSubStepsStatus[subStepId] = false;
-		}
+		stepTwoCompletedSubStepsStatus[subStepId] = completed;
 
 		for (let i = 0; i < stepTwoCompletedSubStepsStatus.length; i += 1) {
 			if (stepTwoCompletedSubStepsStatus[i]) {
@@ -168,7 +169,6 @@ class Example extends React.Component {
 		}
 
 		this.setState({
-			stepTwoCompletedSubSteps,
 			stepTwoCompletedSubStepsStatus,
 			stepTwoProgress: Math.ceil((stepsCompleted / subSteps.length) * 100),
 			stepTwoSelectedSubStep,
@@ -204,7 +204,6 @@ class Example extends React.Component {
 						isOpen={this.state.expandedSteps[0] || false}
 						content={
 							<ProgressIndicator
-								completedSteps={subStepsComplete('complete1')}
 								id="hub-expandable-step-1-progress-indicator"
 								orientation="vertical"
 								steps={subStepsComplete('complete1')}
@@ -223,7 +222,6 @@ class Example extends React.Component {
 						content={
 							<React.Fragment>
 								<ProgressIndicator
-									completedSteps={this.state.stepTwoCompletedSubSteps}
 									id="hub-expandable-step-2-progress-indicator"
 									orientation="vertical"
 									steps={this.getSubSteps()}
@@ -252,7 +250,6 @@ class Example extends React.Component {
 						isOpen={this.state.expandedSteps[2] || false}
 						content={
 							<ProgressIndicator
-								completedSteps={subStepsComplete('complete2')}
 								id="hub-expandable-step-3-progress-indicator"
 								orientation="vertical"
 								steps={subStepsComplete('complete2')}
