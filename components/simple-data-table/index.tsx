@@ -1021,7 +1021,8 @@ class SimpleDataTable extends React.Component<
 		);
 
 		if (this.props.fixedHeader) {
-			const border = '1px solid var(--slds-g-color-border-1)';
+			const border =
+				'1px solid var(--slds-g-color-border-1, rgb(221, 219, 218))';
 			const styles: React.CSSProperties = {
 				borderTop: border,
 				height: '100%',
@@ -1033,7 +1034,7 @@ class SimpleDataTable extends React.Component<
 				styles.borderRight = border;
 				styles.borderTop = 'none';
 				styles.borderRadius =
-					'0 0 var(--slds-g-radius-border-2) var(--slds-g-radius-border-2)';
+					'0 0 var(--slds-g-radius-border-2, 0.25rem) var(--slds-g-radius-border-2, 0.25rem)';
 			}
 
 			const fixedScrollerStyle: React.CSSProperties = {
