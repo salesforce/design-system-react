@@ -12,6 +12,7 @@ export type {
 	DatePickerChangeHandler,
 	DatePickerChangeProps,
 	DatePickerCloseData,
+	DatePickerFocusDirection,
 	DatePickerRequestCloseData,
 	DatePickerRequestCloseTrigger,
 	DatePickerRequestOpenData,

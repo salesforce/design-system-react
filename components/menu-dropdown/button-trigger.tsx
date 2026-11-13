@@ -90,7 +90,7 @@ export interface ButtonTriggerProps {
 	/** Disabled state */
 	disabled?: boolean;
 	/** Tab index */
-	tabIndex?: string;
+	tabIndex?: number;
 	/** Button style */
 	style?: React.CSSProperties;
 }
@@ -174,7 +174,7 @@ const ButtonTrigger = forwardRef<
 			className: classnames(className as string) || undefined,
 			disabled,
 			ref: triggerRef as (element: HTMLElement | null) => void,
-			tabIndex: tabIndex === undefined ? undefined : Number(tabIndex),
+			tabIndex,
 		});
 	} else {
 		// The Button's own props override MenuDropdown's

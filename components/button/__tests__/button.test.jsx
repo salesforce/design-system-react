@@ -197,3 +197,12 @@ describe('SLDSButton', () => {
 		});
 	});
 });
+
+describe('native button attributes', () => {
+	it('passes name, value and role through to the button', () => {
+		render(<Button label="Go" name="go" value="1" role="tab" />);
+		const button = screen.getByRole('tab');
+		expect(button).toHaveAttribute('name', 'go');
+		expect(button).toHaveAttribute('value', '1');
+	});
+});

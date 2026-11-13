@@ -96,6 +96,9 @@ export interface DatePickerRequestCloseData {
 }
 
 /** Data passed to `onClose` */
+/** Which way keyboard focus left the calendar grid: past the last day, or before the first. */
+export type DatePickerFocusDirection = 'next' | 'previous';
+
 export interface DatePickerCloseData {
 	/**
 	 * `true` when the close was reported by the calendar dialog unmounting. The calendar
@@ -167,7 +170,11 @@ interface DatePickerBaseProps {
 	 */
 	onCalendarFocus?: (
 		event: React.SyntheticEvent | undefined,
-		data: { date?: Date; ref?: HTMLElement; direction?: string }
+		data: {
+			date?: Date;
+			ref?: HTMLElement;
+			direction?: DatePickerFocusDirection;
+		}
 	) => void;
 	/**
 	 * Called after the calendar has closed. `event` is `undefined` because the close

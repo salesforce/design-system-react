@@ -4,6 +4,7 @@
 
 import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
+import warning from 'warning';
 import incompatibleProps from '../../utilities/warning/incompatible-props';
 
 let checkProps = function checkPropsFunction() {};
@@ -33,6 +34,35 @@ if (process.env.NODE_ENV !== 'production') {
 			);
 		});
 
+		deprecatedProperty(
+			COMPONENT,
+			props.hasDeprecatedCompletedSteps || undefined,
+			'completedSteps',
+			"steps[].status ('completed')",
+			createDocUrl('steps')
+		);
+		deprecatedProperty(
+			COMPONENT,
+			props.disabledSteps || undefined,
+			'disabledSteps',
+			"steps[].status ('disabled')",
+			createDocUrl('steps')
+		);
+		deprecatedProperty(
+			COMPONENT,
+			props.errorSteps || undefined,
+			'errorSteps',
+			"steps[].status ('error')",
+			createDocUrl('steps')
+		);
+		warning(
+			!props.hasInvalidSteps,
+			`[Design System React] \`steps\` of ${COMPONENT} must be an array of steps that each have a \`label\`; using the default steps instead.`
+		);
+		warning(
+			!props.hasSelectedStepWithoutId,
+			`[Design System React] \`selectedStep\` of ${COMPONENT} is a step without an \`id\`, so it is matched by its whole content. This is deprecated: pass the step's \`id\` instead. ${createDocUrl('selectedStep')}`
+		);
 		deprecatedProperty(
 			COMPONENT,
 			props.hasDeprecatedSetupAssistantAction || undefined,

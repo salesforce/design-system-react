@@ -20,7 +20,7 @@ export interface PageHeaderDetailBlockProps {
 	/**
 	 * Sets the 'flavor' of a block, which adds the following sizing class: `slds-size_${flavor}`
 	 */
-	flavor?: string;
+	flavor?: `${number}-of-${number}`;
 	/**
 	 * Sets the label of a detail block
 	 */

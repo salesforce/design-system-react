@@ -151,15 +151,13 @@ export interface PopoverCloseData {
 }
 
 /**
- * Props for the Popover component
+ * Props every Popover takes
  */
-export interface PopoverProps {
+export interface PopoverBaseProps {
 	/** Alignment relative to trigger */
 	align?: PopoverAlign;
 	/** Accessibility labels */
 	assistiveText?: PopoverAssistiveText;
-	/** HTML id of heading for aria-labelledby */
-	ariaLabelledby?: string;
 	/**
 	 * The element the popover attaches to (the first child), and optional other children rendered
 	 * beside it. The first child is the trigger: Popover adds `id`, `aria-haspopup`, `tabIndex` and
@@ -199,10 +197,6 @@ export interface PopoverProps {
 	hasStaticAlignment?: boolean;
 	/** Remove trigger inline-block style */
 	hasNoTriggerStyles?: boolean;
-	/** Popover heading */
-	heading?: ReactNode;
-	/** Icon for feature variant */
-	icon?: ReactNode;
 	/** HTML id */
 	id?: string;
 	/**
@@ -257,7 +251,8 @@ export interface PopoverProps {
 	 */
 	openOn?: 'click' | 'hover' | 'hybrid' | 'none';
 	/** Overlay for click-outside on iframes */
-	overlay?: boolean | ((isOpen: boolean, overlayElement: HTMLElement) => void);
+	overlay?:
+		boolean | ((isOpen: boolean, overlayElement: HTMLSpanElement) => void);
 	/** Positioning strategy */
 	position?: PopoverPosition;
 	/** Walkthrough step text */
@@ -270,11 +265,48 @@ export interface PopoverProps {
 	styleFooter?: CSSProperties;
 	/** @deprecated Use `className`, which lands on the same element. */
 	triggerClassName?: string | string[] | Record<string, boolean>;
-	/** Popover variant */
-	variant?: PopoverVariant;
 	/** Delay before closing on hover (ms) */
 	hoverCloseDelay?: number;
 }
+
+/** The `feature` variant, the only one with an `icon`. */
+interface PopoverFeatureVariantProps {
+	/** Popover variant */
+	variant: 'feature';
+	/** Icon for the feature variant */
+	icon?: ReactNode;
+}
+
+/** Every other variant. */
+interface PopoverOtherVariantProps {
+	/** Popover variant */
+	variant?: Exclude<PopoverVariant, 'feature'>;
+	icon?: never;
+}
+
+/**
+ * The dialog is named by `heading`, or by the `id` of another element in
+ * `ariaLabelledby`, not both.
+ */
+export type PopoverLabelProps =
+	| {
+			/** Popover heading */
+			heading?: ReactNode;
+			ariaLabelledby?: never;
+	  }
+	| {
+			heading?: never;
+			/** HTML id of the heading element that labels the dialog. Use instead of `heading`. */
+			ariaLabelledby: string;
+	  };
+
+/**
+ * Props for the Popover component: `icon` is feature-only, and `heading`
+ * and `ariaLabelledby` are exclusive.
+ */
+export type PopoverProps = PopoverBaseProps &
+	(PopoverFeatureVariantProps | PopoverOtherVariantProps) &
+	PopoverLabelProps;
 
 /**
  * Props removed from the public API. Still destructured so they never reach
@@ -353,7 +385,13 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>((props, ref) => {
 		variant = 'base',
 		hoverCloseDelay = 300,
 		closeButtonAssistiveText,
-	} = props as PopoverProps & PopoverRemovedProps;
+	} = props as PopoverBaseProps &
+		PopoverRemovedProps & {
+			ariaLabelledby?: string;
+			heading?: ReactNode;
+			icon?: ReactNode;
+			variant?: PopoverVariant;
+		};
 
 	// `check-props.js` is not wired up (its trigger and heading checks predate v11), so the
 	// renamed and removed props are checked here.

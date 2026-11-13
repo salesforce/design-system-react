@@ -245,7 +245,7 @@ export const WithIconTrigger = {
 					category="standard"
 					name="case"
 					size="small"
-					tabIndex="0"
+					tabIndex={0}
 				/>
 			}
 		/>
@@ -264,7 +264,7 @@ export const WithSpanTrigger = {
 			{...args}
 			trigger={
 				<span
-					tabIndex="0"
+					tabIndex={0}
 					style={{ textDecoration: 'underline', cursor: 'help' }}
 				>
 					Hover over this text

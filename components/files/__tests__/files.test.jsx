@@ -1,5 +1,5 @@
-import { render } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
+import { render, fireEvent } from '@testing-library/react';
+import { describe, it, expect, vi } from 'vitest';
 
 import Files from '../';
 import File from '../file';
@@ -29,5 +29,21 @@ describe('Files', () => {
 		expect(container.querySelector('.slds-file__crop')).toHaveClass(
 			'slds-file__crop_16-by-9'
 		);
+	});
+});
+
+describe('File without href', () => {
+	it('defaults href to # so onClickImage handles the click without navigating', () => {
+		const onClickImage = vi.fn();
+		const { container } = render(
+			<IconSettings iconPath="/assets/icons">
+				<File labels={{ title: 'One.pdf' }} onClickImage={onClickImage} />
+			</IconSettings>
+		);
+		const link = container.querySelector('a.slds-file__crop');
+		expect(link.getAttribute('href')).toBe('#');
+		const notPrevented = fireEvent.click(link);
+		expect(notPrevented).toBe(false);
+		expect(onClickImage).toHaveBeenCalledTimes(1);
 	});
 });

@@ -5,6 +5,42 @@
 // `@ts-expect-error` fails the build if the line below it stops erroring.
 
 import SimpleDataTable from '../index';
+import SimpleDataTableColumn from '../column';
+import SimpleDataTableRowActions from '../row-actions';
+
+export const table = (
+	<SimpleDataTable
+		items={[
+			{ id: '1', type: 'header-row' },
+			{ id: '2', classNameRow: 'x' },
+		]}
+		assistiveText={{ selectRow: 'Select' }}
+	>
+		<SimpleDataTableColumn label="Name" property="name" />
+	</SimpleDataTable>
+);
+
+export const unknownItemType = (
+	// @ts-expect-error `type` is `'header-row'` or unset
+	<SimpleDataTable items={[{ id: '1', type: 'footer-row' }]} />
+);
+
+export const unknownAssistiveText = (
+	// @ts-expect-error `assistiveText` has no index signature
+	<SimpleDataTable items={[]} assistiveText={{ typo: 'x' }} />
+);
+
+export const unknownColumnProp = (
+	// @ts-expect-error columns have no index signature
+	<SimpleDataTableColumn property="name" typo="x" />
+);
+
+export const rowActions = (
+	<SimpleDataTableRowActions
+		options={[{ label: 'Edit', value: 'edit' }]}
+		onAction={(event, { item, option }) => [item.id, option.value]}
+	/>
+);
 
 const items = [{ id: '1' }];
 

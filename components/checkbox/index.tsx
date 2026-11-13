@@ -81,7 +81,7 @@ export type CheckboxChangeProps =
 	| { disabled: true; onChange?: CheckboxChangeHandler }
 	| { readOnly: true; onChange?: CheckboxChangeHandler };
 
-interface CheckboxBaseProps {
+interface CheckboxCommonProps {
 	/** aria-controls for related regions */
 	'aria-controls'?: string;
 	/** aria-describedby for descriptions */
@@ -99,21 +99,10 @@ interface CheckboxBaseProps {
 	 * from `onChange`, which reports the requested value in `data.checked`.
 	 */
 	checked: boolean;
-	/** CSS class for container */
-	className?: string | string[] | Record<string, boolean>;
 	/** Disable the checkbox */
 	disabled?: boolean;
-	/** Error message */
-	errorText?: string;
 	/** Unique ID */
 	id?: string;
-	/**
-	 * Indeterminate state (partial selection). Controlled: it is applied to the
-	 * DOM node on every change and cleared when this prop is `false` or
-	 * `undefined`. Clicking an indeterminate checkbox reports
-	 * `{ checked: true, indeterminate: false }`.
-	 */
-	indeterminate?: boolean;
 	/** Text labels */
 	labels?: CheckboxLabels;
 	/** Form parameter name */
@@ -143,14 +132,26 @@ interface CheckboxBaseProps {
 	 * Still works, and warns.
 	 */
 	requestFocus?: boolean;
-	/** Mark as required */
-	required?: boolean;
 	/** ARIA role */
 	role?: string;
+	/** Label ID for label element */
+	labelId?: string;
+}
+
+/** Props of the standalone `base` and `toggle` checkboxes (not the picker variants). */
+interface CheckboxFieldProps {
+	/** CSS class for container */
+	className?: string | string[] | Record<string, boolean>;
+	/** Error message */
+	errorText?: string;
+	/** Mark as required */
+	required?: boolean;
 	/** Tab index */
-	tabIndex?: string;
-	/** Checkbox variant */
-	variant?: CheckboxVariant;
+	tabIndex?: number;
+}
+
+/** Props only the visual picker takes. */
+interface CheckboxVisualPickerProps {
 	/** Coverable visual picker */
 	coverable?: boolean;
 	/** Vertical visual picker */
@@ -169,14 +170,82 @@ interface CheckboxBaseProps {
 	onRenderVisualPickerNotSelected?: () => ReactNode;
 	/** Size for visual picker */
 	size?: CheckboxSize;
-	/** Label ID for label element */
-	labelId?: string;
+}
+
+/** The plain checkbox, and the default. Supports every field prop. */
+interface CheckboxBaseVariantProps
+	extends CheckboxCommonProps, CheckboxFieldProps {
+	/** Checkbox variant */
+	variant?: 'base';
+	/**
+	 * Indeterminate state (partial selection). Controlled: it is applied to the
+	 * DOM node on every change and cleared when this prop is `false` or
+	 * `undefined`. Clicking an indeterminate checkbox reports
+	 * `{ checked: true, indeterminate: false }`.
+	 */
+	indeterminate?: boolean;
+}
+
+/** A toggle switch. A toggle is on or off, so there is no `indeterminate`. */
+interface CheckboxToggleVariantProps
+	extends CheckboxCommonProps, CheckboxFieldProps {
+	/** Checkbox variant */
+	variant: 'toggle';
+	indeterminate?: never;
 }
 
 /**
- * Props for the Checkbox component
+ * A button inside a `ButtonGroup`. The group owns the container, error text and
+ * tab order, so `className`, `errorText`, `required` and `tabIndex` are not accepted.
  */
-export type CheckboxProps = CheckboxBaseProps & CheckboxChangeProps;
+interface CheckboxButtonGroupVariantProps extends CheckboxCommonProps {
+	/** Checkbox variant */
+	variant: 'button-group';
+	/**
+	 * Indeterminate state (partial selection). Controlled: it is applied to the
+	 * DOM node on every change and cleared when this prop is `false` or
+	 * `undefined`. Clicking an indeterminate checkbox reports
+	 * `{ checked: true, indeterminate: false }`.
+	 */
+	indeterminate?: boolean;
+	className?: never;
+	errorText?: never;
+	required?: never;
+	tabIndex?: never;
+}
+
+/**
+ * An option inside a `VisualPicker`. The picker owns the container, error text
+ * and tab order, so `className`, `errorText`, `required` and `tabIndex` are not accepted.
+ */
+interface CheckboxVisualPickerVariantProps
+	extends CheckboxCommonProps, CheckboxVisualPickerProps {
+	/** Checkbox variant */
+	variant: 'visual-picker';
+	/**
+	 * Indeterminate state (partial selection). Controlled: it is applied to the
+	 * DOM node on every change and cleared when this prop is `false` or
+	 * `undefined`. Clicking an indeterminate checkbox reports
+	 * `{ checked: true, indeterminate: false }`.
+	 */
+	indeterminate?: boolean;
+	className?: never;
+	errorText?: never;
+	required?: never;
+	tabIndex?: never;
+}
+
+type CheckboxVariantProps =
+	| CheckboxBaseVariantProps
+	| CheckboxToggleVariantProps
+	| CheckboxButtonGroupVariantProps
+	| CheckboxVisualPickerVariantProps;
+
+/**
+ * Props for the Checkbox component: a union on `variant`, so a prop that a
+ * variant drops is a compile error instead of being ignored.
+ */
+export type CheckboxProps = CheckboxVariantProps & CheckboxChangeProps;
 
 const defaultLabels: CheckboxLabels = {
 	toggleDisabled: 'Disabled',
@@ -225,7 +294,14 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 		size = 'medium',
 		labelId,
 		...restProps
-	} = props as CheckboxProps & { defaultChecked?: boolean };
+	} = props as CheckboxCommonProps &
+		Partial<CheckboxFieldProps & CheckboxVisualPickerProps> &
+		CheckboxChangeProps & {
+			indeterminate?: boolean;
+			variant?: CheckboxVariant;
+		} & {
+			defaultChecked?: boolean;
+		};
 
 	const generatedId = useId();
 	const internalRef = useRef<HTMLInputElement | null>(null);
@@ -347,7 +423,13 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 	// Button Group Variant
 	if (variant === 'button-group') {
 		return (
-			<span className="slds-button slds-checkbox_button">
+			<span
+				className={classNames(
+					'slds-button',
+					'slds-checkbox_button',
+					className as string
+				)}
+			>
 				<input
 					{...inputProps}
 					ref={setRef}
@@ -421,7 +503,8 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 				className={classNames(
 					'slds-visual-picker',
 					`slds-visual-picker_${size}`,
-					vertical && 'slds-visual-picker_vertical'
+					vertical && 'slds-visual-picker_vertical',
+					className as string
 				)}
 			>
 				<input
@@ -498,7 +581,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 					<input
 						{...inputProps}
 						ref={setRef}
-						tabIndex={tabIndex ? parseInt(tabIndex, 10) : undefined}
+						tabIndex={tabIndex}
 						aria-describedby={getAriaDescribedBy()}
 					/>
 					<label

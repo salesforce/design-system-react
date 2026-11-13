@@ -3,7 +3,7 @@
  */
 
 import { ReactElement, ReactNode, CSSProperties, SyntheticEvent } from 'react';
-import type { MenuDropdownProps } from '../menu-dropdown';
+import type { MenuDropdownOption, MenuDropdownProps } from '../menu-dropdown';
 import type { ChildrenOf } from '../../types/common';
 
 // ============================================================================
@@ -14,7 +14,8 @@ export interface SimpleDataTableItem {
 	/** Unique, stable identifier. Selection and disabled selection are matched by `id`, so fresh item objects (e.g. from a store) still match. */
 	id: string;
 	classNameRow?: string;
-	type?: 'header-row' | string;
+	/** `'header-row'` renders the item with `renderSubHeadingRow` instead of as a data row. */
+	type?: 'header-row';
 	headerId?: string;
 	[key: string]: unknown;
 }
@@ -39,7 +40,6 @@ export interface SimpleDataTableAssistiveText {
 	selectRow?: string;
 	selectRowGroup?: string;
 	loadingMore?: string;
-	[key: string]: unknown;
 }
 
 // ============================================================================
@@ -60,7 +60,7 @@ export interface SimpleDataTableRowActionData {
 	/** The row's item */
 	item: SimpleDataTableItem;
 	/** The selected menu option */
-	option: unknown;
+	option: MenuDropdownOption;
 }
 
 export interface SimpleDataTableRowChangeData {
@@ -258,8 +258,6 @@ export interface SimpleDataTableColumnProps {
 	fixedLayout?: boolean;
 	/** Table ID */
 	id?: string;
-	/** Additional props passed through to the cell */
-	[key: string]: unknown;
 }
 
 // ============================================================================
@@ -312,7 +310,7 @@ export interface SimpleDataTableRowActionsProps {
 		data: SimpleDataTableRowActionData
 	) => void;
 	/** Dropdown options */
-	options?: unknown[];
+	options?: MenuDropdownProps['options'];
 	/** A `MenuDropdown` element. Its props override the defaults; its `onSelect` runs after `onAction`. */
 	dropdown?: ReactElement<Partial<MenuDropdownProps>>;
 }

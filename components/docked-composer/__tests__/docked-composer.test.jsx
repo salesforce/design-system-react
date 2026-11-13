@@ -100,6 +100,52 @@ describe('SLDSDockedComposer', () => {
 	});
 });
 
+describe('DockedComposer uncontrolled state', () => {
+	it('starts closed and toggles itself without isOpen', async () => {
+		const user = userEvent.setup();
+		render(
+			<IconSettings iconPath="/assets/icons">
+				<DockedComposer header="Header" body={<div>Body</div>} />
+			</IconSettings>
+		);
+
+		expect(screen.queryByText('Body')).not.toBeInTheDocument();
+		await user.click(screen.getByRole('button', { name: 'Expand' }));
+		expect(screen.getByText('Body')).toBeInTheDocument();
+		await user.click(screen.getByRole('button', { name: 'Minimize' }));
+		expect(screen.queryByText('Body')).not.toBeInTheDocument();
+	});
+
+	it('starts open with defaultIsOpen', () => {
+		render(
+			<IconSettings iconPath="/assets/icons">
+				<DockedComposer defaultIsOpen header="Header" body={<div>Body</div>} />
+			</IconSettings>
+		);
+
+		expect(screen.getByText('Body')).toBeInTheDocument();
+	});
+
+	it('does not toggle itself when isOpen is controlled', async () => {
+		const user = userEvent.setup();
+		const onRequestMinimize = vi.fn();
+		render(
+			<IconSettings iconPath="/assets/icons">
+				<DockedComposer
+					isOpen
+					header="Header"
+					body={<div>Body</div>}
+					events={{ onRequestMinimize }}
+				/>
+			</IconSettings>
+		);
+
+		await user.click(screen.getByRole('button', { name: 'Minimize' }));
+		expect(onRequestMinimize).toHaveBeenCalledTimes(1);
+		expect(screen.getByText('Body')).toBeInTheDocument();
+	});
+});
+
 describe('DockedComposer focus and ARIA', () => {
 	it('moves focus to the button that replaces the clicked minimize/expand button', async () => {
 		const user = userEvent.setup();

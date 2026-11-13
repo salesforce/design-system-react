@@ -36,29 +36,19 @@ import {
 	TreeScrollData,
 } from './types';
 
-export interface TreeProps {
-	/**
-	 * **Assistive text for accessibility**
-	 * * `heading`: Visually hidden tree heading. Set this or `labels.heading`.
-	 */
-	assistiveText?: TreeAssistiveText;
+interface TreeBaseProps {
 	/** Class names for the root `.slds-tree_container` div */
 	className?: string | string[] | Record<string, boolean>;
 	/** Class names for the top-level `ul.slds-tree` element */
 	classNameList?: string | string[] | Record<string, boolean>;
 	/** @deprecated Use `classNameList`. */
 	listClassName?: string | string[] | Record<string, boolean>;
-	/** Function to get child nodes from a parent node */
+	/**
+	 * Resolves a node's children, for trees that store child ids instead of `nodes`. Used at every level.
+	 */
 	getNodes?: (node: { nodes?: TreeNode[] }) => TreeNode[] | undefined;
-	/** @deprecated Use `labels.heading` instead. */
-	heading?: ReactNode;
 	/** HTML id of the tree container (required) */
 	id: string;
-	/**
-	 * **Text labels for internationalization**
-	 * * `heading`: Visible tree heading that describes its contents. Set this or `assistiveText.heading`.
-	 */
-	labels?: TreeLabels;
 	/**
 	 * Array of tree nodes. The tree never modifies them: selection comes from `selectedIds` and
 	 * expansion from `expandedIds` / `defaultExpandedIds`.
@@ -129,6 +119,56 @@ export interface TreeProps {
 }
 
 type ReactNode = React.ReactNode;
+
+/** A visible heading. A tree needs a heading, visible or not. */
+interface TreeVisibleHeadingProps {
+	/**
+	 * **Text labels for internationalization**
+	 * * `heading`: Visible tree heading that describes its contents.
+	 */
+	labels: TreeLabels & { heading: ReactNode };
+	assistiveText?: TreeAssistiveText & { heading?: never; label?: never };
+	heading?: never;
+}
+
+/** A visually hidden heading, for screen readers only. */
+interface TreeHiddenHeadingProps {
+	/**
+	 * **Assistive text for accessibility**
+	 * * `heading`: Visually hidden tree heading.
+	 */
+	assistiveText: TreeAssistiveText & { heading: string };
+	labels?: TreeLabels & { heading?: never };
+	heading?: never;
+}
+
+/** @deprecated Use `labels.heading`. */
+interface TreeDeprecatedHeadingProps {
+	/** @deprecated Use `labels.heading` instead. */
+	heading: ReactNode;
+	assistiveText?: TreeAssistiveText & { heading?: never };
+	labels?: TreeLabels & { heading?: never };
+}
+
+/** @deprecated Use `assistiveText.heading`. */
+interface TreeDeprecatedAssistiveLabelProps {
+	/** **Assistive text for accessibility** */
+	assistiveText: TreeAssistiveText & { label: string; heading?: never };
+	labels?: TreeLabels & { heading?: never };
+	heading?: never;
+}
+
+/**
+ * Props for the Tree component. The heading is either visible (`labels.heading`) or
+ * visually hidden (`assistiveText.heading`), not both.
+ */
+export type TreeProps = TreeBaseProps &
+	(
+		| TreeVisibleHeadingProps
+		| TreeHiddenHeadingProps
+		| TreeDeprecatedHeadingProps
+		| TreeDeprecatedAssistiveLabelProps
+	);
 
 type GetNodes = (node: { nodes?: TreeNode[] }) => TreeNode[] | undefined;
 

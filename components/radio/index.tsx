@@ -75,7 +75,7 @@ export type RadioChangeHandler = (
 /**
  * Props for the Radio component
  */
-export interface RadioProps {
+interface RadioBaseProps {
 	/** Assistive text for accessibility */
 	assistiveText?: RadioAssistiveText;
 	/** ARIA describedby attribute */
@@ -117,11 +117,15 @@ export interface RadioProps {
 	/** @deprecated Focus the radio through `refs.input` instead. Still works, and warns. */
 	requestFocus?: boolean;
 	/** Tab index */
-	tabIndex?: string;
+	tabIndex?: number;
 	/** Input value */
 	value?: string;
-	/** Radio variant */
-	variant?: RadioVariant;
+	/** Ref callbacks */
+	refs?: RadioRefs;
+}
+
+/** Props only the visual picker takes. */
+interface RadioVisualPickerOnlyProps {
 	/** Visual picker: coverable when selected */
 	coverable?: boolean;
 	/** Visual picker: vertical layout */
@@ -138,25 +142,58 @@ export interface RadioProps {
 	onRenderVisualPickerSelected?: () => React.ReactNode;
 	/** @deprecated Use `visualPickerFigureNotSelected` instead. */
 	onRenderVisualPickerNotSelected?: () => React.ReactNode;
-	/** Visual picker: description text */
-	description?: string;
-	/** Visual picker: size */
+	/** Visual picker: size. Defaults to `medium`. */
 	size?: RadioSize;
-	/** Ref callbacks */
-	refs?: RadioRefs;
-	/** Custom styles (for swatch variant) */
+}
+
+/** Visual-picker-only props, rejected by the other variants. */
+type RadioVisualPickerOnlyNever = {
+	[K in keyof RadioVisualPickerOnlyProps]?: never;
+};
+
+/** A plain radio, or a button inside a `RadioButtonGroup`. */
+interface RadioPlainVariantProps extends RadioVisualPickerOnlyNever {
+	/** Radio variant */
+	variant?: 'base' | 'button-group';
+	style?: never;
+}
+
+/** A color swatch button. `value` is the color. */
+interface RadioSwatchVariantProps extends RadioVisualPickerOnlyNever {
+	/** Radio variant */
+	variant: 'swatch';
+	/** Custom styles for the swatch */
 	style?: CSSProperties;
 }
+
+/** An option inside a `VisualPicker`. */
+interface RadioVisualPickerVariantProps extends RadioVisualPickerOnlyProps {
+	/** Radio variant */
+	variant: 'visual-picker';
+	style?: never;
+}
+
+type RadioVariantProps =
+	| RadioPlainVariantProps
+	| RadioSwatchVariantProps
+	| RadioVisualPickerVariantProps;
+
+/**
+ * Props for the Radio component: a union on `variant`, so a prop that a
+ * variant ignores is a compile error.
+ */
+export type RadioProps = RadioBaseProps & RadioVariantProps;
 
 /**
  * Props for a `Radio` rendered as a child of `RadioGroup` or
  * `RadioButtonGroup`. The group injects `checked` (derived from its `value`)
  * and `onChange`, so neither is required here.
  */
-export interface RadioGroupItemProps extends Omit<
-	RadioProps,
-	'checked' | 'onChange'
-> {
+export type RadioGroupItemProps = Omit<RadioBaseProps, 'checked' | 'onChange'> &
+	RadioVariantProps &
+	RadioGroupItemOwnProps;
+
+interface RadioGroupItemOwnProps {
 	/**
 	 * @deprecated Pass `value` to the `RadioGroup`/`RadioButtonGroup` instead.
 	 * Only used when the group has no `value`.
@@ -173,45 +210,50 @@ const defaultLabels: RadioLabels = {};
  * A radio input that can have a single input checked at any one time.
  * Radios should be wrapped with a RadioGroup or RadioButtonGroup.
  */
-const Radio = ({
-	assistiveText: propAssistiveText,
-	'aria-describedby': ariaDescribedBy,
-	'aria-labelledby': ariaLabelledBy,
-	checked,
-	className,
-	// Removed in v11. Destructured so they never reach the DOM;
-	// `checkDeprecatedProps` warns about them.
-	defaultChecked,
-	deselectable,
-	disabled,
-	id: propId,
-	labelId,
-	labels: propLabels,
-	label,
-	name,
-	onChange,
-	onFocus,
-	onRequestFocus,
-	requestFocus,
-	tabIndex,
-	value,
-	variant = 'base',
-	coverable = false,
-	vertical,
-	visualPickerFigure,
-	visualPickerFigureSelected,
-	visualPickerFigureNotSelected,
-	onRenderVisualPicker,
-	onRenderVisualPickerSelected,
-	onRenderVisualPickerNotSelected,
-	size,
-	refs,
-	style,
-	...rest
-}: RadioProps & {
-	defaultChecked?: boolean;
-	label?: unknown;
-}): React.ReactElement => {
+const Radio = (props: RadioProps): React.ReactElement => {
+	const {
+		assistiveText: propAssistiveText,
+		'aria-describedby': ariaDescribedBy,
+		'aria-labelledby': ariaLabelledBy,
+		checked,
+		className,
+		// Removed in v11. Destructured so they never reach the DOM;
+		// `checkDeprecatedProps` warns about them.
+		defaultChecked,
+		deselectable,
+		disabled,
+		id: propId,
+		labelId,
+		labels: propLabels,
+		label,
+		name,
+		onChange,
+		onFocus,
+		onRequestFocus,
+		requestFocus,
+		tabIndex,
+		value,
+		variant = 'base',
+		coverable = false,
+		vertical,
+		visualPickerFigure,
+		visualPickerFigureSelected,
+		visualPickerFigureNotSelected,
+		onRenderVisualPicker,
+		onRenderVisualPickerSelected,
+		onRenderVisualPickerNotSelected,
+		size = 'medium',
+		refs,
+		style,
+		...rest
+	} = props as RadioBaseProps &
+		Partial<RadioVisualPickerOnlyProps> & {
+			variant?: RadioVariant;
+			style?: CSSProperties;
+		} & {
+			defaultChecked?: boolean;
+			label?: unknown;
+		};
 	const generatedId = useId();
 	const preventDuplicateRef = useRef(false);
 
@@ -383,7 +425,7 @@ const Radio = ({
 					}
 				}}
 				disabled={disabled}
-				tabIndex={tabIndex ? parseInt(tabIndex, 10) : undefined}
+				tabIndex={tabIndex}
 				aria-describedby={ariaDescribedBy}
 				aria-labelledby={ariaLabelledBy}
 				{...ariaProps}

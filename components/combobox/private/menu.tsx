@@ -9,11 +9,14 @@ import React, {
 import { dequal as isEqual } from 'dequal';
 import classNames from 'classnames';
 
-import Icon from '../../icon';
+import Icon, { type IconProps } from '../../icon';
 import Spinner from '../../spinner';
 import type { TooltipProps } from '../../tooltip';
 
 type ComboboxOptionLabelRenderer = (searchTerm: string) => ReactNode;
+
+/** The `<Icon>` shown before an option. Its `size` defaults to `small` in the menu. */
+export type ComboboxOptionIcon = ReactElement<IconProps>;
 
 /**
  * A selectable option. Group items under a `subheadings` entry from
@@ -28,7 +31,7 @@ export interface ComboboxItemOption {
 	label?: string;
 	subTitle?: string;
 	title?: string;
-	icon?: ReactNode;
+	icon?: ComboboxOptionIcon;
 	disabled?: boolean;
 	tooltipContent?: ReactNode;
 	value?: string;
@@ -53,7 +56,7 @@ export interface ComboboxSeparatorOption {
 interface ComboboxActionOptionFields {
 	id: string;
 	label?: string | ComboboxOptionLabelRenderer;
-	icon?: ReactNode;
+	icon?: ComboboxOptionIcon;
 	disabled?: boolean;
 	/** @deprecated Only called on Enter, for `type: 'header' | 'footer'` rows
 	 * passed directly in `options`. Use `optionsSearchEntity`/`optionsAddItem`
@@ -201,16 +204,15 @@ const renderLabel = (
 // oversized in the menu (SLDS 2 no longer shrinks it via CSS the way SLDS 1
 // did). Clone the icon to enforce "small" unless the consumer set a size
 // themselves. Leaves non-<Icon> nodes untouched.
-const sizeOptionIcon = (icon: ReactNode): ReactNode => {
-	if (!React.isValidElement(icon)) {
-		return icon;
-	}
-	const iconProps = icon.props as { size?: unknown };
-	if (iconProps.size != null) {
-		return icon;
-	}
-	return React.cloneElement(icon, { size: 'small' } as Record<string, unknown>);
-};
+const sizeOptionIcon = (icon: ComboboxOptionIcon): ReactNode =>
+	icon.props.size != null ? icon : React.cloneElement(icon, { size: 'small' });
+
+/**
+ * The text of an option's label. A label render function (separator and action
+ * rows only) has no text, so it returns `undefined`.
+ */
+export const getOptionLabel = (option?: ComboboxOption): string | undefined =>
+	typeof option?.label === 'string' ? option.label : undefined;
 
 const Menu: React.FC<MenuProps> = ({
 	activeOption,
@@ -309,7 +311,7 @@ const Menu: React.FC<MenuProps> = ({
 						role="option"
 					>
 						<span className="slds-media__figure slds-listbox__option-icon">
-							{sizeOptionIcon(optionData.icon)}
+							{optionData.icon && sizeOptionIcon(optionData.icon)}
 						</span>
 						<span className="slds-media__body">
 							{renderLabel(optionData.label, inputValue)}
@@ -345,7 +347,7 @@ const Menu: React.FC<MenuProps> = ({
 						role="option"
 					>
 						<span className="slds-media__figure slds-listbox__option-icon">
-							{sizeOptionIcon(optionData.icon)}
+							{optionData.icon && sizeOptionIcon(optionData.icon)}
 						</span>
 						<span className="slds-media__body">
 							{renderLabel(optionData.label, inputValue)}
@@ -395,7 +397,7 @@ const Menu: React.FC<MenuProps> = ({
 				>
 					{optionData.icon && !renderMenuItem ? (
 						<span className="slds-media__figure">
-							{sizeOptionIcon(optionData.icon)}
+							{optionData.icon && sizeOptionIcon(optionData.icon)}
 						</span>
 					) : null}
 					{renderMenuItem ? (
@@ -560,7 +562,7 @@ const Menu: React.FC<MenuProps> = ({
 						<Spinner
 							assistiveText={{ label: assistiveText.loadingMenuItems }}
 							hasContainer={false}
-							isInline
+							placement="inline"
 							size="x-small"
 						/>
 					</div>

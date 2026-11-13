@@ -71,6 +71,8 @@ export interface ToastProps {
 	assistiveText?: ToastAssistiveText;
 	/** CSS classes for the toast */
 	className?: string | string[] | Record<string, boolean>;
+	/** Show the close button. `onRequestClose` is called with `trigger: 'close-button'` when it is clicked. */
+	dismissible?: boolean;
 	/** Auto-dismiss duration in milliseconds */
 	duration?: number;
 	/**
@@ -96,8 +98,8 @@ export interface ToastProps {
 	) => void;
 	/** Custom styles */
 	style?: CSSProperties;
-	/** Toast type/severity */
-	variant: ToastVariant;
+	/** Toast type/severity (default `info`) */
+	variant?: ToastVariant;
 }
 
 const defaultAssistiveText: ToastAssistiveText = {
@@ -123,6 +125,7 @@ const defaultIcons: Record<ToastVariant, ReactNode> = {
 const Toast = ({
 	assistiveText: propAssistiveText,
 	className,
+	dismissible = false,
 	duration,
 	icon: propIcon,
 	labels: propLabels,
@@ -241,17 +244,19 @@ const Toast = ({
 				</h2>
 				{labels.details && <p>{labels.details}</p>}
 			</div>
-			<Button
-				assistiveText={{ icon: assistiveText.closeButton as string }}
-				className="slds-notify__close"
-				iconCategory="utility"
-				iconName="close"
-				iconSize="medium"
-				inverse
-				onClick={handleCloseButtonClick}
-				title={assistiveText.closeButton as string}
-				variant="icon"
-			/>
+			{dismissible && (
+				<Button
+					assistiveText={{ icon: assistiveText.closeButton as string }}
+					className="slds-notify__close"
+					iconCategory="utility"
+					iconName="close"
+					iconSize="medium"
+					inverse
+					onClick={handleCloseButtonClick}
+					title={assistiveText.closeButton as string}
+					variant="icon"
+				/>
+			)}
 		</div>
 	);
 };

@@ -12,6 +12,12 @@ export interface CheckedProps extends Pick<
 > {
 	disabledSteps: boolean;
 	errorSteps: boolean;
+	/** Whether the deprecated `completedSteps` has items */
+	hasDeprecatedCompletedSteps: boolean;
+	/** Whether `steps` was passed but is not a valid array of steps */
+	hasInvalidSteps: boolean;
+	/** Whether `selectedStep` is a step object without an `id` (matched by content, deprecated) */
+	hasSelectedStepWithoutId: boolean;
 	/** Whether any step passes the deprecated `onRenderSetupAssistantAction` */
 	hasDeprecatedSetupAssistantAction: boolean;
 	tooltipIsOpenSteps: boolean;

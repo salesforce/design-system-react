@@ -27,9 +27,9 @@ export interface ExpandableSectionAssistiveText {
 }
 
 /**
- * Props for the ExpandableSection component
+ * Props shared by every ExpandableSection
  */
-export interface ExpandableSectionProps {
+interface ExpandableSectionBaseProps {
 	/** Assistive text for accessibility */
 	assistiveText?: ExpandableSectionAssistiveText;
 	/** Content of the section */
@@ -38,6 +38,20 @@ export interface ExpandableSectionProps {
 	className?: string | string[] | Record<string, boolean>;
 	/** Unique identifier */
 	id?: string;
+	/**
+	 * Called when the toggle button is clicked, controlled or not. `data.isOpen` is the requested
+	 * (next) open state.
+	 */
+	onToggleOpen?: (
+		event: MouseEvent<HTMLButtonElement>,
+		data: { isOpen: boolean }
+	) => void;
+	/** Section title (required) */
+	title: string;
+}
+
+/** A section the user can collapse. Open or closed, controlled or not. */
+interface ExpandableSectionCollapsibleProps {
 	/**
 	 * Open state when the section is controlled. When set, the section only expands and collapses when
 	 * this prop changes: update it from `onToggleOpen`. Leave it `undefined` for an uncontrolled section
@@ -50,18 +64,31 @@ export interface ExpandableSectionProps {
 	 */
 	defaultIsOpen?: boolean;
 	/** Whether section cannot be collapsed */
-	nonCollapsible?: boolean;
-	/**
-	 * Called when the toggle button is clicked, controlled or not. `data.isOpen` is the requested
-	 * (next) open state.
-	 */
-	onToggleOpen?: (
-		event: MouseEvent<HTMLButtonElement>,
-		data: { isOpen: boolean }
-	) => void;
-	/** Section title (required) */
-	title: string;
+	nonCollapsible?: false;
 }
+
+/**
+ * A section that cannot be collapsed is always open: `isOpen={false}` or
+ * `defaultIsOpen={false}` would hide its content with no way to show it.
+ */
+interface ExpandableSectionNonCollapsibleProps {
+	/**
+	 * Open state when the section is controlled. A non-collapsible section is
+	 * always open, so only `true` is accepted.
+	 */
+	isOpen?: true;
+	/** Initial open state. A non-collapsible section is always open. */
+	defaultIsOpen?: true;
+	/** Whether section cannot be collapsed */
+	nonCollapsible: true;
+}
+
+/**
+ * Props for the ExpandableSection component: a union on `nonCollapsible`, so
+ * a section that can never be shown again does not compile.
+ */
+export type ExpandableSectionProps = ExpandableSectionBaseProps &
+	(ExpandableSectionCollapsibleProps | ExpandableSectionNonCollapsibleProps);
 
 const defaultAssistiveText: ExpandableSectionAssistiveText = {
 	toggleSection: 'Toggle visibility of section',
@@ -82,10 +109,13 @@ const ExpandableSection = ({
 	title,
 }: ExpandableSectionProps): React.ReactElement => {
 	const generatedId = useId();
-	const [isOpen, setIsOpen] = useControllableState(
+	const [isOpenState, setIsOpen] = useControllableState(
 		controlledIsOpen,
 		defaultIsOpen
 	);
+	// A section that cannot be collapsed is always open, whatever `isOpen` says
+	// (the types reject `false`; this covers JavaScript callers).
+	const isOpen = nonCollapsible || isOpenState;
 
 	const id = propId || generatedId;
 	const assistiveText = { ...defaultAssistiveText, ...propAssistiveText };

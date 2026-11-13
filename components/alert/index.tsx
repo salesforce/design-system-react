@@ -63,8 +63,8 @@ export interface AlertProps {
 	onRequestClose?: (event: React.MouseEvent) => void;
 	/** Custom styles */
 	style?: CSSProperties;
-	/** Alert type/severity */
-	variant: AlertVariant;
+	/** Alert type/severity (default `info`) */
+	variant?: AlertVariant;
 }
 
 const defaultAssistiveText: AlertAssistiveText = {

@@ -11,6 +11,7 @@ import { POPOVER_EDIT_DIALOG } from '../../utilities/constants';
 
 import Button from '../button';
 import Popover, { type PopoverProps } from './index';
+import type { PopoverBaseProps, PopoverLabelProps } from './popover';
 
 export interface EditDialogLabels {
 	/** text for Cancel button */
@@ -19,7 +20,7 @@ export interface EditDialogLabels {
 	save?: ReactNode;
 }
 
-export interface EditDialogProps {
+interface EditDialogOwnProps {
 	/**
 	 * The trigger element. Defaults to an edit button when not provided.
 	 */
@@ -61,17 +62,22 @@ export interface EditDialogProps {
 	 * Popover of type `~/components/popover`. This popover will be cloned and additional props appended, if passed in.
 	 */
 	popover?: ReactNode;
-	/**
-	 * Additional props are passed onto the underlying `Popover`.
-	 */
-	[key: string]: unknown;
 }
+
+/**
+ * Props for EditDialog: its own props, and the base-variant `Popover` props
+ * it passes through. The trigger and id are typed above.
+ */
+export type EditDialogProps = EditDialogOwnProps &
+	Omit<PopoverBaseProps, 'children' | 'disabled' | 'id' | 'body'> & {
+		body: PopoverBaseProps['body'];
+	} & PopoverLabelProps;
 
 interface EditDialogState {
 	isOpen: boolean;
 }
 
-const defaultProps: Partial<EditDialogProps> = {
+const defaultProps: Pick<EditDialogOwnProps, 'labels'> = {
 	labels: {
 		cancel: 'Cancel',
 		save: 'Save',
@@ -91,19 +97,19 @@ class EditDialog extends React.Component<EditDialogProps, EditDialogState> {
 	// these instead of replacing them.
 	handleOpen = (...args: Parameters<NonNullable<PopoverProps['onOpen']>>) => {
 		this.setState({ isOpen: true });
-		(this.props.onOpen as PopoverProps['onOpen'])?.(...args);
+		(this.props as PopoverProps).onOpen?.(...args);
 	};
 
 	handleClose = (...args: Parameters<NonNullable<PopoverProps['onClose']>>) => {
 		this.setState({ isOpen: false });
-		(this.props.onClose as PopoverProps['onClose'])?.(...args);
+		(this.props as PopoverProps).onClose?.(...args);
 	};
 
 	handleRequestClose = (
 		...args: Parameters<NonNullable<PopoverProps['onRequestClose']>>
 	) => {
 		this.setState({ isOpen: false });
-		(this.props.onRequestClose as PopoverProps['onRequestClose'])?.(...args);
+		(this.props as PopoverProps).onRequestClose?.(...args);
 	};
 
 	render() {

@@ -24,7 +24,7 @@ export interface PanelFilterGroupAssistiveText {
 	closeButton?: string;
 }
 
-export interface PanelFilterGroupProps {
+interface PanelFilterGroupBaseProps {
 	/**
 	 * **Assistive text for accessibility.**
 	 * This object is merged with the default props object on every render.
@@ -63,17 +63,25 @@ export interface PanelFilterGroupProps {
 	 */
 	errorLabel?: string;
 	/**
-	 * Allows for customization of footer. This will be added after any `FilterList`'s in the DOM. If using Panel Filter Group outside of a panel, do not set the variant to `panel` and header and footer will be removed.
-	 */
-	footer?: ReactNode;
-	/**
-	 * Allows for customization of header. This will be added before any `FilterList`'s in the DOM. If using Panel Filter Group outside of a panel, do not set the variant to `panel` and header and footer will be removed.
-	 */
-	header?: ReactNode;
-	/**
 	 * The heading within the header of the filtering panel
 	 */
 	heading?: ReactNode | string;
+	/**
+	 * Localized description of the "Remove All" button in the footer
+	 */
+	removeAllLabel?: ReactNode;
+	/**
+	 * Label for button that saves modified filters
+	 */
+	saveLabel?: string;
+}
+
+/** Panel-only callbacks and state, used by the built-in header and footer. */
+interface PanelFilterGroupPanelProps {
+	/**
+	 * Adds in default Panel header and footer
+	 */
+	variant: 'panel';
 	/**
 	 * Shows confirmation heading. Please see `onRequestCancel` and `onRequestSave`.
 	 */
@@ -98,22 +106,37 @@ export interface PanelFilterGroupProps {
 	 * When the panel's save button is clicked in order to confirm filter panel state.
 	 */
 	onRequestSave?: (event: MouseEvent) => void;
-	/**
-	 * Localized description of the "Remove All" button in the footer
-	 */
-	removeAllLabel?: ReactNode;
-	/**
-	 * Label for button that saves modified filters
-	 */
-	saveLabel?: string;
-	/**
-	 * Adds in default Panel header and footer
-	 */
-	variant?: 'panel';
-	[key: string]: unknown;
+	header?: never;
+	footer?: never;
 }
 
-const defaultProps: Partial<PanelFilterGroupProps> = {
+/** A filter group outside a panel: bring your own `header` and `footer`. */
+interface PanelFilterGroupSlotProps {
+	variant?: undefined;
+	/**
+	 * Allows for customization of header. This will be added before any `FilterList`'s in the DOM. If using Panel Filter Group outside of a panel, do not set the variant to `panel` and header and footer will be removed.
+	 */
+	header?: ReactNode;
+	/**
+	 * Allows for customization of footer. This will be added after any `FilterList`'s in the DOM. If using Panel Filter Group outside of a panel, do not set the variant to `panel` and header and footer will be removed.
+	 */
+	footer?: ReactNode;
+	modified?: never;
+	onClickAdd?: never;
+	onClickRemoveAll?: never;
+	onRequestCancel?: never;
+	onRequestClose?: never;
+	onRequestSave?: never;
+}
+
+/**
+ * Props for PanelFilterGroup: `variant="panel"` renders the default header and
+ * footer (and their callbacks); without it, pass `header` and `footer`.
+ */
+export type PanelFilterGroupProps = PanelFilterGroupBaseProps &
+	(PanelFilterGroupPanelProps | PanelFilterGroupSlotProps);
+
+const defaultProps = {
 	addFilterLabel: 'Add Filter',
 	cancelLabel: 'Cancel',
 	assistiveText: {
@@ -154,7 +177,6 @@ const PanelFilterGroup = ({
 	saveLabel = defaultProps.saveLabel,
 	assistiveText = defaultProps.assistiveText,
 	assistiveTextCloseFilterPanel,
-	...rest
 }: PanelFilterGroupProps &
 	PanelFilterGroupRemovedProps): React.ReactElement => {
 	(checkProps as (name: string, props: unknown, doc?: unknown) => void)(
@@ -178,7 +200,6 @@ const PanelFilterGroup = ({
 			saveLabel,
 			assistiveText,
 			assistiveTextCloseFilterPanel,
-			...rest,
 		}
 	);
 

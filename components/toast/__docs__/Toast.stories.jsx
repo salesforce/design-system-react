@@ -4,6 +4,9 @@ import Toast from '../';
 export default {
 	title: 'Components/Toast',
 	component: Toast,
+	args: {
+		dismissible: true,
+	},
 	decorators: [
 		(Story) => (
 			<div className="slds-p-around_medium">
@@ -120,18 +123,22 @@ export const AllVariants = {
 	render: () => (
 		<div className="slds-grid slds-grid_vertical slds-gutters">
 			<Toast
+				dismissible
 				variant="info"
 				labels={{ heading: 'Info', details: 'Information message' }}
 			/>
 			<Toast
+				dismissible
 				variant="success"
 				labels={{ heading: 'Success', details: 'Success message' }}
 			/>
 			<Toast
+				dismissible
 				variant="warning"
 				labels={{ heading: 'Warning', details: 'Warning message' }}
 			/>
 			<Toast
+				dismissible
 				variant="error"
 				labels={{ heading: 'Error', details: 'Error message' }}
 			/>

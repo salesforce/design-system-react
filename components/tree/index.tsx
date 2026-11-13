@@ -5,7 +5,6 @@ export type {
 	TreeNode,
 	TreeBranchNode,
 	TreeItemNode,
-	FlattenedNode,
 	TreeAssistiveText,
 	TreeLabels,
 	TreeNodeSelectData,

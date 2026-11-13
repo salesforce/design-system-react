@@ -1399,3 +1399,11 @@ describe('ColorPicker: required `events.onChange`', () => {
 		});
 	});
 });
+
+describe('ColorPicker id', () => {
+	it('lands the consumer id on the root element', () => {
+		const { container } = render(<ColorPicker id="my-picker" />);
+		expect(container.firstChild).toHaveAttribute('id', 'my-picker');
+		expect(container.firstChild).toHaveClass('slds-color-picker');
+	});
+});

@@ -107,8 +107,6 @@ interface RadioGroupBaseProps {
 	name?: string;
 	/** Whether the field is required */
 	required?: boolean;
-	/** Custom styles for button-group variant */
-	style?: CSSProperties;
 	/**
 	 * The `value` of the selected radio, or `null` for no selection. The group
 	 * is controlled: each child radio is checked when its `value` equals this.
@@ -116,14 +114,30 @@ interface RadioGroupBaseProps {
 	 * (deprecated).
 	 */
 	value: string | null;
+}
+
+/** Radios stacked in a list. Has no wrapper element to style. */
+interface RadioGroupBaseVariantProps {
 	/** Group variant */
-	variant?: RadioGroupVariant;
+	variant?: 'base';
+	style?: never;
+}
+
+/** Radios rendered as a button group. */
+interface RadioGroupButtonGroupVariantProps {
+	/** Group variant */
+	variant: 'button-group';
+	/** Custom styles for the button group */
+	style?: CSSProperties;
 }
 
 /**
- * Props for the RadioGroup component
+ * Props for the RadioGroup component: `style` styles the button-group wrapper,
+ * so only `variant="button-group"` accepts it.
  */
-export type RadioGroupProps = RadioGroupBaseProps & RadioGroupChangeProps;
+export type RadioGroupProps = RadioGroupBaseProps &
+	RadioGroupChangeProps &
+	(RadioGroupBaseVariantProps | RadioGroupButtonGroupVariantProps);
 
 const defaultAssistiveText: RadioGroupAssistiveText = {
 	required: 'Required',

@@ -42,28 +42,16 @@ export interface PillLabels {
 	removeTitle?: string;
 }
 
-/**
- * Props for the Pill component
- */
-export interface PillProps {
+/** Props every Pill takes. */
+interface PillBaseProps {
 	/** Assistive text for accessibility */
 	assistiveText?: PillAssistiveText;
-	/** Avatar element to display */
-	avatar?: ReactNode;
 	/** Use bare styling */
 	bare?: boolean;
-	/** Custom content (overrides label) */
-	children?: ReactNode;
 	/** CSS classes for the pill */
 	className?: string | string[] | Record<string, boolean>;
 	/** Show error styling */
 	hasError?: boolean;
-	/** URL for link variant */
-	href?: string;
-	/** Icon element to display */
-	icon?: ReactNode;
-	/** Text labels */
-	labels?: PillLabels;
 	/** Blur callback */
 	onBlur?: (event: FocusEvent<HTMLSpanElement>) => void;
 	/** Click callback */
@@ -75,12 +63,61 @@ export interface PillProps {
 	/** Remove callback */
 	onRemove?: () => void;
 	/** Tab order index. Applied to the root element so the pill can receive focus (e.g. roving tabindex for pill navigation). */
-	tabIndex?: number | string;
+	tabIndex?: number;
 	/** Marks the pill as selected. Used when the pill acts as a listbox `option`. */
 	'aria-selected'?: boolean | 'true' | 'false';
-	/** Pill variant */
-	variant?: PillVariant;
 }
+
+/** A link pill, and the default. Only a link takes `href`. */
+interface PillLinkVariantProps {
+	/** Pill variant */
+	variant?: 'link';
+	/** URL for the link. Defaults to `#`, which does not navigate. */
+	href?: string;
+}
+
+/** A listbox option pill. */
+interface PillOptionVariantProps {
+	/** Pill variant */
+	variant: 'option';
+	href?: never;
+}
+
+/** A pill shows an icon or an avatar, not both. */
+type PillFigureProps =
+	| {
+			/** Icon element to display */
+			icon?: ReactNode;
+			avatar?: never;
+	  }
+	| {
+			/** Avatar element to display */
+			avatar?: ReactNode;
+			icon?: never;
+	  };
+
+/** A pill shows `labels.label` or custom `children`, not both. */
+type PillContentProps =
+	| {
+			/** Text labels */
+			labels: PillLabels & { label: string };
+			children?: never;
+	  }
+	| {
+			/** Text labels */
+			labels?: Omit<PillLabels, 'label'> & { label?: undefined };
+			/** Custom content, shown when there is no `labels.label` */
+			children?: ReactNode;
+	  };
+
+/**
+ * Props for the Pill component: `href` is link-only, `icon` and `avatar` are
+ * exclusive, and so are `labels.label` and `children`.
+ */
+export type PillProps = PillBaseProps &
+	(PillLinkVariantProps | PillOptionVariantProps) &
+	PillFigureProps &
+	PillContentProps;
 
 /**
  * Ref methods for Pill
@@ -248,13 +285,7 @@ const Pill = forwardRef<PillRef, PillProps>(
 				ref={rootRef}
 				role={role}
 				aria-selected={ariaSelected}
-				tabIndex={
-					tabIndex === undefined
-						? undefined
-						: typeof tabIndex === 'string'
-							? Number(tabIndex)
-							: tabIndex
-				}
+				tabIndex={tabIndex}
 				className={classNames(
 					'slds-pill',
 					{

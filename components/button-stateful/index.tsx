@@ -9,6 +9,7 @@ import React, {
 	type MouseEvent,
 	type FocusEvent,
 	type KeyboardEvent,
+	type ButtonHTMLAttributes,
 } from 'react';
 import classNames from 'classnames';
 
@@ -80,7 +81,10 @@ export type ButtonStatefulClickProps =
 	  }
 	| { disabled: true; onClick?: ButtonStatefulClickHandler };
 
-interface ButtonStatefulBaseProps {
+interface ButtonStatefulBaseProps extends Omit<
+	ButtonHTMLAttributes<HTMLButtonElement>,
+	'children' | 'className' | 'disabled' | 'onClick' | 'tabIndex' | 'type'
+> {
 	/**
 	 * Whether the button is in its selected state. ButtonStateful is
 	 * controlled: update this prop from `onClick`, which reports the requested
@@ -126,7 +130,7 @@ interface ButtonStatefulBaseProps {
 	/** Deselect/hover state */
 	stateThree?: ButtonStatefulState;
 	/** Tab index */
-	tabIndex?: string;
+	tabIndex?: number;
 	/** Button variant. `text` renders a stateful button with no border or background. */
 	variant?: ButtonStatefulVariant;
 }
@@ -180,8 +184,12 @@ const ButtonStateful = ({
 	stateThree = defaultStateThree,
 	tabIndex,
 	variant,
+	// Injected by `ButtonGroup` into its last child; keep it off the DOM.
+	triggerClassName: _triggerClassName,
 	...rest
-}: ButtonStatefulProps): React.ReactElement => {
+}: ButtonStatefulProps & {
+	triggerClassName?: unknown;
+}): React.ReactElement => {
 	useEffect(() => {
 		checkProps(BUTTON_STATEFUL, { active, disabled, onClick }, componentDoc);
 	});
@@ -251,6 +259,7 @@ const ButtonStateful = ({
 
 		return (
 			<button
+				{...rest}
 				{...ariaProps}
 				className={getClassName(isActive)}
 				disabled={disabled}
@@ -263,7 +272,7 @@ const ButtonStateful = ({
 				onKeyUp={onKeyUp}
 				onMouseDown={onMouseDown}
 				onMouseEnter={onMouseEnter}
-				tabIndex={tabIndex ? parseInt(tabIndex, 10) : undefined}
+				tabIndex={tabIndex}
 				type="button"
 			>
 				{icon ? (
@@ -277,7 +286,6 @@ const ButtonStateful = ({
 					)
 				) : (
 					<ButtonIcon
-						disabled={disabled}
 						name={iconName}
 						size={iconSize as 'x-small' | 'small' | 'medium' | 'large'}
 						className="slds-button__icon_stateful"
@@ -301,6 +309,7 @@ const ButtonStateful = ({
 
 	return (
 		<button
+			{...rest}
 			{...ariaProps}
 			className={getClassName(isActive)}
 			disabled={disabled}
@@ -313,7 +322,7 @@ const ButtonStateful = ({
 			onKeyUp={onKeyUp}
 			onMouseDown={onMouseDown}
 			onMouseEnter={onMouseEnter}
-			tabIndex={tabIndex ? parseInt(tabIndex, 10) : undefined}
+			tabIndex={tabIndex}
 			type="button"
 		>
 			<span className="slds-text-not-selected">
@@ -329,7 +338,6 @@ const ButtonStateful = ({
 					)
 				) : (
 					<ButtonIcon
-						disabled={disabled}
 						name={stateOne.iconName}
 						size="small"
 						position="left"
@@ -351,7 +359,6 @@ const ButtonStateful = ({
 					)
 				) : (
 					<ButtonIcon
-						disabled={disabled}
 						name={stateTwo.iconName}
 						size="small"
 						position="left"
@@ -374,7 +381,6 @@ const ButtonStateful = ({
 					)
 				) : (
 					<ButtonIcon
-						disabled={disabled}
 						name={stateThree.iconName}
 						size="small"
 						position="left"

@@ -29,6 +29,8 @@ import Menu, {
 	type ComboboxActionOption,
 	type ComboboxDeselectOption,
 	type MenuRenderMenuItemData,
+	getOptionLabel,
+	type ComboboxOptionIcon,
 } from './private/menu';
 import Label from '../forms/private/label';
 import Popover, { type PopoverProps } from '../popover';
@@ -149,7 +151,7 @@ export interface ComboboxEvents {
  */
 export interface ComboboxActionItem {
 	id?: string;
-	icon?: ReactNode;
+	icon?: ComboboxOptionIcon;
 	label?: string | ((searchTerm: string) => ReactNode);
 	disabled?: boolean;
 	/** @deprecated Use `events.onSelectActionItem`. If both are set, both are
@@ -1430,7 +1432,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 						required={required}
 						value={
 							predefinedOptionsOnly
-								? (activeOption?.label as string) || value
+								? getOptionLabel(activeOption) || value
 								: value
 						}
 						{...userDefinedInputProps}
@@ -1595,7 +1597,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 						required={required}
 						value={
 							predefinedOptionsOnly
-								? (activeOption?.label as string) || value
+								? getOptionLabel(activeOption) || value
 								: value
 						}
 						{...userDefinedInputProps}
@@ -1621,7 +1623,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 				: null;
 
 		const inputValue = selection[0]?.label
-			? (selection[0].label as string)
+			? getOptionLabel(selection[0])
 			: value;
 
 		return (
@@ -1702,7 +1704,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 							required={required}
 							value={
 								predefinedOptionsOnly
-									? (activeOption?.label as string) || value
+									? getOptionLabel(activeOption) || value
 									: inputValue
 							}
 							{...userDefinedInputProps}
@@ -1800,7 +1802,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 			selection.length > 1
 				? labels.multipleOptionsSelected ||
 					`${selection.length} options selected`
-				: (selection[0]?.label as string) || '';
+				: getOptionLabel(selection[0]) || '';
 
 		return (
 			<div className="slds-form-element__control">
@@ -1914,8 +1916,8 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 	};
 
 	const renderReadOnlySingle = () => {
-		const activeOptionLabel = activeOption?.label as string | undefined;
-		const selectedOptionLabel = selection[0]?.label as string | undefined;
+		const activeOptionLabel = getOptionLabel(activeOption);
+		const selectedOptionLabel = getOptionLabel(selection[0]);
 		let inputValue = activeOptionLabel || selectedOptionLabel || '';
 
 		if (selection[0]?.value === '') {

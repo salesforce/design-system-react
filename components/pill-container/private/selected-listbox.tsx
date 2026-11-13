@@ -22,14 +22,15 @@ import type { IconCategory } from '../../../types/common';
 import isReactComponent from '../../../utilities/is-react-component';
 
 export interface SelectedListBoxOption {
-	id?: string;
+	id: string;
 	label?: ReactNode | string;
 	title?: string;
-	icon?: ReactNode | { category?: string; name?: string };
-	avatar?: ReactNode | { imgSrc?: string; title?: string; variant?: string };
+	icon?: ReactNode | { category?: IconCategory; name?: string; title?: string };
+	avatar?:
+		| ReactNode
+		| { imgSrc?: string; title?: string; variant?: 'user' | 'entity' };
 	bare?: boolean;
 	error?: boolean;
-	[key: string]: unknown;
 }
 
 export interface SelectedListBoxLabels {
@@ -74,7 +75,7 @@ export interface SelectedListBoxProps {
 		) => void;
 		onRequestRemove?: (
 			event: MouseEvent | KeyboardEvent | SyntheticEvent,
-			data: { index?: number; option: SelectedListBoxOption }
+			data: { index: number; option: SelectedListBoxOption }
 		) => void;
 	};
 	id: string;
@@ -277,7 +278,7 @@ const SelectedListBox = ({
 												...(data as object),
 												index: renderIndex,
 											} as {
-												index?: number;
+												index: number;
 												option: SelectedListBoxOption;
 											}
 										);

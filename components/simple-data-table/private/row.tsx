@@ -20,6 +20,11 @@ import {
 } from '../../../utilities/constants';
 
 import InteractiveElement from '../interactive-element';
+import type {
+	SimpleDataTableAssistiveText,
+	SimpleDataTableColumnConfig,
+	SimpleDataTableItem,
+} from '../types';
 import CellContext from './cell-context';
 import TableContext from './table-context';
 import useContextHelper from './context-helper';
@@ -33,29 +38,8 @@ const InteractiveRadio = InteractiveElement(
 ) as React.ComponentType<any>;
 /* eslint-enable @typescript-eslint/no-explicit-any */
 
-interface SimpleDataTableItem {
-	id: string;
-	[key: string]: unknown;
-}
-
-interface SimpleDataTableColumnConfig {
-	Cell: React.ComponentType<Record<string, unknown>>;
-	props: {
-		property?: string;
-		truncate?: boolean;
-		primaryColumn?: boolean;
-		width?: string;
-		[key: string]: unknown;
-	};
-}
-
-interface AssistiveText {
-	selectRow?: string;
-	[key: string]: unknown;
-}
-
 export interface SimpleDataTableRowProps {
-	assistiveText?: AssistiveText;
+	assistiveText?: SimpleDataTableAssistiveText;
 	canSelectRows?: boolean | 'checkbox' | 'radio';
 	className?: string;
 	columns?: SimpleDataTableColumnConfig[];
@@ -224,6 +208,11 @@ const SimpleDataTableRow: React.FC<SimpleDataTableRowProps> = (props) => {
 								>
 									<Cell
 										{...column.props}
+										label={
+											typeof column.props.label === 'string'
+												? column.props.label
+												: undefined
+										}
 										className={
 											column.props.truncate ? 'slds-truncate' : undefined
 										}
@@ -235,7 +224,11 @@ const SimpleDataTableRow: React.FC<SimpleDataTableRowProps> = (props) => {
 										headerId={item.headerId}
 										columns={props.columns}
 									>
-										{item[column.props.property || '']}
+										{
+											(item as Record<string, ReactNode>)[
+												column.props.property || ''
+											]
+										}
 									</Cell>
 								</CellContext.Provider>
 							);

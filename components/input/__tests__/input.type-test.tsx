@@ -6,7 +6,44 @@
 
 import Input from '../index';
 
-export const controlled = <Input onChange={() => {}} value="x" />;
+export const base = (
+	<Input label="Name" value="a" maxLength={10} tabIndex={0} />
+);
 
-// @ts-expect-error `defaultValue` was removed in v11: pass `value`
-export const removedDefaultValue = <Input defaultValue="x" />;
+export const counter = (
+	<Input variant="counter" label="Qty" minValue={0} maxValue={5} step={1} />
+);
+
+export const counterPropOnBase = (
+	// @ts-expect-error `minValue` belongs to the counter variant
+	<Input variant="base" label="Qty" minValue={0} />
+);
+
+export const counterPropWithoutVariant = (
+	// @ts-expect-error `step` belongs to the counter variant
+	<Input label="Qty" step={1} />
+);
+
+export const hiddenLabel = <Input assistiveText={{ label: 'Name' }} />;
+
+export const bothLabels = (
+	// @ts-expect-error use `label` or `assistiveText.label`, not both
+	<Input label="Name" assistiveText={{ label: 'Name' }} />
+);
+
+export const fixedLeft = <Input fixedTextLeft="$" />;
+
+export const bothFixedText = (
+	// @ts-expect-error use `fixedTextLeft` or `fixedTextRight`, not both
+	<Input fixedTextLeft="$" fixedTextRight="USD" />
+);
+
+export const stringMaxLength = (
+	// @ts-expect-error `maxLength` is a number
+	<Input maxLength="7" />
+);
+
+export const stringTabIndex = (
+	// @ts-expect-error `tabIndex` is a number
+	<Input tabIndex="0" />
+);

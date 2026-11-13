@@ -18,12 +18,12 @@ class Example extends React.Component {
 		super(props);
 
 		this.state = {
-			selectedStep: stages[1],
+			selectedStep: 1,
 		};
 	}
 
 	handleStepClick = (event, data) => {
-		this.setState({ selectedStep: data.step });
+		this.setState({ selectedStep: data.step.id });
 	};
 
 	render() {
@@ -33,10 +33,12 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<ProgressIndicator
 					id="path-progress-indicator"
-					completedSteps={stages.slice(0, selectedStep.id)}
 					onStepClick={this.handleStepClick}
 					selectedStep={selectedStep}
-					steps={stages}
+					steps={stages.map((stage, index) => ({
+						...stage,
+						status: index < selectedStep ? 'completed' : undefined,
+					}))}
 					type="path"
 				/>
 			</IconSettings>

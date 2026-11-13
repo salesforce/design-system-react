@@ -5,6 +5,7 @@
 // `@ts-expect-error` fails the build if the line below it stops erroring.
 
 import Combobox, { type ComboboxOption } from '../index';
+import Icon from '../../icon';
 import Popover from '../../popover';
 
 export const options: ComboboxOption[] = [
@@ -106,3 +107,16 @@ export const removedDefaultValue = (
 	// @ts-expect-error `defaultValue` was removed in v11: pass `value`
 	<Combobox defaultValue="x" options={options} selection={[]} />
 );
+
+export const iconOption: ComboboxOption = {
+	id: 'icon',
+	label: 'Acme',
+	icon: <Icon category="standard" name="account" />,
+};
+
+export const textIconOption: ComboboxOption = {
+	id: 'text-icon',
+	label: 'Acme',
+	// @ts-expect-error `icon` must be an `<Icon>` element
+	icon: 'account',
+};

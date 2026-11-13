@@ -7,7 +7,7 @@ import log from '~/utilities/log';
 
 const items = [
 	{
-		id: 1,
+		id: '1',
 		heading: 'Visit App Exchange',
 		description: 'Extend Salesforce with the #1 business marketplace.',
 		imageAssistiveText: 'Appy',
@@ -15,7 +15,7 @@ const items = [
 		href: 'https://www.salesforce.com',
 	},
 	{
-		id: 2,
+		id: '2',
 		heading: 'Click to Customize',
 		description:
 			'Use the Object Manager to add fields, build layouts, and more.',
@@ -24,7 +24,7 @@ const items = [
 		href: 'https://www.salesforce.com',
 	},
 	{
-		id: 3,
+		id: '3',
 		heading: 'Download Salesforce Apps',
 		description: "Get the mobile app that's just for Salesforce admins.",
 		imageAssistiveText: 'Salesforce Apps',
@@ -32,7 +32,7 @@ const items = [
 		href: 'https://www.salesforce.com',
 	},
 	{
-		id: 4,
+		id: '4',
 		heading: 'Carousel Item 4',
 		description: 'Description for carousel item #4',
 		imageAssistiveText: 'Apps',
@@ -40,7 +40,7 @@ const items = [
 		href: 'https://www.salesforce.com',
 	},
 	{
-		id: 5,
+		id: '5',
 		heading: 'Carousel Item 5',
 		description: 'Description for carousel item #5',
 		imageAssistiveText: 'Appy',
@@ -48,7 +48,7 @@ const items = [
 		href: 'https://www.salesforce.com',
 	},
 	{
-		id: 6,
+		id: '6',
 		heading: 'Carousel Item 6',
 		description: 'Description for carousel item #6',
 		imageAssistiveText: 'Salesforce Apps',
@@ -56,7 +56,7 @@ const items = [
 		href: 'https://www.salesforce.com',
 	},
 	{
-		id: 7,
+		id: '7',
 		heading: 'Carousel Item 7',
 		description: 'Description for carousel item #7',
 		imageAssistiveText: 'Apps',

@@ -20,6 +20,7 @@ class Example extends React.Component {
 					<ToastContainer>
 						{this.state.isOpen ? (
 							<Toast
+								dismissible
 								duration={15000}
 								labels={{
 									heading: '26 potential duplicate leads were found.',

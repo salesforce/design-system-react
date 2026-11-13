@@ -1,63 +1,11 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { ReactElement, ReactNode } from 'react';
+import React from 'react';
 import { SIMPLE_DATA_TABLE_COLUMN } from '../../utilities/constants';
+import type { SimpleDataTableColumnProps } from './types';
 
-export interface SimpleDataTableColumnProps {
-	/**
-	 * An element that renders this column's cells in place of `SimpleDataTableCell`,
-	 * such as `<CustomCell />`. Its component receives `SimpleDataTableCellProps`
-	 * (merged with the element's own props) for each row.
-	 */
-	children?: ReactElement;
-	/**
-	 * Some columns should sort descending first (e.g., "date last viewed").
-	 * If sortable and the parent has not defined sort order, ascending is default.
-	 */
-	isDefaultSortDescending?: boolean;
-	/**
-	 * Selects this column as the currently sorted column.
-	 */
-	isSorted?: boolean;
-	/**
-	 * The column label. If a `string` is not passed in, no `title` attribute
-	 * will be rendered.
-	 */
-	label?: string | ReactNode;
-	/**
-	 * The primary column for a row. This is almost always the first column.
-	 */
-	primaryColumn?: boolean;
-	/**
-	 * The property which corresponds to this column.
-	 */
-	property?: string;
-	/**
-	 * Whether or not the column is sortable.
-	 */
-	sortable?: boolean;
-	/**
-	 * The current sort direction. Required if `isSorted` is true. Controlled:
-	 * the column renders only this value, and clicking it calls the table's
-	 * `onSort` with the requested next direction (the opposite of this one, or
-	 * the default when unset) without changing what is rendered.
-	 */
-	sortDirection?: 'desc' | 'asc';
-	/**
-	 * Title used for truncation div within the cell.
-	 */
-	title?: string;
-	/**
-	 * Adds truncate to cell node.
-	 */
-	truncate?: boolean;
-	/**
-	 * Width of column. Required for advanced/fixed layout tables.
-	 * Please provide units (`rems` are recommended).
-	 */
-	width?: string;
-}
+export type { SimpleDataTableColumnProps };
 
 /**
  * Columns define the structure of the data displayed in the SimpleDataTable.

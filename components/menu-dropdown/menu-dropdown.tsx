@@ -60,6 +60,7 @@ import type { IconCategory } from '../../types/common';
 import isElementOfType from '../../utilities/is-element-of-type';
 import type { TriggerRender } from '../../utilities/merge-props';
 import type { MenuDropdownTriggerProps } from './button-trigger';
+import type { ButtonAssistiveText } from '../button';
 
 export type { MenuDropdownTriggerProps };
 
@@ -232,17 +233,16 @@ export type MenuDropdownOpenEvent = MouseEvent | KeyboardEvent | undefined;
  */
 export type MenuDropdownCloseEvent = React.SyntheticEvent | Event | undefined;
 
-export interface MenuDropdownProps {
+export interface MenuDropdownBaseProps {
 	/** Aligns the menu center, right, or left respective to the trigger */
 	align?: 'center' | 'left' | 'right';
 	/** Text that is visually hidden but read aloud by screenreaders */
-	assistiveText?: Record<string, unknown>;
+	assistiveText?: ButtonAssistiveText;
 	/** CSS classes to be added to triggering button */
 	buttonClassName?: string | string[] | Record<string, boolean>;
 	/** If true, button/icon is white. Meant for buttons on dark backgrounds */
 	buttonInverse?: boolean;
 	/** Determines variant of the Button component that triggers dropdown */
-	buttonVariant?: 'base' | 'neutral' | 'brand' | 'destructive' | 'icon';
 	/** If true, renders checkmark icon on the selected Menu Item */
 	checkmark?: boolean;
 	/**
@@ -270,8 +270,6 @@ export interface MenuDropdownProps {
 	hoverCloseDelay?: number;
 	/** Name of the icon category */
 	iconCategory?: 'action' | 'custom' | 'doctype' | 'standard' | 'utility';
-	/** Name of the icon */
-	iconName?: string;
 	/** Icon position relative to label */
 	iconPosition?: 'left' | 'right';
 	/**
@@ -285,7 +283,6 @@ export interface MenuDropdownProps {
 		| 'border'
 		| 'border-filled'
 		| 'border-inverse'
-		| 'small'
 		| 'more';
 	/** Determines the size of the icon. `xx-small` requires an `iconVariant`. */
 	iconSize?: 'xx-small' | 'x-small' | 'small' | 'medium' | 'large';
@@ -310,7 +307,7 @@ export interface MenuDropdownProps {
 	 */
 	listItemRenderer?: (props: Record<string, unknown>) => ReactNode;
 	/** Menu list length */
-	length?: null | '5' | '7' | '10' | 5 | 7 | 10;
+	length?: '5' | '7' | '10' | 5 | 7 | 10;
 	/** Position strategy for the menu */
 	menuPosition?: 'absolute' | 'overflowBoundaryElement' | 'relative';
 	/** Style applied to menu element */
@@ -396,7 +393,7 @@ export interface MenuDropdownProps {
 	/** An object of CSS styles for the triggering button */
 	style?: React.CSSProperties;
 	/** Write "-1" if you don't want the user to tab to the button */
-	tabIndex?: string;
+	tabIndex?: number;
 	/**
 	 * The element that opens the menu, rendered inside the trigger `div` (which handles clicks,
 	 * focus, keys and hover). A `Button` element takes the button props of MenuDropdown (`label`,
@@ -419,12 +416,42 @@ export interface MenuDropdownProps {
 	 */
 	value?: MenuDropdownValue;
 	/** Width of the menu dropdown */
-	width?: 'xx-small' | 'x-small' | 'small' | 'medium' | 'bottom' | 'large';
+	width?: 'xx-small' | 'x-small' | 'small' | 'medium' | 'large';
 	/** Internal: Used for requesting focus */
 	requestFocus?: boolean;
 	/** Internal: Callback for focus request */
 	onRequestFocus?: (trigger: HTMLElement) => void;
 }
+
+/** A text trigger button. `iconName` is optional. */
+interface MenuDropdownTextButtonProps {
+	/** Determines variant of the Button component that triggers dropdown */
+	buttonVariant?: 'base' | 'neutral' | 'brand' | 'destructive';
+	/** Name of the icon */
+	iconName?: string;
+}
+
+/** An icon trigger button needs the icon to show, unless `trigger` renders it. */
+type MenuDropdownIconButtonProps =
+	| {
+			/** Determines variant of the Button component that triggers dropdown */
+			buttonVariant: 'icon';
+			/** Name of the icon */
+			iconName: string;
+			trigger?: TriggerRender<MenuDropdownTriggerProps>;
+	  }
+	| {
+			buttonVariant: 'icon';
+			iconName?: string;
+			trigger: TriggerRender<MenuDropdownTriggerProps>;
+	  };
+
+/**
+ * Props for the MenuDropdown component: `buttonVariant="icon"` needs an
+ * `iconName` (or a `trigger`), so an icon button with no icon does not compile.
+ */
+export type MenuDropdownProps = MenuDropdownBaseProps &
+	(MenuDropdownTextButtonProps | MenuDropdownIconButtonProps);
 
 interface NavigableItem {
 	index: number;
@@ -1426,7 +1453,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 			}
 			openOn={openOn}
 			style={style}
-			tabIndex={tabIndex || (isOpen ? '-1' : '0')}
+			tabIndex={tabIndex ?? (isOpen ? -1 : 0)}
 			triggerClassName={triggerClassName}
 			triggerRef={saveRefToTrigger}
 			variant={buttonVariant}

@@ -580,7 +580,12 @@ describe('SLDSProgressIndicator', () => {
 				tooltipIsOpenSteps: [steps[1]],
 			});
 
-			expect(getMessages(consoleError)).toEqual([
+			// The deprecation warnings are deduped per module, so only check the incompatible ones
+			expect(
+				getMessages(consoleError).filter((message) =>
+					message.includes('incompatible')
+				)
+			).toEqual([
 				expect.stringContaining('`disabledSteps`'),
 				expect.stringContaining('`errorSteps`'),
 				expect.stringContaining('`tooltipIsOpenSteps`'),
@@ -745,5 +750,103 @@ describe('SLDSProgressIndicator', () => {
 				container.querySelector('#progress-indicator-vertical-label-0')
 			).toHaveTextContent('Step zero');
 		});
+	});
+});
+
+describe('SLDSProgressIndicator step status', () => {
+	const renderIndicator = (props) =>
+		render(
+			<IconSettings iconPath="/assets/icons">
+				<ProgressIndicator id="status-indicator" steps={steps} {...props} />
+			</IconSettings>
+		);
+	const count = (container, className) =>
+		container.querySelectorAll(`.slds-progress li.${className}`).length;
+
+	it('reads each step status from steps[].status', () => {
+		const { container } = renderIndicator({
+			selectedStep: 3,
+			steps: steps.map((step, index) => ({
+				...step,
+				status: ['completed', 'completed', 'error', undefined, 'disabled'][
+					index
+				],
+			})),
+		});
+
+		expect(count(container, 'slds-is-completed')).toBe(2);
+		expect(count(container, 'slds-has-error')).toBe(1);
+		expect(count(container, 'slds-is-active')).toBe(1);
+	});
+
+	it('gives a step with a status only that status, even if a deprecated array lists it', () => {
+		const { container } = renderIndicator({
+			selectedStep: 0,
+			steps: [{ ...steps[0], status: 'completed' }, ...steps.slice(1)],
+			errorSteps: [steps[0]],
+		});
+
+		expect(count(container, 'slds-has-error')).toBe(0);
+		expect(count(container, 'slds-is-completed')).toBe(1);
+	});
+
+	it('selects a step by id', () => {
+		const { container } = renderIndicator({ selectedStep: 3 });
+		const items = [...container.querySelectorAll('.slds-progress li')];
+
+		expect(
+			items.findIndex((li) => li.classList.contains('slds-is-active'))
+		).toBe(3);
+	});
+
+	it('matches a selectedStep object by id and not by its other fields', () => {
+		const { container } = renderIndicator({
+			selectedStep: { ...steps[3], label: 'a different label' },
+		});
+		const items = [...container.querySelectorAll('.slds-progress li')];
+
+		expect(
+			items.findIndex((li) => li.classList.contains('slds-is-active'))
+		).toBe(3);
+	});
+
+	it('matches a selectedStep object without an id by its content, and warns', () => {
+		const consoleError = vi
+			.spyOn(console, 'error')
+			.mockImplementation(() => {});
+		const stepsWithoutIds = steps.map(({ id, ...step }) => step);
+		const { container } = renderIndicator({
+			steps: stepsWithoutIds,
+			selectedStep: { ...stepsWithoutIds[2] },
+		});
+		const items = [...container.querySelectorAll('.slds-progress li')];
+
+		expect(
+			items.findIndex((li) => li.classList.contains('slds-is-active'))
+		).toBe(2);
+		expect(
+			consoleError.mock.calls.some(([message]) =>
+				message.includes('is a step without an `id`')
+			)
+		).toBe(true);
+		consoleError.mockRestore();
+	});
+
+	it('warns once when steps is invalid and falls back to the default steps', () => {
+		const consoleError = vi
+			.spyOn(console, 'error')
+			.mockImplementation(() => {});
+		const { container } = renderIndicator({
+			steps: [{ id: 0 }],
+			selectedStep: 0,
+		});
+
+		expect(container.querySelectorAll('.slds-progress li')).toHaveLength(5);
+		expect(
+			consoleError.mock.calls.some(([message]) =>
+				message.includes('must be an array of steps')
+			)
+		).toBe(true);
+		consoleError.mockRestore();
 	});
 });

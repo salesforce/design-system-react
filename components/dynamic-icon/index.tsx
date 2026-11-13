@@ -1,7 +1,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { type ReactNode } from 'react';
+import React, { type ReactNode, type ButtonHTMLAttributes } from 'react';
 import classNames from '../../utilities/class-names';
 import { DYNAMIC_ICON } from '../../utilities/constants';
 
@@ -19,8 +19,7 @@ export type ScorePolarity = 'positive' | 'negative';
 /**
  * Strength level options
  */
-export type StrengthLevel =
-	'-3' | '-2' | '-1' | '0' | '1' | '2' | '3' | -3 | -2 | -1 | 0 | 1 | 2 | 3;
+export type StrengthLevel = -3 | -2 | -1 | 0 | 1 | 2 | 3;
 
 /**
  * Trend direction options
@@ -35,10 +34,7 @@ export interface DynamicIconAssistiveText {
 	label?: string;
 }
 
-/**
- * Props for the DynamicIcon component
- */
-export interface DynamicIconProps {
+interface DynamicIconCommonProps {
 	/** Assistive text for accessibility */
 	assistiveText?: DynamicIconAssistiveText;
 	/** CSS classes */
@@ -47,32 +43,75 @@ export interface DynamicIconProps {
 	isPaused?: boolean;
 	/** Disables animation */
 	isStatic?: boolean;
-	/** Polarity for score variant */
-	scorePolarity?: ScorePolarity;
-	/** Strength level for strength variant */
-	strengthLevel?: StrengthLevel;
-	/** Title attribute (required) */
-	title: string;
-	/** Trend direction for trend variant */
-	trendDirection?: TrendDirection;
-	/** Icon variant (required) */
-	variant: DynamicIconVariant;
+	/**
+	 * Tooltip (`title` attribute). Not the accessible name: set `assistiveText.label`
+	 * for that. Without it, the label falls back to the variant name.
+	 */
+	title?: string;
 }
+
+/** Decorative animations that take no variant-specific props. */
+interface DynamicIconPlainProps extends DynamicIconCommonProps {
+	/** Icon variant */
+	variant: 'ellie' | 'eq' | 'typing';
+}
+
+interface DynamicIconScoreProps extends DynamicIconCommonProps {
+	/** Icon variant */
+	variant: 'score';
+	/** Polarity of the score */
+	scorePolarity?: ScorePolarity;
+}
+
+interface DynamicIconStrengthProps extends DynamicIconCommonProps {
+	/** Icon variant */
+	variant: 'strength';
+	/** Strength level, from -3 to 3 */
+	strengthLevel?: StrengthLevel;
+}
+
+interface DynamicIconTrendProps extends DynamicIconCommonProps {
+	/** Icon variant */
+	variant: 'trend';
+	/** Trend direction */
+	trendDirection?: TrendDirection;
+}
+
+/**
+ * The app launcher button. It renders a `<button type="button">`, so it takes
+ * `onClick` and the other `<button>` attributes.
+ */
+interface DynamicIconWaffleProps
+	extends
+		DynamicIconCommonProps,
+		Omit<
+			ButtonHTMLAttributes<HTMLButtonElement>,
+			'children' | 'className' | 'title' | 'type'
+		> {
+	/** Icon variant */
+	variant: 'waffle';
+}
+
+/**
+ * Props for the DynamicIcon component: a union on `variant`, so a prop that
+ * only one variant uses is a compile error on the others.
+ */
+export type DynamicIconProps =
+	| DynamicIconPlainProps
+	| DynamicIconScoreProps
+	| DynamicIconStrengthProps
+	| DynamicIconTrendProps
+	| DynamicIconWaffleProps;
 
 /**
  * A set of delightful animated icons.
  */
-const DynamicIcon = ({
-	assistiveText,
-	className,
-	isPaused,
-	isStatic,
-	scorePolarity,
-	strengthLevel,
-	title,
-	trendDirection,
-	variant,
-}: DynamicIconProps): React.ReactElement => {
+const DynamicIcon = (props: DynamicIconProps): React.ReactElement => {
+	const { assistiveText, className, isPaused, isStatic, title, variant } =
+		props;
+	const { scorePolarity } = props as DynamicIconScoreProps;
+	const { strengthLevel } = props as DynamicIconStrengthProps;
+	const { trendDirection } = props as DynamicIconTrendProps;
 	const getIconChildren = (): ReactNode[] => {
 		const children: ReactNode[] = [];
 		let defaultAssistiveText =
@@ -195,6 +234,17 @@ const DynamicIcon = ({
 	if (variant === 'waffle') {
 		classes.unshift('slds-button', 'slds-icon-waffle_container');
 		element = 'button';
+		// Pass `onClick` and the other `<button>` attributes through
+		const {
+			assistiveText: _assistiveText,
+			className: _className,
+			isPaused: _isPaused,
+			isStatic: _isStatic,
+			title: _title,
+			variant: _variant,
+			...buttonProps
+		} = props as DynamicIconWaffleProps;
+		Object.assign(iconProps, buttonProps);
 		iconProps.type = 'button';
 	} else {
 		classes.unshift(`slds-icon-${variant}`);

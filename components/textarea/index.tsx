@@ -12,6 +12,7 @@ import {
 	type FormEvent,
 	type CSSProperties,
 	type ReactNode,
+	type TextareaHTMLAttributes,
 } from 'react';
 import classNames from 'classnames';
 import getAriaProps from '../../utilities/get-aria-props';
@@ -56,30 +57,23 @@ interface TextareaRemovedProps {
 /**
  * Props for the Textarea component
  */
-export interface TextareaProps {
+export interface TextareaProps extends Pick<
+	TextareaHTMLAttributes<HTMLTextAreaElement>,
+	| 'aria-activedescendant'
+	| 'aria-autocomplete'
+	| 'aria-controls'
+	| 'aria-describedby'
+	| 'aria-expanded'
+	| 'aria-haspopup'
+	| 'aria-labelledby'
+	| 'aria-owns'
+	| 'aria-required'
+> {
 	/**
 	 * **Assistive text for accessibility**
 	 * * `label`: Visually hidden label. Use instead of `labels.label`.
 	 */
 	assistiveText?: TextareaAssistiveText;
-	/** aria-activedescendant for composite widgets */
-	'aria-activedescendant'?: string;
-	/** aria-autocomplete for suggestions */
-	'aria-autocomplete'?: string;
-	/** aria-controls to relate with another region */
-	'aria-controls'?: string;
-	/** aria-describedby for descriptions */
-	'aria-describedby'?: string;
-	/** aria-expanded for collapsible content */
-	'aria-expanded'?: boolean;
-	/** aria-haspopup for popup menus */
-	'aria-haspopup'?: boolean;
-	/** aria-labelledby for labels */
-	'aria-labelledby'?: string;
-	/** aria-owns for related elements */
-	'aria-owns'?: string;
-	/** aria-required for form validation */
-	'aria-required'?: boolean;
 	/** Autofocus on load (poor UX) */
 	autoFocus?: boolean;
 	/** Elements rendered after the textarea, inside the form element */

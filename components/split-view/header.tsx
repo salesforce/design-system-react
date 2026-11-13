@@ -7,12 +7,8 @@ import PageHeader, { type PageHeaderProps } from '../page-header';
 
 import { SPLIT_VIEW_HEADER } from '../../utilities/constants';
 
-export interface SplitViewHeaderProps extends PageHeaderProps {
-	/**
-	 * CSS classes to be added to the wrapping `PageHeader`.
-	 */
-	className?: PageHeaderProps['className'];
-}
+/** The Split View Header takes the same properties as `PageHeader`. */
+export type SplitViewHeaderProps = PageHeaderProps;
 
 /**
  * The Split View Header takes the same properties as the [PageHeader](https://react.lightningdesignsystem.com/components/page-headers/) component.
