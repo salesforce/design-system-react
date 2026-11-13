@@ -29,6 +29,9 @@ const config: StorybookConfig = {
 			from: '../node_modules/@salesforce-ux/design-system-2/dist/css',
 			to: '/slds2',
 		},
+		// The SLDS 2 modules from scripts/build-slds-modules.ts (the CSS toolbar's
+		// module modes).
+		{ from: '../css', to: '/dsr' },
 	],
 
 	typescript: {

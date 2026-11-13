@@ -6,7 +6,7 @@ globalThis.IS_REACT_ACT_ENVIRONMENT = false;
 // This silences the "App element is not defined" warning
 import Settings from '../components/settings';
 import { themeDecorator } from './preview-decorator';
-import { DEFAULT_THEME } from './themes';
+import { DEFAULT_CSS_MODE, DEFAULT_THEME } from './themes';
 
 // Set after DOM is ready
 if (typeof document !== 'undefined') {
@@ -33,6 +33,27 @@ const preview = {
 					{ value: 'lightning-blue', title: 'Lightning Blue' },
 					{ value: 'cosmos', title: 'Cosmos (SLDS2)' },
 					{ value: 'pearl', title: 'Pearl (Alpha)' },
+				],
+				dynamicTitle: true,
+			},
+		},
+		cssMode: {
+			description:
+				'How SLDS 2 CSS is loaded: the monolith or per-component CSS from css/',
+			defaultValue: DEFAULT_CSS_MODE,
+			toolbar: {
+				title: 'CSS',
+				icon: 'component',
+				items: [
+					{ value: 'monolith', title: 'Monolith (bundled SLDS 2)' },
+					{
+						value: 'entry',
+						title: "Per-component CSS (this story's component)",
+					},
+					{
+						value: 'modules',
+						title: 'Debug: every module (unsupported)',
+					},
 				],
 				dynamicTitle: true,
 			},

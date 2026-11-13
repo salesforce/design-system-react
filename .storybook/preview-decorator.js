@@ -1,4 +1,5 @@
-import { THEMES, DEFAULT_THEME } from './themes';
+import manifest from '../css/manifest.json';
+import { THEMES, DEFAULT_THEME, DEFAULT_CSS_MODE } from './themes';
 
 /**
  * Preview decorator that owns both theming axes for the SLDS 2 canvas,
@@ -11,6 +12,8 @@ import { THEMES, DEFAULT_THEME } from './themes';
  *
  *   themeName  → Lightning Blue | Cosmos  → swaps the SLDS 2 stylesheet <link>
  *   theme      → light | dark | system    → sets the slds-color-scheme--* body class
+ *   cssMode    → monolith | modules | entry → bundled SLDS, or DSR css/ modules
+ *                plus the modular theme file (see CSS_MODES in themes.js)
  */
 
 const THEME_LINK_ID = 'slds2-theme';
@@ -28,17 +31,47 @@ function ensureLink(id) {
 	return link;
 }
 
+const MODULE_LINK_ATTR = 'data-dsr-css';
+
+/** The css/ files a CSS mode loads, in cascade order (none for the monolith). */
+function moduleHrefs(cssMode, fileName) {
+	if (cssMode === 'entry') {
+		const dir = /components\/([^/]+)\//.exec(fileName || '')?.[1];
+		if (dir && manifest.entries[dir]) return [`/dsr/${manifest.entries[dir]}`];
+	}
+	if (cssMode === 'entry' || cssMode === 'modules') {
+		return manifest.order.map((key) => `/dsr/${manifest.modules[key].path}`);
+	}
+	return [];
+}
+
 /**
- * Swap the managed <link> to the selected theme's base CSS, and apply/remove the
- * optional sub-theme overlay (Pearl layers on top of the Cosmos base). No flicker,
- * no duplicate links.
+ * Point the managed <link> at the selected theme's CSS, and apply/remove the
+ * optional sub-theme overlay (Pearl layers on top of the Cosmos base). In the
+ * module modes the css/ links go before it, in the order SLDS's bundled files
+ * use (foundation and modules, then the theme). Links
+ * are only replaced when the set changes, so there's no flicker.
  */
-function applyTheme(themeName) {
+function applyTheme(themeName, cssMode, fileName) {
 	const theme = THEMES[themeName] || THEMES[DEFAULT_THEME];
+	const hrefs = moduleHrefs(cssMode || DEFAULT_CSS_MODE, fileName);
 
 	const base = ensureLink(THEME_LINK_ID);
-	if (base.getAttribute('href') !== theme.href) {
-		base.setAttribute('href', theme.href);
+	const href = hrefs.length ? theme.themeHref : theme.href;
+	if (base.getAttribute('href') !== href) {
+		base.setAttribute('href', href);
+	}
+
+	const current = [...document.querySelectorAll(`link[${MODULE_LINK_ATTR}]`)];
+	if (current.map((l) => l.getAttribute('href')).join() !== hrefs.join()) {
+		current.forEach((l) => l.remove());
+		for (const moduleHref of hrefs) {
+			const link = document.createElement('link');
+			link.rel = 'stylesheet';
+			link.href = moduleHref;
+			link.setAttribute(MODULE_LINK_ATTR, '');
+			base.before(link);
+		}
 	}
 
 	if (theme.overlay) {
@@ -64,7 +97,11 @@ function applyColorScheme(scheme) {
 }
 
 export const themeDecorator = (story, context) => {
-	applyTheme(context.globals.themeName);
+	applyTheme(
+		context.globals.themeName,
+		context.globals.cssMode,
+		context.parameters.fileName
+	);
 	applyColorScheme(context.globals.theme);
 	return story();
 };
