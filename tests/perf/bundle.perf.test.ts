@@ -142,14 +142,9 @@ describe.skipIf(!hasDist)('bundle size and tree-shaking', () => {
 });
 
 describe.skipIf(!hasDist)('sideEffects', () => {
-	// TODO(restack): track 2 (csp) changes `sideEffects` to `["**/*.css"]`, so
-	// CSS imports survive tree-shaking. Accept exactly that once restacked.
+	// CSS imports are the only side effects, so they survive tree-shaking.
 	it('package.json declares no JS side effects', () => {
-		expect(
-			pkg.sideEffects === false ||
-				(Array.isArray(pkg.sideEffects) &&
-					pkg.sideEffects.every((glob) => glob.endsWith('.css')))
-		).toBe(true);
+		expect(pkg.sideEffects).toEqual(['**/*.css']);
 	});
 
 	it.each(['', ...entries.map((name) => `/components/${name}`)])(
@@ -162,11 +157,11 @@ describe.skipIf(!hasDist)('sideEffects', () => {
 	);
 });
 
-// TODO(restack): track 3 (css-tokens) adds `css/manifest.json` and
-// `css/components.json`. Until then this report is skipped.
+// Per-component CSS: `css/components.json` lists each entry's modules and
+// `css/manifest.json` their sizes (scripts/build-slds-modules.ts).
 const cssManifest = join(root, 'css/components.json');
 
-describe.skipIf(!existsSync(cssManifest))('CSS size (report-only)', () => {
+describe('CSS size (report-only)', () => {
 	it('records per-component and foundation CSS sizes', () => {
 		const components = JSON.parse(readFileSync(cssManifest, 'utf8')) as Record<
 			string,

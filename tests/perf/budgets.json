@@ -429,56 +429,56 @@
 			"commits": 2,
 			"domNodes": 15,
 			"portalNodes": 0,
-			"ssrBytes": 1195
+			"ssrBytes": 1315
 		},
 		"ColorPicker/CustomTabSelected": {
 			"commits": 2,
 			"domNodes": 15,
 			"portalNodes": 0,
-			"ssrBytes": 1223
+			"ssrBytes": 1343
 		},
 		"ColorPicker/CustomValidator": {
 			"commits": 2,
 			"domNodes": 15,
 			"portalNodes": 0,
-			"ssrBytes": 1215
+			"ssrBytes": 1335
 		},
 		"ColorPicker/DefaultStory": {
 			"commits": 2,
 			"domNodes": 15,
 			"portalNodes": 0,
-			"ssrBytes": 1195
+			"ssrBytes": 1315
 		},
 		"ColorPicker/Disabled": {
 			"commits": 2,
 			"domNodes": 15,
 			"portalNodes": 0,
-			"ssrBytes": 1171
+			"ssrBytes": 1291
 		},
 		"ColorPicker/DocSiteDefault": {
 			"commits": 2,
 			"domNodes": 15,
 			"portalNodes": 0,
-			"ssrBytes": 1179
+			"ssrBytes": 1299
 		},
 		"ColorPicker/HiddenInput": {
 			"commits": 2,
 			"domNodes": 12,
 			"portalNodes": 0,
-			"ssrBytes": 903
+			"ssrBytes": 1023
 		},
 		"ColorPicker/MenuOpen": {
 			"commits": 2,
 			"domNodes": 188,
 			"idleGlobalListeners": 1,
 			"portalNodes": 0,
-			"ssrBytes": 15010
+			"ssrBytes": 15532
 		},
 		"ColorPicker/NoLabel": {
 			"commits": 2,
 			"domNodes": 15,
 			"portalNodes": 0,
-			"ssrBytes": 1223
+			"ssrBytes": 1343
 		},
 		"ColorPicker/OuterInputErrorState": {
 			"commits": 2,
@@ -502,19 +502,19 @@
 			"commits": 2,
 			"domNodes": 16,
 			"portalNodes": 0,
-			"ssrBytes": 1220
+			"ssrBytes": 1340
 		},
 		"ColorPicker/SwatchOnly": {
 			"commits": 2,
 			"domNodes": 15,
 			"portalNodes": 0,
-			"ssrBytes": 1195
+			"ssrBytes": 1315
 		},
 		"ColorPicker/WorkingColorErrorState": {
 			"commits": 2,
 			"domNodes": 15,
 			"portalNodes": 0,
-			"ssrBytes": 1251
+			"ssrBytes": 1371
 		},
 		"Combobox/Base": {
 			"commits": 3,
@@ -908,6 +908,13 @@
 		"Files/Crop16By9": { "domNodes": 28, "portalNodes": 0, "ssrBytes": 1731 },
 		"Files/Crop1By1": { "domNodes": 41, "portalNodes": 0, "ssrBytes": 2492 },
 		"Files/Default": { "domNodes": 41, "portalNodes": 0, "ssrBytes": 2549 },
+		"Files/WithActions": {
+			"commits": 2,
+			"domNodes": 46,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 3164
+		},
 		"Filter/AlignRight": {
 			"commits": 2,
 			"domNodes": 13,
@@ -1189,6 +1196,14 @@
 			"nonPassiveScrollListeners": 1,
 			"portalNodes": 0,
 			"ssrBytes": 2937
+		},
+		"MenuDropdown/WithTooltips": {
+			"commits": 3,
+			"domNodes": 16,
+			"idleGlobalListeners": 2,
+			"nonPassiveScrollListeners": 1,
+			"portalNodes": 0,
+			"ssrBytes": 335
 		},
 		"Modal/AlwaysOpen": {
 			"commits": 3,
@@ -1619,7 +1634,7 @@
 			"domNodes": 167,
 			"nonPassiveScrollListeners": 1,
 			"portalNodes": 0,
-			"ssrBytes": 15555
+			"ssrBytes": 15575
 		},
 		"SimpleDataTable/AdvancedSingleSelectFixedLayout": {
 			"commits": 2,
@@ -1673,21 +1688,21 @@
 			"domNodes": 465,
 			"nonPassiveScrollListeners": 1,
 			"portalNodes": 0,
-			"ssrBytes": 39153
+			"ssrBytes": 39173
 		},
 		"SimpleDataTable/FixedHeaderStory": {
 			"commits": 2,
 			"domNodes": 465,
 			"nonPassiveScrollListeners": 1,
 			"portalNodes": 0,
-			"ssrBytes": 39115
+			"ssrBytes": 39135
 		},
 		"SimpleDataTable/InfiniteScrollingStory": {
 			"commits": 2,
 			"domNodes": 469,
 			"nonPassiveScrollListeners": 1,
 			"portalNodes": 0,
-			"ssrBytes": 37272
+			"ssrBytes": 37292
 		},
 		"SimpleDataTable/InteractiveElementsStory": {
 			"domNodes": 418,
@@ -1699,7 +1714,7 @@
 			"domNodes": 537,
 			"nonPassiveScrollListeners": 1,
 			"portalNodes": 0,
-			"ssrBytes": 45043
+			"ssrBytes": 45121
 		},
 		"Slider/CustomRange": { "domNodes": 10, "portalNodes": 0, "ssrBytes": 544 },
 		"Slider/Default": { "domNodes": 10, "portalNodes": 0, "ssrBytes": 546 },
@@ -1862,10 +1877,10 @@
 		},
 		"Tooltip/AnchoredNubbin": {
 			"commits": 4,
-			"domNodes": 8,
+			"domNodes": 7,
 			"idleGlobalListeners": 3,
 			"portalNodes": 0,
-			"ssrBytes": 963
+			"ssrBytes": 988
 		},
 		"Tooltip/Controlled": {
 			"commits": 2,
@@ -2092,54 +2107,54 @@
 			"strictModeErrors": 2
 		},
 		"bundle:components/accordion": { "gzipBytes": 1343 },
-		"bundle:components/alert": { "gzipBytes": 4641 },
-		"bundle:components/avatar": { "gzipBytes": 2679 },
+		"bundle:components/alert": { "gzipBytes": 4643 },
+		"bundle:components/avatar": { "gzipBytes": 2680 },
 		"bundle:components/badge": { "gzipBytes": 1107 },
-		"bundle:components/breadcrumb": { "gzipBytes": 19419 },
-		"bundle:components/builder-header": { "gzipBytes": 20732 },
+		"bundle:components/breadcrumb": { "gzipBytes": 19104 },
+		"bundle:components/builder-header": { "gzipBytes": 20430 },
 		"bundle:components/button": { "gzipBytes": 2760 },
 		"bundle:components/button-group": { "gzipBytes": 1379 },
 		"bundle:components/button-stateful": { "gzipBytes": 2680 },
 		"bundle:components/card": { "gzipBytes": 1852 },
 		"bundle:components/carousel": { "gzipBytes": 5501 },
-		"bundle:components/checkbox": { "gzipBytes": 3506 },
-		"bundle:components/color-picker": { "gzipBytes": 34053 },
-		"bundle:components/combobox": { "gzipBytes": 35310 },
-		"bundle:components/date-picker": { "gzipBytes": 41267 },
+		"bundle:components/checkbox": { "gzipBytes": 3508 },
+		"bundle:components/color-picker": { "gzipBytes": 34119 },
+		"bundle:components/combobox": { "gzipBytes": 35277 },
+		"bundle:components/date-picker": { "gzipBytes": 41268 },
 		"bundle:components/docked-composer": { "gzipBytes": 3489 },
 		"bundle:components/dynamic-icon": { "gzipBytes": 1770 },
 		"bundle:components/expandable-section": { "gzipBytes": 3228 },
 		"bundle:components/files": { "gzipBytes": 1064 },
-		"bundle:components/filter": { "gzipBytes": 16648 },
+		"bundle:components/filter": { "gzipBytes": 16651 },
 		"bundle:components/grid": { "gzipBytes": 974 },
-		"bundle:components/icon": { "gzipBytes": 2287 },
+		"bundle:components/icon": { "gzipBytes": 2288 },
 		"bundle:components/icon-settings": { "gzipBytes": 352 },
-		"bundle:components/input": { "gzipBytes": 17660 },
+		"bundle:components/input": { "gzipBytes": 17669 },
 		"bundle:components/media-object": { "gzipBytes": 1025 },
-		"bundle:components/menu-dropdown": { "gzipBytes": 19239 },
+		"bundle:components/menu-dropdown": { "gzipBytes": 18923 },
 		"bundle:components/modal": { "gzipBytes": 11650 },
-		"bundle:components/page-header": { "gzipBytes": 21013 },
+		"bundle:components/page-header": { "gzipBytes": 20703 },
 		"bundle:components/panel": { "gzipBytes": 987 },
 		"bundle:components/pill": { "gzipBytes": 2640 },
-		"bundle:components/pill-container": { "gzipBytes": 6311 },
-		"bundle:components/popover": { "gzipBytes": 15816 },
+		"bundle:components/pill-container": { "gzipBytes": 6312 },
+		"bundle:components/popover": { "gzipBytes": 15818 },
 		"bundle:components/portal-settings": { "gzipBytes": 293 },
 		"bundle:components/progress-bar": { "gzipBytes": 1327 },
-		"bundle:components/progress-indicator": { "gzipBytes": 22260 },
-		"bundle:components/progress-ring": { "gzipBytes": 2905 },
-		"bundle:components/radio": { "gzipBytes": 3564 },
+		"bundle:components/progress-indicator": { "gzipBytes": 22261 },
+		"bundle:components/progress-ring": { "gzipBytes": 2907 },
+		"bundle:components/radio": { "gzipBytes": 3593 },
 		"bundle:components/radio-button-group": { "gzipBytes": 1483 },
 		"bundle:components/radio-group": { "gzipBytes": 1430 },
-		"bundle:components/scoped-notification": { "gzipBytes": 2514 },
-		"bundle:components/setup-assistant": { "gzipBytes": 6173 },
-		"bundle:components/simple-data-table": { "gzipBytes": 29384 },
+		"bundle:components/scoped-notification": { "gzipBytes": 2516 },
+		"bundle:components/setup-assistant": { "gzipBytes": 6174 },
+		"bundle:components/simple-data-table": { "gzipBytes": 29157 },
 		"bundle:components/slider": { "gzipBytes": 1608 },
 		"bundle:components/spinner": { "gzipBytes": 1269 },
 		"bundle:components/split-view": { "gzipBytes": 3400 },
 		"bundle:components/tabs": { "gzipBytes": 4149 },
 		"bundle:components/textarea": { "gzipBytes": 1527 },
-		"bundle:components/toast": { "gzipBytes": 4806 },
-		"bundle:components/tooltip": { "gzipBytes": 15042 },
+		"bundle:components/toast": { "gzipBytes": 4807 },
+		"bundle:components/tooltip": { "gzipBytes": 15031 },
 		"bundle:components/tree": { "gzipBytes": 11874 },
 		"bundle:components/trial-bar": { "gzipBytes": 1163 },
 		"bundle:components/vertical-navigation": { "gzipBytes": 1430 },
