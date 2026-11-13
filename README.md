@@ -184,14 +184,15 @@ npx playwright install chromium   # for the real-browser test project
 
 ### Commands
 
-| Command             | Description                                              |
-| ------------------- | -------------------------------------------------------- |
-| `npm run storybook` | Start Storybook at http://localhost:6007                 |
-| `npm test -- --run` | Run all tests once (a bare `npm test` starts watch mode) |
-| `npm run lint`      | Lint all files                                           |
-| `npm run typecheck` | TypeScript type checking                                 |
-| `npm run build`     | Build the library                                        |
-| `npm run test:ci`   | Run what CI runs: typecheck, tests, build, and lint      |
+| Command             | Description                                               |
+| ------------------- | --------------------------------------------------------- |
+| `npm run storybook` | Start Storybook at http://localhost:6007                  |
+| `npm test -- --run` | Run all tests once (a bare `npm test` starts watch mode)  |
+| `npm run lint`      | Lint all files                                            |
+| `npm run typecheck` | TypeScript type checking                                  |
+| `npm run build`     | Build the library                                         |
+| `npm run test:perf` | Performance budgets (run `npm run build` first)           |
+| `npm run test:ci`   | Run what CI runs: typecheck, tests, build, perf, and lint |
 
 [CONTRIBUTING.md](CONTRIBUTING.md) covers the full workflow, and [AGENTS.md](AGENTS.md) lists the commands and pitfalls in one place.
 

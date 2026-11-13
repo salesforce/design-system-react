@@ -1292,6 +1292,40 @@ ascending, descending, selectAllRows, selectRow)` but the call passes `selectAll
 - [ ] Tests for `badge` and `breadcrumb` (already listed under the P2 test gaps below).
       **Partly done:** badge has tests; breadcrumb still has none.
 
+### P2 — Performance fixes (Track D)
+
+`npm run test:perf` records today's values in `tests/perf/budgets.json`, so these pass, and
+`npm run perf:report` lists each one as a violation (measured above the ideal). Each fix is
+its own `fix:`/`perf:` PR that lowers its budget (`npm run perf:budgets`) and passes the
+contract tests. Breaking-change risks:
+
+- Removing closed-state DOM (check 8) breaks `getByRole(…, { hidden: true })` queries:
+  land it before GA with `!`, or defer it to 12.0.
+- `React.memo` or a class → function conversion on an **exported** component changes its
+  type, its statics and what `ref` points to. Memoize the internal items instead.
+- Calling `onChange`/`onSelect` less often, or with different data, is a callback change.
+- Fewer commits, passive listeners, listener cleanup and fewer layout reads aren't breaking.
+
+The violations, roughly cheapest first:
+
+- [ ] Passive `touchstart`/`mousedown` listeners in `utilities/hooks/use-click-outside.ts`
+      and `menu-dropdown.tsx` (79 stories).
+- [ ] Attach global listeners only while open; `ResizeObserver` in place of the `window`
+      `resize` listeners in `carousel` and `utilities/truncate` (56 stories).
+- [ ] `Modal` and `WelcomeMat`: a document listener outlives unmount, plus console and
+      StrictMode errors.
+- [ ] `Combobox`: about 60 of 200 mounts stay reachable after unmount; a pending timer in
+      the popover variant; one overlay node rendered while closed (⚠️ hidden-DOM).
+- [ ] Memoize the `IconSettings` and `PortalSettings` context values, which change on
+      every render.
+- [ ] Memoize the internal items of `Tabs`, `SimpleDataTable`, `Tree` and `MenuDropdown`:
+      every item re-renders on identical props, a parent re-render, or selecting one item.
+- [ ] Avoid the second mount commit (`useEffect` → `setState`) in 167 stories, one PR per
+      component family.
+- [ ] Reduce layout reads when opening `Popover`, `Combobox`, `Tooltip` and `MenuDropdown`
+      (256–461 per open).
+- [ ] Attach the perf report (the `perf-bench` CI artifact) to each rc GitHub Release.
+
 ### P2 — Close the story & test gaps
 
 **Component folders with no Storybook story:**
