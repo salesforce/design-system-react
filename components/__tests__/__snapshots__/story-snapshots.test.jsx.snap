@@ -10621,6 +10621,14 @@ exports[`Story HTML snapshots > Textarea > WithMaxLength 1`] = `
 </div>"
 `;
 
+exports[`Story HTML snapshots > Textarea > WithRows 1`] = `
+"<div class="slds-p-around_medium">
+  <div class="slds-form-element"><label class="slds-form-element__label" for="textarea-rows">Tall Textarea</label>
+    <div class="slds-form-element__control"><textarea class="slds-textarea" id="textarea-rows" name="rows-textarea" placeholder="This textarea shows five visible lines" rows="5"></textarea></div>
+  </div>
+</div>"
+`;
+
 exports[`Story HTML snapshots > Textarea > WithValue 1`] = `
 "<div class="slds-p-around_medium">
   <div class="slds-form-element"><label class="slds-form-element__label" for="textarea-with-value">Textarea with Value</label>
