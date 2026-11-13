@@ -13,8 +13,9 @@
  *     once in an intersection needs JSDoc on one declaration, since editors
  *     merge them.
  *   - Deprecations: every `deprecatedProperty(control, value, 'oldProp', ...)`
- *     call in `components/` whose `oldProp` is still a prop in that
- *     component's types has a `@deprecated` tag on it. Calls for props the
+ *     call in `components/<name>` (or `components/utilities/<name>`) whose
+ *     `oldProp` is still a prop of that component's props types has a
+ *     `@deprecated` tag on every declaration of it. Calls for props the
  *     types no longer declare are skipped (the compiler already rejects them),
  *     as are calls whose `oldProp` is not a plain prop name
  *     (`'steps[].assistiveText (string)'`), which describe a value shape.
@@ -91,6 +92,13 @@ const isExternal = (file: ts.SourceFile) =>
 
 const location = (file: ts.SourceFile) =>
 	file.fileName.slice(typesPrefix.length).replace(/\.d\.ts$/, '');
+
+// `components/<name>`, or `components/utilities/<name>`, for a path relative to
+// the package root or to `dist/types`.
+const componentOf = (path: string) => {
+	const parts = path.split(/[\\/]/);
+	return parts.slice(0, parts[1] === 'utilities' ? 3 : 2).join('/');
+};
 
 const hasDocs = (decl: ts.Node) =>
 	ts.getJSDocCommentsAndTags(decl).some((doc) => {
@@ -176,13 +184,19 @@ for (const entry of entries) {
 // --- Check docs -------------------------------------------------------------------
 
 const undocumented = new Set<string>();
-const visitedTypes = new Set<ts.Type>();
+// A type can be reached both as a props type and as a `labels` type; only the
+// first walk expands its own `labels` and `assistiveText`, so track each.
+const visitedTypes = { props: new Set<ts.Type>(), nested: new Set<ts.Type>() };
 const visitedDecls = new Set<ts.Node>();
+// `components/<name>` -> prop name -> its declarations in that component's
+// props types, for the @deprecated check.
+const propDecls = new Map<string, Map<string, Set<ts.Node>>>();
 
 const checkType = (type: ts.Type, nested: boolean) => {
+	const visited = nested ? visitedTypes.nested : visitedTypes.props;
 	for (const part of constituents(type)) {
-		if (visitedTypes.has(part)) continue;
-		visitedTypes.add(part);
+		if (visited.has(part)) continue;
+		visited.add(part);
 		if (!(part.flags & ts.TypeFlags.Object) && !part.isIntersection()) continue;
 		if (part.getCallSignatures().length) continue;
 		for (const prop of checker.getPropertiesOfType(part)) {
@@ -190,6 +204,16 @@ const checkType = (type: ts.Type, nested: boolean) => {
 				(d) => !isExternal(d.getSourceFile())
 			);
 			if (!decls.length || decls.every(isNever)) continue;
+			if (!nested) {
+				for (const d of decls) {
+					if (isNever(d)) continue;
+					const component = componentOf(location(d.getSourceFile()));
+					if (!propDecls.has(component)) propDecls.set(component, new Map());
+					const byName = propDecls.get(component)!;
+					if (!byName.has(prop.name)) byName.set(prop.name, new Set());
+					byName.get(prop.name)!.add(d);
+				}
+			}
 			// Editors merge the JSDoc of every declaration of an intersected
 			// prop, so one documented declaration documents it.
 			const [decl] = decls;
@@ -229,33 +253,8 @@ const sourceFiles = (dir: string): string[] =>
 			: [];
 	});
 
-// `components/<name>` -> prop names declared in its emitted types, and those
-// of them tagged `@deprecated`.
-const declaredProps = new Map<string, Set<string>>();
-const deprecatedProps = new Map<string, Set<string>>();
-const namesFor = (map: Map<string, Set<string>>, key: string) => {
-	if (!map.has(key)) map.set(key, new Set());
-	return map.get(key)!;
-};
-for (const file of program.getSourceFiles()) {
-	if (isExternal(file)) continue;
-	const component = location(file).split('/').slice(0, 2).join('/');
-	const visit = (node: ts.Node) => {
-		if (
-			(ts.isPropertySignature(node) || ts.isPropertyDeclaration(node)) &&
-			ts.isIdentifier(node.name)
-		) {
-			namesFor(declaredProps, component).add(node.name.text);
-			if (
-				ts.getJSDocTags(node).some((tag) => tag.tagName.text === 'deprecated')
-			) {
-				namesFor(deprecatedProps, component).add(node.name.text);
-			}
-		}
-		ts.forEachChild(node, visit);
-	};
-	visit(file);
-}
+const isDeprecated = (decl: ts.Node) =>
+	ts.getJSDocTags(decl).some((tag) => tag.tagName.text === 'deprecated');
 
 const untagged = new Set<string>();
 const componentsDir = join(root, 'components');
@@ -265,7 +264,7 @@ for (const path of existsSync(componentsDir)
 	const text = readFileSync(path, 'utf8');
 	if (!text.includes('deprecatedProperty(')) continue;
 	const file = ts.createSourceFile(path, text, ts.ScriptTarget.Latest, true);
-	const component = relative(root, path).split(sep).slice(0, 2).join('/');
+	const component = componentOf(relative(root, path));
 	const visit = (node: ts.Node) => {
 		if (
 			ts.isCallExpression(node) &&
@@ -277,8 +276,11 @@ for (const path of existsSync(componentsDir)
 				oldProp &&
 				ts.isStringLiteralLike(oldProp) &&
 				/^[A-Za-z_$][\w$]*$/.test(oldProp.text) &&
-				declaredProps.get(component)?.has(oldProp.text) &&
-				!deprecatedProps.get(component)?.has(oldProp.text)
+				// Every declaration of the prop (each union branch, each props
+				// type) needs the tag, so editors flag it wherever it is used.
+				[...(propDecls.get(component)?.get(oldProp.text) ?? [])].some(
+					(decl) => !isDeprecated(decl)
+				)
 			) {
 				untagged.add(`${component}: ${oldProp.text}`);
 			}
