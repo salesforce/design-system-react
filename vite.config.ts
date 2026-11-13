@@ -59,7 +59,6 @@ export default defineConfig({
 				path.resolve(__dirname, 'components/index.ts'),
 				...directoryEntries,
 			],
-			formats: ['es', 'cjs'],
 		},
 		rollupOptions: {
 			external,
