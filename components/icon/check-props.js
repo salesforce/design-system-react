@@ -2,6 +2,7 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 /* eslint-disable import/no-mutable-exports */
 
+import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import sunsetProperty from '../../utilities/warning/sunset-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
 
@@ -21,6 +22,14 @@ if (process.env.NODE_ENV !== 'production') {
 				)}`
 			);
 		}
+
+		deprecatedProperty(
+			COMPONENT,
+			props.productTheme,
+			'productTheme',
+			undefined,
+			"It hard-codes legacy product brand colors that SLDS 2 themes don't define, and is removed before 11.0.0. Set the background color yourself with `style` or `className`: `<Icon style={{ backgroundColor: '#00857d' }} />`."
+		);
 	};
 }
 

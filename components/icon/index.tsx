@@ -27,6 +27,7 @@ export type IconSize = 'xx-small' | 'x-small' | 'small' | 'medium' | 'large';
 
 /**
  * Product theme types for icon backgrounds
+ * @deprecated Removed before 11.0.0. Set the background color with `style` or `className`.
  */
 export type ProductTheme =
 	| 'global-setup'
@@ -62,7 +63,12 @@ export interface IconProps {
 	name?: string;
 	/** Direct path to the icon sprite */
 	path?: string;
-	/** Background theme color (only for standard category) */
+	/**
+	 * Background theme color (only for standard category)
+	 * @deprecated Removed before 11.0.0. These legacy product brand colors aren't
+	 * SLDS 2 theme values; set the background color yourself with `style` or
+	 * `className`, for example `style={{ backgroundColor: '#00857d' }}`.
+	 */
 	productTheme?: ProductTheme;
 	/** Size of the icon */
 	size?: IconSize;
@@ -110,8 +116,8 @@ const Icon = ({
 	}
 
 	useEffect(() => {
-		checkProps(ICON, { assistiveText }, componentDoc);
-	}, [assistiveText]);
+		checkProps(ICON, { assistiveText, productTheme }, componentDoc);
+	}, [assistiveText, productTheme]);
 
 	// A string `assistiveText` was removed in v11; it is ignored and warns.
 	const mergedAssistiveText =
