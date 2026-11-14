@@ -264,6 +264,16 @@ describe('Button Stateful', () => {
 			expect(button).toHaveAttribute('aria-live', 'assertive');
 		});
 
+		it('stretches the button with slds-button_stretch when responsive', () => {
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<ButtonStateful responsive onClick={() => {}} />
+				</IconSettings>
+			);
+			expect(getButton(container)).toHaveClass('slds-button_stretch');
+			expect(renderVariant(undefined)).not.toHaveClass('slds-button_stretch');
+		});
+
 		it('applies no variant modifier for text', () => {
 			const button = renderVariant('text');
 			expect(button).toHaveClass('slds-button', 'slds-button_stateful');

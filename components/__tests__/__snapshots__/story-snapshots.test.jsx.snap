@@ -828,7 +828,7 @@ exports[`Story HTML snapshots > Button > DocSiteBaseNeutral 1`] = `
 "<div class="slds-p-around_medium">
   <div class="slds-x-small-buttons_horizontal"><button class="slds-button" type="button">Base</button><button class="slds-button slds-button_neutral" type="button">Neutral</button><button class="slds-button slds-button_neutral" type="button"><svg class="slds-button__icon slds-button__icon_left" aria-hidden="true">
         <use href="/assets/icons/utility-sprite/svg/symbols.svg#download"></use>
-      </svg>Neutral Icon</button><button class="slds-button slds-button_neutral" type="button">Responsive</button></div>
+      </svg>Neutral Icon</button><button class="slds-button slds-button_neutral slds-button_stretch" type="button">Responsive</button></div>
 </div>"
 `;
 

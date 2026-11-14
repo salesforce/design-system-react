@@ -175,7 +175,6 @@ const headerTitle = (
 						iconName="down"
 						iconPosition="right"
 						label="My Leads"
-						responsive
 						variant="base"
 					/>
 				}
