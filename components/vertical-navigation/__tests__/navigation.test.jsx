@@ -173,7 +173,7 @@ describe('SLDSVerticalNavigation', () => {
 
 	describe('Item rendering', () => {
 		it('renders all categories and items', () => {
-			const { container } = render(<VerticalNavigation {...defaultProps} />);
+			render(<VerticalNavigation {...defaultProps} />);
 
 			// Check Reports category
 			expect(screen.getByText('Reports')).toBeInTheDocument();

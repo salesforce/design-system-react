@@ -703,8 +703,8 @@ class SimpleDataTable extends React.Component<
 			...this.headerRefs.column,
 			...this.headerRefs.action,
 		];
-		let newRowIndex = 0;
-		let newColumnIndex = 0;
+		let newRowIndex;
+		let newColumnIndex;
 
 		if (event.shiftKey) {
 			if (columnIndex - 1 >= 0) {

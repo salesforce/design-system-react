@@ -2,13 +2,7 @@
  * Common types used across multiple components
  */
 
-import type {
-	ReactElement,
-	ReactNode,
-	CSSProperties,
-	RefObject,
-	HTMLAttributes,
-} from 'react';
+import type { ReactElement, ReactNode, CSSProperties } from 'react';
 
 /**
  * A trigger slot: an element, which the component merges its props into (see

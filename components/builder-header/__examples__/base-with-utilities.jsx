@@ -1,4 +1,3 @@
-
 import IconSettings from '../../icon-settings';
 import BuilderHeader from '../../builder-header';
 import BuilderHeaderNav from '../nav';
@@ -6,7 +5,7 @@ import BuilderHeaderNavDropdown from '../nav-dropdown';
 import BuilderHeaderNavLink from '../nav-link';
 import BuilderHeaderUtilities from '../utilities';
 
-const Example = (props) => (
+const Example = () => (
 	<IconSettings iconPath="/assets/icons">
 		<BuilderHeader
 			assistiveText={{

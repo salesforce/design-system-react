@@ -28,7 +28,7 @@ class Example extends React.Component {
 	}
 
 	onChange =
-		(inputName) =>
+		(_inputName) =>
 		(event, { value }) => {
 			this.setState({ pageType: value });
 		};
@@ -39,7 +39,7 @@ class Example extends React.Component {
 		}
 	};
 
-	handleRequestClose = (event, data) => {
+	handleRequestClose = () => {
 		if (this.props.log) {
 			this.props.log('handleRequestClose');
 		}
@@ -50,7 +50,7 @@ class Example extends React.Component {
 		});
 	};
 
-	handleSave = (event, data) => {
+	handleSave = () => {
 		if (this.state.pageType.length === 0) {
 			this.setState({
 				errorText: 'Required field.',

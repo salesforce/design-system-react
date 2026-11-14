@@ -8,7 +8,6 @@ import RenderInitialBranch from './render-initial-branch';
 import RenderBranch from './render-branch';
 
 import { TREE_BRANCH } from '../../../utilities/constants';
-import generateId from '../../../utilities/generate-id';
 import { TreeNode, FlattenedNode, TreeScrollData } from '../types';
 
 export interface BranchProps {

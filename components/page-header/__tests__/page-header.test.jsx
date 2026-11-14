@@ -44,9 +44,7 @@ const recordHomeActions = (
 					iconCategory="utility"
 					iconName="down"
 					iconVariant="border-filled"
-					onSelect={() => {
-						console.log('selected');
-					}}
+					onSelect={() => {}}
 					openOn="click"
 					align="right"
 					options={[
