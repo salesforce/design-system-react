@@ -6,6 +6,7 @@ import { expect, afterEach } from 'vitest';
 import { cleanup } from '@testing-library/react';
 import * as matchers from '@testing-library/jest-dom/matchers';
 import { resetWarnings } from './utilities/warning/warned-registry';
+import './vitest.console-guard';
 
 // Browser-mode setup. Unlike the jsdom setup, this deliberately does NOT stub
 // layout/measurement APIs (getBoundingClientRect, ResizeObserver, Canvas): the
