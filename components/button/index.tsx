@@ -153,7 +153,10 @@ export interface ButtonBaseProps extends Omit<
 	tabIndex?: number;
 	/** HTML title attribute */
 	title?: string;
-	/** Button type attribute */
+	/**
+	 * Button type attribute. Defaults to `submit` when `formAction` is set, since browsers
+	 * ignore `formAction` on other types, and to `button` otherwise.
+	 */
 	type?: ButtonType;
 }
 
@@ -234,13 +237,14 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 			// Injected by `ButtonGroup` into its last child for `MenuDropdown`; a
 			// Button has no use for it, so keep it off the DOM.
 			triggerClassName: _triggerClassName,
-			type = 'button',
+			type: propType,
 			variant = 'neutral',
 			...restProps
 		} = props as ButtonProps & {
 			tooltip?: ReactNode;
 			triggerClassName?: unknown;
 		};
+		const type = propType ?? (props.formAction ? 'submit' : 'button');
 
 		useEffect(() => {
 			checkRemovedProps(

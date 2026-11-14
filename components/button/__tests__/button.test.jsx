@@ -52,6 +52,33 @@ describe('SLDSButton', () => {
 			const btn = screen.getByRole('button');
 			expect(btn).toHaveAttribute('formaction', formAction);
 		});
+
+		it('defaults type to submit when formAction is set, without a warning', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			renderButton({ formAction: 'http://localhost/some/url' });
+
+			expect(screen.getByRole('button')).toHaveAttribute('type', 'submit');
+			expect(consoleError).not.toHaveBeenCalled();
+			consoleError.mockRestore();
+		});
+
+		it('keeps an explicit type when formAction is set', () => {
+			// React warns that formAction is ignored on this type, which is the point
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			renderButton({ formAction: 'http://localhost/some/url', type: 'button' });
+
+			expect(screen.getByRole('button')).toHaveAttribute('type', 'button');
+			consoleError.mockRestore();
+		});
+
+		it('defaults type to button without formAction', () => {
+			renderButton();
+			expect(screen.getByRole('button')).toHaveAttribute('type', 'button');
+		});
 	});
 
 	describe('Data Props Render', () => {
