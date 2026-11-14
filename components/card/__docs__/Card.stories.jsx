@@ -216,7 +216,7 @@ export const SetHeightCard = {
 		<Card
 			bodyClassName="slds-grow slds-scrollable_y"
 			className="slds-grid slds-grid_vertical"
-			footer={<a href="#">View All</a>}
+			footer={<a href="#view-all">View All</a>}
 			heading="Card with Set Height"
 			icon={<Icon category="standard" name="document" size="small" />}
 			style={{ height: '300px' }}
@@ -240,7 +240,7 @@ export const WithoutHeader = {
 		<Card
 			bodyClassName="slds-grow slds-scrollable_y"
 			className="slds-grid slds-grid_vertical"
-			footer={<a href="#">Footer Link</a>}
+			footer={<a href="#footer-link">Footer Link</a>}
 			hasNoHeader
 			style={{ height: '200px' }}
 		>

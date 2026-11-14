@@ -39,12 +39,15 @@ const DropdownCustomContent = (props) => (
 						<a
 							id="custom-dropdown-menu-content-link"
 							className="slds-m-right_medium"
-							href="#"
+							href="#settings"
 							onClick={EventUtil.trappedHandler(props.onClick)}
 						>
 							Settings
 						</a>
-						<a href="#" onClick={EventUtil.trappedHandler(props.onClick)}>
+						<a
+							href="#log-out"
+							onClick={EventUtil.trappedHandler(props.onClick)}
+						>
 							Log Out
 						</a>
 					</p>

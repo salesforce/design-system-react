@@ -359,7 +359,8 @@ const Tooltip = ({
 			},
 			componentDoc
 		);
-	}, []);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []); // Only run on mount
 
 	// Cleanup on unmount
 	useEffect(() => {
@@ -641,6 +642,7 @@ const Tooltip = ({
 
 		if (onClickTrigger) {
 			return renderTrigger(
+				// eslint-disable-next-line jsx-a11y/anchor-is-valid -- SLDS tooltip markup uses an anchor for the clickable trigger
 				<a
 					href="#"
 					onClick={

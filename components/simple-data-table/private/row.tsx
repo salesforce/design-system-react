@@ -274,6 +274,7 @@ const SimpleDataTableRow: React.FC<SimpleDataTableRowProps> = (props) => {
 					selectRowCellContext,
 					checkboxSelection,
 					radioSelection,
+					tableContext.isGrid,
 				]
 			)}
 		</tr>

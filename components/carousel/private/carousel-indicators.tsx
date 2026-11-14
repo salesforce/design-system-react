@@ -140,6 +140,7 @@ class CarouselIndicators extends React.Component<CarouselIndicatorsProps> {
 							role="presentation"
 							style={{ margin: 0, padding: '0 5px' }}
 						>
+							{/* eslint-disable-next-line jsx-a11y/anchor-is-valid, jsx-a11y/click-events-have-key-events -- SLDS carousel tab markup; arrow keys are handled on the carousel root */}
 							<a
 								ref={(component) => {
 									this.indicators[index] = component;

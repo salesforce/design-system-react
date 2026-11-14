@@ -227,6 +227,7 @@ const Toast = ({
 			ref={saveToastRef}
 			role="status"
 			style={style}
+			// eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex -- the toast is focused on mount so assistive tech announces it
 			tabIndex={0}
 		>
 			<span className="slds-assistive-text">
@@ -237,6 +238,7 @@ const Toast = ({
 				<h2 className="slds-text-heading_small">
 					{labels.heading}{' '}
 					{labels.headingLink && (
+						// eslint-disable-next-line jsx-a11y/anchor-is-valid -- SLDS toast markup uses an anchor for the heading link
 						<a onClick={EventUtil.trappedHandler(onClickHeadingLink)} href="#">
 							{labels.headingLink}
 						</a>

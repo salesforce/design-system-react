@@ -299,6 +299,7 @@ const RenderBranch = (
 		<li
 			id={String(props.htmlId)}
 			role="treeitem"
+			aria-selected={isSelected ? 'true' : 'false'}
 			{...ariaProps}
 			tabIndex={getTabIndex(props)}
 			onKeyDown={(event) => handleKeyDown(event, props)}
@@ -310,6 +311,7 @@ const RenderBranch = (
 				}
 			}}
 		>
+			{/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions -- keyboard selection is handled on the treeitem */}
 			<div
 				className={classNames('slds-tree__item', {
 					'slds-is-selected': isSelected,

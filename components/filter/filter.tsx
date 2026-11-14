@@ -130,7 +130,7 @@ const Filter: React.FC<FilterProps> = ({
 			setPopoverIsOpen(false);
 			onChange?.(event, { id });
 		},
-		[onChange, id]
+		[onChange, id, setPopoverIsOpen]
 	);
 
 	// Handle remove

@@ -169,6 +169,7 @@ const Alert = ({
 			<h2>
 				{labels.heading}{' '}
 				{labels.headingLink && (
+					// eslint-disable-next-line jsx-a11y/anchor-is-valid -- SLDS alert markup uses an anchor for the heading link
 					<a onClick={EventUtil.trappedHandler(onClickHeadingLink)} href="#">
 						{labels.headingLink}
 					</a>

@@ -348,6 +348,7 @@ const InnerInput = ({
 			)}
 
 			{isStatic && (
+				// eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions -- static display text; the inline edit trigger is the focusable control
 				<span
 					className={classNames('slds-form-element__static', 'slds-grid', {
 						'slds-grid_align-spread': variant !== COUNTER,
