@@ -5,11 +5,12 @@
 
 // This function will deliver an error message to the browser console when all of the props passed in are undefined (falsey).
 import warning from 'warning';
+import { createWarnedMap } from './warned-registry';
 
 let oneOfComponent = function oneOfComponentFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
-	const hasWarned = {};
+	const hasWarned = createWarnedMap();
 	oneOfComponent = function oneOfComponentFunction(
 		control,
 		props,

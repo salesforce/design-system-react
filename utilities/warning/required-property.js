@@ -8,11 +8,12 @@
 // value so falsy values such as `0`, `''` or `null` can count as set. Warns
 // once per component and property.
 import warning from 'warning';
+import { createWarnedMap } from './warned-registry';
 
 let required = function requiredFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
-	const hasWarned = {};
+	const hasWarned = createWarnedMap();
 
 	required = function requiredFunction(control, isSet, propName, comment) {
 		const additionalComment = comment ? ` ${comment}` : '';

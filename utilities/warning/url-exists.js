@@ -5,11 +5,12 @@
 
 // This function does an "AJAX" request to warn users on how to setup their icon path.
 import warning from 'warning';
+import { createWarnedMap } from './warned-registry';
 
 let urlExists = function urlExistsFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
-	const hasWarned = {};
+	const hasWarned = createWarnedMap();
 	let hasExecuted;
 
 	const warn = (control, url, comment) => (res) => {
