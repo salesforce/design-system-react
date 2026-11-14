@@ -143,7 +143,7 @@ export interface ButtonBaseProps extends Omit<
 	 * @deprecated Focus the button through `ref` or `buttonRef` instead. Still works, and warns.
 	 */
 	requestFocus?: boolean;
-	/** Responsive width on small screens */
+	/** Stretches the button to the full width of its container (`slds-button_stretch`) */
 	responsive?: boolean;
 	/** Custom inline styles */
 	style?: CSSProperties;
@@ -221,6 +221,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 			onMouseUp,
 			onRequestFocus,
 			requestFocus,
+			responsive = false,
 			style,
 			tabIndex,
 			title,
@@ -291,6 +292,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 						iconVariant && iconSize !== 'medium',
 					'slds-button_reset': variant === 'link',
 					'slds-text-link': variant === 'link',
+					'slds-button_stretch': responsive,
 				},
 				className as string
 			);

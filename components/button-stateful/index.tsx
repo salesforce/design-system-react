@@ -121,7 +121,7 @@ interface ButtonStatefulBaseProps extends Omit<
 	onMouseDown?: (event: MouseEvent<HTMLButtonElement>) => void;
 	/** Mouse enter handler */
 	onMouseEnter?: (event: MouseEvent<HTMLButtonElement>) => void;
-	/** Scale to full width on small screens */
+	/** Stretches the button to the full width of its container (`slds-button_stretch`) */
 	responsive?: boolean;
 	/** Initial/unselected state */
 	stateOne?: ButtonStatefulState;
@@ -217,7 +217,7 @@ const ButtonStateful = ({
 				// SLDS uses one or the other: `:focus` on `slds-is-selected` would win
 				'slds-is-selected': active && !isClicked,
 				'slds-is-selected-clicked': active && isClicked,
-				'slds-max-small-button_stretch': responsive,
+				'slds-button_stretch': responsive,
 				'slds-button_icon-border': variant === 'icon',
 				'slds-button_icon-border-filled': variant === 'icon-filled',
 			}),

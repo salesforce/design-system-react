@@ -355,7 +355,6 @@ class Example extends React.Component {
 											iconName="down"
 											iconPosition="right"
 											label="Dropdown"
-											responsive
 											variant="base"
 										/>
 									}
