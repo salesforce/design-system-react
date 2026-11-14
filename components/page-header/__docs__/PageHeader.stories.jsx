@@ -112,10 +112,10 @@ export const RelatedList = {
 			title="Contacts"
 			label="Acme"
 			trail={[
-				<a key="1" href="#" onClick={(e) => e.preventDefault()}>
+				<a key="1" href="#accounts" onClick={(e) => e.preventDefault()}>
 					Accounts
 				</a>,
-				<a key="2" href="#" onClick={(e) => e.preventDefault()}>
+				<a key="2" href="#acme" onClick={(e) => e.preventDefault()}>
 					Acme
 				</a>,
 			]}

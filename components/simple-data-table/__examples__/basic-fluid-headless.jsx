@@ -8,7 +8,7 @@ import IconSettings from '~/components/icon-settings';
 const CustomSimpleDataTableCell = ({ children, ...props }) => (
 	<SimpleDataTableCell {...props}>
 		<a
-			href="#"
+			href="#record"
 			onClick={(event) => {
 				event.preventDefault();
 			}}

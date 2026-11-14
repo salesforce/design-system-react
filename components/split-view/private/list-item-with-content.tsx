@@ -133,6 +133,7 @@ const listItemWithContent = (
 					})}
 					role="presentation"
 				>
+					{/* eslint-disable-next-line jsx-a11y/anchor-is-valid -- SLDS split view list item markup; keyboard handled by the listbox */}
 					<a
 						className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
 						role="option"

@@ -370,6 +370,7 @@ const Tabs = (props: TabsProps): React.ReactElement => {
 		});
 
 	return (
+		// eslint-disable-next-line jsx-a11y/no-static-element-interactions -- wrapper delegates events from the focusable tabs it contains
 		<div
 			id={id}
 			className={classNames(
