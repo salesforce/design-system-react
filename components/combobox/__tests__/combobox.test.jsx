@@ -175,7 +175,21 @@ const getNodes = (container) => ({
 	popover: container.querySelector('.slds-popover'),
 });
 
+// For tests that use a deprecated API on purpose; each deprecation has its own
+// test that asserts the warning
+const silenceDeprecation = () =>
+	vi.spyOn(console, 'error').mockImplementation(() => {});
+const silenceInlineListboxMultiple = (props) => {
+	if (props.variant === 'inline-listbox' && props.multiple) {
+		silenceDeprecation();
+	}
+};
+
 describe('SLDSCombobox', () => {
+	afterEach(() => {
+		vi.restoreAllMocks();
+	});
+
 	describe('Assistive technology and keyboard interactions', () => {
 		it('has aria-haspopup, aria-expanded is false when closed, aria-expanded is true when open', () => {
 			const { container } = render(<DemoComponent multiple />);
@@ -227,6 +241,7 @@ describe('SLDSCombobox', () => {
 		});
 
 		it('inline-listbox multiple: container is the aria-multiselectable listbox and inner list is a group', () => {
+			silenceDeprecation();
 			const { container } = render(
 				<DemoComponent
 					variant="inline-listbox"
@@ -613,6 +628,7 @@ describe('SLDSCombobox', () => {
 			['readonly', { variant: 'readonly' }],
 			['readonly multiple', { variant: 'readonly', multiple: true }],
 		])('%s: disables the input and keeps the menu closed', (name, props) => {
+			silenceInlineListboxMultiple(props);
 			const { container } = render(
 				<DemoComponent {...props} disabled isOpen options={accounts} />
 			);
@@ -633,12 +649,13 @@ describe('SLDSCombobox', () => {
 				String(message).includes('`singleInputDisabled`')
 			);
 			expect(warnings).toHaveLength(1);
-			consoleError.mockRestore();
 
+			// The component's own check-props instance warns on this render too
 			const { container } = render(
 				<DemoComponent singleInputDisabled variant="readonly" />
 			);
 			expect(getNodes(container).input).toBeDisabled();
+			consoleError.mockRestore();
 		});
 	});
 
@@ -811,6 +828,7 @@ describe('SLDSCombobox', () => {
 		it.each(listboxVariants)(
 			'%s: points at the rendered listbox while open',
 			(name, props) => {
+				silenceInlineListboxMultiple(props);
 				const { container } = render(<DemoComponent {...props} isOpen />);
 				const { combobox } = getNodes(container);
 				const controlsId = combobox.getAttribute('aria-controls');
@@ -825,6 +843,7 @@ describe('SLDSCombobox', () => {
 		it.each(listboxVariants)(
 			'%s: is absent while closed or disabled',
 			(name, props) => {
+				silenceInlineListboxMultiple(props);
 				const { container, rerender } = render(<DemoComponent {...props} />);
 				expect(getNodes(container).combobox).not.toHaveAttribute(
 					'aria-controls'
@@ -1128,6 +1147,7 @@ describe('SLDSCombobox', () => {
 			it.each(['mouse', 'keyboard'])(
 				'%s: calls a deprecated item onClick before events.onSelectActionItem',
 				(method) => {
+					silenceDeprecation();
 					const calls = [];
 					const onClick = vi.fn(() => calls.push('onClick'));
 					const onSelectActionItem = vi.fn(() =>
@@ -1151,6 +1171,7 @@ describe('SLDSCombobox', () => {
 			it.each(['mouse', 'keyboard'])(
 				'%s: a disabled item does nothing and is marked aria-disabled',
 				(method) => {
+					silenceDeprecation();
 					const onClick = vi.fn();
 					const onSelectActionItem = vi.fn();
 					const item = { ...actionItem, onClick, disabled: true };
@@ -1550,8 +1571,8 @@ describe('SLDSCombobox', () => {
 				String(message).includes('`defaultValue`')
 			);
 			expect(warnings).toHaveLength(1);
-			consoleError.mockRestore();
 
+			// The component's own check-props instance warns on this render too
 			const { container } = render(
 				<IconSettings iconPath="/assets/icons">
 					<Combobox
@@ -1565,6 +1586,7 @@ describe('SLDSCombobox', () => {
 			const { input } = getNodes(container);
 			expect(input.value).toBe('');
 			expect(input).not.toHaveAttribute('defaultValue');
+			consoleError.mockRestore();
 		});
 	});
 });

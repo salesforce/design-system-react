@@ -575,12 +575,13 @@ describe('SLDSInput', () => {
 					String(call[0]).includes('defaultValue')
 				);
 				expect(sunsetCalls).toHaveLength(1);
+
+				// The component's own check-props instance warns on this render too
+				const { container } = renderInput({ defaultValue: 'stale' });
+				expect(container.querySelector('input').value).toBe('');
 			} finally {
 				errorSpy.mockRestore();
 			}
-
-			const { container } = renderInput({ defaultValue: 'stale' });
-			expect(container.querySelector('input').value).toBe('');
 		});
 
 		it('ignores and warns about `assistiveText.fieldLevelHelpButton`', () => {

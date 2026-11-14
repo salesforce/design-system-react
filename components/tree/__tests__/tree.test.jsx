@@ -194,6 +194,7 @@ describe('Tree', () => {
 					nodes={createNodes()}
 					onSelect={() => {}}
 					ref={ref}
+					selectedIds={[]}
 				/>
 			);
 			expect(ref.current).toBe(container.querySelector('.slds-tree_container'));
@@ -1193,8 +1194,9 @@ describe('Tree', () => {
 				<Tree
 					id="heading-tree"
 					nodes={nodes}
-					onClick={() => {}}
-					onExpandClick={() => {}}
+					onRequestToggle={() => {}}
+					onSelect={() => {}}
+					selectedIds={[]}
 					{...props}
 				/>
 			);
