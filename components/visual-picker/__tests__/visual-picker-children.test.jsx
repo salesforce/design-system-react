@@ -14,12 +14,12 @@ describe('VisualPicker children', () => {
 						labels={{ label: 'One' }}
 						value="one"
 						name="own-name"
-						onRenderVisualPicker={() => <span>One</span>}
+						visualPickerFigure={<span>One</span>}
 					/>
 					<Radio
 						labels={{ label: 'Two' }}
 						value="two"
-						onRenderVisualPicker={() => <span>Two</span>}
+						visualPickerFigure={<span>Two</span>}
 					/>
 				</VisualPicker>
 			</IconSettings>

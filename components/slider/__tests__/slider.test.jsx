@@ -316,6 +316,10 @@ describe('SLDSSlider', () => {
 		});
 
 		it('takes the display value only from `value`', () => {
+			// Covered by the warning test above
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
 			const { container } = render(
 				<Slider
 					defaultValue={70}
@@ -326,6 +330,7 @@ describe('SLDSSlider', () => {
 			expect(container.querySelector('.slds-slider__value').textContent).toBe(
 				''
 			);
+			consoleError.mockRestore();
 		});
 	});
 
