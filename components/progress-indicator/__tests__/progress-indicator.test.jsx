@@ -1,4 +1,4 @@
-import { render, fireEvent, screen } from '@testing-library/react';
+import { act, render, fireEvent, screen } from '@testing-library/react';
 import { describe, it, expect, vi, afterEach } from 'vitest';
 
 import ProgressIndicator from '../';
@@ -468,11 +468,12 @@ describe('SLDSProgressIndicator', () => {
 			renderProgressIndicator({ ...pathProps, selectedStep: steps[0] });
 			const options = getOptions();
 
-			options[0].focus();
+			// Focusing a stage moves the roving tab stop, a state update
+			act(() => options[0].focus());
 			fireEvent.keyDown(options[0], { key: 'ArrowLeft' });
 			expect(options[0]).toHaveFocus();
 
-			options[4].focus();
+			act(() => options[4].focus());
 			fireEvent.keyDown(options[4], { key: 'ArrowRight' });
 			expect(options[4]).toHaveFocus();
 		});
@@ -508,7 +509,9 @@ describe('SLDSProgressIndicator', () => {
 				bubbles: true,
 				cancelable: true,
 			});
-			getOptions()[0].dispatchEvent(event);
+			act(() => {
+				getOptions()[0].dispatchEvent(event);
+			});
 
 			expect(event.defaultPrevented).toBe(true);
 			expect(clickHandler).toHaveBeenCalledTimes(1);
