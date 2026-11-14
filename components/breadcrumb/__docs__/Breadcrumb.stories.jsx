@@ -20,10 +20,10 @@ export const TwoItems = {
 	render: () => (
 		<Breadcrumb
 			trail={[
-				<a href="#" key="parent">
+				<a href="#parent-entity" key="parent">
 					Parent Entity
 				</a>,
-				<a href="#" key="child">
+				<a href="#child-entity" key="child">
 					Child Entity
 				</a>,
 			]}
@@ -36,7 +36,7 @@ export const OneItem = {
 	render: () => (
 		<Breadcrumb
 			trail={[
-				<a href="#" key="single">
+				<a href="#parent-entity" key="single">
 					Parent Entity
 				</a>,
 			]}
@@ -49,16 +49,16 @@ export const MultipleItems = {
 	render: () => (
 		<Breadcrumb
 			trail={[
-				<a href="#" key="home">
+				<a href="#home" key="home">
 					Home
 				</a>,
-				<a href="#" key="accounts">
+				<a href="#accounts" key="accounts">
 					Accounts
 				</a>,
-				<a href="#" key="acme">
+				<a href="#acme-corp" key="acme">
 					Acme Corp
 				</a>,
-				<a href="#" key="contacts">
+				<a href="#contacts" key="contacts">
 					Contacts
 				</a>,
 			]}
@@ -72,10 +72,10 @@ export const CustomAssistiveText = {
 		<Breadcrumb
 			assistiveText={{ label: 'You are here:' }}
 			trail={[
-				<a href="#" key="parent">
+				<a href="#parent-entity" key="parent">
 					Parent Entity
 				</a>,
-				<a href="#" key="child">
+				<a href="#child-entity" key="child">
 					Child Entity
 				</a>,
 			]}
@@ -87,15 +87,19 @@ export const CustomAssistiveText = {
 export const CustomStyles = {
 	render: () => (
 		<Breadcrumb
-			styleContainer={{ backgroundColor: '#f3f3f3', padding: '10px', borderRadius: '4px' }}
+			styleContainer={{
+				backgroundColor: '#f3f3f3',
+				padding: '10px',
+				borderRadius: '4px',
+			}}
 			trail={[
-				<a href="#" key="home">
+				<a href="#home" key="home">
 					Home
 				</a>,
-				<a href="#" key="library">
+				<a href="#library" key="library">
 					Library
 				</a>,
-				<a href="#" key="data">
+				<a href="#data" key="data">
 					Data
 				</a>,
 			]}

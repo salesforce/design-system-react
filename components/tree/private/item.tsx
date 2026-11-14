@@ -198,6 +198,7 @@ const Item: React.FC<ItemProps> = (props) => {
 				}
 			}}
 		>
+			{/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions -- keyboard selection is handled on the treeitem */}
 			<div
 				className={classNames('slds-tree__item', {
 					'slds-is-selected': isSelected,

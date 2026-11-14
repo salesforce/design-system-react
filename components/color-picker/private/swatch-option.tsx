@@ -49,6 +49,7 @@ const SwatchOption = forwardRef<HTMLAnchorElement, SwatchOptionProps>(
 				style={isSelected ? selectedStyle : {}}
 				role="presentation"
 			>
+				{/* eslint-disable-next-line jsx-a11y/anchor-is-valid, jsx-a11y/click-events-have-key-events -- SLDS swatch markup; arrow keys are handled by the swatch picker listbox */}
 				<a
 					aria-selected={isSelected}
 					className="slds-color-picker__swatch-trigger"

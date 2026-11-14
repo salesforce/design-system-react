@@ -121,6 +121,7 @@ class Step extends React.Component<StepProps> {
 			props.onFocus?.(event, data);
 
 		const stepButton = props.isDisabled ? (
+			// eslint-disable-next-line jsx-a11y/anchor-is-valid -- SLDS disabled step marker markup uses an anchor
 			<a
 				className={classNames(
 					'slds-button',

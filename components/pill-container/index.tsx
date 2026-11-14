@@ -194,17 +194,6 @@ const PillContainer = ({
 	const activeSelectedOptionRef = useRef<HTMLElement | null>(null);
 	const preserveFocusRef = useRef(false);
 
-	// Reset active option when options change
-	useEffect(() => {
-		if (
-			(options.length > 0 && !options[activeSelectedOptionIndex]) ||
-			preserveFocusRef.current
-		) {
-			resetActiveSelectedOption();
-			preserveFocusRef.current = false;
-		}
-	}, [options, activeSelectedOptionIndex]);
-
 	const resetActiveSelectedOption = useCallback(() => {
 		let newIndex = activeSelectedOptionIndex;
 
@@ -220,6 +209,17 @@ const PillContainer = ({
 		setActiveSelectedOptionIndex(newIndex);
 		setListboxHasFocus(!!options[newIndex]);
 	}, [options, activeSelectedOptionIndex]);
+
+	// Reset active option when options change
+	useEffect(() => {
+		if (
+			(options.length > 0 && !options[activeSelectedOptionIndex]) ||
+			preserveFocusRef.current
+		) {
+			resetActiveSelectedOption();
+			preserveFocusRef.current = false;
+		}
+	}, [options, activeSelectedOptionIndex, resetActiveSelectedOption]);
 
 	const getNewActiveOptionIndex = useCallback(
 		(currentIndex: number, offset: number): number => {

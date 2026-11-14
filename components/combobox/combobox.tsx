@@ -782,9 +782,9 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 				return;
 			}
 
-			if (getIsActiveOption()) {
+			if (activeOption && getIsActiveOption()) {
 				handleSelect(event, {
-					option: activeOption!,
+					option: activeOption,
 					selection,
 				});
 			} else if (

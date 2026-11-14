@@ -55,6 +55,7 @@ const BuilderHeaderNavLink = (
 	};
 
 	return (
+		// eslint-disable-next-line jsx-a11y/anchor-is-valid -- SLDS builder header markup uses an anchor for nav items
 		<a
 			className="slds-builder-header__item-action slds-media slds-media_center"
 			href="#"

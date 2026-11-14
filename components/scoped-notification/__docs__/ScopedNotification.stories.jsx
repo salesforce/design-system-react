@@ -28,7 +28,7 @@ export const Default = {
 		<ScopedNotification>
 			<p>
 				It looks as if duplicates exist for this lead.{' '}
-				<a href="#">View Duplicates.</a>
+				<a href="#view-duplicates">View Duplicates.</a>
 			</p>
 		</ScopedNotification>
 	),
@@ -40,7 +40,7 @@ export const Light = {
 		<ScopedNotification theme="light">
 			<p>
 				It looks as if duplicates exist for this lead.{' '}
-				<a href="#">View Duplicates.</a>
+				<a href="#view-duplicates">View Duplicates.</a>
 			</p>
 		</ScopedNotification>
 	),
@@ -52,7 +52,7 @@ export const Dark = {
 		<ScopedNotification theme="dark">
 			<p>
 				It looks as if duplicates exist for this lead.{' '}
-				<a href="#">View Duplicates.</a>
+				<a href="#view-duplicates">View Duplicates.</a>
 			</p>
 		</ScopedNotification>
 	),

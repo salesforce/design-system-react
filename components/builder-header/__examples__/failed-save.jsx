@@ -70,7 +70,7 @@ const Example = () => (
 									<p className="slds-p-bottom_x-small">
 										Pellentesque magna tellus, dapibus vitae placerat nec,
 										viverra vel mi.{' '}
-										<a href="#" title="Learn More">
+										<a href="#learn-more" title="Learn More">
 											Learn More
 										</a>
 									</p>

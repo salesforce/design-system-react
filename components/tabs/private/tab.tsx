@@ -8,12 +8,7 @@
 // ## Dependencies
 
 // ### React
-import React, {
-	forwardRef,
-	useEffect,
-	useRef,
-	type ReactNode,
-} from 'react';
+import React, { forwardRef, useEffect, useRef, type ReactNode } from 'react';
 
 // ### classNames
 import classNames from 'classnames';
@@ -140,6 +135,7 @@ const Tab = forwardRef<HTMLElement, TabProps>((props, ref) => {
 			id={id}
 			title={typeof children === 'string' ? children : undefined}
 		>
+			{/* eslint-disable-next-line jsx-a11y/anchor-is-valid -- SLDS tabs markup uses an anchor for each tab */}
 			<a
 				className={classNames({
 					[activeTabClassName]: selected,
