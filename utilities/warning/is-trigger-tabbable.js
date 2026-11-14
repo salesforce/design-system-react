@@ -5,6 +5,7 @@
 
 // This function will deliver an error message to the browser console about the removal of a property.
 import warning from 'warning';
+import { createWarnedMap } from './warned-registry';
 
 import {
 	BUTTON,
@@ -23,7 +24,7 @@ import {
 let isTriggerTabbable = function isTriggerTabbableFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
-	const hasWarned = {};
+	const hasWarned = createWarnedMap();
 
 	isTriggerTabbable = function isTriggerTabbableFunction(
 		COMPONENT,

@@ -7,12 +7,13 @@ import React from 'react';
 
 // This function will deliver an error message to the browser console when all of the props passed in are undefined (falsey).
 import warning from 'warning';
+import { createWarnedMap } from './warned-registry';
 
 let renderFunctionReturnContentsLackDisplayName =
 	function renderFunctionReturnContentsLackDisplayNameFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
-	const hasWarned = {};
+	const hasWarned = createWarnedMap();
 
 	renderFunctionReturnContentsLackDisplayName =
 		function renderFunctionReturnContentsLackDisplayNameFunction(

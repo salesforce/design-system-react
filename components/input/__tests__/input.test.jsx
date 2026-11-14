@@ -8,6 +8,8 @@ import Icon from '../../icon';
 import InputIcon from '../../icon/input-icon';
 import IconSettings from '../../icon-settings';
 import Tooltip from '../../tooltip';
+import checkProps from '../check-props';
+import { INPUT } from '../../../utilities/constants';
 
 describe('SLDSInput', () => {
 	const defaultProps = {
@@ -563,12 +565,9 @@ describe('SLDSInput', () => {
 	});
 
 	describe('Removed props', () => {
-		it('warns once for `defaultValue` and does not pass it to the input', async () => {
-			vi.resetModules();
+		it('warns once for `defaultValue` and does not pass it to the input', () => {
 			const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
 			try {
-				const { default: checkProps } = await import('../check-props');
-				const { INPUT } = await import('../../../utilities/constants');
 				checkProps(INPUT, { defaultValue: 'x' });
 				checkProps(INPUT, { defaultValue: 'x' });
 				const sunsetCalls = errorSpy.mock.calls.filter((call) =>
@@ -576,7 +575,6 @@ describe('SLDSInput', () => {
 				);
 				expect(sunsetCalls).toHaveLength(1);
 
-				// The component's own check-props instance warns on this render too
 				const { container } = renderInput({ defaultValue: 'stale' });
 				expect(container.querySelector('input').value).toBe('');
 			} finally {

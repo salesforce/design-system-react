@@ -11,6 +11,7 @@ import Popover from '../../../components/popover';
 import { keyObjects } from '../../../utilities/key-code';
 import { keyObjects as letterKeyObjects } from '../../../utilities/letter-key-code';
 import IconSettings from '../../../components/icon-settings';
+import checkProps from '../check-props';
 
 const accounts = [
 	{
@@ -632,9 +633,7 @@ describe('SLDSCombobox', () => {
 			expect(nodes.menuListbox).not.toBeInTheDocument();
 		});
 
-		it('still honors the deprecated singleInputDisabled and warns once', async () => {
-			vi.resetModules();
-			const { default: checkProps } = await import('../check-props');
+		it('still honors the deprecated singleInputDisabled and warns once', () => {
 			const consoleError = vi
 				.spyOn(console, 'error')
 				.mockImplementation(() => {});
@@ -655,9 +654,7 @@ describe('SLDSCombobox', () => {
 	});
 
 	describe('deprecated inline-listbox multiple', () => {
-		it('warns once for inline-listbox with multiple, recommending base', async () => {
-			vi.resetModules();
-			const { default: checkProps } = await import('../check-props');
+		it('warns once for inline-listbox with multiple, recommending base', () => {
 			const consoleError = vi
 				.spyOn(console, 'error')
 				.mockImplementation(() => {});
@@ -678,9 +675,7 @@ describe('SLDSCombobox', () => {
 		it.each([
 			['inline-listbox single', { variant: 'inline-listbox' }],
 			['base multiple', { multiple: true }],
-		])('does not warn for %s', async (name, props) => {
-			vi.resetModules();
-			const { default: checkProps } = await import('../check-props');
+		])('does not warn for %s', (name, props) => {
 			const consoleError = vi
 				.spyOn(console, 'error')
 				.mockImplementation(() => {});
@@ -1010,11 +1005,7 @@ describe('SLDSCombobox', () => {
 		const isOpen = (container) =>
 			getNodes(container).combobox.getAttribute('aria-expanded') === 'true';
 
-		it('warns once per prop that item onClick is deprecated', async () => {
-			// `deprecated-property` dedupes in module state; load a fresh copy so
-			// this test doesn't depend on what other tests rendered first.
-			vi.resetModules();
-			const { default: checkProps } = await import('../check-props');
+		it('warns once per prop that item onClick is deprecated', () => {
 			const consoleError = vi
 				.spyOn(console, 'error')
 				.mockImplementation(() => {});
@@ -1554,9 +1545,7 @@ describe('SLDSCombobox', () => {
 	});
 
 	describe('Removed props', () => {
-		it('defaultValue warns once and does not reach the input', async () => {
-			vi.resetModules();
-			const { default: checkProps } = await import('../check-props');
+		it('defaultValue warns once and does not reach the input', () => {
 			const consoleError = vi
 				.spyOn(console, 'error')
 				.mockImplementation(() => {});

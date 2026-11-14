@@ -4,6 +4,7 @@
 /* eslint-disable import/no-mutable-exports */
 
 import warning from 'warning';
+import { createWarnedMap } from './warned-registry';
 
 interface ComponentHasMovedOptions {
 	oldFileLocation: string;
@@ -15,7 +16,7 @@ let hasMoved: (control: string, options: ComponentHasMovedOptions) => void =
 	function hasMovedFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
-	const hasWarned: Record<string, boolean> = {};
+	const hasWarned = createWarnedMap();
 
 	hasMoved = function hasMovedFunction(
 		control,

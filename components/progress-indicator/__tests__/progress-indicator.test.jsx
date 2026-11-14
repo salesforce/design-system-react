@@ -625,6 +625,12 @@ describe('SLDSProgressIndicator', () => {
 				...pathProps,
 				errorSteps: [steps[2]],
 			});
+			expect(getMessages(consoleError)).toEqual(
+				expect.arrayContaining([
+					expect.stringContaining('along with prop `errorSteps`'),
+				])
+			);
+			const callsAfterFirstRender = consoleError.mock.calls.length;
 
 			rerender(
 				<IconSettings iconPath="/assets/icons">
@@ -632,7 +638,7 @@ describe('SLDSProgressIndicator', () => {
 				</IconSettings>
 			);
 
-			expect(consoleError).toHaveBeenCalledTimes(1);
+			expect(consoleError).toHaveBeenCalledTimes(callsAfterFirstRender);
 		});
 
 		it('does not warn for base values of variant and orientation', () => {

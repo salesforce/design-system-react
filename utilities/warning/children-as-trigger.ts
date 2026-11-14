@@ -4,6 +4,7 @@
 /* eslint-disable import/no-mutable-exports */
 
 import warning from 'warning';
+import { createWarnedMap } from './warned-registry';
 
 // Warns once per component when its trigger is passed as `children` instead of `trigger`.
 let childrenAsTrigger: (
@@ -13,7 +14,7 @@ let childrenAsTrigger: (
 ) => void = function childrenAsTriggerFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
-	const hasWarned: Record<string, boolean> = {};
+	const hasWarned = createWarnedMap();
 
 	childrenAsTrigger = function childrenAsTriggerFunction(
 		control,
