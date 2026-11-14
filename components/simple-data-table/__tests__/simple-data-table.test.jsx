@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { forwardRef, useState } from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, it, expect, vi } from 'vitest';
@@ -1352,6 +1352,105 @@ describe('SimpleDataTable', () => {
 				expect.stringContaining('`onRequestFocus` will be removed')
 			);
 			consoleError.mockRestore();
+		});
+
+		describe('onOpen/onClose injection', () => {
+			// Records the props the wrapper passes to the element it wraps. Forwards
+			// `ref` when the element does, so the wrapper treats it the same way.
+			const spyOn = (WrappedElement) => {
+				const received = [];
+				const render = (props, ref) => {
+					received.push(props);
+					return <WrappedElement {...props} ref={ref} />;
+				};
+				const Spy =
+					WrappedElement.$$typeof === Symbol.for('react.forward_ref')
+						? forwardRef(render)
+						: (props) => render(props);
+				Spy.displayName = WrappedElement.displayName;
+				return { Spy, received };
+			};
+			const renderWrapped = (Interactive, elementProps = {}) => {
+				const InteractiveCell = ({ children: _children, ...props }) => (
+					<SimpleDataTableCell {...props}>
+						<Interactive {...elementProps} />
+					</SimpleDataTableCell>
+				);
+				InteractiveCell.displayName = SimpleDataTableCell.displayName;
+				return renderTable(
+					<SimpleDataTable {...defaultProps} keyboardNavigation>
+						<SimpleDataTableColumn label="Name" property="name" primaryColumn>
+							<InteractiveCell />
+						</SimpleDataTableColumn>
+					</SimpleDataTable>
+				);
+			};
+
+			it.each([
+				['Button', Button, { label: 'Open' }],
+				['Checkbox', Checkbox, { labels: { label: 'Option' }, onChange() {} }],
+			])(
+				'does not pass them to a wrapped %s',
+				(name, WrappedElement, elementProps) => {
+					const { Spy, received } = spyOn(WrappedElement);
+					renderWrapped(SimpleDataTableInteractiveElement(Spy), elementProps);
+
+					expect(received.length).toBeGreaterThan(0);
+					received.forEach((props) => {
+						expect(props).not.toHaveProperty('onOpen');
+						expect(props).not.toHaveProperty('onClose');
+					});
+				}
+			);
+
+			it('passes them to MenuDropdown without options', () => {
+				const { Spy, received } = spyOn(Dropdown);
+				renderWrapped(SimpleDataTableInteractiveElement(Spy), {
+					label: 'Actions',
+					options: [{ label: 'One', value: 'A' }],
+				});
+
+				expect(received.at(-1).onOpen).toEqual(expect.any(Function));
+				expect(received.at(-1).onClose).toEqual(expect.any(Function));
+			});
+
+			it('passes them to a custom element only with tracksOpen, and still calls the consumer callbacks', () => {
+				const Popover = ({ onOpen, onClose }) => (
+					<>
+						<button type="button" onClick={(e) => onOpen?.(e)}>
+							Open
+						</button>
+						<button type="button" onClick={(e) => onClose?.(e)}>
+							Close
+						</button>
+					</>
+				);
+				Popover.displayName = 'CustomPopover';
+
+				const untracked = spyOn(Popover);
+				renderWrapped(
+					SimpleDataTableInteractiveElement(untracked.Spy)
+				).unmount();
+				expect(untracked.received.at(-1)).not.toHaveProperty('onOpen');
+
+				const onOpen = vi.fn();
+				const onClose = vi.fn();
+				const tracked = spyOn(Popover);
+				const { getAllByRole } = renderWrapped(
+					SimpleDataTableInteractiveElement(tracked.Spy, { tracksOpen: true }),
+					{ onOpen, onClose }
+				);
+				expect(tracked.received.at(-1).onOpen).not.toBe(onOpen);
+
+				fireEvent.click(getAllByRole('button', { name: 'Open' })[0]);
+				expect(onOpen).toHaveBeenCalledTimes(1);
+				// Keyboard navigation pauses while open: the wrapper drops its focus props
+				expect(tracked.received.at(-1)).not.toHaveProperty('tabIndex');
+
+				fireEvent.click(getAllByRole('button', { name: 'Close' })[0]);
+				expect(onClose).toHaveBeenCalledTimes(1);
+				expect(tracked.received.at(-1)).toHaveProperty('tabIndex');
+			});
 		});
 
 		it('renders interactive cells with proper structure for keyboard navigation', () => {
