@@ -831,9 +831,7 @@ export const ReadonlyWithCustomMenuItem: Story = {
 
 export const ReadonlyDisabled: Story = {
 	render: () => {
-		const [selection, setSelection] = useState<ComboboxOption[]>([
-			picklistOptions[1],
-		]);
+		const [selection] = useState<ComboboxOption[]>([picklistOptions[1]]);
 
 		return (
 			<Combobox

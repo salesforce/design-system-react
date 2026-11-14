@@ -15,11 +15,11 @@ class Example extends React.Component {
 		};
 	}
 
-	handleMinimize = (event, data) => {
+	handleMinimize = () => {
 		this.setState({ isExpanded: false });
 	};
 
-	handleExpand = (event, data) => {
+	handleExpand = () => {
 		this.setState({ isExpanded: true });
 	};
 

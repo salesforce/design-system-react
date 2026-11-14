@@ -37,7 +37,7 @@ class Example extends React.Component {
 		}
 	};
 
-	handleRequestClose = (event, data) => {
+	handleRequestClose = () => {
 		if (this.props.log) {
 			this.props.log('handleRequestClose');
 		}
@@ -48,7 +48,7 @@ class Example extends React.Component {
 		});
 	};
 
-	handleSave = (event, data) => {
+	handleSave = () => {
 		this.setState({
 			prevFirstName: this.state.firstName,
 			prevLastName: this.state.lastName,

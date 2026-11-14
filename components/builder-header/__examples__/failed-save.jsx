@@ -9,7 +9,7 @@ import BuilderHeaderNavLink from '~/components/builder-header/nav-link';
 import BuilderHeaderNavDropdown from '~/components/builder-header/nav-dropdown';
 import BuilderHeaderToolbar from '~/components/builder-header/toolbar';
 
-const Example = (props) => (
+const Example = () => (
 	<IconSettings iconPath="/assets/icons">
 		<BuilderHeader
 			assistiveText={{
