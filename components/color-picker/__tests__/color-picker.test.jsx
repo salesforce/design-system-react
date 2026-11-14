@@ -1361,10 +1361,7 @@ describe('SLDSColorPicker', () => {
 });
 
 describe('ColorPicker: required `events.onChange`', () => {
-	it('warns once when `events.onChange` is missing, and not when exempt', async () => {
-		// Fresh modules so the once-per-session warning state is reset
-		vi.resetModules();
-		const { default: FreshColorPicker } = await import('../index');
+	it('warns once when `events.onChange` is missing, and not when exempt', () => {
 		const consoleError = vi
 			.spyOn(console, 'error')
 			.mockImplementation(() => {});
@@ -1374,10 +1371,10 @@ describe('ColorPicker: required `events.onChange`', () => {
 				.filter((m) => m.includes('`events.onChange` is required by'));
 
 		// `disabled` doesn't need `events.onChange`
-		render(<FreshColorPicker disabled value="" />);
+		render(<ColorPicker disabled value="" />);
 		expect(requiredWarnings()).toHaveLength(0);
 		// `events` without `onChange` isn't enough
-		render(<FreshColorPicker events={{ onRequestOpen: () => {} }} value="" />);
+		render(<ColorPicker events={{ onRequestOpen: () => {} }} value="" />);
 		expect(requiredWarnings()).toHaveLength(1);
 
 		consoleError.mockRestore();

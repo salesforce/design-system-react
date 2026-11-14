@@ -581,16 +581,13 @@ describe('SLDSSlider', () => {
 			expect(ref.current).toBe(root);
 		});
 
-		it('still applies deprecated classNameContainer, and warns', async () => {
-			// Fresh modules so the once-per-session warning state is reset
-			vi.resetModules();
-			const { default: FreshSlider } = await import('../');
+		it('still applies deprecated classNameContainer, and warns', () => {
 			const consoleError = vi
 				.spyOn(console, 'error')
 				.mockImplementation(() => {});
 
 			const { container } = render(
-				<FreshSlider
+				<Slider
 					className="new-class"
 					classNameContainer="old-class"
 					labels={{ label: 'Slider Label' }}
@@ -615,10 +612,7 @@ describe('SLDSSlider', () => {
 });
 
 describe('Slider: required `onChange`', () => {
-	it('warns once when `onChange` is missing, and not when exempt', async () => {
-		// Fresh modules so the once-per-session warning state is reset
-		vi.resetModules();
-		const { default: FreshSlider } = await import('../');
+	it('warns once when `onChange` is missing, and not when exempt', () => {
 		const consoleError = vi
 			.spyOn(console, 'error')
 			.mockImplementation(() => {});
@@ -628,9 +622,9 @@ describe('Slider: required `onChange`', () => {
 				.filter((m) => m.includes('`onChange` is required by'));
 
 		// `disabled` doesn't need `onChange`
-		render(<FreshSlider disabled labels={{ label: 'A' }} value={1} />);
+		render(<Slider disabled labels={{ label: 'A' }} value={1} />);
 		expect(requiredWarnings()).toHaveLength(0);
-		render(<FreshSlider labels={{ label: 'B' }} value={1} />);
+		render(<Slider labels={{ label: 'B' }} value={1} />);
 		expect(requiredWarnings()).toHaveLength(1);
 
 		consoleError.mockRestore();

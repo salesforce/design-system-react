@@ -1910,10 +1910,7 @@ describe('SimpleDataTable', () => {
 });
 
 describe('SimpleDataTable: required `onRowChange`', () => {
-	it('warns once when `onRowChange` is missing, and not when exempt', async () => {
-		// Fresh modules so the once-per-session warning state is reset
-		vi.resetModules();
-		const { default: FreshSimpleDataTable } = await import('../index');
+	it('warns once when `onRowChange` is missing, and not when exempt', () => {
 		const items = [{ id: '1' }];
 		const consoleError = vi
 			.spyOn(console, 'error')
@@ -1924,11 +1921,11 @@ describe('SimpleDataTable: required `onRowChange`', () => {
 				.filter((m) => m.includes('`onRowChange` is required by'));
 
 		// Without `selectRows` there is nothing to select
-		render(<FreshSimpleDataTable id="a" items={items} />);
+		render(<SimpleDataTable id="a" items={items} />);
 		expect(requiredWarnings()).toHaveLength(0);
 		// The removed `onChange` no longer counts
 		render(
-			<FreshSimpleDataTable
+			<SimpleDataTable
 				id="b"
 				items={items}
 				onChange={() => {}}

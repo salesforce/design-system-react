@@ -281,9 +281,10 @@ describe('Checkbox control model', () => {
 		rerender(<Checkbox id="cb-flip" checked={undefined} />);
 
 		const messages = consoleError.mock.calls.map((args) => args.join(' '));
-		expect(messages.some((m) => /uncontrolled|controlled/i.test(m))).toBe(
-			false
-		);
+		// React's message, not the library's "Checkbox is controlled" guidance
+		expect(
+			messages.some((m) => /changing an? (un)?controlled input/i.test(m))
+		).toBe(false);
 	});
 
 	it('ignores the removed defaultChecked prop and warns', () => {
@@ -309,10 +310,7 @@ describe('Checkbox control model', () => {
 });
 
 describe('Checkbox: required `onChange`', () => {
-	it('warns once when `onChange` is missing, and not when exempt', async () => {
-		// Fresh modules so the once-per-session warning state is reset
-		vi.resetModules();
-		const { default: FreshCheckbox } = await import('../index');
+	it('warns once when `onChange` is missing, and not when exempt', () => {
 		const consoleError = vi
 			.spyOn(console, 'error')
 			.mockImplementation(() => {});
@@ -322,11 +320,11 @@ describe('Checkbox: required `onChange`', () => {
 				.filter((m) => m.includes('`onChange` is required by'));
 
 		// `disabled` and `readOnly` don't need `onChange`
-		render(<FreshCheckbox checked disabled labels={{ label: 'A' }} />);
+		render(<Checkbox checked disabled labels={{ label: 'A' }} />);
 		expect(requiredWarnings()).toHaveLength(0);
-		render(<FreshCheckbox checked readOnly labels={{ label: 'B' }} />);
+		render(<Checkbox checked readOnly labels={{ label: 'B' }} />);
 		expect(requiredWarnings()).toHaveLength(0);
-		render(<FreshCheckbox checked labels={{ label: 'C' }} />);
+		render(<Checkbox checked labels={{ label: 'C' }} />);
 		expect(requiredWarnings()).toHaveLength(1);
 
 		consoleError.mockRestore();

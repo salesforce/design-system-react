@@ -122,16 +122,13 @@ describe('SLDSPopover', () => {
 			vi.restoreAllMocks();
 		});
 
-		it('still apply, merged with the new props, and warn', async () => {
-			// Fresh modules so the once-per-session warning state is reset
-			vi.resetModules();
-			const { default: FreshPopover } = await import('../');
+		it('still apply, merged with the new props, and warn', () => {
 			const consoleError = vi
 				.spyOn(console, 'error')
 				.mockImplementation(() => {});
 
 			const { container } = render(
-				<FreshPopover
+				<Popover
 					{...defaultProps}
 					className="new-root"
 					classNameDialog="new-dialog"
@@ -145,7 +142,7 @@ describe('SLDSPopover', () => {
 					triggerClassName="old-root"
 				>
 					<button type="button">Trigger</button>
-				</FreshPopover>
+				</Popover>
 			);
 
 			const root = container.querySelector(defaultIds.trigger).parentElement;
@@ -176,22 +173,20 @@ describe('SLDSPopover', () => {
 			});
 		});
 
-		it('ignores and warns about the removed closeButtonAssistiveText and offset props', async () => {
-			vi.resetModules();
-			const { default: FreshPopover } = await import('../');
+		it('ignores and warns about the removed closeButtonAssistiveText and offset props', () => {
 			const consoleError = vi
 				.spyOn(console, 'error')
 				.mockImplementation(() => {});
 
 			const { container } = render(
-				<FreshPopover
+				<Popover
 					{...defaultProps}
 					closeButtonAssistiveText="Old close"
 					isOpen
 					offset="10px 5px"
 				>
 					<button type="button">Trigger</button>
-				</FreshPopover>
+				</Popover>
 			);
 
 			expect(container.textContent).not.toContain('Old close');

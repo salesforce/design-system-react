@@ -5,11 +5,12 @@
 
 // This function will deliver an error message to the browser console that another component may use, but is not yet released.
 import warning from 'warning';
+import { createWarnedMap } from './warned-registry';
 
 let future = function futureFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
-	const hasWarned = {};
+	const hasWarned = createWarnedMap();
 
 	future = function futureFunction(control, propValue, newProp, comment) {
 		const additionalComment = comment ? ` ${comment}` : '';

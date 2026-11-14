@@ -84,16 +84,13 @@ describe('SLDSModal', () => {
 			vi.restoreAllMocks();
 		});
 
-		it('still apply, merged with the new props, and warn', async () => {
-			// Fresh modules so the once-per-session warning state is reset
-			vi.resetModules();
-			const { default: FreshModal } = await import('../');
+		it('still apply, merged with the new props, and warn', () => {
 			const consoleError = vi
 				.spyOn(console, 'error')
 				.mockImplementation(() => {});
 
 			render(
-				<FreshModal
+				<Modal
 					ariaHideApp={false}
 					classNameContent="new-content"
 					containerClassName="old-container"
@@ -108,7 +105,7 @@ describe('SLDSModal', () => {
 					styleContent={{ height: '300px' }}
 				>
 					hello
-				</FreshModal>
+				</Modal>
 			);
 
 			const modal = getModalNode();

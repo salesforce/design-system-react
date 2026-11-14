@@ -1269,10 +1269,7 @@ describe('SLDSDatepicker', () => {
 });
 
 describe('DatePicker: required `onChange`', () => {
-	it('warns once when `onChange` is missing, and not when exempt', async () => {
-		// Fresh modules so the once-per-session warning state is reset
-		vi.resetModules();
-		const { default: FreshDatepicker } = await import('../index');
+	it('warns once when `onChange` is missing, and not when exempt', () => {
 		const consoleError = vi
 			.spyOn(console, 'error')
 			.mockImplementation(() => {});
@@ -1282,9 +1279,9 @@ describe('DatePicker: required `onChange`', () => {
 				.filter((m) => m.includes('`onChange` is required by'));
 
 		// `disabled` doesn't need `onChange`
-		render(<FreshDatepicker disabled value={null} />);
+		render(<Datepicker disabled value={null} />);
 		expect(requiredWarnings()).toHaveLength(0);
-		render(<FreshDatepicker value={null} />);
+		render(<Datepicker value={null} />);
 		expect(requiredWarnings()).toHaveLength(1);
 
 		consoleError.mockRestore();
