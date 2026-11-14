@@ -1341,7 +1341,9 @@ enhancement issues, not story fill-ins:
       popper-shaped adapter (`computeFloatingData`, consumed by `utilities/dialog-helpers.js`).
 - [ ] Delete the vendored `assets/styles/slds-plus.css`; nothing outside planning docs
       references it.
-- [ ] Work down the lint warning backlog.
+- [ ] Work down the lint warning backlog: 35 React Compiler-era warnings
+      (`react-hooks/refs` 32, `set-state-in-effect` 3) are carried past GA. `npm run lint`
+      caps them with `--max-warnings=35`; lower the cap as each is fixed.
 - [ ] `combobox` — remove `variant="inline-listbox"` with `multiple` in the next major
       (deprecated in v11, warns once; use `variant="base"` with `multiple`). SLDS deprecated the
       inline listbox, it puts the selected pills before the input for screen readers, and its

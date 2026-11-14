@@ -23,7 +23,7 @@
     "test:snapshots": "vitest run --project unit --update=none components/__tests__/story-snapshots.test.jsx",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
-    "lint": "eslint .",
+    "lint": "eslint . --max-warnings=35",
     "lint:fix": "eslint . --fix && prettier --write \"**/*.{js,jsx,ts,tsx}\"",
     "typecheck": "tsc --noEmit && tsc --noEmit -p tsconfig.type-tests.json && tsc --noEmit -p tsconfig.scripts.json",
     "test:ci": "npm run typecheck && npm run test -- --run --update=none && npm run build && npm run lint",

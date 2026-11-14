@@ -173,6 +173,9 @@ export default tseslint.config(
 			// gradual-migration stance — so they stay visible without breaking the
 			// "zero errors" gate. Ratchet back to `error` as the backlog is worked
 			// down (and as components migrate to function-component form).
+			// These rules account for every remaining warning; they are carried past 11.0
+			// GA and capped by `--max-warnings` in the `lint` script. Lower the
+			// cap when you fix one; never raise it.
 			'react-hooks/refs': 'warn',
 			'react-hooks/set-state-in-effect': 'warn',
 			'react-hooks/immutability': 'warn',
