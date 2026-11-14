@@ -21,13 +21,11 @@ describe('SLDSTooltip', () => {
 
 	const renderTooltip = (
 		props = {},
-		children = <Button label="Hover me for tooltip" />
+		trigger = <Button label="Hover me for tooltip" />
 	) => {
 		return render(
 			<IconSettings iconPath="/assets/icons">
-				<Tooltip {...defaultProps} {...props}>
-					{children}
-				</Tooltip>
+				<Tooltip {...defaultProps} trigger={trigger} {...props} />
 			</IconSettings>
 		);
 	};
@@ -375,7 +373,7 @@ describe('SLDSTooltip', () => {
 			expect(svg).not.toHaveClass('slds-icon-text-default');
 		});
 
-		it('does not change custom children', () => {
+		it('does not change a custom trigger', () => {
 			renderTooltip({ iconVariant: 'inverse' });
 			const trigger = screen.getByRole('button', {
 				name: 'Hover me for tooltip',
@@ -509,9 +507,8 @@ describe('SLDSTooltip', () => {
 						isOpen={isOpen}
 						onRequestOpen={() => setIsOpen(true)}
 						onRequestClose={() => setIsOpen(false)}
-					>
-						<Button label="Hover me for tooltip" />
-					</Tooltip>
+						trigger={<Button label="Hover me for tooltip" />}
+					/>
 				);
 			};
 			render(
@@ -558,9 +555,8 @@ describe('SLDSTooltip', () => {
 						{...defaultProps}
 						isOpen={false}
 						onRequestClose={onRequestClose}
-					>
-						<Button label="Hover me for tooltip" />
-					</Tooltip>
+						trigger={<Button label="Hover me for tooltip" />}
+					/>
 				</IconSettings>
 			);
 			await wait(20);
@@ -571,7 +567,7 @@ describe('SLDSTooltip', () => {
 	});
 
 	describe('Custom trigger', () => {
-		it('renders with custom child component', async () => {
+		it('renders a custom trigger element', async () => {
 			renderTooltip({}, <button type="button">Custom Trigger</button>);
 			const trigger = screen.getByRole('button', { name: 'Custom Trigger' });
 
