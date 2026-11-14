@@ -477,6 +477,7 @@ const Carousel = ({
 		: {};
 
 	return (
+		// eslint-disable-next-line jsx-a11y/no-static-element-interactions -- delegates arrow keys from the focused indicator; not itself interactive
 		<div
 			className={classNames('slds-carousel', className as string)}
 			id={id}

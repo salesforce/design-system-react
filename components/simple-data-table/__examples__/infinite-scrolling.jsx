@@ -133,7 +133,7 @@ const ITEMS = [
 const CustomSimpleDataTableCell = ({ children, ...props }) => (
 	<SimpleDataTableCell title={children} {...props}>
 		<a
-			href="#"
+			href="#record"
 			onClick={(event) => {
 				event.preventDefault();
 			}}

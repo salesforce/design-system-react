@@ -248,6 +248,7 @@ const Pill = forwardRef<PillRef, PillProps>(
 		const renderRemoveIcon = () => {
 			if (onRemove) {
 				return (
+					// eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/interactive-supports-focus -- SLDS pill markup; keyboard removal is Backspace/Delete on the focusable pill
 					<span
 						className="slds-icon_container slds-pill__remove"
 						title={labels.removeTitle}

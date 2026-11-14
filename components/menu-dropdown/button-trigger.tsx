@@ -204,6 +204,7 @@ const ButtonTrigger = forwardRef<
 	}
 
 	return (
+		// eslint-disable-next-line jsx-a11y/no-static-element-interactions -- wrapper delegates events from the focusable trigger it contains
 		<div
 			ref={ref}
 			className={classnames(

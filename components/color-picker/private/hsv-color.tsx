@@ -146,6 +146,7 @@ const HsvColor: React.FC<HsvColorProps> = ({
 				role="presentation"
 			>
 				{/* eslint-disable jsx-a11y/anchor-has-content */}
+				{/* eslint-disable-next-line jsx-a11y/anchor-is-valid -- SLDS range indicator markup; keyboard handled by onKeyDown */}
 				<a
 					aria-atomic="true"
 					aria-describedby={`color-picker-instructions-${id}`}

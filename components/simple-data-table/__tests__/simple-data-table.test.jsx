@@ -1070,6 +1070,32 @@ describe('SimpleDataTable', () => {
 				container.querySelectorAll('tbody [role="gridcell"]').length
 			).toBeGreaterThan(0);
 		});
+
+		it('updates the select cell role when keyboardNavigation toggles', () => {
+			const table = (keyboardNavigation) => (
+				<IconSettings iconPath="/assets/icons">
+					<SimpleDataTable
+						{...defaultProps}
+						fixedLayout
+						keyboardNavigation={keyboardNavigation}
+					>
+						{columns.map((columnProps) => (
+							<SimpleDataTableColumn
+								{...columnProps}
+								key={columnProps.property}
+							/>
+						))}
+					</SimpleDataTable>
+				</IconSettings>
+			);
+			const { container, rerender } = render(table(false));
+			const selectCell = () =>
+				container.querySelector('tbody tr td.slds-text-align_right');
+			expect(selectCell()).not.toHaveAttribute('role');
+
+			rerender(table(true));
+			expect(selectCell()).toHaveAttribute('role', 'gridcell');
+		});
 	});
 
 	describe('w/ Infinite Scrolling', () => {

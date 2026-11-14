@@ -425,6 +425,7 @@ class SplitViewListbox<
 
 	headerWrapper(children: ReactNode): ReactNode {
 		return this.props.events?.onSort ? (
+			// eslint-disable-next-line jsx-a11y/anchor-is-valid -- SLDS split view header markup uses an anchor for sorting
 			<a
 				aria-live="polite"
 				style={{ borderTop: '0' }}

@@ -297,6 +297,7 @@ class DatepickerCalendar extends React.Component<CalendarProps, CalendarState> {
 
 						<tr>
 							<td colSpan={7} role="gridcell">
+								{/* eslint-disable-next-line jsx-a11y/anchor-is-valid -- SLDS datepicker markup uses an anchor for "Today" */}
 								<a
 									href="#"
 									tabIndex={0}

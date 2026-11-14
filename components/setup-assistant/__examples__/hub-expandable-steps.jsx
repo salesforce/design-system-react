@@ -236,7 +236,7 @@ class Example extends React.Component {
 								>
 									<p>
 										It looks as if duplicates exist for this lead.{' '}
-										<a href="#">View Duplicates.</a>
+										<a href="#view-duplicates">View Duplicates.</a>
 									</p>
 								</ScopedNotification>
 							</React.Fragment>

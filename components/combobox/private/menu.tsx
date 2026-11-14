@@ -292,6 +292,7 @@ const Menu: React.FC<MenuProps> = ({
 					role="presentation"
 					className="slds-listbox__item"
 				>
+					{/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/interactive-supports-focus -- focus stays on the combobox input, which drives options through aria-activedescendant */}
 					<div
 						onClick={
 							optionData.disabled
@@ -328,6 +329,7 @@ const Menu: React.FC<MenuProps> = ({
 					role="presentation"
 					className="slds-listbox__item"
 				>
+					{/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/interactive-supports-focus -- focus stays on the combobox input, which drives options through aria-activedescendant */}
 					<div
 						aria-selected={active}
 						aria-disabled={optionData.disabled || undefined}
@@ -376,6 +378,7 @@ const Menu: React.FC<MenuProps> = ({
 
 		const menuItem: Record<string, ReactNode> = {
 			'icon-title-subtitle': (
+				// eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/interactive-supports-focus -- focus stays on the combobox input, which drives options through aria-activedescendant
 				<span
 					aria-selected={active}
 					{...disabledProps}
@@ -428,6 +431,7 @@ const Menu: React.FC<MenuProps> = ({
 				</span>
 			),
 			checkbox: (
+				// eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/interactive-supports-focus -- focus stays on the combobox input, which drives options through aria-activedescendant
 				<span
 					aria-selected={active}
 					{...disabledProps}
