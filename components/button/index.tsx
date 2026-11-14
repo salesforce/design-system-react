@@ -143,7 +143,9 @@ export interface ButtonBaseProps extends Omit<
 	 * @deprecated Focus the button through `ref` or `buttonRef` instead. Still works, and warns.
 	 */
 	requestFocus?: boolean;
-	/** Responsive width on small screens */
+	/**
+	 * Has no effect. Accepted for compatibility: 0.10.x declared it but never applied it.
+	 */
 	responsive?: boolean;
 	/** Custom inline styles */
 	style?: CSSProperties;
@@ -221,6 +223,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 			onMouseUp,
 			onRequestFocus,
 			requestFocus,
+			// Has no effect; destructured so it never reaches the DOM
+			responsive: _responsive,
 			style,
 			tabIndex,
 			title,

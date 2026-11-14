@@ -32,6 +32,19 @@ describe('SLDSButton', () => {
 		});
 	});
 
+	describe('responsive', () => {
+		it('does not reach the DOM', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			renderButton({ responsive: true });
+
+			expect(screen.getByRole('button')).not.toHaveAttribute('responsive');
+			expect(consoleError).not.toHaveBeenCalled();
+			consoleError.mockRestore();
+		});
+	});
+
 	describe('Form Props Render', () => {
 		it('renders formAction prop', () => {
 			const formAction = 'http://localhost/some/url';
