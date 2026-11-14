@@ -1313,6 +1313,10 @@ describe('SimpleDataTable', () => {
 		it('focuses ref-forwarding interactive elements when entering actionable mode', () => {
 			const InteractiveButton = SimpleDataTableInteractiveElement(Button);
 			const InteractiveCheckbox = SimpleDataTableInteractiveElement(Checkbox);
+			// Checks on purpose that the deprecated `onRequestFocus` still fires
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
 			const onRequestFocus = vi.fn();
 			const InteractiveCell = ({ children, ...props }) => (
 				<SimpleDataTableCell {...props}>
@@ -1348,6 +1352,10 @@ describe('SimpleDataTable', () => {
 			expect(onRequestFocus).toHaveBeenCalled();
 			expect(cell.querySelector('button')).toHaveAttribute('tabindex', '0');
 			expect(cell.querySelector('a')).toHaveAttribute('tabindex', '0');
+			expect(consoleError).toHaveBeenCalledWith(
+				expect.stringContaining('`onRequestFocus` will be removed')
+			);
+			consoleError.mockRestore();
 		});
 
 		it('renders interactive cells with proper structure for keyboard navigation', () => {

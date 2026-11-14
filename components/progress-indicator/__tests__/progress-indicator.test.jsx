@@ -21,6 +21,12 @@ const sixSteps = [
 	{ id: 5, label: 'tooltip label #6' },
 ];
 
+// Sets `status` on the steps by position, e.g. `['completed', 'completed', 'error']`
+const withStatus = (stepList, statuses) =>
+	stepList.map((step, index) =>
+		statuses[index] ? { ...step, status: statuses[index] } : step
+	);
+
 describe('SLDSProgressIndicator', () => {
 	const defaultProps = {
 		id: 'sample-progress-indicator',
@@ -37,9 +43,8 @@ describe('SLDSProgressIndicator', () => {
 	describe('Basic Props Render', () => {
 		it('has five steps by default', () => {
 			const { container } = renderProgressIndicator({
-				steps,
+				steps: withStatus(steps, ['completed', 'completed']),
 				selectedStep: steps[2],
-				completedSteps: steps.slice(0, 2),
 			});
 			const stepItems = container.querySelectorAll('.slds-progress li');
 			expect(stepItems).toHaveLength(5);
@@ -47,9 +52,8 @@ describe('SLDSProgressIndicator', () => {
 
 		it('has only one active step', () => {
 			const { container } = renderProgressIndicator({
-				steps,
+				steps: withStatus(steps, ['completed', 'completed']),
 				selectedStep: steps[2],
-				completedSteps: steps.slice(0, 2),
 			});
 			const activeItems = container.querySelectorAll(
 				'.slds-progress li.slds-is-active'
@@ -59,9 +63,8 @@ describe('SLDSProgressIndicator', () => {
 
 		it('does not have an error step', () => {
 			const { container } = renderProgressIndicator({
-				steps,
+				steps: withStatus(steps, ['completed', 'completed']),
 				selectedStep: steps[2],
-				completedSteps: steps.slice(0, 2),
 			});
 			const errorItems = container.querySelectorAll(
 				'.slds-progress li.slds-has-error'
@@ -71,9 +74,8 @@ describe('SLDSProgressIndicator', () => {
 
 		it('has correct number of completed steps', () => {
 			const { container } = renderProgressIndicator({
-				steps,
+				steps: withStatus(steps, ['completed', 'completed']),
 				selectedStep: steps[2],
-				completedSteps: steps.slice(0, 2),
 			});
 			const completedItems = container.querySelectorAll(
 				'.slds-progress li.slds-is-completed'
@@ -83,9 +85,8 @@ describe('SLDSProgressIndicator', () => {
 
 		it('has a white background', () => {
 			const { container } = renderProgressIndicator({
-				steps,
+				steps: withStatus(steps, ['completed', 'completed']),
 				selectedStep: steps[2],
-				completedSteps: steps.slice(0, 2),
 			});
 			const shadeProgress = container.querySelector('.slds-progress_shade');
 			expect(shadeProgress).not.toBeInTheDocument();
@@ -95,9 +96,8 @@ describe('SLDSProgressIndicator', () => {
 	describe('Within-Modal Props Render (Without Error)', () => {
 		it('has 5 steps by default', () => {
 			const { container } = renderProgressIndicator({
-				steps,
+				steps: withStatus(steps, ['completed', 'completed']),
 				selectedStep: steps[2],
-				completedSteps: steps.slice(0, 2),
 				variant: 'modal',
 			});
 			const stepItems = container.querySelectorAll('.slds-progress li');
@@ -106,9 +106,8 @@ describe('SLDSProgressIndicator', () => {
 
 		it('has no error step', () => {
 			const { container } = renderProgressIndicator({
-				steps,
+				steps: withStatus(steps, ['completed', 'completed']),
 				selectedStep: steps[2],
-				completedSteps: steps.slice(0, 2),
 				variant: 'modal',
 			});
 			const errorItems = container.querySelectorAll(
@@ -119,9 +118,8 @@ describe('SLDSProgressIndicator', () => {
 
 		it('has 1 active step', () => {
 			const { container } = renderProgressIndicator({
-				steps,
+				steps: withStatus(steps, ['completed', 'completed']),
 				selectedStep: steps[2],
-				completedSteps: steps.slice(0, 2),
 				variant: 'modal',
 			});
 			const activeItems = container.querySelectorAll(
@@ -132,9 +130,8 @@ describe('SLDSProgressIndicator', () => {
 
 		it('has correct number of completed steps', () => {
 			const { container } = renderProgressIndicator({
-				steps,
+				steps: withStatus(steps, ['completed', 'completed']),
 				selectedStep: steps[2],
-				completedSteps: steps.slice(0, 2),
 				variant: 'modal',
 			});
 			const completedItems = container.querySelectorAll(
@@ -145,9 +142,8 @@ describe('SLDSProgressIndicator', () => {
 
 		it('has a gray background', () => {
 			const { container } = renderProgressIndicator({
-				steps,
+				steps: withStatus(steps, ['completed', 'completed']),
 				selectedStep: steps[2],
-				completedSteps: steps.slice(0, 2),
 				variant: 'modal',
 			});
 			const shadeProgress = container.querySelector('.slds-progress_shade');
@@ -158,10 +154,8 @@ describe('SLDSProgressIndicator', () => {
 	describe('Within-Modal Props Render (With Error)', () => {
 		it('has 1 error step', () => {
 			const { container } = renderProgressIndicator({
-				steps,
+				steps: withStatus(steps, ['completed', 'completed', 'error']),
 				selectedStep: steps[2],
-				errorSteps: steps.slice(2, 3),
-				completedSteps: steps.slice(0, 2),
 				variant: 'modal',
 			});
 			const errorItems = container.querySelectorAll(
@@ -172,10 +166,8 @@ describe('SLDSProgressIndicator', () => {
 
 		it('has no active step', () => {
 			const { container } = renderProgressIndicator({
-				steps,
+				steps: withStatus(steps, ['completed', 'completed', 'error']),
 				selectedStep: steps[2],
-				errorSteps: steps.slice(2, 3),
-				completedSteps: steps.slice(0, 2),
 				variant: 'modal',
 			});
 			const activeItems = container.querySelectorAll(
@@ -186,10 +178,8 @@ describe('SLDSProgressIndicator', () => {
 
 		it('has correct number of completed steps', () => {
 			const { container } = renderProgressIndicator({
-				steps,
+				steps: withStatus(steps, ['completed', 'completed', 'error']),
 				selectedStep: steps[2],
-				errorSteps: steps.slice(2, 3),
-				completedSteps: steps.slice(0, 2),
 				variant: 'modal',
 			});
 			const completedItems = container.querySelectorAll(
@@ -202,10 +192,8 @@ describe('SLDSProgressIndicator', () => {
 	describe('Tooltip Props Render', () => {
 		it('has an error step', () => {
 			const { container } = renderProgressIndicator({
-				steps: sixSteps,
+				steps: withStatus(sixSteps, ['completed', 'completed', 'error']),
 				selectedStep: sixSteps[2],
-				errorSteps: sixSteps.slice(2, 3),
-				completedSteps: sixSteps.slice(0, 2),
 			});
 			const errorItems = container.querySelectorAll(
 				'.slds-progress li.slds-has-error'
@@ -215,10 +203,8 @@ describe('SLDSProgressIndicator', () => {
 
 		it('has a tooltip attached to every step', () => {
 			const { container } = renderProgressIndicator({
-				steps: sixSteps,
+				steps: withStatus(sixSteps, ['completed', 'completed', 'error']),
 				selectedStep: sixSteps[2],
-				errorSteps: sixSteps.slice(2, 3),
-				completedSteps: sixSteps.slice(0, 2),
 			});
 			const tooltipTriggers = container.querySelectorAll(
 				'.slds-progress .slds-tooltip-trigger'
@@ -231,9 +217,8 @@ describe('SLDSProgressIndicator', () => {
 		it('calls onStepClick()', () => {
 			const clickHandler = vi.fn();
 			const { container } = renderProgressIndicator({
-				steps,
+				steps: withStatus(steps, ['completed', 'completed']),
 				selectedStep: steps[2],
-				completedSteps: steps.slice(0, 2),
 				onStepClick: clickHandler,
 			});
 			const firstStepButton = container.querySelector(
@@ -248,9 +233,8 @@ describe('SLDSProgressIndicator', () => {
 		it('calls onStepClick()', () => {
 			const clickHandler = vi.fn();
 			const { container } = renderProgressIndicator({
-				steps,
+				steps: withStatus(steps, ['completed', 'completed']),
 				selectedStep: steps[2],
-				completedSteps: steps.slice(0, 2),
 				onStepClick: clickHandler,
 				orientation: 'vertical',
 			});
@@ -266,9 +250,8 @@ describe('SLDSProgressIndicator', () => {
 	describe('Assistive Technology', () => {
 		it('specifies the role for progress bar', () => {
 			const { container } = renderProgressIndicator({
-				steps,
+				steps: withStatus(steps, ['completed', 'completed']),
 				selectedStep: steps[2],
-				completedSteps: steps.slice(0, 2),
 			});
 			const progressBar = container.querySelector('div[role="progressbar"]');
 			expect(progressBar).toBeInTheDocument();
@@ -276,9 +259,8 @@ describe('SLDSProgressIndicator', () => {
 
 		it('renders assistive text for progress bar', () => {
 			const { container } = renderProgressIndicator({
-				steps,
+				steps: withStatus(steps, ['completed', 'completed']),
 				selectedStep: steps[2],
-				completedSteps: steps.slice(0, 2),
 			});
 			const assistiveText = container.querySelector(
 				'.slds-progress-bar .slds-assistive-text'
@@ -315,9 +297,8 @@ describe('SLDSProgressIndicator', () => {
 	describe('Path type', () => {
 		const pathProps = {
 			type: 'path',
-			steps,
+			steps: withStatus(steps, ['completed', 'completed']),
 			selectedStep: steps[2],
-			completedSteps: steps.slice(0, 2),
 		};
 
 		const getOptions = () => screen.getAllByRole('option');
@@ -403,7 +384,6 @@ describe('SLDSProgressIndicator', () => {
 			renderProgressIndicator({
 				...pathProps,
 				steps: [{ ...steps[0], assistiveText: 'Custom:' }, ...steps.slice(1)],
-				completedSteps: [],
 			});
 
 			expect(getStageAssistiveText()[0]).toBe('Custom:');
@@ -437,7 +417,7 @@ describe('SLDSProgressIndicator', () => {
 		it('renders a stage that is both completed and selected as current', () => {
 			renderProgressIndicator({
 				...pathProps,
-				completedSteps: steps.slice(0, 3),
+				steps: withStatus(steps, ['completed', 'completed', 'completed']),
 			});
 
 			const current = getOptions()[2].closest('li');
@@ -511,7 +491,7 @@ describe('SLDSProgressIndicator', () => {
 						{...defaultProps}
 						{...pathProps}
 						selectedStep={steps[1]}
-						completedSteps={steps.slice(0, 1)}
+						steps={withStatus(steps, ['completed'])}
 					/>
 				</IconSettings>
 			);
@@ -537,7 +517,7 @@ describe('SLDSProgressIndicator', () => {
 				isDisabled: false,
 				isError: false,
 				isSelected: false,
-				step: steps[0],
+				step: pathProps.steps[0],
 			});
 		});
 
@@ -779,7 +759,31 @@ describe('SLDSProgressIndicator step status', () => {
 		expect(count(container, 'slds-is-active')).toBe(1);
 	});
 
+	it('still reads the deprecated completedSteps and errorSteps arrays, and warns', () => {
+		const consoleError = vi
+			.spyOn(console, 'error')
+			.mockImplementation(() => {});
+		const { container } = renderIndicator({
+			selectedStep: 3,
+			completedSteps: steps.slice(0, 2),
+			errorSteps: [steps[2]],
+		});
+
+		expect(count(container, 'slds-is-completed')).toBe(2);
+		expect(count(container, 'slds-has-error')).toBe(1);
+		// Only `completedSteps`: the base-only path tests above already used the
+		// once-per-module `errorSteps` warning
+		expect(consoleError).toHaveBeenCalledWith(
+			expect.stringContaining('`completedSteps` will be removed')
+		);
+		consoleError.mockRestore();
+	});
+
 	it('gives a step with a status only that status, even if a deprecated array lists it', () => {
+		// The deprecated array warns; that is covered above
+		const consoleError = vi
+			.spyOn(console, 'error')
+			.mockImplementation(() => {});
 		const { container } = renderIndicator({
 			selectedStep: 0,
 			steps: [{ ...steps[0], status: 'completed' }, ...steps.slice(1)],
@@ -788,6 +792,7 @@ describe('SLDSProgressIndicator step status', () => {
 
 		expect(count(container, 'slds-has-error')).toBe(0);
 		expect(count(container, 'slds-is-completed')).toBe(1);
+		consoleError.mockRestore();
 	});
 
 	it('selects a step by id', () => {
