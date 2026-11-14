@@ -13,7 +13,7 @@ import Checkbox from '~/components/checkbox';
 const InteractiveButton = SimpleDataTableInteractiveElement(Button);
 const InteractiveCheckBox = SimpleDataTableInteractiveElement(Checkbox);
 
-const CustomSimpleDataTableCell = ({ id, children, ...props }) => {
+const CustomSimpleDataTableCell = ({ id, children: _children, ...props }) => {
 	const cell = (
 		<SimpleDataTableCell {...props}>
 			<InteractiveCheckBox id={`${id}-checkbox`} labels={{ label: 'Option' }} />

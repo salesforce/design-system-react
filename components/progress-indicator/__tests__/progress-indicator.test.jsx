@@ -822,7 +822,7 @@ describe('SLDSProgressIndicator step status', () => {
 		const consoleError = vi
 			.spyOn(console, 'error')
 			.mockImplementation(() => {});
-		const stepsWithoutIds = steps.map(({ id, ...step }) => step);
+		const stepsWithoutIds = steps.map(({ id: _id, ...step }) => step);
 		const { container } = renderIndicator({
 			steps: stepsWithoutIds,
 			selectedStep: { ...stepsWithoutIds[2] },

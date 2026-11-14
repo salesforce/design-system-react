@@ -188,7 +188,7 @@ describe('SLDSTooltip', () => {
 		});
 
 		it('respects hoverOpenDelay', async () => {
-			const { container } = renderTooltip({ hoverOpenDelay: 100 });
+			renderTooltip({ hoverOpenDelay: 100 });
 			const trigger = screen.getByRole('button', {
 				name: 'Hover me for tooltip',
 			});

@@ -4625,15 +4625,15 @@ exports[`Story HTML snapshots > Panel > FiltersVariant 1`] = `
     <div class="slds-form_stacked slds-grow slds-scrollable_y slds-grid slds-grid_vertical">
       <div class="slds-panel__section">
         <h3 class="slds-text-heading_small slds-m-bottom_medium">Filters</h3>
-        <div class="slds-form-element slds-m-bottom_small"><label class="slds-form-element__label">Status</label>
-          <div class="slds-form-element__control"><select class="slds-select">
+        <div class="slds-form-element slds-m-bottom_small"><label class="slds-form-element__label" for="panel-filter-status">Status</label>
+          <div class="slds-form-element__control"><select class="slds-select" id="panel-filter-status">
               <option>All</option>
               <option>Active</option>
               <option>Inactive</option>
             </select></div>
         </div>
-        <div class="slds-form-element slds-m-bottom_small"><label class="slds-form-element__label">Type</label>
-          <div class="slds-form-element__control"><select class="slds-select">
+        <div class="slds-form-element slds-m-bottom_small"><label class="slds-form-element__label" for="panel-filter-type">Type</label>
+          <div class="slds-form-element__control"><select class="slds-select" id="panel-filter-type">
               <option>All Types</option>
               <option>Type A</option>
               <option>Type B</option>

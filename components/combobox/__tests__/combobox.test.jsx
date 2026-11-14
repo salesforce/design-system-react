@@ -468,11 +468,6 @@ describe('SLDSCombobox', () => {
 
 			const getSelectedListboxPills = (index) =>
 				nodes.selectedListbox.children[index].children[0];
-			const getFocusedPillLabel = () => {
-				const pillLabel =
-					document.activeElement.querySelector('.slds-pill__label');
-				return pillLabel ? pillLabel.innerText : null;
-			};
 
 			fireEvent.focus(nodes.input);
 			fireEvent.keyDown(nodes.input, keyObjects.TAB);
