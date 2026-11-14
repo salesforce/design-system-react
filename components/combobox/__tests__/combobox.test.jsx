@@ -1277,6 +1277,9 @@ describe('SLDSCombobox', () => {
 						id="render-menu-item"
 						isOpen
 						labels={{ label: 'Search' }}
+						// Skips async floating-ui positioning, which would update the
+						// dialog after the test ends.
+						menuPosition="relative"
 						options={options}
 						selection={[options[0]]}
 						variant="readonly"
