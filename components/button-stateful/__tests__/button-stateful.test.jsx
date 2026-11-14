@@ -277,10 +277,7 @@ describe('Button Stateful', () => {
 });
 
 describe('ButtonStateful: required `onClick`', () => {
-	it('warns once when `onClick` is missing, and not when exempt', async () => {
-		// Fresh modules so the once-per-session warning state is reset
-		vi.resetModules();
-		const { default: FreshButtonStateful } = await import('../');
+	it('warns once when `onClick` is missing, and not when exempt', () => {
 		const consoleError = vi
 			.spyOn(console, 'error')
 			.mockImplementation(() => {});
@@ -290,9 +287,9 @@ describe('ButtonStateful: required `onClick`', () => {
 				.filter((m) => m.includes('`onClick` is required by'));
 
 		// `disabled` doesn't need `onClick`
-		render(<FreshButtonStateful disabled isActive={false} />);
+		render(<ButtonStateful disabled isActive={false} />);
 		expect(requiredWarnings()).toHaveLength(0);
-		render(<FreshButtonStateful isActive={false} />);
+		render(<ButtonStateful isActive={false} />);
 		expect(requiredWarnings()).toHaveLength(1);
 
 		consoleError.mockRestore();

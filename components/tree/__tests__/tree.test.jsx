@@ -206,16 +206,13 @@ describe('Tree', () => {
 			vi.restoreAllMocks();
 		});
 
-		it('still apply to the list, merged with the new props, and warn', async () => {
-			// Fresh modules so the once-per-session warning state is reset
-			vi.resetModules();
-			const { default: FreshTree } = await import('../index');
+		it('still apply to the list, merged with the new props, and warn', () => {
 			const consoleError = vi
 				.spyOn(console, 'error')
 				.mockImplementation(() => {});
 
 			const { container } = render(
-				<FreshTree
+				<Tree
 					classNameList="new-list-class"
 					labels={{ heading: 'Foods' }}
 					id="deprecated-list-tree"
@@ -575,16 +572,13 @@ describe('Tree', () => {
 			vi.restoreAllMocks();
 		});
 
-		it('warns once for each deprecated callback', async () => {
-			// Fresh modules so the once-per-session warning state is reset
-			vi.resetModules();
-			const { default: FreshTree } = await import('../index');
+		it('warns once for each deprecated callback', () => {
 			const consoleError = vi
 				.spyOn(console, 'error')
 				.mockImplementation(() => {});
 
 			render(
-				<FreshTree
+				<Tree
 					labels={{ heading: 'Foods' }}
 					id="fresh-tree"
 					nodes={createNodes()}
@@ -596,7 +590,7 @@ describe('Tree', () => {
 			expect(consoleError).not.toHaveBeenCalled();
 
 			render(
-				<FreshTree
+				<Tree
 					labels={{ heading: 'Foods' }}
 					id="fresh-tree-2"
 					nodes={createNodes()}
@@ -956,15 +950,7 @@ describe('Tree', () => {
 		});
 
 		describe('deprecated node.selected / node.expanded', () => {
-			// Fresh modules so the once-per-session warning state is reset
-			const importFreshTree = async () => {
-				vi.resetModules();
-				const { default: FreshTree } = await import('../index');
-				return FreshTree;
-			};
-
-			it('reads node.selected and node.expanded when the new props are absent, and warns once', async () => {
-				const FreshTree = await importFreshTree();
+			it('reads node.selected and node.expanded when the new props are absent, and warns once', () => {
 				const consoleError = vi
 					.spyOn(console, 'error')
 					.mockImplementation(() => {});
@@ -979,10 +965,10 @@ describe('Tree', () => {
 				);
 
 				const { container, rerender } = render(
-					<FreshTree labels={{ heading: 'Foods' }} id="legacy" nodes={nodes} />
+					<Tree labels={{ heading: 'Foods' }} id="legacy" nodes={nodes} />
 				);
 				rerender(
-					<FreshTree labels={{ heading: 'Foods' }} id="legacy" nodes={nodes} />
+					<Tree labels={{ heading: 'Foods' }} id="legacy" nodes={nodes} />
 				);
 
 				expect(
@@ -1258,10 +1244,7 @@ describe('Tree', () => {
 });
 
 describe('Tree: required `onSelect`', () => {
-	it('warns once when `onSelect` is missing, and not when exempt', async () => {
-		// Fresh modules so the once-per-session warning state is reset
-		vi.resetModules();
-		const { default: FreshTree } = await import('../index');
+	it('warns once when `onSelect` is missing, and not when exempt', () => {
 		const nodes = [{ id: 1, label: 'Grains', type: 'item' }];
 		const consoleError = vi
 			.spyOn(console, 'error')
@@ -1273,7 +1256,7 @@ describe('Tree: required `onSelect`', () => {
 
 		// The deprecated `onClick` still fires, so it counts
 		render(
-			<FreshTree
+			<Tree
 				id="a"
 				labels={{ heading: 'Foods' }}
 				nodes={nodes}
@@ -1283,7 +1266,7 @@ describe('Tree: required `onSelect`', () => {
 		);
 		expect(requiredWarnings()).toHaveLength(0);
 		render(
-			<FreshTree
+			<Tree
 				id="b"
 				labels={{ heading: 'Foods' }}
 				nodes={nodes}
