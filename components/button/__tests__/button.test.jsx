@@ -32,6 +32,27 @@ describe('SLDSButton', () => {
 		});
 	});
 
+	describe('responsive', () => {
+		it('stretches the button with slds-button_stretch, not a DOM attribute', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			renderButton({ responsive: true });
+
+			const button = screen.getByRole('button');
+			expect(button).toHaveClass('slds-button_stretch');
+			expect(button).not.toHaveAttribute('responsive');
+			expect(consoleError).not.toHaveBeenCalled();
+			consoleError.mockRestore();
+		});
+
+		it('does not stretch by default', () => {
+			renderButton();
+
+			expect(screen.getByRole('button')).not.toHaveClass('slds-button_stretch');
+		});
+	});
+
 	describe('Form Props Render', () => {
 		it('renders formAction prop', () => {
 			const formAction = 'http://localhost/some/url';
