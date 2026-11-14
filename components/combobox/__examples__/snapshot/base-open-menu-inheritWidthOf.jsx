@@ -44,7 +44,7 @@ class Example extends React.Component {
 							console.log('onChange', value);
 							this.setState({ inputValue: value });
 						},
-						onRequestRemoveSelectedOption: (event, data) => {
+						onRequestRemoveSelectedOption: () => {
 							this.setState({
 								inputValue: '',
 								selection: [],

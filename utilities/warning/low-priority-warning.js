@@ -19,7 +19,7 @@ if (process.env.NODE_ENV !== 'production') {
 		try {
 			// Throw error to enable tracing the callstack.
 			throw new Error(message);
-		} catch (event) {} // eslint-disable-line no-empty
+		} catch {} // eslint-disable-line no-empty
 	};
 
 	lowPriorityWarning = (condition, originalMessage, ...args) => {

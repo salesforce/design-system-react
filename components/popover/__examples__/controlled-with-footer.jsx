@@ -23,7 +23,7 @@ class Example extends React.Component {
 		this.setState({ isOpen: false });
 	};
 
-	handleRequestClose = (event, data) => {
+	handleRequestClose = () => {
 		if (this.props.log) {
 			this.props.log('onRequestClose');
 		}
