@@ -549,7 +549,8 @@ describe('SLDS Carousel', () => {
 		});
 
 		it('calls onItemClick correctly', () => {
-			const onItemClick = vi.fn();
+			// jsdom cannot follow the item's href
+			const onItemClick = vi.fn((event) => event.preventDefault());
 			const { container } = renderCarousel({
 				itemsPerPanel: 1,
 				onItemClick,

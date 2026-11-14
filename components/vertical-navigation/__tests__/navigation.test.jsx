@@ -230,7 +230,8 @@ describe('SLDSVerticalNavigation', () => {
 
 	describe('Item interaction', () => {
 		it('calls onSelect when item is clicked', async () => {
-			const onSelect = vi.fn();
+			// jsdom cannot follow the item's href
+			const onSelect = vi.fn((event) => event.preventDefault());
 			const { container } = render(
 				<VerticalNavigation {...defaultProps} onSelect={onSelect} />
 			);
