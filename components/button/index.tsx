@@ -224,6 +224,11 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 			onMouseEnter,
 			onMouseLeave,
 			onMouseUp,
+			// Injected by `SimpleDataTableInteractiveElement` into every wrapped
+			// element for `MenuDropdown`; a Button has no use for them, so keep them
+			// off the DOM.
+			onClose: _onClose,
+			onOpen: _onOpen,
 			onRequestFocus,
 			requestFocus,
 			// Has no effect; destructured so it never reaches the DOM
@@ -241,6 +246,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 			variant = 'neutral',
 			...restProps
 		} = props as ButtonProps & {
+			onClose?: unknown;
+			onOpen?: unknown;
 			tooltip?: ReactNode;
 			triggerClassName?: unknown;
 		};
