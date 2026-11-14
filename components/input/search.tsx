@@ -3,11 +3,7 @@
 
 import React, { type KeyboardEvent } from 'react';
 
-import Input, {
-	type InputBaseProps,
-	type InputProps,
-	type InputAssistiveText,
-} from './index';
+import Input, { type InputBaseProps, type InputAssistiveText } from './index';
 import InputIcon from '../icon/input-icon/index';
 import checkProps from './check-props';
 import componentDoc from './component.json';

@@ -130,13 +130,13 @@ class TextTruncate extends Component<TruncateProps, TruncateState> {
 		if (scopeWidth < measureWidth(resolvedText, font)) {
 			let currentPos = 1;
 			const maxTextLength = resolvedText.length;
-			let truncatedText = '';
-			let splitPos = 0;
+			let truncatedText;
+			let splitPos;
 			let startPos = 0;
 			let displayLine = resolvedLine;
-			let width = 0;
+			let width;
 			let lastIsEng = false;
-			let lastSpaceIndex = -1;
+			let lastSpaceIndex;
 
 			while (displayLine !== 0) {
 				let ext = '';

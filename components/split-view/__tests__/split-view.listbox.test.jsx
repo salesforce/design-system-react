@@ -116,7 +116,7 @@ describe('SLDSSplitView - Listbox', () => {
 	describe('When a list item is selected', () => {
 		describe('and single select only', () => {
 			it('should focus the item that is clicked', () => {
-				const { container, rerender } = renderListbox({
+				const { container } = renderListbox({
 					options: listOptions,
 					events: {
 						onSelect: () => {},

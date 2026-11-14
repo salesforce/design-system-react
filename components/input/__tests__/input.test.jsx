@@ -370,7 +370,7 @@ describe('SLDSInput', () => {
 		});
 
 		it('respects min and max values', () => {
-			let changeOccurred = false;
+			let changeOccurred;
 			const { container } = renderInput({
 				maxValue: 1,
 				minValue: 1,

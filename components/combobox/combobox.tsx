@@ -659,15 +659,6 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 		[multiple, selection.length, variant, requestOpen]
 	);
 
-	const handleClickOutside = useCallback(
-		(event: MouseEvent | TouchEvent) => {
-			requestClose(event as unknown as React.SyntheticEvent, {
-				trigger: 'cancel',
-			});
-		},
-		[requestClose]
-	);
-
 	const handleSelect = useCallback(
 		(
 			event: React.SyntheticEvent,

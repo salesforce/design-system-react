@@ -1294,7 +1294,6 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 		) => {
 			let dialogAlign = 'bottom';
 			let hasNubbin = false;
-			let positionClassName = '';
 
 			if (nubbinPosition) {
 				hasNubbin = true;
@@ -1305,7 +1304,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 
 			const positions =
 				DropdownToDialogNubbinMapping[dialogAlign]?.split(' ') || [];
-			positionClassName = classNames(
+			const positionClassName = classNames(
 				positions.map((position) => `slds-dropdown_${position}`)
 			);
 

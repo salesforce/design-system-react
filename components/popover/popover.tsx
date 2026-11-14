@@ -552,14 +552,6 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>((props, ref) => {
 		[handleClose]
 	);
 
-	// Handle click outside
-	const handleClickOutside = useCallback(
-		(event: MouseEvent) => {
-			handleClose(event, { trigger: 'clickOutside' });
-		},
-		[handleClose]
-	);
-
 	// Handle mouse enter
 	const handleMouseEnter = useCallback(
 		(event: MouseEvent) => {

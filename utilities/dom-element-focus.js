@@ -54,7 +54,7 @@ const ElementFocus = {
 			) {
 				try {
 					focusLaterElement.focus();
-				} catch (e) {
+				} catch {
 					// Silently ignore - element may have been removed from DOM
 				}
 			}

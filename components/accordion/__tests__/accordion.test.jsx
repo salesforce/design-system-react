@@ -49,8 +49,6 @@ class AccordionExample extends React.Component {
 							...state,
 							items: state.items.filter((item) => item.id !== selectedItem.id),
 						}));
-					} else if (console) {
-						console.log('onSelect', event, option);
 					}
 				}}
 				options={[
@@ -406,7 +404,9 @@ describe('Accordion', () => {
 						/>
 					</Accordion>
 				</IconSettings>
-			).container.querySelector('.slds-accordion__summary-action .slds-truncate');
+			).container.querySelector(
+				'.slds-accordion__summary-action .slds-truncate'
+			);
 
 		it('uses a string summary as the title', () => {
 			expect(renderPanel({ summary: 'Summary' })).toHaveAttribute(

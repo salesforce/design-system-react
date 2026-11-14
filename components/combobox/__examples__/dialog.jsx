@@ -28,7 +28,7 @@ class Example extends React.Component {
 	}
 
 	getInputString = (options) => {
-		let inputValue = '';
+		let inputValue;
 		if (options.length === 0) inputValue = 'Select an option';
 		else if (options.length === 1) inputValue = `${options[0].label}`;
 		else inputValue = `${options.length} options selected`;

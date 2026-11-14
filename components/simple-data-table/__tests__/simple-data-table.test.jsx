@@ -970,7 +970,7 @@ describe('SimpleDataTable', () => {
 
 			// Check callback is called (may be called during initial render)
 			if (onFixedHeaderResize.mock.calls.length > 0) {
-				const [event, data] = onFixedHeaderResize.mock.calls[0];
+				const [, data] = onFixedHeaderResize.mock.calls[0];
 				expect(Array.isArray(data.headerRefs)).toBe(true);
 				expect(data.headerRefs.length).toBe(4);
 				data.headerRefs.forEach((ref) => {
@@ -985,7 +985,7 @@ describe('SimpleDataTable', () => {
 			}
 
 			if (onToggleFixedHeaderListeners.mock.calls.length > 0) {
-				const [event, data] = onToggleFixedHeaderListeners.mock.calls[0];
+				const [, data] = onToggleFixedHeaderListeners.mock.calls[0];
 				expect(typeof data.attach).toBe('boolean');
 				expect(typeof data.resizeHandler).toBe('function');
 				expect(typeof data.scrollerRef).toBe('object');
@@ -1318,7 +1318,7 @@ describe('SimpleDataTable', () => {
 				.spyOn(console, 'error')
 				.mockImplementation(() => {});
 			const onRequestFocus = vi.fn();
-			const InteractiveCell = ({ children, ...props }) => (
+			const InteractiveCell = ({ children: _children, ...props }) => (
 				<SimpleDataTableCell {...props}>
 					<InteractiveCheckbox
 						labels={{ label: 'Option' }}

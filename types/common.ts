@@ -2,12 +2,7 @@
  * Common types used across multiple components
  */
 
-import type {
-	ReactNode,
-	CSSProperties,
-	RefObject,
-	HTMLAttributes,
-} from 'react';
+import type { ReactNode, CSSProperties } from 'react';
 
 /**
  * Standard assistive text object for accessibility

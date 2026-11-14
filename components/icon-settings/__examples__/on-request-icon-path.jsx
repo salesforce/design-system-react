@@ -32,7 +32,7 @@ class Example extends React.Component {
 
 	render() {
 		return (
-			<IconSettings onRequestIconPath={({ category, name }) => `#${name}`}>
+			<IconSettings onRequestIconPath={({ name }) => `#${name}`}>
 				<div
 					ref={(el) => {
 						this.spriteInlineContainer = el;
