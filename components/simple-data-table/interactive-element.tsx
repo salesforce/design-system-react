@@ -5,8 +5,10 @@ import { Component, ComponentType } from 'react';
 import Mode from './private/mode';
 import CellContext from './private/cell-context';
 import TableContext, { TableContextValue } from './private/table-context';
+import type { SimpleDataTableInteractiveElementOptions } from './types';
 
 import generateId from '../../utilities/generate-id';
+import { MENU_DROPDOWN } from '../../utilities/constants';
 
 const FORWARD_REF_TYPE = Symbol.for('react.forward_ref');
 
@@ -31,10 +33,19 @@ const forwardsRef = (component: unknown): boolean =>
  * node. Any other component instead receives `requestFocus` (`true` when it should take focus)
  * and `onRequestFocus(node)`, which it calls with the node to focus. `onRequestFocus` passed to
  * the wrapper is called after the element is focused.
+ *
+ * An element that opens a popover (MenuDropdown) also receives `onOpen` and `onClose`, which
+ * turn table keyboard navigation off while it is open; `onOpen`/`onClose` passed to the wrapper
+ * are still called. MenuDropdown gets them automatically. For your own popover component, pass
+ * `{ tracksOpen: true }` and call `onOpen`/`onClose` when it opens and closes. Other elements
+ * never receive them, so they don't reach the DOM.
  */
 export default function createInteractiveElement(
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	WrappedElement: ComponentType<any>
+	WrappedElement: ComponentType<any>,
+	{
+		tracksOpen = WrappedElement.displayName === MENU_DROPDOWN,
+	}: SimpleDataTableInteractiveElementOptions = {}
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): any {
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -132,10 +143,12 @@ export default function createInteractiveElement(
 									<WrappedElement
 										{...{
 											...this.props,
-											...{
-												onOpen: onOpen.bind(this, tableContext),
-												onClose: onClose.bind(this, tableContext),
-											},
+											...(tracksOpen
+												? {
+														onOpen: onOpen.bind(this, tableContext),
+														onClose: onClose.bind(this, tableContext),
+													}
+												: {}),
 											...keyboardNavProps,
 										}}
 									/>
