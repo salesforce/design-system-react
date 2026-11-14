@@ -752,6 +752,13 @@ describe('Tree', () => {
 				expect(isSelected(getItem, 'nuts')).toBe(false);
 			});
 
+			it('sets aria-selected on branch nodes as well as leaves', () => {
+				const { getNode } = renderTree({ selectedIds: ['fruits'] });
+
+				expect(getNode('fruits')).toHaveAttribute('aria-selected', 'true');
+				expect(getNode('nuts')).toHaveAttribute('aria-selected', 'false');
+			});
+
 			it('does not change the rendered selection until the parent updates selectedIds', () => {
 				const onSelect = vi.fn();
 				const { getItem, getNode, rerender, nodes } = renderTree({

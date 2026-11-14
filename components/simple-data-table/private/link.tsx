@@ -22,6 +22,7 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => {
 	} = props;
 
 	return (
+		// eslint-disable-next-line jsx-a11y/no-static-element-interactions -- href arrives through passThroughProps
 		<a
 			ref={ref}
 			onKeyDown={(event) => {

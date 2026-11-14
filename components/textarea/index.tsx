@@ -240,6 +240,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 				<div className="slds-form-element__control">
 					<textarea
 						className={classNames('slds-textarea', className as string)}
+						// eslint-disable-next-line jsx-a11y/no-autofocus -- consumer opt-in through the autoFocus prop
 						autoFocus={autoFocus}
 						disabled={disabled}
 						id={getId()}

@@ -20,7 +20,7 @@ export interface SimpleDataTableItem {
 	[key: string]: unknown;
 }
 
-export interface SimpleDataTableSelection extends SimpleDataTableItem {}
+export type SimpleDataTableSelection = SimpleDataTableItem;
 
 export interface SimpleDataTableColumnConfig {
 	Cell: React.ComponentType<SimpleDataTableCellProps>;
