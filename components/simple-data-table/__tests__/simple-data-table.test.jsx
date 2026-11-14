@@ -1358,6 +1358,45 @@ describe('SimpleDataTable', () => {
 			consoleError.mockRestore();
 		});
 
+		it.each([
+			['Button', () => <Button label="Open" />],
+			[
+				'Checkbox',
+				() => <Checkbox labels={{ label: 'Option' }} onChange={() => {}} />,
+			],
+		])(
+			'keeps the injected onOpen/onClose off the DOM of a wrapped %s',
+			(name, renderElement) => {
+				const element = renderElement();
+				const Interactive = SimpleDataTableInteractiveElement(element.type);
+				const consoleError = vi
+					.spyOn(console, 'error')
+					.mockImplementation(() => {});
+				const InteractiveCell = ({ children: _children, ...props }) => (
+					<SimpleDataTableCell {...props}>
+						<Interactive {...element.props} />
+					</SimpleDataTableCell>
+				);
+				InteractiveCell.displayName = SimpleDataTableCell.displayName;
+				try {
+					renderTable(
+						<SimpleDataTable {...defaultProps} keyboardNavigation>
+							<SimpleDataTableColumn label="Name" property="name" primaryColumn>
+								<InteractiveCell />
+							</SimpleDataTableColumn>
+						</SimpleDataTable>
+					);
+
+					expect(consoleError).not.toHaveBeenCalledWith(
+						expect.stringContaining('Unknown event handler property'),
+						expect.anything()
+					);
+				} finally {
+					consoleError.mockRestore();
+				}
+			}
+		);
+
 		it('renders interactive cells with proper structure for keyboard navigation', () => {
 			const { container } = renderTable(
 				<SimpleDataTable {...defaultProps} fixedLayout keyboardNavigation>
