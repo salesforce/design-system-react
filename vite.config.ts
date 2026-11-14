@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite';
+import { createLogger, defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { globSync } from 'fs';
 import path from 'path';
@@ -29,7 +29,20 @@ const external = (id: string) =>
 		!id.startsWith('@utilities') &&
 		!id.startsWith('@types'));
 
-export default defineConfig({
+// Fail the build on any warning, so a new one is fixed rather than scrolling
+// past in CI. Vite reports its own warnings (config conflicts) through the
+// logger and bundler warnings through `onwarn`, so both throw.
+const logger = createLogger();
+const failOnWarning = (message: string) => {
+	throw new Error(`Build warning: ${message}`);
+};
+logger.warn = failOnWarning;
+logger.warnOnce = failOnWarning;
+
+export default defineConfig(({ command }) => ({
+	// Only the library build fails on warnings; `vite dev` and Storybook keep
+	// Vite's default logger.
+	customLogger: command === 'build' ? logger : undefined,
 	plugins: [react()],
 	resolve: {
 		// Force a single copy of React/ReactDOM. `react-highlighter-ts` declares
@@ -62,6 +75,9 @@ export default defineConfig({
 		},
 		rollupOptions: {
 			external,
+			onwarn(warning) {
+				failOnWarning(warning.message);
+			},
 			output: [
 				{
 					format: 'es',
@@ -82,4 +98,4 @@ export default defineConfig({
 		},
 		sourcemap: true,
 	},
-});
+}));
