@@ -5,11 +5,12 @@
 
 // This function will deliver an warning message to the browser console if extraneous properties are defined (falsey).
 import warning from 'warning';
+import { createWarnedMap } from './warned-registry';
 
 let onlyOneOf = function onlyOneOfFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
-	const hasWarned = {};
+	const hasWarned = createWarnedMap();
 
 	onlyOneOf = function onlyOneOfFunction(control, selectedProps, comment) {
 		const additionalComment = comment ? ` ${comment}` : '';

@@ -5,11 +5,12 @@
 
 // This function will deliver a warning message to the browser console about the component being a prototype component.
 import lowPriorityWarning from './low-priority-warning';
+import { createWarnedMap } from './warned-registry';
 
 let isPrototype = function isPrototypeFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
-	const hasWarned = {};
+	const hasWarned = createWarnedMap();
 
 	isPrototype = function isPrototypeFunction(control, comment) {
 		const additionalComment = comment ? ` ${comment}` : '';
