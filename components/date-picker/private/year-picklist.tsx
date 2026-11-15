@@ -4,7 +4,7 @@
 import React, { type SyntheticEvent } from 'react';
 
 import Combobox from '../../combobox/combobox';
-import { type ComboboxOption } from '../../combobox/private/menu';
+import { type ComboboxOption } from '../../combobox/types';
 
 export interface YearPicklistProps {
 	/** Label for year picklist/combobox */

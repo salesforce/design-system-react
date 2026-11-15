@@ -1,25 +1,11 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import { type ReactNode } from 'react';
 import classnames from 'classnames';
 
-const displayName = 'PageHeaderInfo';
+import type { PageHeaderInfoProps } from '../types';
 
-export interface PageHeaderInfoProps {
-	/**
-	 * Optional class name
-	 */
-	className?: unknown[] | Record<string, unknown> | string;
-	/**
-	 * Contents of info section
-	 */
-	content?: ReactNode;
-	/**
-	 * Variant passed down from page header
-	 */
-	variant?: string;
-}
+const displayName = 'PageHeaderInfo';
 
 const Info = (props: PageHeaderInfoProps) => {
 	if (!props.content) return null;

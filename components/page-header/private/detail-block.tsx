@@ -3,33 +3,12 @@
 
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 
-import { Component, type ReactNode } from 'react';
+import { Component } from 'react';
 import classnames from 'classnames';
 
-const displayName = 'PageHeaderDetailRow';
+import type { PageHeaderDetailBlockProps } from '../types';
 
-export interface PageHeaderDetailBlockProps {
-	/**
-	 * Optional class name
-	 */
-	className?: unknown[] | Record<string, unknown> | string;
-	/**
-	 * The content property can be a string or a React element
-	 */
-	content?: ReactNode;
-	/**
-	 * Sets the 'flavor' of a block, which adds the following sizing class: `slds-size_${flavor}`
-	 */
-	flavor?: `${number}-of-${number}`;
-	/**
-	 * Sets the label of a detail block
-	 */
-	label?: ReactNode;
-	/**
-	 * Sets whether the fields truncate
-	 */
-	truncate?: boolean;
-}
+const displayName = 'PageHeaderDetailRow';
 
 class DetailBlock extends Component<PageHeaderDetailBlockProps> {
 	static displayName = displayName;

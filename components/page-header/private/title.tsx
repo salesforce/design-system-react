@@ -1,35 +1,14 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import { Component, type ReactNode } from 'react';
+import { Component } from 'react';
 import classnames from 'classnames';
+
+import type { PageHeaderTitleProps } from '../types';
 
 import Label from './label';
 
 const displayName = 'PageHeaderTitle';
-
-export interface PageHeaderTitleProps {
-	/**
-	 * Sets the vertical alignment on the title
-	 */
-	align?: 'top' | 'middle' | 'bottom';
-	/**
-	 * Optional class name
-	 */
-	className?: unknown[] | Record<string, unknown> | string;
-	/**
-	 * The title content
-	 */
-	content?: ReactNode;
-	/**
-	 * Label node, for variants that require a label within the title
-	 */
-	label?: ReactNode;
-	/**
-	 * Sets whether the title will truncate its content responsively.
-	 */
-	truncate?: boolean;
-}
 
 class Title extends Component<PageHeaderTitleProps> {
 	static displayName = displayName;
