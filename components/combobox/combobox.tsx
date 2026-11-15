@@ -445,10 +445,17 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 		undefined
 	);
 	const [activeOptionIndex, setActiveOptionIndex] = useState(-1);
-	const [activeSelectedOption, setActiveSelectedOption] = useState<
-		ComboboxOption | undefined
-	>(selection?.[0]);
 	const [activeSelectedOptionIndex, setActiveSelectedOptionIndex] = useState(0);
+	// Keep the active pill, and so its roving tabindex, inside `selection`. When
+	// a controlled parent shrinks `selection` through any path other than the
+	// built-in remove handler, an index past the end would leave no pill with
+	// tabindex=0 and the selected-pill listbox unreachable by keyboard (WCAG
+	// 2.1.1 / 2.4.3). An emptied selection starts again from the first pill.
+	const maxSelectedOptionIndex = Math.max(selection.length - 1, 0);
+	if (activeSelectedOptionIndex > maxSelectedOptionIndex) {
+		setActiveSelectedOptionIndex(maxSelectedOptionIndex);
+	}
+	const activeSelectedOption = selection[activeSelectedOptionIndex];
 	const [listboxHasFocus, setListboxHasFocus] = useState(false);
 	// `isOpen` is ephemeral UI state: controlled when the prop is set,
 	// otherwise internal and seeded by `defaultIsOpen`.
@@ -851,11 +858,9 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 				activeSelectedOptionIndex === 0 && direction === 'previous';
 
 			if (isLastOptionAndRightIsPressed) {
-				setActiveSelectedOption(selection[0]);
 				setActiveSelectedOptionIndex(0);
 				setListboxHasFocus(true);
 			} else if (isFirstOptionAndLeftIsPressed) {
-				setActiveSelectedOption(selection[selection.length - 1]);
 				setActiveSelectedOptionIndex(selection.length - 1);
 				setListboxHasFocus(true);
 			} else {
@@ -864,7 +869,6 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 					offset: offsets[direction],
 					options: selection,
 				});
-				setActiveSelectedOption(selection[newIndex]);
 				setActiveSelectedOptionIndex(newIndex);
 				setListboxHasFocus(true);
 			}
@@ -978,10 +982,9 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 	const handlePillFocus = useCallback(
 		(
 			event: React.FocusEvent,
-			{ option, index }: { option: ComboboxOption; index: number }
+			{ index }: { option: ComboboxOption; index: number }
 		) => {
 			if (!listboxHasFocus) {
-				setActiveSelectedOption(option);
 				setActiveSelectedOptionIndex(index);
 				setListboxHasFocus(true);
 			}
@@ -1007,11 +1010,9 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 			) {
 				inputRef.current.focus();
 			} else if (lastPillWasRemoved && index !== undefined) {
-				setActiveSelectedOption(selection[index - 1]);
 				setActiveSelectedOptionIndex(index - 1);
 				setListboxHasFocus(true);
 			} else if (index !== undefined) {
-				setActiveSelectedOption(selection[index + 1]);
 				setActiveSelectedOptionIndex(index);
 				setListboxHasFocus(true);
 			}
@@ -1103,32 +1104,6 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 			}
 		}
 	}, [options, getOptions, activeOption]);
-
-	// Handle selection change - keep the active selected option and its roving
-	// tabindex in sync with `selection`. Besides seeding the initial active
-	// pill, this clamps the active index when `selection` shrinks. Without the
-	// clamp, a controlled parent removing a pill through any path other than
-	// the built-in remove handler could leave the active index pointing past
-	// the end of `selection`, so no pill receives tabindex=0 and the selected-
-	// pill listbox becomes unreachable by keyboard (WCAG 2.1.1 / 2.4.3).
-	useEffect(() => {
-		if (selection.length === 0) {
-			if (activeSelectedOption !== undefined) {
-				setActiveSelectedOption(undefined);
-				setActiveSelectedOptionIndex(0);
-			}
-			return;
-		}
-
-		if (!activeSelectedOption || !selection[activeSelectedOptionIndex]) {
-			const clampedIndex =
-				activeSelectedOptionIndex >= selection.length
-					? selection.length - 1
-					: activeSelectedOptionIndex;
-			setActiveSelectedOption(selection[clampedIndex]);
-			setActiveSelectedOptionIndex(clampedIndex);
-		}
-	}, [selection, activeSelectedOption, activeSelectedOptionIndex]);
 
 	// Cleanup on unmount
 	useEffect(() => {
