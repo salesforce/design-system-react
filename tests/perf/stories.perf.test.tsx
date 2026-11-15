@@ -60,7 +60,7 @@ describe.each(stories.map((s) => [s.key, s] as const))(
 					domNodes: result.container.querySelectorAll('*').length,
 					portalNodes: bodyNodesOutside(result.container),
 				},
-				{ commits: 1 }
+				{ commits: 1, portalNodes: 0 }
 			);
 			result.unmount();
 		});
