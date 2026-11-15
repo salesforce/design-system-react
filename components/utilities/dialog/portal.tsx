@@ -78,7 +78,8 @@ const Portal = (props: PortalProps): React.ReactPortal | null => {
 	const context = useContext(PortalSettingsContext);
 	const portalNodeRef = useRef<HTMLElement | null>(null);
 	const portalNodeInstanceRef = useRef<unknown>(null);
-	const [isMounted, setIsMounted] = useState(false);
+	// The attached container node, for render; the effects use `portalNodeRef`
+	const [portalNode, setPortalNode] = useState<HTMLElement | null>(null);
 
 	// Resolve where the portal's DOM node should be appended. Precedence matches
 	// the legacy implementation: explicit `renderTo` selector/node > context
@@ -118,7 +119,7 @@ const Portal = (props: PortalProps): React.ReactPortal | null => {
 			? onMount(undefined, { portal: node })
 			: node;
 
-		setIsMounted(true);
+		setPortalNode(node);
 
 		if (onOpen) {
 			onOpen(undefined, { portal: children });
@@ -161,11 +162,11 @@ const Portal = (props: PortalProps): React.ReactPortal | null => {
 
 	const child = children ? Children.only(children) : null;
 
-	if (!isMounted || !portalNodeRef.current || !child) {
+	if (!portalNode || !child) {
 		return null;
 	}
 
-	return createPortal(child, portalNodeRef.current);
+	return createPortal(child, portalNode);
 };
 
 Portal.displayName = 'Portal';
