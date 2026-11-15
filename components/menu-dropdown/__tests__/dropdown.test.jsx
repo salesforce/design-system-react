@@ -481,6 +481,35 @@ describe('SLDSMenuDropdown', () => {
 			});
 		});
 
+		it('reports one click and one open each time Enter opens the menu', async () => {
+			const onClick = vi.fn();
+			const onOpen = vi.fn();
+			const onRequestOpen = vi.fn();
+			const { container } = renderDropdown({ onClick, onOpen, onRequestOpen });
+			const button = container.querySelector('button');
+
+			for (let round = 1; round <= 2; round += 1) {
+				fireEvent.keyDown(button, keyObjects.ENTER);
+				await waitFor(() => {
+					expect(container.querySelector('.slds-dropdown')).toBeInTheDocument();
+				});
+				expect(onClick).toHaveBeenCalledTimes(round);
+				expect(onClick.mock.calls[round - 1][0].key).toBe('Enter');
+				expect(onRequestOpen).toHaveBeenCalledTimes(round);
+				expect(onOpen).toHaveBeenCalledTimes(round);
+
+				fireEvent.keyDown(
+					container.querySelector('.slds-dropdown__item a'),
+					keyObjects.ESCAPE
+				);
+				await waitFor(() => {
+					expect(
+						container.querySelector('.slds-dropdown')
+					).not.toBeInTheDocument();
+				});
+			}
+		});
+
 		// The focusMenuItem callback in menu-dropdown.tsx:609 expects an HTMLLIElement
 		// but receives something else during keyboard navigation
 		it('selects an item with keyboard', async () => {
