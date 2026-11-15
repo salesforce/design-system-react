@@ -9,108 +9,18 @@ import React, {
 import { dequal as isEqual } from 'dequal';
 import classNames from 'classnames';
 
-import Icon, { type IconProps } from '../../icon';
+import Icon from '../../icon';
 import Spinner from '../../spinner';
 import type { TooltipProps } from '../../tooltip';
-
-type ComboboxOptionLabelRenderer = (searchTerm: string) => ReactNode;
-
-/** The `<Icon>` shown before an option. Its `size` defaults to `small` in the menu. */
-export type ComboboxOptionIcon = ReactElement<IconProps>;
-
-/**
- * A selectable option. Group items under a `subheadings` entry from
- * `comboboxAddSubheadings` with `category`.
- */
-export interface ComboboxItemOption {
-	/** Structural rows set `type`; selectable items leave it unset. */
-	type?: undefined;
-	id: string;
-	/** Matches the `id` of a subheading passed to `comboboxAddSubheadings` */
-	category?: string;
-	label?: string;
-	subTitle?: string;
-	title?: string;
-	icon?: ComboboxOptionIcon;
-	disabled?: boolean;
-	tooltipContent?: ReactNode;
-	value?: string;
-	onClick?: never;
-}
-
-/** A non-interactive group label. Without a `label` it renders as a divider. */
-export interface ComboboxSeparatorOption {
-	type: 'separator';
-	id: string;
-	label?: string | ComboboxOptionLabelRenderer;
-	category?: never;
-	subTitle?: never;
-	title?: never;
-	icon?: never;
-	disabled?: never;
-	tooltipContent?: never;
-	value?: never;
-	onClick?: never;
-}
-
-interface ComboboxActionOptionFields {
-	id: string;
-	label?: string | ComboboxOptionLabelRenderer;
-	icon?: ComboboxOptionIcon;
-	disabled?: boolean;
-	/** @deprecated Only called on Enter, for `type: 'header' | 'footer'` rows
-	 * passed directly in `options`. Use `optionsSearchEntity`/`optionsAddItem`
-	 * with `events.onSelectActionItem` instead. */
-	onClick?: (event: React.MouseEvent) => void;
-	category?: never;
-	subTitle?: never;
-	title?: never;
-	tooltipContent?: never;
-	value?: never;
-}
-
-/**
- * An action row above (`header`) or below (`footer`) the options. Usually
- * created from `optionsSearchEntity` and `optionsAddItem`.
- */
-export type ComboboxActionOption =
-	| (ComboboxActionOptionFields & { type: 'header' })
-	| (ComboboxActionOptionFields & { type: 'footer' });
-
-/** The "clear selection" row added by `hasDeselect`. */
-export interface ComboboxDeselectOption {
-	type: 'deselect';
-	id: string;
-	label?: string;
-	value?: string;
-	category?: never;
-	subTitle?: never;
-	title?: never;
-	icon?: never;
-	disabled?: never;
-	tooltipContent?: never;
-	onClick?: never;
-}
-
-export type ComboboxOption =
-	| ComboboxItemOption
-	| ComboboxSeparatorOption
-	| ComboboxActionOption
-	| ComboboxDeselectOption;
+import type {
+	ComboboxMenuRenderMenuItemData,
+	ComboboxOption,
+	ComboboxOptionIcon,
+} from '../types';
 
 export interface MenuAssistiveText {
 	loadingMenuItems?: string;
 	optionSelectedInMenu?: string;
-}
-
-/**
- * Argument passed to the menu's `renderMenuItem`
- */
-export interface MenuRenderMenuItemData {
-	/** Whether the option is selected */
-	isSelected: boolean;
-	/** The option to render. Custom renderers only receive selectable rows */
-	option: ComboboxItemOption | ComboboxDeselectOption;
 }
 
 export interface MenuLabels {
@@ -153,7 +63,7 @@ export interface MenuProps {
 	menuRef?:
 		React.RefCallback<HTMLUListElement> | React.RefObject<HTMLUListElement>;
 	/** Renders an option's content in place of the default label and icon */
-	renderMenuItem?: (data: MenuRenderMenuItemData) => ReactNode;
+	renderMenuItem?: (data: ComboboxMenuRenderMenuItemData) => ReactNode;
 	/** Callback when option is selected */
 	onSelect: (
 		event: React.MouseEvent,

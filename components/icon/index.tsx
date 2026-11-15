@@ -15,6 +15,8 @@ import type { IconCategory } from '../../types/common';
 /**
  * Icon color variant types
  */
+export type { IconCategory };
+
 export type IconColorVariant =
 	'base' | 'default' | 'error' | 'light' | 'warning' | 'success';
 

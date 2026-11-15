@@ -1,15 +1,12 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { type ReactElement, type ReactNode, type Ref } from 'react';
+import React, { type ReactNode, type Ref } from 'react';
 import classNames from 'classnames';
 
-/**
- * A trigger slot: an element, which the component merges its props into (see
- * `mergeProps`), or a function that receives the component's props and returns
- * the trigger, for full control over where they go.
- */
-export type TriggerRender<P> = ReactElement | ((props: P) => ReactNode);
+import type { TriggerRender } from '../types/common';
+
+export type { TriggerRender };
 
 // Props that hold space-separated lists, so both sides' values are kept
 const JOINED_PROPS = ['className', 'aria-describedby', 'aria-labelledby'];

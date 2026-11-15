@@ -19,8 +19,12 @@ export type {
 	ComboboxItemOption,
 	ComboboxSeparatorOption,
 	ComboboxActionOption,
+	ComboboxActionOptionFields,
 	ComboboxDeselectOption,
-} from './private/menu';
+	ComboboxOptionIcon,
+	ComboboxOptionLabelRenderer,
+	ComboboxMenuRenderMenuItemData,
+} from './types';
 
 /**
  * Combobox wrapper that handles click outside detection

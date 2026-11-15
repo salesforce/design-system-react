@@ -1,23 +1,12 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import { Component, type ReactNode } from 'react';
+import { Component } from 'react';
 import classnames from 'classnames';
-import DetailBlock, { type PageHeaderDetailBlockProps } from './detail-block';
+import DetailBlock from './detail-block';
+import type { PageHeaderDetailRowProps } from '../types';
 
 const displayName = 'PageHeaderDetailRow';
-
-export interface PageHeaderDetailRowProps {
-	children?: ReactNode;
-	/**
-	 * Optional class name
-	 */
-	className?: unknown[] | Record<string, unknown> | string;
-	/**
-	 * An array of detail blocks
-	 */
-	details?: (PageHeaderDetailBlockProps & { id?: string })[];
-}
 
 class DetailRow extends Component<PageHeaderDetailRowProps> {
 	static displayName = displayName;
