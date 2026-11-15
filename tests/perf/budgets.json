@@ -151,7 +151,8 @@
 		"Button/DocSiteBaseNeutral": {
 			"domNodes": 8,
 			"portalNodes": 0,
-			"ssrBytes": 539
+			"ssrBytes": 539,
+			"ssrErrors": 1
 		},
 		"Button/DocSiteBrandDisabled": {
 			"domNodes": 8,
@@ -429,92 +430,92 @@
 			"commits": 2,
 			"domNodes": 15,
 			"portalNodes": 0,
-			"ssrBytes": 1315
+			"ssrBytes": 1345
 		},
 		"ColorPicker/CustomTabSelected": {
 			"commits": 2,
 			"domNodes": 15,
 			"portalNodes": 0,
-			"ssrBytes": 1343
+			"ssrBytes": 1380
 		},
 		"ColorPicker/CustomValidator": {
 			"commits": 2,
 			"domNodes": 15,
 			"portalNodes": 0,
-			"ssrBytes": 1335
+			"ssrBytes": 1370
 		},
 		"ColorPicker/DefaultStory": {
 			"commits": 2,
 			"domNodes": 15,
 			"portalNodes": 0,
-			"ssrBytes": 1315
+			"ssrBytes": 1341
 		},
 		"ColorPicker/Disabled": {
 			"commits": 2,
 			"domNodes": 15,
 			"portalNodes": 0,
-			"ssrBytes": 1291
+			"ssrBytes": 1309
 		},
 		"ColorPicker/DocSiteDefault": {
 			"commits": 2,
 			"domNodes": 15,
 			"portalNodes": 0,
-			"ssrBytes": 1299
+			"ssrBytes": 1325
 		},
 		"ColorPicker/HiddenInput": {
 			"commits": 2,
 			"domNodes": 12,
 			"portalNodes": 0,
-			"ssrBytes": 1023
+			"ssrBytes": 1054
 		},
 		"ColorPicker/MenuOpen": {
 			"commits": 2,
 			"domNodes": 188,
 			"idleGlobalListeners": 1,
 			"portalNodes": 0,
-			"ssrBytes": 15532
+			"ssrBytes": 15550
 		},
 		"ColorPicker/NoLabel": {
 			"commits": 2,
 			"domNodes": 15,
 			"portalNodes": 0,
-			"ssrBytes": 1343
+			"ssrBytes": 1369
 		},
 		"ColorPicker/OuterInputErrorState": {
 			"commits": 2,
 			"domNodes": 16,
 			"portalNodes": 0,
-			"ssrBytes": 1422
+			"ssrBytes": 1464
 		},
 		"ColorPicker/PredefinedColors": {
 			"commits": 2,
 			"domNodes": 15,
 			"portalNodes": 0,
-			"ssrBytes": 1127
+			"ssrBytes": 1156
 		},
 		"ColorPicker/PredefinedColorsOnly": {
 			"commits": 2,
 			"domNodes": 15,
 			"portalNodes": 0,
-			"ssrBytes": 1147
+			"ssrBytes": 1181
 		},
 		"ColorPicker/RightToLeft": {
 			"commits": 2,
 			"domNodes": 16,
 			"portalNodes": 0,
-			"ssrBytes": 1340
+			"ssrBytes": 1366
 		},
 		"ColorPicker/SwatchOnly": {
 			"commits": 2,
 			"domNodes": 15,
 			"portalNodes": 0,
-			"ssrBytes": 1315
+			"ssrBytes": 1345
 		},
 		"ColorPicker/WorkingColorErrorState": {
 			"commits": 2,
 			"domNodes": 15,
 			"portalNodes": 0,
-			"ssrBytes": 1371
+			"ssrBytes": 1415
 		},
 		"Combobox/Base": {
 			"commits": 3,
@@ -916,7 +917,7 @@
 			"domNodes": 46,
 			"nonPassiveScrollListeners": 1,
 			"portalNodes": 0,
-			"ssrBytes": 3164
+			"ssrBytes": 3152
 		},
 		"Filter/AlignRight": {
 			"commits": 2,
@@ -1900,7 +1901,7 @@
 			"domNodes": 7,
 			"idleGlobalListeners": 3,
 			"portalNodes": 0,
-			"ssrBytes": 988
+			"ssrBytes": 946
 		},
 		"Tooltip/Controlled": {
 			"commits": 2,
@@ -2131,59 +2132,59 @@
 			"strictModeErrors": 2
 		},
 		"bundle:components/accordion": { "gzipBytes": 1343 },
-		"bundle:components/alert": { "gzipBytes": 4643 },
+		"bundle:components/alert": { "gzipBytes": 4646 },
 		"bundle:components/avatar": { "gzipBytes": 2680 },
 		"bundle:components/badge": { "gzipBytes": 1107 },
-		"bundle:components/breadcrumb": { "gzipBytes": 19104 },
-		"bundle:components/builder-header": { "gzipBytes": 20430 },
-		"bundle:components/button": { "gzipBytes": 2760 },
-		"bundle:components/button-group": { "gzipBytes": 1379 },
-		"bundle:components/button-stateful": { "gzipBytes": 2680 },
-		"bundle:components/card": { "gzipBytes": 1852 },
-		"bundle:components/carousel": { "gzipBytes": 5501 },
-		"bundle:components/checkbox": { "gzipBytes": 3508 },
-		"bundle:components/color-picker": { "gzipBytes": 34119 },
-		"bundle:components/combobox": { "gzipBytes": 35277 },
-		"bundle:components/date-picker": { "gzipBytes": 41268 },
-		"bundle:components/docked-composer": { "gzipBytes": 3489 },
-		"bundle:components/dynamic-icon": { "gzipBytes": 1770 },
-		"bundle:components/expandable-section": { "gzipBytes": 3228 },
+		"bundle:components/breadcrumb": { "gzipBytes": 19105 },
+		"bundle:components/builder-header": { "gzipBytes": 20458 },
+		"bundle:components/button": { "gzipBytes": 2766 },
+		"bundle:components/button-group": { "gzipBytes": 1385 },
+		"bundle:components/button-stateful": { "gzipBytes": 2667 },
+		"bundle:components/card": { "gzipBytes": 1879 },
+		"bundle:components/carousel": { "gzipBytes": 5632 },
+		"bundle:components/checkbox": { "gzipBytes": 3489 },
+		"bundle:components/color-picker": { "gzipBytes": 34143 },
+		"bundle:components/combobox": { "gzipBytes": 35321 },
+		"bundle:components/date-picker": { "gzipBytes": 41308 },
+		"bundle:components/docked-composer": { "gzipBytes": 3607 },
+		"bundle:components/dynamic-icon": { "gzipBytes": 1816 },
+		"bundle:components/expandable-section": { "gzipBytes": 3237 },
 		"bundle:components/files": { "gzipBytes": 1064 },
-		"bundle:components/filter": { "gzipBytes": 16651 },
-		"bundle:components/grid": { "gzipBytes": 974 },
+		"bundle:components/filter": { "gzipBytes": 16672 },
+		"bundle:components/grid": { "gzipBytes": 979 },
 		"bundle:components/icon": { "gzipBytes": 2288 },
 		"bundle:components/icon-settings": { "gzipBytes": 352 },
-		"bundle:components/input": { "gzipBytes": 17669 },
+		"bundle:components/input": { "gzipBytes": 17704 },
 		"bundle:components/media-object": { "gzipBytes": 1025 },
-		"bundle:components/menu-dropdown": { "gzipBytes": 18923 },
+		"bundle:components/menu-dropdown": { "gzipBytes": 18914 },
 		"bundle:components/modal": { "gzipBytes": 11650 },
-		"bundle:components/page-header": { "gzipBytes": 20703 },
+		"bundle:components/page-header": { "gzipBytes": 20708 },
 		"bundle:components/panel": { "gzipBytes": 987 },
-		"bundle:components/pill": { "gzipBytes": 2640 },
-		"bundle:components/pill-container": { "gzipBytes": 6312 },
-		"bundle:components/popover": { "gzipBytes": 15818 },
+		"bundle:components/pill": { "gzipBytes": 2622 },
+		"bundle:components/pill-container": { "gzipBytes": 6290 },
+		"bundle:components/popover": { "gzipBytes": 15838 },
 		"bundle:components/portal-settings": { "gzipBytes": 293 },
 		"bundle:components/progress-bar": { "gzipBytes": 1327 },
-		"bundle:components/progress-indicator": { "gzipBytes": 22261 },
+		"bundle:components/progress-indicator": { "gzipBytes": 17760 },
 		"bundle:components/progress-ring": { "gzipBytes": 2907 },
-		"bundle:components/radio": { "gzipBytes": 3593 },
+		"bundle:components/radio": { "gzipBytes": 3581 },
 		"bundle:components/radio-button-group": { "gzipBytes": 1483 },
 		"bundle:components/radio-group": { "gzipBytes": 1430 },
 		"bundle:components/scoped-notification": { "gzipBytes": 2516 },
-		"bundle:components/setup-assistant": { "gzipBytes": 6174 },
-		"bundle:components/simple-data-table": { "gzipBytes": 29157 },
+		"bundle:components/setup-assistant": { "gzipBytes": 6179 },
+		"bundle:components/simple-data-table": { "gzipBytes": 29191 },
 		"bundle:components/slider": { "gzipBytes": 1608 },
-		"bundle:components/spinner": { "gzipBytes": 1269 },
-		"bundle:components/split-view": { "gzipBytes": 3400 },
+		"bundle:components/spinner": { "gzipBytes": 1304 },
+		"bundle:components/split-view": { "gzipBytes": 3406 },
 		"bundle:components/tabs": { "gzipBytes": 4149 },
 		"bundle:components/textarea": { "gzipBytes": 1527 },
-		"bundle:components/toast": { "gzipBytes": 4807 },
-		"bundle:components/tooltip": { "gzipBytes": 15031 },
-		"bundle:components/tree": { "gzipBytes": 11874 },
+		"bundle:components/toast": { "gzipBytes": 4824 },
+		"bundle:components/tooltip": { "gzipBytes": 15060 },
+		"bundle:components/tree": { "gzipBytes": 11870 },
 		"bundle:components/trial-bar": { "gzipBytes": 1163 },
 		"bundle:components/vertical-navigation": { "gzipBytes": 1430 },
-		"bundle:components/visual-picker": { "gzipBytes": 1209 },
-		"bundle:components/welcome-mat": { "gzipBytes": 12729 }
+		"bundle:components/visual-picker": { "gzipBytes": 1208 },
+		"bundle:components/welcome-mat": { "gzipBytes": 12733 }
 	},
 	"components": {
 		"bundle:components/accordion": ["accordion"],
