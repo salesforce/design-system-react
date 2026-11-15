@@ -606,6 +606,40 @@ describe('SLDSTooltip', () => {
 				expect(styleElement.textContent).toContain('display: none');
 			});
 		});
+
+		it('positions the nubbin from the measured trigger size', async () => {
+			const rectSpy = vi
+				.spyOn(HTMLElement.prototype, 'getBoundingClientRect')
+				.mockReturnValue({
+					height: 20,
+					width: 40,
+					top: 0,
+					left: 0,
+					bottom: 20,
+					right: 40,
+					x: 0,
+					y: 0,
+				});
+			try {
+				const { container } = renderTooltip({
+					hasAnchoredNubbin: true,
+					align: 'bottom',
+					isOpen: true,
+				});
+
+				await waitFor(() => {
+					expect(
+						document.querySelector('.slds-popover_tooltip')
+					).toBeInTheDocument();
+				});
+				const nubbinContainer = container.querySelector(
+					'div[style*="position: relative"]'
+				);
+				expect(nubbinContainer).toHaveStyle({ left: '20px', top: '20px' });
+			} finally {
+				rectSpy.mockRestore();
+			}
+		});
 	});
 
 	describe('DialogClassName prop', () => {
