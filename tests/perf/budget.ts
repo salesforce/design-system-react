@@ -7,15 +7,15 @@ import { expect } from 'vitest';
 import { getCurrentTest } from 'vitest/suite';
 
 import budgetFile from './budgets.json';
+import { limit, type Allowance } from './limits';
 
 export type Metrics = Record<string, number>;
 
-interface BudgetFile {
-	tolerance: Record<string, number>;
+interface BudgetFile extends Allowance {
 	budgets: Record<string, Metrics>;
 }
 
-const { tolerance, budgets } = budgetFile as BudgetFile;
+const { budgets, ...allowance } = budgetFile as BudgetFile;
 
 /** `npm run perf:budgets` records values without failing. */
 // Vitest exposes env vars on `import.meta.env` in both browser and Node.
@@ -54,8 +54,9 @@ export const recordPerf = (
  *
  * `ideal` is the value a well-behaved component reaches (e.g. 0 leaked
  * listeners). A metric with no recorded budget falls back to its ideal. Size
- * metrics have no ideal and must have a budget; their tolerance comes from
- * `budgets.json` `tolerance`. Counts have no tolerance.
+ * metrics have no ideal and must have a budget; their allowance comes from
+ * `budgets.json` `tolerance` and `slack` (see `limit` in `limits.ts`). Counts
+ * have neither, so they're exact.
  */
 export const checkBudget = (
 	key: string,
@@ -76,9 +77,8 @@ export const checkBudget = (
 				.toBeDefined();
 			continue;
 		}
-		const limit = Math.floor(budget * (1 + (tolerance[metric] ?? 0)));
 		expect
 			.soft(value, `${key} ${metric} (budget ${budget})`)
-			.toBeLessThanOrEqual(limit);
+			.toBeLessThanOrEqual(limit(budget, metric, allowance));
 	}
 };

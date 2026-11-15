@@ -1,5 +1,11 @@
 {
 	"tolerance": { "domNodes": 0.1, "ssrBytes": 0.1, "gzipBytes": 0.05 },
+	"slack": {
+		"domNodes": 2,
+		"ssrBytes": 100,
+		"gzipBytes": 100,
+		"retainedMounts": 10
+	},
 	"budgets": {
 		"Accordion/Default": { "domNodes": 32, "portalNodes": 0, "ssrBytes": 2573 },
 		"Accordion/MultipleExpanded": {

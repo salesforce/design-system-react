@@ -9,9 +9,9 @@
  * in `meta.perf` (see `checkBudget` and `recordPerf` in tests/perf/budget.ts).
  *
  * `--update-budgets` writes the measured values into `budgets` in
- * tests/perf/budgets.json. A metric equal to its ideal is left out, since the
- * ideal is the default, so the file lists only size metrics and the values
- * that differ from the ideal (the known violations). Report-only metrics
+ * tests/perf/budgets.json. A metric within its ideal's allowance is left out,
+ * since the ideal is the default, so the file lists only size metrics and the
+ * values over the ideal (the known violations). Report-only metrics
  * (`recordPerf`) aren't written; their `lists` go to `<list name>[key]`, e.g.
  * `components` for the bundle checks. Add `--prune` after a
  * full run to drop fixtures that no longer exist.
@@ -28,6 +28,8 @@ import { fileURLToPath } from 'url';
 import { parseArgs } from 'util';
 import { format, resolveConfig } from 'prettier';
 
+import { limit, type Allowance } from '../tests/perf/limits';
+
 const root = fileURLToPath(new URL('..', import.meta.url));
 const budgetPath = join(root, 'tests/perf/budgets.json');
 
@@ -41,8 +43,7 @@ interface PerfRecord {
 	lists?: Record<string, string[]>;
 }
 
-interface BudgetFile {
-	tolerance: Record<string, number>;
+interface BudgetFile extends Allowance {
 	budgets: Record<string, Metrics>;
 	[list: string]: unknown;
 }
@@ -146,8 +147,10 @@ if (values['update-budgets']) {
 	for (const [key, { checked, ideal }] of records) {
 		const kept: Metrics = { ...budgets[key] };
 		for (const [metric, value] of Object.entries(checked)) {
-			if (value === ideal[metric]) delete kept[metric];
-			else kept[metric] = value;
+			const base = ideal[metric];
+			if (base !== undefined && value <= limit(base, metric, budgetFile)) {
+				delete kept[metric];
+			} else kept[metric] = value;
 		}
 		if (Object.keys(kept).length) budgets[key] = kept;
 		else delete budgets[key];
@@ -210,13 +213,14 @@ if (records.size) {
 	out(`Checked ${records.size} fixtures; ${failed} failing tests.`);
 	out();
 
-	// Violations: measured above the ideal.
+	// Violations: measured above the ideal's allowance.
 	const violations: (string | number)[][] = [];
 	for (const [key, { metrics, ideal }] of [...records].sort(([a], [b]) =>
 		a.localeCompare(b)
 	)) {
 		for (const [metric, value] of Object.entries(metrics)) {
-			if (ideal[metric] !== undefined && value > ideal[metric]) {
+			const base = ideal[metric];
+			if (base !== undefined && value > limit(base, metric, budgetFile)) {
 				violations.push([key, metric, value, ideal[metric]]);
 			}
 		}
