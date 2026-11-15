@@ -22,7 +22,8 @@ import EventUtil from '../../utilities/event';
 import { useControllableState } from '../../utilities/hooks';
 import { POPOVER_TOOLTIP } from '../../utilities/constants';
 import generateId from '../../utilities/generate-id';
-import { renderTrigger, type TriggerRender } from '../../utilities/merge-props';
+import { renderTrigger } from '../../utilities/merge-props';
+import type { TriggerRender } from '../../types/common';
 
 import Dialog from '../utilities/dialog';
 import Icon from '../icon';
@@ -35,6 +36,8 @@ import componentDoc from './component.json';
 import { IconSettingsContext } from '../icon-settings';
 
 // ### Types
+
+export type { TriggerRender };
 
 export type TooltipAlign =
 	| 'top'

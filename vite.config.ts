@@ -59,7 +59,7 @@ export default defineConfig({
 			// deep-import `@salesforce/design-system-react/components/accordion`
 			// (and `.../accordion/panel`, etc.) as they always could.
 			entry: [
-				path.resolve(__dirname, 'components/index.js'),
+				path.resolve(__dirname, 'components/index.ts'),
 				...directoryEntries,
 			],
 		},

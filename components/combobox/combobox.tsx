@@ -24,15 +24,15 @@ import Button from '../button';
 import Dialog from '../utilities/dialog';
 import InnerInput from '../input/private/inner-input';
 import InputIcon from '../icon/input-icon';
-import Menu, {
-	type ComboboxOption,
-	type ComboboxItemOption,
-	type ComboboxActionOption,
-	type ComboboxDeselectOption,
-	type MenuRenderMenuItemData,
-	getOptionLabel,
-	type ComboboxOptionIcon,
-} from './private/menu';
+import Menu, { getOptionLabel } from './private/menu';
+import type {
+	ComboboxOption,
+	ComboboxItemOption,
+	ComboboxActionOption,
+	ComboboxDeselectOption,
+	ComboboxMenuRenderMenuItemData,
+	ComboboxOptionIcon,
+} from './types';
 import Label from '../forms/private/label';
 import Popover, { type PopoverProps } from '../popover';
 import type { InputProps } from '../input';
@@ -190,7 +190,7 @@ const toActionItemRow = (
 /**
  * Argument passed to `renderMenuItem`
  */
-export interface ComboboxRenderMenuItemData extends MenuRenderMenuItemData {
+export interface ComboboxRenderMenuItemData extends ComboboxMenuRenderMenuItemData {
 	/** The combobox's assistive text */
 	assistiveText: ComboboxAssistiveText;
 }
@@ -1255,7 +1255,8 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 
 	// `onRenderMenuItem` and `menuItem` are deprecated: they take a component instead of a function
 	const LegacyMenuItem = onRenderMenuItem || menuItem;
-	let renderMenuItem: ((data: MenuRenderMenuItemData) => ReactNode) | undefined;
+	let renderMenuItem:
+		((data: ComboboxMenuRenderMenuItemData) => ReactNode) | undefined;
 	if (renderMenuItemProp) {
 		renderMenuItem = (data) => renderMenuItemProp({ ...data, assistiveText });
 	} else if (LegacyMenuItem) {

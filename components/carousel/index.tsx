@@ -23,7 +23,10 @@ import {
 
 import CarouselIndicators from './private/carousel-indicators';
 import PreviousNextCarouselNavigator from './private/previous-next-carousel-navigator';
-import CarouselItem, { type CarouselItemProps } from './private/carousel-item';
+import CarouselItem from './private/carousel-item';
+import type { CarouselItemProps } from './types';
+
+export type { CarouselItemProps };
 import AutoplayButton from './private/auto-play-button';
 import checkProps from './check-props';
 import componentDoc from './component.json';

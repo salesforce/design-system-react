@@ -18,8 +18,12 @@ export type {
 	ComboboxItemOption,
 	ComboboxSeparatorOption,
 	ComboboxActionOption,
+	ComboboxActionOptionFields,
 	ComboboxDeselectOption,
-} from './private/menu';
+	ComboboxOptionIcon,
+	ComboboxOptionLabelRenderer,
+	ComboboxMenuRenderMenuItemData,
+} from './types';
 
 /**
  * Keeps the wrapping `div` that the v11 rewrite renders around Combobox. The

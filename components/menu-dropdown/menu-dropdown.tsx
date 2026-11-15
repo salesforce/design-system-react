@@ -59,7 +59,7 @@ import { useLatestRef } from '../../utilities/hooks/use-latest-ref';
 import { IconSettingsContext } from '../icon-settings';
 import type { IconCategory } from '../../types/common';
 import isElementOfType from '../../utilities/is-element-of-type';
-import type { TriggerRender } from '../../utilities/merge-props';
+import type { TriggerRender } from '../../types/common';
 import type { MenuDropdownTriggerProps } from './button-trigger';
 import type { ButtonAssistiveText } from '../button';
 

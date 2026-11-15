@@ -17,6 +17,12 @@ import RecordHome from './private/record-home';
 import ObjectHome from './private/object-home';
 import RelatedList from './private/related-list';
 import type { PageHeaderVariantProps } from './private/types';
+import type {
+	PageHeaderInfoProps,
+	PageHeaderTitleProps,
+	PageHeaderDetailRowProps,
+	PageHeaderDetailBlockProps,
+} from './types';
 
 /**
  * Page header variant types
@@ -245,3 +251,9 @@ export default PageHeader;
 // NOTE: these are private components and are prone to breaking changes.
 // Do not use these in your app! These exports are for legacy use only.
 export { Info, Title, DetailRow, DetailBlock };
+export type {
+	PageHeaderInfoProps,
+	PageHeaderTitleProps,
+	PageHeaderDetailRowProps,
+	PageHeaderDetailBlockProps,
+};
