@@ -177,7 +177,7 @@ describe('SLDSTooltip', () => {
 			});
 		});
 
-		it('uses custom id when provided', () => {
+		it('uses custom id when provided', async () => {
 			renderTooltip({ id: 'custom-tooltip-id' });
 			const trigger = screen.getByRole('button', {
 				name: 'Hover me for tooltip',
@@ -185,6 +185,19 @@ describe('SLDSTooltip', () => {
 
 			// The id will be used for aria-describedby when open
 			expect(trigger).not.toHaveAttribute('aria-describedby');
+
+			await userEvent.hover(trigger);
+
+			await waitFor(() => {
+				expect(trigger).toHaveAttribute(
+					'aria-describedby',
+					'custom-tooltip-id'
+				);
+				expect(document.querySelector('.slds-popover_tooltip')).toHaveAttribute(
+					'id',
+					'custom-tooltip-id'
+				);
+			});
 		});
 
 		it('respects hoverOpenDelay', async () => {

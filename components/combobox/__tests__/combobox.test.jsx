@@ -191,6 +191,26 @@ describe('SLDSCombobox', () => {
 		vi.restoreAllMocks();
 	});
 
+	it('uses the id prop for the input and label, and generates the error id', () => {
+		const { container } = render(
+			<Combobox
+				id="fixed-id"
+				errorText="Required"
+				labels={{ label: 'Account' }}
+				options={[]}
+				selection={[]}
+				variant="base"
+			/>
+		);
+		const input = container.querySelector('input');
+		expect(input).toHaveAttribute('id', 'fixed-id');
+		expect(container.querySelector('label')).toHaveAttribute('for', 'fixed-id');
+		const errorId = input.getAttribute('aria-describedby');
+		expect(container.querySelector(`[id="${errorId}"]`)).toHaveTextContent(
+			'Required'
+		);
+	});
+
 	describe('Assistive technology and keyboard interactions', () => {
 		it('has aria-haspopup, aria-expanded is false when closed, aria-expanded is true when open', () => {
 			const { container } = render(<DemoComponent multiple />);
