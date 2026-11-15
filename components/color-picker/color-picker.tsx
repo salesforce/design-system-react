@@ -274,8 +274,8 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
 	);
 
 	// Generate stable ID
-	const generatedId = useRef(idProp || generateId());
-	const componentId = idProp || generatedId.current;
+	const [generatedId] = useState(() => idProp || generateId());
+	const componentId = idProp || generatedId;
 
 	// Refs
 	const wrapperRef = useRef<HTMLDivElement>(null);

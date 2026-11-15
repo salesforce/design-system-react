@@ -350,7 +350,7 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 	const triggerRef = useRef<HTMLDivElement | null>(null);
 	const inputRef = useRef<HTMLInputElement | null>(null);
 	const selectedDateCellRef = useRef<HTMLElement | null>(null);
-	const generatedId = useRef(generateId());
+	const [generatedId] = useState(generateId);
 
 	// `value` is controlled data; `undefined` (warned in `checkProps`) means no date
 	const value = valueProp ?? null;
@@ -394,7 +394,7 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 	}, []);
 
 	// Derived state
-	const getId = useCallback(() => idProp || generatedId.current, [idProp]);
+	const getId = useCallback(() => idProp || generatedId, [idProp, generatedId]);
 
 	const getIsOpen = useCallback(() => !!isOpen, [isOpen]);
 
