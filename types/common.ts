@@ -3,11 +3,19 @@
  */
 
 import type {
+	ReactElement,
 	ReactNode,
 	CSSProperties,
 	RefObject,
 	HTMLAttributes,
 } from 'react';
+
+/**
+ * A trigger slot: an element, which the component merges its props into (see
+ * `mergeProps` in `utilities/merge-props`), or a function that receives the
+ * component's props and returns the trigger, for full control over where they go.
+ */
+export type TriggerRender<P> = ReactElement | ((props: P) => ReactNode);
 
 /**
  * Standard assistive text object for accessibility
