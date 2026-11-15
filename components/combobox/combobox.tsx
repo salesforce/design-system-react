@@ -6,6 +6,7 @@ import React, {
 	useState,
 	useRef,
 	useCallback,
+	useMemo,
 	useEffect,
 	useContext,
 	type ReactNode,
@@ -1143,79 +1144,76 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 
 	// ===== Render Helpers =====
 
-	const getCustomPopoverProps = useCallback(
-		(body: ReactNode) => {
-			const popoverBody = (
-				<div>
-					<div className="slds-assistive-text" id={`${getId()}-label`}>
-						{assistiveText.popoverLabel}
-					</div>
-					{body}
+	const customPopoverProps = useMemo(() => {
+		const popoverPropsFromProp = popover?.props as
+			Record<string, unknown> | undefined;
+		const popoverBody = (
+			<div>
+				<div className="slds-assistive-text" id={`${getId()}-label`}>
+					{assistiveText.popoverLabel}
 				</div>
-			);
+				{popoverPropsFromProp?.body as ReactNode}
+			</div>
+		);
 
-			const popoverFooter = (
-				<div>
-					<Button
-						label={labels.cancelButton}
-						onClick={(e: React.MouseEvent) => {
-							requestClose(e, { trigger: 'cancel' });
-						}}
-					/>
-					<Button
-						label={labels.doneButton}
-						variant="brand"
-						onClick={(e: React.MouseEvent) => {
-							requestClose(e);
-						}}
-					/>
-				</div>
-			);
+		const popoverFooter = (
+			<div>
+				<Button
+					label={labels.cancelButton}
+					onClick={(e: React.MouseEvent) => {
+						requestClose(e, { trigger: 'cancel' });
+					}}
+				/>
+				<Button
+					label={labels.doneButton}
+					variant="brand"
+					onClick={(e: React.MouseEvent) => {
+						requestClose(e);
+					}}
+				/>
+			</div>
+		);
 
-			const defaultPopoverProps: Record<string, unknown> = {
-				ariaLabelledby: `${getId()}-label`,
-				align: 'bottom',
-				body: popoverBody,
-				classNameDialog: 'slds-popover_full-width',
-				footer: popoverFooter,
-				classNameFooter: 'slds-popover__footer_form',
-				hasNoNubbin: true,
-				id: getId(),
-				isOpen,
-				hasNoTriggerStyles: true,
-				onOpen: handleOpen,
-				// The combobox owns the popover's open state; `events.onClose` is
-				// fired by the combobox itself when `isOpen` turns `false`.
-				onRequestClose: (
-					event: React.SyntheticEvent,
-					data?: { trigger?: string }
-				) => {
-					requestClose(event, { trigger: data?.trigger });
-				},
-			};
-
-			const popoverPropsFromProp = popover?.props as
-				Record<string, unknown> | undefined;
-			const popoverProps = assign(
-				defaultPopoverProps,
-				popoverPropsFromProp || {}
-			);
-			popoverProps.body = popoverBody;
-
-			delete popoverProps.children;
-			return popoverProps;
-		},
-		[
-			getId,
-			assistiveText.popoverLabel,
-			labels.cancelButton,
-			labels.doneButton,
-			requestClose,
+		const defaultPopoverProps: Record<string, unknown> = {
+			ariaLabelledby: `${getId()}-label`,
+			align: 'bottom',
+			body: popoverBody,
+			classNameDialog: 'slds-popover_full-width',
+			footer: popoverFooter,
+			classNameFooter: 'slds-popover__footer_form',
+			hasNoNubbin: true,
+			id: getId(),
 			isOpen,
-			handleOpen,
-			popover,
-		]
-	);
+			hasNoTriggerStyles: true,
+			onOpen: handleOpen,
+			// The combobox owns the popover's open state; `events.onClose` is
+			// fired by the combobox itself when `isOpen` turns `false`.
+			onRequestClose: (
+				event: React.SyntheticEvent,
+				data?: { trigger?: string }
+			) => {
+				requestClose(event, { trigger: data?.trigger });
+			},
+		};
+
+		const popoverProps: Record<string, unknown> = {
+			...defaultPopoverProps,
+			...popoverPropsFromProp,
+			body: popoverBody,
+		};
+
+		delete popoverProps.children;
+		return popoverProps;
+	}, [
+		getId,
+		assistiveText.popoverLabel,
+		labels.cancelButton,
+		labels.doneButton,
+		requestClose,
+		isOpen,
+		handleOpen,
+		popover,
+	]);
 
 	// The listbox only renders while open and enabled (see `getDialog`), so the
 	// input must not report it as expanded or point `aria-controls` at it
@@ -1362,12 +1360,23 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 	// is `(event, data)` and InnerInput's is native, so call it alongside the combobox's own.
 	const { onChange: inputOnChange, ...userDefinedInputProps } = (input?.props ??
 		{}) as Partial<InputProps> & Record<string, unknown>;
-	const withInputOnChange =
-		(handler: (event: React.ChangeEvent<HTMLInputElement>) => void) =>
+	const handleInnerInputChange = useCallback(
 		(event: React.ChangeEvent<HTMLInputElement>) => {
 			inputOnChange?.(event, { value: event.target.value });
-			handler(event);
-		};
+			handleInputChange(event);
+		},
+		[inputOnChange, handleInputChange]
+	);
+	// The single-selection variants ignore typing once an option is selected
+	const handleInnerInputChangeWhileUnselected = useCallback(
+		(event: React.ChangeEvent<HTMLInputElement>) => {
+			inputOnChange?.(event, { value: event.target.value });
+			if (!selection.length) {
+				handleInputChange(event);
+			}
+		},
+		[inputOnChange, handleInputChange, selection.length]
+	);
 
 	// ===== Sub-renders =====
 
@@ -1417,7 +1426,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 						onKeyDown={handleKeyDown}
 						inputRef={setInputRefCallback}
 						onClick={(event: React.MouseEvent) => requestOpen(event)}
-						onChange={withInputOnChange(handleInputChange)}
+						onChange={handleInnerInputChange}
 						placeholder={labels.placeholder}
 						readOnly={!!(predefinedOptionsOnly && activeOption)}
 						required={required}
@@ -1582,7 +1591,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 						onKeyDown={handleKeyDown}
 						inputRef={setInputRefCallback}
 						onClick={(event: React.MouseEvent) => requestOpen(event)}
-						onChange={withInputOnChange(handleInputChange)}
+						onChange={handleInnerInputChange}
 						placeholder={labels.placeholder}
 						readOnly={!!(predefinedOptionsOnly && activeOption)}
 						required={required}
@@ -1683,11 +1692,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 							onKeyDown={handleKeyDown}
 							inputRef={setInputRefCallback}
 							onClick={(event: React.MouseEvent) => requestOpenMenu(event)}
-							onChange={withInputOnChange((event) => {
-								if (!selection.length) {
-									handleInputChange(event);
-								}
-							})}
+							onChange={handleInnerInputChangeWhileUnselected}
 							placeholder={labels.placeholder}
 							readOnly={
 								!!(predefinedOptionsOnly && activeOption) || !!selection.length
@@ -1715,13 +1720,12 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 	};
 
 	const renderPopover = () => {
-		const popoverPropsFromProp = popover?.props as
-			{ body?: ReactNode } | undefined;
-		const popoverProps = getCustomPopoverProps(popoverPropsFromProp?.body);
+		const popoverProps = customPopoverProps;
 		// Popover renders its dialog as `${id}-popover`, and `popover` props may
 		// override the id.
+		const popoverId = (popover?.props as { id?: string } | undefined)?.id;
 		const popoverControlsId = getIsOpen()
-			? `${(popoverProps.id as string | undefined) ?? getId()}-popover`
+			? `${popoverId ?? getId()}-popover`
 			: undefined;
 
 		return (
@@ -1740,7 +1744,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 							className
 						)}
 					>
-						{/* @ts-expect-error - popoverProps contains body from getCustomPopoverProps */}
+						{/* @ts-expect-error - popoverProps contains body from customPopoverProps */}
 						<Popover {...popoverProps}>
 							<InnerInput
 								{...getComboboxAriaProps('dialog', popoverControlsId)}
@@ -1765,7 +1769,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 								onKeyDown={handleKeyDown}
 								inputRef={setInputRefCallback}
 								onClick={(event: React.MouseEvent) => requestOpen(event)}
-								onChange={withInputOnChange(handleInputChange)}
+								onChange={handleInnerInputChange}
 								placeholder={labels.placeholder}
 								readOnly
 								required={required}
@@ -1835,11 +1839,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 							onKeyDown={handleKeyDown}
 							inputRef={setInputRefCallback}
 							onClick={(event: React.MouseEvent) => requestOpenMenu(event)}
-							onChange={withInputOnChange((event) => {
-								if (!selection.length) {
-									handleInputChange(event);
-								}
-							})}
+							onChange={handleInnerInputChangeWhileUnselected}
 							placeholder={labels.placeholderReadOnly}
 							readOnly
 							required={required}
@@ -1955,11 +1955,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 							onKeyDown={handleKeyDown}
 							inputRef={setInputRefCallback}
 							onClick={(event: React.MouseEvent) => requestOpenMenu(event)}
-							onChange={withInputOnChange((event) => {
-								if (!selection.length) {
-									handleInputChange(event);
-								}
-							})}
+							onChange={handleInnerInputChangeWhileUnselected}
 							placeholder={labels.placeholderReadOnly}
 							readOnly
 							required={required}
