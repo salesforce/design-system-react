@@ -6,19 +6,16 @@ import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-// Every `components/<name>/index` and `utilities/<name>/index` is a published
-// bare-directory entry (`.../components/tree`). They must be explicit entries:
+// Every `components/<name>/index` is a published bare-directory entry
+// (`.../components/tree`). They must be explicit entries:
 // an index that only re-exports (`export { default } from './tree'`) is not
 // emitted under `preserveModules` when it is merely reachable from the barrel,
 // because Rollup binds the barrel's import straight through to `./tree`. With
 // no built `index.js` the shim script has nothing to point at and the import
 // fails. Entries also pull in components the barrel doesn't export (`grid`).
-const directoryEntries = globSync(
-	'{components,utilities}/*/index.{js,jsx,ts,tsx}',
-	{
-		cwd: __dirname,
-	}
-).map((file) => path.resolve(__dirname, file));
+const directoryEntries = globSync('components/*/index.{js,jsx,ts,tsx}', {
+	cwd: __dirname,
+}).map((file) => path.resolve(__dirname, file));
 
 // Externalize React and any bare (node_modules) dependency — a component library
 // should not bundle its deps. Relative/aliased source is kept in the build.
