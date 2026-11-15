@@ -97,7 +97,7 @@ components/
 - Use **TypeScript** for all new components
 - Add **forwardRef** for ref handling
 - Add **displayName** for debugging
-- Export from `components/index.js` (runtime) and `components/index.d.ts` (types)
+- Export from `components/index.ts`; its `.d.ts` is generated. Export any type used in the props by name from the component's `index`
 
 ### 4. Story Requirements
 
