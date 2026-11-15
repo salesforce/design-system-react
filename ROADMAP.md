@@ -14,7 +14,7 @@
 | TypeScript        | **`tsc --noEmit` clean**, `strict: true`  | `.d.ts` files are generated into `dist/types`                                                                                             |
 | Storybook         | **10**, CSF stories                       | 2 component folders have no story: `grid`, `menu-list`                                                                                    |
 | Tests             | **48 Vitest files**                       | jsdom `unit` project plus a Playwright `browser` project; story HTML snapshots cover non-portal stories in a top-level `__docs__/` folder |
-| Lint              | **0 errors / 223 warnings**               | Errors block CI; warnings are the tracked migration backlog                                                                               |
+| Lint              | **0 errors / 0 warnings**                 | `npm run lint` fails on any error or warning (`--max-warnings=0`)                                                                         |
 | Toolchain         | Vite 8, Vitest 4, ESLint 10, Storybook 10 | Node.js 24 (`.nvmrc`)                                                                                                                     |
 | SLDS 2 CSS        | **npm dependency**                        | `@salesforce-ux/design-system-2` installs with the package; consumers add the stylesheet themselves (see the README)                      |
 | Publishing        | **GitHub Release → npm, `alpha` tag**     | `.github/workflows/npm-publish.yml`; alpha.3 and alpha.4 published from it                                                                |
@@ -1341,9 +1341,9 @@ enhancement issues, not story fill-ins:
       popper-shaped adapter (`computeFloatingData`, consumed by `utilities/dialog-helpers.js`).
 - [ ] Delete the vendored `assets/styles/slds-plus.css`; nothing outside planning docs
       references it.
-- [ ] Work down the lint warning backlog: 35 React Compiler-era warnings
-      (`react-hooks/refs` 32, `set-state-in-effect` 3) are carried past GA. `npm run lint`
-      caps them with `--max-warnings=35`; lower the cap as each is fixed.
+- [x] Lint warning backlog cleared: 32 `react-hooks/refs` and 3 `set-state-in-effect`
+      warnings fixed (one justified inline disable in `dialog/portal`); `npm run lint` runs
+      with `--max-warnings=0`.
 - [ ] `combobox` — remove `variant="inline-listbox"` with `multiple` in the next major
       (deprecated in v11, warns once; use `variant="base"` with `multiple`). SLDS deprecated the
       inline listbox, it puts the selected pills before the input for screen readers, and its
