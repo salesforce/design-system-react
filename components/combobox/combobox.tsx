@@ -537,6 +537,21 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 		options,
 	]);
 
+	// When the options change, keep the highlight on the same option, or clear
+	// it if that option is gone. Only sets state when the index is out of date,
+	// so it settles after one extra render.
+	if (activeOption) {
+		const index = findIndex(getOptions(), (item) =>
+			isEqual(item, activeOption)
+		);
+		if (index === -1) {
+			setActiveOption(undefined);
+			setActiveOptionIndex(-1);
+		} else if (index !== activeOptionIndex) {
+			setActiveOptionIndex(index);
+		}
+	}
+
 	const isSelected = useCallback(
 		({
 			selection: sel,
@@ -1090,20 +1105,6 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 		}
 		closeEventRef.current = undefined;
 	});
-
-	// Handle options change - maintain active highlight
-	useEffect(() => {
-		const opts = getOptions();
-		if (activeOption) {
-			const index = findIndex(opts, (item) => isEqual(item, activeOption));
-			if (index !== -1) {
-				setActiveOptionIndex(index);
-			} else {
-				setActiveOption(undefined);
-				setActiveOptionIndex(-1);
-			}
-		}
-	}, [options, getOptions, activeOption]);
 
 	// Cleanup on unmount
 	useEffect(() => {

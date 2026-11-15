@@ -365,6 +365,39 @@ describe('SLDSCombobox', () => {
 			expect(pills[1]).toHaveAttribute('tabindex', '-1');
 		});
 
+		it('keeps the highlight on the same option when options change, and clears it when the option is removed', () => {
+			const props = { ...defaultProps, isOpen: true, events: {} };
+			const renderWithOptions = (options) => (
+				<IconSettings iconPath="/assets/icons">
+					<Combobox {...props} options={options} value="" selection={[]} />
+				</IconSettings>
+			);
+			const { container, rerender } = render(
+				renderWithOptions([accounts[0], accounts[1], accounts[2]])
+			);
+			const { input } = getNodes(container);
+			fireEvent.keyDown(input, keyObjects.DOWN);
+			fireEvent.keyDown(input, keyObjects.DOWN);
+			expect(input).toHaveAttribute(
+				'aria-activedescendant',
+				`${defaultProps.id}-listbox-option-2`
+			);
+
+			// Reordered: the highlight follows accounts[1] to the first position
+			rerender(renderWithOptions([accounts[1], accounts[0], accounts[2]]));
+			expect(input).toHaveAttribute(
+				'aria-activedescendant',
+				`${defaultProps.id}-listbox-option-2`
+			);
+			expect(
+				container.querySelector(`#${defaultProps.id}-listbox-option-2`)
+			).toHaveTextContent(accounts[1].label);
+
+			// Removed: the highlight is cleared
+			rerender(renderWithOptions([accounts[0], accounts[2]]));
+			expect(input).not.toHaveAttribute('aria-activedescendant');
+		});
+
 		it('menu filters to second item, menu listbox menu item 2 aria-selected is true, input activedescendent has item 2 id, after pressing down arrow, enter selects item 2', () => {
 			const { container } = render(
 				<DemoComponent
