@@ -1,9 +1,11 @@
 /*
  * Leak check (plan D2, check 10): mount and unmount a story 200 times, force
  * a GC (the perf project runs Chromium with `--expose-gc`), and count the
- * mounts still alive through a `WeakRef` each. One may be held for a while by
- * a pending timer or the browser, so the gate is "mounts are retained" (more
- * than a handful), which a real per-mount leak always trips. The heap growth
+ * mounts still alive through a `WeakRef` each. The retained count is the
+ * gate. One or two may be held for a while by a pending timer or the browser,
+ * so it has a `slack` of 10 in `budgets.json`, which a real per-mount leak
+ * still trips. A known leak's count varies between runs, so it also gets a
+ * 30 % tolerance, and fails only if it gets clearly worse. The heap growth
  * is recorded for the report, with only a coarse ceiling because heap size
  * is noisy (see Decisions in the track brief).
  */
@@ -21,8 +23,6 @@ vi.mock(
 );
 
 const CYCLES = 200;
-// More retained mounts than this is a leak, not a straggler.
-const RETAINED_TOLERANCE = 10;
 const HEAP_CEILING = 16 * 1024 * 1024;
 
 const TRIGGER =
@@ -86,14 +86,11 @@ describe.each([
 		const growth = Math.max(heap() - before, 0);
 		const retained = refs.filter((ref) => ref.deref()).length;
 
-		recordPerf(`${key}/leak`, {
-			heapGrowthBytes: growth,
-			retainedMounts: retained,
-		});
+		recordPerf(`${key}/leak`, { heapGrowthBytes: growth });
 		checkBudget(
 			`${key}/leak`,
-			{ leaksMounts: retained > RETAINED_TOLERANCE ? 1 : 0 },
-			{ leaksMounts: 0 }
+			{ retainedMounts: retained },
+			{ retainedMounts: 0 }
 		);
 		expect(growth, `heap grew by ${growth} bytes`).toBeLessThan(HEAP_CEILING);
 	});

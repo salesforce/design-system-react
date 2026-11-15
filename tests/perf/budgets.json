@@ -1,5 +1,10 @@
 {
-	"tolerance": { "domNodes": 0.1, "ssrBytes": 0.1, "gzipBytes": 0.05 },
+	"tolerance": {
+		"domNodes": 0.1,
+		"ssrBytes": 0.1,
+		"gzipBytes": 0.05,
+		"retainedMounts": 0.3
+	},
 	"slack": {
 		"domNodes": 2,
 		"ssrBytes": 100,
@@ -532,7 +537,7 @@
 			"ssrBytes": 2739
 		},
 		"Combobox/Base/closed": { "closedOverlayNodes": 1 },
-		"Combobox/Base/leak": { "leaksMounts": 1 },
+		"Combobox/Base/leak": { "retainedMounts": 59 },
 		"Combobox/Base/open": { "openLayoutReads": 269 },
 		"Combobox/BaseWithMenuSubheader": {
 			"commits": 3,

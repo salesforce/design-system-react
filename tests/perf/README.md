@@ -22,7 +22,7 @@ Each check calls `checkBudget(key, metrics, ideal)` from `budget.ts` (re-exporte
 
 - The **ideal** is in the test: what a well-behaved component reaches (1 mount commit, 0 leaked listeners, 0 console errors…).
 - The **budget** is in `budgets.json`, keyed by fixture (`Combobox/Base`, `bundle:components/button`…). A metric with no budget must meet its ideal, so the file lists only size metrics (DOM nodes, SSR bytes, gzip bytes) and the known violations.
-- Counts are exact. Size metrics get the larger of the `tolerance` (DOM and SSR +10 %, gzip +5 %) and the `slack` (DOM +2 nodes, SSR and gzip +100 bytes) in `budgets.json`, so a small story can still grow a little. `limits.ts` has the rule.
+- Counts are exact. Size metrics get the larger of the `tolerance` (DOM and SSR +10 %, gzip +5 %) and the `slack` (DOM +2 nodes, SSR and gzip +100 bytes) in `budgets.json`, so a small story can still grow a little. The leak check's `retainedMounts` gets a slack of 10 and a tolerance of 30 %, because a mount or two can outlive a GC for a while and a known leak's count varies by about ±7 between runs. `limits.ts` has the rule.
 
 A value over its ideal is a **violation**. It passes, because the budget records it, and `perf:report` lists it as a follow-up fix. A value over its budget is a **regression** and fails.
 
