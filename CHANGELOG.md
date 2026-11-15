@@ -10,10 +10,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - [Versioning & Support Policy](docs/codebase-overview.md#versioning--support-policy): what a major, minor and patch can change, how long a deprecation lasts, and fix-forward support for 11.x (no long-lived maintenance branches; use `~11.y.0` and the `rc` dist-tag to control upgrades)
 - `npm run release-pr -- next --rc` (maintainers): moves `11.0.0-alpha.N` or `-beta.N` to `11.0.0-rc.0`, and `rc.N` to `rc.N+1`
+- Types used in public prop signatures are exported by name, so they can be named without a deep import: `TriggerRender`, `ChildrenOf` and `IconCategory` from the root; `TriggerRender` from `components/tooltip` and `components/menu-dropdown`; `IconCategory` from `components/icon`; `ComboboxOptionIcon`, `ComboboxOptionLabelRenderer`, `ComboboxActionOptionFields` and `ComboboxMenuRenderMenuItemData` from `components/combobox`; `CarouselItemProps` from `components/carousel`; `SplitViewListItem` from `components/split-view/listbox`; and `PageHeaderInfoProps`, `PageHeaderTitleProps`, `PageHeaderDetailRowProps` and `PageHeaderDetailBlockProps` from `components/page-header`
 
 ### Changed
 
 - The [Breaking-Change Taxonomy](docs/codebase-overview.md#breaking-change-taxonomy) also lists callback signatures, exported type narrowing, entry points and peer dependency minimums as breaking
+
+### Removed
+
+- **BREAKING**: `utilities/*` and `components/*/private/*` are no longer importable; they were never public API. Imports outside `exports` fail with `ERR_PACKAGE_PATH_NOT_EXPORTED`, and TypeScript no longer resolves their types. The `check-props` modules are blocked too. The 0.10.x deep imports most likely in use are `utilities/key-code` (`KEYS`), `utilities/date`, `utilities/event` and `utilities/index`. To migrate, copy the helper into your app, or use the platform equivalent (`event.key` instead of `KEYS` key codes). This also covers the `useClickOutside`, `useControllableState` and `useLatestRef` hooks in `utilities/hooks`, which are internal. Public entry points are the root (`.` and `./components`) and `./components/<name>`, including documented subcomponent files such as `components/accordion/panel`
 
 ## [11.0.0-alpha.11] - 2026-11-13
 
@@ -147,7 +152,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `SplitViewListbox` `events.onSelect` data `selection`, the requested list of selected item ids
 - `Textarea` `onChange(event, { value })`, with the `TextareaChangeData` type
 - `RadioGroupItemProps`, the props type for a `Radio` inside `RadioGroup` or `RadioButtonGroup`, which doesn't need `checked` or `onChange`
-- `useControllableState` hook in `utilities/hooks/use-controllable-state`, for state that is controlled when its prop is not `undefined`
 
 ### Changed
 
@@ -412,7 +416,7 @@ First v11 release on npm: a rewrite for React 19, TypeScript, and SLDS 2.
 
 - Dependency on [`@salesforce-ux/design-system-2`](https://www.npmjs.com/package/@salesforce-ux/design-system-2), the SLDS 2 stylesheet package
 - Light, dark, and system color schemes through the SLDS 2 `slds-color-scheme--*` body classes
-- `useClickOutside` hook in `utilities/hooks/use-click-outside`
+- `useClickOutside` hook in `utilities/hooks/use-click-outside`, for internal use. `utilities/` is not public API and is no longer importable (see [Unreleased])
 
 ### Changed
 
