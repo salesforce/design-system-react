@@ -11,7 +11,7 @@ Never run bare `npm test` — it starts Vitest in watch mode and will not exit.
 | Command                  | Purpose                                                                        |
 | ------------------------ | ------------------------------------------------------------------------------ |
 | `npm run typecheck`      | `tsc --noEmit`                                                                 |
-| `npm run lint`           | ESLint; 0 errors and no more warnings than `--max-warnings` in `package.json`  |
+| `npm run lint`           | ESLint; must be 0 errors and 0 warnings (`--max-warnings=0`)                   |
 | `npm test -- --run`      | All tests: jsdom `unit` project, real-browser `browser` project, and snapshots |
 | `npm test -- --run -u`   | Same, and regenerate story HTML snapshots                                      |
 | `npm run build`          | Type-check, library build, `.d.ts`, entry shims                                |
