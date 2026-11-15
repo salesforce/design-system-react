@@ -2,6 +2,7 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 import React, {
+	useId,
 	useState,
 	useRef,
 	useCallback,
@@ -49,7 +50,6 @@ import checkProps from './check-props';
 
 import { COMBOBOX } from '../../utilities/constants';
 import type { SelectedListBoxOption } from '../pill-container/private/selected-listbox';
-import generateId from '../../utilities/generate-id';
 import componentDoc from './component.json';
 import { IconSettingsContext } from '../icon-settings';
 import { useControllableState, useLatestRef } from '../../utilities/hooks';
@@ -434,9 +434,9 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 	const menuKeyBuffer = useRef(new KeyBuffer());
 
 	// Generated IDs
-	const generatedId = useRef(generateId());
-	const generatedErrorId = useRef(generateId());
-	const getId = useCallback(() => idProp || generatedId.current, [idProp]);
+	const generatedId = useId();
+	const generatedErrorId = useId();
+	const getId = useCallback(() => idProp || generatedId, [idProp, generatedId]);
 	const deselectId = `${getId()}-deselect`;
 
 	// State
@@ -494,8 +494,8 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 	}, [activeOption, activeOptionIndex]);
 
 	const getErrorId = useCallback(() => {
-		return ariaDescribedby || (errorText && generatedErrorId.current);
-	}, [ariaDescribedby, errorText]);
+		return ariaDescribedby || (errorText && generatedErrorId);
+	}, [ariaDescribedby, errorText, generatedErrorId]);
 
 	// Build options list
 	const getOptions = useCallback(() => {

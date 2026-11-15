@@ -2842,13 +2842,13 @@ exports[`Story HTML snapshots > Combobox > WithErrorState 1`] = `
       <div class="slds-form-element__control">
         <div class="slds-combobox_container">
           <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-has-error">
-            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="error-state" placeholder="Search Accounts" required="" role="combobox" type="text" aria-autocomplete="list" aria-describedby="slds-snapshot-id-2" aria-expanded="false" aria-haspopup="listbox" value="" /><svg class="slds-input__icon slds-icon-text-default" style="pointer-events:none" aria-hidden="true">
+            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="error-state" placeholder="Search Accounts" required="" role="combobox" type="text" aria-autocomplete="list" aria-describedby="_R_0H1_" aria-expanded="false" aria-haspopup="listbox" value="" /><svg class="slds-input__icon slds-icon-text-default" style="pointer-events:none" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
               </svg></div>
           </div>
         </div>
         <div class="slds-has-error">
-          <div id="slds-snapshot-id-2" class="slds-form-element__help">This field is required</div>
+          <div id="_R_0H1_" class="slds-form-element__help">This field is required</div>
         </div>
       </div>
     </div>
@@ -2980,8 +2980,8 @@ exports[`Story HTML snapshots > DatePicker > CustomYearRange 1`] = `
 "<div class="slds-p-around_medium">
   <div>
     <div class="slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside">
-      <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-1">Date</label>
-        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="slds-snapshot-id-1" placeholder="Pick a Date" type="text" value="" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
+      <div class="slds-form-element"><label class="slds-form-element__label" for="_R_0_">Date</label>
+        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="_R_0_" placeholder="Pick a Date" type="text" value="" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#event"></use>
             </svg><span class="slds-assistive-text">Open Calendar</span></button></div>
       </div>
@@ -2994,8 +2994,8 @@ exports[`Story HTML snapshots > DatePicker > Default 1`] = `
 "<div class="slds-p-around_medium">
   <div>
     <div class="slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside">
-      <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-1">Date</label>
-        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="slds-snapshot-id-1" placeholder="Pick a Date" type="text" value="" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
+      <div class="slds-form-element"><label class="slds-form-element__label" for="_R_0_">Date</label>
+        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="_R_0_" placeholder="Pick a Date" type="text" value="" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#event"></use>
             </svg><span class="slds-assistive-text">Open Calendar</span></button></div>
       </div>
@@ -3008,8 +3008,8 @@ exports[`Story HTML snapshots > DatePicker > Disabled 1`] = `
 "<div class="slds-p-around_medium">
   <div>
     <div class="slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside">
-      <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-1">Date (Disabled)</label>
-        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" disabled="" id="slds-snapshot-id-1" placeholder="Pick a Date" type="text" value="" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
+      <div class="slds-form-element"><label class="slds-form-element__label" for="_R_0_">Date (Disabled)</label>
+        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" disabled="" id="_R_0_" placeholder="Pick a Date" type="text" value="" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#event"></use>
             </svg><span class="slds-assistive-text">Open Calendar</span></button></div>
       </div>
@@ -3022,8 +3022,8 @@ exports[`Story HTML snapshots > DatePicker > DisabledDates 1`] = `
 "<div class="slds-p-around_medium">
   <div>
     <div class="slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside">
-      <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-1">Date (Weekends Disabled)</label>
-        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="slds-snapshot-id-1" placeholder="Pick a Date" type="text" value="" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
+      <div class="slds-form-element"><label class="slds-form-element__label" for="_R_0_">Date (Weekends Disabled)</label>
+        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="_R_0_" placeholder="Pick a Date" type="text" value="" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#event"></use>
             </svg><span class="slds-assistive-text">Open Calendar</span></button></div>
       </div>
@@ -3036,8 +3036,8 @@ exports[`Story HTML snapshots > DatePicker > Error 1`] = `
 "<div class="slds-p-around_medium">
   <div>
     <div class="slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-has-error">
-      <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-1">Date</label>
-        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="slds-snapshot-id-1" placeholder="Pick a Date" type="text" value="" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
+      <div class="slds-form-element"><label class="slds-form-element__label" for="_R_0_">Date</label>
+        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="_R_0_" placeholder="Pick a Date" type="text" value="" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#event"></use>
             </svg><span class="slds-assistive-text">Open Calendar</span></button></div>
       </div>
@@ -3050,8 +3050,8 @@ exports[`Story HTML snapshots > DatePicker > ISOWeekdays 1`] = `
 "<div class="slds-p-around_medium">
   <div>
     <div class="slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside">
-      <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-1">Date</label>
-        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="slds-snapshot-id-1" placeholder="Pick a Date" type="text" value="" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
+      <div class="slds-form-element"><label class="slds-form-element__label" for="_R_0_">Date</label>
+        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="_R_0_" placeholder="Pick a Date" type="text" value="" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#event"></use>
             </svg><span class="slds-assistive-text">Open Calendar</span></button></div>
       </div>
@@ -3064,8 +3064,8 @@ exports[`Story HTML snapshots > DatePicker > InlineMenu 1`] = `
 "<div class="slds-p-around_medium">
   <div>
     <div class="slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside">
-      <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-1">Date</label>
-        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="slds-snapshot-id-1" placeholder="Pick a Date" type="text" value="" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
+      <div class="slds-form-element"><label class="slds-form-element__label" for="_R_0_">Date</label>
+        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="_R_0_" placeholder="Pick a Date" type="text" value="" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#event"></use>
             </svg><span class="slds-assistive-text">Open Calendar</span></button></div>
       </div>
@@ -3078,8 +3078,8 @@ exports[`Story HTML snapshots > DatePicker > Internationalized 1`] = `
 "<div class="slds-p-around_medium">
   <div>
     <div class="slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside">
-      <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-1">Fecha</label>
-        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="slds-snapshot-id-1" placeholder="Selecciona una fecha" type="text" value="" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
+      <div class="slds-form-element"><label class="slds-form-element__label" for="_R_0_">Fecha</label>
+        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="_R_0_" placeholder="Selecciona una fecha" type="text" value="" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#event"></use>
             </svg><span class="slds-assistive-text">Abrir calendario</span></button></div>
       </div>
@@ -3092,8 +3092,8 @@ exports[`Story HTML snapshots > DatePicker > PreselectedDate 1`] = `
 "<div class="slds-p-around_medium">
   <div>
     <div class="slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside">
-      <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-1">Date (Preselected)</label>
-        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="slds-snapshot-id-1" placeholder="Pick a Date" type="text" value="12/25/2024" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
+      <div class="slds-form-element"><label class="slds-form-element__label" for="_R_0_">Date (Preselected)</label>
+        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="_R_0_" placeholder="Pick a Date" type="text" value="12/25/2024" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#event"></use>
             </svg><span class="slds-assistive-text">Open Calendar</span></button></div>
       </div>
@@ -3107,8 +3107,8 @@ exports[`Story HTML snapshots > DatePicker > RightAligned 1`] = `
   <div style="display:flex;justify-content:flex-end">
     <div>
       <div class="slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside">
-        <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-1">Date</label>
-          <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="slds-snapshot-id-1" placeholder="Pick a Date" type="text" value="" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
+        <div class="slds-form-element"><label class="slds-form-element__label" for="_R_0_">Date</label>
+          <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="_R_0_" placeholder="Pick a Date" type="text" value="" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#event"></use>
               </svg><span class="slds-assistive-text">Open Calendar</span></button></div>
         </div>
@@ -3123,8 +3123,8 @@ exports[`Story HTML snapshots > DatePicker > RightToLeft 1`] = `
   <div dir="rtl">
     <div>
       <div class="slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside">
-        <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-1">Date</label>
-          <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="slds-snapshot-id-1" placeholder="Pick a Date" type="text" value="" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
+        <div class="slds-form-element"><label class="slds-form-element__label" for="_R_0_">Date</label>
+          <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="_R_0_" placeholder="Pick a Date" type="text" value="" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols-rtl.svg#event"></use>
               </svg><span class="slds-assistive-text">Open Calendar</span></button></div>
         </div>
@@ -10890,15 +10890,15 @@ exports[`Story HTML snapshots > Tooltip > AnchoredNubbin 1`] = `
 "<div class="slds-p-around_medium slds-m-horizontal_x-large" style="margin:150px auto;width:500px">
   <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1">
     <style>
-      #slds-snapshot-id-1:after,
-      #slds-snapshot-id-1:before {
+      [id="_R_0_"]:after,
+      [id="_R_0_"]:before {
         display: none;
       }
     </style>
     <div style="height:0;position:relative;width:0;left:0px;top:0px">
       <div style="background-color:#16325c;content:&quot;&quot;;height:1rem;position:absolute;transform:rotate(45deg);width:1rem;left:-8px;top:3px"></div>
-    </div><button class="slds-button slds-button_neutral" type="button" aria-describedby="slds-snapshot-id-1">Anchored Nubbin</button>
-    <div class="absolute-positioned slds-nubbin_top slds-popover slds-popover_tooltip" style="outline:0;position:absolute;pointer-events:none" role="tooltip" id="slds-snapshot-id-1">
+    </div><button class="slds-button slds-button_neutral" type="button" aria-describedby="_R_0_">Anchored Nubbin</button>
+    <div class="absolute-positioned slds-nubbin_top slds-popover slds-popover_tooltip" style="outline:0;position:absolute;pointer-events:none" role="tooltip" id="_R_0_">
       <div class="slds-popover__body">Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.</div>
     </div>
   </div>
@@ -10930,8 +10930,8 @@ exports[`Story HTML snapshots > Tooltip > DefaultTrigger 1`] = `
 
 exports[`Story HTML snapshots > Tooltip > ErrorTheme 1`] = `
 "<div class="slds-p-around_medium slds-m-horizontal_x-large" style="margin:150px auto;width:500px">
-  <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_destructive" type="button" aria-describedby="slds-snapshot-id-1">Error Theme</button>
-    <div class="absolute-positioned slds-nubbin_top slds-popover slds-popover_tooltip slds-theme_error" style="outline:0;position:absolute;pointer-events:none" role="tooltip" id="slds-snapshot-id-1">
+  <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_destructive" type="button" aria-describedby="_R_0_">Error Theme</button>
+    <div class="absolute-positioned slds-nubbin_top slds-popover slds-popover_tooltip slds-theme_error" style="outline:0;position:absolute;pointer-events:none" role="tooltip" id="_R_0_">
       <div class="slds-popover__body slds-text-color_inverse">This is an error/warning tooltip</div>
     </div>
   </div>
@@ -10989,8 +10989,8 @@ exports[`Story HTML snapshots > Tooltip > InButtonGroup 1`] = `
 
 exports[`Story HTML snapshots > Tooltip > InfoTheme 1`] = `
 "<div class="slds-p-around_medium slds-m-horizontal_x-large" style="margin:150px auto;width:500px">
-  <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_neutral" type="button" aria-describedby="slds-snapshot-id-1">Info Theme</button>
-    <div class="absolute-positioned slds-nubbin_top slds-popover slds-popover_tooltip" style="outline:0;position:absolute;pointer-events:none" role="tooltip" id="slds-snapshot-id-1">
+  <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_neutral" type="button" aria-describedby="_R_0_">Info Theme</button>
+    <div class="absolute-positioned slds-nubbin_top slds-popover slds-popover_tooltip" style="outline:0;position:absolute;pointer-events:none" role="tooltip" id="_R_0_">
       <div class="slds-popover__body">This is an informational tooltip</div>
     </div>
   </div>
@@ -11026,7 +11026,7 @@ exports[`Story HTML snapshots > Tooltip > WithIconTrigger 1`] = `
   <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><span class="slds-icon_container slds-icon-standard-case"><svg class="slds-icon slds-icon_small" aria-hidden="true">
         <use href="/assets/icons/standard-sprite/svg/symbols.svg#case"></use>
       </svg><span class="slds-assistive-text">Case Icon</span></span>
-    <div class="absolute-positioned slds-nubbin_left slds-popover slds-popover_tooltip" style="outline:0;position:absolute;pointer-events:none" role="tooltip" id="slds-snapshot-id-1">
+    <div class="absolute-positioned slds-nubbin_left slds-popover slds-popover_tooltip" style="outline:0;position:absolute;pointer-events:none" role="tooltip" id="_R_0_">
       <div class="slds-popover__body">This is a case record</div>
     </div>
   </div>
@@ -11035,8 +11035,8 @@ exports[`Story HTML snapshots > Tooltip > WithIconTrigger 1`] = `
 
 exports[`Story HTML snapshots > Tooltip > WithSpanTrigger 1`] = `
 "<div class="slds-p-around_medium slds-m-horizontal_x-large" style="margin:150px auto;width:500px">
-  <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><span tabindex="0" style="text-decoration:underline;cursor:help" aria-describedby="slds-snapshot-id-1">Hover over this text</span>
-    <div class="absolute-positioned slds-nubbin_top slds-popover slds-popover_tooltip" style="outline:0;position:absolute;pointer-events:none" role="tooltip" id="slds-snapshot-id-1">
+  <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><span tabindex="0" style="text-decoration:underline;cursor:help" aria-describedby="_R_0_">Hover over this text</span>
+    <div class="absolute-positioned slds-nubbin_top slds-popover slds-popover_tooltip" style="outline:0;position:absolute;pointer-events:none" role="tooltip" id="_R_0_">
       <div class="slds-popover__body">You can use any focusable element as a trigger</div>
     </div>
   </div>
