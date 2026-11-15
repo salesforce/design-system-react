@@ -257,11 +257,13 @@ const Carousel = ({
 	const isAutoplayRunning = hasAutoplay && isAutoplayOn;
 	const [indicatorsHaveFocus, setIndicatorsHaveFocus] = useState(false);
 	const [stageWidth, setStageWidth] = useState(0);
-	const [translateX, setTranslateX] = useState(-1000000);
+	// The stage width measured on mount; `null` until then
+	const [initialStageWidth, setInitialStageWidth] = useState<number | null>(
+		null
+	);
 
 	// Refs
 	const stageRef = useRef<HTMLDivElement>(null);
-	const initialStageWidthRef = useRef<number>(0);
 
 	// Helper functions
 	const canGoToNext = useCallback(
@@ -276,12 +278,6 @@ const Carousel = ({
 			`content-id-${carouselId}-${itemId}`,
 		[]
 	);
-
-	// Update translation based on current panel
-	const changeTranslationAutomatically = useCallback(() => {
-		const width = stageWidth || initialStageWidthRef.current;
-		setTranslateX(-(width * currentPanel));
-	}, [stageWidth, currentPanel]);
 
 	// Request a panel change: updates internal state when uncontrolled, always reports the request
 	const setCurrentPanel = useCallback(
@@ -436,7 +432,7 @@ const Carousel = ({
 	// Effect: Mount - measure stage width and set up resize listener
 	useEffect(() => {
 		if (canUseDOM && stageRef.current?.offsetWidth !== undefined) {
-			initialStageWidthRef.current = stageRef.current.offsetWidth;
+			setInitialStageWidth(stageRef.current.offsetWidth);
 			setStageWidth(stageRef.current.offsetWidth);
 		}
 
@@ -450,11 +446,6 @@ const Carousel = ({
 			}
 		};
 	}, [setDimensions]);
-
-	// Effect: Update translation when currentPanel or stageWidth changes
-	useEffect(() => {
-		changeTranslationAutomatically();
-	}, [changeTranslationAutomatically]);
 
 	// Effect: run the autoplay timer while autoplay is on (controlled or not); cleared on stop and unmount
 	useEffect(() => {
@@ -470,8 +461,11 @@ const Carousel = ({
 	// Computed values
 	const isPreviousBtnDisabled = !(isInfinite || canGoToPrevious());
 	const isNextBtnDisabled = !(isInfinite || canGoToNext());
-	const itemWidth =
-		(stageWidth || initialStageWidthRef.current) / itemsPerPanel;
+	const panelWidth = stageWidth || initialStageWidth || 0;
+	const itemWidth = panelWidth / itemsPerPanel;
+	// Keep the stage off-screen until it has been measured
+	const translateX =
+		initialStageWidth === null ? -1000000 : -(panelWidth * currentPanel);
 	const carouselMargins = hasPreviousNextPanelNavigation
 		? { marginLeft: '44px', marginRight: '44px' }
 		: {};
