@@ -22,11 +22,8 @@ export interface KeyboardNavigateParams {
 	toggleOpen: () => void;
 }
 
-declare function keyboardNavigate(params: KeyboardNavigateParams): number | undefined;
+declare function keyboardNavigate(
+	params: KeyboardNavigateParams
+): number | undefined;
 
 export default keyboardNavigate;
-
-
-
-
-
