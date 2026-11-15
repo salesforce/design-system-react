@@ -5,9 +5,8 @@ import escapeRegExp from 'lodash.escaperegexp';
 import KEYS from './key-code';
 
 /**
- * Resolve a component context's trigger to a DOM node. `componentContext.trigger`
- * is already stored as a DOM element (via a callback ref) throughout the codebase,
- * so we return it directly. This replaces `ReactDOM.findDOMNode`, which was removed
+ * Resolve a component context's trigger to a DOM node. `componentContext.getTrigger()`
+ * returns the DOM element stored by a callback ref, so we return it directly. This replaces `ReactDOM.findDOMNode`, which was removed
  * in React 19.
  */
 const resolveTriggerNode = (trigger) => {
@@ -63,8 +62,7 @@ const keyboardNavigate = ({
 		}
 		if (
 			openMenuKeys &&
-			componentContext.trigger &&
-			resolveTriggerNode(componentContext.trigger) === target
+			resolveTriggerNode(componentContext.getTrigger()) === target
 		) {
 			componentContext.handleClick(event);
 		}

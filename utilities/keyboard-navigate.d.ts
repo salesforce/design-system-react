@@ -5,7 +5,7 @@ import type { KeyboardEvent } from 'react';
 
 export interface KeyboardNavigateParams {
 	componentContext: {
-		trigger: HTMLElement | null;
+		getTrigger: () => HTMLElement | null;
 		handleClick?: (event: Event) => void;
 	};
 	currentFocusedIndex: number;

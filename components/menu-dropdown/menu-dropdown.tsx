@@ -1021,15 +1021,16 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 		[focusedIndex, getMenu, getMenuItem, focusMenuItem, scrollToMenuItem]
 	);
 
-	// Create a context object for keyboard navigation
+	// Create a context object for keyboard navigation. Opening from the trigger
+	// is done by `toggleOpen`, so the trigger's click only reports `onClick`.
 	const componentContext = useMemo(
 		() => ({
-			trigger: triggerRef.current,
+			getTrigger: () => triggerRef.current,
 			handleClick: (event: Event) => {
-				handleClick(event as unknown as MouseEvent);
+				onClick?.(event as unknown as MouseEvent);
 			},
 		}),
-		[handleClick]
+		[onClick]
 	);
 
 	// Handle keyboard navigate
