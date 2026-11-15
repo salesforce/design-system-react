@@ -317,11 +317,11 @@ const Tooltip = ({
 	// State
 	const [isOpen, setIsOpen] = useControllableState(isOpenProp, defaultIsOpen);
 	const [triggerRendered, setTriggerRendered] = useState(false);
+	const [generatedId] = useState(generateId);
 
 	// Refs
 	const triggerRef = useRef<HTMLDivElement>(null);
 	const tooltipTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-	const generatedIdRef = useRef(generateId());
 	const isUnmountingRef = useRef(false);
 	// Latest open state, read by the hover/blur/Escape timers
 	const isOpenRef = useRef(isOpen);
@@ -374,8 +374,8 @@ const Tooltip = ({
 
 	// Get computed values
 	const getId = useCallback(() => {
-		return idProp || generatedIdRef.current;
-	}, [idProp]);
+		return idProp || generatedId;
+	}, [idProp, generatedId]);
 
 	const getIsOpen = useCallback(
 		() => !isDisabled && isOpen,
