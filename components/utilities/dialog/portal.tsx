@@ -119,6 +119,7 @@ const Portal = (props: PortalProps): React.ReactPortal | null => {
 			? onMount(undefined, { portal: node })
 			: node;
 
+		// eslint-disable-next-line react-hooks/set-state-in-effect -- the node must be attached to the document before children mount, so it is created in an effect
 		setPortalNode(node);
 
 		if (onOpen) {
