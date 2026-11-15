@@ -335,6 +335,36 @@ describe('SLDSCombobox', () => {
 			expect(pills[1]).toHaveAttribute('tabindex', '0');
 		});
 
+		it('makes the first pill tabbable when a controlled selection is emptied and re-populated', () => {
+			const props = {
+				...defaultProps,
+				multiple: true,
+				options: [],
+				events: {},
+			};
+			const renderWithSelection = (selection) => (
+				<IconSettings iconPath="/assets/icons">
+					<Combobox {...props} value="" selection={selection} />
+				</IconSettings>
+			);
+			const { container, rerender } = render(
+				renderWithSelection([accountsWithIcon[0], accountsWithIcon[1]])
+			);
+			fireEvent.focus(
+				getNodes(container).selectedListbox.querySelectorAll(
+					'[role="option"]'
+				)[1]
+			);
+
+			rerender(renderWithSelection([]));
+			rerender(renderWithSelection([accountsWithIcon[2], accountsWithIcon[3]]));
+
+			const pills =
+				getNodes(container).selectedListbox.querySelectorAll('[role="option"]');
+			expect(pills[0]).toHaveAttribute('tabindex', '0');
+			expect(pills[1]).toHaveAttribute('tabindex', '-1');
+		});
+
 		it('menu filters to second item, menu listbox menu item 2 aria-selected is true, input activedescendent has item 2 id, after pressing down arrow, enter selects item 2', () => {
 			const { container } = render(
 				<DemoComponent
