@@ -272,6 +272,16 @@ const defaultLabels: TooltipLabels = {
 	learnMoreBefore: 'Click',
 };
 
+// Renders the trigger slot as a component, so the trigger props' handlers are only
+// handed to the slot rather than called from Tooltip's render
+const TooltipTrigger = ({
+	render,
+	triggerProps,
+}: {
+	render: TriggerRender<TooltipTriggerProps>;
+	triggerProps: TooltipTriggerProps;
+}) => renderTrigger(render, triggerProps);
+
 /**
  * The PopoverTooltip component is variant of the Lightning Design System Popover component.
  * This component wraps an element that triggers it to open. It must be a focusable child element
@@ -635,57 +645,71 @@ const Tooltip = ({
 		};
 
 		if (trigger !== undefined) {
-			return renderTrigger(trigger, triggerProps);
+			return <TooltipTrigger render={trigger} triggerProps={triggerProps} />;
 		}
 
 		// Deprecated: each child element is a trigger
 		if (React.Children.count(children) !== 0) {
 			return React.Children.map(children, (child) =>
-				React.isValidElement(child) ? renderTrigger(child, triggerProps) : child
+				React.isValidElement(child) ? (
+					<TooltipTrigger render={child} triggerProps={triggerProps} />
+				) : (
+					child
+				)
 			);
 		}
 
 		if (onClickTrigger) {
-			return renderTrigger(
-				// eslint-disable-next-line jsx-a11y/anchor-is-valid -- SLDS tooltip markup uses an anchor for the clickable trigger
-				<a
-					href="#"
-					onClick={
-						EventUtil.trappedHandler(
-							onClickTrigger
-						) as React.MouseEventHandler<HTMLAnchorElement>
+			return (
+				<TooltipTrigger
+					render={
+						// eslint-disable-next-line jsx-a11y/anchor-is-valid -- SLDS tooltip markup uses an anchor for the clickable trigger
+						<a
+							href="#"
+							onClick={
+								EventUtil.trappedHandler(
+									onClickTrigger
+								) as React.MouseEventHandler<HTMLAnchorElement>
+							}
+						>
+							<Icon
+								category="utility"
+								colorVariant={iconColorVariant}
+								inverse={isInverseIcon}
+								name="info"
+								assistiveText={{
+									label: assistiveText.triggerLearnMoreIcon,
+								}}
+								size="x-small"
+							/>
+						</a>
 					}
-				>
-					<Icon
-						category="utility"
-						colorVariant={iconColorVariant}
-						inverse={isInverseIcon}
-						name="info"
-						assistiveText={{
-							label: assistiveText.triggerLearnMoreIcon,
-						}}
-						size="x-small"
-					/>
-				</a>,
-				triggerProps
+					triggerProps={triggerProps}
+				/>
 			);
 		}
 
-		return renderTrigger(
-			<Button
-				aria-disabled
-				assistiveText={{
-					icon: assistiveText.triggerLearnMoreIcon,
-				}}
-				iconCategory="utility"
-				iconClassName={iconColorVariant && `slds-icon-text-${iconColorVariant}`}
-				iconName="info"
-				// `bare` keeps `slds-button_icon`, which Button drops for `inverse` alone
-				iconVariant={isInverseIcon ? 'bare' : undefined}
-				inverse={isInverseIcon}
-				variant="icon"
-			/>,
-			triggerProps
+		return (
+			<TooltipTrigger
+				render={
+					<Button
+						aria-disabled
+						assistiveText={{
+							icon: assistiveText.triggerLearnMoreIcon,
+						}}
+						iconCategory="utility"
+						iconClassName={
+							iconColorVariant && `slds-icon-text-${iconColorVariant}`
+						}
+						iconName="info"
+						// `bare` keeps `slds-button_icon`, which Button drops for `inverse` alone
+						iconVariant={isInverseIcon ? 'bare' : undefined}
+						inverse={isInverseIcon}
+						variant="icon"
+					/>
+				}
+				triggerProps={triggerProps}
+			/>
 		);
 	};
 
