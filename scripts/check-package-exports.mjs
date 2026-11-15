@@ -15,6 +15,10 @@
  * silently skipped. Imports go through the package's own name (self-reference),
  * so Node and TypeScript apply the real `exports` map, as a consumer's would.
  *
+ * It also checks that every published CSS file under `css/` (the entry files,
+ * `components/`, `utilities/` and `scoped/`) resolves through the `./css/*`
+ * export, and that each file's relative `@import`s point at published files.
+ *
  * Regression check for alpha.4, where `components/color-picker`, `filter` and
  * `tree` had types but no JS: their re-export-only `index` was not emitted, so
  * no bare-directory shim was generated for them.
@@ -23,7 +27,7 @@
  */
 import { readdirSync, readFileSync, existsSync } from 'fs';
 import { createRequire } from 'module';
-import { join } from 'path';
+import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import ts from 'typescript';
 
@@ -133,6 +137,33 @@ for (const spec of subpaths) {
 	}
 }
 
+// --- CSS ---------------------------------------------------------------------
+
+// `css/` is published as-is (not built), so check that each file resolves
+// through the `./css/*` export to the file in the package, and that the
+// entry files' `@import`s don't point at a module that isn't there.
+const cssFiles = readdirSync(join(root, 'css'), { recursive: true })
+	.map((file) => file.split('\\').join('/'))
+	.filter((file) => file.endsWith('.css'));
+for (const file of cssFiles) {
+	const spec = `${pkg}/css/${file}`;
+	const path = join(root, 'css', file);
+	try {
+		if (require.resolve(spec) !== path) {
+			fail(spec, 'resolves to the wrong file');
+		}
+	} catch (error) {
+		fail(spec, `does not resolve: ${error.message.split('\n')[0]}`);
+	}
+	for (const [, target] of readFileSync(path, 'utf8').matchAll(
+		/@import\s+['"](\.[^'"]+)['"]/g
+	)) {
+		if (!existsSync(join(dirname(path), target))) {
+			fail(spec, `@import '${target}' is not in the package`);
+		}
+	}
+}
+
 /* eslint-disable no-console */
 if (failures.length) {
 	console.error(
@@ -142,5 +173,5 @@ if (failures.length) {
 	process.exit(1);
 }
 console.log(
-	`check-package-exports: ${subpaths.length} entry points resolve for types, ESM and CJS.`
+	`check-package-exports: ${subpaths.length} entry points resolve for types, ESM and CJS; ${cssFiles.length} css file(s) resolve.`
 );
