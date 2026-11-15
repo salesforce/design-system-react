@@ -218,7 +218,7 @@ design-system-react/
 │       ├── private/            # Internal sub-components
 │       └── __docs__/
 │           └── Component.stories.tsx
-├── utilities/            # Shared utilities (not public API)
+├── utilities/            # Shared utilities (not public API, not importable)
 │   ├── hooks/            # Custom React hooks
 │   └── constants.ts      # Component display names
 ├── types/                # Shared TypeScript types
@@ -239,6 +239,8 @@ Each component follows this structure:
 | `__docs__/*.stories.tsx` | Storybook stories                                  |
 
 Components not in a `private` folder are considered public API and fall within the scope of semantic versioning for breaking changes.
+
+**Public surface.** The package `exports` map is the contract. The public entry points are the root (`.` and `./components`), `./components/<name>`, and documented subcomponent files such as `components/accordion/panel`. `utilities/**`, every `private/` folder, and the `check-props` modules are blocked (`ERR_PACKAGE_PATH_NOT_EXPORTED`), and no internal `.d.ts` is an entry point. A type used in a public prop signature must be declared in a public file, never under `utilities/` or `private/`, and exported by name from a public entry point: put shared ones in `types/common.ts` and re-export them from the root and the component; put a component's own in its `types.ts` (private files import them from there) and export them from its `index`. `npm run build` checks all of this (`scripts/check-package-exports.mjs`).
 
 ### Other Top-Level Directories
 
@@ -733,6 +735,7 @@ const buttonClass = classNames('slds-button', {
 Publish this taxonomy alongside any SemVer policy so consumers know what a minor/patch release can and cannot change:
 
 - **Breaking:** prop rename, prop type narrowing, or prop removal.
+- **Breaking:** removing or renaming a public entry point (a subpath in the `exports` map) or a named export from one. `utilities/` and `private/` are not entry points, so changing them is never breaking.
 - **Breaking:** removing or renaming a styling hook (a `className*` target or documented SLDS class consumers style against).
 - **Breaking:** adding a default value to a prop that was previously required or had no default, if it changes rendered output for existing callers (see [Boolean Props & Defaults](#boolean-props--defaults)).
 - **Not breaking:** markup/DOM-structure changes, _provided_ any externally exposed `ref` continues to resolve to an equivalent element. This is also why [Ref Typing](#compatibility--support) matters — a ref typed to the wrong element makes "equivalent element" ambiguous.
@@ -741,7 +744,7 @@ This is the concrete version of the general backward-compatibility policy alread
 
 ### Private-Component Enforcement
 
-The `private/` folder exemption (see [Component Folder Structure](#component-folder-structure)) is currently a naming convention, not a lint-enforced boundary — there's no rule today that fails a build if code outside a component imports from another component's `private/` path. Treat closing that gap (e.g. an ESLint `no-restricted-imports` rule scoped to `**/private/**`) as a maintainability requirement, not a nice-to-have: without it, the exemption can be silently violated and the "private" folder stops meaning what it claims to.
+For consumers, the `private/` folder exemption (see [Component Folder Structure](#component-folder-structure)) is enforced by the `exports` map, which blocks every `private/` path. Inside the repo it is still a naming convention, not a lint-enforced boundary — there's no rule today that fails a build if code outside a component imports from another component's `private/` path. Treat closing that gap (e.g. an ESLint `no-restricted-imports` rule scoped to `**/private/**`) as a maintainability requirement, not a nice-to-have: without it, the exemption can be silently violated and the "private" folder stops meaning what it claims to.
 
 ### Development Diagnostics Scope
 

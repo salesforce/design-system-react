@@ -38,7 +38,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `SplitViewListbox` `events.onSelect` data `selection`, the requested list of selected item ids
 - `Textarea` `onChange(event, { value })`, with the `TextareaChangeData` type
 - `RadioGroupItemProps`, the props type for a `Radio` inside `RadioGroup` or `RadioButtonGroup`, which doesn't need `checked` or `onChange`
-- `useControllableState` hook in `utilities/hooks/use-controllable-state`, for state that is controlled when its prop is not `undefined`
 - `Slider`, `Spinner`, `Tree`, `Modal`, `Popover`, `WelcomeMat` and `VerticalNavigation` forward `ref` to their root element: the outermost element each one renders, which is also where `className` goes. For `Modal` that is `section.slds-modal`, for `Popover` the trigger wrapper `div`, and for `Spinner` the `.slds-spinner_container` (or `.slds-spinner` with `hasContainer={false}`)
 - Suffixed class and style props for inner nodes, following the `className*` convention:
   - `Slider` `className` on the root `.slds-form-element`
@@ -54,6 +53,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `ColorPicker` `validateColor` and `validateWorkingColor` props (see Deprecated)
 - `useLatestRef` hook in `utilities/hooks/use-latest-ref`, for reading the latest consumer callbacks from stable handlers
 - Docs: [Catch deprecated props with ESLint](docs/lint-deprecated-props.md), with the `@typescript-eslint/no-deprecated` config for consumer repos (also in the README). Deprecated props still compile; the rule turns a use into a lint error that names the replacement
+- Types used in public prop signatures are exported by name, so they can be named without a deep import: `TriggerRender`, `ChildrenOf` and `IconCategory` from the root; `TriggerRender` from `components/tooltip` and `components/menu-dropdown`; `IconCategory` from `components/icon`; `ComboboxOptionIcon`, `ComboboxOptionLabelRenderer`, `ComboboxActionOptionFields` and `ComboboxMenuRenderMenuItemData` from `components/combobox`; `CarouselItemProps` from `components/carousel`; `SplitViewListItem` from `components/split-view/listbox`; and `PageHeaderInfoProps`, `PageHeaderTitleProps`, `PageHeaderDetailRowProps` and `PageHeaderDetailBlockProps` from `components/page-header`
 
 ### Changed
 
@@ -228,6 +228,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Removed
 
+- **BREAKING**: `utilities/*` and `components/*/private/*` are no longer importable; they were never public API. Imports outside `exports` fail with `ERR_PACKAGE_PATH_NOT_EXPORTED`, and TypeScript no longer resolves their types. The `check-props` modules are blocked too. The 0.10.x deep imports most likely in use are `utilities/key-code` (`KEYS`), `utilities/date`, `utilities/event` and `utilities/index`. To migrate, copy the helper into your app, or use the platform equivalent (`event.key` instead of `KEYS` key codes). This also covers the `useClickOutside`, `useControllableState` and `useLatestRef` hooks in `utilities/hooks`, which are internal. Public entry points are the root (`.` and `./components`) and `./components/<name>`, including documented subcomponent files such as `components/accordion/panel`
 - **BREAKING**: `utilities/design-tokens`, a stale 2018 copy of SLDS 1 token values. The deep imports `@salesforce/design-system-react/utilities/design-tokens/dist/palette-colors.common` and `.../salesforce-skin.common` no longer exist; use SLDS 2 styling hooks (`var(--slds-g-*)`) instead
 - **BREAKING**: Uncontrolled props for data. They are removed from the types; at runtime they are ignored, kept off the DOM, and log a development warning that names the replacement:
   - `Checkbox` and `Radio` `defaultChecked` (pass `checked`)
@@ -296,7 +297,7 @@ First v11 release on npm: a rewrite for React 19, TypeScript, and SLDS 2.
 
 - Dependency on [`@salesforce-ux/design-system-2`](https://www.npmjs.com/package/@salesforce-ux/design-system-2), the SLDS 2 stylesheet package
 - Light, dark, and system color schemes through the SLDS 2 `slds-color-scheme--*` body classes
-- `useClickOutside` hook in `utilities/hooks/use-click-outside`
+- `useClickOutside` hook in `utilities/hooks/use-click-outside`, for internal use. `utilities/` is not public API and is no longer importable (see [Unreleased])
 
 ### Changed
 
