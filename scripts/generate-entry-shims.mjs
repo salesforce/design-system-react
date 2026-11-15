@@ -32,8 +32,8 @@ const OUTPUTS = [
 ];
 
 // `export *` never forwards `default`, so it is re-exported explicitly — but only
-// when the index has one (e.g. `utilities/hooks` is named-exports only), since
-// re-exporting a missing `default` is a link error in ESM.
+// when the index has one, since re-exporting a missing `default` is a link error
+// in ESM.
 const DEFAULT_EXPORT_RE =
 	/\bexport\s+default\b|\bas\s+default\b|\bexport\s*\{\s*default\b/;
 
@@ -55,6 +55,8 @@ const walk = (outDir, ext, kind, absDir) => {
 	for (const entry of readdirSync(absDir)) {
 		const abs = join(absDir, entry);
 		if (!statSync(abs).isDirectory()) continue;
+		// `private/` folders are internal, blocked in the `exports` map: no shims.
+		if (entry === 'private') continue;
 
 		const indexFile = join(abs, `index.${ext}`);
 		if (existsSync(indexFile)) {
@@ -76,11 +78,10 @@ const walk = (outDir, ext, kind, absDir) => {
 for (const { dir, ext, kind } of OUTPUTS) {
 	const abs = join(root, dir);
 	if (!existsSync(abs)) continue;
-	// Only shim under components/ and utilities/ (the published deep-import roots).
-	for (const sub of ['components', 'utilities']) {
-		const subAbs = join(abs, sub);
-		if (existsSync(subAbs)) walk(dir, ext, kind, subAbs);
-	}
+	// Only shim under components/, the published deep-import root. `utilities/`
+	// is internal and not in the `exports` map.
+	const componentsAbs = join(abs, 'components');
+	if (existsSync(componentsAbs)) walk(dir, ext, kind, componentsAbs);
 }
 
 // eslint-disable-next-line no-console
