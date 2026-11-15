@@ -6,6 +6,7 @@
 import React, {
 	useState,
 	useEffect,
+	useLayoutEffect,
 	useRef,
 	useCallback,
 	useContext,
@@ -318,6 +319,8 @@ const Tooltip = ({
 	const [isOpen, setIsOpen] = useControllableState(isOpenProp, defaultIsOpen);
 	const [triggerRendered, setTriggerRendered] = useState(false);
 	const [generatedId] = useState(generateId);
+	// Trigger size for the anchored nubbin, measured once the tooltip opens
+	const [triggerSize, setTriggerSize] = useState({ height: 0, width: 0 });
 
 	// Refs
 	const triggerRef = useRef<HTMLDivElement>(null);
@@ -538,6 +541,18 @@ const Tooltip = ({
 		[triggerRendered]
 	);
 
+	// Measure the trigger for the anchored nubbin before paint, so it is placed on open
+	const isAnchoredNubbinOpen = hasAnchoredNubbin && getIsOpen();
+	useLayoutEffect(() => {
+		if (!isAnchoredNubbinOpen || !triggerRef.current) {
+			return;
+		}
+		const { height, width } = triggerRef.current.getBoundingClientRect();
+		setTriggerSize((size) =>
+			size.height === height && size.width === width ? size : { height, width }
+		);
+	}, [isAnchoredNubbinOpen, align]);
+
 	// Render helpers
 	const getAnchoredNubbinStyles = () => {
 		if (!hasAnchoredNubbin) {
@@ -559,14 +574,7 @@ const Tooltip = ({
 			transform: 'rotate(45deg)',
 			width: '1rem',
 		};
-		const triggerDimensions = {
-			height: triggerRef.current
-				? triggerRef.current.getBoundingClientRect().height
-				: 0,
-			width: triggerRef.current
-				? triggerRef.current.getBoundingClientRect().width
-				: 0,
-		};
+		const triggerDimensions = triggerSize;
 
 		switch (alignment) {
 			case 'bottom': {
