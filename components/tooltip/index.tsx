@@ -4,6 +4,7 @@
 // # Tooltip
 
 import React, {
+	useId,
 	useState,
 	useEffect,
 	useRef,
@@ -20,7 +21,6 @@ import classNames from 'classnames';
 import EventUtil from '../../utilities/event';
 import { useControllableState } from '../../utilities/hooks';
 import { POPOVER_TOOLTIP } from '../../utilities/constants';
-import generateId from '../../utilities/generate-id';
 import { renderTrigger } from '../../utilities/merge-props';
 import type { TriggerRender } from '../../types/common';
 
@@ -317,11 +317,11 @@ const Tooltip = ({
 	// State
 	const [isOpen, setIsOpen] = useControllableState(isOpenProp, defaultIsOpen);
 	const [triggerRendered, setTriggerRendered] = useState(false);
+	const generatedId = useId();
 
 	// Refs
 	const triggerRef = useRef<HTMLDivElement>(null);
 	const tooltipTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-	const generatedIdRef = useRef(generateId());
 	const isUnmountingRef = useRef(false);
 	// Latest open state, read by the hover/blur/Escape timers
 	const isOpenRef = useRef(isOpen);
@@ -374,8 +374,8 @@ const Tooltip = ({
 
 	// Get computed values
 	const getId = useCallback(() => {
-		return idProp || generatedIdRef.current;
-	}, [idProp]);
+		return idProp || generatedId;
+	}, [idProp, generatedId]);
 
 	const getIsOpen = useCallback(
 		() => !isDisabled && isOpen,
