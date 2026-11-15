@@ -28,12 +28,13 @@ export const limit = (
 
 /**
  * Whether `value` is far enough under its `budget` that the budget should be
- * re-recorded, so the improvement can't quietly come back. Counts with no
- * slack must match their budget exactly.
+ * re-recorded, so the improvement can't quietly come back. The margin is the
+ * same as `limit`'s above the budget, so noise stays inside it both ways.
+ * Exact counts must match their budget.
  */
 export const isStale = (
 	value: number,
 	budget: number,
 	metric: string,
-	{ slack }: Allowance
-) => value < budget - (slack[metric] ?? 0);
+	allowance: Allowance
+) => value < budget - (limit(budget, metric, allowance) - budget);

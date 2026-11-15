@@ -7,7 +7,7 @@ import { expect } from 'vitest';
 import { getCurrentTest } from 'vitest/suite';
 
 import budgetFile from './budgets.json';
-import { limit, type Allowance } from './limits';
+import { isStale, limit, type Allowance } from './limits';
 
 export type Metrics = Record<string, number>;
 
@@ -57,6 +57,10 @@ export const recordPerf = (
  * metrics have no ideal and must have a budget; their allowance comes from
  * `budgets.json` `tolerance` and `slack` (see `limit` in `limits.ts`). Counts
  * have neither, so they're exact.
+ *
+ * A metric with an ideal also fails when it's under its recorded budget by
+ * more than its allowance: the improvement has to be recorded, so it can't
+ * quietly come back. Sizes have no ideal, so they can shrink freely.
  */
 export const checkBudget = (
 	key: string,
@@ -80,5 +84,20 @@ export const checkBudget = (
 		expect
 			.soft(value, `${key} ${metric} (budget ${budget})`)
 			.toBeLessThanOrEqual(limit(budget, metric, allowance));
+		const recorded = budgets[key]?.[metric];
+		if (
+			ideal[metric] !== undefined &&
+			recorded !== undefined &&
+			isStale(value, recorded, metric, allowance)
+		) {
+			expect
+				.soft(
+					value,
+					`${key} ${metric} improved to ${value} (budget ${recorded}); run \`npm run perf:budgets\` to lock it in`
+				)
+				.toBeGreaterThanOrEqual(
+					2 * recorded - limit(recorded, metric, allowance)
+				);
+		}
 	}
 };

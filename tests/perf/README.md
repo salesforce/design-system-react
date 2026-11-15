@@ -24,7 +24,7 @@ Each check calls `checkBudget(key, metrics, ideal)` from `budget.ts` (re-exporte
 - The **budget** is in `budgets.json`, keyed by fixture (`Combobox/Base`, `bundle:components/button`…). A metric with no budget must meet its ideal, so the file lists only size metrics (DOM nodes, SSR bytes, gzip bytes) and the known violations.
 - Counts are exact. Size metrics get the larger of the `tolerance` (DOM and SSR +10 %, gzip +5 %) and the `slack` (DOM +2 nodes, SSR and gzip +100 bytes) in `budgets.json`, so a small story can still grow a little. The leak check's `retainedMounts` gets a slack of 10 and a tolerance of 30 %, because a mount or two can outlive a GC for a while and a known leak's count varies by about ±7 between runs. `limits.ts` has the rule.
 
-A value over its ideal is a **violation**. It passes, because the budget records it, and `perf:report` lists it as a follow-up fix. A value over its budget is a **regression** and fails.
+A value over its ideal is a **violation**. It passes, because the budget records it, and `perf:report` lists it as a follow-up fix. A value over its budget is a **regression** and fails. A count under its budget by more than that same allowance also fails, asking you to run `npm run perf:budgets`, so a fix records its lower budget and the improvement can't quietly come back. Sizes can shrink without it.
 
 The bundle checks also keep `components` in `budgets.json`: the component directories each entry pulled in at the last recording. An entry that starts pulling in another component (button importing combobox) fails until it's re-recorded.
 
