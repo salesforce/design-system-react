@@ -42,6 +42,7 @@ Run `npm run test:ci` and `npm run api:check` before requesting review. A husky 
 - **Keep lint/format-only changes in their own commit** (`style:`), separate from the `fix:`/`feat:` commit, so the functional diff is reviewable.
 - **Rebase on `master` and resolve conflicts before requesting review.**
 - Fill in [docs/PULL_REQUEST_TEMPLATE.md](docs/PULL_REQUEST_TEMPLATE.md). For bug fixes, state the root cause, not just the symptom, and add a regression test.
+- **Report public type changes in the PR description.** Run `npm run api:compat -- --pr` (add `--base <ref>` for a non-`master` base) and paste its output, unedited, into the template's "Public type changes" section. Then add a sentence for maintainers: for 🔴, the migration (what consumers change); for each 🟠, whether it breaks real usage and why; for ⚪/🟢 with a `!` commit, where the non-type break is (behavior, markup). A 🔴 with no `!` / `BREAKING CHANGE:` means fix the commits or explain why the checker is wrong — don't drop the section.
 
 ## Releasing
 

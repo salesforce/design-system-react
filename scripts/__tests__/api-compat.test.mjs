@@ -255,6 +255,45 @@ export default Widget;
 		expect(markdown).toMatch(/\| 🔴 \| `components\/widget` \| `default` \|/);
 	});
 
+	describe('--pr', () => {
+		const pr = () =>
+			spawnSync(
+				TSX,
+				[
+					SCRIPT,
+					'--base-dir',
+					join(dir, 'base'),
+					'--head-dir',
+					join(dir, 'head'),
+					'--pr',
+				],
+				{ encoding: 'utf8', env: { ...process.env, GITHUB_ACTIONS: '' } }
+			).stdout;
+
+		it('says so when nothing changed', () => {
+			change((s) => s);
+			expect(pr()).toContain('⚪ **No public type changes.**');
+		});
+
+		it('leads with 🔴 and gives each component one row', () => {
+			change((s) => s.replace('label?: string;', ''));
+			const out = pr();
+			expect(out).toMatch(/^🔴 \*\*Breaking\.\*\*/m);
+			// One row per component; the 🟠 for WidgetProps folds into it.
+			expect(out).toContain(
+				'| 🔴 | `components/widget` | Removed props: `label`. |'
+			);
+			expect(out).not.toContain('**🟠 Needs review');
+		});
+
+		it('leads with 🟢 and collapses additive changes', () => {
+			change((s) => s.replace('label?: string;', 'label?: string; x?: 1;'));
+			const out = pr();
+			expect(out).toMatch(/^🟢 \*\*Additive only\.\*\*/m);
+			expect(out).toContain('<details><summary>🟢 Additive');
+		});
+	});
+
 	it('caps warning annotations at 10', () => {
 		const many = (n) =>
 			Array.from(

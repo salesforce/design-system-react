@@ -8,6 +8,19 @@ cause, not just the symptom. If it's a breaking change, say so explicitly and
 note the migration path.
 -->
 
+### Public type changes
+
+<!--
+Run `npm run api:compat -- --pr` and paste its output here. It compares this
+branch's emitted types with the base branch:
+  🔴 Breaking: existing consumer code may stop compiling. Needs `!` and a
+     `BREAKING CHANGE:` footer with a migration note.
+  🟠 Needs review: an exported type changed; breaking only for consumers who
+     build or annotate values of it. Say why it is or isn't breaking.
+  🟢 Additive: existing consumer code still compiles.
+  ⚪ No public type changes.
+-->
+
 ---
 
 ### CONTRIBUTOR checklist (do not remove)

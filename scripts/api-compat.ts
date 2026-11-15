@@ -5,8 +5,8 @@
  * job summary and a sticky PR comment instead of failing.
  *
  * Usage:
- *   tsx scripts/api-compat.ts [--base <ref>] [--head <ref>] [--json]
- *   tsx scripts/api-compat.ts --base-dir <dir> --head-dir <dir> [--json]
+ *   tsx scripts/api-compat.ts [--base <ref>] [--head <ref>] [--json | --pr]
+ *   tsx scripts/api-compat.ts --base-dir <dir> --head-dir <dir> [--json | --pr]
  *
  *   --base      Ref to compare against (default: `origin/$BASE_REF`, else
  *               `origin/master`). With no `--head`, compares the merge base
@@ -16,6 +16,9 @@
  *               Already-emitted declaration trees (skips git and tsc). Used by
  *               the tests.
  *   --json      Print the findings as JSON instead of text.
+ *   --pr        Print a "Public type changes" section to paste into the PR
+ *               description: one 🔴/🟠/🟢 headline, then changes grouped by
+ *               what a maintainer has to do about them.
  *
  * Both sides' declarations are emitted with `tsconfig.dts.json`. Every public
  * declaration file (see `api-declarations.ts`) is an entry point. For each
@@ -782,6 +785,198 @@ const markdown = (
 	return [...out, ...note, ...footer].join('\n');
 };
 
+/**
+ * A "Public type changes" section for a PR description: one headline verdict,
+ * then changes grouped by what a maintainer has to do about them. `marked` is
+ * whether the commits or PR title carry `!` / `BREAKING CHANGE:` (undefined
+ * when there is no git history to check).
+ */
+const prSection = (
+	findings: Finding[],
+	uncompared: number,
+	base: string,
+	marked?: boolean
+): string => {
+	const out = ['### Public type changes', ''];
+	const of = (v: Verdict) => findings.filter((f) => f.verdict === v);
+	const breaking = of('breaking');
+	const possibly = of('possibly-breaking');
+	const additive = of('additive');
+	const source = `_\`npm run api:compat\` against \`${base}\`._`;
+	if (!findings.length) {
+		out.push(`⚪ **No public type changes.** ${source}`);
+		return out.join('\n');
+	}
+	const headline = breaking.length
+		? '🔴 **Breaking.** Code that type-checks against the current release may not compile after this change.'
+		: possibly.length
+			? '🟠 **Needs review.** Exported types changed; whether that breaks consumers depends on how they use them.'
+			: '🟢 **Additive only.** Existing consumer code still type-checks.';
+	out.push(`${headline} ${source}`, '');
+	if (breaking.length && marked === false) {
+		out.push(
+			'> [!CAUTION]',
+			'> No `!` or `BREAKING CHANGE:` footer in the commits or PR title. Add one, or explain below why this is not breaking.',
+			''
+		);
+	} else if (breaking.length && marked) {
+		out.push('Marked breaking (`!` / `BREAKING CHANGE:`).', '');
+	} else if (!breaking.length && marked) {
+		out.push(
+			'Marked breaking, but no type change is breaking. Fine if the break is in behavior or markup; say which below.',
+			''
+		);
+	}
+	// One row per component: maintainers decide per component, and a single
+	// change shows up on the component, its props type and every helper type.
+	const group = (entry: string) => entry.split('/').slice(0, 2).join('/');
+	const rows = new Map<string, Finding[]>();
+	for (const f of findings) {
+		const key = group(f.entry);
+		rows.set(key, [...(rows.get(key) ?? []), f]);
+	}
+	const code = (s: string) => `\`${s}\``;
+	const vague =
+		/^(Old props\/arguments are no longer accepted|Incompatible in both)/;
+	/** The innermost property and type from a checker message: what to migrate. */
+	const cause = (detail?: string): string | undefined => {
+		if (!detail) return undefined;
+		const missing = detail.match(
+			/Property '([^']+)' is missing in type .* but required/
+		);
+		if (missing) return `${code(missing[1])} is now required`;
+		const props = [
+			...detail.matchAll(/(?:Types of property|The types of) '([^']+)'/g),
+		].map((m) => m[1]);
+		const last = [
+			...detail.matchAll(/Type '([^']+)' is not assignable to type '([^']+)'/g),
+		].pop();
+		if (!props.length || !last) return undefined;
+		const prop = props[props.length - 1];
+		const shorten = (t: string) => (t.length > 60 ? `${t.slice(0, 57)}…` : t);
+		return `${code(prop)}: ${code(shorten(last[1]))} no longer fits ${code(shorten(last[2]))}`;
+	};
+	const summary = (fs: Finding[]): string => {
+		const worst = fs.filter((f) => f.verdict === fs[0].verdict);
+		// Reasons that name props say what to change; "incompatible in both
+		// directions" on a helper type only says that it changed.
+		const reasonOf = (f: Finding) =>
+			vague.test(f.reason) ? (cause(f.detail) ?? f.reason) : f.reason;
+		const specific = worst.filter(
+			(f) => !/^Incompatible in both/.test(f.reason)
+		);
+		const generic = worst.filter((f) => /^Incompatible in both/.test(f.reason));
+		// A row with only helper types still needs a reason.
+		if (!specific.length && generic[0]) specific.push(generic[0]);
+		// Re-exports and sibling types often share a reason; say it once.
+		const byReason = new Map<string, string[]>();
+		for (const f of specific) {
+			const where =
+				f.entry === group(f.entry)
+					? ''
+					: `${f.entry.slice(group(f.entry).length + 1)} `;
+			const what =
+				f.symbol === '*' || f.symbol === 'default' ? '' : `${code(f.symbol)} `;
+			const label = `${where}${what}`.trim();
+			const reason = reasonOf(f);
+			byReason.set(reason, [...(byReason.get(reason) ?? []), label]);
+		}
+		const parts = [...byReason].map(([reason, labels]) => {
+			const named = [...new Set(labels.filter(Boolean))];
+			return `${named.length ? `${named.join(', ')}: ` : ''}${reason}`;
+		});
+		if (generic.length) {
+			parts.push(
+				`Changed types: ${generic.map((f) => code(f.symbol)).join(', ')}.`
+			);
+		}
+		const low = worst.some((f) => f.lowConfidence)
+			? ' _(types inferred from JS)_'
+			: '';
+		return parts.join(' ') + low;
+	};
+	const icon: Record<Verdict, string> = {
+		breaking: '🔴',
+		'possibly-breaking': '🟠',
+		additive: '🟢',
+	};
+	const table = (verdict: Verdict) => {
+		const picked = [...rows]
+			.map(
+				([key, fs]) =>
+					[
+						key,
+						[...fs].sort((a, b) => RANK[a.verdict] - RANK[b.verdict]),
+					] as const
+			)
+			.filter(([, fs]) => fs[0].verdict === verdict);
+		return [
+			'| | Import path | Change |',
+			'|---|---|---|',
+			...picked.map(
+				([key, fs]) =>
+					`| ${icon[verdict]} | ${code(key)} | ${cell(summary(fs))} |`
+			),
+		];
+	};
+	const countRows = (v: Verdict) =>
+		[...rows.values()].filter(
+			(fs) => Math.min(...fs.map((f) => RANK[f.verdict])) === RANK[v]
+		).length;
+	const counts = (['breaking', 'possibly-breaking', 'additive'] as Verdict[])
+		.filter((v) => countRows(v))
+		.map((v) => `${countRows(v)} ${icon[v]}`)
+		.join(' · ');
+	out.push(
+		`${rows.size} import path${rows.size === 1 ? '' : 's'} changed: ${counts} (by the worst change in each; ${findings.length} exports in all).`,
+		''
+	);
+	if (breaking.length) {
+		out.push(
+			`**🔴 Breaking (${countRows('breaking')}):** each needs a \`BREAKING CHANGE:\` footer saying how consumers migrate.`,
+			'',
+			...table('breaking'),
+			''
+		);
+	}
+	if (countRows('possibly-breaking')) {
+		out.push(
+			`**🟠 Needs review (${countRows('possibly-breaking')}):** breaks only code that builds or reads values of these exported types. Say whether that matters.`,
+			'',
+			...table('possibly-breaking'),
+			''
+		);
+	}
+	if (countRows('additive')) {
+		out.push(
+			`<details><summary>🟢 Additive (${countRows('additive')}): no consumer action</summary>`,
+			'',
+			...table('additive'),
+			'',
+			'</details>',
+			''
+		);
+	}
+	out.push(
+		`<details><summary>Every export (${findings.length})</summary>`,
+		'',
+		...findings.map(
+			(f) =>
+				`- ${icon[f.verdict]} ${code(f.entry)}${f.symbol === '*' ? '' : ` ${code(f.symbol)}`}: ${f.reason}`
+		),
+		'',
+		'</details>',
+		''
+	);
+	if (uncompared) {
+		out.push(`${uncompared} export(s) could not be compared.`, '');
+	}
+	out.push(
+		'_Types only. New defaults that change rendered output and removed styling hooks need review by hand._'
+	);
+	return out.join('\n');
+};
+
 /** Create or update the single PR comment carrying MARKER. */
 const comment = (body: string, hasFindings: boolean): void => {
 	const repo = process.env.GITHUB_REPOSITORY;
@@ -860,16 +1055,17 @@ const main = (): void => {
 
 	const { findings, uncompared } = result;
 	locate(findings, root);
-	if (
-		baseRef &&
-		findings.some((f) => f.verdict === 'breaking') &&
-		!markedBreaking(baseRef, headRef)
-	) {
+	const marked = baseRef ? markedBreaking(baseRef, headRef) : undefined;
+	if (marked === false && findings.some((f) => f.verdict === 'breaking')) {
 		warnings.push(
 			'Breaking type change without `!` or a `BREAKING CHANGE:` footer in the commits or PR title.'
 		);
 	}
 
+	if (args.includes('--pr')) {
+		console.log(prSection(findings, uncompared, baseLabel, marked));
+		return;
+	}
 	if (json) {
 		console.log(JSON.stringify({ findings, warnings, uncompared }, null, 2));
 		return;
