@@ -22,3 +22,25 @@ export const badAutocomplete = (
 	<Textarea value="" onChange={() => {}} aria-autocomplete="maybe" />
 );
 /* eslint-enable jsx-a11y/aria-proptypes */
+
+export const nativeAttributes = (
+	<Textarea
+		value=""
+		onChange={() => {}}
+		rows={5}
+		cols={40}
+		readOnly
+		autoComplete="off"
+	/>
+);
+
+// @ts-expect-error `value` is required
+export const missingValue = <Textarea onChange={() => {}} />;
+
+// @ts-expect-error `onChange` is required
+export const missingOnChange = <Textarea value="" />;
+
+export const removedDefaultValue = (
+	// @ts-expect-error `defaultValue` was removed in v11
+	<Textarea defaultValue="x" onChange={() => {}} value="" />
+);

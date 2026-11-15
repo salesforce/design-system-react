@@ -6,11 +6,6 @@ import {
 	useEffect,
 	forwardRef,
 	type ChangeEvent,
-	type FocusEvent,
-	type KeyboardEvent,
-	type MouseEvent,
-	type FormEvent,
-	type CSSProperties,
 	type ReactNode,
 	type TextareaHTMLAttributes,
 } from 'react';
@@ -55,41 +50,32 @@ interface TextareaRemovedProps {
 }
 
 /**
- * Props for the Textarea component
+ * Props for the Textarea component.
+ *
+ * Other `<textarea>` attributes (`rows`, `cols`, `autoComplete`, `readOnly`,
+ * …) pass through to the element via `TextareaHTMLAttributes` — the same
+ * approach as `Button` / `ButtonHTMLAttributes`, and equivalent to
+ * `React.ComponentProps<'textarea'>` without `ref` (ref is via `forwardRef`).
  */
-export interface TextareaProps extends Pick<
+export interface TextareaProps extends Omit<
 	TextareaHTMLAttributes<HTMLTextAreaElement>,
-	| 'aria-activedescendant'
-	| 'aria-autocomplete'
-	| 'aria-controls'
-	| 'aria-describedby'
-	| 'aria-expanded'
-	| 'aria-haspopup'
-	| 'aria-labelledby'
-	| 'aria-owns'
-	| 'aria-required'
+	'children' | 'className' | 'defaultValue' | 'onChange' | 'value'
 > {
 	/**
 	 * **Assistive text for accessibility**
 	 * * `label`: Visually hidden label. Use instead of `labels.label`.
 	 */
 	assistiveText?: TextareaAssistiveText;
-	/** Autofocus on load (poor UX) */
-	autoFocus?: boolean;
 	/** Elements rendered after the textarea, inside the form element */
 	children?: ReactNode;
 	/** CSS class for textarea element */
 	className?: string | string[] | Record<string, boolean>;
 	/** CSS class for container */
 	classNameContainer?: string | string[] | Record<string, boolean>;
-	/** Disable the textarea */
-	disabled?: boolean;
 	/** @deprecated Use `labels.error` and `hasError` instead. */
 	errorText?: string;
 	/** Puts the textarea in an error state and shows `labels.error` */
 	hasError?: boolean;
-	/** Unique ID */
-	id?: string;
 	/** @deprecated Use `labels.label` instead. */
 	label?: string;
 	/**
@@ -98,12 +84,6 @@ export interface TextareaProps extends Pick<
 	 * * `label`: Visible label. Use `assistiveText.label` for a visually hidden label.
 	 */
 	labels?: TextareaLabels;
-	/** Maximum character count */
-	maxLength?: number;
-	/** Form parameter name */
-	name?: string;
-	/** Blur event handler */
-	onBlur?: (event: FocusEvent<HTMLTextAreaElement>) => void;
 	/**
 	 * Called when the text changes. Textarea is controlled: update `value` from
 	 * `data.value`, or the text won't change.
@@ -112,36 +92,10 @@ export interface TextareaProps extends Pick<
 		event: ChangeEvent<HTMLTextAreaElement>,
 		data: TextareaChangeData
 	) => void;
-	/** Click event handler */
-	onClick?: (event: MouseEvent<HTMLTextAreaElement>) => void;
-	/** Focus event handler */
-	onFocus?: (event: FocusEvent<HTMLTextAreaElement>) => void;
-	/** Input event handler */
-	onInput?: (event: FormEvent<HTMLTextAreaElement>) => void;
-	/** Invalid event handler */
-	onInvalid?: (event: FormEvent<HTMLTextAreaElement>) => void;
-	/** Key down event handler */
-	onKeyDown?: (event: KeyboardEvent<HTMLTextAreaElement>) => void;
-	/** Key press event handler */
-	onKeyPress?: (event: KeyboardEvent<HTMLTextAreaElement>) => void;
-	/** Key up event handler */
-	onKeyUp?: (event: KeyboardEvent<HTMLTextAreaElement>) => void;
-	/** Select event handler */
-	onSelect?: (event: FormEvent<HTMLTextAreaElement>) => void;
-	/** Submit event handler */
-	onSubmit?: (event: FormEvent<HTMLTextAreaElement>) => void;
-	/** Placeholder text */
-	placeholder?: string;
-	/** Mark as required field */
-	required?: boolean;
-	/** ARIA role */
-	role?: string;
 	/** The text in the textarea. Required: Textarea is controlled. */
 	value: string;
 	/** Text wrapping mode */
 	wrap?: 'soft' | 'hard';
-	/** Custom styles */
-	style?: CSSProperties;
 }
 
 /**
@@ -151,36 +105,19 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 	(props, ref) => {
 		const {
 			assistiveText,
-			autoFocus,
 			children,
 			className,
 			classNameContainer,
-			disabled,
 			errorText,
 			hasError: hasErrorProp,
 			id: propId,
 			label: labelProp,
 			labels,
 			maxLength,
-			name,
-			onBlur,
 			onChange,
-			onClick,
-			onFocus,
-			onInput,
-			onInvalid,
-			onKeyDown,
-			onKeyPress,
-			onKeyUp,
-			onSelect,
-			onSubmit,
-			placeholder,
 			required,
-			role,
-			value,
 			// Removed in v11: destructured so it doesn't reach the DOM. check-props warns.
 			defaultValue: _defaultValue,
-			wrap,
 			...restProps
 		} = props as TextareaProps & TextareaRemovedProps;
 
@@ -239,9 +176,9 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 				)}
 				<div className="slds-form-element__control">
 					<textarea
+						{...restProps}
+						{...ariaProps}
 						className={classNames('slds-textarea', className as string)}
-						autoFocus={autoFocus}
-						disabled={disabled}
 						id={getId()}
 						maxLength={
 							// Strings are still accepted at runtime for untyped callers; check-props warns.
@@ -249,34 +186,14 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 								? parseInt(maxLength, 10)
 								: maxLength
 						}
-						name={name}
-						onBlur={onBlur}
 						onChange={(event) => {
 							onChange?.(event, { value: event.target.value });
 						}}
-						onClick={onClick}
-						onFocus={onFocus}
-						onInput={onInput}
-						onInvalid={onInvalid}
-						onKeyDown={onKeyDown}
-						onKeyPress={onKeyPress}
-						onKeyUp={onKeyUp}
-						onSelect={onSelect}
-						onSubmit={onSubmit}
-						placeholder={placeholder}
 						ref={ref}
-						role={role}
 						required={required}
-						wrap={wrap}
-						value={value}
 						aria-describedby={
-							errorMessage
-								? getErrorId()
-								: ((ariaProps as Record<string, unknown>)[
-										'aria-describedby'
-									] as string | undefined)
+							errorMessage ? getErrorId() : restProps['aria-describedby']
 						}
-						{...ariaProps}
 					/>
 				</div>
 				{errorMessage && (
