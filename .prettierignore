@@ -1,7 +1,6 @@
 # machine generated files
 package.json
 package-lock.json
-components/component-docs.json
 icons
 coverage
 storybook

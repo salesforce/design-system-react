@@ -71,7 +71,9 @@ describe('generate-llm-docs', () => {
 	it('writes llms.txt with install and import lines, and llms-full.txt with every file', () => {
 		const index = read('llms.txt');
 		expect(index).toMatch(/^# @salesforce\/design-system-react /);
-		expect(index).toContain('npm install @salesforce/design-system-react@alpha');
+		expect(index).toContain(
+			'npm install @salesforce/design-system-react@alpha'
+		);
 		expect(index).toContain(
 			"import Button from '@salesforce/design-system-react/components/button';"
 		);
@@ -80,6 +82,13 @@ describe('generate-llm-docs', () => {
 		for (const file of readdirSync(join(out, 'components'))) {
 			expect(full).toContain(read(`components/${file}`));
 		}
+	});
+
+	it('takes a description the .d.ts drops from the component source JSDoc', () => {
+		// Breadcrumb assigns `displayName`, so tsc emits it without its JSDoc.
+		expect(read('components/breadcrumb.md').split('\n')[2]).toBe(
+			'Use breadcrumbs to note the path of a record and help the user navigate back to the parent.'
+		);
 	});
 
 	it('marks required props', () => {
