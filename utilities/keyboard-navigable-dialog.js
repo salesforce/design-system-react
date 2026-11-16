@@ -37,12 +37,12 @@ const KeyboardNavigableDialog = ({
 	event,
 	isOpen,
 	handleClick,
-	keyCode,
+	key,
 	eventTarget,
 	trigger,
 	toggleOpen,
 }) => {
-	switch (keyCode) {
+	switch (key) {
 		case KEYS.ESCAPE:
 			if (isOpen) {
 				toggleOpen();

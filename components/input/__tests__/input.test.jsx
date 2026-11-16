@@ -352,8 +352,8 @@ describe('SLDSInput', () => {
 
 			// Test increment with keyboard
 			onChangeData = {};
-			fireEvent.keyDown(increment, { key: 'Enter', keyCode: 13, which: 13 });
-			fireEvent.keyUp(increment, { key: 'Enter', keyCode: 13, which: 13 });
+			fireEvent.keyDown(increment, { key: 'Enter' });
+			fireEvent.keyUp(increment, { key: 'Enter' });
 			expect(onChangeData.number).toBe(2);
 			expect(onChangeData.value).toBe('2');
 
@@ -365,8 +365,8 @@ describe('SLDSInput', () => {
 
 			// Test decrement with keyboard
 			onChangeData = {};
-			fireEvent.keyDown(decrement, { key: 'Enter', keyCode: 13, which: 13 });
-			fireEvent.keyUp(decrement, { key: 'Enter', keyCode: 13, which: 13 });
+			fireEvent.keyDown(decrement, { key: 'Enter' });
+			fireEvent.keyUp(decrement, { key: 'Enter' });
 			expect(onChangeData.number).toBe(0);
 			expect(onChangeData.value).toBe('0');
 		});

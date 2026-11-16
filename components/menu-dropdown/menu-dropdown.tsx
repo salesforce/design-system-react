@@ -1041,7 +1041,6 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 		({
 			event,
 			isOpen: menuIsOpen = true,
-			keyCode,
 			onFocus: focusCallback = handleKeyboardFocus,
 			onSelect: selectCallback,
 			target,
@@ -1049,7 +1048,6 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 		}: {
 			event: KeyboardEvent;
 			isOpen?: boolean;
-			keyCode: number;
 			onFocus?: (index: number | undefined) => void;
 			onSelect: (index: number) => void;
 			target: EventTarget | null;
@@ -1060,8 +1058,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 				currentFocusedIndex: focusedIndex,
 				event,
 				isOpen: menuIsOpen,
-				key: (event as unknown as { key?: string }).key,
-				keyCode,
+				key: event.key,
 				navigableItems,
 				onFocus: focusCallback,
 				onSelect: selectCallback,
@@ -1084,21 +1081,20 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 	// Handle key down
 	const handleKeyDown = useCallback(
 		(event: KeyboardEvent) => {
-			if (event.keyCode) {
-				if (event.keyCode === KEYS.TAB) {
+			if (event.key) {
+				if (event.key === KEYS.TAB) {
 					handleCancel(event);
 				} else if (
-					event.keyCode === KEYS.ENTER ||
-					event.keyCode === KEYS.SPACE ||
-					event.keyCode === KEYS.DOWN ||
-					event.keyCode === KEYS.UP ||
-					event.keyCode === KEYS.ESCAPE
+					event.key === KEYS.ENTER ||
+					event.key === KEYS.SPACE ||
+					event.key === KEYS.DOWN ||
+					event.key === KEYS.UP ||
+					event.key === KEYS.ESCAPE
 				) {
 					EventUtil.trap(event);
 					handleKeyboardNavigate({
 						event,
 						isOpen: getIsOpen(),
-						keyCode: event.keyCode,
 						onSelect: (index: number) => handleSelect(index, event),
 						target: event.target,
 						toggleOpen: () => toggleOpen(event),

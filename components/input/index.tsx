@@ -28,6 +28,7 @@ import type { InputIconProps } from '../icon/input-icon';
 
 import checkProps from './check-props';
 import { INPUT } from '../../utilities/constants';
+import KEYS from '../../utilities/key-code';
 import componentDoc from './component.json';
 
 const COUNTER = 'counter';
@@ -576,7 +577,7 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
 					iconCategory="utility"
 					iconName={direction === DECREMENT ? 'ban' : 'new'}
 					onKeyDown={(event: KeyboardEvent) => {
-						if (event.keyCode === 13) {
+						if (event.key === KEYS.ENTER) {
 							performStep(direction, event);
 						}
 					}}

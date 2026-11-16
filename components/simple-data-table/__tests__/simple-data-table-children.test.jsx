@@ -55,7 +55,6 @@ describe('SimpleDataTable children', () => {
 		for (let i = 0; i < 5; i += 1) {
 			fireEvent.keyDown(container.querySelector('tbody td[tabindex="0"]'), {
 				key: 'ArrowRight',
-				keyCode: 39,
 			});
 		}
 		const cells = firstRowCells();

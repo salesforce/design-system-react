@@ -914,7 +914,6 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 			const newActiveOptionIndex = keyLetterMenuItemSelect({
 				key: event.key,
 				keyBuffer: menuKeyBuffer.current,
-				keyCode: event.keyCode,
 				options: opts,
 			});
 
