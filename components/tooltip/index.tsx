@@ -536,7 +536,7 @@ const Tooltip = ({
 	const saveTriggerRef = useCallback(
 		(component: HTMLDivElement | null) => {
 			if (component && triggerRef.current !== component) {
-				(triggerRef as React.MutableRefObject<HTMLDivElement | null>).current =
+				(triggerRef as React.RefObject<HTMLDivElement | null>).current =
 					component;
 				// Dialog/Popper.js cannot place the popover until
 				// the trigger/target DOM node is mounted.

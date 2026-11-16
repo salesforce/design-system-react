@@ -681,7 +681,7 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>((props, ref) => {
 	// Container ref callback
 	const setContainerRef = useCallback(
 		(component: HTMLDivElement | null) => {
-			(triggerRef as React.MutableRefObject<HTMLDivElement | null>).current =
+			(triggerRef as React.RefObject<HTMLDivElement | null>).current =
 				component;
 			if (typeof ref === 'function') {
 				ref(component);
@@ -697,8 +697,7 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>((props, ref) => {
 
 	// Dialog ref callback
 	const setMenuRef = useCallback((component: HTMLElement | null) => {
-		(dialogRef as React.MutableRefObject<HTMLElement | null>).current =
-			component;
+		(dialogRef as React.RefObject<HTMLElement | null>).current = component;
 	}, []);
 
 	// Cleanup on unmount
