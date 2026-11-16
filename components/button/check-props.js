@@ -53,6 +53,13 @@ if (process.env.NODE_ENV !== 'production') {
 			undefined,
 			`Focus the button through \`ref\` (or \`buttonRef\`) instead. ${createDocUrl()}`
 		);
+		deprecatedProperty(
+			COMPONENT,
+			props.onKeyPress,
+			'onKeyPress',
+			'onKeyDown',
+			`\`keypress\` is a deprecated DOM event; read \`event.key\` instead. ${createDocUrl('onKeyDown')}`
+		);
 		sunsetProperty(
 			COMPONENT,
 			props.tooltip,

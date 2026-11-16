@@ -20,6 +20,14 @@ if (process.env.NODE_ENV !== 'production') {
 			createDocUrl('isActive')
 		);
 
+		deprecatedProperty(
+			COMPONENT,
+			props.onKeyPress,
+			'onKeyPress',
+			'onKeyDown',
+			`\`keypress\` is a deprecated DOM event; read \`event.key\` instead. ${createDocUrl('onKeyDown')}`
+		);
+
 		requiredProperty(
 			COMPONENT,
 			props.onClick !== undefined || !!props.disabled,
