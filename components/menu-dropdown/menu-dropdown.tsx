@@ -883,7 +883,10 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 	useEffect(() => {
 		if (isOpen) {
 			document.addEventListener('mousedown', handleClickOutside);
-			document.addEventListener('touchstart', handleClickOutside);
+			// Passive: the handler never calls preventDefault.
+			document.addEventListener('touchstart', handleClickOutside, {
+				passive: true,
+			});
 		}
 		return () => {
 			document.removeEventListener('mousedown', handleClickOutside);
