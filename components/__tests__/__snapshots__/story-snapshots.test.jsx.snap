@@ -3587,6 +3587,59 @@ exports[`Story HTML snapshots > Files > Default 1`] = `
 </div>"
 `;
 
+exports[`Story HTML snapshots > Files > NoTitleWithActions 1`] = `
+"<link rel="preload" as="image" href="/assets/images/placeholder-img@16x9.jpg" />
+<div class="slds-p-around_medium">
+  <ul class="slds-grid slds-grid_pull-padded" id="_R_0_">
+    <li class="slds-p-horizontal_xx-small slds-size_1-of-3 slds-medium-size_1-of-4">
+      <div id="file-2" class="slds-file slds-file_card">
+        <figure><a href="#" class="slds-file__crop slds-file__crop_4-by-3"><span class="slds-assistive-text">Preview:</span><img alt="Proposal.pdf" src="/assets/images/placeholder-img@16x9.jpg" /></a></figure>
+        <div class="slds-file__title slds-file__title_scrim">
+          <div class="slds-file__actions-menu">
+            <div class="slds-button-group" role="group"><button class="slds-button slds-button_icon slds-button_icon-inverse" title="Download" type="button"><span><svg class="slds-icon slds-icon_xx-small" aria-hidden="true">
+                    <use href="/assets/icons/utility-sprite/svg/symbols.svg#download"></use>
+                  </svg><span class="slds-assistive-text">download</span></span></button>
+              <div class="slds-dropdown-trigger slds-dropdown-trigger_click slds-button_last" id="file-2-more-actions"><button class="slds-button slds-button_icon slds-button_icon-inverse slds-button_icon-bare ignore-click-file-2-more-actions" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><svg class="slds-button__icon" aria-hidden="true">
+                    <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                  </svg><span class="slds-assistive-text">more actions</span></button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>"
+`;
+
+exports[`Story HTML snapshots > Files > WithActions 1`] = `
+"<link rel="preload" as="image" href="/assets/images/placeholder-img@16x9.jpg" />
+<div class="slds-p-around_medium">
+  <ul class="slds-grid slds-grid_pull-padded" id="_R_0_">
+    <li class="slds-p-horizontal_xx-small slds-size_1-of-3 slds-medium-size_1-of-4">
+      <div id="file-1" class="slds-file slds-file_card slds-has-title">
+        <figure><a href="#" class="slds-file__crop slds-file__crop_4-by-3"><span class="slds-assistive-text">Preview:</span><img alt="Proposal.pdf" src="/assets/images/placeholder-img@16x9.jpg" /></a>
+          <figcaption class="slds-file__title slds-file__title_card">
+            <div class="slds-media__figure slds-line-height_reset"><span class="slds-icon_container"><svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                  <use href="/assets/icons/doctype-sprite/svg/symbols.svg#pdf"></use>
+                </svg></span></div>
+            <div class="slds-media__body"><span class="slds-file__text slds-truncate" title="Proposal.pdf">Proposal.pdf</span></div>
+          </figcaption>
+        </figure>
+        <div class="slds-file__actions-menu">
+          <div class="slds-button-group" role="group"><button class="slds-button slds-button_icon slds-button_icon-inverse" title="Download" type="button"><span><svg class="slds-icon slds-icon_xx-small slds-icon-text-default" aria-hidden="true">
+                  <use href="/assets/icons/utility-sprite/svg/symbols.svg#download"></use>
+                </svg><span class="slds-assistive-text">download</span></span></button>
+            <div class="slds-dropdown-trigger slds-dropdown-trigger_click slds-button_last" id="file-1-more-actions"><button class="slds-button slds-button_icon slds-button_icon-bare ignore-click-file-1-more-actions" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><svg class="slds-button__icon" aria-hidden="true">
+                  <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                </svg><span class="slds-assistive-text">more actions</span></button></div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>"
+`;
+
 exports[`Story HTML snapshots > Filter > AlignRight 1`] = `
 "<div class="slds-p-around_medium">
   <div class="slds-grid slds-m-around_xx-large">
