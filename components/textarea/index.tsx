@@ -122,7 +122,10 @@ export interface TextareaProps extends Pick<
 	onInvalid?: (event: FormEvent<HTMLTextAreaElement>) => void;
 	/** Key down event handler */
 	onKeyDown?: (event: KeyboardEvent<HTMLTextAreaElement>) => void;
-	/** Key press event handler */
+	/**
+	 * @deprecated `keypress` is a deprecated DOM event. Use `onKeyDown` and read
+	 * `event.key` instead. Still works, and warns.
+	 */
 	onKeyPress?: (event: KeyboardEvent<HTMLTextAreaElement>) => void;
 	/** Key up event handler */
 	onKeyUp?: (event: KeyboardEvent<HTMLTextAreaElement>) => void;
@@ -207,10 +210,10 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 		useEffect(() => {
 			checkProps(
 				TEXTAREA,
-				{ assistiveText, errorText, label: labelProp, labels },
+				{ assistiveText, errorText, label: labelProp, labels, onKeyPress },
 				componentDoc
 			);
-		}, [assistiveText, errorText, labelProp, labels]);
+		}, [assistiveText, errorText, labelProp, labels, onKeyPress]);
 
 		return (
 			<div
