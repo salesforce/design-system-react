@@ -358,7 +358,7 @@ const ColorUtils = {
 
 	getHexFromRgb({ red, green, blue }) {
 		function getHex(color) {
-			return `0${Math.round(color).toString(16)}`.substr(-2);
+			return `0${Math.round(color).toString(16)}`.slice(-2);
 		}
 		return `#${getHex(red)}${getHex(green)}${getHex(blue)}`;
 	},
