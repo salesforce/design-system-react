@@ -250,6 +250,8 @@ export default tseslint.config(
 			'**/__tests__/**/*.{ts,tsx,js,jsx}',
 			'**/*.test.{ts,tsx,js,jsx}',
 			'**/*.spec.{ts,tsx,js,jsx}',
+			'tests/perf/**/*.{ts,tsx}',
+			'components/**/__perf__/**/*.{ts,tsx,js,jsx}',
 			'vitest.setup.ts',
 		],
 		languageOptions: {

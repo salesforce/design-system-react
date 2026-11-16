@@ -28,7 +28,55 @@ jobs:
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
 
-      # Blocking gates (typecheck, test, build, lint) — these pass today and
-      # must stay green. Same script contributors run locally.
-      - name: Typecheck, test, build, lint
+      # Blocking gates (typecheck, test, build, perf budgets, lint) — these
+      # pass today and must stay green. Same script contributors run locally.
+      - name: Typecheck, test, build, perf, lint
         run: npm run test:ci
+
+  # Report-only timings (tests/perf/*.bench.tsx). Shared runners are noisy,
+  # so this job never blocks: it compares with master's latest bench, warns
+  # on >20 % regressions and uploads the report. Budgets are gated in
+  # `verify` (test:perf).
+  perf-bench:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    permissions:
+      contents: read
+      actions: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+          cache: 'npm'
+      - name: Install dependencies
+        run: npm ci
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Build
+        run: npm run build
+      - name: Perf results
+        run: |
+          npx vitest run --project 'perf*' --reporter=json --outputFile=.tmp-perf/results.json || true
+      - name: Benchmarks
+        run: npm run perf:bench
+      - name: Download master's benchmark
+        if: github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          run_id=$(gh run list --workflow ci.yml --branch master --status success --limit 1 --json databaseId --jq '.[0].databaseId')
+          if [ -n "$run_id" ]; then
+            gh run download "$run_id" --name perf-bench --dir .tmp-perf/baseline || echo "No baseline artifact on run $run_id"
+          fi
+      - name: Report
+        run: |
+          npx tsx scripts/perf-report.ts --results .tmp-perf/results.json --bench .tmp-perf/bench.json --baseline-bench .tmp-perf/baseline/bench.json --out .tmp-perf/report.md
+          cat .tmp-perf/report.md >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: perf-bench
+          path: |
+            .tmp-perf/bench.json
+            .tmp-perf/report.md
+          include-hidden-files: true

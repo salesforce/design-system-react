@@ -53,6 +53,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `ColorPicker` `events.onOpen`, `events.onClose`, `events.onRequestOpen` and `events.onRequestClose`, which were typed but never called. `onRequestClose` data `trigger` is typed `ColorPickerRequestCloseTrigger`, exported with `ColorPickerRequestCloseData`
 - `ColorPicker` `validateColor` and `validateWorkingColor` props (see Deprecated)
 - `useLatestRef` hook in `utilities/hooks/use-latest-ref`, for reading the latest consumer callbacks from stable handlers
+- Performance checks (maintainers): `npm run test:perf` runs a real-browser and a bundle suite against budgets in `tests/perf/budgets.json`. They count, rather than time, mount commits, renders of list items, context value changes, leftover listeners, timers and observers, closed overlay DOM, retained mounts, layout reads, console errors, SSR bytes, and each entry's gzip size, components and dependencies, so a regression fails CI. `npm run perf:bench` times mount, update, filtering, sorting and expanding (report-only), and `npm run perf:report` writes a Markdown summary. See `tests/perf/README.md`
 
 ### Changed
 
@@ -129,6 +130,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - `Carousel` `itemsPerPanel` must be a positive integer (other values fall back to 1 and warn); `DatePicker` `onCalendarFocus` direction is `'next' | 'previous'`
 - `MenuDropdown` with `tooltipMenuItem`, `Tooltip` with `hasAnchoredNubbin`, and `File` with `moreActionsDropdown` no longer render a `<style>` element, so they work under a Content-Security-Policy without `'unsafe-inline'` in `style-src`. They use SLDS markup instead, and need no extra stylesheet: a tooltip menu item's link is now the `li`'s direct child (the tooltip renders next to it and opens on hover and focus), the anchored tooltip doesn't add the dialog's `slds-nubbin_*` class, and the file more-actions dropdown adds `slds-button_last`. The anchored nubbin's color now follows the SLDS 2 tooltip background hook, falling back to the old `#16325c`
 - `ColorPicker`: under SLDS 2, the HSV picker's border and shadow and the swatch borders and no-color pattern read SLDS 2 hooks (`--slds-g-color-border-2`, `--slds-g-color-neutral-base-50`, `--slds-g-color-on-surface-3`, `--slds-g-color-surface-1`, `--slds-g-color-error-1`), so they follow the theme. The previous values are the `var()` fallbacks, so SLDS 1 looks the same. Swatch colors are unchanged
+- `npm run test:ci` (maintainers) also runs `npm run test:perf` after the build, and CI reports the timing benchmarks against the latest `master` run on every PR without failing it
 
 ### Deprecated
 
