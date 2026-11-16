@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { action } from 'storybook/actions';
 
 import Tree from '../index';
-import sampleNodesDynamicHashMap from './dynamic-hashmap.tsx';
+import sampleNodesDynamicHashMap from './dynamic-hashmap';
 import DefaultExample from '../__examples__/default';
 
 const meta: Meta<typeof Tree> = {
