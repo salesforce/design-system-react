@@ -22,6 +22,9 @@ import { type ListItemLabelProps } from './item-label';
 // ## Constants
 import { LIST } from '../../../utilities/constants';
 
+// Memoized here rather than in `./item`, whose `ListItem` export is public.
+const MemoListItem = React.memo(ListItem);
+
 type ListOption = { disabled?: boolean; value?: unknown } & Record<
 	string,
 	unknown
@@ -94,6 +97,50 @@ class List extends React.Component<MenuListProps> {
 		selectedIndex: -1,
 	};
 
+	// The `<li>` of each mounted item, by index.
+	itemNodes: Array<HTMLLIElement | undefined> = [];
+
+	itemNodeRefs: Array<(node: HTMLLIElement | null) => void> = [];
+
+	// Stable per index, so memoized items don't re-render for a new ref. An
+	// unmount is reported here; mounted items are reported after every render.
+	getItemNodeRef(index: number) {
+		if (!this.itemNodeRefs[index]) {
+			this.itemNodeRefs[index] = (node) => {
+				if (node) {
+					this.itemNodes[index] = node;
+				} else {
+					delete this.itemNodes[index];
+					this.props.itemRefs?.(null, index);
+				}
+			};
+		}
+		return this.itemNodeRefs[index];
+	}
+
+	// Items used to get a new inline ref on every render, so `itemRefs` heard
+	// from every item after every render; parents rely on that to re-focus
+	// and scroll to the focused item.
+	reportItemNodes() {
+		this.itemNodes.forEach((node, index) => {
+			if (node) {
+				this.props.itemRefs?.(node, index);
+			}
+		});
+	}
+
+	componentDidMount() {
+		this.reportItemNodes();
+	}
+
+	componentDidUpdate() {
+		this.reportItemNodes();
+	}
+
+	handleItemSelect = (index: number, event?: React.MouseEvent) => {
+		this.props.onSelect?.(index, event);
+	};
+
 	render() {
 		let lengthClassName;
 
@@ -118,7 +165,7 @@ class List extends React.Component<MenuListProps> {
 						!!this.props.selectedIndices &&
 						this.props.selectedIndices.indexOf(index) !== -1;
 					return (
-						<ListItem
+						<MemoListItem
 							{...(option as Partial<ListItemProps>)}
 							aria-disabled={option.disabled}
 							// show checkmark
@@ -134,8 +181,8 @@ class List extends React.Component<MenuListProps> {
 							key={`${id}-${option.value}`}
 							labelRenderer={this.props.itemRenderer}
 							renderLabel={this.props.renderItemLabel}
-							onSelect={this.props.onSelect ?? (() => {})}
-							nodeRef={(listItem) => this.props.itemRefs?.(listItem, index)}
+							onSelect={this.handleItemSelect}
+							nodeRef={this.getItemNodeRef(index)}
 							tooltipTemplate={this.props.tooltipMenuItem}
 						/>
 					);
