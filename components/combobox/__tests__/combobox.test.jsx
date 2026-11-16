@@ -1448,6 +1448,41 @@ describe('SLDSCombobox', () => {
 			expect(isOpen(container)).toBe(false);
 		});
 
+		it('closes 200ms after the input blurs', () => {
+			vi.useFakeTimers();
+			try {
+				const onRequestClose = vi.fn();
+				const { container } = renderCombobox({
+					defaultIsOpen: true,
+					events: { onRequestClose },
+				});
+				fireEvent.blur(getNodes(container).input);
+				expect(onRequestClose).not.toHaveBeenCalled();
+				vi.advanceTimersByTime(200);
+				expect(onRequestClose).toHaveBeenCalledTimes(1);
+			} finally {
+				vi.useRealTimers();
+			}
+		});
+
+		it('drops a pending blur close when it unmounts', () => {
+			vi.useFakeTimers();
+			try {
+				const onRequestClose = vi.fn();
+				const { container, unmount } = renderCombobox({
+					defaultIsOpen: true,
+					events: { onRequestClose },
+				});
+				fireEvent.blur(getNodes(container).input);
+				unmount();
+				expect(vi.getTimerCount()).toBe(0);
+				vi.advanceTimersByTime(200);
+				expect(onRequestClose).not.toHaveBeenCalled();
+			} finally {
+				vi.useRealTimers();
+			}
+		});
+
 		it('defaultIsOpen seeds the uncontrolled open state', () => {
 			const { container } = renderCombobox({ defaultIsOpen: true });
 			expect(isOpen(container)).toBe(true);

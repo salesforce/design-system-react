@@ -709,9 +709,21 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 		]
 	);
 
+	// Pending input-blur timers, cleared on unmount so they don't act on (or
+	// keep alive) an unmounted Combobox.
+	const blurTimersRef = useRef(new Set<ReturnType<typeof setTimeout>>());
+	useEffect(() => {
+		const blurTimers = blurTimersRef.current;
+		return () => {
+			blurTimers.forEach(clearTimeout);
+			blurTimers.clear();
+		};
+	}, []);
+
 	const handleInputBlur = useCallback(
 		(event: React.FocusEvent) => {
-			setTimeout(() => {
+			const timer = setTimeout(() => {
+				blurTimersRef.current.delete(timer);
 				const activeElement = documentDefined ? document.activeElement : null;
 				if (
 					activeElement &&
@@ -725,6 +737,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 					requestClose(event);
 				}
 			}, 200);
+			blurTimersRef.current.add(timer);
 
 			if (eventsRef.current.onBlur) {
 				eventsRef.current.onBlur(event);
