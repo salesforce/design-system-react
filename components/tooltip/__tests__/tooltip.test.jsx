@@ -585,7 +585,7 @@ describe('SLDSTooltip', () => {
 
 	describe('HasAnchoredNubbin', () => {
 		it('renders with anchored nubbin when enabled', async () => {
-			const { container } = renderTooltip({
+			renderTooltip({
 				hasAnchoredNubbin: true,
 				align: 'top',
 			});
@@ -600,10 +600,12 @@ describe('SLDSTooltip', () => {
 					document.querySelector('.slds-popover_tooltip')
 				).toBeInTheDocument();
 
-				// NOTE: Anchored nubbin is rendered via inline styles, check for style element
-				const styleElement = container.querySelector('style');
-				expect(styleElement).toBeInTheDocument();
-				expect(styleElement.textContent).toContain('display: none');
+				// The dialog draws no nubbin of its own, so nothing needs hiding
+				// with a <style> element, which a CSP without 'unsafe-inline' blocks.
+				expect(
+					document.querySelector('.slds-popover_tooltip').className
+				).not.toMatch(/slds-nubbin/);
+				expect(document.querySelectorAll('style')).toHaveLength(0);
 			});
 		});
 

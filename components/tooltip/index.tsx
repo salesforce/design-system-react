@@ -580,7 +580,9 @@ const Tooltip = ({
 			width: '0',
 		};
 		const nubbinStyles: CSSProperties = {
-			backgroundColor: '#16325c',
+			// Same chain as the SLDS 2 tooltip body, so the nubbin matches it.
+			backgroundColor:
+				'var(--slds-c-tooltip-color-background, var(--slds-g-color-surface-inverse-1, #16325c))',
 			content: '""',
 			height: '1rem',
 			position: 'absolute',
@@ -620,18 +622,13 @@ const Tooltip = ({
 			}
 		}
 
-		return (
-			<>
-				<style>{`#${getId()}:after, #${getId()}:before {
-	display: none;
-}`}</style>
-				{getIsOpen() ? (
-					<div style={nubbinContainerStyles}>
-						<div style={nubbinStyles} />
-					</div>
-				) : null}
-			</>
-		);
+		// The dialog doesn't draw its own nubbin (`isNubbinHidden`); this one is
+		// drawn with inline styles, which CSP `style-src` doesn't block.
+		return getIsOpen() ? (
+			<div style={nubbinContainerStyles}>
+				<div style={nubbinStyles} />
+			</div>
+		) : null;
 	};
 
 	const getContent = () => {
@@ -754,6 +751,7 @@ const Tooltip = ({
 			<Dialog
 				closeOnTabKey
 				hasNubbin
+				isNubbinHidden={hasAnchoredNubbin}
 				contentsClassName={classNames(
 					'slds-popover',
 					'slds-popover_tooltip',
