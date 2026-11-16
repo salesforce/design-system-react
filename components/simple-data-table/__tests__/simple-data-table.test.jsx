@@ -1249,14 +1249,12 @@ describe('SimpleDataTable', () => {
 			// ArrowRight moves the active cell one column to the right...
 			fireEvent.keyDown(container.querySelector('tbody td[tabindex="0"]'), {
 				key: 'ArrowRight',
-				keyCode: 39,
 			});
 			expect(cellTabIndexes().indexOf('0')).toBe(startIndex + 1);
 
 			// ...and ArrowLeft moves it back.
 			fireEvent.keyDown(container.querySelector('tbody td[tabindex="0"]'), {
 				key: 'ArrowLeft',
-				keyCode: 37,
 			});
 			expect(cellTabIndexes().indexOf('0')).toBe(startIndex);
 		});
@@ -1292,7 +1290,6 @@ describe('SimpleDataTable', () => {
 			// Enter switches to actionable mode: interactive controls become tabbable.
 			fireEvent.keyDown(container.querySelector('tbody td[tabindex="0"]'), {
 				key: 'Enter',
-				keyCode: 13,
 			});
 			expect(actionTabIndexes().some((t) => t === '0')).toBe(true);
 
@@ -1300,7 +1297,6 @@ describe('SimpleDataTable', () => {
 			// interactive controls go back to tabindex="-1".
 			fireEvent.keyDown(container.querySelector('[tabindex="0"]'), {
 				key: 'Escape',
-				keyCode: 27,
 			});
 			expect(
 				container.querySelectorAll('tbody td[tabindex="0"]').length
@@ -1337,7 +1333,7 @@ describe('SimpleDataTable', () => {
 			// The primary column renders as a row header
 			const cell = container.querySelector('tbody th[tabindex="0"]');
 			fireEvent.focus(cell);
-			fireEvent.keyDown(cell, { key: 'Enter', keyCode: 13 });
+			fireEvent.keyDown(cell, { key: 'Enter' });
 
 			// Button, Checkbox and the internal link get no `requestFocus` props;
 			// the wrapper focuses them through `ref`.

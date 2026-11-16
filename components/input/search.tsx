@@ -46,7 +46,7 @@ const handleKeyDown = (
 	event: KeyboardEvent<HTMLInputElement>,
 	onSearch?: (event: KeyboardEvent<HTMLInputElement> | React.MouseEvent) => void
 ) => {
-	if (event.keyCode === KEYS.ENTER && onSearch) {
+	if (event.key === KEYS.ENTER && onSearch && !EventUtil.isComposing(event)) {
 		EventUtil.trapImmediate(event);
 		onSearch(event);
 	}

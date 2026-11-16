@@ -38,6 +38,14 @@ const EventUtil = {
 			}
 		};
 	},
+
+	// Keys pressed while an IME composes text belong to the IME: the Enter that
+	// commits a composition must not submit. Safari ends the composition before
+	// that keydown, so `isComposing` is false there and only `keyCode` 229 shows it.
+	isComposing: (event) => {
+		const nativeEvent = event.nativeEvent ?? event;
+		return nativeEvent.isComposing || nativeEvent.keyCode === 229;
+	},
 };
 
 export default EventUtil;

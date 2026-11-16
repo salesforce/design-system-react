@@ -332,7 +332,7 @@ class Dialog extends React.Component {
 	};
 
 	handleKeyDown = (event) => {
-		if (event.keyCode === KEYS.TAB) {
+		if (event.key === KEYS.TAB) {
 			if (this.props.closeOnTabKey) {
 				EventUtil.trap(event);
 				this.handleClose(event);

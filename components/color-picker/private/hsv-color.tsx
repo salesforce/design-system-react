@@ -88,7 +88,7 @@ const HsvColor: React.FC<HsvColorProps> = ({
 
 	const handleKeyDown = useCallback(
 		(event: React.KeyboardEvent) => {
-			const keyDownCallbacks: Record<number, (multiplier: number) => void> = {
+			const keyDownCallbacks: Record<string, (multiplier: number) => void> = {
 				[KEYS.LEFT]: (multiplier) => {
 					onSaturationNavigate(event, { delta: multiplier * -1 });
 				},
@@ -103,9 +103,9 @@ const HsvColor: React.FC<HsvColorProps> = ({
 				},
 			};
 
-			if (keyDownCallbacks[event.keyCode]) {
+			if (keyDownCallbacks[event.key]) {
 				event.preventDefault();
-				keyDownCallbacks[event.keyCode](event.shiftKey ? 10 : 1);
+				keyDownCallbacks[event.key](event.shiftKey ? 10 : 1);
 			}
 		},
 		[onSaturationNavigate, onValueNavigate]

@@ -413,13 +413,13 @@ const Radio = (props: RadioProps): React.ReactElement => {
 						handleChange(event as unknown as ChangeEvent<HTMLInputElement>);
 					}
 				}}
-				onKeyPress={(event) => {
-					const { charCode } = event;
-					if (charCode === KEYS.SPACE && checked && deselectable) {
+				onKeyDown={(event) => {
+					const { key } = event;
+					if (key === KEYS.SPACE && checked && deselectable) {
 						handleChange(event, true);
 					} else if (
-						(charCode === KEYS.ENTER && checked && deselectable) ||
-						!checked
+						(key === KEYS.ENTER && checked && deselectable) ||
+						(!checked && (key === KEYS.SPACE || key === KEYS.ENTER))
 					) {
 						handleChange(event);
 					}
