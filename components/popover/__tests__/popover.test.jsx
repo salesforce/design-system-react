@@ -286,8 +286,6 @@ describe('SLDSPopover', () => {
 				const popover = container.querySelector(`#${defaultIds.popover}`);
 				fireEvent.keyDown(popover, {
 					key: 'Escape',
-					keyCode: 27,
-					which: 27,
 				});
 
 				// Wait for popover to close
@@ -322,8 +320,6 @@ describe('SLDSPopover', () => {
 				const popover = container.querySelector(`#${defaultIds.popover}`);
 				fireEvent.keyDown(popover, {
 					key: 'Escape',
-					keyCode: 27,
-					which: 27,
 				});
 
 				// NOTE: Cannot directly assert on stopPropagation calls from synthetic events,
@@ -387,8 +383,6 @@ describe('SLDSPopover', () => {
 			await openPopover(container);
 			fireEvent.keyDown(container.querySelector(`#${defaultIds.popover}`), {
 				key: 'Escape',
-				keyCode: 27,
-				which: 27,
 			});
 
 			expect(onRequestClose).toHaveBeenCalledTimes(1);

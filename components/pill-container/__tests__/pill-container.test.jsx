@@ -187,17 +187,17 @@ describe('SLDSPillContainer', () => {
 			// a real browser does. We test keyboard event handling and removal callbacks.
 
 			// Test Delete key triggers removal
-			fireEvent.keyDown(pills[0], { key: 'Delete', keyCode: 46, which: 46 });
+			fireEvent.keyDown(pills[0], { key: 'Delete' });
 			expect(requestRemoveData[0].label).toBe(options[0].label);
 
 			// Test Backspace key triggers removal
-			fireEvent.keyDown(pills[1], { key: 'Backspace', keyCode: 8, which: 8 });
+			fireEvent.keyDown(pills[1], { key: 'Backspace' });
 			expect(requestRemoveData[1].label).toBe(options[1].label);
 
 			// Test that arrow keys don't crash (handlers exist)
 			// In real browser these would move focus; in jsdom we verify no errors thrown
-			fireEvent.keyDown(pills[2], { key: 'Right', keyCode: 39, which: 39 });
-			fireEvent.keyDown(pills[3], { key: 'Left', keyCode: 37, which: 37 });
+			fireEvent.keyDown(pills[2], { key: 'ArrowRight' });
+			fireEvent.keyDown(pills[3], { key: 'ArrowLeft' });
 
 			// Verify container is still intact after keyboard interactions
 			expect(
@@ -298,7 +298,7 @@ describe('SLDSPillContainer', () => {
 				{ index: 3, option: options[3] }
 			);
 
-			fireEvent.keyDown(pills[4], { key: 'Delete', keyCode: 46, which: 46 });
+			fireEvent.keyDown(pills[4], { key: 'Delete' });
 			expect(onRequestRemovePill).toHaveBeenLastCalledWith(
 				expect.objectContaining({ type: 'keydown' }),
 				{ index: 4, option: options[4] }

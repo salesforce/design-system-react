@@ -188,6 +188,37 @@ describe('Radio control model', () => {
 		expect(input.checked).toBe(true);
 	});
 
+	it('requests checked: true when Space or Enter is pressed on an unchecked radio', () => {
+		const onChange = vi.fn();
+		const { container } = render(
+			<Radio id="radio-keys" labels={{ label: 'Option' }} onChange={onChange} />
+		);
+
+		const input = getInput(container);
+		fireEvent.keyDown(input, { key: 'Tab' });
+		expect(onChange).not.toHaveBeenCalled();
+		fireEvent.keyDown(input, { key: 'Enter' });
+		expect(onChange).toHaveBeenCalledTimes(1);
+		expect(onChange.mock.calls[0][1]).toEqual({ checked: true });
+	});
+
+	it('requests checked: false when Enter is pressed on a checked deselectable radio', () => {
+		const onChange = vi.fn();
+		const { container } = render(
+			<Radio
+				id="radio-keys-deselect"
+				labels={{ label: 'Option' }}
+				checked
+				deselectable
+				onChange={onChange}
+			/>
+		);
+
+		fireEvent.keyDown(getInput(container), { key: 'Enter' });
+		expect(onChange).toHaveBeenCalledTimes(1);
+		expect(onChange.mock.calls[0][1]).toEqual({ checked: false });
+	});
+
 	it('does not warn about switching between controlled and uncontrolled', () => {
 		const consoleError = vi
 			.spyOn(console, 'error')

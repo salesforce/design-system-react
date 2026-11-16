@@ -3,6 +3,7 @@ import { render, fireEvent, act } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 
 import Input from '../';
+import Search from '../search';
 import Icon from '../../icon';
 import InputIcon from '../../icon/input-icon';
 import IconSettings from '../../icon-settings';
@@ -352,8 +353,8 @@ describe('SLDSInput', () => {
 
 			// Test increment with keyboard
 			onChangeData = {};
-			fireEvent.keyDown(increment, { key: 'Enter', keyCode: 13, which: 13 });
-			fireEvent.keyUp(increment, { key: 'Enter', keyCode: 13, which: 13 });
+			fireEvent.keyDown(increment, { key: 'Enter' });
+			fireEvent.keyUp(increment, { key: 'Enter' });
 			expect(onChangeData.number).toBe(2);
 			expect(onChangeData.value).toBe('2');
 
@@ -365,8 +366,8 @@ describe('SLDSInput', () => {
 
 			// Test decrement with keyboard
 			onChangeData = {};
-			fireEvent.keyDown(decrement, { key: 'Enter', keyCode: 13, which: 13 });
-			fireEvent.keyUp(decrement, { key: 'Enter', keyCode: 13, which: 13 });
+			fireEvent.keyDown(decrement, { key: 'Enter' });
+			fireEvent.keyUp(decrement, { key: 'Enter' });
 			expect(onChangeData.number).toBe(0);
 			expect(onChangeData.value).toBe('0');
 		});
@@ -602,6 +603,29 @@ describe('SLDSInput', () => {
 			} finally {
 				errorSpy.mockRestore();
 			}
+		});
+	});
+
+	describe('Search', () => {
+		const renderSearch = (onSearch) =>
+			render(
+				<IconSettings iconPath="/assets/icons">
+					<Search assistiveText={{ label: 'Search' }} onSearch={onSearch} />
+				</IconSettings>
+			).getByRole('textbox');
+
+		it('calls onSearch on Enter', () => {
+			const onSearch = vi.fn();
+			fireEvent.keyDown(renderSearch(onSearch), { key: 'Enter' });
+			expect(onSearch).toHaveBeenCalledTimes(1);
+		});
+
+		it('ignores the Enter that commits an IME composition', () => {
+			const onSearch = vi.fn();
+			const input = renderSearch(onSearch);
+			fireEvent.keyDown(input, { key: 'Enter', isComposing: true });
+			fireEvent.keyDown(input, { key: 'Enter', keyCode: 229 });
+			expect(onSearch).not.toHaveBeenCalled();
 		});
 	});
 });

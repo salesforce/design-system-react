@@ -11,8 +11,7 @@ export interface KeyboardNavigateParams {
 	currentFocusedIndex: number;
 	event: KeyboardEvent | Event;
 	isOpen: boolean;
-	key?: string;
-	keyCode: number;
+	key: string;
 	navigableItems: Array<{ index: number; text: string }> & {
 		indexes: number[];
 		keyBuffer: (char: string) => string;

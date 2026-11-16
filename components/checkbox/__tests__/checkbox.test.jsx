@@ -324,8 +324,8 @@ describe('Checkbox keyboard and readOnly', () => {
 		);
 		const input = container.querySelector('input');
 
-		fireEvent.keyDown(input, { key: 'Enter', keyCode: 13 });
-		fireEvent.keyDown(input, { key: ' ', keyCode: 32 });
+		fireEvent.keyDown(input, { key: 'Enter' });
+		fireEvent.keyDown(input, { key: ' ' });
 
 		// Space toggles a native checkbox through its click; Enter does not toggle it
 		expect(onChange).not.toHaveBeenCalled();

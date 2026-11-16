@@ -296,7 +296,7 @@ describe('SLDSModal', () => {
 				disableClose: true,
 				onRequestClose,
 			});
-			fireEvent.keyDown(getModalNode(), { key: 'Escape', keyCode: 27 });
+			fireEvent.keyDown(getModalNode(), { key: 'Escape', code: 'Escape' });
 			fireEvent.click(getModalNode());
 			expect(onRequestClose).not.toHaveBeenCalled();
 		});
@@ -449,7 +449,7 @@ describe('SLDSModal', () => {
 			});
 
 			const modal = getModalNode();
-			fireEvent.keyDown(modal, { key: 'Escape', keyCode: 27 });
+			fireEvent.keyDown(modal, { key: 'Escape', code: 'Escape' });
 
 			expect(onRequestClose).toHaveBeenCalledTimes(1);
 			const [event, data] = onRequestClose.mock.calls[0];

@@ -4,7 +4,7 @@ import EventUtil from './event';
 
 /*
  * Helper function that has callbacks passed into it with the key
- * being the keycode of the event. This allows an object literal to
+ * being the `KeyboardEvent.key` of the event. This allows an object literal to
  * control key event callback mapping and avoids a long conditional
  * if statement and uses an enumeration pattern instead.
  */
@@ -12,20 +12,19 @@ const mapKeyEventCallbacks = (
 	event,
 	{ callbacks = {}, shiftCallbacks = {}, stopPropagation = true }
 ) => {
-	if (event.shiftKey && event.keyCode && shiftCallbacks[event.keyCode]) {
+	if (EventUtil.isComposing(event)) return;
+
+	if (event.shiftKey && event.key && shiftCallbacks[event.key]) {
 		if (stopPropagation) {
 			EventUtil.trapEvent(event);
 		}
-		shiftCallbacks[event.keyCode].callback(
-			event,
-			shiftCallbacks[event.keyCode].data
-		);
-	} else if (event.keyCode && callbacks[event.keyCode]) {
+		shiftCallbacks[event.key].callback(event, shiftCallbacks[event.key].data);
+	} else if (event.key && callbacks[event.key]) {
 		if (stopPropagation) {
 			EventUtil.trapEvent(event);
 		}
-		callbacks[event.keyCode].callback(event, callbacks[event.keyCode].data);
-	} else if (event.keyCode && callbacks.other) {
+		callbacks[event.key].callback(event, callbacks[event.key].data);
+	} else if (event.key && callbacks.other) {
 		// You will likely NOT want to stop propagation of all key presses!
 		if (callbacks.other.stopPropagation) {
 			EventUtil.trapEvent(event);
