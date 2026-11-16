@@ -7,6 +7,7 @@ import React, {
 	useCallback,
 	useEffect,
 	useId,
+	useLayoutEffect,
 	type MouseEvent,
 	type KeyboardEvent,
 } from 'react';
@@ -22,9 +23,14 @@ import type { ChildrenOf } from '../../types/common';
 import { TABS } from '../../utilities/constants';
 import KEYS from '../../utilities/key-code';
 import EventUtil from '../../utilities/event';
+import { useLatestRef } from '../../utilities/hooks/use-latest-ref';
 
 import checkProps from './check-props';
 import componentDoc from './component.json';
+
+// Memoized here rather than in `private/tab` so the private module's export is
+// unchanged.
+const MemoTab = React.memo(Tab);
 
 /**
  * Tabs variant types
@@ -171,15 +177,13 @@ const Tabs = (props: TabsProps): React.ReactElement => {
 	});
 
 	const [focus, setFocus] = useState(false);
-	const tabsRef = useRef<
-		Array<{ tab: React.ReactElement<TabsPanelProps>; node: HTMLElement | null }>
-	>([]);
 	const tabsNodeRef = useRef<HTMLDivElement>(null);
 
 	const childArray = React.Children.toArray(
 		children
 	) as React.ReactElement<TabsPanelProps>[];
 	const tabsCount = childArray.length;
+	const childArrayRef = useLatestRef(childArray);
 
 	// Selection is controlled: derived from `value`, or from the deprecated
 	// `selectedIndex` when `value` is not passed. There is no internal copy.
@@ -196,42 +200,42 @@ const Tabs = (props: TabsProps): React.ReactElement => {
 		(index: number): number => {
 			// Look for non-disabled tab from index to the last tab
 			for (let i = index + 1; i < tabsCount; i++) {
-				const tab = tabsRef.current[i];
-				if (tab && !isTabDisabled(tab.tab)) {
+				const tab = childArrayRef.current[i];
+				if (tab && !isTabDisabled(tab)) {
 					return i;
 				}
 			}
 			// Continue from first tab
 			for (let i = 0; i < index; i++) {
-				const tab = tabsRef.current[i];
-				if (tab && !isTabDisabled(tab.tab)) {
+				const tab = childArrayRef.current[i];
+				if (tab && !isTabDisabled(tab)) {
 					return i;
 				}
 			}
 			return index;
 		},
-		[tabsCount]
+		[tabsCount, childArrayRef]
 	);
 
 	const getPrevTab = useCallback(
 		(index: number): number => {
 			// Look for non-disabled tab backwards
 			for (let i = index - 1; i >= 0; i--) {
-				const tab = tabsRef.current[i];
-				if (tab && !isTabDisabled(tab.tab)) {
+				const tab = childArrayRef.current[i];
+				if (tab && !isTabDisabled(tab)) {
 					return i;
 				}
 			}
 			// Continue from last tab
 			for (let i = tabsCount - 1; i > index; i--) {
-				const tab = tabsRef.current[i];
-				if (tab && !isTabDisabled(tab.tab)) {
+				const tab = childArrayRef.current[i];
+				if (tab && !isTabDisabled(tab)) {
 					return i;
 				}
 			}
 			return index;
 		},
-		[tabsCount]
+		[tabsCount, childArrayRef]
 	);
 
 	const setSelected = useCallback(
@@ -257,6 +261,14 @@ const Tabs = (props: TabsProps): React.ReactElement => {
 		},
 		[tabsCount, onSelect, selectedIndex, childArray]
 	);
+
+	// The selected tab focuses itself in a passive effect, which React flushes
+	// before re-rendering for this reset.
+	useLayoutEffect(() => {
+		if (focus) {
+			setFocus(false);
+		}
+	}, [focus]);
 
 	const isTabFromContainer = useCallback((node: HTMLElement): boolean => {
 		if (!isTabNode(node)) return false;
@@ -329,14 +341,8 @@ const Tabs = (props: TabsProps): React.ReactElement => {
 				const shouldFocus = isSelected && focus;
 
 				return (
-					<Tab
+					<MemoTab
 						key={child.key ?? index}
-						ref={(node: HTMLElement | null) => {
-							tabsRef.current[index] = { tab: child, node };
-							if (focus) {
-								setFocus(false);
-							}
-						}}
 						focus={shouldFocus}
 						selected={isSelected}
 						id={tabId}
@@ -347,7 +353,7 @@ const Tabs = (props: TabsProps): React.ReactElement => {
 						assistiveText={child.props.assistiveText}
 					>
 						{child.props.label}
-					</Tab>
+					</MemoTab>
 				);
 			})}
 		</TabsList>
