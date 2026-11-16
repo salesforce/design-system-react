@@ -471,7 +471,6 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 			setActiveOptionIndex(-1);
 		}
 	}
-	const [inputRendered, setInputRendered] = useState(false);
 
 	// Check props on mount
 	useEffect(() => {
@@ -1050,14 +1049,11 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 	const setInputRefCallback = useCallback(
 		(component: HTMLInputElement | null) => {
 			inputRef.current = component;
-			if (!inputRendered) {
-				setInputRendered(true);
-			}
 			if (inputRefCallback) {
 				inputRefCallback(component);
 			}
 		},
-		[inputRendered, inputRefCallback]
+		[inputRefCallback]
 	);
 
 	const setSelectedListboxRefCallback = useCallback(

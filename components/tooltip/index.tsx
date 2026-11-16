@@ -518,20 +518,20 @@ const Tooltip = ({
 		[hoverCloseDelay, requestClose]
 	);
 
-	// Save trigger ref and trigger re-render once mounted
+	// Save the trigger ref. The anchored nubbin is sized from the trigger during
+	// render, so re-render once the trigger is mounted to measure it. The Dialog
+	// re-renders itself once its content mounts, so nothing else needs this.
 	const saveTriggerRef = useCallback(
 		(component: HTMLDivElement | null) => {
 			if (component && triggerRef.current !== component) {
 				(triggerRef as React.MutableRefObject<HTMLDivElement | null>).current =
 					component;
-				// Dialog/Popper.js cannot place the popover until
-				// the trigger/target DOM node is mounted.
-				if (!triggerRendered) {
+				if (hasAnchoredNubbin && !triggerRendered) {
 					setTriggerRendered(true);
 				}
 			}
 		},
-		[triggerRendered]
+		[hasAnchoredNubbin, triggerRendered]
 	);
 
 	// Render helpers
