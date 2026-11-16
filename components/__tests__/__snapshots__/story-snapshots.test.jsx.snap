@@ -10895,16 +10895,10 @@ exports[`Story HTML snapshots > Tooltip > AllAlignments 1`] = `
 exports[`Story HTML snapshots > Tooltip > AnchoredNubbin 1`] = `
 "<div class="slds-p-around_medium slds-m-horizontal_x-large" style="margin:150px auto;width:500px">
   <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1">
-    <style>
-      [id="_R_0_"]:after,
-      [id="_R_0_"]:before {
-        display: none;
-      }
-    </style>
     <div style="height:0;position:relative;width:0;left:0px;top:0px">
-      <div style="background-color:#16325c;content:&quot;&quot;;height:1rem;position:absolute;transform:rotate(45deg);width:1rem;left:-8px;top:3px"></div>
+      <div style="background-color:var(--slds-c-tooltip-color-background, var(--slds-g-color-surface-inverse-1, #16325c));content:&quot;&quot;;height:1rem;position:absolute;transform:rotate(45deg);width:1rem;left:-8px;top:3px"></div>
     </div><button class="slds-button slds-button_neutral" type="button" aria-describedby="_R_0_">Anchored Nubbin</button>
-    <div class="absolute-positioned slds-nubbin_top slds-popover slds-popover_tooltip" style="outline:0;position:absolute;pointer-events:none" role="tooltip" id="_R_0_">
+    <div class="absolute-positioned slds-popover slds-popover_tooltip" style="outline:0;position:absolute;pointer-events:none" role="tooltip" id="_R_0_">
       <div class="slds-popover__body">Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.</div>
     </div>
   </div>
