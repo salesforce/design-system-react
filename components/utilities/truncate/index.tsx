@@ -157,7 +157,7 @@ class TextTruncate extends Component<TruncateProps, TruncateState> {
 				}
 
 				while (currentPos <= maxTextLength) {
-					truncatedText = resolvedText.substr(startPos, currentPos);
+					truncatedText = resolvedText.slice(startPos, startPos + currentPos);
 					width =
 						measureWidth(truncatedText + ext, font) +
 						extraWidthDueToPrefixStyle;
@@ -175,15 +175,24 @@ class TextTruncate extends Component<TruncateProps, TruncateState> {
 						let lastWidth = 0;
 						do {
 							currentPos -= 1;
-							truncatedText = resolvedText.substr(startPos, currentPos);
+							truncatedText = resolvedText.slice(
+								startPos,
+								startPos + currentPos
+							);
 							if (truncatedText[truncatedText.length - 1] === ' ') {
-								truncatedText = resolvedText.substr(startPos, currentPos - 1);
+								truncatedText = resolvedText.slice(
+									startPos,
+									startPos + currentPos - 1
+								);
 							}
 							if (lastIsEng) {
 								lastSpaceIndex = truncatedText.lastIndexOf(' ');
 								if (lastSpaceIndex > -1) {
 									currentPos = lastSpaceIndex;
-									truncatedText = resolvedText.substr(startPos, currentPos);
+									truncatedText = resolvedText.slice(
+										startPos,
+										startPos + currentPos
+									);
 								}
 							}
 							width =
@@ -210,7 +219,7 @@ class TextTruncate extends Component<TruncateProps, TruncateState> {
 			}
 
 			if (startPos !== maxTextLength) {
-				outputText = `${resolvedText.substr(0, startPos)}${resolvedTruncateText} `;
+				outputText = `${resolvedText.slice(0, startPos)}${resolvedTruncateText} `;
 				child = textTruncateChild;
 			}
 		}
