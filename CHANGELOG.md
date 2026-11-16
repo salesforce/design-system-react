@@ -15,7 +15,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- `MenuDropdown` with `tooltipMenuItem`, `Tooltip` with `hasAnchoredNubbin`, and `File` with `moreActionsDropdown` no longer render a `<style>` element, so they work under a Content-Security-Policy without `'unsafe-inline'` in `style-src`. They use SLDS markup instead, and need no extra stylesheet: a tooltip menu item's link is now the `li`'s direct child (the tooltip renders next to it and opens on hover and focus), the anchored tooltip doesn't add the dialog's `slds-nubbin_*` class, and the file more-actions dropdown adds `slds-button_last`. The anchored nubbin's color now follows the SLDS 2 tooltip background hook, falling back to the old `#16325c`
 - The [Breaking-Change Taxonomy](docs/codebase-overview.md#breaking-change-taxonomy) also lists callback signatures, exported type narrowing, entry points and peer dependency minimums as breaking
+
+### Deprecated
+
+- `File.injectMoreActionsStyles()`. It returns `null`, and `File` no longer calls it
 
 ### Fixed
 
