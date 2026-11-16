@@ -127,6 +127,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - **BREAKING**: `Truncate` props and `Dialog` `containerProps` are `HTMLAttributes<HTMLDivElement>` instead of an open `[key: string]` index. Remove props that are not valid `div` attributes
   - `Alert` and `Toast` `variant` is optional (`info`); `Spinner` `placement` (`isInline` and `isInput` are deprecated and warn once)
   - `Carousel` `itemsPerPanel` must be a positive integer (other values fall back to 1 and warn); `DatePicker` `onCalendarFocus` direction is `'next' | 'previous'`
+- `MenuDropdown` with `tooltipMenuItem`, `Tooltip` with `hasAnchoredNubbin`, and `File` with `moreActionsDropdown` no longer render a `<style>` element, so they work under a Content-Security-Policy without `'unsafe-inline'` in `style-src`. They use SLDS markup instead, and need no extra stylesheet: a tooltip menu item's link is now the `li`'s direct child (the tooltip renders next to it and opens on hover and focus), the anchored tooltip doesn't add the dialog's `slds-nubbin_*` class, and the file more-actions dropdown adds `slds-button_last`. The anchored nubbin's color now follows the SLDS 2 tooltip background hook, falling back to the old `#16325c`
 
 ### Deprecated
 
@@ -168,6 +169,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - `ColorPicker` `events.onValidateColor` and `events.onValidateWorkingColor` (use `validateColor` and `validateWorkingColor`)
   - `ColorPicker` top-level `onOpen`, `onClose`, `onRequestOpen` and `onRequestClose` (use the `events` keys). If both are set, both are called
 - `requestFocus` and `onRequestFocus` on `Button`, `Checkbox` and `Radio`. They keep working and log a one-time development warning. Focus through a ref instead: `ref` (or `buttonRef`) on `Button`, `ref` on `Checkbox` (forwarded to the `<input>`), and `refs.input` on `Radio`, then call `.focus()`. `SimpleDataTableInteractiveElement` focuses `forwardRef` components through `ref`, and still passes `requestFocus`/`onRequestFocus` to other wrapped components
+- `File.injectMoreActionsStyles()`. It returns `null`, and `File` no longer calls it
 
 ### Fixed
 
