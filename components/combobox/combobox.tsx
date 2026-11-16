@@ -390,6 +390,10 @@ const defaultLabels: Required<ComboboxLabels> = {
 
 // ===== Component =====
 
+/**
+ * An input field that is either an autocomplete or read-only, with a listbox of
+ * predefined options.
+ */
 const Combobox: React.FC<ComboboxProps> = (props) => {
 	const {
 		assistiveText: assistiveTextProp = {},
