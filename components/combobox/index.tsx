@@ -1,10 +1,9 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { useRef, forwardRef, type ForwardedRef } from 'react';
+import React, { forwardRef, type ForwardedRef } from 'react';
 import LanguageDirection from '../utilities/UNSAFE_direction/private/language-direction';
 import Combobox, { type ComboboxProps } from './combobox';
-import { useClickOutside } from '../../utilities/hooks/use-click-outside';
 
 export type {
 	ComboboxProps,
@@ -23,34 +22,14 @@ export type {
 } from './private/menu';
 
 /**
- * Combobox wrapper that handles click outside detection
- * Replaces react-onclickoutside HOC for React 19 compatibility
+ * Combobox wrapper. It used to host the react-onclickoutside HOC; the
+ * Combobox closes on outside interaction through its input blur handler, so
+ * the wrapper only keeps the container `div` and the component's type.
  */
 const ComboboxWithClickOutside = forwardRef<HTMLDivElement, ComboboxProps>(
-	(props, ref: ForwardedRef<HTMLDivElement>) => {
-		const containerRef = useRef<HTMLDivElement>(null);
-		const comboboxRef = useRef<{
-			handleClickOutside?: (event: MouseEvent | TouchEvent) => void;
-		}>(null);
-
-		// Use our custom hook to detect clicks outside
-		useClickOutside(
-			containerRef,
-			(event) => {
-				// The Combobox component handles click outside via handleRequestClose
-				// This is triggered when clicking outside the combobox container
-				if (comboboxRef.current?.handleClickOutside) {
-					comboboxRef.current.handleClickOutside(event);
-				}
-			},
-			{
-				enabled: true,
-				ignoreClass: 'ignore-react-onclickoutside',
-			}
-		);
-
+	(props, _ref: ForwardedRef<HTMLDivElement>) => {
 		return (
-			<div ref={containerRef}>
+			<div>
 				<Combobox {...props} />
 			</div>
 		);

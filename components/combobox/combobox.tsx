@@ -54,7 +54,6 @@ import componentDoc from './component.json';
 import { IconSettingsContext } from '../icon-settings';
 import { useControllableState, useLatestRef } from '../../utilities/hooks';
 
-let currentOpenDropdown: { handleClose: () => void } | undefined;
 const documentDefined = typeof document !== 'undefined';
 
 // ===== Types =====
@@ -604,8 +603,6 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 	// `events.onOpen` fires on a real open whether `isOpen` is controlled or not.
 	const handleOpen = useCallback(
 		(event?: React.SyntheticEvent, data?: Record<string, unknown>) => {
-			currentOpenDropdown = { handleClose: requestClose };
-
 			if (eventsRef.current.onOpen) {
 				eventsRef.current.onOpen(event, data || {});
 			}
@@ -625,7 +622,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 				}
 			}
 		},
-		[requestClose, eventsRef, variant, getOptions, selection]
+		[eventsRef, variant, getOptions, selection]
 	);
 
 	// Every internal open path (typing, clicking the input, Down, Enter) goes
@@ -657,15 +654,6 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 			}
 		},
 		[multiple, selection.length, variant, requestOpen]
-	);
-
-	const handleClickOutside = useCallback(
-		(event: MouseEvent | TouchEvent) => {
-			requestClose(event as unknown as React.SyntheticEvent, {
-				trigger: 'cancel',
-			});
-		},
-		[requestClose]
 	);
 
 	const handleSelect = useCallback(
@@ -1085,12 +1073,6 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 		if (wasOpenRef.current !== isOpen) {
 			wasOpenRef.current = isOpen;
 			if (!isOpen) {
-				if (
-					currentOpenDropdown &&
-					currentOpenDropdown.handleClose === requestClose
-				) {
-					currentOpenDropdown = undefined;
-				}
 				if (eventsRef.current.onClose) {
 					eventsRef.current.onClose(closeEventRef.current, {});
 				}
@@ -1138,18 +1120,6 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 			setActiveSelectedOptionIndex(clampedIndex);
 		}
 	}, [selection, activeSelectedOption, activeSelectedOptionIndex]);
-
-	// Cleanup on unmount
-	useEffect(() => {
-		return () => {
-			if (
-				currentOpenDropdown &&
-				currentOpenDropdown.handleClose === requestClose
-			) {
-				currentOpenDropdown = undefined;
-			}
-		};
-	}, [requestClose]);
 
 	// ===== Render Helpers =====
 
