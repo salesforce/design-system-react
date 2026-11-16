@@ -26,6 +26,14 @@ export default defineConfig({
 	plugins: [react()],
 	resolve,
 	test: {
+		// `default` and, on GitHub Actions, `github-actions` are what Vitest uses
+		// when no reporter is set; the console reporter lists unexpected console
+		// output and fails the run past its budget.
+		reporters: [
+			'default',
+			...(process.env.GITHUB_ACTIONS === 'true' ? ['github-actions'] : []),
+			'./scripts/vitest-console-reporter.ts',
+		],
 		coverage: {
 			provider: 'v8',
 			reporter: ['text', 'json', 'html'],
