@@ -18,13 +18,13 @@ export interface SwatchOptionProps {
 }
 
 const selectedStyle: CSSProperties = {
-	border: '1px solid #141414',
+	border: '1px solid var(--slds-g-color-on-surface-3, #141414)',
 	borderRadius: '2px',
 	margin: '3px',
 };
 
 const selectedInnerStyle: CSSProperties = {
-	border: '1px solid white',
+	border: '1px solid var(--slds-g-color-surface-1, white)',
 	borderRadius: '2px',
 };
 

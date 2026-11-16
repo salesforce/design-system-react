@@ -1,7 +1,10 @@
 import '@testing-library/jest-dom';
-// Load the real SLDS stylesheet so layout-dependent behavior (text truncation,
-// column widths, focus rings) matches production in the browser project.
-import '@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.min.css';
+// Load the real SLDS 2 stylesheet so layout-dependent behavior (text
+// truncation, column widths, focus rings) matches production in the browser
+// project. Modular base first: it declares the `@layer` order the theme's
+// layer blocks rely on.
+import '@salesforce-ux/design-system-2/dist/css/modular/slds2.base.css';
+import '@salesforce-ux/design-system-2/dist/css/modular/slds2.theme.cosmos.css';
 import { expect, afterEach } from 'vitest';
 import { cleanup } from '@testing-library/react';
 import * as matchers from '@testing-library/jest-dom/matchers';
