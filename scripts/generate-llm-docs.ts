@@ -530,9 +530,45 @@ const firstSentence = (text: string) => {
 	return (match ? match[1] : line).replace(/\s*\*+$/, '');
 };
 
-const componentDescriptions = JSON.parse(
-	readFileSync(join(root, 'components/component-docs.json'), 'utf8')
-) as Record<string, { description?: string }>;
+/**
+ * The JSDoc on a component's declaration in its source file. `tsc` drops it
+ * from the `.d.ts` when a component gets an assigned `displayName` (emitted as
+ * `declare function` plus a namespace), so this is the fallback.
+ */
+const sourceDescription = (modulePath: string, name: string): string => {
+	const [dir] = modulePath.split('/');
+	const candidates = [
+		`${modulePath}.tsx`,
+		`${modulePath}/index.tsx`,
+		`${dir}/${dir}.tsx`,
+	].map((path) => join(root, 'components', path));
+	for (const path of candidates.filter(existsSync)) {
+		const source = ts.createSourceFile(
+			path,
+			readFileSync(path, 'utf8'),
+			ts.ScriptTarget.Latest,
+			true
+		);
+		for (const statement of source.statements) {
+			const declared = ts.isVariableStatement(statement)
+				? statement.declarationList.declarations.map((d) => d.name)
+				: ts.isFunctionDeclaration(statement) ||
+					  ts.isClassDeclaration(statement)
+					? [statement.name]
+					: [];
+			if (!declared.some((id) => id && ts.isIdentifier(id) && id.text === name))
+				continue;
+			const comment = ts
+				.getJSDocCommentsAndTags(statement)
+				.filter(ts.isJSDoc)
+				.map((doc) => ts.getTextOfJSDocComment(doc.comment) ?? '')
+				.join('\n')
+				.trim();
+			if (comment) return stripSiteLinks(comment);
+		}
+	}
+	return '';
+};
 
 interface Rendered {
 	dir: string;
@@ -554,13 +590,9 @@ const renderComponent = (component: Component): Rendered => {
 	});
 	const [main] = component.entries;
 	const title = main.names[0];
-	// The `.d.ts` JSDoc is the v11 contract; component-docs.json (generated for
-	// 0.10.x) is the fallback for a component whose default export has none.
 	const description =
 		infos[0].description ||
-		stripSiteLinks(
-			componentDescriptions[json.component]?.description ?? ''
-		).trim() ||
+		sourceDescription(main.modulePath, title) ||
 		`${json['display-name'] ?? title}.`;
 
 	const lines: string[] = [`# ${title}`, '', description, ''];
