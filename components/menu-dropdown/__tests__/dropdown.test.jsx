@@ -1,5 +1,11 @@
 import { useState } from 'react';
-import { render, fireEvent, screen, waitFor } from '@testing-library/react';
+import {
+	render,
+	fireEvent,
+	screen,
+	waitFor,
+	within,
+} from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 
 import Dropdown from '../../menu-dropdown';
@@ -1346,6 +1352,65 @@ describe('SLDSMenuDropdown', () => {
 				);
 				expect(tooltip).toBeInTheDocument();
 			});
+			// No <style> element, so a CSP without 'unsafe-inline' in
+			// style-src doesn't block anything.
+			expect(document.querySelectorAll('style')).toHaveLength(0);
+		});
+
+		const renderTooltipDropdown = (tooltipMenuItem = <Tooltip />) =>
+			renderDropdown({
+				isOpen: true,
+				options: [
+					{ label: 'Test item A', value: 'A0' },
+					{
+						label: 'Test item B',
+						value: 'B0',
+						tooltipContent: 'Testing tooltip content',
+					},
+				],
+				tooltipMenuItem,
+			});
+
+		it('keeps the link the menu item’s direct child, so SLDS styles it', () => {
+			const { container } = renderTooltipDropdown();
+			const item = container.querySelector('#sample-dropdown-item-1');
+			const link = within(item).getByRole('menuitem');
+			expect(link.parentElement).toBe(item);
+			expect(item.querySelector('.slds-tooltip-trigger a')).toBeNull();
+		});
+
+		it('opens on hover and focus and describes the link while open', async () => {
+			const { container } = renderTooltipDropdown();
+			const link = within(
+				container.querySelector('#sample-dropdown-item-1')
+			).getByRole('menuitem');
+			const getTooltip = () =>
+				container.querySelector('#sample-dropdown-item-1-tooltip');
+			expect(getTooltip()).toBeNull();
+			expect(link).not.toHaveAttribute('aria-describedby');
+
+			fireEvent.mouseEnter(link);
+			await waitFor(() => expect(getTooltip()).toBeInTheDocument());
+			expect(getTooltip()).toHaveTextContent('Testing tooltip content');
+			expect(link).toHaveAttribute(
+				'aria-describedby',
+				'sample-dropdown-item-1-tooltip'
+			);
+
+			fireEvent.mouseLeave(link);
+			await waitFor(() => expect(getTooltip()).toBeNull());
+
+			fireEvent.focus(link);
+			await waitFor(() => expect(getTooltip()).toBeInTheDocument());
+			fireEvent.blur(link);
+			await waitFor(() => expect(getTooltip()).toBeNull());
+		});
+
+		it('lets the template’s isOpen control the tooltip', () => {
+			const { container } = renderTooltipDropdown(<Tooltip isOpen />);
+			expect(
+				container.querySelector('#sample-dropdown-item-1-tooltip')
+			).toBeInTheDocument();
 		});
 	});
 
