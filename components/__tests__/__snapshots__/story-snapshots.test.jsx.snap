@@ -4422,6 +4422,12 @@ exports[`Story HTML snapshots > MenuDropdown > WithNubbins 1`] = `
 </div>"
 `;
 
+exports[`Story HTML snapshots > MenuDropdown > WithTooltips 1`] = `
+"<div class="slds-p-around_medium slds-text-align_center">
+  <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="tooltips-dropdown"><button class="slds-button slds-button_neutral ignore-click-tooltips-dropdown" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true">Dropdown with Tooltips</button></div>
+</div>"
+`;
+
 exports[`Story HTML snapshots > PageHeader > Base 1`] = `
 "<div class="slds-p-around_medium">
   <div class="slds-page-header">

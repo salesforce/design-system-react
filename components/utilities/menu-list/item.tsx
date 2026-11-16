@@ -68,7 +68,12 @@ export interface ListItemProps {
 /**
  * Component description.
  */
-class ListItem extends React.Component<ListItemProps> {
+class ListItem extends React.Component<
+	ListItemProps,
+	{ isTooltipOpen: boolean }
+> {
+	state = { isTooltipOpen: false };
+
 	static displayName = LIST_ITEM;
 
 	static defaultProps: Partial<ListItemProps> = {
@@ -151,6 +156,62 @@ class ListItem extends React.Component<ListItemProps> {
 		EventUtil.trapImmediate(event);
 	};
 
+	anchor: HTMLAnchorElement | null = null;
+
+	saveAnchor = (node: HTMLAnchorElement | null) => {
+		this.anchor = node;
+	};
+
+	handleTooltipOpen = () => {
+		this.setState({ isTooltipOpen: true });
+	};
+
+	handleTooltipClose = () => {
+		this.setState({ isTooltipOpen: false });
+	};
+
+	// The tooltip renders next to the link, not around it, so the link stays the
+	// `li`'s direct child and SLDS's `.slds-dropdown__item > a` rules style it.
+	// The item opens it on hover and focus and points it at the link.
+	getTooltip = () => {
+		if (!this.props.tooltipContent || !this.props.tooltipTemplate) {
+			return null;
+		}
+		const templateProps = this.props.tooltipTemplate.props as Record<
+			string,
+			unknown
+		>;
+		const id = `${this.props.id}-tooltip`;
+		const isOpen =
+			(templateProps.isOpen as boolean | undefined) ?? this.state.isTooltipOpen;
+		const onRequestClose = templateProps.onRequestClose as
+			((...args: unknown[]) => void) | undefined;
+		const element = React.cloneElement(
+			this.props.tooltipTemplate as React.ReactElement<Record<string, unknown>>,
+			{
+				content: this.props.tooltipContent,
+				id,
+				isOpen,
+				onRequestClose: (...args: unknown[]) => {
+					this.handleTooltipClose();
+					onRequestClose?.(...args);
+				},
+				onRequestTargetElement: () => this.anchor,
+				trigger: () => null,
+				// Out of flow, so the empty trigger wrapper adds no line below the link.
+				// The tooltip renders inside the wrapper and sizes against it, so give
+				// the wrapper the menu's width; at 0 width the text wraps at every word.
+				// (`width`, not `left`/`right`: the tooltip sets `right: inherit`.)
+				triggerStyle: {
+					position: 'absolute',
+					width: '100%',
+					...((templateProps.triggerStyle as Record<string, unknown>) || {}),
+				},
+			}
+		);
+		return { describedBy: isOpen ? id : undefined, element };
+	};
+
 	render() {
 		switch (this.props.type) {
 			case 'header': {
@@ -186,16 +247,24 @@ class ListItem extends React.Component<ListItemProps> {
 			case 'link':
 			case 'item':
 			default: {
+				const tooltip = this.getTooltip();
+
 				/* eslint-disable jsx-a11y/role-supports-aria-props */
-				let itemContents = (
+				const itemContents = (
 					<a
 						aria-checked={
 							this.props.checkmark && this.props.isSelected ? true : undefined
 						}
+						aria-describedby={tooltip?.describedBy}
 						aria-disabled={this.props['aria-disabled']}
 						href={this.props.href}
 						data-index={this.props.index}
+						onBlur={tooltip ? this.handleTooltipClose : undefined}
 						onClick={this.handleClick}
+						onFocus={tooltip ? this.handleTooltipOpen : undefined}
+						onMouseEnter={tooltip ? this.handleTooltipOpen : undefined}
+						onMouseLeave={tooltip ? this.handleTooltipClose : undefined}
+						ref={this.saveAnchor}
 						role={this.props.checkmark ? 'menuitemcheckbox' : 'menuitem'}
 						tabIndex={-1}
 					>
@@ -206,29 +275,6 @@ class ListItem extends React.Component<ListItemProps> {
 						{this.getIcon('right')}
 					</a>
 				);
-
-				if (this.props.tooltipContent && this.props.tooltipTemplate) {
-					const { ...tooltipTemplateProps } = this.props.tooltipTemplate
-						.props as Record<string, unknown>;
-					const tooltipProps = {
-						...tooltipTemplateProps,
-						content: this.props.tooltipContent,
-						id: `${this.props.id}-tooltip`,
-						triggerStyle: {
-							width: '100%',
-							...((tooltipTemplateProps.triggerStyle as Record<
-								string,
-								unknown
-							>) || {}),
-						},
-					};
-					itemContents = React.cloneElement(
-						this.props.tooltipTemplate as React.ReactElement<
-							Record<string, unknown>
-						>,
-						{ ...tooltipProps, trigger: itemContents }
-					);
-				}
 
 				return (
 					/* eslint-disable jsx-a11y/role-supports-aria-props */
@@ -250,6 +296,7 @@ class ListItem extends React.Component<ListItemProps> {
 						role="presentation"
 					>
 						{itemContents}
+						{tooltip?.element}
 					</li>
 				);
 			}
