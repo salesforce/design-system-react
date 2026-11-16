@@ -43,6 +43,13 @@ if (process.env.NODE_ENV !== 'production') {
 
 		deprecatedProperty(
 			COMPONENT,
+			props.onKeyPress,
+			'onKeyPress',
+			'onKeyDown',
+			`\`keypress\` is a deprecated DOM event; read \`event.key\` instead. ${createDocUrl('onKeyDown')}`
+		);
+		deprecatedProperty(
+			COMPONENT,
 			props.errorText,
 			'errorText',
 			'labels.error` and `hasError',
