@@ -1344,11 +1344,15 @@ enhancement issues, not story fill-ins:
 - [x] Lint warning backlog cleared: 32 `react-hooks/refs` and 3 `set-state-in-effect`
       warnings fixed (one justified inline disable in `dialog/portal`); `npm run lint` runs
       with `--max-warnings=0`.
-- [ ] Work down the lint warning backlog.
-      `@typescript-eslint/no-deprecated` is an error in `__examples__` and `__docs__` (0 left)
-      and a warning in component source, where most hits are a component reading its own
-      deprecated prop. Deprecated DOM APIs (`keyCode`, `substr`, `onKeyPress`, React's
-      `FormEvent` and `MutableRefObject`) account for about 70 of those warnings.
+- [x] Deprecated APIs are a lint error in `components/`, `utilities/` and `types/` source
+      (tests exempt). Deprecated DOM and React APIs (`keyCode`, `substr`, `onKeyPress`,
+      `FormEvent`, `MutableRefObject`) are gone from source. `local/no-deprecated`
+      (`eslint-rules/no-deprecated.mjs`) lets a component read its own deprecated props during
+      the RC; another component's deprecated prop, or a deprecated React or DOM API, still fails.
+      The four components that forward their own deprecated `onKeyPress` to React's carry an
+      inline disable.
+- [ ] 11.0 GA: remove every deprecated prop and its warning, along with the `onKeyPress`
+      inline disables.
 - [ ] `combobox` — remove `variant="inline-listbox"` with `multiple` in the next major
       (deprecated in v11, warns once; use `variant="base"` with `multiple`). SLDS deprecated the
       inline listbox, it puts the selected pills before the input for screen readers, and its
