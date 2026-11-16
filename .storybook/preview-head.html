@@ -2,19 +2,23 @@
      to /slds2 in .storybook/main.ts. This is the first-paint default (Lightning Blue);
      the preview decorator (preview-decorator.js) then owns the <link id="slds2-theme">
      and swaps it when the Theme toolbar changes. -->
-<link id="slds2-theme" rel="stylesheet" href="/slds2/bundled/slds2.lightning-blue.css" />
+<link
+	id="slds2-theme"
+	rel="stylesheet"
+	href="/slds2/bundled/slds2.lightning-blue.css"
+/>
 
 <style>
-  /* color-scheme is driven by the slds-color-scheme--* class the decorator sets on <body> */
-  body {
-    color-scheme: light dark;
-  }
+	/* color-scheme is driven by the slds-color-scheme--* class the decorator sets on <body> */
+	body {
+		color-scheme: light dark;
+	}
 
-  body.slds-color-scheme--light {
-    color-scheme: only light;
-  }
+	body.slds-color-scheme--light {
+		color-scheme: only light;
+	}
 
-  body.slds-color-scheme--dark {
-    color-scheme: only dark;
-  }
+	body.slds-color-scheme--dark {
+		color-scheme: only dark;
+	}
 </style>
