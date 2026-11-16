@@ -177,12 +177,12 @@ const setBold = (label: string | undefined, searchTerm: string): ReactNode => {
 	if (position > -1) {
 		return (
 			<React.Fragment>
-				{label.substr(0, position)}
-				<span key="bold" className="slds-text-title_bold">{`${label.substr(
+				{label.slice(0, position)}
+				<span key="bold" className="slds-text-title_bold">{`${label.slice(
 					position,
-					searchTerm.length
+					position + searchTerm.length
 				)}`}</span>
-				{label.substr(position + searchTerm.length)}
+				{label.slice(position + searchTerm.length)}
 			</React.Fragment>
 		);
 	}

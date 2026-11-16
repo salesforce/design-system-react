@@ -65,3 +65,18 @@ describe('Combobox slots', () => {
 		expect(onChange).toHaveBeenCalledTimes(1);
 	});
 });
+
+describe('Combobox menu highlight', () => {
+	it('bolds the whole search term when it starts mid-label', () => {
+		const { container } = renderCombobox({
+			isOpen: true,
+			value: 'ana',
+			options: [{ id: '1', label: 'Banana' }],
+		});
+		const bold = container.querySelector(
+			'.slds-listbox__option-text .slds-text-title_bold'
+		);
+		expect(bold.textContent).toBe('ana');
+		expect(bold.parentElement.textContent).toBe('Banana');
+	});
+});
