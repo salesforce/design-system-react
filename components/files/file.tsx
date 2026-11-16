@@ -116,17 +116,13 @@ class File extends React.Component<FileProps> {
 
 	static defaultProps = defaultProps;
 
+	/**
+	 * @deprecated The more-actions button now uses SLDS's `slds-button_last`,
+	 * so this returns `null` and `File` no longer calls it. It will be removed
+	 * in a future major.
+	 */
 	static injectMoreActionsStyles(): ReactNode {
-		return (
-			<style>{`
-					.dsr-file__more-actions-dropdown  ul.dropdown__list li.slds-dropdown__item > a:before
-					{ background: none; }
-					.dsr-file__more-actions-dropdown  ul.dropdown__list li.slds-dropdown__item > a:after
-					{ background: none; }
-					.dsr-file__more-actions > button:first-child
-					{ border-radius: 0 0.25rem 0.25rem 0!important;}
-			`}</style>
-		);
+		return null;
 	}
 
 	generatedId: string;
@@ -219,7 +215,6 @@ class File extends React.Component<FileProps> {
 						})}
 					</div>
 				) : null}
-				{this.props.moreActionsDropdown ? File.injectMoreActionsStyles() : null}
 				<FileActions
 					assistiveText={assistiveText}
 					hasNoVisibleTitle={this.props.hasNoVisibleTitle}
