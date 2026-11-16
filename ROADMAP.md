@@ -34,6 +34,11 @@
       `DataTable` rename, module format, and every breaking prop change with before/after
       code; the React 19.2 / Node 24 / SLDS 2 CSS requirements; a "deprecated but still
       works" section. Ship it with 11.0.0, not after.
+  - Include the `Icon` `productTheme` removal: `<Icon productTheme="sales-cloud" />`
+    becomes `<Icon style={{ backgroundColor: '#00857d' }} />`. Deprecated for
+    11.0.0-alpha.11; remove the prop, the `ProductTheme` type,
+    `utilities/product-tokens/` and the `ProductThemes1` story in a later 11.0
+    prerelease, before the first rc, as `feat(icon)!:`.
 - [ ] Publish hosted docs for v11. `react.lightningdesignsystem.com` redirects to
       GitHub, and there is no public v11 documentation site (Chromatic builds Storybook
       on push, but only for review). Keep the 0.10 docs reachable at a stable URL.
@@ -1339,7 +1344,7 @@ enhancement issues, not story fill-ins:
 
 - [ ] Convert `components/utilities/dialog/index.jsx` to `.tsx`, and drop the
       popper-shaped adapter (`computeFloatingData`, consumed by `utilities/dialog-helpers.js`).
-- [ ] Delete the vendored `assets/styles/slds-plus.css`; nothing outside planning docs
+- [x] Delete the vendored `assets/styles/slds-plus.css`; nothing outside planning docs
       references it.
 - [x] Lint warning backlog cleared: 32 `react-hooks/refs` and 3 `set-state-in-effect`
       warnings fixed (one justified inline disable in `dialog/portal`); `npm run lint` runs
