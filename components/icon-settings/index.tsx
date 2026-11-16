@@ -1,7 +1,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { createContext, type ReactNode } from 'react';
+import React, { createContext, useMemo, type ReactNode } from 'react';
 import { ICON_SETTINGS } from '../../utilities/constants';
 import type { IconCategory } from '../../types/common';
 
@@ -12,7 +12,10 @@ export interface IconSettingsContextValue {
 	/** Path to the root icon folder */
 	iconPath?: string;
 	/** Function to generate custom icon paths */
-	onRequestIconPath?: (data: { category: IconCategory; name: string }) => string;
+	onRequestIconPath?: (data: {
+		category: IconCategory;
+		name: string;
+	}) => string;
 	/** Path to the action sprite */
 	actionSprite?: string;
 	/** Path to the custom sprite */
@@ -69,15 +72,26 @@ const IconSettings = ({
 	utilitySprite,
 	children,
 }: IconSettingsProps): React.ReactElement => {
-	const contextValue: IconSettingsContextValue = {
-		iconPath,
-		onRequestIconPath,
-		actionSprite,
-		customSprite,
-		doctypeSprite,
-		standardSprite,
-		utilitySprite,
-	};
+	const contextValue = useMemo<IconSettingsContextValue>(
+		() => ({
+			iconPath,
+			onRequestIconPath,
+			actionSprite,
+			customSprite,
+			doctypeSprite,
+			standardSprite,
+			utilitySprite,
+		}),
+		[
+			iconPath,
+			onRequestIconPath,
+			actionSprite,
+			customSprite,
+			doctypeSprite,
+			standardSprite,
+			utilitySprite,
+		]
+	);
 
 	return (
 		<IconSettingsContext.Provider value={contextValue}>
@@ -89,4 +103,3 @@ const IconSettings = ({
 IconSettings.displayName = ICON_SETTINGS;
 
 export default IconSettings;
-
