@@ -11,7 +11,7 @@ Never run bare `npm test` — it starts Vitest in watch mode and will not exit.
 | Command                  | Purpose                                                                        |
 | ------------------------ | ------------------------------------------------------------------------------ |
 | `npm run typecheck`      | `tsc --noEmit`                                                                 |
-| `npm run lint`           | ESLint; must be 0 errors (warnings are the tracked migration backlog)          |
+| `npm run lint`           | ESLint; 0 errors and no more warnings than `--max-warnings` in `package.json`  |
 | `npm test -- --run`      | All tests: jsdom `unit` project, real-browser `browser` project, and snapshots |
 | `npm test -- --run -u`   | Same, and regenerate story HTML snapshots                                      |
 | `npm run build`          | Type-check, library build, `.d.ts`, entry shims                                |
@@ -26,6 +26,7 @@ Run `npm run test:ci` before requesting review. A husky pre-push hook runs `test
 - **A filtered test run does not run the snapshot suite.** `npm test -- --run components/combobox` skips `components/__tests__/story-snapshots.test.jsx`. Always finish with an unfiltered run.
 - **Local runs write new snapshots silently.** Outside CI, a plain `npm test -- --run` passes and writes snapshots for new stories without failing; CI then fails if they aren't committed. `test:ci` and `test:snapshots` pass `--update=none` to behave like CI. Check `git status` for `.snap` changes before pushing.
 - **Stories must use the component's real prop API.** Cross-check against `components/<name>/__examples__` and `types.ts`; stories written against an assumed API are a common source of "component looks broken" reports.
+- **Unexpected console output has a budget of 0.** Any test that writes `console.error`/`console.warn` is listed after the run (and, on a PR, annotated on the test file and in the job summary); the run fails past `maxWarnings` in `scripts/vitest-console-reporter.ts`. Fix the cause, or assert an expected warning with `vi.spyOn(console, '<method>')`. Lint warnings are annotated on the PR the same way. Build warnings are printed and never fail.
 - **jsdom vs. browser tests.** Tests that need a real browser (focus traversal, layout/measurement) go in `*.browser.test.jsx`; everything else is jsdom.
 - **New scripts in `scripts/` are TypeScript.** Write `.ts` and run it with `tsx` (as `release.ts` is); `npm run typecheck` covers them via `tsconfig.scripts.json`. The remaining `.mjs`/`.js` scripts predate this rule; convert one when you substantially change it. Tests in `scripts/__tests__/` stay `*.test.mjs`, the pattern the `scripts` Vitest project picks up.
 - **Types are the contract.** Runtime PropTypes were removed in the TypeScript migration; the generated `.d.ts` files are what consumers get.
