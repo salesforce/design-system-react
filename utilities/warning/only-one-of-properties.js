@@ -24,7 +24,7 @@ if (process.env.NODE_ENV !== 'production') {
 				`[Design System React] Only one of the following props is needed by ${control}: [${keys.join()}].${additionalComment}`
 			);
 			/* eslint-enable max-len */
-			hasWarned[control] = !!selectedProps;
+			hasWarned[control] = keys.length > 1;
 		}
 	};
 }
