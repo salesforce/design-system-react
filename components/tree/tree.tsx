@@ -6,6 +6,7 @@ import React, {
 	useState,
 	useCallback,
 	useEffect,
+	useLayoutEffect,
 	useMemo,
 	useRef,
 } from 'react';
@@ -18,6 +19,7 @@ import Branch from './private/branch';
 // Similar to React's PropTypes check
 import checkProps, { checkLegacyNodeFields } from './check-props';
 import { useControllableState } from '../../utilities/hooks';
+import { useLatestRef } from '../../utilities/hooks/use-latest-ref';
 
 // Constants
 import { TREE } from '../../utilities/constants';
@@ -497,6 +499,46 @@ const Tree = forwardRef<HTMLDivElement, TreeProps>(
 			]
 		);
 
+		// Items are memoized, so they get stable handlers and read tree-wide
+		// values from this render through `treeState`.
+		const treeHasFocus = treeHasFocusRef.current;
+		const treeState = useLatestRef({
+			flattenedNodes,
+			isNodeExpanded,
+			focusedNodeIndex: effectiveFocusedNodeIndex,
+			treeHasFocus,
+		});
+		const handlersRef = useLatestRef({ handleSelect, handleExpand });
+		const stableHandleSelect = useCallback(
+			(params: Parameters<typeof handleSelect>[0]) =>
+				handlersRef.current.handleSelect(params),
+			[handlersRef]
+		);
+		const stableHandleExpand = useCallback(
+			(params: Parameters<typeof handleExpand>[0]) =>
+				handlersRef.current.handleExpand(params),
+			[handlersRef]
+		);
+
+		const itemNodesRef = useRef(new Map<string, HTMLElement>());
+		const registerItemNode = useCallback(
+			(treeIndex: string, node: HTMLElement | null) => {
+				if (node) {
+					itemNodesRef.current.set(treeIndex, node);
+				} else {
+					itemNodesRef.current.delete(treeIndex);
+				}
+			},
+			[]
+		);
+		// After every render, focus the focused item while the tree has focus
+		// (branches focus themselves from their ref).
+		useLayoutEffect(() => {
+			if (treeHasFocus && effectiveFocusedNodeIndex !== undefined) {
+				itemNodesRef.current.get(effectiveFocusedNodeIndex)?.focus();
+			}
+		});
+
 		// Determine heading text
 		const headingText = assistiveHeading || visibleHeading;
 
@@ -528,10 +570,12 @@ const Tree = forwardRef<HTMLDivElement, TreeProps>(
 					isNodeExpanded={isNodeExpanded}
 					tabStopIndex={tabStopIndex}
 					focusedNodeIndex={effectiveFocusedNodeIndex}
-					treeHasFocus={treeHasFocusRef.current}
+					treeHasFocus={treeHasFocus}
+					treeState={treeState}
+					registerItemNode={registerItemNode}
 					onNodeBlur={handleNodeBlur}
-					onSelect={handleSelect}
-					onExpand={handleExpand}
+					onSelect={stableHandleSelect}
+					onExpand={stableHandleExpand}
 					onScroll={onScroll}
 					searchTerm={searchTerm}
 					treeId={id}

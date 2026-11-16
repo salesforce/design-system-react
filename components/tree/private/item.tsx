@@ -1,7 +1,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { ReactNode } from 'react';
+import React, { ReactNode, RefObject, useCallback } from 'react';
 import classNames from 'classnames';
 import findIndex from 'lodash.findindex';
 import isFunction from 'lodash.isfunction';
@@ -14,6 +14,14 @@ import KEYS from '../../../utilities/key-code';
 import mapKeyEventCallbacks from '../../../utilities/key-callbacks';
 import { TREE_ITEM } from '../../../utilities/constants';
 import { TreeNode, FlattenedNode } from '../types';
+
+/** Tree-wide values from the tree's latest render, read by the item's event handlers. */
+export interface TreeItemState {
+	flattenedNodes: FlattenedNode[];
+	isNodeExpanded: (node: TreeNode) => boolean;
+	focusedNodeIndex?: string;
+	treeHasFocus?: boolean;
+}
 
 export interface ItemProps {
 	htmlId: string;
@@ -42,13 +50,15 @@ export interface ItemProps {
 	searchTerm?: string;
 	treeId?: string;
 	treeIndex: string;
-	flattenedNodes: FlattenedNode[];
-	isNodeSelected: (node: TreeNode) => boolean;
-	isNodeExpanded: (node: TreeNode) => boolean;
-	tabStopIndex?: string;
-	focusedNodeIndex?: string;
+	isSelected: boolean;
+	/** Whether this item is the tree's focused node */
+	isFocused: boolean;
+	/** Whether this item is the tree's tab stop */
+	isTabStop: boolean;
+	treeState: RefObject<TreeItemState>;
+	/** Registers the item's node so the tree can focus it */
+	registerNode: (treeIndex: string, node: HTMLElement | null) => void;
 	onNodeBlur?: () => void;
-	treeHasFocus?: boolean;
 	parent?: TreeNode | { nodes?: TreeNode[] };
 }
 
@@ -67,7 +77,7 @@ const handleSelect = ({
 			event,
 			data: {
 				node: props.node,
-				select: !props.isNodeSelected(props.node),
+				select: !props.isSelected,
 				treeIndex: props.treeIndex,
 			},
 			fromFocus,
@@ -91,8 +101,11 @@ const findPreviousNode = (flattenedNodes: FlattenedNode[], node: TreeNode) => {
 };
 
 const handleKeyDownDown = (event: React.KeyboardEvent, props: ItemProps) => {
-	if (props.focusedNodeIndex === props.treeIndex) {
-		const flattenedNode = findNextNode(props.flattenedNodes, props.node);
+	if (props.isFocused) {
+		const flattenedNode = findNextNode(
+			props.treeState.current.flattenedNodes,
+			props.node
+		);
 		props.onSelect?.({
 			event,
 			data: {
@@ -106,8 +119,11 @@ const handleKeyDownDown = (event: React.KeyboardEvent, props: ItemProps) => {
 };
 
 const handleKeyDownUp = (event: React.KeyboardEvent, props: ItemProps) => {
-	if (props.focusedNodeIndex === props.treeIndex) {
-		const flattenedNode = findPreviousNode(props.flattenedNodes, props.node);
+	if (props.isFocused) {
+		const flattenedNode = findPreviousNode(
+			props.treeState.current.flattenedNodes,
+			props.node
+		);
 		props.onSelect?.({
 			event,
 			data: {
@@ -121,7 +137,8 @@ const handleKeyDownUp = (event: React.KeyboardEvent, props: ItemProps) => {
 };
 
 const handleKeyDownLeft = (event: React.KeyboardEvent, props: ItemProps) => {
-	const nodes = props.flattenedNodes.map((flattenedNode) => flattenedNode.node);
+	const { flattenedNodes, isNodeExpanded } = props.treeState.current;
+	const nodes = flattenedNodes.map((flattenedNode) => flattenedNode.node);
 	const parent = props.parent as TreeNode;
 	const index = findIndex(nodes, { id: parent?.id });
 	if (index !== -1) {
@@ -132,8 +149,8 @@ const handleKeyDownLeft = (event: React.KeyboardEvent, props: ItemProps) => {
 			data: {
 				node: parent,
 				select: true,
-				expand: !props.isNodeExpanded(parent),
-				treeIndex: props.flattenedNodes[index].treeIndex,
+				expand: !isNodeExpanded(parent),
+				treeIndex: flattenedNodes[index].treeIndex,
 			},
 		});
 	}
@@ -163,24 +180,27 @@ const handleKeyDown = (event: React.KeyboardEvent, props: ItemProps) => {
 };
 
 const handleFocus = (event: React.FocusEvent, props: ItemProps) => {
+	const { treeHasFocus, focusedNodeIndex } = props.treeState.current;
 	if (
-		!props.treeHasFocus &&
-		!props.focusedNodeIndex &&
+		!treeHasFocus &&
+		!focusedNodeIndex &&
 		event.target === event.currentTarget
 	) {
 		handleSelect({ event, props });
 	}
 };
 
-const getTabIndex = (props: ItemProps): number =>
-	props.treeIndex === props.tabStopIndex ? 0 : -1;
-
 /**
- * A Tree Item is a non-branching node in a hierarchical list.
+ * A Tree Item is a non-branching node in a hierarchical list. The tree memoizes
+ * it, so it only reads tree-wide values from `treeState` in event handlers.
  */
 const Item: React.FC<ItemProps> = (props) => {
-	const isSelected = props.isNodeSelected(props.node);
-	const isFocused = props.treeIndex === props.focusedNodeIndex;
+	const { isSelected, registerNode, treeIndex } = props;
+	// The tree focuses the focused item after each of its renders.
+	const setNodeRef = useCallback(
+		(node: HTMLLIElement | null) => registerNode(treeIndex, node),
+		[registerNode, treeIndex]
+	);
 
 	return (
 		<li
@@ -188,15 +208,11 @@ const Item: React.FC<ItemProps> = (props) => {
 			role="treeitem"
 			aria-level={props.level}
 			aria-selected={isSelected ? 'true' : 'false'}
-			tabIndex={getTabIndex(props)}
+			tabIndex={props.isTabStop ? 0 : -1}
 			onKeyDown={(event) => handleKeyDown(event, props)}
 			onFocus={(event) => handleFocus(event, props)}
 			onBlur={props.onNodeBlur}
-			ref={(component) => {
-				if (props.treeHasFocus && component && isFocused) {
-					component.focus();
-				}
-			}}
+			ref={setNodeRef}
 		>
 			<div
 				className={classNames('slds-tree__item', {
