@@ -56,6 +56,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- **BREAKING**: `utilities/key-code` holds `KeyboardEvent.key` values (`'Enter'`, `'ArrowDown'`, …) instead of numeric key codes, and `keyObjects` entries carry only `key`. `utilities/keyboard-navigate` and `utilities/keyboard-navigable-dialog` take `key` instead of `keyCode`. Keyboard handling reads `event.key`; `keyCode`, `which` and `charCode` are deprecated DOM APIs
+- `Input`, `Textarea` and `Slider` type `onInput`, `onSubmit`, `onInvalid` and `onSelect` with React 19's `InputEvent`, `SubmitEvent` and `SyntheticEvent` instead of the deprecated `FormEvent`
 - `ProgressIndicator` `selectedStep` takes a step `id`; a step object is still accepted and matched by its `id`. Each step can have one `status` (`'completed' | 'disabled' | 'error'`), which wins over the deprecated step arrays
 - `Accordion`, `Breadcrumb`, `DatePicker`, `Tabs`, `VisualPicker` and `WelcomeMat`: reviewed for data models, no change
 - `Card`, `Input`, `Textarea`: the `header` merge, `iconLeft`/`iconRight` `iconPosition` and `children` placement are documented in the prop types
@@ -130,6 +132,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Deprecated
 
+- `onKeyPress` on `Button`, `ButtonStateful`, `Checkbox`, `Input` and `Textarea` (use `onKeyDown` and read `event.key`). `keypress` is a deprecated DOM event. It still works and logs a warning
 - `ProgressIndicator` `completedSteps`, `disabledSteps` and `errorSteps` (use `steps[].status`), and a `selectedStep` object without an `id`, which is still matched by its whole content (pass the step's `id`). Each logs a warning
 - `Tree` `onClick` (use `onSelect`) and `onExpandClick` (use `onRequestToggle`). They keep their old payloads and behavior, log a one-time warning, and are ignored when the replacement is passed. Neither is required in the types any more
 - `Tree` `onScroll` data `percentage` (use `ratio`)
@@ -171,6 +174,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Fixed
 
+- `Radio`: listened to the deprecated `keypress` event, and any key on an unchecked radio selected it. It now selects on Space or Enter keydown
 - `Filter`: a custom `popover`'s `isOpen` was read only on the first render. It now controls the open state when set, and `defaultIsOpen` starts the popover open otherwise. A popover that sets `isOpen` must update it to open or close; leave it unset for click-to-open
 - `Combobox`: while open, the input sets `aria-controls` to the listbox (or, for `variant="popover"`, the dialog), fixing the axe `aria-required-attr` violation (W-24839159). It is omitted, and `aria-expanded` is `false`, while the listbox isn't rendered, including with the deprecated `singleInputDisabled`
 - The `@salesforce-ux/design-system` peer dependency accepts `^2.25.0-alpha.2` instead of exactly `2.25.0-alpha.2`, so installing into a project that already has a newer version no longer fails with `ERESOLVE`
