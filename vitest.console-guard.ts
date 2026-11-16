@@ -1,6 +1,9 @@
 import { afterEach, beforeEach } from 'vitest';
+import type {} from './scripts/vitest-console-reporter';
 
-// Fails any test that writes to `console.error` or `console.warn`. A test that
+// Records any test's writes to `console.error` and `console.warn` in the
+// test's meta, where `scripts/vitest-console-reporter.ts` counts them, lists
+// them on the pull request and fails the run past the budget. A test that
 // expects a warning installs its own `vi.spyOn(console, 'error')`, which sits
 // in front of this guard, so mocked calls never reach it. Output after the
 // test ends (a late timer, jsdom's virtual console) goes straight through.
@@ -30,13 +33,10 @@ beforeEach(() => {
 	unexpected = [];
 });
 
-afterEach(() => {
+afterEach(({ task }) => {
 	active = false;
 	if (unexpected.length > 0) {
-		const messages = unexpected;
+		task.meta.unexpectedConsole = unexpected;
 		unexpected = [];
-		throw new Error(
-			`Unexpected console output. Fix the cause, or assert it with vi.spyOn(console, '<method>').\n\n${messages.join('\n\n')}`
-		);
 	}
 });
