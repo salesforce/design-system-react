@@ -403,7 +403,10 @@ export interface MenuDropdownBaseProps {
 	 * control. It must render a focusable element and pass it `ref`.
 	 */
 	trigger?: TriggerRender<MenuDropdownTriggerProps>;
-	/** Tooltip component template for menu items */
+	/**
+	 * Tooltip component template for menu items with `tooltipContent`. The item opens it on hover
+	 * and focus, unless the template sets `isOpen`.
+	 */
 	tooltipMenuItem?: ReactNode;
 	/** CSS classes to be added to wrapping trigger div */
 	triggerClassName?: string | string[] | Record<string, boolean>;
