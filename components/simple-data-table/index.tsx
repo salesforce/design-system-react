@@ -252,6 +252,8 @@ class SimpleDataTable extends React.Component<
 	// Map of cells to interactive elements within that cell
 	interactiveElements: Record<number, Record<number, string[]>>;
 
+	lastItems?: SimpleDataTableItem[];
+
 	tableRef?: HTMLTableElement | null;
 
 	constructor(props: SimpleDataTableProps) {
@@ -554,13 +556,6 @@ class SimpleDataTable extends React.Component<
 		}
 	};
 
-	// eslint-disable-next-line camelcase
-	UNSAFE_componentWillUpdate(nextProps: SimpleDataTableProps) {
-		if (this.props.items !== nextProps.items) {
-			this.interactiveElements = {};
-		}
-	}
-
 	changeActiveCell(rowIndex: number, columnIndex: number) {
 		this.setState({
 			tableHasFocus: true,
@@ -832,6 +827,13 @@ class SimpleDataTable extends React.Component<
 
 	// ### Render
 	render() {
+		// New items mean new cells, which register their interactive elements
+		// while this render renders them. Repeating the render (StrictMode) with
+		// the same items keeps what registered.
+		if (this.props.items !== this.lastItems) {
+			this.lastItems = this.props.items;
+			this.interactiveElements = {};
+		}
 		const ariaProps: { 'aria-multiselectable'?: 'true' } = {};
 		const numHeaderRows = 1;
 		const isItemSelected = this.getSelectionMatcher(
