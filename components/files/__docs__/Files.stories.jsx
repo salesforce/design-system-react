@@ -2,6 +2,7 @@ import IconSettings from '../../icon-settings';
 import Files from '../';
 import File from '../file';
 import Icon from '../../icon';
+import MenuDropdown from '../../menu-dropdown';
 
 export default {
 	title: 'Components/Files',
@@ -103,6 +104,54 @@ export const Crop1By1 = {
 				icon={<Icon category="doctype" name="image" />}
 				image="/assets/images/placeholder-img@16x9.jpg"
 				crop="1-by-1"
+			/>
+		</Files>
+	),
+};
+
+// Download and more-actions buttons.
+export const WithActions = {
+	render: () => (
+		<Files>
+			<File
+				id="file-1"
+				labels={{ title: 'Proposal.pdf' }}
+				icon={<Icon category="doctype" name="pdf" />}
+				image="/assets/images/placeholder-img@16x9.jpg"
+				onClickDownload={() => {}}
+				moreActionsDropdown={
+					<MenuDropdown
+						id="file-1-more-actions"
+						align="right"
+						iconCategory="utility"
+						iconName="down"
+						iconVariant="bare"
+						options={[
+							{ label: 'Menu Item One', value: 'A0' },
+							{ label: 'Menu Item Two', value: 'B0' },
+						]}
+					/>
+				}
+			/>
+			<File
+				id="file-2"
+				labels={{ title: 'Proposal.pdf' }}
+				image="/assets/images/placeholder-img@16x9.jpg"
+				hasNoVisibleTitle
+				onClickDownload={() => {}}
+				moreActionsDropdown={
+					<MenuDropdown
+						id="file-2-more-actions"
+						align="right"
+						iconCategory="utility"
+						iconName="down"
+						iconVariant="bare"
+						options={[
+							{ label: 'Menu Item One', value: 'A0' },
+							{ label: 'Menu Item Two', value: 'B0' },
+						]}
+					/>
+				}
 			/>
 		</Files>
 	),

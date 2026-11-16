@@ -75,12 +75,11 @@ const FileActions = (props: FileActionsProps) => {
 							buttonInverse:
 								moreActionsDropdown.props.buttonInverse ??
 								props.hasNoVisibleTitle,
-							className: classNames(
-								'dsr-file__more-actions-dropdown',
-								moreActionsDropdown.props.className
-							),
+							// The trigger wraps the button, so SLDS's
+							// `.slds-button-group .slds-button:first-child` would round
+							// its left corners; `slds-button_last` rounds the right ones.
 							triggerClassName: classNames(
-								'dsr-file__more-actions',
+								'slds-button_last',
 								moreActionsDropdown.props.triggerClassName
 							),
 						})
