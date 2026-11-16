@@ -354,11 +354,16 @@ class SimpleDataTable extends React.Component<
 		return null;
 	}
 
+	// `items` is only a cache key: new items reset `interactiveElements`, and
+	// a new context value re-renders the interactive elements, including the
+	// rows' memoized selection controls, so they register again.
 	getTableContext = memoize(
 		(
 			state: SimpleDataTableState,
 			isKeyboardNavigation: boolean | undefined,
-			isGrid: boolean
+			isGrid: boolean,
+			// eslint-disable-next-line @typescript-eslint/no-unused-vars
+			_items: SimpleDataTableItem[]
 		) => ({
 			isGrid,
 			activeCell: state.activeCell,
@@ -880,7 +885,8 @@ class SimpleDataTable extends React.Component<
 					value={this.getTableContext(
 						this.state,
 						this.props.keyboardNavigation,
-						isGrid
+						isGrid,
+						this.props.items
 					)}
 				>
 					<table

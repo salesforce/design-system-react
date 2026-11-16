@@ -1348,6 +1348,48 @@ describe('SimpleDataTable', () => {
 			expect(cell.querySelector('a')).toHaveAttribute('tabindex', '0');
 		});
 
+		it('still focuses interactive elements when items change while the table has focus', () => {
+			const InteractiveCheckbox = SimpleDataTableInteractiveElement(Checkbox);
+			const InteractiveCell = ({ children, ...props }) => (
+				<SimpleDataTableCell {...props}>
+					<InteractiveCheckbox
+						labels={{ label: 'Option' }}
+						onChange={() => {}}
+					/>
+				</SimpleDataTableCell>
+			);
+			InteractiveCell.displayName = SimpleDataTableCell.displayName;
+			const renderWith = (tableItems) => (
+				<SimpleDataTable
+					{...defaultProps}
+					items={tableItems}
+					fixedLayout
+					keyboardNavigation
+				>
+					<SimpleDataTableColumn label="Name" property="name" primaryColumn>
+						<InteractiveCell />
+					</SimpleDataTableColumn>
+				</SimpleDataTable>
+			);
+			const { container, rerender } = renderTable(renderWith(items));
+
+			const cell = container.querySelector('tbody th[tabindex="0"]');
+			fireEvent.focus(cell);
+			// Same item objects in a new array while the table has focus: the
+			// table resets its registry of interactive elements, and every cell
+			// has to register again.
+			rerender(
+				<IconSettings iconPath="/assets/icons">
+					{renderWith([...items])}
+				</IconSettings>
+			);
+			fireEvent.keyDown(cell, { key: 'Enter', keyCode: 13 });
+
+			expect(document.activeElement).toBe(
+				cell.querySelector('input[type="checkbox"]')
+			);
+		});
+
 		it('renders interactive cells with proper structure for keyboard navigation', () => {
 			const { container } = renderTable(
 				<SimpleDataTable {...defaultProps} fixedLayout keyboardNavigation>
