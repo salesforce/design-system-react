@@ -7,6 +7,7 @@ import importX from 'eslint-plugin-import-x';
 import storybook from 'eslint-plugin-storybook';
 import prettier from 'eslint-config-prettier';
 import globals from 'globals';
+import noDeprecated from './eslint-rules/no-deprecated.mjs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -67,6 +68,8 @@ export default tseslint.config(
 			'**/*.config.mjs',
 			'.storybook/**',
 			'eslint-plugin/**',
+			// This repo's own lint rules (plain Node modules, like the config).
+			'eslint-rules/**',
 			// Build/release tooling (Node scripts), outside the type-aware program.
 			'scripts/**',
 			// Legacy Karma/chai/sinon browser tests, excluded from the Vitest run
@@ -286,12 +289,20 @@ export default tseslint.config(
 		},
 	},
 
-	// Deprecated props in component source. Mostly a component reading its own
-	// deprecated prop to honor it, which is expected, so warn rather than error.
-	// A component passing another component's deprecated prop is a real bug.
-	// Tests exercise the deprecated paths on purpose.
+	// Deprecated APIs in library source. During the 11.x RC a component still
+	// reads its own deprecated props to honor them; `local/no-deprecated` allows
+	// that (it's the upstream rule, minus symbols declared under the same
+	// `components/<name>/` or `utilities/<name>/` directory), so the exemption
+	// is by kind of use rather than a per-file count. Any other use, such as a
+	// component passing another component's deprecated prop or a deprecated
+	// React or DOM API, is an error. Tests exercise the deprecated paths on
+	// purpose.
 	{
-		files: ['components/**/*.{ts,tsx}'],
+		files: [
+			'components/**/*.{ts,tsx}',
+			'utilities/**/*.{ts,tsx}',
+			'types/**/*.ts',
+		],
 		ignores: [
 			'**/__tests__/**',
 			'**/*.test.{ts,tsx}',
@@ -299,8 +310,9 @@ export default tseslint.config(
 			'**/__examples__/**',
 			'**/__docs__/**',
 		],
+		plugins: { local: { rules: { 'no-deprecated': noDeprecated } } },
 		rules: {
-			'@typescript-eslint/no-deprecated': 'warn',
+			'local/no-deprecated': 'error',
 		},
 	},
 
