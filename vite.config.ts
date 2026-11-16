@@ -39,10 +39,15 @@ const failOnWarning = (message: string) => {
 logger.warn = failOnWarning;
 logger.warnOnce = failOnWarning;
 
+// Storybook's `build-storybook` also loads this file with `command: 'build'`,
+// but only the library build should fail on warnings. Storybook sets
+// `STORYBOOK=true` before loading it.
+const isLibraryBuild = (command: string) =>
+	command === 'build' && process.env.STORYBOOK !== 'true';
+
 export default defineConfig(({ command }) => ({
-	// Only the library build fails on warnings; `vite dev` and Storybook keep
-	// Vite's default logger.
-	customLogger: command === 'build' ? logger : undefined,
+	// `vite dev` and Storybook keep Vite's default logger.
+	customLogger: isLibraryBuild(command) ? logger : undefined,
 	plugins: [react()],
 	resolve: {
 		// Force a single copy of React/ReactDOM. `react-highlighter-ts` declares
@@ -75,6 +80,9 @@ export default defineConfig(({ command }) => ({
 		},
 		rollupOptions: {
 			external,
+			// The plugin-timings hint depends on how fast the machine is, not on the
+			// code, so it would make the build fail at random on a slow runner.
+			checks: { pluginTimings: false },
 			onwarn(warning) {
 				failOnWarning(warning.message);
 			},
