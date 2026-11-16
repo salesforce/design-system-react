@@ -34,7 +34,7 @@ if (process.env.NODE_ENV !== 'production') {
 					`[Design System React] If one of the following props are used, then both of the following properties are required by ${control}: [${keys.join()}].${additionalComment}`
 				);
 				/* eslint-enable max-len */
-				hasWarned[control] = !!selectedProps;
+				hasWarned[control] = !bothOrNoneAreSet;
 			}
 		};
 } else {
