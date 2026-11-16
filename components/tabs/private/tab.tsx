@@ -101,7 +101,7 @@ const Tab = forwardRef<HTMLElement, TabProps>((props, ref) => {
 		if (typeof ref === 'function') {
 			ref(node);
 		} else if (ref) {
-			(ref as React.MutableRefObject<HTMLElement | null>).current = node;
+			(ref as React.RefObject<HTMLElement | null>).current = node;
 		}
 	};
 
