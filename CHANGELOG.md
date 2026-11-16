@@ -17,15 +17,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - `MenuDropdown` with `tooltipMenuItem`, `Tooltip` with `hasAnchoredNubbin`, and `File` with `moreActionsDropdown` no longer render a `<style>` element, so they work under a Content-Security-Policy without `'unsafe-inline'` in `style-src`. They use SLDS markup instead, and need no extra stylesheet: a tooltip menu item's link is now the `li`'s direct child (the tooltip renders next to it and opens on hover and focus), the anchored tooltip doesn't add the dialog's `slds-nubbin_*` class, and the file more-actions dropdown adds `slds-button_last`. The anchored nubbin's color now follows the SLDS 2 tooltip background hook, falling back to the old `#16325c`
 - The [Breaking-Change Taxonomy](docs/codebase-overview.md#breaking-change-taxonomy) also lists callback signatures, exported type narrowing, entry points and peer dependency minimums as breaking
+- `ColorPicker`: under SLDS 2, the HSV picker's border and shadow and the swatch borders and no-color pattern read SLDS 2 hooks (`--slds-g-color-border-2`, `--slds-g-color-neutral-base-50`, `--slds-g-color-on-surface-3`, `--slds-g-color-surface-1`, `--slds-g-color-error-1`), so they follow the theme. The previous values are the `var()` fallbacks, so SLDS 1 looks the same. Swatch colors are unchanged
 
 ### Deprecated
 
 - `File.injectMoreActionsStyles()`. It returns `null`, and `File` no longer calls it
+- `Icon` `productTheme`, the `ProductTheme` type and `utilities/product-tokens/icon-backgrounds`. Removal: before 11.0.0. The eight product brand colors aren't SLDS 2 theme values, and several fail WCAG AA contrast. `productTheme` still sets the background color and logs a one-time development warning. Set the color yourself: `<Icon productTheme="sales-cloud" />` becomes `<Icon style={{ backgroundColor: '#00857d' }} />`, or a class you own
 
 ### Fixed
 
 - `ColorPicker` no longer passes the deprecated `checked` to its swatch `Radio`s. The `RadioGroup` `value` already set it, so nothing changes at runtime. `File` styles its loading spinner without `Spinner`'s deprecated `containerStyle`
 - Examples and stories use no deprecated props: accordion `base-open` passes the panel's event to its handler instead of `window.event`, builder-header labels its edit dialog by a heading id (the old value was not an element id), radio groups derive their error id, and setup-assistant marks steps with `status: 'completed'`
+- `SimpleDataTable`: the fixed-header border and radius hooks have SLDS 1 fallbacks (`rgb(221, 219, 218)`, `0.25rem`), so the border shows without SLDS 2 loaded
 
 ### Removed
 
