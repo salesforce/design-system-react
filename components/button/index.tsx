@@ -373,6 +373,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 					onClick={handleClick}
 					onFocus={onFocus}
 					onKeyDown={onKeyDown}
+					// eslint-disable-next-line local/no-deprecated -- forwards the deprecated `onKeyPress` prop until 11.0
 					onKeyPress={onKeyPress}
 					onKeyUp={onKeyUp}
 					onMouseDown={onMouseDown}

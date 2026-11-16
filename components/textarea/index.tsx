@@ -265,6 +265,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 						onInput={onInput}
 						onInvalid={onInvalid}
 						onKeyDown={onKeyDown}
+						// eslint-disable-next-line local/no-deprecated -- forwards the deprecated `onKeyPress` prop until 11.0
 						onKeyPress={onKeyPress}
 						onKeyUp={onKeyUp}
 						onSelect={onSelect}
