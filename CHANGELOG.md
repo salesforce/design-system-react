@@ -128,6 +128,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - `Alert` and `Toast` `variant` is optional (`info`); `Spinner` `placement` (`isInline` and `isInput` are deprecated and warn once)
   - `Carousel` `itemsPerPanel` must be a positive integer (other values fall back to 1 and warn); `DatePicker` `onCalendarFocus` direction is `'next' | 'previous'`
 - `MenuDropdown` with `tooltipMenuItem`, `Tooltip` with `hasAnchoredNubbin`, and `File` with `moreActionsDropdown` no longer render a `<style>` element, so they work under a Content-Security-Policy without `'unsafe-inline'` in `style-src`. They use SLDS markup instead, and need no extra stylesheet: a tooltip menu item's link is now the `li`'s direct child (the tooltip renders next to it and opens on hover and focus), the anchored tooltip doesn't add the dialog's `slds-nubbin_*` class, and the file more-actions dropdown adds `slds-button_last`. The anchored nubbin's color now follows the SLDS 2 tooltip background hook, falling back to the old `#16325c`
+- `ColorPicker`: under SLDS 2, the HSV picker's border and shadow and the swatch borders and no-color pattern read SLDS 2 hooks (`--slds-g-color-border-2`, `--slds-g-color-neutral-base-50`, `--slds-g-color-on-surface-3`, `--slds-g-color-surface-1`, `--slds-g-color-error-1`), so they follow the theme. The previous values are the `var()` fallbacks, so SLDS 1 looks the same. Swatch colors are unchanged
 
 ### Deprecated
 
@@ -170,6 +171,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - `ColorPicker` top-level `onOpen`, `onClose`, `onRequestOpen` and `onRequestClose` (use the `events` keys). If both are set, both are called
 - `requestFocus` and `onRequestFocus` on `Button`, `Checkbox` and `Radio`. They keep working and log a one-time development warning. Focus through a ref instead: `ref` (or `buttonRef`) on `Button`, `ref` on `Checkbox` (forwarded to the `<input>`), and `refs.input` on `Radio`, then call `.focus()`. `SimpleDataTableInteractiveElement` focuses `forwardRef` components through `ref`, and still passes `requestFocus`/`onRequestFocus` to other wrapped components
 - `File.injectMoreActionsStyles()`. It returns `null`, and `File` no longer calls it
+- `Icon` `productTheme`, the `ProductTheme` type and `utilities/product-tokens/icon-backgrounds`. Removal: before 11.0.0. The eight product brand colors aren't SLDS 2 theme values, and several fail WCAG AA contrast. `productTheme` still sets the background color and logs a one-time development warning. Set the color yourself: `<Icon productTheme="sales-cloud" />` becomes `<Icon style={{ backgroundColor: '#00857d' }} />`, or a class you own
 
 ### Fixed
 
@@ -220,6 +222,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `PopoverEditDialog`: a consumer `onOpen`, `onClose` or `onRequestClose` no longer replaces the dialog's own handlers, so it still opens and closes
 - `Tree`: leaf items are keyed by `node.id`, so they no longer remount on every render
 - `WelcomeMatInfoBadge`: the check icon (and its "Completed" text) renders only when `isComplete`
+- `SimpleDataTable`: the fixed-header border and radius hooks have SLDS 1 fallbacks (`rgb(221, 219, 218)`, `0.25rem`), so the border shows without SLDS 2 loaded
 
 ### Removed
 
