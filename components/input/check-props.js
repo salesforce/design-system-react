@@ -6,6 +6,7 @@
 // import oneOfRequiredProperty from '../../../utilities/warning/one-of-required-property';
 import onlyOneOfProperties from '../../utilities/warning/only-one-of-properties';
 import sunsetProperty from '../../utilities/warning/sunset-property';
+import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
 
 import { INPUT } from '../../utilities/constants';
@@ -17,6 +18,14 @@ if (process.env.NODE_ENV !== 'production') {
 		const createDocUrl = getComponentDocFn(jsonDoc);
 
 		if (COMPONENT === INPUT) {
+			deprecatedProperty(
+				COMPONENT,
+				props.onKeyPress,
+				'onKeyPress',
+				'onKeyDown',
+				`\`keypress\` is a deprecated DOM event; read \`event.key\` instead. ${createDocUrl('onKeyDown')}`
+			);
+
 			sunsetProperty(
 				COMPONENT,
 				props.defaultValue !== undefined,

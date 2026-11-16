@@ -113,7 +113,10 @@ interface CheckboxCommonProps {
 	onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
 	/** Key down event handler */
 	onKeyDown?: (event: KeyboardEvent<HTMLInputElement>) => void;
-	/** Key press event handler */
+	/**
+	 * @deprecated `keypress` is a deprecated DOM event. Use `onKeyDown` and read
+	 * `event.key` instead. Still works, and warns.
+	 */
 	onKeyPress?: (event: KeyboardEvent<HTMLInputElement>) => void;
 	/** Key up event handler */
 	onKeyUp?: (event: KeyboardEvent<HTMLInputElement>) => void;
@@ -323,6 +326,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 			CHECKBOX,
 			{
 				defaultChecked,
+				onKeyPress,
 				onRenderVisualPicker,
 				onRenderVisualPickerSelected,
 				onRenderVisualPickerNotSelected,
@@ -333,6 +337,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 		);
 	}, [
 		defaultChecked,
+		onKeyPress,
 		onRequestFocus,
 		requestFocus,
 		onRenderVisualPicker,
