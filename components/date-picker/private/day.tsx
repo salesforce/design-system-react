@@ -102,7 +102,7 @@ const handleKeyDown = (
 		direction,
 	}: DayHandlerProps
 ) => {
-	const keyDownCallbacks: Record<number, () => void> = {
+	const keyDownCallbacks: Record<string, () => void> = {
 		[KEYS.SPACE]: () => {
 			onSelectDate(event, { date });
 		},
@@ -134,19 +134,19 @@ const handleKeyDown = (
 		},
 	};
 
-	const shiftKeyDownCallbacks: Record<number, () => void> = {
+	const shiftKeyDownCallbacks: Record<string, () => void> = {
 		[KEYS.TAB]: () => {
 			onCalendarBlur(event, { direction: 'previous' });
 		},
 	};
 
-	if (event.keyCode) {
-		if (event.shiftKey && keyDownCallbacks[event.keyCode]) {
+	if (event.key) {
+		if (event.shiftKey && keyDownCallbacks[event.key]) {
 			EventUtil.trapEvent(event);
-			shiftKeyDownCallbacks[event.keyCode]();
-		} else if (keyDownCallbacks[event.keyCode]) {
+			shiftKeyDownCallbacks[event.key]();
+		} else if (keyDownCallbacks[event.key]) {
 			EventUtil.trapEvent(event);
-			keyDownCallbacks[event.keyCode]();
+			keyDownCallbacks[event.key]();
 		}
 	}
 };

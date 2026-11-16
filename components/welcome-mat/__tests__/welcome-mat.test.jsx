@@ -115,7 +115,7 @@ describe('SLDSWelcomeMat', () => {
 
 			fireEvent.keyDown(document.body.querySelector('.slds-modal'), {
 				key: 'Escape',
-				keyCode: 27,
+				code: 'Escape',
 			});
 
 			expect(onRequestClose).toHaveBeenCalledTimes(1);

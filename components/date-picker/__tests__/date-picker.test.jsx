@@ -189,14 +189,10 @@ describe('SLDSDatepicker', () => {
 			fireEvent.click(container.querySelector(inputSelector));
 			fireEvent.click(container.querySelector(triggerClassSelector));
 			fireEvent.keyDown(container.querySelector(inputSelector), {
-				key: 'Down',
-				keyCode: KEYS.DOWN,
-				which: KEYS.DOWN,
+				key: 'ArrowDown',
 			});
 			fireEvent.keyDown(container.querySelector(inputSelector), {
-				key: 'Up',
-				keyCode: KEYS.UP,
-				which: KEYS.UP,
+				key: 'ArrowUp',
 			});
 
 			expect(onRequestOpen).toHaveBeenCalledTimes(4);
@@ -227,9 +223,7 @@ describe('SLDSDatepicker', () => {
 			);
 
 			fireEvent.keyDown(container.querySelector(inputSelector), {
-				key: 'Down',
-				keyCode: KEYS.DOWN,
-				which: KEYS.DOWN,
+				key: 'ArrowDown',
 			});
 
 			expect(onRequestOpen).not.toHaveBeenCalled();
@@ -247,13 +241,9 @@ describe('SLDSDatepicker', () => {
 
 			fireEvent.keyDown(container.querySelector(inputSelector), {
 				key: 'Escape',
-				keyCode: KEYS.ESCAPE,
-				which: KEYS.ESCAPE,
 			});
 			fireEvent.keyDown(container.querySelector(inputSelector), {
 				key: 'Enter',
-				keyCode: KEYS.ENTER,
-				which: KEYS.ENTER,
 			});
 
 			expect(onRequestClose).toHaveBeenCalledTimes(2);
@@ -276,7 +266,7 @@ describe('SLDSDatepicker', () => {
 
 			fireEvent.keyDown(
 				container.querySelector('.datepicker__month [aria-selected=true]'),
-				{ key: 'Escape', keyCode: KEYS.ESCAPE, which: KEYS.ESCAPE }
+				{ key: 'Escape' }
 			);
 
 			expect(onRequestClose).toHaveBeenCalledTimes(1);
@@ -345,13 +335,9 @@ describe('SLDSDatepicker', () => {
 
 			fireEvent.keyDown(container.querySelector(inputSelector), {
 				key: 'Escape',
-				keyCode: KEYS.ESCAPE,
-				which: KEYS.ESCAPE,
 			});
 			fireEvent.keyDown(container.querySelector(inputSelector), {
 				key: 'Enter',
-				keyCode: KEYS.ENTER,
-				which: KEYS.ENTER,
 			});
 
 			expect(onRequestClose).not.toHaveBeenCalled();
@@ -370,9 +356,7 @@ describe('SLDSDatepicker', () => {
 			const input = container.querySelector(inputSelector);
 
 			fireEvent.keyDown(input, {
-				key: 'Down',
-				keyCode: KEYS.DOWN,
-				which: KEYS.DOWN,
+				key: 'ArrowDown',
 			});
 			await waitFor(() => {
 				expect(
@@ -382,8 +366,6 @@ describe('SLDSDatepicker', () => {
 
 			fireEvent.keyDown(input, {
 				key: 'Escape',
-				keyCode: KEYS.ESCAPE,
-				which: KEYS.ESCAPE,
 			});
 			await waitFor(() => {
 				expect(
@@ -395,8 +377,6 @@ describe('SLDSDatepicker', () => {
 
 			fireEvent.keyDown(input, {
 				key: 'Escape',
-				keyCode: KEYS.ESCAPE,
-				which: KEYS.ESCAPE,
 			});
 			expect(onRequestClose).toHaveBeenCalledTimes(1);
 
@@ -437,9 +417,7 @@ describe('SLDSDatepicker', () => {
 					'.datepicker__month [aria-disabled=false]'
 				);
 				fireEvent.keyDown(firstDayOfMonth, {
-					key: 'Esc',
-					keyCode: KEYS.ESCAPE,
-					which: KEYS.ESCAPE,
+					key: 'Escape',
 				});
 
 				// Verify calendar closed
@@ -475,9 +453,7 @@ describe('SLDSDatepicker', () => {
 				expect(selectedDay).toBeInTheDocument();
 
 				fireEvent.keyDown(selectedDay, {
-					key: 'Down',
-					keyCode: KEYS.DOWN,
-					which: KEYS.DOWN,
+					key: 'ArrowDown',
 				});
 
 				await waitFor(() => {
@@ -512,9 +488,7 @@ describe('SLDSDatepicker', () => {
 				);
 
 				fireEvent.keyDown(selectedDay, {
-					key: 'Right',
-					keyCode: KEYS.RIGHT,
-					which: KEYS.RIGHT,
+					key: 'ArrowRight',
 				});
 
 				await waitFor(() => {
@@ -549,9 +523,7 @@ describe('SLDSDatepicker', () => {
 				);
 
 				fireEvent.keyDown(selectedDay, {
-					key: 'Left',
-					keyCode: KEYS.LEFT,
-					which: KEYS.LEFT,
+					key: 'ArrowLeft',
 				});
 
 				await waitFor(() => {
@@ -585,9 +557,7 @@ describe('SLDSDatepicker', () => {
 				);
 
 				fireEvent.keyDown(selectedDay, {
-					key: 'Up',
-					keyCode: KEYS.UP,
-					which: KEYS.UP,
+					key: 'ArrowUp',
 				});
 
 				await waitFor(() => {
@@ -623,9 +593,7 @@ describe('SLDSDatepicker', () => {
 				);
 
 				fireEvent.keyDown(selectedDay, {
-					key: 'Left',
-					keyCode: KEYS.LEFT,
-					which: KEYS.LEFT,
+					key: 'ArrowLeft',
 				});
 
 				await waitFor(() => {
@@ -660,9 +628,7 @@ describe('SLDSDatepicker', () => {
 				);
 
 				fireEvent.keyDown(selectedDay, {
-					key: 'Right',
-					keyCode: KEYS.RIGHT,
-					which: KEYS.RIGHT,
+					key: 'ArrowRight',
 				});
 
 				await waitFor(() => {
@@ -697,8 +663,6 @@ describe('SLDSDatepicker', () => {
 
 				fireEvent.keyDown(selectedDay, {
 					key: 'Tab',
-					keyCode: KEYS.TAB,
-					which: KEYS.TAB,
 				});
 
 				await waitFor(() => {
@@ -731,9 +695,7 @@ describe('SLDSDatepicker', () => {
 
 				fireEvent.keyDown(selectedDay, {
 					key: 'Tab',
-					keyCode: KEYS.TAB,
 					shiftKey: true,
-					which: KEYS.TAB,
 				});
 
 				await waitFor(() => {
@@ -854,8 +816,6 @@ describe('SLDSDatepicker', () => {
 			expect(container.querySelector('.datepicker__month')).toBeInTheDocument();
 			fireEvent.keyDown(container.querySelector('.datepicker__month'), {
 				key: 'Escape',
-				keyCode: KEYS.ESCAPE,
-				which: KEYS.ESCAPE,
 			});
 			expect(
 				container.querySelector('.datepicker__month')
@@ -1154,8 +1114,8 @@ describe('SLDSDatepicker', () => {
 				);
 				const input = container.querySelector(inputSelector);
 
-				fireEvent.keyDown(input, { keyCode: KEYS.ESCAPE, which: KEYS.ESCAPE });
-				fireEvent.keyDown(input, { keyCode: KEYS.ENTER, which: KEYS.ENTER });
+				fireEvent.keyDown(input, { key: KEYS.ESCAPE });
+				fireEvent.keyDown(input, { key: KEYS.ENTER });
 				fireEvent.change(input, { target: { value: '1/2/2007' } });
 				fireEvent.click(
 					container.querySelector(`${calendarSelector} [aria-disabled=false]`)
@@ -1178,8 +1138,7 @@ describe('SLDSDatepicker', () => {
 				fireEvent.click(container.querySelector(inputSelector));
 				fireEvent.click(container.querySelector(triggerClassSelector));
 				fireEvent.keyDown(container.querySelector(inputSelector), {
-					keyCode: KEYS.DOWN,
-					which: KEYS.DOWN,
+					key: KEYS.DOWN,
 				});
 
 				expect(
@@ -1202,10 +1161,10 @@ describe('SLDSDatepicker', () => {
 				const { container } = render(<Parent />);
 				const input = container.querySelector(inputSelector);
 
-				fireEvent.keyDown(input, { keyCode: KEYS.DOWN, which: KEYS.DOWN });
+				fireEvent.keyDown(input, { key: KEYS.DOWN });
 				expect(container.querySelector(calendarSelector)).toBeInTheDocument();
 
-				fireEvent.keyDown(input, { keyCode: KEYS.ESCAPE, which: KEYS.ESCAPE });
+				fireEvent.keyDown(input, { key: KEYS.ESCAPE });
 				expect(
 					container.querySelector(calendarSelector)
 				).not.toBeInTheDocument();
@@ -1257,8 +1216,7 @@ describe('SLDSDatepicker', () => {
 				expect(container.querySelector(calendarSelector)).toBeInTheDocument();
 
 				fireEvent.keyDown(container.querySelector(inputSelector), {
-					keyCode: KEYS.ESCAPE,
-					which: KEYS.ESCAPE,
+					key: KEYS.ESCAPE,
 				});
 				expect(
 					container.querySelector(calendarSelector)

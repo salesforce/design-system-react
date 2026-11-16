@@ -385,7 +385,7 @@ const Carousel = ({
 	// Keyboard handler
 	const handleKeyDown = useCallback(
 		(event: KeyboardEvent<HTMLDivElement>) => {
-			const keyDownCallbacks: Record<number, () => void> = {
+			const keyDownCallbacks: Record<string, () => void> = {
 				[KEYS.LEFT]: () => {
 					if (isInfinite || canGoToPrevious()) {
 						onPreviousPanelHandler(event);
@@ -406,9 +406,9 @@ const Carousel = ({
 				},
 			};
 
-			if (keyDownCallbacks[event.keyCode]) {
+			if (keyDownCallbacks[event.key]) {
 				EventUtil.trapImmediate(event);
-				keyDownCallbacks[event.keyCode]();
+				keyDownCallbacks[event.key]();
 			}
 		},
 		[

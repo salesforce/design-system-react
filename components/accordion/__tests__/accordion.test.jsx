@@ -197,8 +197,6 @@ describe('Accordion', () => {
 
 			fireEvent.keyDown(accordionButtons[0], {
 				key: 'ArrowDown',
-				keyCode: 40,
-				which: 40,
 			});
 
 			// In real browser, accordionButtons[1] would be focused
@@ -216,8 +214,6 @@ describe('Accordion', () => {
 
 			fireEvent.keyDown(accordionButtons[0], {
 				key: 'ArrowUp',
-				keyCode: 38,
-				which: 38,
 			});
 
 			// In real browser, last accordion button would be focused
@@ -246,8 +242,6 @@ describe('Accordion', () => {
 
 			fireEvent.keyDown(accordionButtons[0], {
 				key: 'ArrowDown',
-				keyCode: 40,
-				which: 40,
 			});
 
 			expect(document.activeElement).toBe(accordionButtons[1]);
@@ -272,13 +266,9 @@ describe('Accordion', () => {
 			initialButtons[0].focus();
 			fireEvent.keyDown(document.activeElement, {
 				key: 'ArrowDown',
-				keyCode: 40,
-				which: 40,
 			});
 			fireEvent.keyDown(document.activeElement, {
 				key: 'ArrowDown',
-				keyCode: 40,
-				which: 40,
 			});
 			expect(document.activeElement).toBe(
 				initialButtons[initialButtons.length - 1]
@@ -301,8 +291,6 @@ describe('Accordion', () => {
 
 			fireEvent.keyDown(document.activeElement, {
 				key: 'ArrowUp',
-				keyCode: 38,
-				which: 38,
 			});
 
 			// Without resyncing the tracked index, this would be a no-op and
@@ -328,8 +316,6 @@ describe('Accordion', () => {
 			initialButtons[0].focus();
 			fireEvent.keyDown(document.activeElement, {
 				key: 'ArrowDown',
-				keyCode: 40,
-				which: 40,
 			});
 			expect(document.activeElement).toBe(initialButtons[1]);
 
@@ -351,8 +337,6 @@ describe('Accordion', () => {
 
 			fireEvent.keyDown(document.activeElement, {
 				key: 'ArrowDown',
-				keyCode: 40,
-				which: 40,
 			});
 
 			// Without resyncing to the focused button's new index, the stale

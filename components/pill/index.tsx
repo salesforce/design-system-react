@@ -177,7 +177,7 @@ const Pill = forwardRef<PillRef, PillProps>(
 				onKeyDown?.(event);
 				if (event.defaultPrevented) return;
 
-				switch (event.keyCode) {
+				switch (event.key) {
 					case KEYS.ENTER:
 						if (onClick) {
 							EventUtil.trap(event);

@@ -222,7 +222,7 @@ describe('SLDS Carousel', () => {
 			const carousel = container.querySelector('.slds-carousel');
 
 			// Navigate right (next item)
-			fireEvent.keyDown(carousel, { keyCode: KEYS.RIGHT });
+			fireEvent.keyDown(carousel, { key: KEYS.RIGHT });
 			let activeLink = container.querySelector(
 				`#content-id-${defaultCarouselProps.id}-2 a`
 			);
@@ -233,7 +233,7 @@ describe('SLDS Carousel', () => {
 			expect(activeIndicator).toHaveAttribute('tabindex', '0');
 
 			// Navigate left (previous item)
-			fireEvent.keyDown(carousel, { keyCode: KEYS.LEFT });
+			fireEvent.keyDown(carousel, { key: KEYS.LEFT });
 			activeLink = container.querySelector(
 				`#content-id-${defaultCarouselProps.id}-1 a`
 			);
@@ -382,7 +382,7 @@ describe('SLDS Carousel', () => {
 			const carousel = container.querySelector('.slds-carousel');
 
 			// Navigate right (next panel - items 4, 5, 6)
-			fireEvent.keyDown(carousel, { keyCode: KEYS.RIGHT });
+			fireEvent.keyDown(carousel, { key: KEYS.RIGHT });
 			const link4 = container.querySelector(
 				`#content-id-${defaultCarouselProps.id}-4 a`
 			);
@@ -402,7 +402,7 @@ describe('SLDS Carousel', () => {
 			expect(activeIndicator).toHaveAttribute('tabindex', '0');
 
 			// Navigate left (previous panel - back to items 1, 2, 3)
-			fireEvent.keyDown(carousel, { keyCode: KEYS.LEFT });
+			fireEvent.keyDown(carousel, { key: KEYS.LEFT });
 			const link1 = container.querySelector(
 				`#content-id-${defaultCarouselProps.id}-1 a`
 			);
@@ -517,7 +517,7 @@ describe('SLDS Carousel', () => {
 			});
 
 			const carousel = container.querySelector('.slds-carousel');
-			fireEvent.keyDown(carousel, { keyCode: KEYS.RIGHT });
+			fireEvent.keyDown(carousel, { key: KEYS.RIGHT });
 
 			expect(onRequestPanelChange).toHaveBeenCalledTimes(1);
 			const [event, data] = onRequestPanelChange.mock.calls[0];
@@ -535,7 +535,7 @@ describe('SLDS Carousel', () => {
 			});
 
 			fireEvent.keyDown(container.querySelector('.slds-carousel'), {
-				keyCode: KEYS.RIGHT,
+				key: KEYS.RIGHT,
 			});
 
 			// The same real event, never a stale or empty `{}` placeholder
@@ -543,7 +543,7 @@ describe('SLDS Carousel', () => {
 			const [autoplayEvent, autoplayData] =
 				onRequestAutoplayToggle.mock.calls[0];
 			expect(panelEvent.type).toBe('keydown');
-			expect(panelEvent.keyCode).toBe(KEYS.RIGHT);
+			expect(panelEvent.key).toBe(KEYS.RIGHT);
 			expect(autoplayEvent).toBe(panelEvent);
 			expect(autoplayData).toEqual({ isAutoplayOn: false });
 		});

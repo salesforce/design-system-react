@@ -1,34 +1,25 @@
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
+/* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+// `KeyboardEvent.key` values. Compare with `event.key`; `keyCode` and `which`
+// are deprecated DOM APIs.
 const keys = {
-	ENTER: 13,
-	ESCAPE: 27,
-	SPACE: 32,
-	LEFT: 37,
-	UP: 38,
-	RIGHT: 39,
-	DOWN: 40,
-	TAB: 9,
-	DELETE: 46,
-	BACKSPACE: 8,
+	ENTER: 'Enter',
+	ESCAPE: 'Escape',
+	SPACE: ' ',
+	LEFT: 'ArrowLeft',
+	UP: 'ArrowUp',
+	RIGHT: 'ArrowRight',
+	DOWN: 'ArrowDown',
+	TAB: 'Tab',
+	DELETE: 'Delete',
+	BACKSPACE: 'Backspace',
 };
 
-// Helpful for interaction/event tests. Use with simulate:
-// `nodes.input.simulate('keyDown', keyObjects.DOWN);`
-const keyObjects = {
-	ENTER: { key: 'Enter', keyCode: keys.ENTER, which: keys.ENTER },
-	ESCAPE: { key: 'Escape', keyCode: keys.ESCAPE, which: keys.ESCAPE },
-	SPACE: { key: 'Space', keyCode: keys.SPACE, which: keys.SPACE },
-	LEFT: { key: 'Left', keyCode: keys.LEFT, which: keys.LEFT },
-	UP: { key: 'Up', keyCode: keys.UP, which: keys.ESCAPE },
-	RIGHT: { key: 'Right', keyCode: keys.RIGHT, which: keys.RIGHT },
-	DOWN: { key: 'Down', keyCode: keys.DOWN, which: keys.DOWN },
-	TAB: { key: 'Tab', keyCode: keys.TAB, which: keys.TAB },
-	DELETE: { key: 'Delete', keyCode: keys.DELETE, which: keys.DELETE },
-	BACKSPACE: {
-		key: 'Backspace',
-		keyCode: keys.BACKSPACE,
-		which: keys.BACKSPACE,
-	},
-};
+// Event init objects for tests: `fireEvent.keyDown(node, keyObjects.DOWN)`.
+const keyObjects = Object.fromEntries(
+	Object.entries(keys).map(([name, key]) => [name, { key }])
+);
 
 export default keys;
 export { keyObjects };

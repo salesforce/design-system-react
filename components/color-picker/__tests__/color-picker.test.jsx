@@ -263,8 +263,7 @@ describe('SLDSColorPicker', () => {
 
 				const swatch = container.querySelector(selectors.swatch);
 				fireEvent.keyDown(swatch, {
-					keyCode: KEYS.RIGHT,
-					which: KEYS.RIGHT,
+					key: KEYS.RIGHT,
 				});
 
 				expect(onWorkingColorChange).toHaveBeenCalledWith(
@@ -291,8 +290,7 @@ describe('SLDSColorPicker', () => {
 
 				const swatch = container.querySelector(selectors.swatch);
 				fireEvent.keyDown(swatch, {
-					keyCode: KEYS.LEFT,
-					which: KEYS.LEFT,
+					key: KEYS.LEFT,
 				});
 
 				expect(onWorkingColorChange).toHaveBeenCalledWith(
@@ -321,8 +319,7 @@ describe('SLDSColorPicker', () => {
 
 				const swatch = container.querySelector(selectors.swatch);
 				fireEvent.keyDown(swatch, {
-					keyCode: KEYS.RIGHT,
-					which: KEYS.RIGHT,
+					key: KEYS.RIGHT,
 				});
 
 				expect(onWorkingColorChange).toHaveBeenCalledWith(
@@ -351,8 +348,7 @@ describe('SLDSColorPicker', () => {
 
 				const swatch = container.querySelector(selectors.swatch);
 				fireEvent.keyDown(swatch, {
-					keyCode: KEYS.LEFT,
-					which: KEYS.LEFT,
+					key: KEYS.LEFT,
 				});
 
 				expect(onWorkingColorChange).toHaveBeenCalledWith(
@@ -495,8 +491,7 @@ describe('SLDSColorPicker', () => {
 
 						const point = container.querySelector(selectors.gridPoint);
 						fireEvent.keyDown(point, {
-							keyCode: KEYS.UP,
-							which: KEYS.UP,
+							key: KEYS.UP,
 						});
 
 						expect(onWorkingColorChange).toHaveBeenCalledWith(
@@ -524,8 +519,7 @@ describe('SLDSColorPicker', () => {
 
 						const point = container.querySelector(selectors.gridPoint);
 						fireEvent.keyDown(point, {
-							keyCode: KEYS.DOWN,
-							which: KEYS.DOWN,
+							key: KEYS.DOWN,
 						});
 
 						expect(onWorkingColorChange).toHaveBeenCalledWith(
@@ -553,8 +547,7 @@ describe('SLDSColorPicker', () => {
 
 						const point = container.querySelector(selectors.gridPoint);
 						fireEvent.keyDown(point, {
-							keyCode: KEYS.LEFT,
-							which: KEYS.LEFT,
+							key: KEYS.LEFT,
 						});
 
 						expect(onWorkingColorChange).toHaveBeenCalledWith(
@@ -582,8 +575,7 @@ describe('SLDSColorPicker', () => {
 
 						const point = container.querySelector(selectors.gridPoint);
 						fireEvent.keyDown(point, {
-							keyCode: KEYS.RIGHT,
-							which: KEYS.RIGHT,
+							key: KEYS.RIGHT,
 						});
 
 						expect(onWorkingColorChange).toHaveBeenCalledWith(
@@ -612,8 +604,7 @@ describe('SLDSColorPicker', () => {
 						const point = container.querySelector(selectors.gridPoint);
 						fireEvent.keyDown(point, {
 							shiftKey: true,
-							keyCode: KEYS.UP,
-							which: KEYS.UP,
+							key: KEYS.UP,
 						});
 
 						expect(onWorkingColorChange).toHaveBeenCalledWith(
@@ -641,8 +632,7 @@ describe('SLDSColorPicker', () => {
 
 						const point = container.querySelector(selectors.gridPoint);
 						fireEvent.keyDown(point, {
-							keyCode: KEYS.UP,
-							which: KEYS.UP,
+							key: KEYS.UP,
 						});
 
 						expect(onWorkingColorChange).toHaveBeenCalledWith(
@@ -671,8 +661,7 @@ describe('SLDSColorPicker', () => {
 						const point = container.querySelector(selectors.gridPoint);
 						fireEvent.keyDown(point, {
 							shiftKey: true,
-							keyCode: KEYS.UP,
-							which: KEYS.UP,
+							key: KEYS.UP,
 						});
 
 						expect(onWorkingColorChange).toHaveBeenCalledWith(

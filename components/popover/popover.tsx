@@ -636,13 +636,13 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>((props, ref) => {
 	// Handle key down
 	const handleKeyDown = useCallback(
 		(event: KeyboardEvent) => {
-			if (event.keyCode) {
-				if (event.keyCode !== KEYS.TAB) {
+			if (event.key) {
+				if (event.key !== KEYS.TAB) {
 					keyboardNavigableDialog({
 						event,
 						isOpen,
 						handleClick: (e: MouseEvent) => handleClick(e),
-						keyCode: event.keyCode,
+						key: event.key,
 						eventTarget: event.target,
 						// keyboardNavigableDialog calls `toggleOpen()` without the event; pass it through
 						toggleOpen: () => toggleOpenFromKeyboard(event),

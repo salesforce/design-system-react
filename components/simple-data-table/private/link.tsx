@@ -26,7 +26,7 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => {
 		<a
 			ref={ref}
 			onKeyDown={(event) => {
-				if (event.keyCode === KEYS.ENTER && onClick) {
+				if (event.key === KEYS.ENTER && onClick) {
 					// eslint-disable-next-line @typescript-eslint/no-explicit-any
 					onClick(event as any);
 				}

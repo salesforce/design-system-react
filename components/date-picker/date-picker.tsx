@@ -543,9 +543,9 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 		(event: KeyboardEvent<HTMLInputElement>) => {
 			// Don't open if user is selecting text
 			if (
-				event.keyCode &&
+				event.key &&
 				!event.shiftKey &&
-				(event.keyCode === KEYS.DOWN || event.keyCode === KEYS.UP)
+				(event.key === KEYS.DOWN || event.key === KEYS.UP)
 			) {
 				EventUtil.trapEvent(event);
 				// Go through the same request path as clicking, so a controlled
@@ -555,10 +555,10 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 				}
 			}
 
-			if (event.keyCode === KEYS.ESCAPE || event.keyCode === KEYS.ENTER) {
+			if (event.key === KEYS.ESCAPE || event.key === KEYS.ENTER) {
 				EventUtil.trapEvent(event);
 				handleRequestClose(event, {
-					trigger: event.keyCode === KEYS.ESCAPE ? 'escape' : 'enter',
+					trigger: event.key === KEYS.ESCAPE ? 'escape' : 'enter',
 				});
 			}
 
