@@ -2,6 +2,7 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 import { useEffect, useCallback, type RefObject } from 'react';
+import { useLatestRef } from './use-latest-ref';
 
 /**
  * Options for useClickOutside hook
@@ -43,6 +44,10 @@ export function useClickOutside<T extends HTMLElement>(
 		eventType = 'mousedown',
 	} = options;
 
+	// Read the callback through a ref so an inline callback doesn't re-subscribe
+	// the document listeners on every render.
+	const callbackRef = useLatestRef(callback);
+
 	const handleClickOutside = useCallback(
 		(event: MouseEvent | TouchEvent) => {
 			const target = event.target as Node;
@@ -60,10 +65,10 @@ export function useClickOutside<T extends HTMLElement>(
 
 			// Check if click is inside the ref element
 			if (ref.current && !ref.current.contains(target)) {
-				callback(event);
+				callbackRef.current(event);
 			}
 		},
-		[ref, callback, ignoreClass]
+		[ref, callbackRef, ignoreClass]
 	);
 
 	useEffect(() => {
@@ -71,9 +76,12 @@ export function useClickOutside<T extends HTMLElement>(
 			return;
 		}
 
-		// Add event listeners
+		// The handler never calls preventDefault, so touchstart can be passive
+		// and never blocks scrolling.
 		document.addEventListener(eventType, handleClickOutside);
-		document.addEventListener('touchstart', handleClickOutside);
+		document.addEventListener('touchstart', handleClickOutside, {
+			passive: true,
+		});
 
 		return () => {
 			document.removeEventListener(eventType, handleClickOutside);

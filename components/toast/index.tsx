@@ -2,7 +2,6 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 import React, {
-	useState,
 	useEffect,
 	useRef,
 	useCallback,
@@ -134,7 +133,7 @@ const Toast = ({
 	style,
 	variant = 'info',
 }: ToastProps): React.ReactElement => {
-	const [isInitialRender, setIsInitialRender] = useState(true);
+	const isInitialRenderRef = useRef(true);
 	const toastRef = useRef<HTMLDivElement | null>(null);
 	const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -179,17 +178,14 @@ const Toast = ({
 	}, [duration, handleTimeout, clearTimeoutRef]);
 
 	// Handle initial focus
-	const saveToastRef = useCallback(
-		(element: HTMLDivElement | null) => {
-			toastRef.current = element;
-			if (isInitialRender && element) {
-				DOMElementFocus.storeActiveElement();
-				element.focus();
-				setIsInitialRender(false);
-			}
-		},
-		[isInitialRender]
-	);
+	const saveToastRef = useCallback((element: HTMLDivElement | null) => {
+		toastRef.current = element;
+		if (isInitialRenderRef.current && element) {
+			DOMElementFocus.storeActiveElement();
+			element.focus();
+			isInitialRenderRef.current = false;
+		}
+	}, []);
 
 	// Get the icon to display
 	const icon = propIcon || defaultIcons[variant];

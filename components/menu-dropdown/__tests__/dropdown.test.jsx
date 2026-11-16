@@ -509,6 +509,36 @@ describe('SLDSMenuDropdown', () => {
 			expect(selected.value).toBe('B0');
 		});
 
+		it('focuses the item the arrow keys move to, and keeps it focused when the parent re-renders', async () => {
+			const props = { ...defaultProps, value: undefined };
+			const { container, rerender } = render(
+				<IconSettings iconPath="/assets/icons">
+					<Dropdown {...props} />
+				</IconSettings>
+			);
+
+			fireEvent.click(container.querySelector('.slds-dropdown-trigger'));
+			await waitFor(() => {
+				expect(container.querySelector('.slds-dropdown')).toBeInTheDocument();
+			});
+
+			const menu = container.querySelector('.slds-dropdown');
+			const links = () => menu.querySelectorAll('.slds-dropdown__item a');
+			fireEvent.keyDown(menu, keyObjects.DOWN);
+			fireEvent.keyDown(menu, keyObjects.DOWN);
+			expect(document.activeElement).toBe(links()[1]);
+
+			// Focus moves elsewhere, then the parent re-renders: the menu puts
+			// focus back on its focused item.
+			links()[0].focus();
+			rerender(
+				<IconSettings iconPath="/assets/icons">
+					<Dropdown {...props} />
+				</IconSettings>
+			);
+			expect(document.activeElement).toBe(links()[1]);
+		});
+
 		it('closes Menu on esc', async () => {
 			const { container } = renderDropdown();
 

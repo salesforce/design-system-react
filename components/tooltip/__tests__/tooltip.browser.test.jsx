@@ -58,3 +58,40 @@ describe('Tooltip hasAnchoredNubbin (browser)', () => {
 		expect(anchored.rect.left).toBeCloseTo(plain.rect.left, 0);
 	});
 });
+
+describe('Tooltip positioning (browser)', () => {
+	it('re-positions when the tooltip resizes', async () => {
+		const { unmount } = render(
+			<IconSettings iconPath="/assets/icons">
+				<div style={{ padding: '240px' }}>
+					<Tooltip
+						id="resizing-tooltip"
+						align="top"
+						content={<div data-testid="tooltip-body">Tooltip text</div>}
+						isOpen
+					>
+						<button type="button">Trigger</button>
+					</Tooltip>
+				</div>
+			</IconSettings>
+		);
+		const trigger = document.querySelector('button');
+		const tooltip = await waitFor(() => {
+			const el = document.querySelector('.slds-popover_tooltip');
+			expect(el).not.toBeNull();
+			expect(el.style.top).not.toBe('');
+			return el;
+		});
+		const gapAbove = () =>
+			trigger.getBoundingClientRect().top -
+			tooltip.getBoundingClientRect().bottom;
+		const gap = gapAbove();
+
+		document.querySelector('[data-testid="tooltip-body"]').style.height =
+			'120px';
+
+		// Bottom-aligned above the trigger again, so it moved up as it grew.
+		await waitFor(() => expect(gapAbove()).toBeCloseTo(gap, 0));
+		unmount();
+	});
+});

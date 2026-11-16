@@ -2,7 +2,6 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 import React, {
-	useState,
 	useRef,
 	useEffect,
 	useCallback,
@@ -102,7 +101,7 @@ const Alert = ({
 	style,
 	variant = 'info',
 }: AlertProps): React.ReactElement => {
-	const [isInitialRender, setIsInitialRender] = useState(true);
+	const isInitialRenderRef = useRef(true);
 	const closeButtonRef = useRef<HTMLButtonElement | null>(null);
 	const hasStoredFocusRef = useRef(false);
 
@@ -120,18 +119,15 @@ const Alert = ({
 		};
 	}, []);
 
-	const saveButtonRef = useCallback(
-		(component: HTMLButtonElement | null) => {
-			closeButtonRef.current = component;
-			if (isInitialRender && component) {
-				DOMElementFocus.storeActiveElement();
-				hasStoredFocusRef.current = true;
-				component.focus();
-				setIsInitialRender(false);
-			}
-		},
-		[isInitialRender]
-	);
+	const saveButtonRef = useCallback((component: HTMLButtonElement | null) => {
+		closeButtonRef.current = component;
+		if (isInitialRenderRef.current && component) {
+			DOMElementFocus.storeActiveElement();
+			hasStoredFocusRef.current = true;
+			component.focus();
+			isInitialRenderRef.current = false;
+		}
+	}, []);
 
 	// Get the icon to display
 	const icon = propIcon || defaultIcons[variant];

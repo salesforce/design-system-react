@@ -78,6 +78,32 @@ describe('SLDSModal (browser)', () => {
 		);
 	});
 
+	it('returns focus to the element focused before it opened, before onRequestClose', async () => {
+		const trigger = document.createElement('button');
+		document.body.appendChild(trigger);
+		trigger.focus();
+		let activeOnClose;
+		const onRequestClose = vi.fn(() => {
+			activeOnClose = document.activeElement;
+		});
+		try {
+			renderModal({ onRequestClose });
+			const closeButton = getCloseButton();
+			await vi.waitFor(() => {
+				expect(document.activeElement).not.toBe(trigger);
+			});
+
+			await act(async () => {
+				closeButton.click();
+			});
+
+			expect(onRequestClose).toHaveBeenCalledTimes(1);
+			expect(activeOnClose).toBe(trigger);
+		} finally {
+			trigger.remove();
+		}
+	});
+
 	it('traps focus inside the modal when tabbing', async () => {
 		renderModal({
 			footer: [

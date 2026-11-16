@@ -367,7 +367,6 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 		valueKey: string;
 		typedKey: string | null;
 	}>(() => ({ text: formatter(value), valueKey, typedKey: null }));
-	const [inputRendered, setInputRendered] = useState(false);
 
 	// Re-sync the typed text whenever `value` changes, unless the change is the parent accepting
 	// the date that was just typed (so the user's text is not reformatted mid-typing)
@@ -593,11 +592,8 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 	const setInputRefCallback = useCallback(
 		(component: HTMLInputElement | null) => {
 			inputRef.current = component;
-			if (!inputRendered) {
-				setInputRendered(true);
-			}
 		},
-		[inputRendered]
+		[]
 	);
 
 	// ===== Render Helpers =====

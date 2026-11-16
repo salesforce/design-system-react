@@ -1,9 +1,9 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { ReactNode } from 'react';
+import React, { ReactNode, RefObject } from 'react';
 
-import Item from './item';
+import Item, { type TreeItemState } from './item';
 import RenderInitialBranch from './render-initial-branch';
 import RenderBranch from './render-branch';
 
@@ -59,7 +59,12 @@ export interface BranchProps {
 	treeHasFocus?: boolean;
 	parent?: TreeNode | { nodes?: TreeNode[] };
 	nodes?: TreeNode[];
+	treeState: RefObject<TreeItemState>;
+	registerItemNode: (treeIndex: string, node: HTMLElement | null) => void;
 }
+
+// Memoized here rather than in `./item` so that module's export is unchanged.
+const MemoItem = React.memo(Item);
 
 const defaultGetNodes = (node: { nodes?: TreeNode[] }) => node.nodes;
 
@@ -112,6 +117,8 @@ const Branch: React.FC<BranchProps> = ({
 						treeHasFocus={props.treeHasFocus}
 						onNodeBlur={props.onNodeBlur}
 						nodes={childNode.nodes}
+						treeState={props.treeState}
+						registerItemNode={props.registerItemNode}
 						onSelect={props.onSelect}
 						onExpand={onExpand}
 						searchTerm={searchTerm}
@@ -122,18 +129,17 @@ const Branch: React.FC<BranchProps> = ({
 				);
 			} else {
 				child = (
-					<Item
+					<MemoItem
 						label={childNode.label}
 						htmlId={htmlId}
 						key={childNode.id}
 						level={level + 1}
 						node={childNode}
-						flattenedNodes={props.flattenedNodes}
-						isNodeSelected={props.isNodeSelected}
-						isNodeExpanded={props.isNodeExpanded}
-						tabStopIndex={props.tabStopIndex}
-						focusedNodeIndex={props.focusedNodeIndex}
-						treeHasFocus={props.treeHasFocus}
+						isSelected={props.isNodeSelected(childNode)}
+						isFocused={resolvedTreeIndex === props.focusedNodeIndex}
+						isTabStop={resolvedTreeIndex === props.tabStopIndex}
+						treeState={props.treeState}
+						registerNode={props.registerItemNode}
 						onNodeBlur={props.onNodeBlur}
 						onSelect={props.onSelect}
 						onExpand={onExpand}

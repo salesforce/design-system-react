@@ -1,7 +1,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { type ReactNode } from 'react';
+import React, { useMemo, type ReactNode } from 'react';
 import { PORTAL_SETTINGS } from '../../utilities/constants';
 
 /**
@@ -25,7 +25,8 @@ export interface PortalSettingsProps {
 /**
  * Context for portal settings
  */
-export const PortalSettingsContext = React.createContext<PortalSettingsContextValue>({});
+export const PortalSettingsContext =
+	React.createContext<PortalSettingsContextValue>({});
 
 /**
  * The Portal Settings component allows for the portal parent node to be specified
@@ -35,8 +36,10 @@ const PortalSettings = ({
 	renderTo,
 	children,
 }: PortalSettingsProps): React.ReactElement => {
+	const contextValue = useMemo(() => ({ renderTo }), [renderTo]);
+
 	return (
-		<PortalSettingsContext.Provider value={{ renderTo }}>
+		<PortalSettingsContext.Provider value={contextValue}>
 			{children}
 		</PortalSettingsContext.Provider>
 	);
@@ -45,18 +48,3 @@ const PortalSettings = ({
 PortalSettings.displayName = PORTAL_SETTINGS;
 
 export default PortalSettings;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

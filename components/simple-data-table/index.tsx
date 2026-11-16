@@ -104,15 +104,16 @@ const createItemMatcher = (list: SimpleDataTableItem[]) => {
 		references.has(item) || (hasId(item) && ids.has(item.id));
 };
 
-const getAssistiveText = memoize(
-	(
-		assistiveText: SimpleDataTableAssistiveText | undefined
-	): SimpleDataTableAssistiveText => ({
-		...defaultProps.assistiveText,
-		...assistiveText,
-	}),
-	isEqual
-);
+const mergeAssistiveText = (
+	assistiveText: SimpleDataTableAssistiveText | undefined
+): SimpleDataTableAssistiveText => ({
+	...defaultProps.assistiveText,
+	...assistiveText,
+});
+
+// Memoized here rather than in `private/row` so the private module's export
+// is unchanged. Rows treat `item` as immutable: pass a new item to change it.
+const MemoRow = React.memo(SimpleDataTableRow);
 
 const isPlainObject = (value: unknown): value is Record<string, unknown> => {
 	if (value === null || typeof value !== 'object') {
@@ -156,76 +157,70 @@ const isEqualIgnoringOwner = (a: unknown, b: unknown): boolean => {
 	return result;
 };
 
-const getColumnsAndRowActions = memoize(
-	(
-		children: ReactNode,
-		id: string | undefined,
-		fixedHeader: boolean | undefined,
-		fixedLayout: boolean | undefined,
-		items: SimpleDataTableItem[],
-		search: string | undefined
-	): {
-		columns: SimpleDataTableColumnConfig[];
-		RowActions: ReactElement | null;
-	} => {
-		const columns: SimpleDataTableColumnConfig[] = [];
-		let RowActions: ReactElement | null = null;
+const computeColumnsAndRowActions = (
+	children: ReactNode,
+	id: string | undefined,
+	fixedHeader: boolean | undefined,
+	fixedLayout: boolean | undefined,
+	items: SimpleDataTableItem[],
+	search: string | undefined
+): {
+	columns: SimpleDataTableColumnConfig[];
+	RowActions: ReactElement | null;
+} => {
+	const columns: SimpleDataTableColumnConfig[] = [];
+	let RowActions: ReactElement | null = null;
 
-		React.Children.forEach(children, (child) => {
-			if (
-				isElementOfType<SimpleDataTableColumnProps>(
-					child,
-					SimpleDataTableColumn
-				)
-			) {
-				const { children: columnChildren, ...columnProps } = child.props;
-				const props: Record<string, unknown> = {
-					fixedLayout,
-					search,
-					items,
-					...columnProps,
-				};
-				if (id) {
-					props.id = id;
-				}
-
-				// Any element child is the column's cell renderer, so custom cells
-				// don't need to copy `SimpleDataTableCell`'s `displayName`.
-				let Cell;
-				if (React.isValidElement(columnChildren)) {
-					Cell = columnChildren.type;
-					assign(props, columnChildren.props);
-				} else {
-					Cell = SimpleDataTableCell;
-				}
-
-				columns.push({
-					Cell: Cell as React.ComponentType<SimpleDataTableCellProps>,
-					props: props as SimpleDataTableColumnProps,
-				});
-			} else if (
-				isElementOfType<SimpleDataTableRowActionsProps>(
-					child,
-					SimpleDataTableRowActions
-				)
-			) {
-				const { dropdown } = child.props;
-				// A fixed header scrolls the body, so the menu needs to escape it,
-				// unless the dropdown sets its own `menuPosition`.
-				RowActions = React.cloneElement(child, {
-					dropdown:
-						dropdown && fixedHeader && dropdown.props.menuPosition === undefined
-							? React.cloneElement(dropdown, {
-									menuPosition: 'overflowBoundaryElement',
-								})
-							: dropdown,
-				});
+	React.Children.forEach(children, (child) => {
+		if (
+			isElementOfType<SimpleDataTableColumnProps>(child, SimpleDataTableColumn)
+		) {
+			const { children: columnChildren, ...columnProps } = child.props;
+			const props: Record<string, unknown> = {
+				fixedLayout,
+				search,
+				items,
+				...columnProps,
+			};
+			if (id) {
+				props.id = id;
 			}
-		});
-		return { columns, RowActions };
-	},
-	isEqualIgnoringOwner
-);
+
+			// Any element child is the column's cell renderer, so custom cells
+			// don't need to copy `SimpleDataTableCell`'s `displayName`.
+			let Cell;
+			if (React.isValidElement(columnChildren)) {
+				Cell = columnChildren.type;
+				assign(props, columnChildren.props);
+			} else {
+				Cell = SimpleDataTableCell;
+			}
+
+			columns.push({
+				Cell: Cell as React.ComponentType<SimpleDataTableCellProps>,
+				props: props as SimpleDataTableColumnProps,
+			});
+		} else if (
+			isElementOfType<SimpleDataTableRowActionsProps>(
+				child,
+				SimpleDataTableRowActions
+			)
+		) {
+			const { dropdown } = child.props;
+			// A fixed header scrolls the body, so the menu needs to escape it,
+			// unless the dropdown sets its own `menuPosition`.
+			RowActions = React.cloneElement(child, {
+				dropdown:
+					dropdown && fixedHeader && dropdown.props.menuPosition === undefined
+						? React.cloneElement(dropdown, {
+								menuPosition: 'overflowBoundaryElement',
+							})
+						: dropdown,
+			});
+		}
+	});
+	return { columns, RowActions };
+};
 
 /**
  * SimpleDataTables support the display of structured data in rows and columns with an HTML table. To sort, filter or paginate the table, simply update the data passed in the items to the table and it will re-render itself appropriately. The table will throw a sort event as needed, and helper components for paging and filtering are coming soon.
@@ -256,6 +251,8 @@ class SimpleDataTable extends React.Component<
 
 	// Map of cells to interactive elements within that cell
 	interactiveElements: Record<number, Record<number, string[]>>;
+
+	lastItems?: SimpleDataTableItem[];
 
 	tableRef?: HTMLTableElement | null;
 
@@ -354,11 +351,25 @@ class SimpleDataTable extends React.Component<
 		return null;
 	}
 
+	// Per instance, so two tables don't evict each other's columns and
+	// re-render every row.
+	getAssistiveText = memoize(mergeAssistiveText, isEqual);
+
+	getColumnsAndRowActions = memoize(
+		computeColumnsAndRowActions,
+		isEqualIgnoringOwner
+	);
+
+	// `items` is only a cache key: new items reset `interactiveElements`, and
+	// a new context value re-renders the interactive elements, including the
+	// rows' memoized selection controls, so they register again.
 	getTableContext = memoize(
 		(
 			state: SimpleDataTableState,
 			isKeyboardNavigation: boolean | undefined,
-			isGrid: boolean
+			isGrid: boolean,
+			// eslint-disable-next-line @typescript-eslint/no-unused-vars
+			_items: SimpleDataTableItem[]
 		) => ({
 			isGrid,
 			activeCell: state.activeCell,
@@ -545,13 +556,6 @@ class SimpleDataTable extends React.Component<
 		}
 	};
 
-	// eslint-disable-next-line camelcase
-	UNSAFE_componentWillUpdate(nextProps: SimpleDataTableProps) {
-		if (this.props.items !== nextProps.items) {
-			this.interactiveElements = {};
-		}
-	}
-
 	changeActiveCell(rowIndex: number, columnIndex: number) {
 		this.setState({
 			tableHasFocus: true,
@@ -640,7 +644,7 @@ class SimpleDataTable extends React.Component<
 	// Columns plus the row actions cell. Counts parsed children, so
 	// conditional (`false`/`null`) children don't count as columns.
 	getCellCount() {
-		const { columns, RowActions } = getColumnsAndRowActions(
+		const { columns, RowActions } = this.getColumnsAndRowActions(
 			this.props.children,
 			this.props.id,
 			this.props.fixedHeader,
@@ -823,6 +827,13 @@ class SimpleDataTable extends React.Component<
 
 	// ### Render
 	render() {
+		// New items mean new cells, which register their interactive elements
+		// while this render renders them. Repeating the render (StrictMode) with
+		// the same items keeps what registered.
+		if (this.props.items !== this.lastItems) {
+			this.lastItems = this.props.items;
+			this.interactiveElements = {};
+		}
 		const ariaProps: { 'aria-multiselectable'?: 'true' } = {};
 		const numHeaderRows = 1;
 		const isItemSelected = this.getSelectionMatcher(
@@ -846,7 +857,7 @@ class SimpleDataTable extends React.Component<
 		const indeterminateSelected =
 			canSelectRows && numNonHeaderRows !== numSelected && numSelected !== 0;
 
-		const { columns, RowActions } = getColumnsAndRowActions(
+		const { columns, RowActions } = this.getColumnsAndRowActions(
 			this.props.children,
 			this.props.id,
 			this.props.fixedHeader,
@@ -855,7 +866,7 @@ class SimpleDataTable extends React.Component<
 			this.props.search
 		);
 
-		const assistiveText = getAssistiveText(this.props.assistiveText);
+		const assistiveText = this.getAssistiveText(this.props.assistiveText);
 
 		if (this.props.selectRows && this.props.selectRows !== 'radio') {
 			ariaProps['aria-multiselectable'] = 'true';
@@ -880,7 +891,8 @@ class SimpleDataTable extends React.Component<
 					value={this.getTableContext(
 						this.state,
 						this.props.keyboardNavigation,
-						isGrid
+						isGrid,
+						this.props.items
 					)}
 				>
 					<table
@@ -983,7 +995,7 @@ class SimpleDataTable extends React.Component<
 											}
 										}
 										return (
-											<SimpleDataTableRow
+											<MemoRow
 												assistiveText={assistiveText}
 												canSelectRows={canSelectRows}
 												className={item.classNameRow}

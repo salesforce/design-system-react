@@ -433,6 +433,25 @@ describe('Tabs', () => {
 		});
 	});
 
+	describe('Interactions focus', () => {
+		const id = 'this-is-an-id-for-testing--focus';
+
+		it('moves focus to the tab the arrow key selects', () => {
+			const { container } = render(<TabsDemoComponent id={id} />);
+			const tabs = container.querySelectorAll('[role="tab"]');
+
+			fireEvent.keyDown(tabs[0], {
+				key: 'ArrowRight',
+				keyCode: 39,
+				which: 39,
+			});
+
+			// Tab B is disabled, so Tab C is selected and focused.
+			expect(tabs[2]).toHaveAttribute('aria-selected', 'true');
+			expect(tabs[2]).toHaveFocus();
+		});
+	});
+
 	describe('Interactions tabby disabled', () => {
 		const id = 'this-is-an-id-for-testing--tabby-disabled';
 

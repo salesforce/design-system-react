@@ -447,7 +447,25 @@ class Dialog extends React.Component {
 		// `update()` call is needed here (a manual call would just recompute the
 		// same position a second time). It returns a cleanup function stored for
 		// teardown.
-		this.cleanupFloating = autoUpdate(reference, floating, update);
+		//
+		// Element resizes are observed here rather than by `autoUpdate`, which
+		// briefly unobserves the floating element after each reference resize
+		// (to break update loops with the `size` middleware, which isn't used
+		// here); re-observing it reports its size again, so every open
+		// positioned one extra time with identical rects.
+		const cleanupAutoUpdate = autoUpdate(reference, floating, update, {
+			elementResize: false,
+		});
+		const resizeObserver =
+			typeof ResizeObserver === 'function' ? new ResizeObserver(update) : null;
+		if (resizeObserver) {
+			resizeObserver.observe(reference);
+			resizeObserver.observe(floating);
+		}
+		this.cleanupFloating = () => {
+			cleanupAutoUpdate();
+			if (resizeObserver) resizeObserver.disconnect();
+		};
 		this.floatingUpdate = update;
 	};
 
