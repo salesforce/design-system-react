@@ -5,7 +5,6 @@
 
 import {
 	forwardRef,
-	useState,
 	useEffect,
 	useCallback,
 	useMemo,
@@ -207,10 +206,8 @@ const Modal = forwardRef<HTMLElement, ModalProps>(
 			// eslint-disable-next-line react-hooks/exhaustive-deps
 		}, []); // Only run on mount
 
-		// State
-		const [returnFocusTo, setReturnFocusTo] = useState<Element | null>(null);
-
 		// Refs
+		const returnFocusToRef = useRef<Element | null>(null);
 		const generatedId = useRef(generateId());
 
 		// Merged assistive text
@@ -238,7 +235,7 @@ const Modal = forwardRef<HTMLElement, ModalProps>(
 		// Set return focus on mount
 		useEffect(() => {
 			if (documentDefined) {
-				setReturnFocusTo(document.activeElement);
+				returnFocusToRef.current = document.activeElement;
 			}
 		}, []);
 
@@ -263,6 +260,7 @@ const Modal = forwardRef<HTMLElement, ModalProps>(
 		// Dismiss modal handler
 		const dismissModal = useCallback(
 			(event: ModalRequestCloseEvent, data: ModalRequestCloseData) => {
+				const returnFocusTo = returnFocusToRef.current;
 				if (
 					returnFocusTo &&
 					'focus' in returnFocusTo &&
@@ -274,7 +272,7 @@ const Modal = forwardRef<HTMLElement, ModalProps>(
 					onRequestClose(event, data);
 				}
 			},
-			[returnFocusTo, onRequestClose]
+			[onRequestClose]
 		);
 
 		// Close modal handler (respects disableClose)
