@@ -551,8 +551,11 @@ const Tooltip = ({
 		[triggerRendered]
 	);
 
-	// Measure the trigger for the anchored nubbin before paint, so it is placed on open
+	// Measure the trigger for the anchored nubbin before paint, so it is placed on open.
+	// Runs after every render, as the old in-render measurement did, so a trigger that
+	// resizes while the tooltip is open is re-measured.
 	const isAnchoredNubbinOpen = hasAnchoredNubbin && getIsOpen();
+	// eslint-disable-next-line react-hooks/exhaustive-deps -- no deps on purpose; the updater returns the same state when the size is unchanged, so it settles
 	useLayoutEffect(() => {
 		if (!isAnchoredNubbinOpen || !triggerRef.current) {
 			return;
@@ -561,7 +564,7 @@ const Tooltip = ({
 		setTriggerSize((size) =>
 			size.height === height && size.width === width ? size : { height, width }
 		);
-	}, [isAnchoredNubbinOpen, align]);
+	});
 
 	// Render helpers
 	const getAnchoredNubbinStyles = () => {
