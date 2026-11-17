@@ -1168,6 +1168,40 @@ describe('SLDSColorPicker', () => {
 				expect(
 					container.querySelector(selectors.popover)
 				).not.toBeInTheDocument();
+
+				fireEvent.click(container.querySelector(selectors.toggle));
+				fireEvent.click(container.querySelector(selectors.submit));
+				expect(
+					container.querySelector(selectors.popover)
+				).not.toBeInTheDocument();
+
+				fireEvent.click(container.querySelector(selectors.toggle));
+				fireEvent.mouseDown(document.body);
+				expect(
+					container.querySelector(selectors.popover)
+				).not.toBeInTheDocument();
+			});
+
+			it('controlled isOpen stays open on a click outside, and requests close', () => {
+				const onRequestClose = vi.fn();
+				const { container } = render(
+					<ColorPicker
+						events={{
+							onRequestClose,
+							onChange: () => {},
+						}}
+						isOpen
+						value="#000000"
+					/>
+				);
+
+				fireEvent.mouseDown(document.body);
+
+				expect(container.querySelector(selectors.popover)).toBeInTheDocument();
+				expect(onRequestClose).toHaveBeenCalledTimes(1);
+				expect(onRequestClose.mock.calls[0][1]).toEqual({
+					trigger: 'clickOutside',
+				});
 			});
 
 			it('uncontrolled opens and closes itself without callbacks', () => {
