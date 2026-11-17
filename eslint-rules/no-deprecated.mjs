@@ -13,6 +13,7 @@
 // use any deprecated symbol declared in `components/foo/`, even one that belongs
 // to a different component exported from that directory.
 import path from 'node:path';
+import { ESLintUtils } from '@typescript-eslint/utils';
 import tseslint from 'typescript-eslint';
 
 const upstream = tseslint.plugin.rules['no-deprecated'];
@@ -31,7 +32,7 @@ const resolveSymbol = (services, node) => {
 			.getContextualType(parent.parent.name)
 			?.getProperty(node.name);
 	}
-	if (parent?.type === 'Property' && parent.key === node) {
+	if (parent?.type === 'Property' && parent.key === node && !parent.computed) {
 		return (
 			services.getTypeAtLocation(parent.parent).getProperty(node.name) ??
 			services.getSymbolAtLocation(node)
@@ -55,7 +56,9 @@ export default {
 		if (!owner) {
 			return upstream.create(context);
 		}
-		const services = context.sourceCode.parserServices;
+		// Throws the upstream "requires type information" error for a file
+		// outside the project, rather than failing on a missing `program`.
+		const services = ESLintUtils.getParserServices(context);
 		const checker = services.program.getTypeChecker();
 		const isOwn = (node) => {
 			let symbol = resolveSymbol(services, node);
