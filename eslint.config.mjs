@@ -296,20 +296,26 @@ export default tseslint.config(
 	// is by kind of use rather than a per-file count. Any other use, such as a
 	// component passing another component's deprecated prop or a deprecated
 	// React or DOM API, is an error. Tests exercise the deprecated paths on
-	// purpose.
+	// purpose. The rule needs type information, so re-enable the project for
+	// `.js`/`.jsx` source, which the JavaScript block above opts out
+	// (`tsconfig.eslint.json` includes it via `allowJs`).
 	{
 		files: [
-			'components/**/*.{ts,tsx}',
-			'utilities/**/*.{ts,tsx}',
+			'components/**/*.{ts,tsx,js,jsx}',
+			'utilities/**/*.{ts,tsx,js,jsx}',
 			'types/**/*.ts',
 		],
 		ignores: [
 			'**/__tests__/**',
-			'**/*.test.{ts,tsx}',
+			'**/*.test.{ts,tsx,js,jsx}',
 			'**/*.type-test.{ts,tsx}',
+			'**/*.browser-test.*',
 			'**/__examples__/**',
 			'**/__docs__/**',
 		],
+		languageOptions: {
+			parserOptions: { project: ['./tsconfig.eslint.json'] },
+		},
 		plugins: { local: { rules: { 'no-deprecated': noDeprecated } } },
 		rules: {
 			'local/no-deprecated': 'error',
@@ -317,10 +323,8 @@ export default tseslint.config(
 	},
 
 	// Deprecated props in examples and stories. Agents and consumers copy these
-	// files verbatim, so a deprecated prop here spreads; make it an error. The
-	// rule needs type information, so re-enable the project for the `.js`/`.jsx`
-	// files the block above opts out (`tsconfig.eslint.json` includes them via
-	// `allowJs`).
+	// files verbatim, so a deprecated prop here spreads; make it an error. As
+	// above, `.js`/`.jsx` files get the project back for type information.
 	{
 		files: [
 			'components/**/__examples__/**/*.{ts,tsx,js,jsx}',
