@@ -22,9 +22,17 @@ const results = [
 				message:
 					'Error: Cannot access refs, during render\n\n> 12 | code frame',
 			},
+			{
+				ruleId: 'react-hooks/refs',
+				severity: 1,
+				line: 12,
+				column: 4,
+				message:
+					'Error: Cannot access refs, during render\n\n> 12 | other frame',
+			},
 		],
 		errorCount: 0,
-		warningCount: 1,
+		warningCount: 2,
 		fixableErrorCount: 0,
 		fixableWarningCount: 0,
 		suppressedMessages: [],
@@ -59,12 +67,13 @@ describe('eslint-github-formatter', () => {
 		process.env.GITHUB_STEP_SUMMARY = path.join(dir, 'summary.md');
 		const output = await format(results, context);
 
-		// The annotation drops the code frame; the stylish output above keeps it.
+		// One annotation per location, without the code frame; the stylish output
+		// above keeps it.
 		const annotations = output
 			.split('\n')
 			.filter((line) => line.startsWith('::'));
 		expect(annotations).toEqual([
-			'::warning file=components/a/index.tsx,line=12,col=4,title=react-hooks/refs::Error: Cannot access refs, during render',
+			'::warning file=components/a/index.tsx,line=12,col=4,title=react-hooks/refs::Error: Cannot access refs, during render (reported 2 times)',
 		]);
 		expect(readFileSync(process.env.GITHUB_STEP_SUMMARY, 'utf8')).toContain(
 			'| `components/a/index.tsx:12` | react-hooks/refs | Error: Cannot access refs, during render |'
