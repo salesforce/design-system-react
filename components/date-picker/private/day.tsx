@@ -141,7 +141,7 @@ const handleKeyDown = (
 	};
 
 	if (event.key) {
-		if (event.shiftKey && keyDownCallbacks[event.key]) {
+		if (event.shiftKey && shiftKeyDownCallbacks[event.key]) {
 			EventUtil.trapEvent(event);
 			shiftKeyDownCallbacks[event.key]();
 		} else if (keyDownCallbacks[event.key]) {
