@@ -14,6 +14,7 @@ import SimpleDataTableInteractiveLink from '../../simple-data-table/interactive-
 import Button from '../../button';
 import Checkbox from '../../checkbox';
 import IconSettings from '../../icon-settings';
+import InteractiveElementsExample from '../__examples__/interactive-elements';
 
 describe('SimpleDataTable', () => {
 	const items = [
@@ -1418,6 +1419,18 @@ describe('SimpleDataTable', () => {
 				}
 			}
 		);
+
+		it('toggles the controlled checkboxes in the interactive elements example', async () => {
+			const user = userEvent.setup();
+			const { getAllByRole } = render(<InteractiveElementsExample />);
+			const [checkbox] = getAllByRole('checkbox', { name: 'Option' });
+
+			expect(checkbox).not.toBeChecked();
+			await user.click(checkbox);
+			expect(checkbox).toBeChecked();
+			await user.click(checkbox);
+			expect(checkbox).not.toBeChecked();
+		});
 
 		it('renders interactive cells with proper structure for keyboard navigation', () => {
 			const { container } = renderTable(
