@@ -9,6 +9,7 @@ class Example extends React.Component {
 
 	state = {
 		value: '',
+		isOpen: false,
 	};
 
 	render() {
@@ -19,7 +20,14 @@ class Example extends React.Component {
 						onChange: (event, data) => {
 							this.setState({ value: data.color });
 						},
+						onRequestOpen: () => {
+							this.setState({ isOpen: true });
+						},
+						onRequestClose: () => {
+							this.setState({ isOpen: false });
+						},
 					}}
+					isOpen={this.state.isOpen}
 					labels={{ label: 'Choose Color' }}
 					id="default-color-picker"
 					value={this.state.value}
