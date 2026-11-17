@@ -677,6 +677,35 @@ describe('SLDSPopover', () => {
 			// the document, which we can verify. Actual focus behavior works in browsers.
 			expect(document.activeElement.id).toBeTruthy();
 		});
+
+		it('moves focus into a popover in a portal, so Escape closes it', async () => {
+			const onOpen = vi.fn();
+			const onRequestClose = vi.fn();
+			const { container } = renderPopover({
+				onOpen,
+				onRequestClose,
+				position: 'overflowBoundaryElement',
+			});
+
+			fireEvent.click(container.querySelector(defaultIds.trigger));
+
+			const popover = await waitFor(() => {
+				const element = document.getElementById(defaultIds.popover);
+				expect(element).toBeInTheDocument();
+				return element;
+			});
+			expect(popover.contains(document.activeElement)).toBe(true);
+			expect(onOpen).toHaveBeenCalledTimes(1);
+			expect(onOpen.mock.calls[0][1].portal).toBe(popover);
+
+			fireEvent.keyDown(document.activeElement, {
+				key: 'Escape',
+				keyCode: 27,
+			});
+			expect(onRequestClose).toHaveBeenCalledWith(expect.anything(), {
+				trigger: 'cancel',
+			});
+		});
 	});
 
 	describe('Disabled', () => {
