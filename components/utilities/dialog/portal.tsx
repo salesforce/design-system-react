@@ -122,10 +122,6 @@ const Portal = (props: PortalProps): React.ReactPortal | null => {
 		// eslint-disable-next-line react-hooks/set-state-in-effect -- the node must be attached to the document before children mount, so it is created in an effect
 		setPortalNode(node);
 
-		if (onOpen) {
-			onOpen(undefined, { portal: children });
-		}
-
 		return () => {
 			if (node.parentNode) {
 				node.parentNode.removeChild(node);
@@ -135,6 +131,15 @@ const Portal = (props: PortalProps): React.ReactPortal | null => {
 		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
+
+	// Fire `onOpen` once the children have mounted into the node (the render after
+	// it is created), so a handler can reach them, for example to move focus inside
+	useEffect(() => {
+		if (portalNode && onOpen) {
+			onOpen(undefined, { portal: children });
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [portalNode]);
 
 	// Keep the container node's id/className/style in sync with props, and fire
 	// `onUpdate` after each render (matches the legacy `updatePortal` behavior).
