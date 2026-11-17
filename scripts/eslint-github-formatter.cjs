@@ -33,12 +33,17 @@ module.exports = async function githubFormatter(results, context) {
 
 	if (process.env.GITHUB_ACTIONS === 'true') {
 		const rows = [];
+		// React Compiler rules report the same location once per use of the
+		// value (one ColorPicker line produces 9), which would fill GitHub's 10
+		// visible annotations. Annotate each location once, with a count.
+		const annotations = new Map();
 		results.forEach((result) => {
 			const file = path.relative(process.cwd(), result.filePath);
 			result.messages.forEach((message) => {
+				const text = summary(message.message);
 				rows.push(
 					`| \`${file}:${message.line ?? 1}\` | ${message.ruleId ?? ''} | ${markdownCell(
-						summary(message.message)
+						text
 					)} |`
 				);
 				const level = message.severity === 2 ? 'error' : 'warning';
@@ -48,10 +53,18 @@ module.exports = async function githubFormatter(results, context) {
 					`col=${message.column ?? 1}`,
 					`title=${escapeProperty(message.ruleId ?? 'eslint')}`,
 				].join(',');
-				output.push(
-					`::${level} ${properties}::${escapeData(summary(message.message))}`
-				);
+				const key = `${level} ${properties}::${text}`;
+				const annotation = annotations.get(key);
+				if (annotation) {
+					annotation.count += 1;
+				} else {
+					annotations.set(key, { level, properties, text, count: 1 });
+				}
 			});
+		});
+		annotations.forEach(({ level, properties, text, count }) => {
+			const suffix = count > 1 ? ` (reported ${count} times)` : '';
+			output.push(`::${level} ${properties}::${escapeData(text + suffix)}`);
 		});
 
 		if (rows.length > 0 && process.env.GITHUB_STEP_SUMMARY) {
