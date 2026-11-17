@@ -7,7 +7,12 @@
 		"moduleResolution": "bundler",
 		"noEmit": true,
 		"skipLibCheck": true,
-		"types": []
+		"types": [],
+		// Like the repo tsconfig. Without `paths` (or `baseUrl`), TypeScript 6
+		// crashes computing a module specifier under `bundler` resolution
+		// (`getLocalModuleSpecifier` reads an undefined base path), which the
+		// rule can trigger when it names a symbol.
+		"paths": { "~/*": ["./*"] }
 	},
 	"include": ["components", "utilities"]
 }
