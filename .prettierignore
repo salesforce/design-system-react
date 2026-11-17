@@ -9,3 +9,6 @@ storybook
 # Publishing and dist build
 storybook-based-tests
 .tmp*
+
+# Generated public API snapshot (npm run api:update)
+api

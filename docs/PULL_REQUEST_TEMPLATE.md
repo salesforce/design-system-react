@@ -8,6 +8,19 @@ cause, not just the symptom. If it's a breaking change, say so explicitly and
 note the migration path.
 -->
 
+### Public type changes
+
+<!--
+Run `npm run api:compat -- --pr` and paste its output here. It compares this
+branch's emitted types with the base branch:
+  🔴 Breaking: existing consumer code may stop compiling. Needs `!` and a
+     `BREAKING CHANGE:` footer with a migration note.
+  🟠 Needs review: an exported type changed; breaking only for consumers who
+     build or annotate values of it. Say why it is or isn't breaking.
+  🟢 Additive: existing consumer code still compiles.
+  ⚪ No public type changes.
+-->
+
 ---
 
 ### CONTRIBUTOR checklist (do not remove)
@@ -20,6 +33,7 @@ Please complete for every pull request.
 - [ ] `npm run typecheck` is clean (`tsc --noEmit`).
 - [ ] `npm test -- --run` passes — this runs both Vitest projects (jsdom `unit` + real-browser `browser`) **and** the story HTML snapshots. If you changed rendered markup on purpose, update snapshots with `npm test -- --run -u` and review the diff.
 - [ ] `npm run build` succeeds (type-check + Vite library build + `.d.ts` + entry shims).
+- [ ] `npm run api:check` passes. If you changed public types on purpose, update the snapshot with `npm run api:update` and review the `api/` diff.
 
 **Behavior & docs:**
 
@@ -36,6 +50,7 @@ Please complete for every pull request.
 - [ ] Change has adequate test coverage; bug fixes include a regression test.
 - [ ] Reviewed the affected Storybook stories and their a11y panels.
 - [ ] Rendered markup still conforms to [SLDS](https://www.lightningdesignsystem.com/) — check the story HTML snapshot diff (`components/__tests__/__snapshots__/story-snapshots.test.jsx.snap`).
+- [ ] **Public API types:** reviewed the `api/` diff. Removed/renamed exports, narrowed or newly required props, and reordered callback parameters are breaking.
 - [ ] **Public API / package surface:** if exports changed, the deep-import contract still holds (`@salesforce/design-system-react/components/<name>` and nested paths resolve for ESM, CJS, and types). Removing/renaming a public component or export is a **breaking change** → `feat!:`/`BREAKING CHANGE:` and a major version bump.
 
 <!--
