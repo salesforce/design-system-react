@@ -93,9 +93,10 @@ Deprecated props still compile in v11. Enable [`@typescript-eslint/no-deprecated
 
 ```js
 // eslint.config.mjs
+import { defineConfig } from 'eslint/config';
 import tseslint from 'typescript-eslint';
 
-export default tseslint.config(tseslint.configs.base, {
+export default defineConfig(tseslint.configs.base, {
 	files: ['**/*.{ts,tsx}'],
 	languageOptions: { parserOptions: { projectService: true } },
 	rules: { '@typescript-eslint/no-deprecated': 'error' },
