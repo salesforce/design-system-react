@@ -24,6 +24,10 @@ const lint = async () => {
 					parserOptions: {
 						project: ['./tsconfig.json'],
 						tsconfigRootDir: fixtures,
+						// typescript-eslint switches to single-run mode when `CI=true`,
+						// which isn't meant for creating several ESLint instances in one
+						// process: TypeScript then crashes resolving `bar`'s import.
+						disallowAutomaticSingleRunInference: true,
 					},
 				},
 				plugins: { local: { rules: { 'no-deprecated': noDeprecated } } },
