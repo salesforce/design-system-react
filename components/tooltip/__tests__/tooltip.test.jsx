@@ -653,6 +653,54 @@ describe('SLDSTooltip', () => {
 				rectSpy.mockRestore();
 			}
 		});
+
+		it('re-measures a trigger that resizes while the tooltip is open', async () => {
+			const rect = (width, height) => ({
+				height,
+				width,
+				top: 0,
+				left: 0,
+				bottom: height,
+				right: width,
+				x: 0,
+				y: 0,
+			});
+			const rectSpy = vi
+				.spyOn(HTMLElement.prototype, 'getBoundingClientRect')
+				.mockReturnValue(rect(40, 20));
+			try {
+				const props = {
+					hasAnchoredNubbin: true,
+					align: 'bottom',
+					isOpen: true,
+				};
+				const { container, rerender } = renderTooltip(props);
+				const nubbinContainer = () =>
+					container.querySelector('div[style*="position: relative"]');
+				await waitFor(() => {
+					expect(nubbinContainer()).toHaveStyle({ left: '20px' });
+				});
+
+				// The trigger grows (a longer label, say) while the tooltip stays open
+				rectSpy.mockReturnValue(rect(100, 30));
+				rerender(
+					<IconSettings iconPath="/assets/icons">
+						<Tooltip
+							{...defaultProps}
+							trigger={<Button label="Hover me for tooltip" />}
+							{...props}
+							content="Longer content"
+						/>
+					</IconSettings>
+				);
+
+				await waitFor(() => {
+					expect(nubbinContainer()).toHaveStyle({ left: '50px', top: '30px' });
+				});
+			} finally {
+				rectSpy.mockRestore();
+			}
+		});
 	});
 
 	describe('DialogClassName prop', () => {
