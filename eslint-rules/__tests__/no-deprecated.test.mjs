@@ -2,7 +2,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { ESLint } from 'eslint';
 import tseslint from 'typescript-eslint';
-import { describe, expect, it } from 'vitest';
+import { beforeAll, describe, expect, it } from 'vitest';
 import noDeprecated from '../no-deprecated.mjs';
 
 const fixtures = path.join(
@@ -18,7 +18,7 @@ const lint = async () => {
 		overrideConfigFile: true,
 		overrideConfig: [
 			{
-				files: ['**/*.ts'],
+				files: ['**/*.{ts,tsx}'],
 				languageOptions: {
 					parser: tseslint.parser,
 					parserOptions: {
@@ -45,18 +45,33 @@ const lint = async () => {
 };
 
 describe('local/no-deprecated', () => {
-	it('allows a component to read its own deprecated props', async () => {
-		expect((await lint())['components/foo/index.ts']).toEqual([]);
+	let messages;
+	beforeAll(async () => {
+		messages = await lint();
 	});
 
-	it("reports another component's deprecated prop", async () => {
-		expect((await lint())['components/bar/index.ts']).toEqual([
+	it('allows a component to read its own deprecated props', () => {
+		expect(messages['components/foo/index.ts']).toEqual([]);
+	});
+
+	it('allows a component to pass its own deprecated prop as a JSX attribute', () => {
+		expect(messages['components/foo/button.tsx']).toEqual([]);
+	});
+
+	it("reports another component's deprecated prop", () => {
+		expect(messages['components/bar/index.ts']).toEqual([
 			'`text` is deprecated. Use `label` instead.',
 		]);
 	});
 
-	it('reports a deprecated DOM API', async () => {
-		expect((await lint())['utilities/keys/index.ts']).toEqual([
+	it("reports another component's deprecated JSX attribute", () => {
+		expect(messages['components/bar/button.tsx']).toEqual([
+			'`text` is deprecated. Use `label` instead.',
+		]);
+	});
+
+	it('reports a deprecated DOM API', () => {
+		expect(messages['utilities/keys/index.ts']).toEqual([
 			expect.stringMatching(/^`keyCode` is deprecated\./),
 		]);
 	});
