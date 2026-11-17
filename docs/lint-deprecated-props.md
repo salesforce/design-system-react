@@ -6,9 +6,10 @@ Add the rule to your flat config. `configs.base` registers the parser and plugin
 
 ```js
 // eslint.config.mjs
+import { defineConfig } from 'eslint/config';
 import tseslint from 'typescript-eslint';
 
-export default tseslint.config(tseslint.configs.base, {
+export default defineConfig(tseslint.configs.base, {
 	files: ['**/*.{ts,tsx}'],
 	languageOptions: { parserOptions: { projectService: true } },
 	rules: { '@typescript-eslint/no-deprecated': 'error' },
