@@ -4,7 +4,6 @@
 
 import React, {
 	forwardRef,
-	useState,
 	useEffect,
 	useRef,
 	useCallback,
@@ -439,7 +438,6 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>((props, ref) => {
 		controlledIsOpen,
 		defaultIsOpen
 	);
-	const [inputRendered, setInputRendered] = useState(false);
 
 	// Refs
 	const triggerRef = useRef<HTMLDivElement>(null);
@@ -688,11 +686,8 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>((props, ref) => {
 			} else if (ref) {
 				ref.current = component;
 			}
-			if (component && !inputRendered) {
-				setInputRendered(true);
-			}
 		},
-		[inputRendered, ref]
+		[ref]
 	);
 
 	// Dialog ref callback
