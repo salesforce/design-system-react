@@ -121,11 +121,11 @@ if (process.env.NODE_ENV !== 'production') {
 
 		deprecatedProperty(
 			COMPONENT,
-			props.onFocus,
+			props.required,
 			'required',
 			undefined,
-			`Please see children prop description and add your own \`Input\` as a child of Datepicker. ${createDocUrl(
-				'children'
+			`Please see \`input\` prop description and add your own \`Input\`. Props will be shallow merged. ${createDocUrl(
+				'input'
 			)}`
 		);
 
