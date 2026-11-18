@@ -319,8 +319,11 @@ export interface MenuDropdownBaseProps {
 	nubbinPosition?: DropdownNubbinPosition;
 	/** Called when the triggering button loses focus */
 	onBlur?: (event: FocusEvent) => void;
-	/** Triggered when the trigger button is clicked */
-	onClick?: (event: MouseEvent) => void;
+	/**
+	 * Called when the trigger is clicked, or when Enter, Space, Up or Down on the
+	 * trigger opens the menu (with that `keydown` event).
+	 */
+	onClick?: (event: MouseEvent | KeyboardEvent) => void;
 	/**
 	 * Triggered after the menu closes, in both modes. Receives the event that
 	 * closed it (see `MenuDropdownCloseEvent`) and a `MenuDropdownCloseData`
@@ -1024,18 +1027,6 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 		[focusedIndex, getMenu, getMenuItem, focusMenuItem, scrollToMenuItem]
 	);
 
-	// Create a context object for keyboard navigation. Opening from the trigger
-	// is done by `toggleOpen`, so the trigger's click only reports `onClick`.
-	const componentContext = useMemo(
-		() => ({
-			getTrigger: () => triggerRef.current,
-			handleClick: (event: Event) => {
-				onClick?.(event as unknown as MouseEvent);
-			},
-		}),
-		[onClick]
-	);
-
 	// Handle keyboard navigate
 	const handleKeyboardNavigate = useCallback(
 		({
@@ -1054,7 +1045,12 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 			toggleOpen?: () => void;
 		}) => {
 			keyboardNavigate({
-				componentContext,
+				// Opening from the trigger is done by `toggleOpen`, so a key that
+				// opens the menu only reports `onClick`, with this keydown event.
+				componentContext: {
+					getTrigger: () => triggerRef.current,
+					handleClick: () => onClick?.(event),
+				},
 				currentFocusedIndex: focusedIndex,
 				event,
 				isOpen: menuIsOpen,
@@ -1066,7 +1062,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 				toggleOpen: toggleCallback,
 			});
 		},
-		[componentContext, focusedIndex, handleKeyboardFocus, navigableItems]
+		[focusedIndex, handleKeyboardFocus, navigableItems, onClick]
 	);
 
 	// Handle cancel
