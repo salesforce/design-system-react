@@ -8,3 +8,4 @@ storybook
 # Publishing and dist build
 storybook-based-tests
 .tmp*
+eslint-suppressions.json
