@@ -139,6 +139,24 @@ describe('SLDS TEXTAREA', () => {
 			const textarea = container.querySelector('textarea');
 			expect(textarea).toHaveAttribute('placeholder', 'Placeholder Text');
 		});
+
+		it('passes native textarea attributes such as rows and cols through', () => {
+			const { container } = render(
+				<Textarea
+					{...defaultProps}
+					labels={{ label: 'Textarea Label' }}
+					id="custom-id"
+					rows={5}
+					cols={40}
+					readOnly
+				/>
+			);
+
+			const textarea = container.querySelector('textarea');
+			expect(textarea).toHaveAttribute('rows', '5');
+			expect(textarea).toHaveAttribute('cols', '40');
+			expect(textarea).toHaveAttribute('readonly');
+		});
 	});
 
 	describe('Textarea without Label', () => {
