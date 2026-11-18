@@ -2,6 +2,7 @@ import React, { useRef, useCallback } from 'react';
 
 import KEYS from '../../../utilities/key-code';
 import RadioButtonGroup from '../../../components/radio-button-group';
+import type { RadioGroupChangeHandler } from '../../../components/radio-group';
 import Radio from '../../../components/radio-button-group/radio';
 import ColorUtils from '../../../utilities/color';
 import {
@@ -37,7 +38,7 @@ export interface HsvColorProps {
 		data: { delta: number }
 	) => void;
 	/** Callback for swatch toggle (working color vs transparent) */
-	onSwatchChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+	onSwatchChange: RadioGroupChangeHandler;
 	/** Previous working color (fallback when transparent) */
 	previousColor: WorkingColor;
 }
@@ -112,13 +113,6 @@ const HsvColor: React.FC<HsvColorProps> = ({
 		[onSaturationNavigate, onValueNavigate]
 	);
 
-	const handleSwatchChange = useCallback(
-		(event: React.ChangeEvent<HTMLInputElement>) => {
-			onSwatchChange(event);
-		},
-		[onSwatchChange]
-	);
-
 	// When working color is transparent: either use the previous color or default to black
 	const fallbackWorkingColor = previousColor.hex
 		? previousColor
@@ -187,7 +181,7 @@ const HsvColor: React.FC<HsvColorProps> = ({
 					name={`${id}-color-picker-swatch-toggle-button-group`}
 					assistiveText={{ label: 'Toggle Transparency' }}
 					style={style}
-					onChange={handleSwatchChange}
+					onChange={onSwatchChange}
 					value={isTransparent() ? '' : workingColor.hex}
 				>
 					<Radio

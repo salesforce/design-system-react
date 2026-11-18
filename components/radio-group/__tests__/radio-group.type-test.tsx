@@ -30,3 +30,27 @@ export const baseStyle = (
 		<Radio value="a" labels={{ label: 'A' }} />
 	</RadioGroup>
 );
+
+// `onChange` also receives the `click` and `keydown` events that deselect or
+// select a radio, so a handler that only accepts a ChangeEvent is rejected.
+export const changeEventOnlyHandler = (
+	<RadioGroup
+		value="a"
+		// @ts-expect-error the event can be a MouseEvent or KeyboardEvent
+		onChange={(event: React.ChangeEvent<HTMLInputElement>) => event}
+	>
+		<Radio value="a" labels={{ label: 'A' }} />
+	</RadioGroup>
+);
+
+export const dataValueHandler = (
+	<RadioGroup
+		value="a"
+		onChange={(event, data) => {
+			const next: string | null = data.value;
+			return [event.type, next];
+		}}
+	>
+		<Radio value="a" labels={{ label: 'A' }} />
+	</RadioGroup>
+);
