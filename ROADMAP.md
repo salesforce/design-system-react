@@ -85,6 +85,13 @@
 - [ ] `README.md`: rewrite the install section and Versions table for GA (a plain
       install gets 11.x; 0.10.x via `@salesforce/design-system-react@legacy`), and drop
       the alpha `--legacy-peer-deps` note.
+- [ ] Prune the `@typescript-eslint/consistent-type-assertions` suppressions in
+      `eslint-suppressions.json` (404 casts across 110 files when the rule landed; the
+      biggest are `combobox`, `pill-container`'s `selected-listbox`, `menu-dropdown`,
+      `simple-data-table`, `popover`, `color-picker` and `utilities/merge-props`).
+      Narrow, annotate or use `satisfies`; where a cast is the only option, leave an
+      `eslint-disable-next-line` comment that says why. Then run
+      `npx eslint . --prune-suppressions`.
 
 **Release checklist (in order).**
 
