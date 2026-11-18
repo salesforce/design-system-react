@@ -12,10 +12,11 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build && npm run build:types && npm run build:llm-docs && npm run build:shims && npm run test:exports",
+    "build": "tsc --noEmit && vite build && npm run build:types && npm run build:llm-docs && npm run build:shims && npm run build:node16-types && npm run test:exports",
     "build:types": "tsc -p tsconfig.dts.json && tsx scripts/prune-internal-types.ts",
     "build:llm-docs": "tsx scripts/generate-llm-docs.ts",
     "build:shims": "node scripts/generate-entry-shims.mjs",
+    "build:node16-types": "tsx scripts/emit-node16-types.ts",
     "test:exports": "node scripts/check-package-exports.mjs",
     "check:prop-docs": "tsx scripts/check-prop-docs.ts",
     "test:packed": "tsx scripts/check-packed-install.ts",
@@ -78,21 +79,36 @@
   ],
   "exports": {
     ".": {
-      "types": "./dist/types/components/index.d.ts",
-      "import": "./dist/es/components/index.js",
-      "require": "./dist/cjs/components/index.cjs",
+      "import": {
+        "types": "./dist/types/components/index.d.ts",
+        "default": "./dist/es/components/index.js"
+      },
+      "require": {
+        "types": "./dist/types/components/index.d.cts",
+        "default": "./dist/cjs/components/index.cjs"
+      },
       "default": "./dist/es/components/index.js"
     },
     "./components": {
-      "types": "./dist/types/components/index.d.ts",
-      "import": "./dist/es/components/index.js",
-      "require": "./dist/cjs/components/index.cjs",
+      "import": {
+        "types": "./dist/types/components/index.d.ts",
+        "default": "./dist/es/components/index.js"
+      },
+      "require": {
+        "types": "./dist/types/components/index.d.cts",
+        "default": "./dist/cjs/components/index.cjs"
+      },
       "default": "./dist/es/components/index.js"
     },
     "./components/*": {
-      "types": "./dist/types/components/*.d.ts",
-      "import": "./dist/es/components/*.js",
-      "require": "./dist/cjs/components/*.cjs",
+      "import": {
+        "types": "./dist/types/components/*.d.ts",
+        "default": "./dist/es/components/*.js"
+      },
+      "require": {
+        "types": "./dist/types/components/*.d.cts",
+        "default": "./dist/cjs/components/*.cjs"
+      },
       "default": "./dist/es/components/*.js"
     },
     "./components/*check-props": null,
