@@ -331,6 +331,64 @@ describe('release script', () => {
 		});
 	});
 
+	describe('--onto (top of a release stack)', () => {
+		/** Push a stack branch off master with one unmerged commit. */
+		const seedStackTop = (name) => {
+			git('switch', '-c', name, 'master');
+			writeFileSync(join(work, 'stacked.txt'), 'x\n');
+			git('add', '-A');
+			git('commit', '-m', 'feat: a change in the release stack');
+			git('push', '-u', 'origin', name);
+			git('switch', 'master');
+		};
+
+		it('cuts the release from the stack top and opens the PR against it', () => {
+			seedStackTop('feat/stack-top');
+
+			const r = release('next', '--rc', '--onto', 'feat/stack-top');
+			expect(r.status, r.stderr).toBe(0);
+
+			const branch = 'chore/release-11.0.0-rc.0';
+			git('fetch', 'origin', branch);
+			expect(releasedPackage(branch).version).toBe('11.0.0-rc.0');
+
+			// One commit on top of the stack, touching only package.json
+			expect(
+				git('diff', '--name-only', 'origin/feat/stack-top', `origin/${branch}`)
+			).toBe('package.json');
+			expect(
+				git('rev-list', '--count', `origin/feat/stack-top..origin/${branch}`)
+			).toBe('1');
+
+			const args = readFileSync(env.GH_ARGS_FILE, 'utf8').split('\n');
+			expect(args[args.indexOf('--base') + 1]).toBe('feat/stack-top');
+			const body = readFileSync(env.GH_BODY_FILE, 'utf8');
+			expect(body).toContain('top of the release stack for `11.0.0-rc.0`');
+			expect(body).toContain('feat: a change in the release stack');
+
+			// The release itself is still created from master
+			expect(r.stdout).toContain(
+				'After the stack merges: gh release create v11.0.0-rc.0 --target master --generate-notes --prerelease'
+			);
+			expect(git('branch', '--show-current')).toBe('master');
+		});
+
+		it('reads the current version from the stack top', () => {
+			git('switch', '-c', 'feat/stack-top', 'master');
+			writePackage({ ...BASE_PACKAGE, version: '11.0.0-alpha.7' });
+			git('commit', '-am', 'chore: stack is ahead');
+			git('push', '-u', 'origin', 'feat/stack-top');
+			git('switch', 'master');
+
+			const r = release('--onto', 'feat/stack-top', 'next', '--dry-run');
+			expect(r.status, r.stderr).toBe(0);
+			expect(r.stdout).toContain(
+				'[dry-run] 11.0.0-alpha.7 -> 11.0.0-alpha.8 (dist-tag: alpha)'
+			);
+			expect(r.stdout).toContain('from origin/feat/stack-top');
+		});
+	});
+
 	describe('refuses to run', () => {
 		const expectFailure = (r, message) => {
 			expect(r.status).toBe(1);
@@ -387,6 +445,11 @@ describe('release script', () => {
 
 		it('when --base has no branch', () => {
 			expectFailure(release('next', '--base'), 'usage:');
+		});
+
+		it('when --onto has no branch', () => {
+			expectFailure(release('next', '--onto'), 'usage:');
+			expectFailure(release('next', '--onto', '--dry-run'), 'usage:');
 		});
 
 		it('when tracked files are modified', () => {
