@@ -171,7 +171,7 @@ const Pill = ({
 									...eventData,
 								});
 							}
-					  }
+						}
 					: null
 			}
 			onFocus={(event: React.FocusEvent) => {
