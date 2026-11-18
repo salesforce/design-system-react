@@ -255,7 +255,11 @@ const Toast = ({
 					iconSize="medium"
 					inverse
 					onClick={handleCloseButtonClick}
-					title={assistiveText.closeButton as string}
+					title={
+						typeof assistiveText.closeButton === 'string'
+							? assistiveText.closeButton
+							: undefined
+					}
 					variant="icon"
 				/>
 			)}
