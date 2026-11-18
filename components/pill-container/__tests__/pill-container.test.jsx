@@ -350,3 +350,62 @@ describe('SLDSPillContainer', () => {
 		});
 	});
 });
+
+describe('PillContainer pill titles', () => {
+	const renderPills = (pillOptions) =>
+		render(
+			<IconSettings iconPath="/assets/icons">
+				<PillContainer
+					options={pillOptions}
+					events={{ onRequestRemovePill: () => {} }}
+				/>
+			</IconSettings>
+		).container;
+
+	it('uses option.title as the pill title', () => {
+		const container = renderPills([
+			{ id: '1', label: 'Acme', title: 'Acme Corporation' },
+		]);
+		expect(container.querySelector('.slds-pill__label')).toHaveAttribute(
+			'title',
+			'Acme Corporation'
+		);
+	});
+
+	it('falls back to a string label for the pill and icon titles', () => {
+		const container = renderPills([
+			{
+				id: '1',
+				label: 'Acme',
+				icon: { category: 'standard', name: 'account' },
+			},
+		]);
+		expect(container.querySelector('.slds-pill__label')).toHaveAttribute(
+			'title',
+			'Acme'
+		);
+		expect(container.querySelector('.slds-icon_container')).toHaveAttribute(
+			'title',
+			'Acme'
+		);
+	});
+
+	it('renders no "[object Object]" title for a JSX label', () => {
+		const container = renderPills([
+			{
+				id: '1',
+				label: <strong>Acme</strong>,
+				icon: { category: 'standard', name: 'account' },
+			},
+			{
+				id: '2',
+				label: <strong>Globex</strong>,
+				avatar: { imgSrc: 'avatar.png' },
+			},
+		]);
+		expect(container.querySelector('[title="[object Object]"]')).toBeNull();
+		expect(container.querySelector('.slds-pill__label')).toHaveTextContent(
+			'Acme'
+		);
+	});
+});
