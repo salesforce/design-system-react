@@ -10,7 +10,7 @@
  * The story glob and `generate-id` mock are copied from
  * story-snapshots.test.jsx.
  */
-import { describe, it, expect, vi, afterEach } from 'vitest';
+import { describe, it, expect, vi, afterEach, beforeEach } from 'vitest';
 import { act, cleanup, render } from '@testing-library/react';
 import { composeStories } from '@storybook/react-vite';
 
@@ -36,8 +36,18 @@ const componentName = (filePath) => {
 };
 
 describe('Stories render no <style> elements', () => {
+	// Mounting every story replays its deprecation and Modal app-element
+	// warnings, which this test doesn't check; the console guard would count
+	// them.
+	beforeEach(() => {
+		vi.spyOn(console, 'error').mockImplementation(() => {});
+		vi.spyOn(console, 'warn').mockImplementation(() => {});
+	});
+
 	afterEach(() => {
+		// Unmounting a Modal warns too, so restore the spies after cleanup.
 		cleanup();
+		vi.restoreAllMocks();
 		idCounter = 0;
 	});
 
