@@ -46,7 +46,7 @@ describe('generate-llm-docs', () => {
 	it('writes a file for every public component', () => {
 		// Independent of the generator: component directories whose index the
 		// package root re-exports.
-		const rootIndex = readFileSync(join(root, 'components/index.js'), 'utf8');
+		const rootIndex = readFileSync(join(root, 'components/index.ts'), 'utf8');
 		const exported = new Set(
 			[...rootIndex.matchAll(/from '\.\/([^/']+)/g)].map(([, dir]) => dir)
 		);
