@@ -325,6 +325,43 @@ describe('SLDSMenuDropdown', () => {
 			expect(container.querySelector('.slds-dropdown')).not.toBeInTheDocument();
 		});
 
+		it('does not treat a click inside the open menu as a trigger click', async () => {
+			const onClick = vi.fn();
+			const onRequestClose = vi.fn();
+			const onSelect = vi.fn();
+			const { container } = renderDropdown({
+				onClick,
+				onRequestClose,
+				onSelect,
+				options: [
+					{ label: 'Header', type: 'header' },
+					{ label: 'Link', value: 'link', type: 'link', href: '#top' },
+				],
+			});
+
+			fireEvent.click(container.querySelector('.slds-dropdown-trigger button'));
+			await waitFor(() => {
+				expect(container.querySelector('.slds-dropdown')).toBeInTheDocument();
+			});
+			onClick.mockClear();
+
+			fireEvent.click(container.querySelector('.slds-dropdown'));
+			fireEvent.click(container.querySelector('.slds-dropdown__header'));
+			expect(container.querySelector('.slds-dropdown')).toBeInTheDocument();
+			expect(onRequestClose).not.toHaveBeenCalled();
+			expect(onClick).not.toHaveBeenCalled();
+
+			fireEvent.click(container.querySelector('.slds-dropdown__item a'));
+			await waitFor(() => {
+				expect(
+					container.querySelector('.slds-dropdown')
+				).not.toBeInTheDocument();
+			});
+			expect(onSelect).toHaveBeenCalledTimes(1);
+			expect(onRequestClose).toHaveBeenCalledTimes(1);
+			expect(onClick).not.toHaveBeenCalled();
+		});
+
 		it('expands/contracts on click', async () => {
 			const { container } = renderDropdown();
 

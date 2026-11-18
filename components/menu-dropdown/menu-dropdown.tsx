@@ -904,9 +904,19 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 		[getIsOpen, handleClose, handleOpen, setFocus]
 	);
 
-	// Handle click
+	// Handle click. The menu renders inside the trigger's wrapper (or in a portal, whose
+	// React events bubble the same way), so clicks in the menu (padding, headers, custom
+	// content, link options) reach this handler too. They are not trigger clicks.
 	const handleClick = useCallback(
 		(event: MouseEvent) => {
+			const menu =
+				event.target instanceof Element
+					? event.target.closest('.slds-dropdown')
+					: null;
+			// A menu that contains this trigger is an outer menu, not this one
+			if (menu && !menu.contains(event.currentTarget as Node)) {
+				return;
+			}
 			if (!getIsOpen()) {
 				handleOpen(event);
 				setFocus();
