@@ -15,7 +15,7 @@ class Example extends React.Component {
 							assistiveText={{ label: 'Global Setup' }}
 							category="standard"
 							name="account"
-							productTheme="global-setup"
+							style={{ backgroundColor: '#2A739E' }}
 						/>
 					</div>
 					<div className="slds-col_padded">
@@ -23,7 +23,7 @@ class Example extends React.Component {
 							assistiveText={{ label: 'Service Cloud' }}
 							category="standard"
 							name="address"
-							productTheme="service-cloud"
+							style={{ backgroundColor: '#7f2443' }}
 						/>
 					</div>
 					<div className="slds-col_padded">
@@ -31,7 +31,7 @@ class Example extends React.Component {
 							assistiveText={{ label: 'Industry Cloud' }}
 							category="standard"
 							name="answer_best"
-							productTheme="industry-cloud"
+							style={{ backgroundColor: '#4c2248' }}
 						/>
 					</div>
 					<div className="slds-col_padded">
@@ -39,7 +39,7 @@ class Example extends React.Component {
 							assistiveText={{ label: 'Sales Cloud' }}
 							category="standard"
 							name="canvas"
-							productTheme="sales-cloud"
+							style={{ backgroundColor: '#00857d' }}
 						/>
 					</div>
 					<div className="slds-col_padded">
@@ -47,7 +47,7 @@ class Example extends React.Component {
 							assistiveText={{ label: 'Commerce Cloud' }}
 							category="standard"
 							name="choice"
-							productTheme="commerce-cloud"
+							style={{ backgroundColor: '#41693d' }}
 						/>
 					</div>
 					<div className="slds-col_padded">
@@ -55,7 +55,7 @@ class Example extends React.Component {
 							assistiveText={{ label: 'Community Cloud' }}
 							category="standard"
 							name="choice"
-							productTheme="community-cloud"
+							style={{ backgroundColor: '#ffc20e' }}
 						/>
 					</div>
 					<div className="slds-col_padded">
@@ -63,7 +63,7 @@ class Example extends React.Component {
 							assistiveText={{ label: 'Marketing Cloud' }}
 							category="standard"
 							name="choice"
-							productTheme="marketing-cloud"
+							style={{ backgroundColor: '#ea7600' }}
 						/>
 					</div>
 					<div className="slds-col_padded">
@@ -71,7 +71,7 @@ class Example extends React.Component {
 							assistiveText={{ label: 'Quip' }}
 							category="standard"
 							name="choice"
-							productTheme="quip"
+							style={{ backgroundColor: '#cf451d' }}
 						/>
 					</div>
 				</div>
