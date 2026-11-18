@@ -2,7 +2,6 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 import React, {
-	useRef,
 	useId,
 	useCallback,
 	useEffect,
@@ -255,7 +254,6 @@ const Radio = (props: RadioProps): React.ReactElement => {
 			label?: unknown;
 		};
 	const generatedId = useId();
-	const preventDuplicateRef = useRef(false);
 
 	const id = propId || generatedId;
 	const assistiveText = { ...defaultAssistiveText, ...propAssistiveText };
@@ -290,15 +288,9 @@ const Radio = (props: RadioProps): React.ReactElement => {
 
 	const handleChange = useCallback(
 		(
-			event: ChangeEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>,
-			preventDuplicate?: boolean
+			event: ChangeEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>
 		) => {
-			if (!preventDuplicateRef.current) {
-				preventDuplicateRef.current = Boolean(preventDuplicate);
-				onChange?.(event, { checked: !checked });
-			} else {
-				preventDuplicateRef.current = false;
-			}
+			onChange?.(event, { checked: !checked });
 		},
 		[checked, onChange]
 	);
@@ -413,14 +405,10 @@ const Radio = (props: RadioProps): React.ReactElement => {
 						handleChange(event as unknown as ChangeEvent<HTMLInputElement>);
 					}
 				}}
+				// Space clicks the input natively, which fires `change` (unchecked) or
+				// reaches `onClick` (checked and deselectable); only Enter needs handling.
 				onKeyDown={(event) => {
-					const { key } = event;
-					if (key === KEYS.SPACE && checked && deselectable) {
-						handleChange(event, true);
-					} else if (
-						(key === KEYS.ENTER && checked && deselectable) ||
-						(!checked && (key === KEYS.SPACE || key === KEYS.ENTER))
-					) {
+					if (event.key === KEYS.ENTER && (!checked || deselectable)) {
 						handleChange(event);
 					}
 				}}

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { render, fireEvent } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { describe, it, expect, vi, afterEach } from 'vitest';
 
 import Radio from '../index';
@@ -217,6 +218,54 @@ describe('Radio control model', () => {
 		fireEvent.keyDown(getInput(container), { key: 'Enter' });
 		expect(onChange).toHaveBeenCalledTimes(1);
 		expect(onChange.mock.calls[0][1]).toEqual({ checked: false });
+	});
+
+	it('requests checked: true once when Space is pressed on an unchecked radio', async () => {
+		const onChange = vi.fn();
+		const { container } = render(
+			<Radio
+				id="radio-space"
+				labels={{ label: 'Option' }}
+				onChange={onChange}
+			/>
+		);
+
+		getInput(container).focus();
+		await userEvent.keyboard(' ');
+		expect(onChange).toHaveBeenCalledTimes(1);
+		expect(onChange.mock.calls[0][0].type).toBe('change');
+		expect(onChange.mock.calls[0][1]).toEqual({ checked: true });
+	});
+
+	it('toggles a deselectable radio once per Space press', async () => {
+		const onChange = vi.fn();
+		const Wrapper = () => {
+			const [checked, setChecked] = useState(false);
+			return (
+				<Radio
+					id="radio-space-deselect"
+					labels={{ label: 'Option' }}
+					checked={checked}
+					deselectable
+					onChange={(event, data) => {
+						onChange(event, data);
+						setChecked(data.checked);
+					}}
+				/>
+			);
+		};
+		const { container } = render(<Wrapper />);
+		const input = getInput(container);
+
+		input.focus();
+		await userEvent.keyboard(' ');
+		expect(input.checked).toBe(true);
+		await userEvent.keyboard(' ');
+		expect(input.checked).toBe(false);
+		expect(onChange.mock.calls.map((call) => call[1])).toEqual([
+			{ checked: true },
+			{ checked: false },
+		]);
 	});
 
 	it('does not warn about switching between controlled and uncontrolled', () => {
