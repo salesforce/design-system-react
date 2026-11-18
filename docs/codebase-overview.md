@@ -601,6 +601,7 @@ describe('Button', () => {
 - Keyboard interactions work
 - ARIA attributes are present
 - Focus management is correct
+- axe passes in the open or expanded state (see [Automated Accessibility Assertions](#automated-accessibility-assertions))
 
 A breaking change should always cause at least one test to fail — if it wouldn't, add a test for it.
 
@@ -669,7 +670,13 @@ When a component composes others (e.g. a component rendering `Icon` internally, 
 
 ### Automated Accessibility Assertions
 
-Manual ARIA guidelines and keyboard-pattern review (above) catch source-shape problems, but they can't prove that rendered ARIA relationships (`aria-controls`, `aria-activedescendant`, roving `tabindex`) actually resolve correctly once the DOM is rendered — composition and portals can put the rendered DOM in a different tree than the source JSX. Rendered-DOM accessibility assertions (e.g. `axe`/`jest-axe`/`vitest-axe`) should run as part of a component's test suite in addition to manual review.
+Manual ARIA guidelines and keyboard-pattern review (above) catch source-shape problems, but they can't prove that rendered ARIA relationships (`aria-controls`, `aria-activedescendant`, roving `tabindex`) actually resolve correctly once the DOM is rendered — composition and portals can put the rendered DOM in a different tree than the source JSX. Rendered-DOM accessibility assertions should run as part of a component's test suite in addition to manual review.
+
+**Run axe on the open or expanded state.** A component that opens, expands or discloses content (a menu, listbox, popover, tooltip, dialog, calendar, accordion panel, tree branch) needs a `*.browser.test.jsx` test that renders it open and calls `expectNoAxeViolations()` from `components/__tests__/axe.ts`. The browser project loads the real SLDS stylesheet, so visibility, target size and contrast are real. A closed state proves little: the popup isn't rendered, and axe exempts `aria-expanded="false"` from `aria-controls`. Story snapshots render closed, which is how a combobox with no `aria-controls` shipped (#3289).
+
+- `expectNoAxeViolations(context?, { rules })` checks `document.body` by default, so portaled content is included. It runs the rulesets the Storybook a11y addon runs, without the page-level rules (`region`, `landmark-one-main`, `page-has-heading-one`), and waits until any Dialog has been positioned.
+- Call `notActEnvironment()` at the top of the `describe` for components that position through Dialog (menus, popovers, tooltips, the calendar), as `popover.browser.test.jsx` does; Floating UI's update resolves outside act().
+- Disable a rule for one test only, through `rules`, with a comment saying why. Acceptable reasons are an SLDS blueprint DSR must follow (say which) or an axe false positive (say what axe misreads). Prefer narrowing `context` to turning a rule off for the whole render.
 
 ### Non-Accessible Contributions
 
