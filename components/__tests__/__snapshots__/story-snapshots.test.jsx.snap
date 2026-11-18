@@ -6099,7 +6099,7 @@ exports[`Story HTML snapshots > SetupAssistant > ExpandableSteps 1`] = `
                         <div class="slds-size_3-of-4">Turn on Lightning for all users.</div>
                         <div class="slds-grid slds-grid_align-end slds-size_1-of-4">
                           <div class="slds-media__figure slds-media__figure_reverse">
-                            <div class="slds-form-element"><label class="slds-checkbox_toggle slds-grid" for="substep-0-action"><input id="substep-0-action" type="checkbox" aria-describedby="substep-0-action-desc" checked="" /><span id="substep-0-action-desc" class="slds-checkbox_faux_container" aria-live="assertive"><span class="slds-checkbox_faux"></span><span class="slds-checkbox_on">Enabled</span><span class="slds-checkbox_off">Disabled</span></span></label></div>
+                            <div class="slds-form-element"><label class="slds-checkbox_toggle slds-grid" for="substep-0-action"><input id="substep-0-action" aria-readonly="true" type="checkbox" aria-describedby="substep-0-action-desc" checked="" /><span id="substep-0-action-desc" class="slds-checkbox_faux_container" aria-live="assertive"><span class="slds-checkbox_faux"></span><span class="slds-checkbox_on">Enabled</span><span class="slds-checkbox_off">Disabled</span></span></label></div>
                           </div>
                         </div>
                       </div>
@@ -6249,7 +6249,7 @@ exports[`Story HTML snapshots > SetupAssistant > ExpandableSteps 1`] = `
                         <div class="slds-size_3-of-4">Turn on Lightning for all users.</div>
                         <div class="slds-grid slds-grid_align-end slds-size_1-of-4">
                           <div class="slds-media__figure slds-media__figure_reverse">
-                            <div class="slds-form-element"><label class="slds-checkbox_toggle slds-grid" for="substep-0-action"><input id="substep-0-action" type="checkbox" aria-describedby="substep-0-action-desc" /><span id="substep-0-action-desc" class="slds-checkbox_faux_container" aria-live="assertive"><span class="slds-checkbox_faux"></span><span class="slds-checkbox_on">Enabled</span><span class="slds-checkbox_off">Disabled</span></span></label></div>
+                            <div class="slds-form-element"><label class="slds-checkbox_toggle slds-grid" for="substep-0-action"><input id="substep-0-action" aria-readonly="true" type="checkbox" aria-describedby="substep-0-action-desc" /><span id="substep-0-action-desc" class="slds-checkbox_faux_container" aria-live="assertive"><span class="slds-checkbox_faux"></span><span class="slds-checkbox_on">Enabled</span><span class="slds-checkbox_off">Disabled</span></span></label></div>
                           </div>
                         </div>
                       </div>
