@@ -16,10 +16,9 @@ const openTooltip = async (props) => {
 					align="top"
 					content="Tooltip text"
 					isOpen
+					trigger={<button type="button">Trigger</button>}
 					{...props}
-				>
-					<button type="button">Trigger</button>
-				</Tooltip>
+				/>
 			</div>
 		</IconSettings>
 	);
