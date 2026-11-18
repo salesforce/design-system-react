@@ -7,12 +7,12 @@ import React, {
 	useMemo,
 	type ReactElement,
 	type CSSProperties,
-	type ChangeEvent,
 } from 'react';
 import classNames from 'classnames';
 import { RADIO_GROUP } from '../../utilities/constants';
 import type {
 	RadioChangeData,
+	RadioChangeEvent,
 	RadioChangeHandler,
 	RadioGroupItemProps,
 } from '../radio/index';
@@ -66,7 +66,7 @@ export interface RadioGroupChangeData {
  * `data.value`. The rendered selection only changes when `value` is updated.
  */
 export type RadioGroupChangeHandler = (
-	event: ChangeEvent<HTMLInputElement>,
+	event: RadioChangeEvent,
 	data: RadioGroupChangeData
 ) => void;
 
@@ -196,7 +196,7 @@ const RadioGroup = ({
 					event,
 					data: RadioChangeData
 				) => {
-					onChange?.(event as ChangeEvent<HTMLInputElement>, {
+					onChange?.(event, {
 						checked: data.checked,
 						value: data.checked ? childValue : null,
 					});
