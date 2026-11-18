@@ -1,3 +1,4 @@
+import { createRef } from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi, afterEach } from 'vitest';
 
@@ -232,6 +233,26 @@ describe('SLDS TEXTAREA', () => {
 			const error = container.querySelector('.slds-form-element__help');
 			expect(error).toBeInTheDocument();
 			expect(error.textContent).toBe('Error Message');
+		});
+	});
+
+	describe('className, style and ref', () => {
+		it('puts style on the textarea, with className and ref', () => {
+			const ref = createRef();
+			const { container } = render(
+				<Textarea
+					{...defaultProps}
+					className="custom-class"
+					labels={{ label: 'Textarea Label' }}
+					ref={ref}
+					style={{ outlineColor: 'rgb(1, 2, 3)' }}
+				/>
+			);
+
+			const textarea = container.querySelector('textarea');
+			expect(textarea).toHaveClass('custom-class');
+			expect(textarea.style.outlineColor).toBe('rgb(1, 2, 3)');
+			expect(ref.current).toBe(textarea);
 		});
 	});
 
