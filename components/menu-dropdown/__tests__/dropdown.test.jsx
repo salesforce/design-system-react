@@ -355,6 +355,23 @@ describe('SLDSMenuDropdown', () => {
 
 			expect(onClick).toHaveBeenCalledTimes(1);
 		});
+
+		it('calls onClick with the keydown event when a key opens the menu', () => {
+			const onClick = vi.fn();
+			const { container } = renderDropdown({ onClick });
+
+			fireEvent.keyDown(
+				container.querySelector('.slds-dropdown-trigger button'),
+				{
+					key: 'Enter',
+				}
+			);
+
+			expect(onClick).toHaveBeenCalledTimes(1);
+			const [event] = onClick.mock.calls[0];
+			expect(event.type).toBe('keydown');
+			expect(event.key).toBe('Enter');
+		});
 	});
 
 	describe('Expanded', () => {
