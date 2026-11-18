@@ -477,6 +477,19 @@ describe('SLDSPopover', () => {
 			expect(popoverIn()).not.toBeInTheDocument();
 		});
 
+		it('passes the native DOM event for clickOutside, not a React event', () => {
+			const onRequestClose = vi.fn();
+			renderPopover({ isOpen: true, onRequestClose });
+
+			fireEvent.mouseDown(document.body);
+
+			// The listener is on the document, so the event is the native
+			// MouseEvent: it has no `nativeEvent` or `isPropagationStopped`.
+			const [event] = onRequestClose.mock.calls[0];
+			expect(event).toBeInstanceOf(MouseEvent);
+			expect(event.nativeEvent).toBeUndefined();
+		});
+
 		it('stays open when controlled `isOpen`, but requests close', () => {
 			const onRequestClose = vi.fn();
 			renderPopover({ isOpen: true, onRequestClose });
