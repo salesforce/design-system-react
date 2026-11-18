@@ -1,0 +1,552 @@
+{
+  "components/accordion/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 2
+    }
+  },
+  "components/accordion/panel.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/alert/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 3
+    }
+  },
+  "components/badge/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/breadcrumb/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/builder-header/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 3
+    }
+  },
+  "components/builder-header/nav-dropdown.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/builder-header/nav-link.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 2
+    }
+  },
+  "components/builder-header/toolbar.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/button-group/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 7
+    }
+  },
+  "components/button-stateful/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 9
+    }
+  },
+  "components/button/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 4
+    }
+  },
+  "components/card/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/card/private/header.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 3
+    }
+  },
+  "components/carousel/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/carousel/private/carousel-indicators.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/carousel/private/carousel-item.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 3
+    }
+  },
+  "components/checkbox/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 5
+    }
+  },
+  "components/color-picker/color-picker.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 12
+    }
+  },
+  "components/color-picker/private/hsv-color.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/combobox/combobox.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 49
+    }
+  },
+  "components/combobox/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 2
+    }
+  },
+  "components/combobox/private/menu.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/date-picker/date-picker.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 8
+    }
+  },
+  "components/date-picker/private/calendar-wrapper.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 3
+    }
+  },
+  "components/docked-composer/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/dynamic-icon/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 4
+    }
+  },
+  "components/expandable-section/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/files/file.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/files/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/files/more-files.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/files/private/file-figure.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/filter/filter.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/icon/button-icon/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 2
+    }
+  },
+  "components/icon/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 2
+    }
+  },
+  "components/icon/input-icon/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 2
+    }
+  },
+  "components/input/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 2
+    }
+  },
+  "components/input/private/inner-input.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 2
+    }
+  },
+  "components/input/search.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/media-object/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/menu-dropdown/button-trigger.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 9
+    }
+  },
+  "components/menu-dropdown/menu-dropdown.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 16
+    }
+  },
+  "components/page-header/control.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/page-header/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 2
+    }
+  },
+  "components/page-header/private/base/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 3
+    }
+  },
+  "components/page-header/private/controls.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/page-header/private/object-home/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 3
+    }
+  },
+  "components/page-header/private/record-home/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 3
+    }
+  },
+  "components/panel/filtering/group.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 3
+    }
+  },
+  "components/panel/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/pill-container/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/pill-container/private/selected-listbox.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 31
+    }
+  },
+  "components/pill/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/popover/edit-dialog.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 5
+    }
+  },
+  "components/popover/popover.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 12
+    }
+  },
+  "components/progress-bar/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/progress-indicator/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 2
+    }
+  },
+  "components/progress-indicator/private/progress.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/progress-ring/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/progress-ring/private/ring-shape.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/radio-button-group/radio.ts": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 2
+    }
+  },
+  "components/radio-group/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 2
+    }
+  },
+  "components/radio-group/radio.ts": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 2
+    }
+  },
+  "components/radio/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 2
+    }
+  },
+  "components/scoped-notification/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/setup-assistant/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 2
+    }
+  },
+  "components/setup-assistant/step.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 3
+    }
+  },
+  "components/simple-data-table/cell.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/simple-data-table/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 12
+    }
+  },
+  "components/simple-data-table/interactive-element.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 2
+    }
+  },
+  "components/simple-data-table/private/head.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 2
+    }
+  },
+  "components/simple-data-table/private/header-cell.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 7
+    }
+  },
+  "components/simple-data-table/private/link.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/simple-data-table/private/row.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 6
+    }
+  },
+  "components/simple-data-table/row-actions.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 4
+    }
+  },
+  "components/slider/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 3
+    }
+  },
+  "components/split-view/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/split-view/listbox.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 9
+    }
+  },
+  "components/split-view/private/list-item-with-content.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/tabs/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 9
+    }
+  },
+  "components/tabs/private/tab.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/tabs/private/tabs-list.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/textarea/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 5
+    }
+  },
+  "components/toast/container.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/toast/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 3
+    }
+  },
+  "components/tooltip/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 7
+    }
+  },
+  "components/tooltip/private/field-level-help-tooltip.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/tree/private/branch.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/tree/private/item.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/tree/private/render-branch.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/tree/tree.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 4
+    }
+  },
+  "components/trial-bar/button.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/trial-bar/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/utilities/dialog/portal.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 6
+    }
+  },
+  "components/utilities/highlighter/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 3
+    }
+  },
+  "components/utilities/label/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 3
+    }
+  },
+  "components/utilities/menu-list/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/utilities/menu-list/item.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 6
+    }
+  },
+  "components/utilities/pill/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 5
+    }
+  },
+  "components/utilities/truncate/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 4
+    }
+  },
+  "components/utilities/utility-icon/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 3
+    }
+  },
+  "components/visual-picker/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 5
+    }
+  },
+  "components/visual-picker/link.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 3
+    }
+  },
+  "components/welcome-mat/index.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 2
+    }
+  },
+  "components/welcome-mat/info-badge.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "components/welcome-mat/tile.tsx": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 2
+    }
+  },
+  "utilities/hooks/use-click-outside.ts": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "utilities/hooks/use-controllable-state.ts": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "utilities/is-element-of-type.ts": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 1
+    }
+  },
+  "utilities/merge-props.ts": {
+    "@typescript-eslint/consistent-type-assertions": {
+      "count": 11
+    }
+  }
+}
