@@ -1,8 +1,8 @@
 {
   "name": "@salesforce/design-system-react",
-  "version": "11.0.0-alpha.11",
+  "version": "11.0.0-rc.0",
   "publishConfig": {
-    "tag": "alpha"
+    "tag": "rc"
   },
   "description": "Salesforce Lightning Design System for React",
   "type": "module",
