@@ -13,8 +13,24 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // because Rollup binds the barrel's import straight through to `./tree`. With
 // no built `index.js` the shim script has nothing to point at and the import
 // fails. Entries also pull in components the barrel doesn't export (`grid`).
-const directoryEntries = globSync('components/*/index.{js,jsx,ts,tsx}', {
+//
+// The same goes for every public file subpath (`.../menu-list/list`,
+// `.../radio-group/radio`): the `./components/*` export maps each one, but an
+// alias module nothing imports is not reachable from the barrel, so without an
+// entry of its own it is never emitted and only its types ship.
+// `check-packed-install` imports every one from the packed tarball.
+const entries = globSync('components/**/*.{js,jsx,ts,tsx}', {
 	cwd: __dirname,
+	exclude: [
+		'**/__tests__/**',
+		'**/__docs__/**',
+		'**/__examples__/**',
+		'**/private/**',
+		'**/*check-props.*',
+		'**/*.d.ts',
+		// The documentation site's example index (`raw-loader!` requires)
+		'components/site-stories.js',
+	],
 }).map((file) => path.resolve(__dirname, file));
 
 // Externalize React and any bare (node_modules) dependency — a component library
@@ -55,10 +71,7 @@ export default defineConfig({
 			// its own file, mirroring the components/ tree, so consumers can
 			// deep-import `@salesforce/design-system-react/components/accordion`
 			// (and `.../accordion/panel`, etc.) as they always could.
-			entry: [
-				path.resolve(__dirname, 'components/index.ts'),
-				...directoryEntries,
-			],
+			entry: [path.resolve(__dirname, 'components/index.ts'), ...entries],
 		},
 		rollupOptions: {
 			external,
