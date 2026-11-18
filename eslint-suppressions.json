@@ -271,7 +271,7 @@
   },
   "components/popover/popover.tsx": {
     "@typescript-eslint/consistent-type-assertions": {
-      "count": 12
+      "count": 10
     }
   },
   "components/progress-bar/index.tsx": {

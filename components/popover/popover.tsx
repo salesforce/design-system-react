@@ -49,7 +49,7 @@ if (documentDefined) {
 // Track currently open popover for single-popover-at-a-time behavior
 let currentOpenPopover: {
 	handleClose: (
-		event: MouseEvent | KeyboardEvent | undefined,
+		event: PopoverRequestCloseEvent,
 		data: PopoverRequestCloseData
 	) => void;
 	getId: () => string;
@@ -117,6 +117,15 @@ export interface PopoverRequestCloseData {
 	/** HTML id of the popover being closed. Only present when `trigger` is `newPopover`. */
 	id?: string;
 }
+
+/**
+ * Event passed to `onRequestClose`: the React click or key event that asked
+ * to close the popover, the native DOM `mousedown` or `touchstart` event for
+ * `clickOutside`, or `undefined` when there is none (`mouseLeave` timer,
+ * `newPopover`).
+ */
+export type PopoverRequestCloseEvent =
+	MouseEvent | KeyboardEvent | globalThis.MouseEvent | TouchEvent | undefined;
 
 /**
  * What caused `onRequestOpen` to fire:
@@ -234,11 +243,12 @@ export interface PopoverBaseProps {
 	) => void;
 	/**
 	 * Called when the popover requests to close, controlled or not. `data.trigger` says why. `event` is
-	 * the triggering click or key event, or `undefined` when there is none (`mouseLeave` timer,
-	 * `newPopover`). A controlled popover closes only if the parent sets `isOpen` to `false`.
+	 * the triggering click or key event, the native `mousedown`/`touchstart` event for `clickOutside`,
+	 * or `undefined` when there is none (`mouseLeave` timer, `newPopover`). A controlled popover closes
+	 * only if the parent sets `isOpen` to `false`.
 	 */
 	onRequestClose?: (
-		event: MouseEvent | KeyboardEvent | undefined,
+		event: PopoverRequestCloseEvent,
 		data: PopoverRequestCloseData
 	) => void;
 	/** Custom target element getter */
@@ -491,10 +501,7 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>((props, ref) => {
 
 	// Handle close
 	const handleClose = useCallback(
-		(
-			event: MouseEvent | KeyboardEvent | undefined,
-			data: PopoverRequestCloseData
-		) => {
+		(event: PopoverRequestCloseEvent, data: PopoverRequestCloseData) => {
 			if (isOpen) {
 				if (onRequestClose) {
 					onRequestClose(event, data);
@@ -555,7 +562,7 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>((props, ref) => {
 	// and an inline dialog; a dialog in a portal carries the ignore class instead.
 	const handleClickOutside = useCallback(
 		(event: globalThis.MouseEvent | TouchEvent) => {
-			handleClose(event as unknown as MouseEvent, { trigger: 'clickOutside' });
+			handleClose(event, { trigger: 'clickOutside' });
 		},
 		[handleClose]
 	);
