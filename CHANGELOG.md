@@ -29,6 +29,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Fixed
 
+- The `log` export type-checks: its declaration typed the options object as `Function`, so the published `.d.ts` failed to compile without `skipLibCheck` and accepted no options. Its options are now typed and optional
 - The file subpaths `components/menu-list/list`, `list-item` and `list-item-label`, `components/radio-group/radio`, `components/SLDSSettings`, `components/simple-data-table/simple-data-table`, `components/utilities/text-content`, `components/utilities/truncate/by-length` and `truncate/index`, and `components/utilities/deprecated-warning/index` load at runtime. They shipped types but no JS: nothing in the build imports these alias modules, so they were never emitted. Every public file under `components/` is now a build entry, and `npm run test:packed` imports each one from the packed tarball
 - `ColorPicker` no longer passes the deprecated `checked` to its swatch `Radio`s. The `RadioGroup` `value` already set it, so nothing changes at runtime. `File` styles its loading spinner without `Spinner`'s deprecated `containerStyle`
 - Examples and stories use no deprecated props: accordion `base-open` passes the panel's event to its handler instead of `window.event`, builder-header labels its edit dialog by a heading id (the old value was not an element id), radio groups derive their error id, and setup-assistant marks steps with `status: 'completed'`
