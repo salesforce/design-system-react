@@ -97,6 +97,10 @@ export interface SelectedListBoxProps {
 	variant?: string;
 }
 
+// `label` may be JSX, which is not usable as a `title` attribute.
+const getLabelText = (option: SelectedListBoxOption): string | undefined =>
+	typeof option.label === 'string' ? option.label : undefined;
+
 const getAvatar = (option: SelectedListBoxOption): ReactNode => {
 	const avatarObject = option.avatar;
 	let avatar: ReactNode = null;
@@ -113,7 +117,7 @@ const getAvatar = (option: SelectedListBoxOption): ReactNode => {
 			avatar = (
 				<Avatar
 					imgSrc={avatarData.imgSrc}
-					title={avatarData.title || (option.label as string)}
+					title={avatarData.title || getLabelText(option)}
 					variant={(avatarData.variant as 'user' | 'entity') || 'user'}
 				/>
 			);
@@ -141,7 +145,7 @@ const getIcon = (option: SelectedListBoxOption): ReactNode => {
 					<Icon
 						category={iconData.category as IconCategory}
 						name={iconData.name}
-						title={iconData.title || (option.label as string)}
+						title={iconData.title || getLabelText(option)}
 					/>
 				);
 			}
@@ -285,9 +289,9 @@ const SelectedListBox = ({
 								icon={icon as ReactElement}
 								labels={{
 									label: option.label as string,
+									title: option.title ?? getLabelText(option),
 									removeTitle: labels?.removePillTitle,
 								}}
-								title={(option.title ?? option.label) as string}
 								requestFocus={listboxHasFocus}
 								tabIndex={hasTabIndex ? 0 : -1}
 							/>
