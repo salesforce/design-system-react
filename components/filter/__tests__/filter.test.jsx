@@ -110,6 +110,27 @@ describe('SLDSFilter', () => {
 		});
 	});
 
+	describe('Right alignment', () => {
+		it('does not pass Popover the removed offset prop', () => {
+			const consoleError = vi.spyOn(console, 'error');
+			render(
+				<IconSettings iconPath="/assets/icons">
+					<Filter
+						align="right"
+						property="Show Me"
+						predicate="All Opportunities"
+					>
+						<div>Filter content</div>
+					</Filter>
+				</IconSettings>
+			);
+			expect(consoleError).not.toHaveBeenCalledWith(
+				expect.stringContaining('`offset`')
+			);
+			consoleError.mockRestore();
+		});
+	});
+
 	describe('On click handler when clicking on filter', () => {
 		it('Filter could take onClick prop and trigger this callback during filter click', async () => {
 			const onClick = vi.fn();
