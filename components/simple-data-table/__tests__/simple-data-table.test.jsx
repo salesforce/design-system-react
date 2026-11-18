@@ -1381,6 +1381,35 @@ describe('SimpleDataTable', () => {
 			consoleError.mockRestore();
 		});
 
+		it('focuses a row radio without its deprecated requestFocus props', () => {
+			const consoleError = vi.spyOn(console, 'error');
+			const { container } = renderTable(
+				<SimpleDataTable
+					{...defaultProps}
+					fixedLayout
+					keyboardNavigation
+					selectRows="radio"
+					selection={[]}
+				>
+					<SimpleDataTableColumn label="Name" property="name" primaryColumn />
+				</SimpleDataTable>
+			);
+
+			// The selection cell is the row's first cell
+			const cell = getRow(container, 1).querySelector('td');
+			fireEvent.focus(cell);
+			fireEvent.keyDown(cell, { key: 'Enter' });
+
+			expect(document.activeElement).toBe(cell.querySelector('input'));
+			expect(consoleError).not.toHaveBeenCalledWith(
+				expect.stringContaining('`requestFocus` will be removed')
+			);
+			expect(consoleError).not.toHaveBeenCalledWith(
+				expect.stringContaining('`onRequestFocus` will be removed')
+			);
+			consoleError.mockRestore();
+		});
+
 		describe('onOpen/onClose injection', () => {
 			// Records the props the wrapper passes to the element it wraps. Forwards
 			// `ref` when the element does, so the wrapper treats it the same way.

@@ -2,6 +2,7 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 import React, {
+	forwardRef,
 	useCallback,
 	useContext,
 	useMemo,
@@ -11,7 +12,7 @@ import React, {
 import classNames from 'classnames';
 
 import Checkbox from '../../checkbox';
-import Radio from '../../radio';
+import Radio, { type RadioProps } from '../../radio';
 
 import {
 	SIMPLE_DATA_TABLE_ROW,
@@ -34,8 +35,26 @@ import { getCornerRowStyle, getCornerStyle } from './corner-style';
 const InteractiveCheckbox = InteractiveElement(
 	Checkbox as any
 ) as React.ComponentType<any>;
+// Radio takes its `<input>` ref through `refs.input`, not `ref`. Without a `ref`,
+// InteractiveElement would focus it through Radio's deprecated `requestFocus`
+// and `onRequestFocus` props, which warn.
+const RadioWithRef = forwardRef<HTMLInputElement, RadioProps>((props, ref) => (
+	<Radio
+		{...props}
+		refs={{
+			input: (input: HTMLInputElement | null) => {
+				if (typeof ref === 'function') {
+					ref(input);
+				} else if (ref) {
+					ref.current = input;
+				}
+			},
+		}}
+	/>
+));
+RadioWithRef.displayName = 'SimpleDataTableRadio';
 const InteractiveRadio = InteractiveElement(
-	Radio as any
+	RadioWithRef as any
 ) as React.ComponentType<any>;
 /* eslint-enable @typescript-eslint/no-explicit-any */
 
