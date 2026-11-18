@@ -66,7 +66,11 @@ const keyboardNavigate = ({
 			componentContext.handleClick(event);
 		}
 	} else if (key === KEYS.ENTER || key === KEYS.SPACE) {
-		onSelect(currentFocusedIndex);
+		// A menu opened by mouse has no focused item until an arrow key moves
+		// focus, so there is nothing to select yet.
+		if (indexes.includes(currentFocusedIndex)) {
+			onSelect(currentFocusedIndex);
+		}
 	} else {
 		const navigableIndex = indexes.indexOf(currentFocusedIndex);
 
