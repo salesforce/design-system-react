@@ -13,6 +13,7 @@ import {
 
 import Datepicker from '../';
 import IconSettings from '../../icon-settings';
+import { expectNoAxeViolations, notActEnvironment } from '../../__tests__/axe';
 
 // Count Floating UI's position computations and the `autoUpdate` drivers still
 // running, delegating to the real implementation so positioning is unchanged.
@@ -356,5 +357,42 @@ describe('Datepicker in a portal (browser)', () => {
 		await userEvent.click(getOutside());
 		await waitForClosed();
 		expect(onRequestClose).toHaveBeenCalledTimes(1);
+	});
+});
+
+// axe on the open calendar, with real SLDS CSS. A closed calendar isn't
+// rendered.
+describe('DatePicker accessibility (browser)', () => {
+	notActEnvironment();
+
+	it.each([
+		['default', {}],
+		['relative year picker', { relativeYearFrom: -5, relativeYearTo: 5 }],
+		['with a value', { value: new Date(2014, 6, 23) }],
+	])('%s: has no axe violations while open', async (name, props) => {
+		render(
+			<IconSettings iconPath="/assets/icons">
+				<Datepicker
+					id="date-picker"
+					isOpen
+					labels={{ label: 'Date' }}
+					formatter={(date) => (date ? date.toISOString().slice(0, 10) : '')}
+					onChange={() => {}}
+					parser={(text) => new Date(text)}
+					value={null}
+					{...props}
+				/>
+			</IconSettings>
+		);
+		const calendar = document.querySelector('.slds-datepicker');
+		expect(calendar).toBeInTheDocument();
+		// `target-size`: the calendar button inside the input is the SLDS
+		// `slds-input__icon` blueprint, which SLDS sizes at 14px (WCAG 2.5.8
+		// asks for 24px). That's SLDS's sizing, not DSR's, so check it
+		// everywhere but there: the calendar runs with every rule on.
+		await expectNoAxeViolations(document.body, {
+			rules: { 'target-size': { enabled: false } },
+		});
+		await expectNoAxeViolations(calendar);
 	});
 });

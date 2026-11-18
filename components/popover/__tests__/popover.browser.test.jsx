@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { page, userEvent } from 'vitest/browser';
 import {
 	describe,
@@ -14,6 +14,7 @@ import {
 import Popover from '../';
 import Button from '../../button';
 import IconSettings from '../../icon-settings';
+import { expectNoAxeViolations } from '../../__tests__/axe';
 
 // Count Floating UI's position computations and the `autoUpdate` drivers still
 // running, delegating to the real implementation so positioning is unchanged.
@@ -311,5 +312,41 @@ describe('Popover in a portal (browser)', () => {
 		await userEvent.click(getOutside());
 		await waitForClosed();
 		expect(onRequestClose).toHaveBeenCalledTimes(1);
+	});
+});
+
+// axe on the open popover, with real SLDS CSS. A closed popover isn't rendered.
+describe('Popover accessibility (browser)', () => {
+	it.each([
+		['heading', { heading: 'Details' }],
+		[
+			'heading and footer',
+			{ heading: 'Details', footer: <Button label="Save" variant="brand" /> },
+		],
+		[
+			'ariaLabelledby',
+			{
+				ariaLabelledby: 'axe-popover-own-heading',
+				body: <h2 id="axe-popover-own-heading">Own heading</h2>,
+			},
+		],
+		['walkthrough', { heading: 'Welcome', variant: 'walkthrough' }],
+		['error', { heading: 'Review the errors', variant: 'error' }],
+	])('%s: has no axe violations while open', async (name, props) => {
+		render(
+			<IconSettings iconPath="/assets/icons">
+				<Popover
+					body="Popover body"
+					id="axe-popover"
+					isOpen
+					onRequestClose={() => {}}
+					{...props}
+				>
+					<Button label="Trigger" />
+				</Popover>
+			</IconSettings>
+		);
+		expect(screen.getByRole('dialog')).toBeInTheDocument();
+		await expectNoAxeViolations();
 	});
 });

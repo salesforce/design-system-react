@@ -1,5 +1,11 @@
 import { useState } from 'react';
-import { render, waitFor, within, fireEvent } from '@testing-library/react';
+import {
+	render,
+	screen,
+	waitFor,
+	within,
+	fireEvent,
+} from '@testing-library/react';
 import { page, userEvent } from 'vitest/browser';
 import {
 	describe,
@@ -14,6 +20,7 @@ import {
 import MenuDropdown from '../';
 import IconSettings from '../../icon-settings';
 import Tooltip from '../../tooltip';
+import { expectNoAxeViolations, notActEnvironment } from '../../__tests__/axe';
 
 // Count Floating UI's position computations and the `autoUpdate` drivers still
 // running, delegating to the real implementation so positioning is unchanged.
@@ -428,5 +435,47 @@ describe('MenuDropdown tooltipMenuItem (browser)', () => {
 		expect(linkRect.top - tooltipRect.bottom).toBeLessThan(24);
 		expect(tooltipRect.right).toBeGreaterThan(linkRect.left);
 		expect(tooltipRect.left).toBeLessThan(linkRect.right);
+	});
+});
+
+const options = [
+	{ type: 'header', label: 'Actions' },
+	{ label: 'Edit', value: 'edit' },
+	{ label: 'Archive', value: 'archive', disabled: true },
+	{ type: 'divider' },
+	{ label: 'Delete', value: 'delete' },
+];
+
+// axe on the open menu, with real SLDS CSS. A closed menu isn't rendered.
+describe('MenuDropdown accessibility (browser)', () => {
+	notActEnvironment();
+
+	it.each([
+		['label button', { label: 'Actions' }],
+		[
+			'icon button',
+			{
+				assistiveText: { icon: 'More actions' },
+				buttonVariant: 'icon',
+				iconCategory: 'utility',
+				iconName: 'down',
+				iconVariant: 'border-filled',
+			},
+		],
+		['checkmark', { label: 'Sort', checkmark: true, value: 'edit' }],
+	])('%s: has no axe violations while open', async (name, props) => {
+		render(
+			<IconSettings iconPath="/assets/icons">
+				<MenuDropdown
+					id="menu"
+					isOpen
+					onSelect={() => {}}
+					options={options}
+					{...props}
+				/>
+			</IconSettings>
+		);
+		expect(screen.getByRole('menu')).toBeInTheDocument();
+		await expectNoAxeViolations();
 	});
 });
