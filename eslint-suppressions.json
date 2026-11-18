@@ -256,7 +256,7 @@
   },
   "components/pill-container/private/selected-listbox.tsx": {
     "@typescript-eslint/consistent-type-assertions": {
-      "count": 31
+      "count": 28
     }
   },
   "components/pill/index.tsx": {
