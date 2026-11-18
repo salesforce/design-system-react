@@ -580,6 +580,7 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
 		return (
 			<TabsPanel label={labels.swatchTab ?? ''}>
 				<SwatchPicker
+					ariaLabelledby={`color-picker-label-${componentId}`}
 					color={workingColor}
 					labels={labels}
 					onSelect={handleSwatchSelect}
