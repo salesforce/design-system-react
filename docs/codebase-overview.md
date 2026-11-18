@@ -620,6 +620,8 @@ npm run test:coverage       # Run once with coverage
 
 Every Storybook story (except portal-rendered ones, which can't be server-rendered) is also rendered into an HTML snapshot (`components/__tests__/__snapshots__/story-snapshots.test.jsx.snap`), so stories are test fixtures as well as documentation. A run filtered to one component's folder does not include that suite — finish with an unfiltered run.
 
+`components/__tests__/conformance.test.jsx` renders every export from `components/index` and checks it against the [DOM Node & Ref Conventions](#dom-node--ref-conventions): `data-*`/`aria-*` props reach the DOM, `className`, `style` and `ref` land on the outermost element, and a consumer `onClick` runs alongside the component's own click handling. A new export fails the suite until it has a fixture there. A component that doesn't meet a check yet is listed in that file's `exemptions` with the reason, and an exemption that starts passing fails too, so remove it when you fix the component.
+
 ---
 
 ## Accessibility
