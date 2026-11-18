@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { render, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, it, expect, vi } from 'vitest';
 
@@ -219,6 +219,23 @@ describe('SLDSColorPicker', () => {
 		};
 
 		describe('Swatch tab', () => {
+			it.each([
+				['labels.label', { labels: { label: 'Theme color' } }],
+				['assistiveText.label', { assistiveText: { label: 'Theme color' } }],
+			])('names the swatch listbox with %s', (name, props) => {
+				render(
+					<ColorPicker
+						events={{ onChange: () => {} }}
+						isOpen
+						value="#000000"
+						{...props}
+					/>
+				);
+				expect(
+					screen.getByRole('listbox', { name: 'Theme color' })
+				).toBeInTheDocument();
+			});
+
 			it('clicking a swatch sets that working color', () => {
 				const onWorkingColorChange = vi.fn();
 				const { container } = render(

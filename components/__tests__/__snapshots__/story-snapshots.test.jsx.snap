@@ -2194,7 +2194,7 @@ exports[`Story HTML snapshots > ColorPicker > MenuOpen 1`] = `
                 <li class="slds-tabs_default__item" role="presentation" id="color-picker-tabs-color-picker-slds-tabs_tab-1" title="Custom"><a class="slds-tabs_default__link" href="#" role="tab" tabindex="-1" aria-controls="color-picker-tabs-color-picker-slds-tabs_panel-1" aria-selected="false">Custom</a></li>
               </ul>
               <div aria-labelledby="color-picker-tabs-color-picker-slds-tabs_tab-0" class="slds-show slds-tabs_default__content" id="color-picker-tabs-color-picker-slds-tabs_panel-0" role="tabpanel">
-                <ul class="slds-color-picker__swatches" role="listbox">
+                <ul aria-labelledby="color-picker-label-color-picker" class="slds-color-picker__swatches" role="listbox">
                   <li class="slds-color-picker__swatch" role="presentation"><a aria-selected="false" class="slds-color-picker__swatch-trigger" role="option" tabindex="-1"><span class="slds-swatch" style="background-color:#e3abec"><span class="slds-assistive-text">#e3abec</span></span></a></li>
                   <li class="slds-color-picker__swatch" role="presentation"><a aria-selected="false" class="slds-color-picker__swatch-trigger" role="option" tabindex="-1"><span class="slds-swatch" style="background-color:#c2dbf7"><span class="slds-assistive-text">#c2dbf7</span></span></a></li>
                   <li class="slds-color-picker__swatch" role="presentation"><a aria-selected="false" class="slds-color-picker__swatch-trigger" role="option" tabindex="-1"><span class="slds-swatch" style="background-color:#9fd6ff"><span class="slds-assistive-text">#9fd6ff</span></span></a></li>
