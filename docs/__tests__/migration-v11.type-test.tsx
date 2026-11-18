@@ -11,7 +11,6 @@ import {
 	Button,
 	Checkbox,
 	ExpandableSection,
-	Icon,
 	Input,
 	MenuDropdown,
 	Modal,
