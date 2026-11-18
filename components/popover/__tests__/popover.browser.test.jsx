@@ -290,3 +290,26 @@ describe('Popover (browser)', () => {
 		expect(floating.activeDrivers).toBe(0);
 	});
 });
+
+describe('Popover in a portal (browser)', () => {
+	it('positions the portaled popover, keeps it open on an inside click and closes on an outside click', async () => {
+		const onRequestClose = vi.fn();
+		renderPopover({ position: 'overflowBoundaryElement', onRequestClose });
+		await userEvent.click(getTrigger());
+		await waitForPositioned();
+
+		const dialogRect = getDialog().getBoundingClientRect();
+		expectInViewport(dialogRect);
+		expect(dialogRect.left).toBeGreaterThanOrEqual(
+			getTrigger().getBoundingClientRect().right
+		);
+
+		await userEvent.click(document.querySelector('.slds-popover__body'));
+		expect(getDialog()).toBeTruthy();
+		expect(onRequestClose).not.toHaveBeenCalled();
+
+		await userEvent.click(getOutside());
+		await waitForClosed();
+		expect(onRequestClose).toHaveBeenCalledTimes(1);
+	});
+});
