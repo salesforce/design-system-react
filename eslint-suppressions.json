@@ -11,7 +11,7 @@
   },
   "components/alert/index.tsx": {
     "@typescript-eslint/consistent-type-assertions": {
-      "count": 3
+      "count": 2
     }
   },
   "components/badge/index.tsx": {
@@ -421,7 +421,7 @@
   },
   "components/toast/index.tsx": {
     "@typescript-eslint/consistent-type-assertions": {
-      "count": 3
+      "count": 2
     }
   },
   "components/tooltip/index.tsx": {

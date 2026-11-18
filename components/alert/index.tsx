@@ -185,7 +185,11 @@ const Alert = ({
 					iconSize="medium"
 					inverse
 					onClick={onRequestClose}
-					title={assistiveText.closeButton as string}
+					title={
+						typeof assistiveText.closeButton === 'string'
+							? assistiveText.closeButton
+							: undefined
+					}
 					variant="icon"
 				/>
 			)}
