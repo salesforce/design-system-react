@@ -10,6 +10,8 @@ import { DIRECTIONS } from '../../utilities/UNSAFE_direction';
 import LanguageDirection from '../../utilities/UNSAFE_direction/private/language-direction';
 
 export interface SwatchPickerProps {
+	/** Id of the element that names the swatch listbox */
+	ariaLabelledby: string;
 	/** Current working color object */
 	color: WorkingColor;
 	/** Labels for internationalization */
@@ -29,6 +31,7 @@ export interface SwatchPickerProps {
  * SwatchPicker displays a grid of color swatches for selection.
  */
 const SwatchPicker: React.FC<SwatchPickerProps> = ({
+	ariaLabelledby,
 	color,
 	labels,
 	onSelect,
@@ -117,6 +120,7 @@ const SwatchPicker: React.FC<SwatchPickerProps> = ({
 
 	return (
 		<ul
+			aria-labelledby={ariaLabelledby}
 			className="slds-color-picker__swatches"
 			role="listbox"
 			onKeyDown={handleKeyDown}
