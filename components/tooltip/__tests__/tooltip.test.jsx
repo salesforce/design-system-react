@@ -559,6 +559,22 @@ describe('SLDSTooltip', () => {
 			await waitFor(() => expect(tooltipEl()).not.toBeInTheDocument());
 		});
 
+		it('closes on a mousedown outside, requesting a `clickOutside` close', async () => {
+			const onRequestClose = vi.fn();
+			renderTooltip({ defaultIsOpen: true, onRequestClose });
+			expect(tooltipEl()).toBeInTheDocument();
+
+			fireEvent.mouseDown(tooltipEl());
+			expect(onRequestClose).not.toHaveBeenCalled();
+
+			fireEvent.mouseDown(document.body);
+			await waitFor(() => expect(tooltipEl()).not.toBeInTheDocument());
+			expect(onRequestClose).toHaveBeenCalledTimes(1);
+			expect(onRequestClose.mock.calls[0][1]).toEqual({
+				trigger: 'clickOutside',
+			});
+		});
+
 		it('does not request close when the controlled parent closes it', async () => {
 			const onRequestClose = vi.fn();
 			const { rerender } = renderTooltip({ isOpen: true, onRequestClose });
