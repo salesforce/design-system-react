@@ -319,7 +319,7 @@ describe('Dismissing never drops focus to <body> (browser)', () => {
 			await userEvent.click(outsideButton());
 			await expectClosed();
 			await settle();
-			expectFocusNotOnBody();
+			expectFocusOnOutside();
 		});
 	});
 
