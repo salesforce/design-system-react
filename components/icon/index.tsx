@@ -108,9 +108,11 @@ const Icon = ({
 	style,
 }: IconProps): React.ReactElement => {
 	let styleOverride = style;
-	if (productTheme && IconBackgrounds[productTheme]) {
+	// eslint-disable-next-line local/no-deprecated -- honors the deprecated `productTheme` prop until it is removed
+	const productBackground = productTheme && IconBackgrounds[productTheme];
+	if (productBackground) {
 		styleOverride = {
-			backgroundColor: IconBackgrounds[productTheme],
+			backgroundColor: productBackground,
 			...style,
 		};
 	}
