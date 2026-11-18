@@ -45,6 +45,8 @@ Maintainers: `npm run release-pr -- next` (or an explicit version such as `11.0.
 
 For a maintenance line, add `--base <branch>`: `npm run release-pr -- next --base 0.10.x` cuts `chore/release-0.10.66` from `origin/0.10.x` (`next` patch-bumps a stable version there) and opens the PR against that branch. After it merges, `gh release create v<version> --target 0.10.x --generate-notes` runs that branch's own publish workflow. A stable maintenance release publishes under npm's `latest` dist-tag, which is right while the current major is in prerelease.
 
+To ship a set of PRs as one version, use a release stack ([`release-stack` skill](.claude/skills/release-stack/SKILL.md)). A milestone named for the version (e.g. `11.0.0-rc.0`) marks every PR in the stack. `npm run release-pr -- <version> --onto <top branch>` puts the release PR on top of the stack. Once the whole stack merges, create the GitHub Release.
+
 ## Scratch files
 
 Agent-generated notes, plans, and analyses go in `.planning/` (gitignored). Don't commit them.

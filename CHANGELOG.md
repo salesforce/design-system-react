@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - [Versioning & Support Policy](docs/codebase-overview.md#versioning--support-policy): what a major, minor and patch can change, how long a deprecation lasts, and fix-forward support for 11.x (no long-lived maintenance branches; use `~11.y.0` and the `rc` dist-tag to control upgrades)
 - `npm run release-pr -- next --rc` (maintainers): moves `11.0.0-alpha.N` or `-beta.N` to `11.0.0-rc.0`, and `rc.N` to `rc.N+1`
+- Release stacks (maintainers): a milestone named for the version marks the PRs that ship in it, and `npm run release-pr -- <version> --onto <branch>` stacks the release PR on top of them. The `release-stack` agent skill (`.claude/skills/release-stack`) plans, checks and releases them
 
 ### Changed
 
