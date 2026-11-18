@@ -186,43 +186,49 @@ describe('Accordion', () => {
 			expect(document.activeElement).toBe(document.body);
 		});
 
-		it('focuses the next accordion button on arrow down', () => {
-			const { container } = render(<AccordionExample />);
-			const accordionButtons = container.querySelectorAll(
-				'button.slds-accordion__summary-action'
+		const renderButtons = () =>
+			Array.from(
+				render(<AccordionExample />).container.querySelectorAll(
+					'button.slds-accordion__summary-action'
+				)
 			);
+		const arrowDown = (element) =>
+			fireEvent.keyDown(element, { key: 'ArrowDown', keyCode: 40, which: 40 });
+		const arrowUp = (element) =>
+			fireEvent.keyDown(element, { key: 'ArrowUp', keyCode: 38, which: 38 });
 
-			// NOTE: jsdom doesn't support document.activeElement focus management the same way as browsers
-			// The keyDown event is dispatched but focus() doesn't update document.activeElement in jsdom
-			// Verifying that buttons exist and are interactive
-			expect(accordionButtons).toHaveLength(3);
+		it('focuses the next accordion button on arrow down', () => {
+			const buttons = renderButtons();
+			buttons[0].focus();
 
-			fireEvent.keyDown(accordionButtons[0], {
-				key: 'ArrowDown',
-				keyCode: 40,
-				which: 40,
-			});
+			arrowDown(buttons[0]);
 
-			// In real browser, accordionButtons[1] would be focused
+			expect(document.activeElement).toBe(buttons[1]);
 		});
 
-		it('focuses the previous accordion button on arrow up', () => {
-			const { container } = render(<AccordionExample />);
-			const accordionButtons = container.querySelectorAll(
-				'button.slds-accordion__summary-action'
-			);
+		it('focuses the last accordion button on arrow up from the first', () => {
+			const buttons = renderButtons();
+			buttons[0].focus();
 
-			// NOTE: jsdom doesn't support document.activeElement focus management the same way as browsers
-			// Verifying that buttons exist and are interactive
-			expect(accordionButtons).toHaveLength(3);
+			arrowUp(buttons[0]);
 
-			fireEvent.keyDown(accordionButtons[0], {
-				key: 'ArrowUp',
-				keyCode: 38,
-				which: 38,
-			});
+			expect(document.activeElement).toBe(buttons[2]);
+		});
 
-			// In real browser, last accordion button would be focused
+		it('moves from the button focused with Tab, not the last one reached with arrows', () => {
+			const buttons = renderButtons();
+
+			// Tab to the last button without using the arrow keys
+			buttons[2].focus();
+			arrowDown(buttons[2]);
+			expect(document.activeElement).toBe(buttons[0]);
+
+			// Reach the second button with the arrows, then Tab back to the first
+			arrowDown(buttons[0]);
+			expect(document.activeElement).toBe(buttons[1]);
+			buttons[0].focus();
+			arrowDown(buttons[0]);
+			expect(document.activeElement).toBe(buttons[1]);
 		});
 
 		it('focuses the correct remaining button after a panel is removed', () => {
@@ -406,7 +412,9 @@ describe('Accordion', () => {
 						/>
 					</Accordion>
 				</IconSettings>
-			).container.querySelector('.slds-accordion__summary-action .slds-truncate');
+			).container.querySelector(
+				'.slds-accordion__summary-action .slds-truncate'
+			);
 
 		it('uses a string summary as the title', () => {
 			expect(renderPanel({ summary: 'Summary' })).toHaveAttribute(
