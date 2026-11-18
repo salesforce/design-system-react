@@ -330,6 +330,50 @@ describe('Tooltip (browser)', () => {
 	});
 });
 
+describe('Tooltip in a portal (browser)', () => {
+	it('positions the portaled tooltip and keeps it open on an inside click', async () => {
+		const onRequestClose = vi.fn();
+		renderTooltip({
+			defaultIsOpen: true,
+			onRequestClose,
+			position: 'overflowBoundaryElement',
+		});
+		await waitForPositioned();
+
+		const tooltipRect = getTooltip().getBoundingClientRect();
+		expectInViewport(tooltipRect);
+		expect(tooltipRect.bottom).toBeLessThanOrEqual(
+			getTrigger().getBoundingClientRect().top
+		);
+
+		await userEvent.click(getTooltip());
+		expect(onRequestClose).not.toHaveBeenCalled();
+
+		// Leaving the tooltip closes it
+		await userEvent.hover(getOutside());
+		await waitForClosed();
+		expect(onRequestClose.mock.calls.map(([, data]) => data)).toEqual([
+			{ trigger: 'mouseLeave' },
+		]);
+	});
+
+	it('closes the portaled tooltip on an outside click', async () => {
+		const onRequestClose = vi.fn();
+		renderTooltip({
+			defaultIsOpen: true,
+			onRequestClose,
+			position: 'overflowBoundaryElement',
+		});
+		await waitForPositioned();
+
+		await userEvent.click(getOutside());
+		await waitForClosed();
+		expect(onRequestClose.mock.calls.map(([, data]) => data)).toEqual([
+			{ trigger: 'clickOutside' },
+		]);
+	});
+});
+
 // Browser-mode tests for `hasAnchoredNubbin`: they check positioning and
 // pseudo-elements against the real SLDS 2 stylesheet
 // (vitest.setup.browser.ts), which jsdom doesn't lay out or apply.

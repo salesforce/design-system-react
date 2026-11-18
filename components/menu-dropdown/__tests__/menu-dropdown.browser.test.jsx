@@ -335,6 +335,33 @@ describe('MenuDropdown clicks inside the menu (browser)', () => {
 	});
 });
 
+describe('MenuDropdown in a portal (browser)', () => {
+	it('positions the portaled menu, keeps it open on an inside click and closes on an outside click', async () => {
+		const onRequestClose = vi.fn();
+		renderMenu({
+			menuPosition: 'overflowBoundaryElement',
+			onRequestClose,
+			options: [{ label: 'Header', type: 'header' }, ...OPTIONS],
+		});
+		await userEvent.click(getTrigger());
+		await waitForPositioned();
+
+		const menuRect = getMenu().getBoundingClientRect();
+		const triggerRect = getTrigger().getBoundingClientRect();
+		expectInViewport(menuRect);
+		expect(menuRect.top).toBeGreaterThanOrEqual(triggerRect.bottom - 1);
+		expect(Math.abs(menuRect.left - triggerRect.left)).toBeLessThan(2);
+
+		await userEvent.click(document.querySelector('.slds-dropdown__header'));
+		expect(getMenu()).toBeTruthy();
+		expect(onRequestClose).not.toHaveBeenCalled();
+
+		await userEvent.click(getOutside());
+		await waitForClosed();
+		expect(onRequestClose).toHaveBeenCalledTimes(1);
+	});
+});
+
 // Browser-mode tests for `tooltipMenuItem`: they check the item's styles and
 // the tooltip's position against the real SLDS 2 stylesheet
 // (vitest.setup.browser.ts), which jsdom doesn't apply or lay out.
