@@ -877,6 +877,25 @@ describe('SLDSMenuDropdown', () => {
 			});
 		});
 
+		it('does not call onSelect for Enter or Space before an item has focus', async () => {
+			const onSelect = vi.fn();
+			const { container } = renderDropdown({ onSelect });
+
+			const menu = await openMenu(container);
+			fireEvent.keyDown(menu, keyObjects.ENTER);
+			fireEvent.keyDown(menu, { key: ' ' });
+			expect(onSelect).not.toHaveBeenCalled();
+
+			fireEvent.keyDown(menu, keyObjects.DOWN);
+			fireEvent.keyDown(menu, keyObjects.ENTER);
+			expect(onSelect).toHaveBeenCalledTimes(1);
+			expect(onSelect.mock.calls[0][1]).toEqual({
+				option: menuOptions[0],
+				optionIndex: 0,
+				value: 'A0',
+			});
+		});
+
 		it('calls onSelect for each toggle in multiple mode with the next value', async () => {
 			const onSelect = vi.fn();
 			const { container } = render(
