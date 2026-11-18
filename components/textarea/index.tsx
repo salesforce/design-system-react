@@ -145,7 +145,7 @@ export interface TextareaProps extends Pick<
 	value: string;
 	/** Text wrapping mode */
 	wrap?: 'soft' | 'hard';
-	/** Custom styles */
+	/** Custom styles for the `<textarea>`, the element `className` and `ref` target */
 	style?: CSSProperties;
 }
 
@@ -182,6 +182,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 			placeholder,
 			required,
 			role,
+			style,
 			value,
 			// Removed in v11: destructured so it doesn't reach the DOM. check-props warns.
 			defaultValue: _defaultValue,
@@ -274,6 +275,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 						ref={ref}
 						role={role}
 						required={required}
+						style={style}
 						wrap={wrap}
 						value={value}
 						aria-describedby={
