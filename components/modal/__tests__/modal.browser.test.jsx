@@ -6,6 +6,7 @@ import Modal from '../';
 import Button from '../../button';
 import IconSettings from '../../icon-settings';
 import Settings from '../../settings';
+import { expectNoAxeViolations } from '../../__tests__/axe';
 
 // Browser-mode counterparts of the modal focus tests that jsdom cannot run:
 // jsdom neither moves focus on Tab nor synthesizes a click from Enter on a
@@ -98,5 +99,22 @@ describe('SLDSModal (browser)', () => {
 			});
 			expect(content.contains(document.activeElement)).toBe(true);
 		}
+	});
+
+	// axe on the open modal, with real SLDS CSS. A closed modal isn't rendered.
+	it.each([
+		['heading and footer', { footer: <Button label="Save" variant="brand" /> }],
+		['tagline', { tagline: 'Enter the details below' }],
+		['prompt', { prompt: 'error', heading: 'Service unavailable' }],
+		['disableClose', { disableClose: true }],
+	])('%s: has no axe violations while open', async (name, props) => {
+		renderModal(props);
+		const content = document.body.querySelector('.ReactModal__Content');
+		await vi.waitFor(() => {
+			expect(content.contains(document.activeElement)).toBe(true);
+		});
+		// react-modal updates its state once the open transition settles; let
+		// that flush inside act() while axe runs.
+		await act(() => expectNoAxeViolations());
 	});
 });
