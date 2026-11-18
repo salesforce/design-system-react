@@ -271,8 +271,11 @@ const visitSymbol = (symbol, via) => {
 	for (const decl of target.declarations ?? []) {
 		const file = decl.getSourceFile().fileName;
 		if (!file.startsWith(typesRoot)) continue;
+		// An anonymous type (an inline `{ … }` parameter type) has no name to
+		// import, so only the types it references are surface.
 		const isTypeDecl =
-			target.flags & (ts.SymbolFlags.Type | ts.SymbolFlags.Class);
+			target.flags & (ts.SymbolFlags.Type | ts.SymbolFlags.Class) &&
+			target.getName() !== ts.InternalSymbolName.Type;
 		if (isTypeDecl && isInternalDecl(file)) {
 			const key = typeName(target, file);
 			if (!misplaced.has(key)) misplaced.set(key, via);
