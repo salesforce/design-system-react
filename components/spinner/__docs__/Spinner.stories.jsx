@@ -49,8 +49,9 @@ export default {
 		isDelayed: {
 			control: 'boolean',
 		},
-		isInline: {
-			control: 'boolean',
+		placement: {
+			control: 'radio',
+			options: ['container', 'inline', 'input'],
 		},
 	},
 	tags: ['autodocs'],
@@ -202,7 +203,7 @@ export const WithDelay = {
  */
 export const InlineSpinner = {
 	args: {
-		isInline: true,
+		placement: 'inline',
 		hasContainer: false,
 	},
 	decorators: [inlineDecorator],
