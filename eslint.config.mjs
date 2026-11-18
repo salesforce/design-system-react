@@ -62,7 +62,6 @@ export default tseslint.config(
 			// Gitignored agent scratch space (see AGENTS.md).
 			'.planning/**',
 			'storybook-based-tests/**',
-			'icons/**',
 			'**/*.config.js',
 			'**/*.config.cjs',
 			'**/*.config.mjs',

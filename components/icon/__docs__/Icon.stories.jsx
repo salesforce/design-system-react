@@ -1,6 +1,5 @@
 import Icon from '../../icon';
 import IconSettings from '../../icon-settings';
-import download from '../../../icons/utility/download';
 import Standard from '../__examples__/standard';
 import Utility from '../__examples__/utility';
 import Action from '../__examples__/action';
@@ -30,6 +29,22 @@ const makeRtl = (component) => (
 		<div dir="rtl">{component}</div>
 	</UNSAFE_DirectionSettings.Provider>
 );
+
+// Inline SVG data for the utility `download` icon, passed to the `icon` prop.
+const download = {
+	viewBox: '0 0 52 52',
+	xmlns: 'http://www.w3.org/2000/svg',
+	g: {
+		path: [
+			{
+				d: 'M48.5 31h-3c-.8 0-1.5.7-1.5 1.5v10c0 .8-.7 1.5-1.5 1.5h-33c-.8 0-1.5-.7-1.5-1.5v-10c0-.8-.7-1.5-1.5-1.5h-3c-.8 0-1.5.7-1.5 1.5V46c0 2.2 1.8 4 4 4h40c2.2 0 4-1.8 4-4V32.5c0-.8-.7-1.5-1.5-1.5z',
+			},
+			{
+				d: 'M25 37.6c.6.6 1.5.6 2.1 0l13.5-13.5c.6-.6.6-1.5 0-2.1l-2.1-2.1c-.6-.6-1.5-.6-2.1 0l-5.6 5.6c-.6.6-1.7.2-1.7-.7V3.5C29 2.7 28.2 2 27.5 2h-3c-.8 0-1.5.7-1.5 1.5v21.2c0 .9-1.1 1.3-1.7.7l-5.6-5.6c-.6-.6-1.5-.6-2.1 0L11.5 22c-.6.6-.6 1.5 0 2.1L25 37.6z',
+			},
+		],
+	},
+};
 
 export default {
 	title: 'Components/Icon',
