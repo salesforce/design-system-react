@@ -19,7 +19,7 @@ import React, {
 import classNames from 'classnames';
 
 import EventUtil from '../../utilities/event';
-import { useControllableState } from '../../utilities/hooks';
+import { useClickOutside, useControllableState } from '../../utilities/hooks';
 import { POPOVER_TOOLTIP } from '../../utilities/constants';
 import generateId from '../../utilities/generate-id';
 import { renderTrigger } from '../../utilities/merge-props';
@@ -447,7 +447,7 @@ const Tooltip = ({
 		[onRequestClose, setIsOpen]
 	);
 
-	// Called by the Dialog on click outside, Tab and unmount
+	// Called by the Dialog on Tab and unmount
 	const handleDialogClose = useCallback(
 		(
 			event?: KeyboardEvent<HTMLElement>,
@@ -458,10 +458,23 @@ const Tooltip = ({
 			if (data?.componentWillUnmount) {
 				return;
 			}
-			requestClose(event, event ? 'blur' : 'clickOutside');
+			requestClose(event, 'blur');
 		},
 		[requestClose]
 	);
+
+	// Request a close on a mousedown outside the trigger and an inline tooltip. A tooltip
+	// in a portal carries the `ignore-react-onclickoutside` class instead.
+	const handleClickOutside = useCallback(
+		(event: globalThis.MouseEvent | TouchEvent) => {
+			clearTooltipTimeout();
+			requestClose(event as unknown as MouseEvent<HTMLElement>, 'clickOutside');
+		},
+		[requestClose]
+	);
+	useClickOutside(triggerRef, handleClickOutside, {
+		enabled: !isDisabled && isOpen,
+	});
 
 	const handleDialogMouseLeave = useCallback(
 		(event: MouseEvent) => {
