@@ -81,7 +81,7 @@
   },
   "components/carousel/private/carousel-item.tsx": {
     "@typescript-eslint/consistent-type-assertions": {
-      "count": 3
+      "count": 2
     }
   },
   "components/checkbox/index.tsx": {
