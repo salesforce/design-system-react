@@ -65,6 +65,9 @@ export interface PageHeaderDetailBlockProps {
 }
 
 export interface PageHeaderDetailRowProps {
+	/**
+	 * Custom detail row content, rendered inside the `<ul>`. When set, `details` is ignored
+	 */
 	children?: ReactNode;
 	/**
 	 * Optional class name
