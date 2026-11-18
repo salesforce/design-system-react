@@ -1280,3 +1280,29 @@ describe('DatePicker: required `onChange`', () => {
 		consoleError.mockRestore();
 	});
 });
+
+describe('DatePicker: deprecated input props', () => {
+	const deprecationWarnings = (consoleError) =>
+		consoleError.mock.calls
+			.map((call) => call.join(' '))
+			.filter((m) => m.includes('will be removed in the next major version'));
+
+	it('warns about `required` when it is passed, not when `onFocus` is', () => {
+		const consoleError = vi
+			.spyOn(console, 'error')
+			.mockImplementation(() => {});
+
+		render(<Datepicker value={null} onChange={() => {}} required />);
+		const requiredWarnings = deprecationWarnings(consoleError);
+		expect(requiredWarnings).toHaveLength(1);
+		expect(requiredWarnings[0]).toContain('`required`');
+
+		consoleError.mockClear();
+		render(<Datepicker value={null} onChange={() => {}} onFocus={() => {}} />);
+		const focusWarnings = deprecationWarnings(consoleError);
+		expect(focusWarnings).toHaveLength(1);
+		expect(focusWarnings[0]).toContain('`onFocus`');
+
+		consoleError.mockRestore();
+	});
+});
