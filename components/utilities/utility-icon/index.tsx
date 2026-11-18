@@ -3,11 +3,6 @@
 
 import React, { useContext, type CSSProperties, type SVGProps } from 'react';
 import Svg from './svg';
-import SLDS_ICONS_UTILITY from '../../../icons/utility';
-import SLDS_ICONS_ACTION from '../../../icons/action';
-import SLDS_ICONS_CUSTOM from '../../../icons/custom';
-import SLDS_ICONS_DOCTYPE from '../../../icons/doctype';
-import SLDS_ICONS_STANDARD from '../../../icons/standard';
 import { DIRECTIONS } from '../UNSAFE_direction';
 import LanguageDirection from '../UNSAFE_direction/private/language-direction';
 import {
@@ -17,7 +12,7 @@ import {
 import type { IconCategory } from '../../../types/common';
 
 /**
- * Shape of inline icon data from icon bundles
+ * Shape of inline SVG icon data passed to the `icon` prop
  */
 export interface InlineIconData {
 	viewBox?: string;
@@ -27,11 +22,6 @@ export interface InlineIconData {
 	ellipse?: Record<string, string> | Array<Record<string, string>>;
 	[key: string]: unknown;
 }
-
-/**
- * Icon bundle type
- */
-type IconBundle = Record<string, InlineIconData> & { viewBox?: string };
 
 /**
  * Props for UtilityIcon component
@@ -59,9 +49,8 @@ export interface UtilityIconProps extends Omit<
 }
 
 /**
- * Internal component that renders either inline SVG or external sprite reference.
- * If inline icons are present and icon bundle imports are not just an empty object,
- * then inline icons will be used instead of external icons that require HTTP access.
+ * Internal component that renders the `icon` prop's inline SVG data if given,
+ * otherwise a sprite `<use>` reference resolved from `path` or `IconSettings`.
  */
 const UtilityIcon = ({
 	name = '',
@@ -74,30 +63,7 @@ const UtilityIcon = ({
 }: UtilityIconProps): React.ReactElement | null => {
 	const context = useContext<IconSettingsContextValue>(IconSettingsContext);
 
-	const inlineIcons: Record<IconCategory, IconBundle> = {
-		action: SLDS_ICONS_ACTION as IconBundle,
-		custom: SLDS_ICONS_CUSTOM as IconBundle,
-		doctype: SLDS_ICONS_DOCTYPE as IconBundle,
-		standard: SLDS_ICONS_STANDARD as IconBundle,
-		utility: SLDS_ICONS_UTILITY as IconBundle,
-	};
-
-	let inlineData: InlineIconData | undefined;
-
-	if (icon) {
-		// Use SVG data passed in with `icon` prop
-		inlineData = icon;
-	} else if (Object.keys(inlineIcons[category]).length) {
-		// Use inline icon data if it exists
-		const categoryIcons = inlineIcons[category];
-		const iconData = categoryIcons[name.toLowerCase()];
-		if (iconData) {
-			inlineData = {
-				...iconData,
-				viewBox: categoryIcons.viewBox,
-			};
-		}
-	}
+	const inlineData = icon;
 
 	let modifiedPath: string | undefined;
 

@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Removed
 
+- `Icon`: the stale bundled inline SLDS icon data (`icons/`), which was never active at runtime. Icons render from `IconSettings` sprites, or from inline data passed to `icon`
 - **BREAKING**: `utilities/*` and `components/*/private/*` are no longer importable; they were never public API. Imports outside `exports` fail with `ERR_PACKAGE_PATH_NOT_EXPORTED`, and TypeScript no longer resolves their types. The `check-props` modules are blocked too. The 0.10.x deep imports most likely in use are `utilities/key-code` (`KEYS`), `utilities/date`, `utilities/event` and `utilities/index`. To migrate, copy the helper into your app, or use the platform equivalent (`event.key` instead of `KEYS` key codes). This also covers the `useClickOutside`, `useControllableState` and `useLatestRef` hooks in `utilities/hooks`, which are internal. Public entry points are the root (`.` and `./components`) and `./components/<name>`, including documented subcomponent files such as `components/accordion/panel`
 
 ## [11.0.0-alpha.11] - 2026-11-13
