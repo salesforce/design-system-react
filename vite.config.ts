@@ -48,10 +48,7 @@ const external = (id: string) =>
 export default defineConfig({
 	plugins: [react()],
 	resolve: {
-		// Force a single copy of React/ReactDOM. `react-highlighter-ts` declares
-		// `react@^17` as a hard dependency (not a peer); a package.json `overrides`
-		// entry pins it to the root React 19 so no nested copy is installed, and
-		// deduping keeps a single React instance regardless.
+		// Force a single copy of React/ReactDOM, even if a dependency brings its own.
 		dedupe: ['react', 'react-dom'],
 		alias: {
 			'~': path.resolve(__dirname, './'),

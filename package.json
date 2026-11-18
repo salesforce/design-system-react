@@ -153,7 +153,6 @@
     "nanoid": "^6.0.1",
     "prop-types": "^15.8.1",
     "react-contenteditable": "^3.3.7",
-    "react-highlighter-ts": "^2.2.0",
     "react-modal": "^3.16.1",
     "warning": "^4.0.3"
   },
@@ -219,8 +218,6 @@
     "vitest": "^4.1.11"
   },
   "overrides": {
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
     "eslint-plugin-react": {
       "eslint": "^10.0.0"
     }
