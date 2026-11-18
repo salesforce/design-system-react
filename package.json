@@ -18,6 +18,7 @@
     "build:shims": "node scripts/generate-entry-shims.mjs",
     "test:exports": "node scripts/check-package-exports.mjs",
     "check:prop-docs": "tsx scripts/check-prop-docs.ts",
+    "test:packed": "tsx scripts/check-packed-install.ts",
     "preview": "vite preview",
     "test": "vitest",
     "test:unit": "vitest --project unit",
