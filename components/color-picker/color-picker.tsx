@@ -20,6 +20,7 @@ import Input, { type InputChangeData } from '../input';
 import TabsPanel from '../tabs/panel';
 import ColorPickerTabs from './private/color-picker-tabs';
 import Popover from '../popover';
+import type { RadioGroupChangeHandler } from '../radio-group';
 
 import ColorUtils from '../../utilities/color';
 import { COLOR_PICKER } from '../../utilities/constants';
@@ -411,9 +412,9 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
 	);
 
 	// Event handlers
-	const handleSwatchChange = useCallback(
-		(event: React.ChangeEvent<HTMLInputElement>) => {
-			updateWorkingColor(event, { hex: event.target.value });
+	const handleSwatchChange = useCallback<RadioGroupChangeHandler>(
+		(event, data) => {
+			updateWorkingColor(event, { hex: data.value ?? '' });
 		},
 		[updateWorkingColor]
 	);

@@ -3,6 +3,7 @@ import React from 'react';
 import CustomColorForm from './custom-color-form';
 import HsvColor from './hsv-color';
 import { type InputChangeData } from '../../input';
+import type { RadioGroupChangeHandler } from '../../radio-group';
 import {
 	WorkingColor,
 	ColorPickerAssistiveText,
@@ -41,7 +42,7 @@ export interface CustomColorProps {
 	/** Callback for red value change */
 	onRedChange: InputChangeHandler;
 	/** Callback for swatch toggle */
-	onSwatchChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+	onSwatchChange: RadioGroupChangeHandler;
 	/** Callback for saturation/value change */
 	onSaturationValueChange: (
 		event: React.MouseEvent | React.KeyboardEvent,
