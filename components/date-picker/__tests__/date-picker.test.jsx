@@ -406,6 +406,66 @@ describe('SLDSDatepicker', () => {
 	});
 
 	describe('keyboard interactions', () => {
+		describe('Enter and Escape when the calendar is closed', () => {
+			const inputSelector = 'input#sample-datepicker';
+
+			it('does not prevent Enter, so the input can submit its form', () => {
+				const { container } = render(<DemoComponent />);
+
+				const notPrevented = fireEvent.keyDown(
+					container.querySelector(inputSelector),
+					{ key: 'Enter', keyCode: KEYS.ENTER, which: KEYS.ENTER }
+				);
+
+				expect(notPrevented).toBe(true);
+			});
+
+			it('lets Escape reach a surrounding element', () => {
+				const onParentKeyDown = vi.fn();
+				const { container } = render(
+					// eslint-disable-next-line jsx-a11y/no-static-element-interactions
+					<div onKeyDown={onParentKeyDown}>
+						<DemoComponent />
+					</div>
+				);
+
+				const notPrevented = fireEvent.keyDown(
+					container.querySelector(inputSelector),
+					{ key: 'Escape', keyCode: KEYS.ESCAPE, which: KEYS.ESCAPE }
+				);
+
+				expect(notPrevented).toBe(true);
+				expect(onParentKeyDown).toHaveBeenCalledTimes(1);
+			});
+
+			it('still traps Enter and Escape while the calendar is open', () => {
+				const onParentKeyDown = vi.fn();
+				const { container } = render(
+					// eslint-disable-next-line jsx-a11y/no-static-element-interactions
+					<div onKeyDown={onParentKeyDown}>
+						<DemoComponent isOpen menuPosition="relative" />
+					</div>
+				);
+				const input = container.querySelector(inputSelector);
+
+				expect(
+					fireEvent.keyDown(input, {
+						key: 'Enter',
+						keyCode: KEYS.ENTER,
+						which: KEYS.ENTER,
+					})
+				).toBe(false);
+				expect(
+					fireEvent.keyDown(input, {
+						key: 'Escape',
+						keyCode: KEYS.ESCAPE,
+						which: KEYS.ESCAPE,
+					})
+				).toBe(false);
+				expect(onParentKeyDown).not.toHaveBeenCalled();
+			});
+		});
+
 		describe('Esc when menu is open', () => {
 			it('opens on trigger click, closes on ESC', async () => {
 				const onOpen = vi.fn();
