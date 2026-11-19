@@ -129,7 +129,10 @@ export interface CarouselItemClickData {
 export interface CarouselProps {
 	/** Assistive text for accessibility */
 	assistiveText?: CarouselAssistiveText;
-	/** Autoplay interval in milliseconds */
+	/**
+	 * Time each panel shows during autoplay, in milliseconds. The countdown pauses while the pointer is
+	 * over the carousel or the browser tab is hidden.
+	 */
 	autoplayInterval?: number;
 	/** CSS classes */
 	className?: string | string[] | Record<string, boolean>;
@@ -144,6 +147,8 @@ export interface CarouselProps {
 	/**
 	 * Enables autoplay and shows the autoplay (play / pause) button. Whether autoplay is running comes
 	 * from `isAutoplayOn` / `defaultIsAutoplayOn`; when neither is set, autoplay starts on mount.
+	 * Autoplay pauses while the pointer is over the carousel and stops when the user navigates or
+	 * focuses an item.
 	 */
 	hasAutoplay?: boolean;
 	/** Show previous/next navigation buttons */
@@ -264,6 +269,9 @@ const Carousel = ({
 
 	// Refs
 	const stageRef = useRef<HTMLDivElement>(null);
+	// The running autoplay dwell, so hovering can pause and resume it
+	const dwellRef = useRef<Animation | null>(null);
+	const isPointerOverRef = useRef(false);
 	const initialStageWidthRef = useRef<number>(0);
 
 	// Helper functions
@@ -459,16 +467,51 @@ const Carousel = ({
 		changeTranslationAutomatically();
 	}, [changeTranslationAutomatically]);
 
-	// Effect: run the autoplay timer while autoplay is on (controlled or not); cleared on stop and unmount
+	// Counts finished dwells, so the next one starts even when a controlled panel doesn't change
+	const [dwellCount, setDwellCount] = useState(0);
+
+	// Effect: while autoplay is on (controlled or not), time one dwell per committed panel, then step.
+	// A new dwell starts only after React commits the previous step, so a step never acts on a panel
+	// that hasn't rendered yet. Cleared on stop, panel change and unmount.
 	useEffect(() => {
 		if (!isAutoplayRunning) {
 			return undefined;
 		}
-		const autoplayId = setInterval(() => {
+		const step = () => {
+			setDwellCount((count) => count + 1);
 			autoplayStepRef.current();
-		}, autoplayInterval);
-		return () => clearInterval(autoplayId);
-	}, [isAutoplayRunning, autoplayInterval]);
+		};
+		const stage = stageRef.current;
+		if (stage && typeof stage.animate === 'function') {
+			// A keyframe-less animation is a timer on the document timeline: it pauses in a hidden tab
+			// and can be paused while hovered, keeping the remaining time.
+			const dwell = stage.animate([], { duration: autoplayInterval });
+			if (isPointerOverRef.current) {
+				dwell.pause();
+			}
+			dwell.onfinish = step;
+			dwellRef.current = dwell;
+			return () => {
+				dwell.onfinish = null;
+				dwell.cancel();
+				dwellRef.current = null;
+			};
+		}
+		// No Web Animations API (jsdom)
+		const timeoutId = setTimeout(step, autoplayInterval);
+		return () => clearTimeout(timeoutId);
+	}, [isAutoplayRunning, autoplayInterval, currentPanel, dwellCount]);
+
+	// Pause the autoplay dwell while the pointer is over the carousel
+	const onPointerEnter = useCallback(() => {
+		isPointerOverRef.current = true;
+		dwellRef.current?.pause();
+	}, []);
+
+	const onPointerLeave = useCallback(() => {
+		isPointerOverRef.current = false;
+		dwellRef.current?.play();
+	}, []);
 
 	// Computed values
 	const isPreviousBtnDisabled = !(isInfinite || canGoToPrevious());
@@ -484,6 +527,8 @@ const Carousel = ({
 			className={classNames('slds-carousel', className as string)}
 			id={id}
 			onKeyDown={handleKeyDown}
+			onPointerEnter={onPointerEnter}
+			onPointerLeave={onPointerLeave}
 		>
 			<div className="slds-grid_vertical slds-col slds-path__scroller">
 				{hasAutoplay && (

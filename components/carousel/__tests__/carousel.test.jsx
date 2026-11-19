@@ -125,6 +125,7 @@ describe('SLDS Carousel', () => {
 			expect(autoplayButton.innerHTML).toContain('#pause');
 		});
 
+		// jsdom has no Web Animations API, so this covers autoplay's setTimeout fallback
 		it('advances through every panel during autoplay instead of stalling after one tick', () => {
 			vi.useFakeTimers();
 			try {

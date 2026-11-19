@@ -15,10 +15,10 @@ const makeItems = (length) =>
 		href: 'https://www.salesforce.com',
 	}));
 
-// These tests let real timers and React's real scheduler run, because wrapping the
-// waits in `act()` queues the interval tick and the translation effect into one flush
-// and hides the ordering bug they exist to catch. Tell React this file is not an act
-// environment so the resulting state updates don't log "not wrapped in act" warnings.
+// These tests let React's real scheduler run, because wrapping the steps in `act()`
+// queues the autoplay step and the translation into one flush and hides the ordering bug
+// they exist to catch. Tell React this file is not an act environment so the resulting
+// state updates don't log "not wrapped in act" warnings.
 let previousActEnvironment;
 beforeAll(() => {
 	previousActEnvironment = globalThis.IS_REACT_ACT_ENVIRONMENT;
@@ -28,7 +28,8 @@ afterAll(() => {
 	globalThis.IS_REACT_ACT_ENVIRONMENT = previousActEnvironment;
 });
 
-const AUTOPLAY_INTERVAL = 100;
+// Long enough that autoplay only steps when a test finishes the dwell
+const AUTOPLAY_INTERVAL = 60000;
 const WRAPPER_WIDTH = 400;
 
 const getTranslateX = (container) => {
@@ -53,23 +54,37 @@ const renderAutoplayCarousel = (props) =>
 		</IconSettings>
 	);
 
-// Waits for each autoplay tick in real time and records the translation once the
-// carousel has settled. Fake timers inside `act()` flush effects in a fixed order and
-// hide a race between the interval and the translation effect, so real timers are used.
-const collectTranslations = async (container, ticks) => {
-	const seen = [getTranslateX(container)];
-	const start = performance.now();
+// Autoplay times each panel with a keyframe-less animation on the stage
+const getDwell = (container) =>
+	container.querySelector('.slds-carousel__stage').getAnimations()[0];
+
+// Ends the current dwell and waits for the next one, which starts only after React
+// commits the step. No wall clock is involved, so a slow runner can't skip or add a step.
+const tick = async (container) => {
+	const dwell = getDwell(container);
+	dwell.finish();
+	// A finished animation drops out of `getAnimations()`, so wait for a new one.
+	await expect
+		.poll(() => {
+			const next = getDwell(container);
+			return next !== undefined && next !== dwell;
+		})
+		.toBe(true);
+};
+
+// Steps autoplay `ticks` times and records `read()` before the first step and after each.
+const collectAtTicks = async (container, ticks, read) => {
+	const seen = [read()];
 	for (let i = 1; i <= ticks; i += 1) {
-		// Sample halfway between ticks.
-		const wait = start + AUTOPLAY_INTERVAL * (i + 0.5) - performance.now();
 		// eslint-disable-next-line no-await-in-loop
-		await new Promise((resolve) => {
-			setTimeout(resolve, Math.max(0, wait));
-		});
-		seen.push(getTranslateX(container));
+		await tick(container);
+		seen.push(read());
 	}
 	return seen;
 };
+
+const collectTranslations = (container, ticks) =>
+	collectAtTicks(container, ticks, () => getTranslateX(container));
 
 // `n * width + 0` normalizes -0 to 0, which toEqual would otherwise distinguish.
 const toTranslations = (panelIndexes, stageWidth) =>
@@ -166,13 +181,44 @@ describe('SLDS Carousel autoplay translation (browser)', () => {
 				'Carousel Item 3',
 			]);
 
-			await collectTranslations(container, 1);
+			await tick(container);
 
 			expect(focusableHeadings()).toEqual([
 				'Carousel Item 4',
 				'Carousel Item 5',
 				'Carousel Item 6',
 			]);
+		});
+	});
+
+	describe('hover', () => {
+		it('pauses the dwell while the pointer is over the carousel and resumes on leave', async () => {
+			const { container } = renderAutoplayCarousel({
+				items: makeItems(4),
+				itemsPerPanel: 1,
+			});
+			const carousel = container.querySelector('.slds-carousel');
+
+			expect(getDwell(container).playState).toBe('running');
+
+			await userEvent.hover(carousel);
+			expect(getDwell(container).playState).toBe('paused');
+
+			await userEvent.unhover(carousel);
+			expect(getDwell(container).playState).toBe('running');
+		});
+
+		it('starts the next dwell paused while the pointer stays over the carousel', async () => {
+			const { container } = renderAutoplayCarousel({
+				items: makeItems(4),
+				itemsPerPanel: 1,
+			});
+			await userEvent.hover(container.querySelector('.slds-carousel'));
+
+			await tick(container);
+
+			expect(getTranslateX(container)).toBe(-WRAPPER_WIDTH);
+			expect(getDwell(container).playState).toBe('paused');
 		});
 	});
 });
