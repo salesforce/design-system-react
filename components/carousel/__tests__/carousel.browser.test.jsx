@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import { userEvent } from 'vitest/browser';
-import { describe, it, expect, beforeAll, afterAll } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll, afterEach } from 'vitest';
 
 import IconSettings from '../../icon-settings';
 import Carousel from '../index';
@@ -56,7 +56,12 @@ const renderAutoplayCarousel = (props) =>
 
 // Autoplay times each panel with a keyframe-less animation on the stage
 const getDwell = (container) =>
-	container.querySelector('.slds-carousel__stage').getAnimations()[0];
+	container
+		.querySelector('.slds-carousel__stage')
+		.getAnimations()
+		.find(
+			(animation) => animation.effect.getTiming().duration === AUTOPLAY_INTERVAL
+		);
 
 // Ends the current dwell and waits for the next one, which starts only after React
 // commits the step. No wall clock is involved, so a slow runner can't skip or add a step.
@@ -192,6 +197,16 @@ describe('SLDS Carousel autoplay translation (browser)', () => {
 	});
 
 	describe('hover', () => {
+		// Park the real pointer away from where the next test renders its carousel
+		afterEach(async () => {
+			const parking = document.createElement('div');
+			parking.style.cssText =
+				'position: fixed; left: 600px; top: 600px; width: 10px; height: 10px;';
+			document.body.append(parking);
+			await userEvent.hover(parking);
+			parking.remove();
+		});
+
 		it('pauses the dwell while the pointer is over the carousel and resumes on leave', async () => {
 			const { container } = renderAutoplayCarousel({
 				items: makeItems(4),
@@ -214,6 +229,64 @@ describe('SLDS Carousel autoplay translation (browser)', () => {
 				itemsPerPanel: 1,
 			});
 			await userEvent.hover(container.querySelector('.slds-carousel'));
+
+			await tick(container);
+
+			expect(getTranslateX(container)).toBe(-WRAPPER_WIDTH);
+			expect(getDwell(container).playState).toBe('paused');
+		});
+
+		it('pauses when the pointer moves over a carousel it was already over', async () => {
+			const { container } = renderAutoplayCarousel({
+				items: makeItems(4),
+				itemsPerPanel: 1,
+			});
+			expect(getDwell(container).playState).toBe('running');
+
+			// A carousel that mounts under the pointer gets `pointermove` but no `pointerenter`
+			container
+				.querySelector('.slds-carousel__stage')
+				.dispatchEvent(new PointerEvent('pointermove', { bubbles: true }));
+
+			await expect.poll(() => getDwell(container).playState).toBe('paused');
+		});
+	});
+
+	describe('hidden tab', () => {
+		const setHidden = (hidden) => {
+			Object.defineProperty(document, 'hidden', {
+				configurable: true,
+				get: () => hidden,
+			});
+			document.dispatchEvent(new Event('visibilitychange'));
+		};
+		afterEach(() => {
+			delete document.hidden;
+		});
+
+		it('pauses the dwell while the tab is hidden and resumes with the time it had left', async () => {
+			const { container } = renderAutoplayCarousel({
+				items: makeItems(4),
+				itemsPerPanel: 1,
+			});
+			const dwell = getDwell(container);
+			dwell.currentTime = 1000;
+
+			setHidden(true);
+			expect(dwell.playState).toBe('paused');
+			expect(dwell.currentTime).toBe(1000);
+
+			setHidden(false);
+			expect(dwell.playState).toBe('running');
+			expect(getTranslateX(container)).toBe(0);
+		});
+
+		it('starts the next dwell paused while the tab is hidden', async () => {
+			const { container } = renderAutoplayCarousel({
+				items: makeItems(4),
+				itemsPerPanel: 1,
+			});
+			setHidden(true);
 
 			await tick(container);
 
