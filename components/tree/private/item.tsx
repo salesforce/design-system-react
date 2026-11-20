@@ -1,7 +1,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useRef } from 'react';
 import classNames from 'classnames';
 import findIndex from 'lodash.findindex';
 import isFunction from 'lodash.isfunction';
@@ -162,8 +162,15 @@ const handleKeyDown = (event: React.KeyboardEvent, props: ItemProps) => {
 	});
 };
 
-const handleFocus = (event: React.FocusEvent, props: ItemProps) => {
+const handleFocus = (
+	event: React.FocusEvent,
+	props: ItemProps,
+	fromMouseDown: boolean
+) => {
+	// A mouse press focuses the item before its click; the click selects it, so
+	// selecting on that focus too would toggle the selection twice.
 	if (
+		!fromMouseDown &&
 		!props.treeHasFocus &&
 		!props.focusedNodeIndex &&
 		event.target === event.currentTarget
@@ -181,6 +188,7 @@ const getTabIndex = (props: ItemProps): number =>
 const Item: React.FC<ItemProps> = (props) => {
 	const isSelected = props.isNodeSelected(props.node);
 	const isFocused = props.treeIndex === props.focusedNodeIndex;
+	const mouseDownRef = useRef(false);
 
 	return (
 		<li
@@ -190,7 +198,16 @@ const Item: React.FC<ItemProps> = (props) => {
 			aria-selected={isSelected ? 'true' : 'false'}
 			tabIndex={getTabIndex(props)}
 			onKeyDown={(event) => handleKeyDown(event, props)}
-			onFocus={(event) => handleFocus(event, props)}
+			onMouseDown={() => {
+				mouseDownRef.current = true;
+			}}
+			onMouseUp={() => {
+				mouseDownRef.current = false;
+			}}
+			onFocus={(event) => {
+				handleFocus(event, props, mouseDownRef.current);
+				mouseDownRef.current = false;
+			}}
 			onBlur={props.onNodeBlur}
 			ref={(component) => {
 				if (props.treeHasFocus && component && isFocused) {
