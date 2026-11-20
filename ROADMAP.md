@@ -16,7 +16,7 @@
 | Tests             | **48 Vitest files**                       | jsdom `unit` project plus a Playwright `browser` project; story HTML snapshots cover non-portal stories in a top-level `__docs__/` folder |
 | Lint              | **0 errors / 0 warnings**                 | `npm run lint` fails on any error or warning (`--max-warnings=0`)                                                                         |
 | Toolchain         | Vite 8, Vitest 4, ESLint 10, Storybook 10 | Node.js 24 (`.nvmrc`)                                                                                                                     |
-| SLDS 2 CSS        | **npm dependency**                        | `@salesforce-ux/design-system-2` installs with the package; consumers add the stylesheet themselves (see the README)                      |
+| SLDS 2 CSS        | **npm peer dependency**                   | `@salesforce-ux/design-system-2` is a peer (npm 7+/pnpm 8+ install it; Yarn users add it); consumers import the CSS (see the README)      |
 | Publishing        | **GitHub Release → npm, `alpha` tag**     | `.github/workflows/npm-publish.yml`; alpha.3 and alpha.4 published from it                                                                |
 
 ## Prioritized Plan

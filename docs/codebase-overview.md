@@ -743,11 +743,11 @@ const buttonClass = classNames('slds-button', {
 
 DSR follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) from 11.0.0 on. The [Breaking-Change Taxonomy](#breaking-change-taxonomy) below defines what counts as breaking.
 
-| Release   | May contain                                                                                                                                                                                                |
-| --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Major** | Any API or behavior break as defined by the taxonomy, and removal of anything deprecated in an earlier minor.                                                                                              |
-| **Minor** | Additions (components, props, callback data, exported types, entry points), deprecations, and layout or visual changes, including bumps of the `@salesforce-ux/design-system-2` stylesheet DSR depends on. |
-| **Patch** | Fixes only: bugs, accessibility and security fixes that leave every documented contract in place.                                                                                                          |
+| Release   | May contain                                                                                                                                                                                                                   |
+| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Major** | Any API or behavior break as defined by the taxonomy, and removal of anything deprecated in an earlier minor.                                                                                                                 |
+| **Minor** | Additions (components, props, callback data, exported types, entry points), deprecations, and layout or visual changes, including bumps of the `@salesforce-ux/design-system-2` devDependency DSR develops and tests against. |
+| **Patch** | Fixes only: bugs, accessibility and security fixes that leave every documented contract in place.                                                                                                                             |
 
 **Deprecation.** A deprecated prop, value, callback shape or component keeps working for at least one minor release before a major removes it. Each deprecation:
 
@@ -783,7 +783,7 @@ Consumers should know what a minor or patch release can and cannot change. The r
 - Changing a callback signature: argument order, the event object, or the shape of the data object.
 - Narrowing an exported type: removing a union member, making an optional field required, or changing a generic.
 - Removing or renaming a public entry point (a subpath in the `exports` map: `.`, `./components`, `./components/<name>`) or a named export from one. `utilities/` and `private/` are not entry points, so changing them is never breaking.
-- Raising the minimum version of a peer dependency (`react`, `react-dom`, `@salesforce-ux/design-system`).
+- Raising the minimum version of a peer dependency (`react`, `react-dom`, `@salesforce-ux/design-system`, `@salesforce-ux/design-system-2`). The `@salesforce-ux/design-system-2` peer range stays wide (`^2.264.1`): its minimum is raised within `^2` only when DSR markup needs newer SLDS classes, and that is a major, so routine SLDS refreshes bump only the devDependency.
 - Removing or renaming a styling hook (a `className*` target or documented SLDS class consumers style against).
 - Adding a default value to a prop that was previously required or had no default, if it changes rendered output for existing callers (see [Boolean Props & Defaults](#boolean-props--defaults)).
 

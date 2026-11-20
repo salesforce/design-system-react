@@ -20,14 +20,14 @@ npm install @salesforce/design-system-react@alpha
 
 v11 is published under the `alpha` tag until GA. A plain `npm install` still installs 0.10.x.
 
-|                     | 0.10.x                                  | v11                                                                                                  |
-| ------------------- | --------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| React and React DOM | `>= 16.8`                               | `^19.2.0`                                                                                            |
-| Node.js             | any                                     | `>= 24`                                                                                              |
-| SLDS stylesheet     | `@salesforce-ux/design-system` (SLDS 1) | `@salesforce-ux/design-system-2` (SLDS 2), a regular dependency. See [Styling](../README.md#styling) |
-| Icons               | `@salesforce-ux/design-system` sprites  | Unchanged: the `@salesforce-ux/design-system` peer dependency, now `^2.25.0-alpha.2`                 |
-| Positioning         | `popper.js`                             | `@floating-ui/dom` (internal; no API change)                                                         |
-| Browsers            | IE11 with polyfills                     | Evergreen browsers; no polyfills                                                                     |
+|                     | 0.10.x                                  | v11                                                                                                                   |
+| ------------------- | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| React and React DOM | `>= 16.8`                               | `^19.2.0`                                                                                                             |
+| Node.js             | any                                     | `>= 24`                                                                                                               |
+| SLDS stylesheet     | `@salesforce-ux/design-system` (SLDS 1) | `@salesforce-ux/design-system-2` (SLDS 2), a peer dependency (Yarn users add it). See [Styling](../README.md#styling) |
+| Icons               | `@salesforce-ux/design-system` sprites  | Unchanged: the `@salesforce-ux/design-system` peer dependency, now `^2.25.0-alpha.2`                                  |
+| Positioning         | `popper.js`                             | `@floating-ui/dom` (internal; no API change)                                                                          |
+| Browsers            | IE11 with polyfills                     | Evergreen browsers; no polyfills                                                                                      |
 
 ### Module format and imports
 
