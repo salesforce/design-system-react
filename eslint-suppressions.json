@@ -206,7 +206,7 @@
   },
   "components/menu-dropdown/menu-dropdown.tsx": {
     "@typescript-eslint/consistent-type-assertions": {
-      "count": 16
+      "count": 19
     }
   },
   "components/page-header/control.tsx": {
@@ -306,7 +306,7 @@
   },
   "components/radio-group/index.tsx": {
     "@typescript-eslint/consistent-type-assertions": {
-      "count": 2
+      "count": 3
     }
   },
   "components/radio-group/radio.ts": {
@@ -316,7 +316,7 @@
   },
   "components/radio/index.tsx": {
     "@typescript-eslint/consistent-type-assertions": {
-      "count": 2
+      "count": 4
     }
   },
   "components/scoped-notification/index.tsx": {
@@ -426,7 +426,7 @@
   },
   "components/tooltip/index.tsx": {
     "@typescript-eslint/consistent-type-assertions": {
-      "count": 7
+      "count": 9
     }
   },
   "components/tooltip/private/field-level-help-tooltip.tsx": {
@@ -471,7 +471,7 @@
   },
   "components/utilities/highlighter/index.tsx": {
     "@typescript-eslint/consistent-type-assertions": {
-      "count": 3
+      "count": 1
     }
   },
   "components/utilities/label/index.tsx": {
