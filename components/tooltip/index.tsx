@@ -620,9 +620,13 @@ const Tooltip = ({
 			}
 		}
 
+		// An attribute selector matches any id, including one passed in that is
+		// not a valid CSS identifier (e.g. it starts with a digit)
+		const idSelector = `[id="${getId().replace(/["\\]/g, '\\$&')}"]`;
+
 		return (
 			<>
-				<style>{`#${getId()}:after, #${getId()}:before {
+				<style>{`${idSelector}:after, ${idSelector}:before {
 	display: none;
 }`}</style>
 				{getIsOpen() ? (

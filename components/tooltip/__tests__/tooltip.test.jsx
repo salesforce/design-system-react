@@ -620,6 +620,30 @@ describe('SLDSTooltip', () => {
 			});
 		});
 
+		it.each([
+			['a generated id', undefined],
+			['an id that is not a CSS identifier', '1 "tip"\\'],
+		])('hides the SLDS nubbin of the tooltip for %s', async (_name, id) => {
+			const { container } = renderTooltip({
+				hasAnchoredNubbin: true,
+				align: 'top',
+				id,
+			});
+
+			await userEvent.hover(
+				screen.getByRole('button', { name: 'Hover me for tooltip' })
+			);
+
+			await waitFor(() => {
+				const tooltip = document.querySelector('.slds-popover_tooltip');
+				expect(tooltip).toBeInTheDocument();
+				const selector = container
+					.querySelector('style')
+					.textContent.split(':after')[0];
+				expect(document.querySelector(selector)).toBe(tooltip);
+			});
+		});
+
 		it('positions the nubbin from the measured trigger size', async () => {
 			const rectSpy = vi
 				.spyOn(HTMLElement.prototype, 'getBoundingClientRect')
