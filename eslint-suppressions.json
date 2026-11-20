@@ -206,7 +206,7 @@
   },
   "components/menu-dropdown/menu-dropdown.tsx": {
     "@typescript-eslint/consistent-type-assertions": {
-      "count": 16
+      "count": 17
     }
   },
   "components/page-header/control.tsx": {
@@ -426,7 +426,7 @@
   },
   "components/tooltip/index.tsx": {
     "@typescript-eslint/consistent-type-assertions": {
-      "count": 7
+      "count": 9
     }
   },
   "components/tooltip/private/field-level-help-tooltip.tsx": {
@@ -471,7 +471,7 @@
   },
   "components/utilities/highlighter/index.tsx": {
     "@typescript-eslint/consistent-type-assertions": {
-      "count": 3
+      "count": 1
     }
   },
   "components/utilities/label/index.tsx": {
