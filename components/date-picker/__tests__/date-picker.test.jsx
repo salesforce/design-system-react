@@ -1,4 +1,4 @@
-import { Component, useState } from 'react';
+import { Component, createRef, useState } from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 
@@ -856,6 +856,20 @@ describe('SLDSDatepicker', () => {
 				container.querySelector('.datepicker__month')
 			).not.toBeInTheDocument();
 			expect(document.activeElement).toBe(input);
+		});
+	});
+
+	describe('ref', () => {
+		it('forwards ref to the outermost element', () => {
+			const ref = createRef();
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<Datepicker {...defaultProps} ref={ref} />
+				</IconSettings>
+			);
+
+			expect(ref.current).not.toBeNull();
+			expect(ref.current).toBe(container.firstElementChild);
 		});
 	});
 
