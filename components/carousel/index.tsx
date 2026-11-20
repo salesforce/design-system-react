@@ -130,8 +130,9 @@ export interface CarouselProps {
 	/** Assistive text for accessibility */
 	assistiveText?: CarouselAssistiveText;
 	/**
-	 * Time each panel shows during autoplay, in milliseconds. The countdown pauses while the pointer is
-	 * over the carousel or the browser tab is hidden.
+	 * Time each panel shows during autoplay, in milliseconds. In browsers with the Web Animations API,
+	 * the countdown pauses while the pointer is over the carousel or the browser tab is hidden, and
+	 * resumes with the time it had left.
 	 */
 	autoplayInterval?: number;
 	/** CSS classes */
@@ -467,6 +468,19 @@ const Carousel = ({
 		changeTranslationAutomatically();
 	}, [changeTranslationAutomatically]);
 
+	// Pause the dwell while the pointer is over the carousel or the tab is hidden, otherwise run it
+	const syncDwell = useCallback(() => {
+		const dwell = dwellRef.current;
+		if (!dwell) {
+			return;
+		}
+		if (isPointerOverRef.current || document.hidden) {
+			dwell.pause();
+		} else {
+			dwell.play();
+		}
+	}, []);
+
 	// Counts finished dwells, so the next one starts even when a controlled panel doesn't change
 	const [dwellCount, setDwellCount] = useState(0);
 
@@ -483,35 +497,55 @@ const Carousel = ({
 		};
 		const stage = stageRef.current;
 		if (stage && typeof stage.animate === 'function') {
-			// A keyframe-less animation is a timer on the document timeline: it pauses in a hidden tab
-			// and can be paused while hovered, keeping the remaining time.
+			// A keyframe-less animation is a timer that can be paused and resumed with the time it has left
 			const dwell = stage.animate([], { duration: autoplayInterval });
-			if (isPointerOverRef.current) {
-				dwell.pause();
-			}
 			dwell.onfinish = step;
 			dwellRef.current = dwell;
+			syncDwell();
 			return () => {
 				dwell.onfinish = null;
 				dwell.cancel();
 				dwellRef.current = null;
 			};
 		}
-		// No Web Animations API (jsdom)
+		// No Web Animations API (jsdom), so no pausing
 		const timeoutId = setTimeout(step, autoplayInterval);
 		return () => clearTimeout(timeoutId);
-	}, [isAutoplayRunning, autoplayInterval, currentPanel, dwellCount]);
+	}, [
+		isAutoplayRunning,
+		autoplayInterval,
+		currentPanel,
+		dwellCount,
+		syncDwell,
+	]);
 
-	// Pause the autoplay dwell while the pointer is over the carousel
+	// Pause the autoplay dwell while the pointer is over the carousel. `pointermove` also catches a
+	// pointer that was already over the carousel when it mounted, which never fires `pointerenter`.
 	const onPointerEnter = useCallback(() => {
 		isPointerOverRef.current = true;
-		dwellRef.current?.pause();
-	}, []);
+		syncDwell();
+	}, [syncDwell]);
+
+	const onPointerMove = useCallback(() => {
+		if (!isPointerOverRef.current) {
+			onPointerEnter();
+		}
+	}, [onPointerEnter]);
 
 	const onPointerLeave = useCallback(() => {
 		isPointerOverRef.current = false;
-		dwellRef.current?.play();
-	}, []);
+		syncDwell();
+	}, [syncDwell]);
+
+	// Pause the autoplay dwell while the browser tab is hidden. The document timeline keeps running in
+	// a hidden tab, so without this the dwell would finish as soon as the tab is shown again.
+	useEffect(() => {
+		if (!canUseEventListeners) {
+			return undefined;
+		}
+		document.addEventListener('visibilitychange', syncDwell);
+		return () => document.removeEventListener('visibilitychange', syncDwell);
+	}, [syncDwell]);
 
 	// Computed values
 	const isPreviousBtnDisabled = !(isInfinite || canGoToPrevious());
@@ -528,6 +562,7 @@ const Carousel = ({
 			id={id}
 			onKeyDown={handleKeyDown}
 			onPointerEnter={onPointerEnter}
+			onPointerMove={onPointerMove}
 			onPointerLeave={onPointerLeave}
 		>
 			<div className="slds-grid_vertical slds-col slds-path__scroller">
