@@ -36,7 +36,7 @@ npm install @salesforce/design-system-react@alpha
 
 Without the `@alpha` tag, npm installs 0.10.x. Alpha releases can include breaking changes between versions, so consider pinning the exact version you tested against.
 
-npm 7 and later also installs the peer dependencies: `react`, `react-dom`, and `@salesforce-ux/design-system`, which provides the icons. The stylesheet package, `@salesforce-ux/design-system-2`, is a regular dependency.
+npm 7 and later, and pnpm 8 and later, also install the peer dependencies: `react`, `react-dom`, `@salesforce-ux/design-system`, which provides the icons, and `@salesforce-ux/design-system-2`, which provides the stylesheet. Yarn doesn't install peers; add the stylesheet package yourself with `yarn add @salesforce-ux/design-system-2` (and React and the icons package if you don't have them).
 
 ### Troubleshooting `ERESOLVE` errors
 
@@ -118,7 +118,7 @@ See [docs/lint-deprecated-props.md](docs/lint-deprecated-props.md).
 
 The components render SLDS markup but don't ship CSS. Add an SLDS 2 stylesheet from
 [`@salesforce-ux/design-system-2`](https://www.npmjs.com/package/@salesforce-ux/design-system-2),
-which installs with this package. Cosmos is the default theme. If your bundler handles CSS
+a peer dependency of this package. Cosmos is the default theme. If your bundler handles CSS
 imports (Vite, webpack, and so on), import it once at your app's entry point:
 
 ```tsx
