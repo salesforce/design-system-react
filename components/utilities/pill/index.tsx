@@ -26,6 +26,7 @@ export interface PillLabels {
 	label?: string;
 	remove?: string;
 	removeTitle?: string;
+	title?: string;
 }
 
 export interface PillEvents {
@@ -80,10 +81,6 @@ export interface PillProps {
 	 * If true and is active pill in listbox, will trigger `events.onRequestFocus`
 	 */
 	requestFocus?: boolean;
-	/**
-	 * Pill Title
-	 */
-	title?: string;
 	/**
 	 * Allows the user to tab to the node
 	 */
@@ -171,7 +168,7 @@ const Pill = ({
 									...eventData,
 								});
 							}
-					  }
+						}
 					: null
 			}
 			onFocus={(event: React.FocusEvent) => {

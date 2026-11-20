@@ -44,3 +44,30 @@ export const iconOnWarning = (
 		<button type="button">Open</button>
 	</Popover>
 );
+
+// A click outside passes the native DOM event, so a handler that reads a
+// React event's `nativeEvent` must narrow first.
+export const reactEventOnlyRequestClose = (
+	<Popover
+		body="Body"
+		// @ts-expect-error the event can be a native MouseEvent or TouchEvent
+		onRequestClose={(
+			event: React.MouseEvent | React.KeyboardEvent | undefined
+		) => event}
+	>
+		<button type="button">Open</button>
+	</Popover>
+);
+
+export const requestCloseEvent = (
+	<Popover
+		body="Body"
+		onRequestClose={(event, data) => {
+			const native =
+				event && 'nativeEvent' in event ? event.nativeEvent : event;
+			return [native, data.trigger];
+		}}
+	>
+		<button type="button">Open</button>
+	</Popover>
+);

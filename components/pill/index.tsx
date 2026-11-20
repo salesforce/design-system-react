@@ -220,7 +220,11 @@ const Pill = forwardRef<PillRef, PillProps>(
 			return null;
 		};
 
-		// Render label or children
+		// Render label or children. PillContainer passes a JSX `label` through
+		// `labels.label`, so only fall back to it for the title when it is a string.
+		const title =
+			labels.title ||
+			(typeof labels.label === 'string' ? labels.label : undefined);
 		const renderLabel = () => {
 			if (labels.label) {
 				if (variant === 'link') {
@@ -228,7 +232,7 @@ const Pill = forwardRef<PillRef, PillProps>(
 						<a
 							href={getHref()}
 							className="slds-pill__action"
-							title={labels.title || labels.label}
+							title={title}
 							onClick={handleLinkClick}
 						>
 							<span className="slds-pill__label">{labels.label}</span>
@@ -236,10 +240,7 @@ const Pill = forwardRef<PillRef, PillProps>(
 					);
 				}
 				return (
-					<span
-						className="slds-pill__label"
-						title={labels.title || labels.label}
-					>
+					<span className="slds-pill__label" title={title}>
 						{labels.label}
 					</span>
 				);

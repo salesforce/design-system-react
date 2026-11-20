@@ -132,3 +132,29 @@ describe('SLDSAlert', () => {
 		});
 	});
 });
+
+describe('Alert close button title', () => {
+	const getCloseButton = (assistiveText) =>
+		render(
+			<IconSettings iconPath="/assets/icons">
+				<Alert
+					dismissible
+					labels={{ heading: 'Hi' }}
+					assistiveText={assistiveText}
+				/>
+			</IconSettings>
+		).container.querySelector('button.slds-notify__close');
+
+	it('uses a string assistiveText.closeButton as the title', () => {
+		expect(getCloseButton({ closeButton: 'Dismiss' })).toHaveAttribute(
+			'title',
+			'Dismiss'
+		);
+	});
+
+	it('renders no title for a JSX assistiveText.closeButton', () => {
+		const button = getCloseButton({ closeButton: <span>Dismiss</span> });
+		expect(button).not.toHaveAttribute('title');
+		expect(button).toHaveTextContent('Dismiss');
+	});
+});
