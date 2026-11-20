@@ -165,7 +165,6 @@ const Filter: React.FC<FilterProps> = ({
 		body: popoverBody,
 		heading: '',
 		id,
-		offset: align === 'right' ? '0px -35px' : undefined,
 		onClose: handleClose,
 		onRequestClose: handleClose,
 		position: 'overflowBoundaryElement' as const,
@@ -204,7 +203,7 @@ const Filter: React.FC<FilterProps> = ({
 		>
 			{!isLocked && (children || popover) ? (
 				// @ts-expect-error - Popover props are complex with overrides
-				<Popover {...popoverProps} silenceDeprecatedPropertyWarning>
+				<Popover {...popoverProps}>
 					<button
 						className="slds-button_reset slds-grow slds-has-blur-focus"
 						onClick={handleFilterClick}
