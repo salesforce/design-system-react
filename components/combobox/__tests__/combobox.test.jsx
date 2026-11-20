@@ -790,6 +790,9 @@ describe('SLDSCombobox', () => {
 
 	// axe `aria-required-attr`: an expanded role="combobox" must have
 	// `aria-controls` pointing at the element it opens (W-24839159).
+	// combobox.browser.test.jsx runs axe itself on each open variant; these
+	// tests pin what axe can't: which element is the combobox, that
+	// `aria-controls` names this popup, and that it's absent while closed.
 	// ARIA 1.2 combobox pattern, as in the SLDS blueprint: the focusable input
 	// owns the combobox role and state, and the wrapper is presentational.
 	describe('ARIA 1.2 combobox ownership', () => {

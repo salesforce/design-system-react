@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { render, waitFor } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { page, userEvent } from 'vitest/browser';
 import {
 	describe,
@@ -14,6 +14,7 @@ import {
 import Tooltip from '../';
 import Button from '../../button';
 import IconSettings from '../../icon-settings';
+import { expectNoAxeViolations, notActEnvironment } from '../../__tests__/axe';
 
 // Count Floating UI's position computations and the `autoUpdate` drivers still
 // running, delegating to the real implementation so positioning is unchanged.
@@ -425,5 +426,29 @@ describe('Tooltip hasAnchoredNubbin (browser)', () => {
 		const anchored = await openTooltip({ hasAnchoredNubbin: true });
 		expect(anchored.rect.top).toBeCloseTo(plain.rect.top, 0);
 		expect(anchored.rect.left).toBeCloseTo(plain.rect.left, 0);
+	});
+});
+
+// axe on the open tooltip, with real SLDS CSS. A closed tooltip isn't rendered.
+describe('Tooltip accessibility (browser)', () => {
+	notActEnvironment();
+
+	it.each([
+		['button trigger', { trigger: <Button label="Save" /> }],
+		['learnMore', { variant: 'learnMore' }],
+	])('%s: has no axe violations while open', async (name, props) => {
+		render(
+			<IconSettings iconPath="/assets/icons">
+				<Tooltip
+					align="top"
+					content="Saves the record"
+					id="tooltip"
+					isOpen
+					{...props}
+				/>
+			</IconSettings>
+		);
+		expect(screen.getByRole('tooltip')).toBeInTheDocument();
+		await expectNoAxeViolations();
 	});
 });
