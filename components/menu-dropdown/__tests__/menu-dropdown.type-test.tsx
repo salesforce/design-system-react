@@ -98,3 +98,13 @@ export const nullLength = (
 	// @ts-expect-error `length` has no `null`; omit it for the default
 	<MenuDropdown length={null} options={options} />
 );
+
+// A key that opens the menu calls `onClick` with its keydown event, so a
+// handler that only accepts a MouseEvent is rejected.
+export const mouseEventOnlyOnClick = (
+	<MenuDropdown
+		options={options}
+		// @ts-expect-error the event can be a KeyboardEvent
+		onClick={(event: React.MouseEvent) => event.clientX}
+	/>
+);

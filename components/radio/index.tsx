@@ -9,6 +9,7 @@ import React, {
 	type ChangeEvent,
 	type FocusEvent,
 	type KeyboardEvent,
+	type MouseEvent,
 	type CSSProperties,
 } from 'react';
 import classNames from 'classnames';
@@ -65,10 +66,21 @@ export interface RadioChangeData {
 }
 
 /**
+ * Event passed to a Radio's `onChange`: the input's `change` event when a
+ * click selects it, the `click` event when a click deselects a checked
+ * `deselectable` radio (a checked radio fires no `change`), or the `keydown`
+ * event when Enter or Space selects or deselects it.
+ */
+export type RadioChangeEvent =
+	| ChangeEvent<HTMLInputElement>
+	| MouseEvent<HTMLInputElement>
+	| KeyboardEvent<HTMLInputElement>;
+
+/**
  * Change handler for Radio
  */
 export type RadioChangeHandler = (
-	event: ChangeEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>,
+	event: RadioChangeEvent,
 	data: RadioChangeData
 ) => void;
 
@@ -289,10 +301,7 @@ const Radio = (props: RadioProps): React.ReactElement => {
 	const dataProps = getDataProps(rest);
 
 	const handleChange = useCallback(
-		(
-			event: ChangeEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>,
-			preventDuplicate?: boolean
-		) => {
+		(event: RadioChangeEvent, preventDuplicate?: boolean) => {
 			if (!preventDuplicateRef.current) {
 				preventDuplicateRef.current = Boolean(preventDuplicate);
 				onChange?.(event, { checked: !checked });
@@ -410,7 +419,7 @@ const Radio = (props: RadioProps): React.ReactElement => {
 				onChange={(event) => handleChange(event)}
 				onClick={(event) => {
 					if (checked && deselectable) {
-						handleChange(event as unknown as ChangeEvent<HTMLInputElement>);
+						handleChange(event);
 					}
 				}}
 				onKeyDown={(event) => {
