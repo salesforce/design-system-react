@@ -30,10 +30,11 @@
 - [x] Loosen the `@salesforce-ux/design-system` peer dependency. It was pinned to
       `2.25.0-alpha.2`, which conflicted with any newer version already in the
       consumer's tree. It is now `^2.25.0-alpha.2`.
-- [ ] Write a 0.10.x → v11 migration guide (`docs/migration-v11.md`): removed components,
+- [x] Write a 0.10.x → v11 migration guide (`docs/migration-v11.md`): removed components,
       `DataTable` rename, module format, and every breaking prop change with before/after
       code; the React 19.2 / Node 24 / SLDS 2 CSS requirements; a "deprecated but still
-      works" section. Ship it with 11.0.0, not after.
+      works" section. Ship it with 11.0.0, not after. Done: [docs/migration-v11.md](docs/migration-v11.md),
+      with its snippets type-checked by `docs/__tests__/migration-v11.type-test.tsx`.
   - Include the `Icon` `productTheme` removal: `<Icon productTheme="sales-cloud" />`
     becomes `<Icon style={{ backgroundColor: '#00857d' }} />`. Deprecated for
     11.0.0-alpha.11; remove the prop, the `ProductTheme` type,
