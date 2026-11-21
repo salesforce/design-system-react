@@ -1360,6 +1360,7 @@ enhancement issues, not story fill-ins:
 - [x] Lint warning backlog cleared: 32 `react-hooks/refs` and 3 `set-state-in-effect`
       warnings fixed (one justified inline disable in `dialog/portal`); `npm run lint` runs
       with `--max-warnings=0`.
+      **Done in #3323** (11.0.0-rc.1).
 - [x] Deprecated APIs are a lint error in `components/`, `utilities/` and `types/` source
       (tests exempt). Deprecated DOM and React APIs (`keyCode`, `substr`, `onKeyPress`,
       `FormEvent`, `MutableRefObject`) are gone from source. `local/no-deprecated`
@@ -1367,6 +1368,7 @@ enhancement issues, not story fill-ins:
       the RC; another component's deprecated prop, or a deprecated React or DOM API, still fails.
       The four components that forward their own deprecated `onKeyPress` to React's carry an
       inline disable.
+      **Done in #3311** (11.0.0-rc.1).
 - [ ] 11.0 GA: remove every deprecated prop and its warning, along with the `onKeyPress`
       inline disables.
 - [ ] `combobox` — remove `variant="inline-listbox"` with `multiple` in the next major
