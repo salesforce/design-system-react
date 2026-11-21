@@ -7,7 +7,7 @@ import {
 	useCallback,
 	useEffect,
 	type ChangeEvent,
-	type FormEvent,
+	type InputEvent,
 	type ReactNode,
 } from 'react';
 import classNames from 'classnames';
@@ -98,7 +98,7 @@ interface SliderBaseProps {
 	name?: string;
 	/** Called on input event */
 	onInput?: (
-		event: FormEvent<HTMLInputElement>,
+		event: InputEvent<HTMLInputElement>,
 		data: { value: number }
 	) => void;
 	/** Size of the slider */
@@ -210,7 +210,7 @@ const Slider = forwardRef<HTMLDivElement, SliderProps>((props, ref) => {
 	);
 
 	const handleInput = useCallback(
-		(event: FormEvent<HTMLInputElement>) => {
+		(event: InputEvent<HTMLInputElement>) => {
 			onInput?.(event, {
 				value: Number((event.target as HTMLInputElement).value),
 			});

@@ -619,6 +619,41 @@ describe('SLDSDatepicker', () => {
 				});
 			});
 
+			it('navigates to previous day with shift held', async () => {
+				const onCalendarFocus = vi.fn();
+
+				const { container } = render(
+					<DemoComponent
+						isOpen
+						menuPosition="relative"
+						onCalendarFocus={onCalendarFocus}
+					/>
+				);
+
+				await waitFor(() => {
+					expect(
+						container.querySelector('.datepicker__month')
+					).toBeInTheDocument();
+				});
+
+				const selectedDay = container.querySelector(
+					'.datepicker__month [aria-selected=true]'
+				);
+
+				fireEvent.keyDown(selectedDay, {
+					key: 'ArrowLeft',
+					shiftKey: true,
+				});
+
+				await waitFor(() => {
+					expect(onCalendarFocus).toHaveBeenCalledTimes(1);
+					const callArgs = onCalendarFocus.mock.calls[0];
+					expect(callArgs[1].date.getTime()).toBe(
+						new Date(2007, 0, 5).getTime()
+					);
+				});
+			});
+
 			it('navigates to previous day with the opposite button for RTL', async () => {
 				const onCalendarFocus = vi.fn();
 
