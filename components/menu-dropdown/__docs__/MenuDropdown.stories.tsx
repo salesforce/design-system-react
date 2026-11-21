@@ -10,6 +10,7 @@ import MenuDropdown, {
 } from '../index';
 import IconSettings from '../../icon-settings';
 import Button from '../../button';
+import Tooltip from '../../tooltip';
 // eslint-disable-next-line camelcase
 import UNSAFE_DirectionSettings from '../../utilities/UNSAFE_direction';
 
@@ -252,6 +253,28 @@ export const RenderInline: Story = {
 		label: 'Inline Dropdown',
 		menuPosition: 'relative',
 		options,
+	},
+};
+
+// Menu items with tooltips. `tooltipMenuItem` is the Tooltip template; an
+// option's `tooltipContent` opts that item in.
+export const WithTooltips: Story = {
+	args: {
+		align: 'right',
+		id: 'tooltips-dropdown',
+		isOpen: true,
+		label: 'Dropdown with Tooltips',
+		menuPosition: 'relative',
+		options: [
+			{ label: 'Menu Item One', value: 'A0' },
+			{
+				label: 'Menu Item Two',
+				value: 'B0',
+				tooltipContent: 'Just a friendly tooltip',
+			},
+			{ label: 'Menu Item Three', value: 'C0' },
+		],
+		tooltipMenuItem: <Tooltip />,
 	},
 };
 

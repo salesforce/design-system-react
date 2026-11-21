@@ -598,7 +598,7 @@ describe('SLDSTooltip', () => {
 
 	describe('HasAnchoredNubbin', () => {
 		it('renders with anchored nubbin when enabled', async () => {
-			const { container } = renderTooltip({
+			renderTooltip({
 				hasAnchoredNubbin: true,
 				align: 'top',
 			});
@@ -613,10 +613,12 @@ describe('SLDSTooltip', () => {
 					document.querySelector('.slds-popover_tooltip')
 				).toBeInTheDocument();
 
-				// NOTE: Anchored nubbin is rendered via inline styles, check for style element
-				const styleElement = container.querySelector('style');
-				expect(styleElement).toBeInTheDocument();
-				expect(styleElement.textContent).toContain('display: none');
+				// The dialog draws no nubbin of its own, so nothing needs hiding
+				// with a <style> element, which a CSP without 'unsafe-inline' blocks.
+				expect(
+					document.querySelector('.slds-popover_tooltip').className
+				).not.toMatch(/slds-nubbin/);
+				expect(document.querySelectorAll('style')).toHaveLength(0);
 			});
 		});
 
@@ -624,7 +626,7 @@ describe('SLDSTooltip', () => {
 			['a generated id', undefined],
 			['an id that is not a CSS identifier', '1 "tip"\\'],
 		])('hides the SLDS nubbin of the tooltip for %s', async (_name, id) => {
-			const { container } = renderTooltip({
+			renderTooltip({
 				hasAnchoredNubbin: true,
 				align: 'top',
 				id,
@@ -637,10 +639,10 @@ describe('SLDSTooltip', () => {
 			await waitFor(() => {
 				const tooltip = document.querySelector('.slds-popover_tooltip');
 				expect(tooltip).toBeInTheDocument();
-				const selector = container
-					.querySelector('style')
-					.textContent.split(':after')[0];
-				expect(document.querySelector(selector)).toBe(tooltip);
+				// Hidden by leaving out the class, not by an id-based rule, so any
+				// id works
+				expect(tooltip.className).not.toMatch(/slds-nubbin/);
+				expect(document.querySelectorAll('style')).toHaveLength(0);
 			});
 		});
 

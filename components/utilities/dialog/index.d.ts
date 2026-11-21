@@ -37,6 +37,7 @@ export interface DialogProps {
 	context?: unknown;
 	containerProps?: DialogContainerProps;
 	hasNubbin?: boolean;
+	isNubbinHidden?: boolean;
 	hasStaticAlignment?: boolean;
 	inheritWidthOf?: 'target' | 'menu' | 'none' | string;
 	offset?: string;
