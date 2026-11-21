@@ -105,7 +105,10 @@ type PillContentProps =
 	  }
 	| {
 			/** Text labels */
-			labels?: Omit<PillLabels, 'label'> & { label?: undefined };
+			labels?: Omit<PillLabels, 'label'> & {
+				/** Unset when the pill shows `children`. */
+				label?: undefined;
+			};
 			/** Custom content, shown when there is no `labels.label` */
 			children?: ReactNode;
 	  };

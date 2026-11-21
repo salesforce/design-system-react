@@ -36,18 +36,28 @@ import { useClickOutside, useControllableState } from '../../utilities/hooks';
 // ===== Types =====
 
 export interface DatePickerAssistiveText {
+	/** Label of the next-month button. Defaults to the English text `Next month`. */
 	nextMonth?: string;
+	/** Label of the input's calendar button. Defaults to the English text `Open Calendar`. */
 	openCalendar?: string;
+	/** Label of the previous-month button. Defaults to the English text `Previous month`. */
 	previousMonth?: string;
+	/** Label of the year picklist. Defaults to the English text `Year`. */
 	year?: string;
 }
 
 export interface DatePickerLabels {
+	/** Seven short weekday names, starting with Sunday, for the calendar's column headings. Defaults to English (`Sun` … `Sat`). */
 	abbreviatedWeekDays?: string[];
+	/** Visible label above the input. */
 	label?: string;
+	/** Twelve month names, starting with January. Defaults to English. */
 	months?: string[];
+	/** Input placeholder. Defaults to the English text `Pick a Date`. */
 	placeholder?: string;
+	/** The link that selects today's date. Defaults to the English text `Today`. */
 	today?: string;
+	/** Seven full weekday names, starting with Sunday, read as the column headings' titles. Defaults to English. */
 	weekDays?: string[];
 }
 
@@ -125,7 +135,12 @@ export type DatePickerChangeProps =
 			 */
 			onChange: DatePickerChangeHandler;
 	  }
-	| { disabled: true; onChange?: DatePickerChangeHandler };
+	| {
+			/** Disables the date picker. */
+			disabled: true;
+			/** Called on change. Optional while disabled. */
+			onChange?: DatePickerChangeHandler;
+	  };
 
 interface DatePickerBaseProps {
 	/** Assistive text for accessibility */
@@ -226,13 +241,13 @@ interface DatePickerBaseProps {
 	 * Update it from `onChange`. (`undefined` is treated as `null` and warns in development.)
 	 */
 	value: Date | null;
-	/** Whether field is required */
+	/** @deprecated Set `required` on your own `Input` in the `input` prop. Passed to the input. */
 	required?: boolean;
-	/** Blur handler */
+	/** @deprecated Set `onBlur` on your own `Input` in the `input` prop. Passed to the input. */
 	onBlur?: (event: React.FocusEvent) => void;
-	/** Focus handler */
+	/** @deprecated Set `onFocus` on your own `Input` in the `input` prop. Passed to the input. */
 	onFocus?: (event: React.FocusEvent) => void;
-	/** Keydown handler */
+	/** @deprecated Set `onKeyDown` on your own `Input` in the `input` prop. Called with `(event, {})` after the date picker's own key handling. */
 	onKeyDown?: (event: KeyboardEvent, data: Record<string, unknown>) => void;
 }
 
