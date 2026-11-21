@@ -16,7 +16,7 @@ Please complete for every pull request.
 
 **Green gate — all of these must pass locally (CI runs the same):**
 
-- [ ] `npm run lint` passes with **0 errors** (`npm run lint:fix` to auto-fix). Warnings are the tracked gradual-migration backlog; do not add new errors.
+- [ ] `npm run lint` passes with **0 errors and 0 warnings** (`npm run lint:fix` to auto-fix).
 - [ ] `npm run typecheck` is clean (`tsc --noEmit`).
 - [ ] `npm test -- --run` passes — this runs both Vitest projects (jsdom `unit` + real-browser `browser`) **and** the story HTML snapshots. If you changed rendered markup on purpose, update snapshots with `npm test -- --run -u` and review the diff.
 - [ ] `npm run build` succeeds (type-check + Vite library build + `.d.ts` + entry shims).

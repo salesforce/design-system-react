@@ -4,8 +4,10 @@
 // # Tooltip
 
 import React, {
+	useId,
 	useState,
 	useEffect,
+	useLayoutEffect,
 	useRef,
 	useCallback,
 	useContext,
@@ -20,7 +22,6 @@ import classNames from 'classnames';
 import EventUtil from '../../utilities/event';
 import { useControllableState } from '../../utilities/hooks';
 import { POPOVER_TOOLTIP } from '../../utilities/constants';
-import generateId from '../../utilities/generate-id';
 import { renderTrigger } from '../../utilities/merge-props';
 import type { TriggerRender } from '../../types/common';
 
@@ -274,6 +275,16 @@ const defaultLabels: TooltipLabels = {
 	learnMoreBefore: 'Click',
 };
 
+// Renders the trigger slot as a component, so the trigger props' handlers are only
+// handed to the slot rather than called from Tooltip's render
+const TooltipTrigger = ({
+	render,
+	triggerProps,
+}: {
+	render: TriggerRender<TooltipTriggerProps>;
+	triggerProps: TooltipTriggerProps;
+}) => renderTrigger(render, triggerProps);
+
 /**
  * The PopoverTooltip component is variant of the Lightning Design System Popover component.
  * This component wraps an element that triggers it to open. It must be a focusable child element
@@ -317,11 +328,13 @@ const Tooltip = ({
 	// State
 	const [isOpen, setIsOpen] = useControllableState(isOpenProp, defaultIsOpen);
 	const [triggerRendered, setTriggerRendered] = useState(false);
+	const generatedId = useId();
+	// Trigger size for the anchored nubbin, measured once the tooltip opens
+	const [triggerSize, setTriggerSize] = useState({ height: 0, width: 0 });
 
 	// Refs
 	const triggerRef = useRef<HTMLDivElement>(null);
 	const tooltipTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-	const generatedIdRef = useRef(generateId());
 	const isUnmountingRef = useRef(false);
 	// Latest open state, read by the hover/blur/Escape timers
 	const isOpenRef = useRef(isOpen);
@@ -374,8 +387,8 @@ const Tooltip = ({
 
 	// Get computed values
 	const getId = useCallback(() => {
-		return idProp || generatedIdRef.current;
-	}, [idProp]);
+		return idProp || generatedId;
+	}, [idProp, generatedId]);
 
 	const getIsOpen = useCallback(
 		() => !isDisabled && isOpen,
@@ -538,6 +551,21 @@ const Tooltip = ({
 		[triggerRendered]
 	);
 
+	// Measure the trigger for the anchored nubbin before paint, so it is placed on open.
+	// Runs after every render, as the old in-render measurement did, so a trigger that
+	// resizes while the tooltip is open is re-measured.
+	const isAnchoredNubbinOpen = hasAnchoredNubbin && getIsOpen();
+	// eslint-disable-next-line react-hooks/exhaustive-deps -- no deps on purpose; the updater returns the same state when the size is unchanged, so it settles
+	useLayoutEffect(() => {
+		if (!isAnchoredNubbinOpen || !triggerRef.current) {
+			return;
+		}
+		const { height, width } = triggerRef.current.getBoundingClientRect();
+		setTriggerSize((size) =>
+			size.height === height && size.width === width ? size : { height, width }
+		);
+	});
+
 	// Render helpers
 	const getAnchoredNubbinStyles = () => {
 		if (!hasAnchoredNubbin) {
@@ -559,14 +587,7 @@ const Tooltip = ({
 			transform: 'rotate(45deg)',
 			width: '1rem',
 		};
-		const triggerDimensions = {
-			height: triggerRef.current
-				? triggerRef.current.getBoundingClientRect().height
-				: 0,
-			width: triggerRef.current
-				? triggerRef.current.getBoundingClientRect().width
-				: 0,
-		};
+		const triggerDimensions = triggerSize;
 
 		switch (alignment) {
 			case 'bottom': {
@@ -599,9 +620,13 @@ const Tooltip = ({
 			}
 		}
 
+		// An attribute selector matches any id, including one passed in that is
+		// not a valid CSS identifier (e.g. it starts with a digit)
+		const idSelector = `[id="${getId().replace(/["\\]/g, '\\$&')}"]`;
+
 		return (
 			<>
-				<style>{`#${getId()}:after, #${getId()}:before {
+				<style>{`${idSelector}:after, ${idSelector}:before {
 	display: none;
 }`}</style>
 				{getIsOpen() ? (
@@ -630,57 +655,71 @@ const Tooltip = ({
 		};
 
 		if (trigger !== undefined) {
-			return renderTrigger(trigger, triggerProps);
+			return <TooltipTrigger render={trigger} triggerProps={triggerProps} />;
 		}
 
 		// Deprecated: each child element is a trigger
 		if (React.Children.count(children) !== 0) {
 			return React.Children.map(children, (child) =>
-				React.isValidElement(child) ? renderTrigger(child, triggerProps) : child
+				React.isValidElement(child) ? (
+					<TooltipTrigger render={child} triggerProps={triggerProps} />
+				) : (
+					child
+				)
 			);
 		}
 
 		if (onClickTrigger) {
-			return renderTrigger(
-				// eslint-disable-next-line jsx-a11y/anchor-is-valid -- SLDS tooltip markup uses an anchor for the clickable trigger
-				<a
-					href="#"
-					onClick={
-						EventUtil.trappedHandler(
-							onClickTrigger
-						) as React.MouseEventHandler<HTMLAnchorElement>
+			return (
+				<TooltipTrigger
+					render={
+						// eslint-disable-next-line jsx-a11y/anchor-is-valid -- SLDS tooltip markup uses an anchor for the clickable trigger
+						<a
+							href="#"
+							onClick={
+								EventUtil.trappedHandler(
+									onClickTrigger
+								) as React.MouseEventHandler<HTMLAnchorElement>
+							}
+						>
+							<Icon
+								category="utility"
+								colorVariant={iconColorVariant}
+								inverse={isInverseIcon}
+								name="info"
+								assistiveText={{
+									label: assistiveText.triggerLearnMoreIcon,
+								}}
+								size="x-small"
+							/>
+						</a>
 					}
-				>
-					<Icon
-						category="utility"
-						colorVariant={iconColorVariant}
-						inverse={isInverseIcon}
-						name="info"
-						assistiveText={{
-							label: assistiveText.triggerLearnMoreIcon,
-						}}
-						size="x-small"
-					/>
-				</a>,
-				triggerProps
+					triggerProps={triggerProps}
+				/>
 			);
 		}
 
-		return renderTrigger(
-			<Button
-				aria-disabled
-				assistiveText={{
-					icon: assistiveText.triggerLearnMoreIcon,
-				}}
-				iconCategory="utility"
-				iconClassName={iconColorVariant && `slds-icon-text-${iconColorVariant}`}
-				iconName="info"
-				// `bare` keeps `slds-button_icon`, which Button drops for `inverse` alone
-				iconVariant={isInverseIcon ? 'bare' : undefined}
-				inverse={isInverseIcon}
-				variant="icon"
-			/>,
-			triggerProps
+		return (
+			<TooltipTrigger
+				render={
+					<Button
+						aria-disabled
+						assistiveText={{
+							icon: assistiveText.triggerLearnMoreIcon,
+						}}
+						iconCategory="utility"
+						iconClassName={
+							iconColorVariant && `slds-icon-text-${iconColorVariant}`
+						}
+						iconName="info"
+						// `bare` keeps `slds-button_icon`, which Button drops for `inverse` alone
+						iconVariant={isInverseIcon ? 'bare' : undefined}
+						inverse={isInverseIcon}
+						variant="icon"
+					/>
+				}
+				triggerProps={triggerProps}
+			/>
 		);
 	};
 

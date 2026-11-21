@@ -65,6 +65,20 @@ class DemoComponent extends Component {
 }
 
 describe('SLDSDatepicker', () => {
+	it('uses the id prop for the input and its label', () => {
+		const { container } = render(
+			<Datepicker {...defaultProps} labels={{ label: 'Date' }} />
+		);
+		expect(container.querySelector('input')).toHaveAttribute(
+			'id',
+			'sample-datepicker'
+		);
+		expect(container.querySelector('label')).toHaveAttribute(
+			'for',
+			'sample-datepicker'
+		);
+	});
+
 	const triggerClassSelector = 'button.slds-input__icon';
 
 	describe('Assistive technology', () => {

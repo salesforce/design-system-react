@@ -16,23 +16,40 @@ const handleChange = (
 	event: React.SyntheticEvent,
 	data: { color: string; isValid?: boolean }
 ) => {
-	action('onChange')(event, data);
+	// Storybook can't serialize a React event (it's circular), so log only the data
+	action('onChange')(data);
 };
 
 const customOuterInputValidator = (hex: string) =>
 	!hex || HEX_REGEX_6_DIGITS.test(hex);
 
-// `value` (and `valueWorking`, when a story sets it) are controlled, so stories keep them in state
+// `value` (and `valueWorking`, when a story sets it) are controlled, so stories keep them in state.
+// `isOpen` is controlled too: ColorPicker requests open and close, and this parent decides.
 const StatefulColorPicker = (props: ColorPickerProps) => {
 	const [value, setValue] = useState(props.value ?? '');
 	const [valueWorking, setValueWorking] = useState(props.valueWorking);
+	const [isOpen, setIsOpen] = useState(
+		props.isOpen ?? props.defaultIsOpen ?? false
+	);
 	const { events = {} } = props;
 
 	return (
 		<ColorPicker
 			{...props}
+			defaultIsOpen={undefined}
+			isOpen={isOpen}
 			events={{
 				...events,
+				onRequestOpen: () => {
+					action('onRequestOpen')();
+					setIsOpen(true);
+					events.onRequestOpen?.();
+				},
+				onRequestClose: (event, data) => {
+					action('onRequestClose')(data);
+					setIsOpen(false);
+					events.onRequestClose?.(event, data);
+				},
 				onChange: (event, data) => {
 					setValue(data.color);
 					events.onChange?.(event, data);
@@ -242,7 +259,7 @@ export const MenuOpen: Story = {
 	args: {
 		id: 'color-picker',
 		classNameMenu: 'test_class_name_menu',
-		defaultIsOpen: true,
+		isOpen: true,
 		labels: { label: 'Choose Color' },
 	},
 };

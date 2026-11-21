@@ -30,7 +30,15 @@ export default {
 		},
 		prompt: {
 			control: 'select',
-			options: [undefined, 'success', 'warning', 'error', 'wrench', 'offline', 'info'],
+			options: [
+				undefined,
+				'success',
+				'warning',
+				'error',
+				'wrench',
+				'offline',
+				'info',
+			],
 		},
 		align: {
 			control: 'radio',
@@ -83,16 +91,22 @@ const SampleContent = () => (
 	</section>
 );
 
-// Interactive modal with trigger button
-const ModalWithTrigger = ({ buttonLabel, ...modalProps }) => {
+// Interactive modal with trigger button. The parent owns `isOpen`: Escape and the close
+// button request a close, and `footer` receives `close` so its buttons can close the modal.
+const ModalWithTrigger = ({ buttonLabel, footer, ...modalProps }) => {
 	const [isOpen, setIsOpen] = useState(false);
+	const close = () => setIsOpen(false);
 	return (
 		<>
-			<Button label={buttonLabel || 'Open Modal'} onClick={() => setIsOpen(true)} />
+			<Button
+				label={buttonLabel || 'Open Modal'}
+				onClick={() => setIsOpen(true)}
+			/>
 			<Modal
 				{...modalProps}
+				footer={typeof footer === 'function' ? footer(close) : footer}
 				isOpen={isOpen}
-				onRequestClose={() => setIsOpen(false)}
+				onRequestClose={close}
 			/>
 		</>
 	);
@@ -118,9 +132,9 @@ export const WithFooter = {
 			heading="New Opportunity"
 			tagline="Enter in details below"
 			buttonLabel="Open with Footer"
-			footer={[
-				<Button key="cancel" label="Cancel" />,
-				<Button key="save" label="Save" variant="brand" />,
+			footer={(close) => [
+				<Button key="cancel" label="Cancel" onClick={close} />,
+				<Button key="save" label="Save" variant="brand" onClick={close} />,
 			]}
 		>
 			<SampleContent />
@@ -136,9 +150,9 @@ export const DirectionalFooter = {
 			tagline="Configure your settings"
 			buttonLabel="Open Directional Footer"
 			directional
-			footer={[
-				<Button key="back" label="Back" />,
-				<Button key="next" label="Next" variant="brand" />,
+			footer={(close) => [
+				<Button key="back" label="Back" onClick={close} />,
+				<Button key="next" label="Next" variant="brand" onClick={close} />,
 			]}
 		>
 			<SampleContent />
@@ -153,9 +167,9 @@ export const Large = {
 			heading="Large Modal"
 			size="large"
 			buttonLabel="Open Large Modal"
-			footer={[
-				<Button key="cancel" label="Cancel" />,
-				<Button key="save" label="Save" variant="brand" />,
+			footer={(close) => [
+				<Button key="cancel" label="Cancel" onClick={close} />,
+				<Button key="save" label="Save" variant="brand" onClick={close} />,
 			]}
 		>
 			<SampleContent />
@@ -170,9 +184,9 @@ export const Medium = {
 			heading="Medium Modal"
 			size="medium"
 			buttonLabel="Open Medium Modal"
-			footer={[
-				<Button key="cancel" label="Cancel" />,
-				<Button key="save" label="Save" variant="brand" />,
+			footer={(close) => [
+				<Button key="cancel" label="Cancel" onClick={close} />,
+				<Button key="save" label="Save" variant="brand" onClick={close} />,
 			]}
 		>
 			<SampleContent />
@@ -187,9 +201,9 @@ export const Small = {
 			heading="Small Modal"
 			size="small"
 			buttonLabel="Open Small Modal"
-			footer={[
-				<Button key="cancel" label="Cancel" />,
-				<Button key="save" label="Save" variant="brand" />,
+			footer={(close) => [
+				<Button key="cancel" label="Cancel" onClick={close} />,
+				<Button key="save" label="Save" variant="brand" onClick={close} />,
 			]}
 		>
 			<SampleContent />
@@ -206,13 +220,12 @@ export const NoHeader = {
 		>
 			<section className="slds-p-around_large">
 				<p>
-					This modal has no visible header, but includes an assistive text
-					label for screen readers.
+					This modal has no visible header, but includes an assistive text label
+					for screen readers.
 				</p>
 				<p className="slds-m-top_medium">
-					Sit nulla est ex deserunt exercitation anim occaecat. Nostrud
-					ullamco deserunt aute id consequat veniam incididunt duis in sint
-					irure nisi.
+					Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco
+					deserunt aute id consequat veniam incididunt duis in sint irure nisi.
 				</p>
 			</section>
 		</ModalWithTrigger>
@@ -226,9 +239,19 @@ export const PromptError = {
 			heading="Delete Record"
 			prompt="error"
 			buttonLabel="Open Error Prompt"
-			footer={[
-				<Button key="cancel" label="Cancel" variant="neutral" />,
-				<Button key="delete" label="Delete" variant="destructive" />,
+			footer={(close) => [
+				<Button
+					key="cancel"
+					label="Cancel"
+					variant="neutral"
+					onClick={close}
+				/>,
+				<Button
+					key="delete"
+					label="Delete"
+					variant="destructive"
+					onClick={close}
+				/>,
 			]}
 		>
 			<div className="slds-p-around_medium">
@@ -248,7 +271,9 @@ export const PromptWarning = {
 			heading="Warning"
 			prompt="warning"
 			buttonLabel="Open Warning Prompt"
-			footer={<Button key="ok" label="Got it" variant="neutral" />}
+			footer={(close) => (
+				<Button key="ok" label="Got it" variant="neutral" onClick={close} />
+			)}
 		>
 			<div className="slds-p-around_medium">
 				<p>
@@ -266,7 +291,9 @@ export const PromptSuccess = {
 			heading="Success!"
 			prompt="success"
 			buttonLabel="Open Success Prompt"
-			footer={<Button key="ok" label="Continue" variant="neutral" />}
+			footer={(close) => (
+				<Button key="ok" label="Continue" variant="neutral" onClick={close} />
+			)}
 		>
 			<div className="slds-p-around_medium">
 				<p>Your changes have been saved successfully.</p>
@@ -282,7 +309,9 @@ export const PromptInfo = {
 			heading="Information"
 			prompt="info"
 			buttonLabel="Open Info Prompt"
-			footer={<Button key="ok" label="OK" variant="neutral" />}
+			footer={(close) => (
+				<Button key="ok" label="OK" variant="neutral" onClick={close} />
+			)}
 		>
 			<div className="slds-p-around_medium">
 				<p>
@@ -337,9 +366,9 @@ export const TopAligned = {
 			heading="Top Aligned Modal"
 			align="top"
 			buttonLabel="Open Top Aligned"
-			footer={[
-				<Button key="cancel" label="Cancel" />,
-				<Button key="save" label="Save" variant="brand" />,
+			footer={(close) => [
+				<Button key="cancel" label="Cancel" onClick={close} />,
+				<Button key="save" label="Save" variant="brand" onClick={close} />,
 			]}
 		>
 			<SampleContent />
@@ -362,10 +391,15 @@ export const CustomHeader = {
 					</div>
 				</div>
 			}
-			footer={<Button key="close" label="Close" variant="neutral" />}
+			footer={(close) => (
+				<Button key="close" label="Close" variant="neutral" onClick={close} />
+			)}
 		>
 			<section className="slds-p-around_large">
-				<p>This modal has a completely custom header with a badge and custom layout.</p>
+				<p>
+					This modal has a completely custom header with a badge and custom
+					layout.
+				</p>
 			</section>
 		</ModalWithTrigger>
 	),
@@ -390,7 +424,8 @@ export const AlwaysOpen = {
 	parameters: {
 		docs: {
 			description: {
-				story: 'This modal is always open for documentation purposes. In real usage, control the `isOpen` prop with state.',
+				story:
+					'This modal is always open for documentation purposes. In real usage, control the `isOpen` prop with state.',
 			},
 		},
 	},

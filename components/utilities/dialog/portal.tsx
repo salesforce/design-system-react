@@ -78,7 +78,8 @@ const Portal = (props: PortalProps): React.ReactPortal | null => {
 	const context = useContext(PortalSettingsContext);
 	const portalNodeRef = useRef<HTMLElement | null>(null);
 	const portalNodeInstanceRef = useRef<unknown>(null);
-	const [isMounted, setIsMounted] = useState(false);
+	// The attached container node, for render; the effects use `portalNodeRef`
+	const [portalNode, setPortalNode] = useState<HTMLElement | null>(null);
 
 	// Resolve where the portal's DOM node should be appended. Precedence matches
 	// the legacy implementation: explicit `renderTo` selector/node > context
@@ -118,11 +119,8 @@ const Portal = (props: PortalProps): React.ReactPortal | null => {
 			? onMount(undefined, { portal: node })
 			: node;
 
-		setIsMounted(true);
-
-		if (onOpen) {
-			onOpen(undefined, { portal: children });
-		}
+		// eslint-disable-next-line react-hooks/set-state-in-effect -- the node must be attached to the document before children mount, so it is created in an effect
+		setPortalNode(node);
 
 		return () => {
 			if (node.parentNode) {
@@ -133,6 +131,15 @@ const Portal = (props: PortalProps): React.ReactPortal | null => {
 		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
+
+	// Fire `onOpen` once the children have mounted into the node (the render after
+	// it is created), so a handler can reach them, for example to move focus inside
+	useEffect(() => {
+		if (portalNode && onOpen) {
+			onOpen(undefined, { portal: children });
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [portalNode]);
 
 	// Keep the container node's id/className/style in sync with props, and fire
 	// `onUpdate` after each render (matches the legacy `updatePortal` behavior).
@@ -161,11 +168,11 @@ const Portal = (props: PortalProps): React.ReactPortal | null => {
 
 	const child = children ? Children.only(children) : null;
 
-	if (!isMounted || !portalNodeRef.current || !child) {
+	if (!portalNode || !child) {
 		return null;
 	}
 
-	return createPortal(child, portalNodeRef.current);
+	return createPortal(child, portalNode);
 };
 
 Portal.displayName = 'Portal';

@@ -2,9 +2,11 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 import React, {
+	useId,
 	useState,
 	useRef,
 	useCallback,
+	useMemo,
 	useEffect,
 	useContext,
 	type ReactNode,
@@ -49,7 +51,6 @@ import checkProps from './check-props';
 
 import { COMBOBOX } from '../../utilities/constants';
 import type { SelectedListBoxOption } from '../pill-container/private/selected-listbox';
-import generateId from '../../utilities/generate-id';
 import componentDoc from './component.json';
 import { IconSettingsContext } from '../icon-settings';
 import { useControllableState, useLatestRef } from '../../utilities/hooks';
@@ -434,9 +435,9 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 	const menuKeyBuffer = useRef(new KeyBuffer());
 
 	// Generated IDs
-	const generatedId = useRef(generateId());
-	const generatedErrorId = useRef(generateId());
-	const getId = useCallback(() => idProp || generatedId.current, [idProp]);
+	const generatedId = useId();
+	const generatedErrorId = useId();
+	const getId = useCallback(() => idProp || generatedId, [idProp, generatedId]);
 	const deselectId = `${getId()}-deselect`;
 
 	// State
@@ -444,10 +445,17 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 		undefined
 	);
 	const [activeOptionIndex, setActiveOptionIndex] = useState(-1);
-	const [activeSelectedOption, setActiveSelectedOption] = useState<
-		ComboboxOption | undefined
-	>(selection?.[0]);
 	const [activeSelectedOptionIndex, setActiveSelectedOptionIndex] = useState(0);
+	// Keep the active pill, and so its roving tabindex, inside `selection`. When
+	// a controlled parent shrinks `selection` through any path other than the
+	// built-in remove handler, an index past the end would leave no pill with
+	// tabindex=0 and the selected-pill listbox unreachable by keyboard (WCAG
+	// 2.1.1 / 2.4.3). An emptied selection starts again from the first pill.
+	const maxSelectedOptionIndex = Math.max(selection.length - 1, 0);
+	if (activeSelectedOptionIndex > maxSelectedOptionIndex) {
+		setActiveSelectedOptionIndex(maxSelectedOptionIndex);
+	}
+	const activeSelectedOption = selection[activeSelectedOptionIndex];
 	const [listboxHasFocus, setListboxHasFocus] = useState(false);
 	// `isOpen` is ephemeral UI state: controlled when the prop is set,
 	// otherwise internal and seeded by `defaultIsOpen`.
@@ -494,8 +502,8 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 	}, [activeOption, activeOptionIndex]);
 
 	const getErrorId = useCallback(() => {
-		return ariaDescribedby || (errorText && generatedErrorId.current);
-	}, [ariaDescribedby, errorText]);
+		return ariaDescribedby || (errorText && generatedErrorId);
+	}, [ariaDescribedby, errorText, generatedErrorId]);
 
 	// Build options list
 	const getOptions = useCallback(() => {
@@ -528,6 +536,21 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 		hasDeselect,
 		options,
 	]);
+
+	// When the options change, keep the highlight on the same option, or clear
+	// it if that option is gone. Only sets state when the index is out of date,
+	// so it settles after one extra render.
+	if (activeOption) {
+		const index = findIndex(getOptions(), (item) =>
+			isEqual(item, activeOption)
+		);
+		if (index === -1) {
+			setActiveOption(undefined);
+			setActiveOptionIndex(-1);
+		} else if (index !== activeOptionIndex) {
+			setActiveOptionIndex(index);
+		}
+	}
 
 	const isSelected = useCallback(
 		({
@@ -850,11 +873,9 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 				activeSelectedOptionIndex === 0 && direction === 'previous';
 
 			if (isLastOptionAndRightIsPressed) {
-				setActiveSelectedOption(selection[0]);
 				setActiveSelectedOptionIndex(0);
 				setListboxHasFocus(true);
 			} else if (isFirstOptionAndLeftIsPressed) {
-				setActiveSelectedOption(selection[selection.length - 1]);
 				setActiveSelectedOptionIndex(selection.length - 1);
 				setListboxHasFocus(true);
 			} else {
@@ -863,7 +884,6 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 					offset: offsets[direction],
 					options: selection,
 				});
-				setActiveSelectedOption(selection[newIndex]);
 				setActiveSelectedOptionIndex(newIndex);
 				setListboxHasFocus(true);
 			}
@@ -977,10 +997,9 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 	const handlePillFocus = useCallback(
 		(
 			event: React.FocusEvent,
-			{ option, index }: { option: ComboboxOption; index: number }
+			{ index }: { option: ComboboxOption; index: number }
 		) => {
 			if (!listboxHasFocus) {
-				setActiveSelectedOption(option);
 				setActiveSelectedOptionIndex(index);
 				setListboxHasFocus(true);
 			}
@@ -1006,11 +1025,9 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 			) {
 				inputRef.current.focus();
 			} else if (lastPillWasRemoved && index !== undefined) {
-				setActiveSelectedOption(selection[index - 1]);
 				setActiveSelectedOptionIndex(index - 1);
 				setListboxHasFocus(true);
 			} else if (index !== undefined) {
-				setActiveSelectedOption(selection[index + 1]);
 				setActiveSelectedOptionIndex(index);
 				setListboxHasFocus(true);
 			}
@@ -1089,46 +1106,6 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 		closeEventRef.current = undefined;
 	});
 
-	// Handle options change - maintain active highlight
-	useEffect(() => {
-		const opts = getOptions();
-		if (activeOption) {
-			const index = findIndex(opts, (item) => isEqual(item, activeOption));
-			if (index !== -1) {
-				setActiveOptionIndex(index);
-			} else {
-				setActiveOption(undefined);
-				setActiveOptionIndex(-1);
-			}
-		}
-	}, [options, getOptions, activeOption]);
-
-	// Handle selection change - keep the active selected option and its roving
-	// tabindex in sync with `selection`. Besides seeding the initial active
-	// pill, this clamps the active index when `selection` shrinks. Without the
-	// clamp, a controlled parent removing a pill through any path other than
-	// the built-in remove handler could leave the active index pointing past
-	// the end of `selection`, so no pill receives tabindex=0 and the selected-
-	// pill listbox becomes unreachable by keyboard (WCAG 2.1.1 / 2.4.3).
-	useEffect(() => {
-		if (selection.length === 0) {
-			if (activeSelectedOption !== undefined) {
-				setActiveSelectedOption(undefined);
-				setActiveSelectedOptionIndex(0);
-			}
-			return;
-		}
-
-		if (!activeSelectedOption || !selection[activeSelectedOptionIndex]) {
-			const clampedIndex =
-				activeSelectedOptionIndex >= selection.length
-					? selection.length - 1
-					: activeSelectedOptionIndex;
-			setActiveSelectedOption(selection[clampedIndex]);
-			setActiveSelectedOptionIndex(clampedIndex);
-		}
-	}, [selection, activeSelectedOption, activeSelectedOptionIndex]);
-
 	// Cleanup on unmount
 	useEffect(() => {
 		return () => {
@@ -1143,79 +1120,76 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 
 	// ===== Render Helpers =====
 
-	const getCustomPopoverProps = useCallback(
-		(body: ReactNode) => {
-			const popoverBody = (
-				<div>
-					<div className="slds-assistive-text" id={`${getId()}-label`}>
-						{assistiveText.popoverLabel}
-					</div>
-					{body}
+	const customPopoverProps = useMemo(() => {
+		const popoverPropsFromProp = popover?.props as
+			Record<string, unknown> | undefined;
+		const popoverBody = (
+			<div>
+				<div className="slds-assistive-text" id={`${getId()}-label`}>
+					{assistiveText.popoverLabel}
 				</div>
-			);
+				{popoverPropsFromProp?.body as ReactNode}
+			</div>
+		);
 
-			const popoverFooter = (
-				<div>
-					<Button
-						label={labels.cancelButton}
-						onClick={(e: React.MouseEvent) => {
-							requestClose(e, { trigger: 'cancel' });
-						}}
-					/>
-					<Button
-						label={labels.doneButton}
-						variant="brand"
-						onClick={(e: React.MouseEvent) => {
-							requestClose(e);
-						}}
-					/>
-				</div>
-			);
+		const popoverFooter = (
+			<div>
+				<Button
+					label={labels.cancelButton}
+					onClick={(e: React.MouseEvent) => {
+						requestClose(e, { trigger: 'cancel' });
+					}}
+				/>
+				<Button
+					label={labels.doneButton}
+					variant="brand"
+					onClick={(e: React.MouseEvent) => {
+						requestClose(e);
+					}}
+				/>
+			</div>
+		);
 
-			const defaultPopoverProps: Record<string, unknown> = {
-				ariaLabelledby: `${getId()}-label`,
-				align: 'bottom',
-				body: popoverBody,
-				classNameDialog: 'slds-popover_full-width',
-				footer: popoverFooter,
-				classNameFooter: 'slds-popover__footer_form',
-				hasNoNubbin: true,
-				id: getId(),
-				isOpen,
-				hasNoTriggerStyles: true,
-				onOpen: handleOpen,
-				// The combobox owns the popover's open state; `events.onClose` is
-				// fired by the combobox itself when `isOpen` turns `false`.
-				onRequestClose: (
-					event: React.SyntheticEvent,
-					data?: { trigger?: string }
-				) => {
-					requestClose(event, { trigger: data?.trigger });
-				},
-			};
-
-			const popoverPropsFromProp = popover?.props as
-				Record<string, unknown> | undefined;
-			const popoverProps = assign(
-				defaultPopoverProps,
-				popoverPropsFromProp || {}
-			);
-			popoverProps.body = popoverBody;
-
-			delete popoverProps.children;
-			return popoverProps;
-		},
-		[
-			getId,
-			assistiveText.popoverLabel,
-			labels.cancelButton,
-			labels.doneButton,
-			requestClose,
+		const defaultPopoverProps: Record<string, unknown> = {
+			ariaLabelledby: `${getId()}-label`,
+			align: 'bottom',
+			body: popoverBody,
+			classNameDialog: 'slds-popover_full-width',
+			footer: popoverFooter,
+			classNameFooter: 'slds-popover__footer_form',
+			hasNoNubbin: true,
+			id: getId(),
 			isOpen,
-			handleOpen,
-			popover,
-		]
-	);
+			hasNoTriggerStyles: true,
+			onOpen: handleOpen,
+			// The combobox owns the popover's open state; `events.onClose` is
+			// fired by the combobox itself when `isOpen` turns `false`.
+			onRequestClose: (
+				event: React.SyntheticEvent,
+				data?: { trigger?: string }
+			) => {
+				requestClose(event, { trigger: data?.trigger });
+			},
+		};
+
+		const popoverProps: Record<string, unknown> = {
+			...defaultPopoverProps,
+			...popoverPropsFromProp,
+			body: popoverBody,
+		};
+
+		delete popoverProps.children;
+		return popoverProps;
+	}, [
+		getId,
+		assistiveText.popoverLabel,
+		labels.cancelButton,
+		labels.doneButton,
+		requestClose,
+		isOpen,
+		handleOpen,
+		popover,
+	]);
 
 	// The listbox only renders while open and enabled (see `getDialog`), so the
 	// input must not report it as expanded or point `aria-controls` at it
@@ -1362,12 +1336,23 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 	// is `(event, data)` and InnerInput's is native, so call it alongside the combobox's own.
 	const { onChange: inputOnChange, ...userDefinedInputProps } = (input?.props ??
 		{}) as Partial<InputProps> & Record<string, unknown>;
-	const withInputOnChange =
-		(handler: (event: React.ChangeEvent<HTMLInputElement>) => void) =>
+	const handleInnerInputChange = useCallback(
 		(event: React.ChangeEvent<HTMLInputElement>) => {
 			inputOnChange?.(event, { value: event.target.value });
-			handler(event);
-		};
+			handleInputChange(event);
+		},
+		[inputOnChange, handleInputChange]
+	);
+	// The single-selection variants ignore typing once an option is selected
+	const handleInnerInputChangeWhileUnselected = useCallback(
+		(event: React.ChangeEvent<HTMLInputElement>) => {
+			inputOnChange?.(event, { value: event.target.value });
+			if (!selection.length) {
+				handleInputChange(event);
+			}
+		},
+		[inputOnChange, handleInputChange, selection.length]
+	);
 
 	// ===== Sub-renders =====
 
@@ -1417,7 +1402,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 						onKeyDown={handleKeyDown}
 						inputRef={setInputRefCallback}
 						onClick={(event: React.MouseEvent) => requestOpen(event)}
-						onChange={withInputOnChange(handleInputChange)}
+						onChange={handleInnerInputChange}
 						placeholder={labels.placeholder}
 						readOnly={!!(predefinedOptionsOnly && activeOption)}
 						required={required}
@@ -1582,7 +1567,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 						onKeyDown={handleKeyDown}
 						inputRef={setInputRefCallback}
 						onClick={(event: React.MouseEvent) => requestOpen(event)}
-						onChange={withInputOnChange(handleInputChange)}
+						onChange={handleInnerInputChange}
 						placeholder={labels.placeholder}
 						readOnly={!!(predefinedOptionsOnly && activeOption)}
 						required={required}
@@ -1683,11 +1668,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 							onKeyDown={handleKeyDown}
 							inputRef={setInputRefCallback}
 							onClick={(event: React.MouseEvent) => requestOpenMenu(event)}
-							onChange={withInputOnChange((event) => {
-								if (!selection.length) {
-									handleInputChange(event);
-								}
-							})}
+							onChange={handleInnerInputChangeWhileUnselected}
 							placeholder={labels.placeholder}
 							readOnly={
 								!!(predefinedOptionsOnly && activeOption) || !!selection.length
@@ -1715,13 +1696,12 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 	};
 
 	const renderPopover = () => {
-		const popoverPropsFromProp = popover?.props as
-			{ body?: ReactNode } | undefined;
-		const popoverProps = getCustomPopoverProps(popoverPropsFromProp?.body);
+		const popoverProps = customPopoverProps;
 		// Popover renders its dialog as `${id}-popover`, and `popover` props may
 		// override the id.
+		const popoverId = (popover?.props as { id?: string } | undefined)?.id;
 		const popoverControlsId = getIsOpen()
-			? `${(popoverProps.id as string | undefined) ?? getId()}-popover`
+			? `${popoverId ?? getId()}-popover`
 			: undefined;
 
 		return (
@@ -1740,7 +1720,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 							className
 						)}
 					>
-						{/* @ts-expect-error - popoverProps contains body from getCustomPopoverProps */}
+						{/* @ts-expect-error - popoverProps contains body from customPopoverProps */}
 						<Popover {...popoverProps}>
 							<InnerInput
 								{...getComboboxAriaProps('dialog', popoverControlsId)}
@@ -1765,7 +1745,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 								onKeyDown={handleKeyDown}
 								inputRef={setInputRefCallback}
 								onClick={(event: React.MouseEvent) => requestOpen(event)}
-								onChange={withInputOnChange(handleInputChange)}
+								onChange={handleInnerInputChange}
 								placeholder={labels.placeholder}
 								readOnly
 								required={required}
@@ -1835,11 +1815,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 							onKeyDown={handleKeyDown}
 							inputRef={setInputRefCallback}
 							onClick={(event: React.MouseEvent) => requestOpenMenu(event)}
-							onChange={withInputOnChange((event) => {
-								if (!selection.length) {
-									handleInputChange(event);
-								}
-							})}
+							onChange={handleInnerInputChangeWhileUnselected}
 							placeholder={labels.placeholderReadOnly}
 							readOnly
 							required={required}
@@ -1955,11 +1931,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 							onKeyDown={handleKeyDown}
 							inputRef={setInputRefCallback}
 							onClick={(event: React.MouseEvent) => requestOpenMenu(event)}
-							onChange={withInputOnChange((event) => {
-								if (!selection.length) {
-									handleInputChange(event);
-								}
-							})}
+							onChange={handleInnerInputChangeWhileUnselected}
 							placeholder={labels.placeholderReadOnly}
 							readOnly
 							required={required}

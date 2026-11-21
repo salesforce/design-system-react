@@ -55,6 +55,7 @@ import {
 	MENU_DROPDOWN_TRIGGER,
 } from '../../utilities/constants';
 import { useControllableState } from '../../utilities/hooks/use-controllable-state';
+import { useLatestRef } from '../../utilities/hooks/use-latest-ref';
 import { IconSettingsContext } from '../icon-settings';
 import type { IconCategory } from '../../types/common';
 import isElementOfType from '../../utilities/is-element-of-type';
@@ -702,11 +703,6 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 		return null;
 	}, []);
 
-	// Handle close
-	const handleCloseRef = useRef<(event?: MenuDropdownCloseEvent) => void>(
-		() => {}
-	);
-
 	// The open state `onOpen`/`onClose` last reported. It starts at the initial
 	// state, so a menu that renders open does not report an open on mount.
 	const notifiedOpenRef = useRef(Boolean(isOpenValue) && !disabled);
@@ -793,8 +789,8 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 		[setIsOpenValue, notifyOpenChange]
 	);
 
-	// Update the ref so the open-dropdown registration always calls the latest
-	handleCloseRef.current = handleClose;
+	// The open-dropdown registration always calls the latest `handleClose`
+	const handleCloseRef = useLatestRef(handleClose);
 
 	// Requests an open. With a controlled `isOpen` only `onRequestOpen` runs; the
 	// menu opens (and `onOpen` fires) when the parent sets `isOpen={true}`.
@@ -1025,15 +1021,16 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 		[focusedIndex, getMenu, getMenuItem, focusMenuItem, scrollToMenuItem]
 	);
 
-	// Create a context object for keyboard navigation
+	// Create a context object for keyboard navigation. Opening from the trigger
+	// is done by `toggleOpen`, so the trigger's click only reports `onClick`.
 	const componentContext = useMemo(
 		() => ({
-			trigger: triggerRef.current,
+			getTrigger: () => triggerRef.current,
 			handleClick: (event: Event) => {
-				handleClick(event as unknown as MouseEvent);
+				onClick?.(event as unknown as MouseEvent);
 			},
 		}),
-		[handleClick]
+		[onClick]
 	);
 
 	// Handle keyboard navigate

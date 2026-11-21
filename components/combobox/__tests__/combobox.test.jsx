@@ -191,6 +191,26 @@ describe('SLDSCombobox', () => {
 		vi.restoreAllMocks();
 	});
 
+	it('uses the id prop for the input and label, and generates the error id', () => {
+		const { container } = render(
+			<Combobox
+				id="fixed-id"
+				errorText="Required"
+				labels={{ label: 'Account' }}
+				options={[]}
+				selection={[]}
+				variant="base"
+			/>
+		);
+		const input = container.querySelector('input');
+		expect(input).toHaveAttribute('id', 'fixed-id');
+		expect(container.querySelector('label')).toHaveAttribute('for', 'fixed-id');
+		const errorId = input.getAttribute('aria-describedby');
+		expect(container.querySelector(`[id="${errorId}"]`)).toHaveTextContent(
+			'Required'
+		);
+	});
+
 	describe('Assistive technology and keyboard interactions', () => {
 		it('has aria-haspopup, aria-expanded is false when closed, aria-expanded is true when open', () => {
 			const { container } = render(<DemoComponent multiple />);
@@ -333,6 +353,69 @@ describe('SLDSCombobox', () => {
 			);
 			expect(tabbable).toHaveLength(1);
 			expect(pills[1]).toHaveAttribute('tabindex', '0');
+		});
+
+		it('makes the first pill tabbable when a controlled selection is emptied and re-populated', () => {
+			const props = {
+				...defaultProps,
+				multiple: true,
+				options: [],
+				events: {},
+			};
+			const renderWithSelection = (selection) => (
+				<IconSettings iconPath="/assets/icons">
+					<Combobox {...props} value="" selection={selection} />
+				</IconSettings>
+			);
+			const { container, rerender } = render(
+				renderWithSelection([accountsWithIcon[0], accountsWithIcon[1]])
+			);
+			fireEvent.focus(
+				getNodes(container).selectedListbox.querySelectorAll(
+					'[role="option"]'
+				)[1]
+			);
+
+			rerender(renderWithSelection([]));
+			rerender(renderWithSelection([accountsWithIcon[2], accountsWithIcon[3]]));
+
+			const pills =
+				getNodes(container).selectedListbox.querySelectorAll('[role="option"]');
+			expect(pills[0]).toHaveAttribute('tabindex', '0');
+			expect(pills[1]).toHaveAttribute('tabindex', '-1');
+		});
+
+		it('keeps the highlight on the same option when options change, and clears it when the option is removed', () => {
+			const props = { ...defaultProps, isOpen: true, events: {} };
+			const renderWithOptions = (options) => (
+				<IconSettings iconPath="/assets/icons">
+					<Combobox {...props} options={options} value="" selection={[]} />
+				</IconSettings>
+			);
+			const { container, rerender } = render(
+				renderWithOptions([accounts[0], accounts[1], accounts[2]])
+			);
+			const { input } = getNodes(container);
+			fireEvent.keyDown(input, keyObjects.DOWN);
+			fireEvent.keyDown(input, keyObjects.DOWN);
+			expect(input).toHaveAttribute(
+				'aria-activedescendant',
+				`${defaultProps.id}-listbox-option-2`
+			);
+
+			// Reordered: the highlight follows accounts[1] to the first position
+			rerender(renderWithOptions([accounts[1], accounts[0], accounts[2]]));
+			expect(input).toHaveAttribute(
+				'aria-activedescendant',
+				`${defaultProps.id}-listbox-option-2`
+			);
+			expect(
+				container.querySelector(`#${defaultProps.id}-listbox-option-2`)
+			).toHaveTextContent(accounts[1].label);
+
+			// Removed: the highlight is cleared
+			rerender(renderWithOptions([accounts[0], accounts[2]]));
+			expect(input).not.toHaveAttribute('aria-activedescendant');
 		});
 
 		it('menu filters to second item, menu listbox menu item 2 aria-selected is true, input activedescendent has item 2 id, after pressing down arrow, enter selects item 2', () => {

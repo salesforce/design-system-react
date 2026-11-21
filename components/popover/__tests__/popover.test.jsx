@@ -457,6 +457,73 @@ describe('SLDSPopover', () => {
 		});
 	});
 
+	describe('Click outside', () => {
+		const popoverIn = () => document.getElementById(defaultIds.popover);
+
+		it('requests close with the mousedown event and trigger "clickOutside", and closes when uncontrolled', async () => {
+			const onRequestClose = vi.fn();
+			const { container } = renderPopover({ onRequestClose });
+
+			fireEvent.click(container.querySelector(defaultIds.trigger));
+			await waitFor(() => {
+				expect(popoverIn()).toBeInTheDocument();
+			});
+			fireEvent.mouseDown(container.querySelector('#not-the-trigger'));
+
+			expect(onRequestClose).toHaveBeenCalledTimes(1);
+			const [event, data] = onRequestClose.mock.calls[0];
+			expect(event.type).toBe('mousedown');
+			expect(data).toEqual({ trigger: 'clickOutside' });
+			expect(popoverIn()).not.toBeInTheDocument();
+		});
+
+		it('stays open when controlled `isOpen`, but requests close', () => {
+			const onRequestClose = vi.fn();
+			renderPopover({ isOpen: true, onRequestClose });
+
+			fireEvent.mouseDown(document.body);
+
+			expect(onRequestClose).toHaveBeenCalledWith(expect.anything(), {
+				trigger: 'clickOutside',
+			});
+			expect(popoverIn()).toBeInTheDocument();
+		});
+
+		it('does not request close for a mousedown inside the popover or on the trigger', () => {
+			const onRequestClose = vi.fn();
+			const { container } = renderPopover({ isOpen: true, onRequestClose });
+
+			fireEvent.mouseDown(document.getElementById('sample-body'));
+			fireEvent.mouseDown(container.querySelector(defaultIds.trigger));
+
+			expect(onRequestClose).not.toHaveBeenCalled();
+		});
+
+		it('does not request close for a mousedown inside a popover rendered in a portal', () => {
+			const onRequestClose = vi.fn();
+			renderPopover({
+				isOpen: true,
+				onRequestClose,
+				position: 'overflowBoundaryElement',
+			});
+
+			fireEvent.mouseDown(document.getElementById('sample-body'));
+			expect(onRequestClose).not.toHaveBeenCalled();
+
+			fireEvent.mouseDown(document.body);
+			expect(onRequestClose).toHaveBeenCalledTimes(1);
+		});
+
+		it('does not listen while closed', () => {
+			const onRequestClose = vi.fn();
+			renderPopover({ onRequestClose });
+
+			fireEvent.mouseDown(document.body);
+
+			expect(onRequestClose).not.toHaveBeenCalled();
+		});
+	});
+
 	describe('Controlled and uncontrolled open state', () => {
 		const popoverIn = (container) =>
 			container.querySelector(`#${defaultIds.popover}`);
@@ -609,6 +676,35 @@ describe('SLDSPopover', () => {
 			// NOTE: In jsdom, focus management is limited. The popover should be in
 			// the document, which we can verify. Actual focus behavior works in browsers.
 			expect(document.activeElement.id).toBeTruthy();
+		});
+
+		it('moves focus into a popover in a portal, so Escape closes it', async () => {
+			const onOpen = vi.fn();
+			const onRequestClose = vi.fn();
+			const { container } = renderPopover({
+				onOpen,
+				onRequestClose,
+				position: 'overflowBoundaryElement',
+			});
+
+			fireEvent.click(container.querySelector(defaultIds.trigger));
+
+			const popover = await waitFor(() => {
+				const element = document.getElementById(defaultIds.popover);
+				expect(element).toBeInTheDocument();
+				return element;
+			});
+			expect(popover.contains(document.activeElement)).toBe(true);
+			expect(onOpen).toHaveBeenCalledTimes(1);
+			expect(onOpen.mock.calls[0][1].portal).toBe(popover);
+
+			fireEvent.keyDown(document.activeElement, {
+				key: 'Escape',
+				keyCode: 27,
+			});
+			expect(onRequestClose).toHaveBeenCalledWith(expect.anything(), {
+				trigger: 'cancel',
+			});
 		});
 	});
 

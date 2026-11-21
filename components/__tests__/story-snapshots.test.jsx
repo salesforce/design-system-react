@@ -19,8 +19,9 @@ import { composeStories } from '@storybook/react-vite';
 // flake on every run. Replace it with a counter that RESETS before each story
 // (see beforeEach), so each story's ids are stable and independent of how many
 // other stories rendered first — otherwise adding/removing a component shifts
-// every later story's ids and churns unrelated snapshots. (All 20 id-consuming
-// components go through this single util.)
+// every later story's ids and churns unrelated snapshots. Components that use
+// React's `useId` need no mock: each `renderToStaticMarkup` call is its own
+// root, so those ids (`_R_…_`) depend only on the story's own tree.
 let idCounter = 0;
 vi.mock('../../utilities/generate-id', () => ({
 	default: () => `slds-snapshot-id-${(idCounter += 1)}`,

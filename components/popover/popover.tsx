@@ -4,7 +4,6 @@
 
 import React, {
 	forwardRef,
-	useState,
 	useEffect,
 	useRef,
 	useCallback,
@@ -22,7 +21,7 @@ import Button from '../button';
 import MediaObject from '../media-object';
 import Icon from '../icon';
 import Dialog from '../utilities/dialog';
-import { useControllableState } from '../../utilities/hooks';
+import { useClickOutside, useControllableState } from '../../utilities/hooks';
 import keyboardNavigableDialog from '../../utilities/keyboard-navigable-dialog';
 import KEYS from '../../utilities/key-code';
 import { POPOVER } from '../../utilities/constants';
@@ -439,7 +438,6 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>((props, ref) => {
 		controlledIsOpen,
 		defaultIsOpen
 	);
-	const [inputRendered, setInputRendered] = useState(false);
 
 	// Refs
 	const triggerRef = useRef<HTMLDivElement>(null);
@@ -551,6 +549,19 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>((props, ref) => {
 		},
 		[handleClose]
 	);
+
+	// Request a close on a mousedown outside the popover. The container holds the trigger
+	// and an inline dialog; a dialog in a portal carries the ignore class instead.
+	const handleClickOutside = useCallback(
+		(event: globalThis.MouseEvent | TouchEvent) => {
+			handleClose(event as unknown as MouseEvent, { trigger: 'clickOutside' });
+		},
+		[handleClose]
+	);
+	useClickOutside(triggerRef, handleClickOutside, {
+		enabled: isOpen,
+		ignoreClass: `ignore-click-${id}`,
+	});
 
 	// Handle mouse enter
 	const handleMouseEnter = useCallback(
@@ -688,11 +699,8 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>((props, ref) => {
 			} else if (ref) {
 				ref.current = component;
 			}
-			if (component && !inputRendered) {
-				setInputRendered(true);
-			}
 		},
-		[inputRendered, ref]
+		[ref]
 	);
 
 	// Dialog ref callback

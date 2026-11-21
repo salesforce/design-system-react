@@ -1,5 +1,6 @@
 /* eslint-disable max-lines */
 import React, {
+	useId,
 	useState,
 	useCallback,
 	useRef,
@@ -22,7 +23,6 @@ import Popover from '../popover';
 
 import ColorUtils from '../../utilities/color';
 import { COLOR_PICKER } from '../../utilities/constants';
-import generateId from '../../utilities/generate-id';
 import { useControllableState, useLatestRef } from '../../utilities/hooks';
 
 import {
@@ -274,8 +274,8 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
 	);
 
 	// Generate stable ID
-	const generatedId = useRef(idProp || generateId());
-	const componentId = idProp || generatedId.current;
+	const generatedId = useId();
+	const componentId = idProp || generatedId;
 
 	// Refs
 	const wrapperRef = useRef<HTMLDivElement>(null);
