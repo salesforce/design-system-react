@@ -34,6 +34,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- `Input`, `Textarea` and `Slider` type `onInput`, `onSubmit`, `onInvalid` and `onSelect` with React 19's `InputEvent`, `SubmitEvent` and `SyntheticEvent` instead of the deprecated `FormEvent`
 - `ProgressIndicator` `selectedStep` takes a step `id`; a step object is still accepted and matched by its `id`. Each step can have one `status` (`'completed' | 'disabled' | 'error'`), which wins over the deprecated step arrays
 - `Accordion`, `Breadcrumb`, `DatePicker`, `Tabs`, `VisualPicker` and `WelcomeMat`: reviewed for data models, no change
 - `Card`, `Input`, `Textarea`: the `header` merge, `iconLeft`/`iconRight` `iconPosition` and `children` placement are documented in the prop types
@@ -62,6 +63,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Deprecated
 
+- `onKeyPress` on `Button`, `ButtonStateful`, `Checkbox`, `Input` and `Textarea` (use `onKeyDown` and read `event.key`). `keypress` is a deprecated DOM event. It still works and logs a warning
 - `ProgressIndicator` `completedSteps`, `disabledSteps` and `errorSteps` (use `steps[].status`), and a `selectedStep` object without an `id`, which is still matched by its whole content (pass the step's `id`). Each logs a warning
 - `Combobox` `singleInputDisabled` (use `disabled`, which now disables the input in every variant)
 - `Combobox` `variant="inline-listbox"` with `multiple` (use `variant="base"` with `multiple`). SLDS deprecated the inline listbox, and it renders the selected pills before the input, so screen reader users hear the selections before reaching the field; its pill listbox also has no accessible name (axe `aria-input-field-name`). `base` lists the selections after the input in a labelled listbox. It keeps working and logs a one-time warning. `inline-listbox` without `multiple` is unaffected
@@ -73,6 +75,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Fixed
 
+- `Radio`: listened to the deprecated `keypress` event, and any key on an unchecked radio selected it. It now selects on Space or Enter keydown
 - `Filter`: a custom `popover`'s `isOpen` was read only on the first render. It now controls the open state when set, and `defaultIsOpen` starts the popover open otherwise. A popover that sets `isOpen` must update it to open or close; leave it unset for click-to-open
 - `Combobox`: while open, the input sets `aria-controls` to the listbox (or, for `variant="popover"`, the dialog), fixing the axe `aria-required-attr` violation (W-24839159). It is omitted, and `aria-expanded` is `false`, while the listbox isn't rendered, including with the deprecated `singleInputDisabled`
 - `ButtonStateful`: no longer blurs itself on mouse leave or blur, so focus stays on the button and the next Tab continues from it; `onBlur` is never called with a `MouseEvent`, and `onMouseDown` is called in the text variants too

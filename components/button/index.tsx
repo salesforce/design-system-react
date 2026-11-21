@@ -122,7 +122,10 @@ export interface ButtonBaseProps extends Omit<
 	onFocus?: (event: FocusEvent<HTMLButtonElement>) => void;
 	/** Key down event handler */
 	onKeyDown?: (event: KeyboardEvent<HTMLButtonElement>) => void;
-	/** Key press event handler */
+	/**
+	 * @deprecated `keypress` is a deprecated DOM event. Use `onKeyDown` and read
+	 * `event.key` instead. Still works, and warns.
+	 */
 	onKeyPress?: (event: KeyboardEvent<HTMLButtonElement>) => void;
 	/** Key up event handler */
 	onKeyUp?: (event: KeyboardEvent<HTMLButtonElement>) => void;
@@ -246,10 +249,10 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 		useEffect(() => {
 			checkRemovedProps(
 				BUTTON,
-				{ onRequestFocus, requestFocus, tooltip },
+				{ onKeyPress, onRequestFocus, requestFocus, tooltip },
 				componentDoc
 			);
-		}, [onRequestFocus, requestFocus, tooltip]);
+		}, [onKeyPress, onRequestFocus, requestFocus, tooltip]);
 
 		const internalRef = useRef<HTMLButtonElement | null>(null);
 

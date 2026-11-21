@@ -9,7 +9,9 @@ import {
 	type FocusEvent,
 	type KeyboardEvent,
 	type MouseEvent,
-	type FormEvent,
+	type InputEvent,
+	type SubmitEvent,
+	type SyntheticEvent,
 	type CSSProperties,
 	type ReactNode,
 	type TextareaHTMLAttributes,
@@ -117,19 +119,22 @@ export interface TextareaProps extends Pick<
 	/** Focus event handler */
 	onFocus?: (event: FocusEvent<HTMLTextAreaElement>) => void;
 	/** Input event handler */
-	onInput?: (event: FormEvent<HTMLTextAreaElement>) => void;
+	onInput?: (event: InputEvent<HTMLTextAreaElement>) => void;
 	/** Invalid event handler */
-	onInvalid?: (event: FormEvent<HTMLTextAreaElement>) => void;
+	onInvalid?: (event: SyntheticEvent<HTMLTextAreaElement>) => void;
 	/** Key down event handler */
 	onKeyDown?: (event: KeyboardEvent<HTMLTextAreaElement>) => void;
-	/** Key press event handler */
+	/**
+	 * @deprecated `keypress` is a deprecated DOM event. Use `onKeyDown` and read
+	 * `event.key` instead. Still works, and warns.
+	 */
 	onKeyPress?: (event: KeyboardEvent<HTMLTextAreaElement>) => void;
 	/** Key up event handler */
 	onKeyUp?: (event: KeyboardEvent<HTMLTextAreaElement>) => void;
 	/** Select event handler */
-	onSelect?: (event: FormEvent<HTMLTextAreaElement>) => void;
+	onSelect?: (event: SyntheticEvent<HTMLTextAreaElement>) => void;
 	/** Submit event handler */
-	onSubmit?: (event: FormEvent<HTMLTextAreaElement>) => void;
+	onSubmit?: (event: SubmitEvent<HTMLTextAreaElement>) => void;
 	/** Placeholder text */
 	placeholder?: string;
 	/** Mark as required field */
@@ -207,10 +212,10 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 		useEffect(() => {
 			checkProps(
 				TEXTAREA,
-				{ assistiveText, errorText, label: labelProp, labels },
+				{ assistiveText, errorText, label: labelProp, labels, onKeyPress },
 				componentDoc
 			);
-		}, [assistiveText, errorText, labelProp, labels]);
+		}, [assistiveText, errorText, labelProp, labels, onKeyPress]);
 
 		return (
 			<div
