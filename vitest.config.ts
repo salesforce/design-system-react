@@ -77,11 +77,15 @@ export default defineConfig({
 			},
 			{
 				extends: true,
-				// Node-only tests for repo tooling in `scripts/` (they spawn git).
+				// Node-only tests for repo tooling in `scripts/` (they spawn git) and
+				// the local lint rules in `eslint-rules/`.
 				test: {
 					name: 'scripts',
 					environment: 'node',
-					include: ['scripts/__tests__/*.test.mjs'],
+					include: [
+						'scripts/__tests__/*.test.mjs',
+						'eslint-rules/__tests__/*.test.mjs',
+					],
 					testTimeout: 30000,
 				},
 			},
