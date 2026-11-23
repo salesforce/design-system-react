@@ -166,7 +166,7 @@ const Tab = forwardRef<HTMLElement, TabProps>((props, ref) => {
 								label: assistiveText.withErrorIcon,
 							}}
 							category="utility"
-							containerClassName="slds-icon_container slds-icon-utility-error"
+							containerClassName="slds-icon_container"
 							size="x-small"
 							name="error"
 							colorVariant="error"

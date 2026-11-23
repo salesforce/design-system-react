@@ -250,7 +250,7 @@ describe('Tabs', () => {
 				`.${COMPONENT_CSS_CLASSES.link}`
 			);
 			links.forEach((node, index) => {
-				const errorIcon = node.querySelector('.slds-icon-utility-error');
+				const errorIcon = node.querySelector('.slds-icon-text-error');
 				if (index === 2) {
 					expect(errorIcon).toBeInTheDocument();
 				} else {
