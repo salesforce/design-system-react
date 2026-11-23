@@ -24,6 +24,7 @@ import {
 import SimpleDataTableCell from './cell';
 import SimpleDataTableColumn from './column';
 import SimpleDataTableHead from './private/head';
+import { inheritRadius } from './private/corner-style';
 import SimpleDataTableRow from './private/row';
 import SimpleDataTableRowActions from './row-actions';
 import TableContext from './private/table-context';
@@ -943,6 +944,7 @@ class SimpleDataTable extends React.Component<
 								}
 							}}
 							isHidden={this.props.isHeadless}
+							isOnlyRow={numRows === 0}
 							indeterminateSelected={indeterminateSelected}
 							canSelectRows={canSelectRows}
 							columns={columns}
@@ -951,7 +953,7 @@ class SimpleDataTable extends React.Component<
 							onSort={this.props.onSort}
 							showRowActions={!!RowActions}
 						/>
-						<tbody>
+						<tbody style={inheritRadius}>
 							{numRows > 0
 								? this.props.items.map((item, index) => {
 										const rowId =
@@ -998,6 +1000,8 @@ class SimpleDataTable extends React.Component<
 												rowActions={RowActions}
 												tableId={this.getId()}
 												rowIndex={index + numHeaderRows}
+												isFirstRow={this.props.isHeadless && index === 0}
+												isLastRow={index === numRows - 1}
 											/>
 										);
 									})

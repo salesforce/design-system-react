@@ -208,8 +208,9 @@ const SimpleDataTableHeaderCell: React.FC<SimpleDataTableHeaderCellProps> = (
 			}}
 			scope="col"
 			style={
-				fixedHeader || width
+				fixedHeader || width || cellContext.cornerStyle
 					? {
+							...cellContext.cornerStyle,
 							height: fixedHeader ? 0 : undefined,
 							lineHeight: fixedHeader ? 0 : undefined,
 							width: width || undefined,

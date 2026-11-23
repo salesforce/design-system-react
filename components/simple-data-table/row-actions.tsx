@@ -103,7 +103,7 @@ const SimpleDataTableRowActions: React.FC<
 			className={classNames({ 'slds-has-focus': hasFocus })}
 			data-label="Actions"
 			onClick={handleClick}
-			style={{ width: '3.25rem' }}
+			style={{ ...cellContext.cornerStyle, width: '3.25rem' }}
 			onFocus={handleFocus}
 			onKeyDown={handleKeyDown}
 			ref={(ref) => {

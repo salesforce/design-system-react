@@ -67,6 +67,11 @@ const SimpleDataTableCell: React.FC<SimpleDataTableCellProps> = (props) => {
 		'slds-has-focus': hasFocus,
 	});
 
+	const style =
+		props.width || cellContext.cornerStyle
+			? { ...cellContext.cornerStyle, width: props.width }
+			: undefined;
+
 	const ref = (node: HTMLTableCellElement | null) => {
 		if (node && hasFocus) {
 			node.focus();
@@ -81,7 +86,7 @@ const SimpleDataTableCell: React.FC<SimpleDataTableCellProps> = (props) => {
 				data-label={props.label}
 				role={tableContext.isGrid ? 'gridcell' : undefined}
 				tabIndex={tabIndex}
-				style={props.width ? { width: props.width } : undefined}
+				style={style}
 				onFocus={handleFocus}
 				onKeyDown={handleKeyDown}
 			>
@@ -98,7 +103,7 @@ const SimpleDataTableCell: React.FC<SimpleDataTableCellProps> = (props) => {
 			onKeyDown={handleKeyDown}
 			ref={ref}
 			role={tableContext.isGrid ? 'gridcell' : undefined}
-			style={props.width ? { width: props.width } : undefined}
+			style={style}
 			tabIndex={tabIndex}
 			headers={props.headerId}
 		>
