@@ -460,7 +460,7 @@ exports[`Story HTML snapshots > BuilderHeader > AfterSuccessfulSave 1`] = `
         </div>
         <div class="slds-builder-toolbar__actions" aria-label="Document Actions">
           <div>
-            <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><span class="slds-color__text_gray-10 slds-align-middle slds-m-right_small" tabindex="0">Saved 5 mins ago</span><span></span></div><button class="slds-button slds-button_neutral" type="button"><svg class="slds-button__icon slds-button__icon_left" aria-hidden="true">
+            <div class="slds-tooltip-trigger" style="display:inline-block;line-height:var(--slds-g-font-line-height-1, 1)"><span class="slds-color__text_gray-10 slds-align-middle slds-m-right_small" tabindex="0">Saved 5 mins ago</span><span></span></div><button class="slds-button slds-button_neutral" type="button"><svg class="slds-button__icon slds-button__icon_left" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#right"></use>
               </svg>Run</button><button class="slds-button slds-button_neutral" type="button">Save As</button><button class="slds-button slds-button_brand" type="button">Save</button>
           </div>
@@ -619,7 +619,7 @@ exports[`Story HTML snapshots > BuilderHeader > FailedSave 1`] = `
         </div>
         <div class="slds-builder-toolbar__actions" aria-label="Document Actions">
           <div>
-            <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button type="button" class="slds-button slds-color__text_gray-10 slds-align-middle slds-m-right_x-small">Saved 45 mins ago</button><span></span></div><button class="slds-button slds-button_icon-container" type="button"><svg class="slds-button__icon slds-icon-text-error" aria-hidden="true">
+            <div class="slds-tooltip-trigger" style="display:inline-block;line-height:var(--slds-g-font-line-height-1, 1)"><button type="button" class="slds-button slds-color__text_gray-10 slds-align-middle slds-m-right_x-small">Saved 45 mins ago</button><span></span></div><button class="slds-button slds-button_icon-container" type="button"><svg class="slds-button__icon slds-icon-text-error" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
               </svg><span class="slds-assistive-text">Error</span></button><button class="slds-button slds-button_neutral" type="button"><svg class="slds-button__icon slds-button__icon_left" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#right"></use>
@@ -2235,7 +2235,7 @@ exports[`Story HTML snapshots > ColorPicker > MenuOpen 1`] = `
                       <fieldset class="slds-form-element">
                         <legend class="slds-form-element__legend slds-form-element__label slds-assistive-text">Toggle Transparency</legend>
                         <div class="slds-form-element__control">
-                          <div style="border:none;border-radius:unset" class="slds-radio_button-group"><span class="slds-radio"><input type="radio" id="color-picker-active-working-color-swatch-color-picker" name="color-picker-color-picker-swatch-toggle-button-group" value="#000000" /><label style="border:1px" class="slds-radio_button__label" for="color-picker-active-working-color-swatch-color-picker"><span><span class="slds-swatch" style="background-color:#000000;border:1px solid var(--slds-g-color-border-2, #9e9e9e);margin-right:2px"><span class="slds-assistive-text">Working Color</span></span></span></label></span><span class="slds-radio"><input type="radio" id="color-picker-transparent-swatch-color-picker" name="color-picker-color-picker-swatch-toggle-button-group" checked="" value="" /><label style="border:1px" class="slds-radio_button__label" for="color-picker-transparent-swatch-color-picker"><span><span class="slds-swatch" style="border:1px solid var(--slds-g-color-border-2, #9e9e9e);box-shadow:var(--slds-g-color-neutral-base-50, rgb(117, 112, 112)) 1px 1px 1px;margin-right:2px;background-image:linear-gradient(-45deg, var(--slds-g-color-surface-1, white) 47%, var(--slds-g-color-error-1, #870500) 0, var(--slds-g-color-error-1, #870500) 53%, var(--slds-g-color-surface-1, white) 0)"><span class="slds-assistive-text">Transparent Swatch</span></span></span></label></span></div>
+                          <div style="border:none;border-radius:unset" class="slds-radio_button-group"><span class="slds-radio"><input type="radio" id="color-picker-active-working-color-swatch-color-picker" name="color-picker-color-picker-swatch-toggle-button-group" value="#000000" /><label style="border:var(--slds-g-sizing-border-1, 1px)" class="slds-radio_button__label" for="color-picker-active-working-color-swatch-color-picker"><span><span class="slds-swatch" style="background-color:#000000;border:1px solid var(--slds-g-color-border-2, #9e9e9e);margin-right:2px"><span class="slds-assistive-text">Working Color</span></span></span></label></span><span class="slds-radio"><input type="radio" id="color-picker-transparent-swatch-color-picker" name="color-picker-color-picker-swatch-toggle-button-group" checked="" value="" /><label style="border:var(--slds-g-sizing-border-1, 1px)" class="slds-radio_button__label" for="color-picker-transparent-swatch-color-picker"><span><span class="slds-swatch" style="border:1px solid var(--slds-g-color-border-2, #9e9e9e);box-shadow:var(--slds-g-color-neutral-base-50, rgb(117, 112, 112)) 1px 1px 1px;margin-right:2px;background-image:linear-gradient(-45deg, var(--slds-g-color-surface-1, white) 47%, var(--slds-g-color-error-1, #870500) 0, var(--slds-g-color-error-1, #870500) 53%, var(--slds-g-color-surface-1, white) 0)"><span class="slds-assistive-text">Transparent Swatch</span></span></span></label></span></div>
                         </div>
                       </fieldset>
                     </div>
@@ -2878,7 +2878,7 @@ exports[`Story HTML snapshots > Combobox > WithInlineHelpTooltip 1`] = `
 "<div class="slds-p-around_medium">
   <div>
     <div class="slds-form-element"><label class="slds-form-element__label" for="inline-help-tooltip">Search</label>
-      <div class="slds-tooltip-trigger slds-form-element__icon" style="display:inline-block;line-height:1;position:static"><button class="slds-button slds-button_icon" type="button" aria-disabled="true"><svg class="slds-button__icon" aria-hidden="true">
+      <div class="slds-tooltip-trigger slds-form-element__icon" style="display:inline-block;line-height:var(--slds-g-font-line-height-1, 1);position:static"><button class="slds-button slds-button_icon" type="button" aria-disabled="true"><svg class="slds-button__icon" aria-hidden="true">
             <use href="/assets/icons/utility-sprite/svg/symbols.svg#info"></use>
           </svg><span class="slds-assistive-text">Help</span></button><span></span></div>
       <div class="slds-form-element__control">
@@ -4107,7 +4107,7 @@ exports[`Story HTML snapshots > Input > ErrorState 1`] = `
 exports[`Story HTML snapshots > Input > FieldLevelHelp 1`] = `
 "<div class="slds-p-around_medium">
   <div class="slds-form-element"><label class="slds-form-element__label" for="field-level-help-input">API Key</label>
-    <div class="slds-tooltip-trigger slds-form-element__icon" style="display:inline-block;line-height:1;position:static"><button class="slds-button slds-button_icon" type="button" aria-disabled="true"><svg class="slds-button__icon" aria-hidden="true">
+    <div class="slds-tooltip-trigger slds-form-element__icon" style="display:inline-block;line-height:var(--slds-g-font-line-height-1, 1);position:static"><button class="slds-button slds-button_icon" type="button" aria-disabled="true"><svg class="slds-button__icon" aria-hidden="true">
           <use href="/assets/icons/utility-sprite/svg/symbols.svg#info"></use>
         </svg><span class="slds-assistive-text">Help</span></button><span></span></div>
     <div class="slds-form-element__control"><input class="slds-input" id="field-level-help-input" placeholder="Enter your API key" type="text" /></div>
@@ -5197,27 +5197,27 @@ exports[`Story HTML snapshots > ProgressIndicator > AllComplete 1`] = `
   <div id="_R_0_" class="slds-progress">
     <ol class="slds-progress__list">
       <li class="slds-progress__item slds-is-completed">
-        <div class="slds-tooltip-trigger" style="line-height:1"><button class="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon" type="button"><svg class="slds-button__icon" aria-hidden="true">
+        <div class="slds-tooltip-trigger" style="line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon" type="button"><svg class="slds-button__icon" aria-hidden="true">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>
             </svg><span class="slds-assistive-text">Step 1: Step 1: Introduction - Completed</span></button><span></span></div>
       </li>
       <li class="slds-progress__item slds-is-completed">
-        <div class="slds-tooltip-trigger" style="line-height:1"><button class="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon" type="button"><svg class="slds-button__icon" aria-hidden="true">
+        <div class="slds-tooltip-trigger" style="line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon" type="button"><svg class="slds-button__icon" aria-hidden="true">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>
             </svg><span class="slds-assistive-text">Step 2: Step 2: Configuration - Completed</span></button><span></span></div>
       </li>
       <li class="slds-progress__item slds-is-completed">
-        <div class="slds-tooltip-trigger" style="line-height:1"><button class="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon" type="button"><svg class="slds-button__icon" aria-hidden="true">
+        <div class="slds-tooltip-trigger" style="line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon" type="button"><svg class="slds-button__icon" aria-hidden="true">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>
             </svg><span class="slds-assistive-text">Step 3: Step 3: Review - Completed</span></button><span></span></div>
       </li>
       <li class="slds-progress__item slds-is-completed">
-        <div class="slds-tooltip-trigger" style="line-height:1"><button class="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon" type="button"><svg class="slds-button__icon" aria-hidden="true">
+        <div class="slds-tooltip-trigger" style="line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon" type="button"><svg class="slds-button__icon" aria-hidden="true">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>
             </svg><span class="slds-assistive-text">Step 4: Step 4: Confirmation - Completed</span></button><span></span></div>
       </li>
       <li class="slds-progress__item slds-is-completed slds-is-active">
-        <div class="slds-tooltip-trigger" style="line-height:1"><button class="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon" aria-current="step" type="button"><svg class="slds-button__icon" aria-hidden="true">
+        <div class="slds-tooltip-trigger" style="line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon" aria-current="step" type="button"><svg class="slds-button__icon" aria-hidden="true">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>
             </svg><span class="slds-assistive-text">Step 5: Step 5: Complete - Completed</span></button><span></span></div>
       </li>
@@ -5232,23 +5232,23 @@ exports[`Story HTML snapshots > ProgressIndicator > Default 1`] = `
   <div id="_R_0_" class="slds-progress">
     <ol class="slds-progress__list">
       <li class="slds-progress__item slds-is-completed">
-        <div class="slds-tooltip-trigger" style="line-height:1"><button class="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon" type="button"><svg class="slds-button__icon" aria-hidden="true">
+        <div class="slds-tooltip-trigger" style="line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon" type="button"><svg class="slds-button__icon" aria-hidden="true">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>
             </svg><span class="slds-assistive-text">Step 1: Step 1: Introduction - Completed</span></button><span></span></div>
       </li>
       <li class="slds-progress__item slds-is-completed">
-        <div class="slds-tooltip-trigger" style="line-height:1"><button class="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon" type="button"><svg class="slds-button__icon" aria-hidden="true">
+        <div class="slds-tooltip-trigger" style="line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon" type="button"><svg class="slds-button__icon" aria-hidden="true">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>
             </svg><span class="slds-assistive-text">Step 2: Step 2: Configuration - Completed</span></button><span></span></div>
       </li>
       <li class="slds-progress__item slds-is-active">
-        <div class="slds-tooltip-trigger" style="display:flex;line-height:1"><button class="slds-button slds-progress__marker" aria-current="step" type="button"><span class="slds-assistive-text">Step 3: Step 3: Review</span></button><span></span></div>
+        <div class="slds-tooltip-trigger" style="display:flex;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-progress__marker" aria-current="step" type="button"><span class="slds-assistive-text">Step 3: Step 3: Review</span></button><span></span></div>
       </li>
       <li class="slds-progress__item">
-        <div class="slds-tooltip-trigger" style="display:flex;line-height:1"><button class="slds-button slds-progress__marker" type="button"><span class="slds-assistive-text">Step 4: Step 4: Confirmation</span></button><span></span></div>
+        <div class="slds-tooltip-trigger" style="display:flex;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-progress__marker" type="button"><span class="slds-assistive-text">Step 4: Step 4: Confirmation</span></button><span></span></div>
       </li>
       <li class="slds-progress__item">
-        <div class="slds-tooltip-trigger" style="display:flex;line-height:1"><button class="slds-button slds-progress__marker" type="button"><span class="slds-assistive-text">Step 5: Step 5: Complete</span></button><span></span></div>
+        <div class="slds-tooltip-trigger" style="display:flex;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-progress__marker" type="button"><span class="slds-assistive-text">Step 5: Step 5: Complete</span></button><span></span></div>
       </li>
     </ol>
     <div class="slds-progress-bar slds-progress-bar_x-small" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" role="progressbar"><span class="slds-progress-bar__value" style="width:50%"><span class="slds-assistive-text">Progress: 50%</span></span></div>
@@ -5262,19 +5262,19 @@ exports[`Story HTML snapshots > ProgressIndicator > Interactive 1`] = `
     <div id="_R_1_" class="slds-progress">
       <ol class="slds-progress__list">
         <li class="slds-progress__item slds-is-active">
-          <div class="slds-tooltip-trigger" style="display:flex;line-height:1"><button class="slds-button slds-progress__marker" aria-current="step" type="button"><span class="slds-assistive-text">Step 1: Step 1: Introduction</span></button><span></span></div>
+          <div class="slds-tooltip-trigger" style="display:flex;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-progress__marker" aria-current="step" type="button"><span class="slds-assistive-text">Step 1: Step 1: Introduction</span></button><span></span></div>
         </li>
         <li class="slds-progress__item">
-          <div class="slds-tooltip-trigger" style="display:flex;line-height:1"><button class="slds-button slds-progress__marker" type="button"><span class="slds-assistive-text">Step 2: Step 2: Configuration</span></button><span></span></div>
+          <div class="slds-tooltip-trigger" style="display:flex;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-progress__marker" type="button"><span class="slds-assistive-text">Step 2: Step 2: Configuration</span></button><span></span></div>
         </li>
         <li class="slds-progress__item">
-          <div class="slds-tooltip-trigger" style="display:flex;line-height:1"><button class="slds-button slds-progress__marker" type="button"><span class="slds-assistive-text">Step 3: Step 3: Review</span></button><span></span></div>
+          <div class="slds-tooltip-trigger" style="display:flex;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-progress__marker" type="button"><span class="slds-assistive-text">Step 3: Step 3: Review</span></button><span></span></div>
         </li>
         <li class="slds-progress__item">
-          <div class="slds-tooltip-trigger" style="display:flex;line-height:1"><button class="slds-button slds-progress__marker" type="button"><span class="slds-assistive-text">Step 4: Step 4: Confirmation</span></button><span></span></div>
+          <div class="slds-tooltip-trigger" style="display:flex;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-progress__marker" type="button"><span class="slds-assistive-text">Step 4: Step 4: Confirmation</span></button><span></span></div>
         </li>
         <li class="slds-progress__item">
-          <div class="slds-tooltip-trigger" style="display:flex;line-height:1"><button class="slds-button slds-progress__marker" type="button"><span class="slds-assistive-text">Step 5: Step 5: Complete</span></button><span></span></div>
+          <div class="slds-tooltip-trigger" style="display:flex;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-progress__marker" type="button"><span class="slds-assistive-text">Step 5: Step 5: Complete</span></button><span></span></div>
         </li>
       </ol>
       <div class="slds-progress-bar slds-progress-bar_x-small" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" role="progressbar"><span class="slds-progress-bar__value" style="width:0%"><span class="slds-assistive-text">Progress: 0%</span></span></div>
@@ -5322,23 +5322,23 @@ exports[`Story HTML snapshots > ProgressIndicator > ModalVariant 1`] = `
   <div id="_R_0_" class="slds-progress slds-progress_shade">
     <ol class="slds-progress__list">
       <li class="slds-progress__item slds-is-completed">
-        <div class="slds-tooltip-trigger" style="line-height:1"><button class="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon" type="button"><svg class="slds-button__icon" aria-hidden="true">
+        <div class="slds-tooltip-trigger" style="line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon" type="button"><svg class="slds-button__icon" aria-hidden="true">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>
             </svg><span class="slds-assistive-text">Step 1: Step 1: Introduction - Completed</span></button><span></span></div>
       </li>
       <li class="slds-progress__item slds-is-completed">
-        <div class="slds-tooltip-trigger" style="line-height:1"><button class="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon" type="button"><svg class="slds-button__icon" aria-hidden="true">
+        <div class="slds-tooltip-trigger" style="line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon" type="button"><svg class="slds-button__icon" aria-hidden="true">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>
             </svg><span class="slds-assistive-text">Step 2: Step 2: Configuration - Completed</span></button><span></span></div>
       </li>
       <li class="slds-progress__item slds-is-active">
-        <div class="slds-tooltip-trigger" style="display:flex;line-height:1"><button class="slds-button slds-progress__marker" aria-current="step" type="button"><span class="slds-assistive-text">Step 3: Step 3: Review</span></button><span></span></div>
+        <div class="slds-tooltip-trigger" style="display:flex;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-progress__marker" aria-current="step" type="button"><span class="slds-assistive-text">Step 3: Step 3: Review</span></button><span></span></div>
       </li>
       <li class="slds-progress__item">
-        <div class="slds-tooltip-trigger" style="display:flex;line-height:1"><button class="slds-button slds-progress__marker" type="button"><span class="slds-assistive-text">Step 4: Step 4: Confirmation</span></button><span></span></div>
+        <div class="slds-tooltip-trigger" style="display:flex;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-progress__marker" type="button"><span class="slds-assistive-text">Step 4: Step 4: Confirmation</span></button><span></span></div>
       </li>
       <li class="slds-progress__item">
-        <div class="slds-tooltip-trigger" style="display:flex;line-height:1"><button class="slds-button slds-progress__marker" type="button"><span class="slds-assistive-text">Step 5: Step 5: Complete</span></button><span></span></div>
+        <div class="slds-tooltip-trigger" style="display:flex;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-progress__marker" type="button"><span class="slds-assistive-text">Step 5: Step 5: Complete</span></button><span></span></div>
       </li>
     </ol>
     <div class="slds-progress-bar slds-progress-bar_x-small" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" role="progressbar"><span class="slds-progress-bar__value" style="width:50%"><span class="slds-assistive-text">Progress: 50%</span></span></div>
@@ -5413,23 +5413,23 @@ exports[`Story HTML snapshots > ProgressIndicator > ShadeVariant 1`] = `
     <div id="_R_0_" class="slds-progress slds-progress_shade">
       <ol class="slds-progress__list">
         <li class="slds-progress__item slds-is-completed">
-          <div class="slds-tooltip-trigger" style="line-height:1"><button class="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon" type="button"><svg class="slds-button__icon" aria-hidden="true">
+          <div class="slds-tooltip-trigger" style="line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon" type="button"><svg class="slds-button__icon" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>
               </svg><span class="slds-assistive-text">Step 1: Step 1: Introduction - Completed</span></button><span></span></div>
         </li>
         <li class="slds-progress__item slds-is-completed">
-          <div class="slds-tooltip-trigger" style="line-height:1"><button class="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon" type="button"><svg class="slds-button__icon" aria-hidden="true">
+          <div class="slds-tooltip-trigger" style="line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon" type="button"><svg class="slds-button__icon" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>
               </svg><span class="slds-assistive-text">Step 2: Step 2: Configuration - Completed</span></button><span></span></div>
         </li>
         <li class="slds-progress__item slds-is-active">
-          <div class="slds-tooltip-trigger" style="display:flex;line-height:1"><button class="slds-button slds-progress__marker" aria-current="step" type="button"><span class="slds-assistive-text">Step 3: Step 3: Review</span></button><span></span></div>
+          <div class="slds-tooltip-trigger" style="display:flex;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-progress__marker" aria-current="step" type="button"><span class="slds-assistive-text">Step 3: Step 3: Review</span></button><span></span></div>
         </li>
         <li class="slds-progress__item">
-          <div class="slds-tooltip-trigger" style="display:flex;line-height:1"><button class="slds-button slds-progress__marker" type="button"><span class="slds-assistive-text">Step 4: Step 4: Confirmation</span></button><span></span></div>
+          <div class="slds-tooltip-trigger" style="display:flex;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-progress__marker" type="button"><span class="slds-assistive-text">Step 4: Step 4: Confirmation</span></button><span></span></div>
         </li>
         <li class="slds-progress__item">
-          <div class="slds-tooltip-trigger" style="display:flex;line-height:1"><button class="slds-button slds-progress__marker" type="button"><span class="slds-assistive-text">Step 5: Step 5: Complete</span></button><span></span></div>
+          <div class="slds-tooltip-trigger" style="display:flex;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-progress__marker" type="button"><span class="slds-assistive-text">Step 5: Step 5: Complete</span></button><span></span></div>
         </li>
       </ol>
       <div class="slds-progress-bar slds-progress-bar_x-small" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" role="progressbar"><span class="slds-progress-bar__value" style="width:50%"><span class="slds-assistive-text">Progress: 50%</span></span></div>
@@ -5471,21 +5471,21 @@ exports[`Story HTML snapshots > ProgressIndicator > WithDisabledSteps 1`] = `
   <div id="_R_0_" class="slds-progress">
     <ol class="slds-progress__list">
       <li class="slds-progress__item slds-is-completed">
-        <div class="slds-tooltip-trigger" style="line-height:1"><button class="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon" type="button"><svg class="slds-button__icon" aria-hidden="true">
+        <div class="slds-tooltip-trigger" style="line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon" type="button"><svg class="slds-button__icon" aria-hidden="true">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>
             </svg><span class="slds-assistive-text">Step 1: Step 1: Introduction - Completed</span></button><span></span></div>
       </li>
       <li class="slds-progress__item slds-is-active">
-        <div class="slds-tooltip-trigger" style="display:flex;line-height:1"><button class="slds-button slds-progress__marker" aria-current="step" type="button"><span class="slds-assistive-text">Step 2: Step 2: Configuration</span></button><span></span></div>
+        <div class="slds-tooltip-trigger" style="display:flex;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-progress__marker" aria-current="step" type="button"><span class="slds-assistive-text">Step 2: Step 2: Configuration</span></button><span></span></div>
       </li>
       <li class="slds-progress__item">
-        <div class="slds-tooltip-trigger" style="display:flex;line-height:1"><button class="slds-button slds-progress__marker" type="button"><span class="slds-assistive-text">Step 3: Step 3: Review</span></button><span></span></div>
+        <div class="slds-tooltip-trigger" style="display:flex;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-progress__marker" type="button"><span class="slds-assistive-text">Step 3: Step 3: Review</span></button><span></span></div>
       </li>
       <li class="slds-progress__item">
-        <div class="slds-tooltip-trigger" style="display:flex;line-height:1"><a class="slds-button slds-progress__marker slds-is-disabled" aria-disabled="true" style="cursor:not-allowed" tabindex="0" role="button"><span class="slds-assistive-text">Step 4: Step 4: Confirmation- Disabled</span></a><span></span></div>
+        <div class="slds-tooltip-trigger" style="display:flex;line-height:var(--slds-g-font-line-height-1, 1)"><a class="slds-button slds-progress__marker slds-is-disabled" aria-disabled="true" style="cursor:not-allowed" tabindex="0" role="button"><span class="slds-assistive-text">Step 4: Step 4: Confirmation- Disabled</span></a><span></span></div>
       </li>
       <li class="slds-progress__item">
-        <div class="slds-tooltip-trigger" style="display:flex;line-height:1"><a class="slds-button slds-progress__marker slds-is-disabled" aria-disabled="true" style="cursor:not-allowed" tabindex="0" role="button"><span class="slds-assistive-text">Step 5: Step 5: Complete- Disabled</span></a><span></span></div>
+        <div class="slds-tooltip-trigger" style="display:flex;line-height:var(--slds-g-font-line-height-1, 1)"><a class="slds-button slds-progress__marker slds-is-disabled" aria-disabled="true" style="cursor:not-allowed" tabindex="0" role="button"><span class="slds-assistive-text">Step 5: Step 5: Complete- Disabled</span></a><span></span></div>
       </li>
     </ol>
     <div class="slds-progress-bar slds-progress-bar_x-small" aria-valuemin="0" aria-valuemax="100" aria-valuenow="25" role="progressbar"><span class="slds-progress-bar__value" style="width:25%"><span class="slds-assistive-text">Progress: 25%</span></span></div>
@@ -5498,25 +5498,25 @@ exports[`Story HTML snapshots > ProgressIndicator > WithError 1`] = `
   <div id="_R_0_" class="slds-progress">
     <ol class="slds-progress__list">
       <li class="slds-progress__item slds-is-completed">
-        <div class="slds-tooltip-trigger" style="line-height:1"><button class="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon" type="button"><svg class="slds-button__icon" aria-hidden="true">
+        <div class="slds-tooltip-trigger" style="line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon" type="button"><svg class="slds-button__icon" aria-hidden="true">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>
             </svg><span class="slds-assistive-text">Step 1: Step 1: Introduction - Completed</span></button><span></span></div>
       </li>
       <li class="slds-progress__item slds-is-completed">
-        <div class="slds-tooltip-trigger" style="line-height:1"><button class="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon" type="button"><svg class="slds-button__icon" aria-hidden="true">
+        <div class="slds-tooltip-trigger" style="line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon" type="button"><svg class="slds-button__icon" aria-hidden="true">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>
             </svg><span class="slds-assistive-text">Step 2: Step 2: Configuration - Completed</span></button><span></span></div>
       </li>
       <li class="slds-progress__item slds-has-error">
-        <div class="slds-tooltip-trigger" style="line-height:1"><button class="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon" aria-current="step" type="button"><svg class="slds-button__icon" aria-hidden="true">
+        <div class="slds-tooltip-trigger" style="line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon" aria-current="step" type="button"><svg class="slds-button__icon" aria-hidden="true">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
             </svg><span class="slds-assistive-text">Step 3: Step 3: Review - Error</span></button><span></span></div>
       </li>
       <li class="slds-progress__item">
-        <div class="slds-tooltip-trigger" style="display:flex;line-height:1"><button class="slds-button slds-progress__marker" type="button"><span class="slds-assistive-text">Step 4: Step 4: Confirmation</span></button><span></span></div>
+        <div class="slds-tooltip-trigger" style="display:flex;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-progress__marker" type="button"><span class="slds-assistive-text">Step 4: Step 4: Confirmation</span></button><span></span></div>
       </li>
       <li class="slds-progress__item">
-        <div class="slds-tooltip-trigger" style="display:flex;line-height:1"><button class="slds-button slds-progress__marker" type="button"><span class="slds-assistive-text">Step 5: Step 5: Complete</span></button><span></span></div>
+        <div class="slds-tooltip-trigger" style="display:flex;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-progress__marker" type="button"><span class="slds-assistive-text">Step 5: Step 5: Complete</span></button><span></span></div>
       </li>
     </ol>
     <div class="slds-progress-bar slds-progress-bar_x-small" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" role="progressbar"><span class="slds-progress-bar__value" style="width:50%"><span class="slds-assistive-text">Progress: 50%</span></span></div>
@@ -10858,84 +10858,84 @@ exports[`Story HTML snapshots > Tooltip > AllAlignments 1`] = `
 "<div class="slds-p-around_medium slds-m-horizontal_x-large" style="margin:150px auto;width:500px">
   <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:60px;padding:80px">
     <div style="text-align:center">
-      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_neutral" type="button" aria-describedby="tooltip-top">top</button>
+      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_neutral" type="button" aria-describedby="tooltip-top">top</button>
         <div class="absolute-positioned slds-nubbin_bottom slds-popover slds-popover_tooltip" style="outline:0;position:absolute;pointer-events:none" role="tooltip" id="tooltip-top">
           <div class="slds-popover__body">Aligned: top</div>
         </div>
       </div>
     </div>
     <div style="text-align:center">
-      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_neutral" type="button" aria-describedby="tooltip-top-left">top left</button>
+      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_neutral" type="button" aria-describedby="tooltip-top-left">top left</button>
         <div class="absolute-positioned slds-nubbin_bottom-left slds-popover slds-popover_tooltip" style="outline:0;position:absolute;pointer-events:none" role="tooltip" id="tooltip-top-left">
           <div class="slds-popover__body">Aligned: top left</div>
         </div>
       </div>
     </div>
     <div style="text-align:center">
-      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_neutral" type="button" aria-describedby="tooltip-top-right">top right</button>
+      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_neutral" type="button" aria-describedby="tooltip-top-right">top right</button>
         <div class="absolute-positioned slds-nubbin_bottom-right slds-popover slds-popover_tooltip" style="outline:0;position:absolute;pointer-events:none" role="tooltip" id="tooltip-top-right">
           <div class="slds-popover__body">Aligned: top right</div>
         </div>
       </div>
     </div>
     <div style="text-align:center">
-      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_neutral" type="button" aria-describedby="tooltip-right">right</button>
+      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_neutral" type="button" aria-describedby="tooltip-right">right</button>
         <div class="absolute-positioned slds-nubbin_left slds-popover slds-popover_tooltip" style="outline:0;position:absolute;pointer-events:none" role="tooltip" id="tooltip-right">
           <div class="slds-popover__body">Aligned: right</div>
         </div>
       </div>
     </div>
     <div style="text-align:center">
-      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_neutral" type="button" aria-describedby="tooltip-right-top">right top</button>
+      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_neutral" type="button" aria-describedby="tooltip-right-top">right top</button>
         <div class="absolute-positioned slds-nubbin_left-top slds-popover slds-popover_tooltip" style="outline:0;position:absolute;pointer-events:none" role="tooltip" id="tooltip-right-top">
           <div class="slds-popover__body">Aligned: right top</div>
         </div>
       </div>
     </div>
     <div style="text-align:center">
-      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_neutral" type="button" aria-describedby="tooltip-right-bottom">right bottom</button>
+      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_neutral" type="button" aria-describedby="tooltip-right-bottom">right bottom</button>
         <div class="absolute-positioned slds-nubbin_left-bottom slds-popover slds-popover_tooltip" style="outline:0;position:absolute;pointer-events:none" role="tooltip" id="tooltip-right-bottom">
           <div class="slds-popover__body">Aligned: right bottom</div>
         </div>
       </div>
     </div>
     <div style="text-align:center">
-      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_neutral" type="button" aria-describedby="tooltip-bottom">bottom</button>
+      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_neutral" type="button" aria-describedby="tooltip-bottom">bottom</button>
         <div class="absolute-positioned slds-nubbin_top slds-popover slds-popover_tooltip" style="outline:0;position:absolute;pointer-events:none" role="tooltip" id="tooltip-bottom">
           <div class="slds-popover__body">Aligned: bottom</div>
         </div>
       </div>
     </div>
     <div style="text-align:center">
-      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_neutral" type="button" aria-describedby="tooltip-bottom-left">bottom left</button>
+      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_neutral" type="button" aria-describedby="tooltip-bottom-left">bottom left</button>
         <div class="absolute-positioned slds-nubbin_top-left slds-popover slds-popover_tooltip" style="outline:0;position:absolute;pointer-events:none" role="tooltip" id="tooltip-bottom-left">
           <div class="slds-popover__body">Aligned: bottom left</div>
         </div>
       </div>
     </div>
     <div style="text-align:center">
-      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_neutral" type="button" aria-describedby="tooltip-bottom-right">bottom right</button>
+      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_neutral" type="button" aria-describedby="tooltip-bottom-right">bottom right</button>
         <div class="absolute-positioned slds-nubbin_top-right slds-popover slds-popover_tooltip" style="outline:0;position:absolute;pointer-events:none" role="tooltip" id="tooltip-bottom-right">
           <div class="slds-popover__body">Aligned: bottom right</div>
         </div>
       </div>
     </div>
     <div style="text-align:center">
-      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_neutral" type="button" aria-describedby="tooltip-left">left</button>
+      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_neutral" type="button" aria-describedby="tooltip-left">left</button>
         <div class="absolute-positioned slds-nubbin_right slds-popover slds-popover_tooltip" style="outline:0;position:absolute;pointer-events:none" role="tooltip" id="tooltip-left">
           <div class="slds-popover__body">Aligned: left</div>
         </div>
       </div>
     </div>
     <div style="text-align:center">
-      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_neutral" type="button" aria-describedby="tooltip-left-top">left top</button>
+      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_neutral" type="button" aria-describedby="tooltip-left-top">left top</button>
         <div class="absolute-positioned slds-nubbin_right-top slds-popover slds-popover_tooltip" style="outline:0;position:absolute;pointer-events:none" role="tooltip" id="tooltip-left-top">
           <div class="slds-popover__body">Aligned: left top</div>
         </div>
       </div>
     </div>
     <div style="text-align:center">
-      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_neutral" type="button" aria-describedby="tooltip-left-bottom">left bottom</button>
+      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_neutral" type="button" aria-describedby="tooltip-left-bottom">left bottom</button>
         <div class="absolute-positioned slds-nubbin_right-bottom slds-popover slds-popover_tooltip" style="outline:0;position:absolute;pointer-events:none" role="tooltip" id="tooltip-left-bottom">
           <div class="slds-popover__body">Aligned: left bottom</div>
         </div>
@@ -10947,7 +10947,7 @@ exports[`Story HTML snapshots > Tooltip > AllAlignments 1`] = `
 
 exports[`Story HTML snapshots > Tooltip > AnchoredNubbin 1`] = `
 "<div class="slds-p-around_medium slds-m-horizontal_x-large" style="margin:150px auto;width:500px">
-  <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1">
+  <div class="slds-tooltip-trigger" style="display:inline-block;line-height:var(--slds-g-font-line-height-1, 1)">
     <div style="height:0;position:relative;width:0;left:0px;top:0px">
       <div style="background-color:var(--slds-c-tooltip-color-background, var(--slds-g-color-surface-inverse-1, #16325c));content:&quot;&quot;;height:1rem;position:absolute;transform:rotate(45deg);width:1rem;left:-8px;top:3px"></div>
     </div><button class="slds-button slds-button_neutral" type="button" aria-describedby="_R_0_">Anchored Nubbin</button>
@@ -10962,20 +10962,20 @@ exports[`Story HTML snapshots > Tooltip > Controlled 1`] = `
 "<div class="slds-p-around_medium slds-m-horizontal_x-large" style="margin:150px auto;width:500px">
   <div>
     <div style="margin-bottom:20px"><button class="slds-button slds-button_neutral" type="button">Show Tooltip</button></div>
-    <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_neutral" type="button">Controlled Tooltip</button><span></span></div>
+    <div class="slds-tooltip-trigger" style="display:inline-block;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_neutral" type="button">Controlled Tooltip</button><span></span></div>
   </div>
 </div>"
 `;
 
 exports[`Story HTML snapshots > Tooltip > Default 1`] = `
 "<div class="slds-p-around_medium slds-m-horizontal_x-large" style="margin:150px auto;width:500px">
-  <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_neutral" type="button">Hover Me</button><span></span></div>
+  <div class="slds-tooltip-trigger" style="display:inline-block;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_neutral" type="button">Hover Me</button><span></span></div>
 </div>"
 `;
 
 exports[`Story HTML snapshots > Tooltip > DefaultTrigger 1`] = `
 "<div class="slds-p-around_medium slds-m-horizontal_x-large" style="margin:150px auto;width:500px">
-  <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_icon" type="button" aria-disabled="true"><svg class="slds-button__icon" aria-hidden="true">
+  <div class="slds-tooltip-trigger" style="display:inline-block;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_icon" type="button" aria-disabled="true"><svg class="slds-button__icon" aria-hidden="true">
         <use href="/assets/icons/utility-sprite/svg/symbols.svg#info"></use>
       </svg><span class="slds-assistive-text">Help</span></button><span></span></div>
 </div>"
@@ -10983,7 +10983,7 @@ exports[`Story HTML snapshots > Tooltip > DefaultTrigger 1`] = `
 
 exports[`Story HTML snapshots > Tooltip > ErrorTheme 1`] = `
 "<div class="slds-p-around_medium slds-m-horizontal_x-large" style="margin:150px auto;width:500px">
-  <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_destructive" type="button" aria-describedby="_R_0_">Error Theme</button>
+  <div class="slds-tooltip-trigger" style="display:inline-block;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_destructive" type="button" aria-describedby="_R_0_">Error Theme</button>
     <div class="absolute-positioned slds-nubbin_top slds-popover slds-popover_tooltip slds-theme_error" style="outline:0;position:absolute;pointer-events:none" role="tooltip" id="_R_0_">
       <div class="slds-popover__body slds-text-color_inverse">This is an error/warning tooltip</div>
     </div>
@@ -10995,22 +10995,22 @@ exports[`Story HTML snapshots > Tooltip > IconVariants 1`] = `
 "<div class="slds-p-around_medium slds-m-horizontal_x-large" style="margin:150px auto;width:500px">
   <div class="slds-grid slds-gutters_small slds-grid_vertical-align-center">
     <div class="slds-col slds-p-around_x-small">
-      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_icon" type="button" aria-disabled="true"><svg class="slds-button__icon" aria-hidden="true">
+      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_icon" type="button" aria-disabled="true"><svg class="slds-button__icon" aria-hidden="true">
             <use href="/assets/icons/utility-sprite/svg/symbols.svg#info"></use>
           </svg><span class="slds-assistive-text">Help</span></button><span></span></div> bare
     </div>
     <div class="slds-col slds-p-around_x-small">
-      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_icon" type="button" aria-disabled="true"><svg class="slds-button__icon slds-icon-text-warning" aria-hidden="true">
+      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_icon" type="button" aria-disabled="true"><svg class="slds-button__icon slds-icon-text-warning" aria-hidden="true">
             <use href="/assets/icons/utility-sprite/svg/symbols.svg#info"></use>
           </svg><span class="slds-assistive-text">Help</span></button><span></span></div> warning
     </div>
     <div class="slds-col slds-p-around_x-small">
-      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_icon" type="button" aria-disabled="true"><svg class="slds-button__icon slds-icon-text-error" aria-hidden="true">
+      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_icon" type="button" aria-disabled="true"><svg class="slds-button__icon slds-icon-text-error" aria-hidden="true">
             <use href="/assets/icons/utility-sprite/svg/symbols.svg#info"></use>
           </svg><span class="slds-assistive-text">Help</span></button><span></span></div> error
     </div>
     <div class="slds-col slds-theme_inverse slds-p-around_x-small">
-      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_icon slds-button_icon-inverse slds-button_icon-bare" type="button" aria-disabled="true"><svg class="slds-button__icon" aria-hidden="true">
+      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_icon slds-button_icon-inverse slds-button_icon-bare" type="button" aria-disabled="true"><svg class="slds-button__icon" aria-hidden="true">
             <use href="/assets/icons/utility-sprite/svg/symbols.svg#info"></use>
           </svg><span class="slds-assistive-text">Help</span></button><span></span></div> inverse
     </div>
@@ -11022,17 +11022,17 @@ exports[`Story HTML snapshots > Tooltip > InButtonGroup 1`] = `
 "<div class="slds-p-around_medium slds-m-horizontal_x-large" style="margin:150px auto;width:500px">
   <ul class="slds-button-group-list" id="_R_0_">
     <li>
-      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_icon-border" type="button"><svg class="slds-button__icon" aria-hidden="true">
+      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_icon-border" type="button"><svg class="slds-button__icon" aria-hidden="true">
             <use href="/assets/icons/utility-sprite/svg/symbols.svg#edit"></use>
           </svg><span class="slds-assistive-text">Edit</span></button><span></span></div>
     </li>
     <li>
-      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_icon-border" type="button"><svg class="slds-button__icon" aria-hidden="true">
+      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_icon-border" type="button"><svg class="slds-button__icon" aria-hidden="true">
             <use href="/assets/icons/utility-sprite/svg/symbols.svg#delete"></use>
           </svg><span class="slds-assistive-text">Delete</span></button><span></span></div>
     </li>
     <li>
-      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_icon-border" type="button"><svg class="slds-button__icon" aria-hidden="true">
+      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_icon-border" type="button"><svg class="slds-button__icon" aria-hidden="true">
             <use href="/assets/icons/utility-sprite/svg/symbols.svg#refresh"></use>
           </svg><span class="slds-assistive-text">Refresh</span></button><span></span></div>
     </li>
@@ -11042,7 +11042,7 @@ exports[`Story HTML snapshots > Tooltip > InButtonGroup 1`] = `
 
 exports[`Story HTML snapshots > Tooltip > InfoTheme 1`] = `
 "<div class="slds-p-around_medium slds-m-horizontal_x-large" style="margin:150px auto;width:500px">
-  <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_neutral" type="button" aria-describedby="_R_0_">Info Theme</button>
+  <div class="slds-tooltip-trigger" style="display:inline-block;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_neutral" type="button" aria-describedby="_R_0_">Info Theme</button>
     <div class="absolute-positioned slds-nubbin_top slds-popover slds-popover_tooltip" style="outline:0;position:absolute;pointer-events:none" role="tooltip" id="_R_0_">
       <div class="slds-popover__body">This is an informational tooltip</div>
     </div>
@@ -11052,7 +11052,7 @@ exports[`Story HTML snapshots > Tooltip > InfoTheme 1`] = `
 
 exports[`Story HTML snapshots > Tooltip > LearnMore 1`] = `
 "<div class="slds-p-around_medium slds-m-horizontal_x-large" style="margin:150px auto;width:500px">
-  <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><a href="#"><span><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+  <div class="slds-tooltip-trigger" style="display:inline-block;line-height:var(--slds-g-font-line-height-1, 1)"><a href="#"><span><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
           <use href="/assets/icons/utility-sprite/svg/symbols.svg#info"></use>
         </svg><span class="slds-assistive-text">Help</span></span></a><span></span></div>
 </div>"
@@ -11060,7 +11060,7 @@ exports[`Story HTML snapshots > Tooltip > LearnMore 1`] = `
 
 exports[`Story HTML snapshots > Tooltip > Open 1`] = `
 "<div class="slds-p-around_medium slds-m-horizontal_x-large" style="margin:150px auto;width:500px">
-  <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_neutral" type="button" aria-describedby="tooltip-open">Trigger Tooltip</button>
+  <div class="slds-tooltip-trigger" style="display:inline-block;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_neutral" type="button" aria-describedby="tooltip-open">Trigger Tooltip</button>
     <div class="absolute-positioned slds-nubbin_top slds-popover slds-popover_tooltip dialog-classname" style="outline:0;position:absolute;pointer-events:none" role="tooltip" id="tooltip-open">
       <div class="slds-popover__body">Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.</div>
     </div>
@@ -11070,13 +11070,13 @@ exports[`Story HTML snapshots > Tooltip > Open 1`] = `
 
 exports[`Story HTML snapshots > Tooltip > WithDelay 1`] = `
 "<div class="slds-p-around_medium slds-m-horizontal_x-large" style="margin:150px auto;width:500px">
-  <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_neutral" type="button">Hover (500ms delay)</button><span></span></div>
+  <div class="slds-tooltip-trigger" style="display:inline-block;line-height:var(--slds-g-font-line-height-1, 1)"><button class="slds-button slds-button_neutral" type="button">Hover (500ms delay)</button><span></span></div>
 </div>"
 `;
 
 exports[`Story HTML snapshots > Tooltip > WithIconTrigger 1`] = `
 "<div class="slds-p-around_medium slds-m-horizontal_x-large" style="margin:150px auto;width:500px">
-  <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><span class="slds-icon_container slds-icon-standard-case"><svg class="slds-icon slds-icon_small" aria-hidden="true">
+  <div class="slds-tooltip-trigger" style="display:inline-block;line-height:var(--slds-g-font-line-height-1, 1)"><span class="slds-icon_container slds-icon-standard-case"><svg class="slds-icon slds-icon_small" aria-hidden="true">
         <use href="/assets/icons/standard-sprite/svg/symbols.svg#case"></use>
       </svg><span class="slds-assistive-text">Case Icon</span></span>
     <div class="absolute-positioned slds-nubbin_left slds-popover slds-popover_tooltip" style="outline:0;position:absolute;pointer-events:none" role="tooltip" id="_R_0_">
@@ -11088,7 +11088,7 @@ exports[`Story HTML snapshots > Tooltip > WithIconTrigger 1`] = `
 
 exports[`Story HTML snapshots > Tooltip > WithSpanTrigger 1`] = `
 "<div class="slds-p-around_medium slds-m-horizontal_x-large" style="margin:150px auto;width:500px">
-  <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><span tabindex="0" style="text-decoration:underline;cursor:help" aria-describedby="_R_0_">Hover over this text</span>
+  <div class="slds-tooltip-trigger" style="display:inline-block;line-height:var(--slds-g-font-line-height-1, 1)"><span tabindex="0" style="text-decoration:underline;cursor:help" aria-describedby="_R_0_">Hover over this text</span>
     <div class="absolute-positioned slds-nubbin_top slds-popover slds-popover_tooltip" style="outline:0;position:absolute;pointer-events:none" role="tooltip" id="_R_0_">
       <div class="slds-popover__body">You can use any focusable element as a trigger</div>
     </div>

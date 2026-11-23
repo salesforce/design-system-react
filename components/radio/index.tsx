@@ -328,7 +328,7 @@ const Radio = (props: RadioProps): React.ReactElement => {
 	if (variant === 'swatch') {
 		radioLabel = (
 			<label
-				style={{ border: '1px' }}
+				style={{ border: 'var(--slds-g-sizing-border-1, 1px)' }}
 				className="slds-radio_button__label"
 				htmlFor={id}
 			>
