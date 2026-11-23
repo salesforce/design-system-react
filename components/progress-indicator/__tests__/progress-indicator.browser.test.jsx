@@ -2,8 +2,6 @@ import { render, act, screen } from '@testing-library/react';
 import { page, userEvent } from 'vitest/browser';
 import { afterEach, describe, it, expect } from 'vitest';
 
-import '@salesforce-ux/design-system-2/dist/css/bundled/slds2.lightning-blue.css';
-
 import ProgressIndicator from '../';
 import IconSettings from '../../icon-settings';
 

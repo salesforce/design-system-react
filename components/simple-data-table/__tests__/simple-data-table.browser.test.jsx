@@ -1,8 +1,6 @@
 import { render } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
 
-import '@salesforce-ux/design-system-2/dist/css/bundled/slds2.lightning-blue.css';
-
 import SimpleDataTable from '../';
 import SimpleDataTableColumn from '../column';
 import IconSettings from '../../icon-settings';
