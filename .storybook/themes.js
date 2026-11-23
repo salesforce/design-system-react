@@ -29,4 +29,4 @@ export const THEMES = {
 	},
 };
 
-export const DEFAULT_THEME = 'lightning-blue';
+export const DEFAULT_THEME = 'cosmos';
