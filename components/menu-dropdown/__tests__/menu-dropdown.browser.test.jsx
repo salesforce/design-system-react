@@ -433,7 +433,7 @@ describe('MenuDropdown tooltipMenuItem (browser)', () => {
 	// The tooltip sizes against its trigger wrapper; a 0-width wrapper wrapped
 	// "Just a friendly tooltip" onto three lines.
 	it('fits short tooltip content on one line', async () => {
-		const { container } = renderMenu();
+		const { container } = renderTooltipMenu();
 		fireEvent.mouseEnter(getLink(container, 1));
 		const body = await waitFor(() => {
 			const el = document.querySelector(
