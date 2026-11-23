@@ -37,7 +37,13 @@ export const Base: Story = {
 
 export const BaseWithStencil: Story = {
 	name: 'Base with stencil',
-	render: () => <DefaultExample action={action} loadingStencil />,
+	render: () => (
+		<DefaultExample
+			action={action}
+			nodes={sampleNodesDynamicHashMap.loading.nodes}
+			initialExpandedIds={sampleNodesDynamicHashMap.loading.expandedIds}
+		/>
+	),
 };
 
 export const InitialExpandedSelected: Story = {
