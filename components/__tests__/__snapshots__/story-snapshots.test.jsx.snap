@@ -10620,6 +10620,29 @@ exports[`Story HTML snapshots > Tabs > WithDisabledTab 1`] = `
 </div>"
 `;
 
+exports[`Story HTML snapshots > Tabs > WithErrorTab 1`] = `
+"<div class="slds-p-around_medium" style="max-width:800px">
+  <div id="_R_0_" class="slds-tabs_default" data-tabs="true">
+    <ul id="_R_0_-slds-tabs__nav" class="slds-tabs_default__nav" role="tablist">
+      <li class="slds-is-active slds-tabs_default__item" role="presentation" id="_R_0_-slds-tabs_tab-0" title="Details"><a class="slds-is-active slds-tabs_default__link" href="#" role="tab" tabindex="0" aria-controls="_R_0_-slds-tabs_panel-0" aria-selected="true">Details</a></li>
+      <li class="slds-tabs_default__item" role="presentation" id="_R_0_-slds-tabs_tab-1" title="Billing"><a class="slds-tabs_default__link" href="#" role="tab" tabindex="-1" aria-controls="_R_0_-slds-tabs_panel-1" aria-selected="false">Billing<span class="slds-tabs__right-icon"><span class="slds-icon_container" title="This item has an error"><svg class="slds-icon slds-icon_x-small slds-icon-text-error" aria-hidden="true">
+                <use href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+              </svg><span class="slds-assistive-text">This item has an error</span></span></span></a></li>
+      <li class="slds-tabs_default__item" role="presentation" id="_R_0_-slds-tabs_tab-2" title="Notes"><a class="slds-tabs_default__link" href="#" role="tab" tabindex="-1" aria-controls="_R_0_-slds-tabs_panel-2" aria-selected="false">Notes</a></li>
+    </ul>
+    <div aria-labelledby="_R_0_-slds-tabs_tab-0" class="slds-show slds-tabs_default__content" id="_R_0_-slds-tabs_panel-0" role="tabpanel">
+      <p>This tab has no errors.</p>
+    </div>
+    <div aria-labelledby="_R_0_-slds-tabs_tab-1" class="slds-hide slds-tabs_default__content" id="_R_0_-slds-tabs_panel-1" role="tabpanel">
+      <p>This tab has an error.</p>
+    </div>
+    <div aria-labelledby="_R_0_-slds-tabs_tab-2" class="slds-hide slds-tabs_default__content" id="_R_0_-slds-tabs_panel-2" role="tabpanel">
+      <p>This tab has no errors.</p>
+    </div>
+  </div>
+</div>"
+`;
+
 exports[`Story HTML snapshots > Textarea > AssistiveTextOnly 1`] = `
 "<div class="slds-p-around_medium">
   <div class="slds-form-element"><label class="slds-form-element__label slds-assistive-text" for="textarea-assistive">This label is only visible to screen readers</label>
