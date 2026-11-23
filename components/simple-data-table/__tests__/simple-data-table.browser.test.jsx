@@ -37,3 +37,33 @@ describe('SLDSSimpleDataTable fixedLayout header (browser)', () => {
 		expect(th.getBoundingClientRect().height).toBe(32);
 	});
 });
+
+// Regression: SLDS 2 has no `slds-table_header-hidden`. The header must stay
+// visually hidden (via `slds-assistive-text` on the thead) but remain in the
+// accessibility tree. SLDS 2 draws the bordered table as a rounded box, so the
+// headless table keeps its top border; dropping it (as SLDS 1's class did)
+// leaves the rounded top corners open.
+describe('SLDSSimpleDataTable isHeadless (browser)', () => {
+	it('visually hides the header but keeps it accessible', () => {
+		const { container, getAllByRole } = renderTable({ isHeadless: true });
+		const table = container.querySelector('table');
+		const thead = container.querySelector('thead');
+
+		expect(table).not.toHaveClass('slds-table_header-hidden');
+		expect(thead).toHaveClass('slds-assistive-text');
+		expect(thead.getBoundingClientRect().height).toBeLessThanOrEqual(1);
+		expect(getComputedStyle(thead).position).toBe('absolute');
+		expect(getAllByRole('columnheader').map((th) => th.textContent)).toEqual(
+			expect.arrayContaining(['Name', 'Stage'])
+		);
+	});
+
+	it('keeps the rounded border box closed at the top', () => {
+		const { container } = renderTable({ isHeadless: true });
+		const style = getComputedStyle(container.querySelector('table'));
+
+		expect(style.borderTopWidth).toBe('1px');
+		expect(style.borderTopLeftRadius).not.toBe('0px');
+		expect(style.borderTopRightRadius).not.toBe('0px');
+	});
+});

@@ -7315,7 +7315,7 @@ exports[`Story HTML snapshots > SimpleDataTable > BasicFluidLayoutDefault 1`] = 
 exports[`Story HTML snapshots > SimpleDataTable > BasicFluidLayoutHeadless 1`] = `
 "<div class="slds-p-around_medium">
   <div style="overflow:auto">
-    <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_header-hidden" id="SimpleDataTableExample-headless">
+    <table class="slds-table slds-table_bordered slds-table_cell-buffer" id="SimpleDataTableExample-headless">
       <thead class="slds-assistive-text">
         <tr class="slds-line-height_reset">
           <th id="SimpleDataTableExample-headless-opportunityName-th" aria-label="Opportunity Name" aria-sort="none" class="" scope="col">
