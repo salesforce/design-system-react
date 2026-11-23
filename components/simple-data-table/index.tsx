@@ -902,7 +902,6 @@ class SimpleDataTable extends React.Component<
 								'slds-table_striped': this.props.striped,
 								'slds-table_col-bordered': this.props.columnBordered,
 								'slds-no-row-hover': this.props.noRowHover,
-								'slds-table_header-hidden': this.props.isHeadless,
 							},
 							this.props.className
 						)}
