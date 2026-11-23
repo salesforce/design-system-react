@@ -85,7 +85,7 @@ const CarouselItem = ({
 					onClick={handleOnClick}
 					onFocus={onFocus}
 					style={{
-						backgroundColor: 'white',
+						backgroundColor: 'var(--slds-g-color-surface-1, white)',
 						width: '100%',
 					}}
 					tabIndex={isInCurrentPanel ? 0 : -1}
