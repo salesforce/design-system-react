@@ -11,6 +11,11 @@ import InteractiveElement from '../interactive-element';
 import CellContext from './cell-context';
 import TableContext from './table-context';
 import useContextHelper from './context-helper';
+import {
+	getCornerRowStyle,
+	getCornerStyle,
+	inheritRadius,
+} from './corner-style';
 
 import type {
 	SimpleDataTableAssistiveText,
@@ -27,6 +32,7 @@ const InteractiveCheckbox = InteractiveElement(
 interface ActionsHeaderProps {
 	assistiveText?: string;
 	columnIndex: number;
+	cornerStyle?: React.CSSProperties;
 	fixedLayout?: boolean;
 	fixedHeader?: boolean;
 	headerRefs?: (
@@ -64,6 +70,7 @@ const ActionsHeader: React.FC<ActionsHeaderProps> = (props) => {
 			}}
 			scope="col"
 			style={{
+				...props.cornerStyle,
 				height: fixedHeader ? 0 : undefined,
 				lineHeight: fixedHeader ? 0 : undefined,
 				width: '3.25rem',
@@ -102,6 +109,7 @@ interface SelectHeaderProps {
 		selectRowGroup?: string;
 	};
 	canSelectRows?: boolean | 'checkbox' | 'radio';
+	cornerStyle?: React.CSSProperties;
 	fixedHeader?: boolean;
 	fixedLayout?: boolean;
 	headerRefs?: (
@@ -190,6 +198,7 @@ const SelectHeader: React.FC<SelectHeaderProps> = (props) => {
 			}}
 			scope="col"
 			style={{
+				...props.cornerStyle,
 				height: fixedHeader ? 0 : undefined,
 				lineHeight: fixedHeader ? 0 : undefined,
 				width: '3.25rem',
@@ -236,6 +245,8 @@ export interface SimpleDataTableHeadProps {
 		index: 'action' | 'select' | number
 	) => void;
 	isHidden?: boolean;
+	/** The table has no body rows, so the header row is also its last row */
+	isOnlyRow?: boolean;
 	indeterminateSelected?: boolean;
 	canSelectRows?: boolean | 'checkbox' | 'radio';
 	columns?: SimpleDataTableColumnConfig[];
@@ -254,6 +265,17 @@ export interface SimpleDataTableHeadProps {
  * Used internally, provides header row rendering to the SimpleDataTable.
  */
 const SimpleDataTableHead: React.FC<SimpleDataTableHeadProps> = (props) => {
+	// A hidden header is out of the layout, so the first body row takes the
+	// top corners instead.
+	const row = { isFirstRow: !props.isHidden, isLastRow: props.isOnlyRow };
+	const columnCount = props.columns?.length ?? 0;
+	const getColumnCornerStyle = (index: number) =>
+		getCornerStyle({
+			...row,
+			isFirstColumn: index === 0 && !props.canSelectRows,
+			isLastColumn: index === columnCount - 1 && !props.showRowActions,
+		});
+
 	const getActionsHeader = () => {
 		if (props.showRowActions) {
 			return (
@@ -264,6 +286,11 @@ const SimpleDataTableHead: React.FC<SimpleDataTableHeadProps> = (props) => {
 							? (props.columns?.length ?? 0) + 1
 							: (props.columns?.length ?? 0)
 					}
+					cornerStyle={getCornerStyle({
+						...row,
+						isFirstColumn: columnCount === 0 && !props.canSelectRows,
+						isLastColumn: true,
+					})}
 					fixedLayout={props.fixedLayout}
 					fixedHeader={props.fixedHeader}
 					headerRefs={props.headerRefs}
@@ -283,6 +310,11 @@ const SimpleDataTableHead: React.FC<SimpleDataTableHeadProps> = (props) => {
 						selectRowGroup: props.assistiveText?.selectRowGroup,
 					}}
 					canSelectRows={props.canSelectRows}
+					cornerStyle={getCornerStyle({
+						...row,
+						isFirstColumn: true,
+						isLastColumn: columnCount === 0 && !props.showRowActions,
+					})}
 					fixedHeader={props.fixedHeader}
 					fixedLayout={props.fixedLayout}
 					headerRefs={props.headerRefs}
@@ -303,8 +335,9 @@ const SimpleDataTableHead: React.FC<SimpleDataTableHeadProps> = (props) => {
 			className={classNames({
 				'slds-assistive-text': props.isHidden,
 			})}
+			style={props.isHidden ? undefined : inheritRadius}
 		>
-			<tr className="slds-line-height_reset">
+			<tr className="slds-line-height_reset" style={getCornerRowStyle(row)}>
 				{selectHeader}
 				{props.columns?.map((column, index) => (
 					<CellContext.Provider
@@ -312,6 +345,7 @@ const SimpleDataTableHead: React.FC<SimpleDataTableHeadProps> = (props) => {
 						value={{
 							columnIndex: props.canSelectRows ? index + 1 : index,
 							rowIndex: 0,
+							cornerStyle: getColumnCornerStyle(index),
 						}}
 					>
 						<HeaderCell
