@@ -170,7 +170,11 @@ interface ButtonIconProps {
 	 * `xx-small` requires `iconVariant`, since SLDS only defines it for the button container (matches `lightning-button-icon`).
 	 */
 	iconSize?: ButtonIconSize;
-	/** Icon variant */
+	/**
+	 * Icon variant. `global-header` renders the SLDS global header action button
+	 * (`slds-global-actions__item-action`); place it inside a
+	 * `slds-global-actions__item` in the global header markup.
+	 */
 	iconVariant?: ButtonIconVariant;
 }
 
@@ -294,7 +298,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 					'slds-button_icon-border-inverse': borderInverseIcon,
 					[`slds-button_icon-${computedIconVariant}`]:
 						computedIconVariant && !borderInverseIcon,
-					'slds-global-header__button_icon': iconGlobalHeader,
+					'slds-global-actions__item-action': iconGlobalHeader,
 					[`slds-button_icon-${iconSize}`]:
 						iconVariant && iconSize !== 'medium',
 					'slds-button_reset': variant === 'link',
@@ -320,12 +324,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 			return (
 				<ButtonIcon
 					category={iconCategory || 'utility'}
-					className={classNames(
-						{
-							'slds-global-header__icon': iconVariant === 'global-header',
-						},
-						iconClassName as string
-					)}
+					className={iconClassName as string}
 					hint={hint}
 					inverse={inverse}
 					name={name}

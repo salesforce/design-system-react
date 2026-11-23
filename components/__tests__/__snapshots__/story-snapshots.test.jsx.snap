@@ -874,6 +874,20 @@ exports[`Story HTML snapshots > Button > DropdownButton 1`] = `
     </svg><span class="slds-assistive-text">More options</span></button></div>"
 `;
 
+exports[`Story HTML snapshots > Button > GlobalHeaderIcon 1`] = `
+"<div class="slds-p-around_medium">
+  <div class="slds-global-header_container" style="position:static">
+    <div class="slds-global-header slds-grid slds-grid_align-end">
+      <ul class="slds-global-actions">
+        <li class="slds-global-actions__item"><button class="slds-button slds-button_icon-container slds-global-actions__item-action slds-button_icon-small" title="Help and Training" type="button"><svg class="slds-button__icon" aria-hidden="true">
+              <use href="/assets/icons/utility-sprite/svg/symbols.svg#question"></use>
+            </svg><span class="slds-assistive-text">Help and Training</span></button></li>
+      </ul>
+    </div>
+  </div>
+</div>"
+`;
+
 exports[`Story HTML snapshots > Button > IconLarge 1`] = `
 "<div class="slds-p-around_medium"><button class="slds-button slds-button_icon" title="Chat" type="button"><svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
       <use href="/assets/icons/utility-sprite/svg/symbols.svg#answer"></use>
