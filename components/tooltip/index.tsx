@@ -781,7 +781,7 @@ const Tooltip = ({
 
 	const containerStyles: CSSProperties = {
 		display: 'inline-block',
-		lineHeight: '1',
+		lineHeight: 'var(--slds-g-font-line-height-1, 1)',
 		...triggerStyle,
 	};
 
