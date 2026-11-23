@@ -11183,11 +11183,16 @@ exports[`Story HTML snapshots > Tree > BaseWithStencil 1`] = `
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-2__label"><span class="slds-tree__item-label slds-truncate" title="Fruits">Fruits</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-2__label"></ul>
         </li>
-        <li id="example-tree-3" role="treeitem" aria-selected="false" aria-level="1" aria-expanded="false" aria-label="Nuts" tabindex="-1">
+        <li id="example-tree-3" role="treeitem" aria-selected="false" aria-level="1" aria-expanded="true" aria-label="Nuts" tabindex="-1">
           <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-3" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-3__label"><span class="slds-tree__item-label slds-truncate" title="Nuts">Nuts</span></span></div>
-          <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-3__label"></ul>
+          <div style="display:block;padding-left:3rem;margin-top:var(--slds-g-spacing-2, .5rem)">
+            <div style="border-radius:var(--slds-g-radius-border-pill, 15rem);display:block;margin-bottom:var(--slds-g-spacing-3, .75rem);height:var(--slds-g-sizing-3, .5rem);background-color:var(--slds-g-color-surface-container-3, rgb(224, 229, 238));width:40%"></div>
+            <div style="border-radius:var(--slds-g-radius-border-pill, 15rem);display:block;margin-bottom:var(--slds-g-spacing-3, .75rem);height:var(--slds-g-sizing-3, .5rem);background-color:var(--slds-g-color-surface-container-3, rgb(224, 229, 238));width:80%"></div>
+            <div style="border-radius:var(--slds-g-radius-border-pill, 15rem);display:block;margin-bottom:var(--slds-g-spacing-3, .75rem);height:var(--slds-g-sizing-3, .5rem);background-color:var(--slds-g-color-surface-container-3, rgb(224, 229, 238));width:60%"></div>
+          </div>
+          <ul class="slds-is-expanded" role="group" aria-labelledby="example-tree-3__label"></ul>
         </li>
         <li id="example-tree-7" role="treeitem" aria-selected="false" aria-level="1" aria-expanded="false" tabindex="-1">
           <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-7" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">

@@ -297,10 +297,19 @@ const generateLargeDataset = (): TreeHashMap => {
 
 const large = generateLargeDataset();
 
+// "Nuts" is expanded and still loading its children, so the tree renders the
+// loading skeleton in place of them. `loading` is static rather than toggled
+// by a timer, so the story renders the same every time (stable in VRT).
+const loading = {
+	nodes: { ...base, 3: { ...base[3], loading: true } },
+	expandedIds: [3],
+};
+
 const hashmap = {
 	base,
 	large,
 	initialExpandedSelected,
+	loading,
 };
 
 export default hashmap;
