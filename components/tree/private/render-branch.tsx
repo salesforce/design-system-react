@@ -229,6 +229,17 @@ const handleFocus = (event: React.FocusEvent, props: RenderBranchProps) => {
 const getTabIndex = (props: RenderBranchProps): number =>
 	props.treeIndex === props.tabStopIndex ? 0 : -1;
 
+// Loading skeleton bar. SLDS 2 ships no skeleton/stencil blueprint, so this
+// uses global styling hooks with the SLDS 1 values as fallbacks.
+const skeletonBarStyle: React.CSSProperties = {
+	borderRadius: 'var(--slds-g-radius-border-pill, 15rem)',
+	display: 'block',
+	marginBottom: 'var(--slds-g-spacing-3, .75rem)',
+	height: 'var(--slds-g-sizing-3, .5rem)',
+	backgroundColor:
+		'var(--slds-g-color-surface-container-3, rgb(224, 229, 238))',
+};
+
 /**
  * Renders a branch node in the tree.
  */
@@ -246,36 +257,24 @@ const RenderBranch = (
 			style={{
 				display: 'block',
 				paddingLeft: `${1.5 * props.level + 1.5}rem`,
-				marginTop: '.5rem',
+				marginTop: 'var(--slds-g-spacing-2, .5rem)',
 			}}
 		>
 			<div
 				style={{
-					borderRadius: '15rem',
-					display: 'block',
-					marginBottom: '.75rem',
-					height: '.5rem',
-					backgroundColor: 'rgb(224, 229, 238)',
+					...skeletonBarStyle,
 					width: '40%',
 				}}
 			/>
 			<div
 				style={{
-					borderRadius: '15rem',
-					display: 'block',
-					marginBottom: '.75rem',
-					height: '.5rem',
-					backgroundColor: 'rgb(224, 229, 238)',
+					...skeletonBarStyle,
 					width: '80%',
 				}}
 			/>
 			<div
 				style={{
-					borderRadius: '15rem',
-					display: 'block',
-					marginBottom: '.75rem',
-					height: '.5rem',
-					backgroundColor: 'rgb(224, 229, 238)',
+					...skeletonBarStyle,
 					width: '60%',
 				}}
 			/>
