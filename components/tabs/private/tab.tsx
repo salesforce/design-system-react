@@ -19,10 +19,6 @@ import { TAB } from '../../../utilities/constants';
 import Icon from '../../icon';
 import { type TabsVariant } from '../index';
 
-/*
- * Disabled Tab CSS has been removed. If you'd like to use the styling, please import it in your module bundler.
- */
-
 export interface TabProps {
 	/**
 	 * The CSS class to be applied when this tab is selected. Defaults to `.slds-is-active`. If another class is desired, it should be passed in _along with_ `.slds-is-active`, not _instead_ of it.
