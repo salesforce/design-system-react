@@ -429,7 +429,6 @@ const Modal = forwardRef<HTMLElement, ModalProps>(
 						{
 							'slds-modal__header_empty': headerEmpty,
 							[`slds-theme_${prompt}`]: isPrompt,
-							'slds-theme_alert-texture': isPrompt,
 						},
 						headerClassName,
 						classNameHeader

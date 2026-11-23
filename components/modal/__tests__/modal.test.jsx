@@ -143,6 +143,18 @@ describe('SLDSModal', () => {
 		});
 	});
 
+	describe('Prompt', () => {
+		it('themes the header without the legacy SLDS 1 alert texture class', () => {
+			renderModal({ isOpen: true, prompt: 'error', heading: 'Heading' });
+			const modal = getModalNode();
+			expect(modal).toHaveClass('slds-modal_prompt');
+			const header = modal.querySelector('.slds-modal__header');
+			expect(header).toHaveClass('slds-theme_error');
+			// SLDS 2 does not define slds-theme_alert-texture
+			expect(header).not.toHaveClass('slds-theme_alert-texture');
+		});
+	});
+
 	describe('ref', () => {
 		it('forwards ref to the root section.slds-modal element', () => {
 			const ref = createRef();
