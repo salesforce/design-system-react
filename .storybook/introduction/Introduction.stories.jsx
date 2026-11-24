@@ -176,6 +176,28 @@ const styles = {
 		padding: 0,
 		listStyle: 'none',
 	},
+	// Legal footer, matching the Lightning Design System for React site.
+	// Same column as `main`; the inner box carries the rule so it spans only
+	// the text width.
+	footer: {
+		maxWidth: 800,
+		margin: '0 auto',
+		padding: '0 32px 48px',
+		color: color.muted,
+		fontSize: '0.875rem',
+		lineHeight: 1.6,
+	},
+	footerLinks: {
+		display: 'flex',
+		flexWrap: 'wrap',
+		gap: '4px 0',
+		margin: '0 0 8px',
+		padding: 0,
+		listStyle: 'none',
+	},
+	footerInner: { paddingTop: 32, borderTop: `1px solid ${color.border}` },
+	footerLink: { color: color.link },
+	footerP: { margin: 0 },
 	table: { width: '100%', borderCollapse: 'collapse', margin: '0 0 16px' },
 	cell: {
 		padding: '8px 12px 8px 0',
@@ -197,6 +219,60 @@ const ExternalLink = ({ href, children }) => (
 	<a href={href} target="_blank" rel="noreferrer" style={styles.link}>
 		{children}
 	</a>
+);
+
+const LEGAL_LINKS = [
+	[
+		'Terms of Service',
+		'https://www.salesforce.com/company/legal/sfdc-website-terms-of-service/',
+	],
+	['Privacy', 'https://www.salesforce.com/company/privacy/'],
+	['Responsible Disclosure', 'https://www.salesforce.com/company/disclosure/'],
+	['Trust', 'https://trust.salesforce.com/'],
+];
+
+const LegalFooter = () => (
+	<footer style={styles.footer}>
+		<div style={styles.footerInner}>
+			<nav aria-label="Legal">
+				<ul style={styles.footerLinks}>
+					{LEGAL_LINKS.map(([label, href], index) => (
+						<li key={href}>
+							{index > 0 && (
+								<span aria-hidden="true" style={{ margin: '0 8px' }}>
+									•
+								</span>
+							)}
+							<a
+								href={href}
+								target="_blank"
+								rel="noreferrer"
+								style={styles.footerLink}
+							>
+								{label}
+							</a>
+						</li>
+					))}
+				</ul>
+			</nav>
+			<p style={styles.footerP}>
+				© Copyright 2015-present Salesforce.com, inc.{' '}
+				<a
+					href="https://www.salesforce.com/company/legal/intellectual/"
+					target="_blank"
+					rel="noreferrer"
+					style={styles.footerLink}
+				>
+					All rights reserved
+				</a>
+				. Various trademarks held by their respective owners.
+			</p>
+			<p style={styles.footerP}>
+				Salesforce, Inc. Salesforce Tower, 415 Mission Street, 3rd Floor, San
+				Francisco, CA 94105, United States
+			</p>
+		</div>
+	</footer>
 );
 
 const Card = ({ title, children, action }) => (
@@ -485,6 +561,8 @@ export default function App() {
 				</li>
 			</ul>
 		</main>
+
+		<LegalFooter />
 	</div>
 );
 
