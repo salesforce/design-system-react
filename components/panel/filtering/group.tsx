@@ -112,6 +112,7 @@ interface PanelFilterGroupPanelProps {
 
 /** A filter group outside a panel: bring your own `header` and `footer`. */
 interface PanelFilterGroupSlotProps {
+	/** Unset outside a panel, so the default header and footer aren't rendered. */
 	variant?: undefined;
 	/**
 	 * Allows for customization of header. This will be added before any `FilterList`'s in the DOM. If using Panel Filter Group outside of a panel, do not set the variant to `panel` and header and footer will be removed.
@@ -152,6 +153,7 @@ const defaultProps = {
  * the DOM, and reported by `checkProps`.
  */
 interface PanelFilterGroupRemovedProps {
+	/** @deprecated Removed and ignored. Use `assistiveText.closeButton`. */
 	assistiveTextCloseFilterPanel?: unknown;
 }
 
