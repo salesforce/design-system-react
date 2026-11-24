@@ -68,11 +68,6 @@
 	background: url('../assets/images/logo.svg') left center / contain no-repeat;
 }
 
-/* Keep the <i> inline with the rest of the text inside the flex link. */
-.sidebar-header a[href]:not([tabindex='0']) i {
-	margin: 0 0.25em;
-}
-
 /* Search */
 #storybook-explorer-searchfield {
 	font-family: var(--dsr-chrome-font);
