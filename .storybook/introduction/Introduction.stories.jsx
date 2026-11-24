@@ -16,6 +16,8 @@ const REPO = 'https://github.com/salesforce/design-system-react';
 const STYLING_GUIDE =
 	'https://developer.salesforce.com/docs/platform/multiframework/guide/mfw-styling.html';
 const LLMS = 'https://salesforce.github.io/design-system-react/llms.txt';
+const TITLE_FONT =
+	"'Salesforce Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif";
 
 // SLDS 2 tokens with fallbacks, so the page follows the Theme and Color Scheme
 // toolbar like the components do.
@@ -53,12 +55,14 @@ const styles = {
 		backgroundRepeat: 'no-repeat',
 	},
 	heroInner: { maxWidth: 960, margin: '0 auto', position: 'relative' },
+	// Light weight, as on the Lightning Design System for React site. Salesforce
+	// Sans renders where installed; its license doesn't allow shipping it here.
 	heroTitle: {
 		margin: 0,
-		fontSize: 'clamp(2.25rem, 5vw, 3.5rem)',
-		fontWeight: 700,
-		lineHeight: 1.1,
-		letterSpacing: '-0.02em',
+		fontFamily: TITLE_FONT,
+		fontSize: 'clamp(2.5rem, 5vw, 4rem)',
+		fontWeight: 300,
+		lineHeight: 1.25,
 		color: '#fff',
 	},
 	heroVersion: {
@@ -106,14 +110,6 @@ const styles = {
 		fontSize: '0.875em',
 	},
 	link: { color: color.link, fontWeight: 600 },
-	callout: {
-		margin: '0 0 16px',
-		padding: '12px 16px',
-		borderLeft: `4px solid ${color.link}`,
-		background: color.codeBg,
-		borderRadius: 4,
-		lineHeight: 1.6,
-	},
 	grid: {
 		display: 'grid',
 		gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
@@ -189,7 +185,9 @@ const IntroductionPage = () => (
 	<div style={styles.page}>
 		<header style={styles.hero}>
 			<div style={styles.heroInner}>
-				<h1 style={styles.heroTitle}>Design System React</h1>
+				<h1 style={styles.heroTitle}>
+					Design System <i>for</i> React
+				</h1>
 				<p style={styles.heroVersion}>v{pkg.version}</p>
 				<p style={styles.heroLead}>
 					Accessible, localization-friendly React components for Lightning
@@ -214,7 +212,7 @@ const IntroductionPage = () => (
 			<Snippet label="Install command">
 				npm install @salesforce/design-system-react@alpha
 			</Snippet>
-			<p style={styles.callout}>
+			<p style={styles.p}>
 				v11 is in prerelease and needs the <Code>@alpha</Code> tag. Without it,
 				npm installs the stable 0.10.x line (React 16.8+, SLDS 1). v11 requires
 				React 19.2 and isn't a drop-in upgrade from 0.10.x. Pin the exact
