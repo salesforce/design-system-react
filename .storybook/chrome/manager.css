@@ -97,6 +97,16 @@
 	display: none;
 }
 
+/* With the 12px icon gone, the 8px expand caret sat high (its wrapper is
+   top-aligned with a 2px offset sized for the icon). Center it on the text. */
+.sidebar-item > button {
+	align-items: center;
+}
+
+.sidebar-item > button > div:first-child {
+	margin-top: 0;
+}
+
 .sidebar-item:hover {
 	background: var(--dsr-chrome-hover);
 }
