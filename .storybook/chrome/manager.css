@@ -107,6 +107,14 @@
 	margin-top: 0;
 }
 
+/* Story and docs rows under a component: Storybook indents them 40px (+18px
+   per extra level) through a depth-computed padding. Pull the content 10px
+   left (40 -> 30) at every depth by offsetting the (now empty) icon slot, so
+   the link's own box and focus ring stay inside the row. */
+.sidebar-item[data-parent-id] > a > div:first-child {
+	margin-left: -10px;
+}
+
 .sidebar-item:hover {
 	background: var(--dsr-chrome-hover);
 }
