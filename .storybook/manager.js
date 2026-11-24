@@ -1,54 +1,22 @@
 import { addons } from 'storybook/manager-api';
 import { GLOBALS_UPDATED, SET_GLOBALS } from 'storybook/internal/core-events';
-import { create } from 'storybook/theming';
+import { darkTheme, isDarkScheme, lightTheme } from './storybook-themes';
 
 // The Storybook chrome (sidebar, toolbar, addon panel) follows the canvas's
 // Color Scheme toolbar global (light, dark or system; see preview.js), not
 // Storybook's own OS-based default.
-const brand = {
-	// With no brandImage, Storybook renders brandTitle as HTML inside the
-	// sidebar's home link, so "for" can be italic like the site's title. The
-	// Salesforce cloud is drawn before it by .storybook/chrome/manager.css.
-	brandTitle: '<span>Design System <i>for</i> React</span>',
-	brandUrl: './',
-};
-
-const themes = {
-	light: create({ base: 'light', ...brand }),
-	// Surfaces and text from the SLDS 2 dark tokens, matching the canvas.
-	dark: create({
-		base: 'dark',
-		...brand,
-		appBg: '#242424',
-		appContentBg: '#242424',
-		appPreviewBg: '#242424',
-		barBg: '#242424',
-		appBorderColor: '#444',
-		textColor: '#e5e5e5',
-		textMutedColor: '#aeaeae',
-		colorSecondary: '#7cb1fe',
-		barSelectedColor: '#7cb1fe',
-		barHoverColor: '#a8cbff',
-		inputBg: '#181818',
-		inputBorder: '#444',
-		inputTextColor: '#e5e5e5',
-	}),
-};
 
 const osDark = window.matchMedia('(prefers-color-scheme: dark)');
 let scheme = 'light';
 let applied;
 
 const apply = () => {
-	const mode =
-		scheme === 'dark' || (scheme === 'system' && osDark.matches)
-			? 'dark'
-			: 'light';
+	const mode = isDarkScheme(scheme) ? 'dark' : 'light';
 	// manager.css reads this for its own light/dark colors.
 	document.documentElement.dataset.dsrScheme = scheme;
 	if (mode !== applied) {
 		applied = mode;
-		addons.setConfig({ theme: themes[mode] });
+		addons.setConfig({ theme: mode === 'dark' ? darkTheme : lightTheme });
 	}
 };
 

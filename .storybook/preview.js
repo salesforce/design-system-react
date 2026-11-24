@@ -5,6 +5,7 @@ globalThis.IS_REACT_ACT_ENVIRONMENT = false;
 // Configure Modal to use #storybook-root for accessibility
 // This silences the "App element is not defined" warning
 import Settings from '../components/settings';
+import ThemedDocsContainer from './docs-container';
 import { themeDecorator } from './preview-decorator';
 import { DEFAULT_THEME } from './themes';
 
@@ -81,6 +82,8 @@ const preview = {
 		// Documentation configuration
 		docs: {
 			toc: true,
+			// Light or dark docs blocks to match the Color Scheme toolbar.
+			container: ThemedDocsContainer,
 		},
 	},
 	tags: ['autodocs'],
