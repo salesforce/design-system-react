@@ -53,9 +53,9 @@ const preview = {
 		},
 	},
 	parameters: {
-		// Introduction first (and the default landing story), then components.
+		// Get started first (and the default landing story), then components.
 		options: {
-			storySort: { order: ['Introduction', 'Components'] },
+			storySort: { order: ['Get started', 'Components'] },
 		},
 		// Accessibility addon configuration (axe rulesets, modeled on SLDS 2).
 		a11y: {

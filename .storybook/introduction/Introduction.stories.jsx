@@ -330,8 +330,6 @@ const IntroductionPage = () => (
 				support built in, for React 19 with TypeScript types included.
 			</p>
 
-			<h2 style={styles.h2}>Get started</h2>
-
 			<h3 style={styles.h3}>1. Install</h3>
 			<Snippet label="Install command">
 				npm install @salesforce/design-system-react@alpha
@@ -567,7 +565,10 @@ export default function App() {
 );
 
 export default {
-	title: 'Introduction',
+	title: 'Get started',
+	// Keep the original ids (introduction--introduction) so existing links and
+	// the panel rule in manager.js keep working after the rename.
+	id: 'introduction',
 	component: IntroductionPage,
 	// A landing page, not a component: no Docs tab, and out of test runners.
 	tags: ['!autodocs', '!test'],
@@ -580,6 +581,6 @@ export default {
 };
 
 export const Introduction = {
-	name: 'Introduction',
+	name: 'Get started',
 	render: () => <IntroductionPage />,
 };
