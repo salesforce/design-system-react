@@ -880,3 +880,35 @@ describe('SLDS Carousel', () => {
 		});
 	});
 });
+
+describe('Carousel item image alt', () => {
+	const renderItem = (item) =>
+		render(
+			<IconSettings iconPath="/assets/icons">
+				<Carousel
+					id="carousel-alt"
+					items={[{ id: 'item-1', src: 'a.png', ...item }]}
+				/>
+			</IconSettings>
+		).container.querySelector('.slds-carousel__image img');
+
+	it('uses a string heading as the image alt', () => {
+		expect(renderItem({ heading: 'Visit App Exchange' })).toHaveAttribute(
+			'alt',
+			'Visit App Exchange'
+		);
+	});
+
+	it('prefers imageAssistiveText over the heading', () => {
+		expect(
+			renderItem({ heading: 'Visit', imageAssistiveText: 'App Exchange logo' })
+		).toHaveAttribute('alt', 'App Exchange logo');
+	});
+
+	it('renders an empty alt for a JSX heading, which is shown as text', () => {
+		expect(renderItem({ heading: <strong>Visit</strong> })).toHaveAttribute(
+			'alt',
+			''
+		);
+	});
+});

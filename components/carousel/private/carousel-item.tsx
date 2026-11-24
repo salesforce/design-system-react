@@ -91,7 +91,13 @@ const CarouselItem = ({
 					tabIndex={isInCurrentPanel ? 0 : -1}
 				>
 					<div className="slds-carousel__image">
-						<img src={src} alt={imageAssistiveText || (heading as string)} />
+						<img
+							src={src}
+							alt={
+								imageAssistiveText ||
+								(typeof heading === 'string' ? heading : '')
+							}
+						/>
 					</div>
 					<div className="slds-carousel__content" style={{ height: 'auto' }}>
 						<h2 className="slds-carousel__content-title">

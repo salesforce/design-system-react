@@ -322,6 +322,30 @@ export default tseslint.config(
 		},
 	},
 
+	// Type assertions in library source. An `as` cast tells the compiler to
+	// stop checking, and in this codebase that hid real bugs: a ReactNode cast
+	// to string rendered an "[object Object]" tooltip, and a KeyboardEvent cast
+	// to a ChangeEvent reached consumers' onChange. Narrow, annotate or use
+	// `satisfies` instead. `never` still allows `as const`, which only narrows.
+	// The casts that predate this rule are recorded in `eslint-suppressions.json`
+	// and are pruned by 11.0 GA. Tests, examples and stories are exempt.
+	{
+		files: ['components/**/*.{ts,tsx}', 'utilities/**/*.{ts,tsx}'],
+		ignores: [
+			'**/__tests__/**',
+			'**/*.test.{ts,tsx}',
+			'**/*.type-test.{ts,tsx}',
+			'**/__examples__/**',
+			'**/__docs__/**',
+		],
+		rules: {
+			'@typescript-eslint/consistent-type-assertions': [
+				'error',
+				{ assertionStyle: 'never' },
+			],
+		},
+	},
+
 	// Deprecated props in examples and stories. Agents and consumers copy these
 	// files verbatim, so a deprecated prop here spreads; make it an error. As
 	// above, `.js`/`.jsx` files get the project back for type information.

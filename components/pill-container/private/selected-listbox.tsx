@@ -97,15 +97,16 @@ export interface SelectedListBoxProps {
 	variant?: string;
 }
 
+// `label` may be JSX, which is not usable as a `title` attribute.
+const getLabelText = (option: SelectedListBoxOption): string | undefined =>
+	typeof option.label === 'string' ? option.label : undefined;
+
 const getAvatar = (option: SelectedListBoxOption): ReactNode => {
 	const avatarObject = option.avatar;
 	let avatar: ReactNode = null;
 
 	if (avatarObject) {
-		if (
-			isReactComponent(avatarObject) ||
-			avatarObject instanceof HTMLElement
-		) {
+		if (isReactComponent(avatarObject) || avatarObject instanceof HTMLElement) {
 			avatar = avatarObject as ReactNode;
 		} else if ((avatarObject as { imgSrc?: string }).imgSrc) {
 			const avatarData = avatarObject as {
@@ -116,10 +117,8 @@ const getAvatar = (option: SelectedListBoxOption): ReactNode => {
 			avatar = (
 				<Avatar
 					imgSrc={avatarData.imgSrc}
-					title={avatarData.title || (option.label as string)}
-					variant={
-						(avatarData.variant as 'user' | 'entity') || 'user'
-					}
+					title={avatarData.title || getLabelText(option)}
+					variant={(avatarData.variant as 'user' | 'entity') || 'user'}
 				/>
 			);
 		}
@@ -146,7 +145,7 @@ const getIcon = (option: SelectedListBoxOption): ReactNode => {
 					<Icon
 						category={iconData.category as IconCategory}
 						name={iconData.name}
-						title={iconData.title || (option.label as string)}
+						title={iconData.title || getLabelText(option)}
 					/>
 				);
 			}
@@ -253,7 +252,7 @@ const SelectedListBox = ({
 															option: SelectedListBoxOption;
 														}
 													);
-											  }
+												}
 											: undefined,
 									onFocus: (event: React.FocusEvent, data?: unknown) => {
 										events.onPillFocus?.(event, {
@@ -265,12 +264,10 @@ const SelectedListBox = ({
 										});
 									},
 									onRequestFocusOnNextPill: events.onRequestFocusOnNextPill as
-										| ((event: unknown, data: unknown) => void)
-										| undefined,
+										((event: unknown, data: unknown) => void) | undefined,
 									onRequestFocusOnPreviousPill:
 										events.onRequestFocusOnPreviousPill as
-											| ((event: unknown, data: unknown) => void)
-											| undefined,
+											((event: unknown, data: unknown) => void) | undefined,
 									onRequestRemove: (event: unknown, data: unknown) => {
 										events.onRequestRemove?.(
 											event as unknown as MouseEvent,
@@ -292,9 +289,9 @@ const SelectedListBox = ({
 								icon={icon as ReactElement}
 								labels={{
 									label: option.label as string,
+									title: option.title ?? getLabelText(option),
 									removeTitle: labels?.removePillTitle,
 								}}
-								title={(option.title ?? option.label) as string}
 								requestFocus={listboxHasFocus}
 								tabIndex={hasTabIndex ? 0 : -1}
 							/>
