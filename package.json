@@ -1,6 +1,6 @@
 {
   "name": "@salesforce/design-system-react",
-  "version": "11.0.0-rc.1",
+  "version": "11.0.0-rc.2",
   "publishConfig": {
     "tag": "rc"
   },
