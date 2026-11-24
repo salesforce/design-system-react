@@ -202,10 +202,8 @@ const IntroductionPage = () => (
 				<ExternalLink href="https://www.lightningdesignsystem.com/">
 					Salesforce Lightning Design System
 				</ExternalLink>
-				. React apps can't use Lightning base components, so they get no SLDS
-				styling on their own. These components render SLDS 2 markup with
-				keyboard and screen reader support built in, for React 19 with
-				TypeScript types included.
+				. These components render SLDS 2 markup with keyboard and screen reader
+				support built in, for React 19 with TypeScript types included.
 			</p>
 
 			<h2 style={styles.h2}>Get started</h2>

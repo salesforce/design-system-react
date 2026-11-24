@@ -17,6 +17,11 @@ const config: StorybookConfig = {
 		'@storybook/addon-docs',
 	],
 
+	features: {
+		// Hide Storybook's "Get started" onboarding checklist in the sidebar.
+		sidebarOnboardingChecklist: false,
+	},
+
 	framework: {
 		name: '@storybook/react-vite',
 		options: {},
