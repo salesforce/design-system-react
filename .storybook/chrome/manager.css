@@ -9,6 +9,7 @@
  */
 
 :root {
+	--dsr-chrome-bg: #fff;
 	--dsr-chrome-navy: #03234d;
 	--dsr-chrome-heading: #032d60;
 	--dsr-chrome-brand: #0176d3;
@@ -21,10 +22,39 @@
 		'Helvetica Neue', Arial, sans-serif;
 }
 
+/* Dark: manager.js mirrors the Color Scheme toolbar global onto
+   <html data-dsr-scheme> (light, dark or system), so the chrome follows the
+   same setting as the canvas. Values are SLDS 2's dark tokens (surface-1,
+   on-surface-1/2/3, accent-2/3, border-1). Plain overrides rather than
+   light-dark(), because Storybook's layout sets its own color-scheme. */
+html[data-dsr-scheme='dark'] {
+	--dsr-chrome-bg: #242424;
+	--dsr-chrome-navy: #e5e5e5;
+	--dsr-chrome-heading: #d8e6fe;
+	--dsr-chrome-brand: #7cb1fe;
+	--dsr-chrome-brand-dark: #a8cbff;
+	--dsr-chrome-hover: #1f2a3d;
+	--dsr-chrome-border: #444;
+	--dsr-chrome-muted: #aeaeae;
+}
+
+@media (prefers-color-scheme: dark) {
+	html[data-dsr-scheme='system'] {
+		--dsr-chrome-bg: #242424;
+		--dsr-chrome-navy: #e5e5e5;
+		--dsr-chrome-heading: #d8e6fe;
+		--dsr-chrome-brand: #7cb1fe;
+		--dsr-chrome-brand-dark: #a8cbff;
+		--dsr-chrome-hover: #1f2a3d;
+		--dsr-chrome-border: #444;
+		--dsr-chrome-muted: #aeaeae;
+	}
+}
+
 /* Sidebar ---------------------------------------------------------------- */
 
 .sidebar-container {
-	background: #fff;
+	background: var(--dsr-chrome-bg);
 	border-right: 1px solid var(--dsr-chrome-border);
 	color: var(--dsr-chrome-navy);
 	font-family: var(--dsr-chrome-font);
@@ -161,7 +191,7 @@
 /* Toolbar and addon panel -------------------------------------------------- */
 
 .sb-bar {
-	background: #fff;
+	background: var(--dsr-chrome-bg);
 	border-bottom: 1px solid var(--dsr-chrome-border);
 	box-shadow: none;
 	font-family: var(--dsr-chrome-font);
