@@ -16,7 +16,11 @@ import heroImage from './hero.jpg';
 const REPO = 'https://github.com/salesforce/design-system-react';
 const STYLING_GUIDE =
 	'https://developer.salesforce.com/docs/platform/multiframework/guide/mfw-styling.html';
-const LLMS = 'https://salesforce.github.io/design-system-react/llms.txt';
+// The docs-site workflow copies dist/llms into the Storybook site root, next
+// to iframe.html (where this story renders). Resolve against that root rather
+// than the domain root, so it works under the GitHub Pages /design-system-react/
+// subpath and on any other host.
+const LLMS = './llms.txt';
 
 // SLDS versions are `2.<Salesforce release>.<patch>`. Salesforce ships three
 // releases a year, two numbers apart, and 244 was Summer '23, so the release
@@ -32,6 +36,16 @@ const releaseName = (version) => {
 };
 
 const slds2Release = releaseName(slds2Pkg.version);
+
+// Fluid spacing: `min` px at a 375px phone, `max` px from 1200px up, linear in
+// between. Inline styles can't hold media queries, so clamp() does the work.
+const clamp = (min, max) => {
+	const slope = (max - min) / (1200 - 375);
+	const base = min - slope * 375;
+	return `clamp(${min}px, ${base.toFixed(2)}px + ${(slope * 100).toFixed(3)}vw, ${max}px)`;
+};
+// Side gutter shared by the hero, body and footer so they keep one left edge.
+const GUTTER = clamp(16, 32);
 
 const TITLE_FONT =
 	"'Salesforce Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif";
@@ -59,8 +73,9 @@ const styles = {
 	hero: {
 		position: 'relative',
 		overflow: 'hidden',
-		// Title and release line only, so equal space above and below.
-		padding: '72px 0',
+		// Title and release line only, so equal space above and below. Scales
+		// from 28px on phones to 72px on desktop.
+		padding: `${clamp(28, 72)} 0`,
 		color: '#fff',
 		// Solid fallback (the image's base blue) keeps the white text readable
 		// while the image loads.
@@ -77,7 +92,7 @@ const styles = {
 	heroInner: {
 		maxWidth: 800,
 		margin: '0 auto',
-		padding: '0 32px',
+		padding: `0 ${GUTTER}`,
 		position: 'relative',
 	},
 	// Light weight, as on the Lightning Design System for React site. Salesforce
@@ -85,7 +100,9 @@ const styles = {
 	heroTitle: {
 		margin: 0,
 		fontFamily: TITLE_FONT,
-		fontSize: 'clamp(2.5rem, 5vw, 4rem)',
+		// Sized off the viewport so "Design System for React" stays on one line
+		// down to a 320px phone (about 26px there), up to 64px on desktop.
+		fontSize: 'clamp(1.5rem, 7.2vw, 4rem)',
 		fontWeight: 300,
 		lineHeight: 1.25,
 		color: '#fff',
@@ -96,10 +113,15 @@ const styles = {
 		fontWeight: 400,
 	},
 	heroLink: { color: '#fff', textDecoration: 'underline' },
-	main: { maxWidth: 800, margin: '0 auto', padding: '56px 32px 80px' },
+	main: {
+		maxWidth: 800,
+		margin: '0 auto',
+		padding: `${clamp(28, 56)} ${GUTTER} ${clamp(40, 80)}`,
+	},
 	h2: {
-		margin: '56px 0 16px',
-		fontSize: '1.75rem',
+		margin: `${clamp(36, 56)} 0 16px`,
+		// 20px on phones so section headings stay smaller than the hero title.
+		fontSize: clamp(20, 28),
 		fontWeight: 700,
 		lineHeight: 1.25,
 		color: color.heading,
@@ -175,7 +197,7 @@ const styles = {
 	footer: {
 		maxWidth: 800,
 		margin: '0 auto',
-		padding: '0 32px 48px',
+		padding: `0 ${GUTTER} ${clamp(28, 48)}`,
 		color: color.muted,
 		fontSize: '0.875rem',
 		lineHeight: 1.6,
