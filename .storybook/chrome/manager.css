@@ -103,6 +103,9 @@
 	/* Storybook paints the selection solid blue; use the site's light tint. */
 	background: var(--dsr-chrome-hover) !important;
 	box-shadow: inset 3px 0 0 var(--dsr-chrome-brand);
+	/* Square left corners so the accent bar is a straight edge, not curved. */
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
 }
 
 .sidebar-item[data-selected='true'],
