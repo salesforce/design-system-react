@@ -10,6 +10,7 @@
 import React from 'react';
 import { linkTo } from '@storybook/addon-links';
 import pkg from '../../package.json';
+import heroImage from './hero.jpg';
 
 const REPO = 'https://github.com/salesforce/design-system-react';
 const STYLING_GUIDE =
@@ -39,16 +40,17 @@ const styles = {
 	hero: {
 		position: 'relative',
 		overflow: 'hidden',
-		padding: '72px 32px 64px',
+		padding: '96px 32px 120px',
 		color: '#fff',
-		background: [
-			'radial-gradient(circle at 8% 0%, rgba(254, 147, 57, 0.85) 0, rgba(254, 147, 57, 0) 28%)',
-			'radial-gradient(circle at 88% 22%, rgba(255, 160, 120, 0.9) 0, rgba(255, 160, 120, 0) 7%)',
-			'radial-gradient(circle at 68% 82%, rgba(255, 184, 210, 0.9) 0, rgba(255, 184, 210, 0) 5%)',
-			'radial-gradient(circle at 100% 100%, rgba(254, 120, 80, 0.75) 0, rgba(254, 120, 80, 0) 32%)',
-			'radial-gradient(ellipse at 75% 60%, #0b1f66 0, #0b1f66 30%, rgba(11, 31, 102, 0) 60%)',
-			'linear-gradient(120deg, #032d60 0%, #1b3bd1 55%, #2f4be3 100%)',
-		].join(', '),
+		// Solid fallback (the image's base blue) keeps the white text readable
+		// while the image loads.
+		backgroundColor: '#3b4bd9',
+		backgroundImage: `url(${heroImage})`,
+		// Anchor bottom-left so the orange/pink glow stays in view as the hero
+		// crops on narrow or short viewports.
+		backgroundPosition: 'left bottom',
+		backgroundSize: 'cover',
+		backgroundRepeat: 'no-repeat',
 	},
 	heroInner: { maxWidth: 960, margin: '0 auto', position: 'relative' },
 	heroTitle: {
