@@ -141,6 +141,12 @@
 	font-weight: 700;
 }
 
+/* First-level links (no parent, e.g. "Get started") stay bold when not
+   selected, so they read as top-level entries next to the section headings. */
+.sidebar-item:not([data-parent-id]) > a {
+	font-weight: 700;
+}
+
 /* "Open context menu" button: Storybook paints a hover fill plus a 5px
    box-shadow glow behind it, which shows as a gradient halo over the row. */
 .sidebar-item [data-testid='context-menu'] {
