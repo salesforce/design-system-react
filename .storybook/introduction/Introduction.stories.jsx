@@ -59,7 +59,7 @@ const styles = {
 	hero: {
 		position: 'relative',
 		overflow: 'hidden',
-		padding: '96px 32px 120px',
+		padding: '96px 0 120px',
 		color: '#fff',
 		// Solid fallback (the image's base blue) keeps the white text readable
 		// while the image loads.
@@ -71,7 +71,14 @@ const styles = {
 		backgroundSize: 'cover',
 		backgroundRepeat: 'no-repeat',
 	},
-	heroInner: { maxWidth: 960, margin: '0 auto', position: 'relative' },
+	// Same width and side padding as `main`, so the hero text and the body copy
+	// share one left edge at every viewport width.
+	heroInner: {
+		maxWidth: 800,
+		margin: '0 auto',
+		padding: '0 32px',
+		position: 'relative',
+	},
 	// Light weight, as on the Lightning Design System for React site. Salesforce
 	// Sans renders where installed; its license doesn't allow shipping it here.
 	heroTitle: {
