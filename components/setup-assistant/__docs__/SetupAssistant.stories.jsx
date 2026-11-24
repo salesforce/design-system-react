@@ -113,9 +113,9 @@ const buildSubSteps = ({ toggleChecked, onToggle, status }) => [
 				id="substep-0-action"
 				checked={toggleChecked}
 				labels={{ toggleEnabled: 'Enabled', toggleDisabled: 'Disabled' }}
-				onChange={
-					onToggle ? (event) => onToggle(event.target.checked) : undefined
-				}
+				{...(onToggle
+					? { onChange: (event) => onToggle(event.target.checked) }
+					: { readOnly: true })}
 				variant="toggle"
 			/>
 		),
