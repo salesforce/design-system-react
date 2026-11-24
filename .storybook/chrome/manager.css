@@ -33,9 +33,6 @@
 /* Brand: replace the Storybook logo with the Salesforce cloud + product name. */
 .sidebar-header {
 	min-height: 56px;
-	padding-bottom: 8px;
-	margin-bottom: 8px;
-	border-bottom: 1px solid var(--dsr-chrome-border);
 }
 
 .sidebar-header a[href]:not([tabindex='0']) {
