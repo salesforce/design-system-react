@@ -150,7 +150,7 @@ const defaultAssistiveText: ModalAssistiveText = {
  * By default, `Modal` will add `aria-hidden=true` to the `body` tag, but this disables some assistive technologies.
  * To prevent this you can add the following to your application with `#mount` being the root node of your application:
  * ```
- * import settings from 'design-system-react/components/settings';
+ * import settings from '@salesforce/design-system-react/components/settings';
  * settings.setAppElement('#mount');
  * ```
  */

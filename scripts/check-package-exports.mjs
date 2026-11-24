@@ -35,11 +35,18 @@
  *
  * Run after a full build: `npm run build` (which runs this as its last step).
  */
-import { readdirSync, readFileSync, existsSync, globSync } from 'fs';
+import { readFileSync, globSync } from 'fs';
 import { createRequire } from 'module';
 import { join } from 'path';
 import { fileURLToPath } from 'url';
 import ts from 'typescript';
+
+import {
+	IGNORED,
+	componentDirSubpaths,
+	toSubpath,
+	valueExportNames,
+} from './package-entry-points.ts';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const { name: pkg } = JSON.parse(
@@ -47,25 +54,14 @@ const { name: pkg } = JSON.parse(
 );
 const require = createRequire(import.meta.url);
 
-const INDEX_RE = /^index\.(js|jsx|ts|tsx)$/;
-const hasIndex = (dir) =>
-	existsSync(dir) && readdirSync(dir).some((file) => INDEX_RE.test(file));
-
-const subpaths = [pkg];
-for (const entry of readdirSync(join(root, 'components'), {
-	withFileTypes: true,
-})) {
-	if (entry.isDirectory() && hasIndex(join(root, 'components', entry.name))) {
-		subpaths.push(`${pkg}/components/${entry.name}`);
-	}
-}
+const subpaths = [
+	pkg,
+	...componentDirSubpaths(root).map((subpath) => `${pkg}/${subpath}`),
+];
 
 // Internal subpaths that must NOT resolve: every source module under
 // `utilities/` (and its folders), every module and folder under a `private/`
 // folder in `components/`, and every `check-props` module.
-const SOURCE_RE = /\.(js|jsx|ts|tsx)$/;
-const IGNORED = ['**/__tests__/**', '**/__docs__/**', '**/__examples__/**'];
-const toSubpath = (file) => file.replace(SOURCE_RE, '').replace(/\.d$/, '');
 const blocked = new Set();
 for (const file of globSync('utilities/**/*.{js,jsx,ts,tsx}', {
 	cwd: root,
@@ -170,18 +166,7 @@ const checker = program.getTypeChecker();
 /** @type {Map<string, string[]>} subpath -> value (non-type-only) export names */
 const declaredValues = new Map();
 for (const [spec, file] of typeFiles) {
-	const moduleSymbol = checker.getSymbolAtLocation(program.getSourceFile(file));
-	const names = (moduleSymbol ? checker.getExportsOfModule(moduleSymbol) : [])
-		.filter((symbol) => {
-			const target =
-				symbol.flags & ts.SymbolFlags.Alias
-					? checker.getAliasedSymbol(symbol)
-					: symbol;
-			// A re-export whose target doesn't resolve aliases TypeScript's
-			// declaration-less `unknown` symbol, which carries a value flag.
-			return target.declarations?.length && target.flags & ts.SymbolFlags.Value;
-		})
-		.map((symbol) => symbol.getName());
+	const names = valueExportNames(checker, program.getSourceFile(file));
 	if (names.length === 0) {
 		fail(spec, `types (${file.slice(root.length)}) declare no value exports`);
 	}
@@ -286,8 +271,11 @@ const visitSymbol = (symbol, via) => {
 	for (const decl of target.declarations ?? []) {
 		const file = decl.getSourceFile().fileName;
 		if (!file.startsWith(typesRoot)) continue;
+		// An anonymous type (an inline `{ … }` parameter type) has no name to
+		// import, so only the types it references are surface.
 		const isTypeDecl =
-			target.flags & (ts.SymbolFlags.Type | ts.SymbolFlags.Class);
+			target.flags & (ts.SymbolFlags.Type | ts.SymbolFlags.Class) &&
+			target.getName() !== ts.InternalSymbolName.Type;
 		if (isTypeDecl && isInternalDecl(file)) {
 			const key = typeName(target, file);
 			if (!misplaced.has(key)) misplaced.set(key, via);
