@@ -56,8 +56,8 @@
 }
 
 .sidebar-header a[href]:not([tabindex='0'])::after {
-	content: 'Design System React';
-	/* Same face as the Lightning Design System for React site's title: light
+	content: 'Design System for React';
+	/* Same face as the Lightning Design System for React site's title:
 	   Salesforce Sans where installed (its license doesn't allow shipping it). */
 	font-family:
 		'Salesforce Sans',
@@ -67,8 +67,11 @@
 		Roboto,
 		Arial,
 		sans-serif;
-	font-size: 17px;
-	font-weight: 300;
+	/* 15px keeps the four-word title on one line beside the gear at the
+	   default sidebar width. */
+	font-size: 15px;
+	font-weight: 500;
+	white-space: nowrap;
 	line-height: 1.2;
 }
 
