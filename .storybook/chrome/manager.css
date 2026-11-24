@@ -30,7 +30,8 @@
 	font-family: var(--dsr-chrome-font);
 }
 
-/* Brand: replace the Storybook logo with the Salesforce cloud + product name. */
+/* Brand: the title text ("Design System <i>for</i> React") is the theme's
+   brandTitle in manager.js; this adds the Salesforce cloud before it. */
 .sidebar-header {
 	min-height: 56px;
 }
@@ -41,22 +42,6 @@
 	gap: 10px;
 	color: var(--dsr-chrome-heading);
 	text-decoration: none;
-}
-
-.sidebar-header a[href]:not([tabindex='0']) > * {
-	display: none;
-}
-
-.sidebar-header a[href]:not([tabindex='0'])::before {
-	content: '';
-	flex: none;
-	width: 36px;
-	height: 25px;
-	background: url('../assets/images/logo.svg') left center / contain no-repeat;
-}
-
-.sidebar-header a[href]:not([tabindex='0'])::after {
-	content: 'Design System for React';
 	/* Same face as the Lightning Design System for React site's title:
 	   Salesforce Sans where installed (its license doesn't allow shipping it). */
 	font-family:
@@ -73,6 +58,19 @@
 	font-weight: 500;
 	white-space: nowrap;
 	line-height: 1.2;
+}
+
+.sidebar-header a[href]:not([tabindex='0'])::before {
+	content: '';
+	flex: none;
+	width: 36px;
+	height: 25px;
+	background: url('../assets/images/logo.svg') left center / contain no-repeat;
+}
+
+/* Keep the <i> inline with the rest of the text inside the flex link. */
+.sidebar-header a[href]:not([tabindex='0']) i {
+	margin: 0 0.25em;
 }
 
 /* Search */

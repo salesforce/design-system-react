@@ -59,7 +59,8 @@ const styles = {
 	hero: {
 		position: 'relative',
 		overflow: 'hidden',
-		padding: '96px 0 120px',
+		// 50px shorter than before: 25px off the top and bottom.
+		padding: '71px 0 95px',
 		color: '#fff',
 		// Solid fallback (the image's base blue) keeps the white text readable
 		// while the image loads.
