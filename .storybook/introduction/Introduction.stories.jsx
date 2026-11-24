@@ -84,10 +84,10 @@ const styles = {
 	},
 	// The image sits on its own layer behind the text so it can be dimmed (dark
 	// mode) and slowly drift (see useHeroGlow) without touching the text. The
-	// 8% overscan keeps its edges out of view while it moves.
+	// 12% overscan keeps its edges out of view while it moves.
 	heroImage: {
 		position: 'absolute',
-		inset: '-8%',
+		inset: '-12%',
 		backgroundImage: `url(${heroImage})`,
 		// Anchor bottom-left so the orange/pink glow stays in view as the hero
 		// crops on narrow or short viewports.
@@ -329,7 +329,7 @@ const heroFilter = (isDark, hue = 0) =>
 	`${isDark ? 'brightness(0.5) saturate(1.15) ' : ''}hue-rotate(${hue}deg)`;
 
 // A slow "pearl core" glow: the image layer breathes (scale), drifts and
-// shifts hue a little, back and forth over 24s. Uses the Web Animations API
+// shifts hue, back and forth over 14s. Uses the Web Animations API
 // so no stylesheet is needed; off when the user prefers reduced motion.
 const useHeroGlow = (ref, isDark, reduceMotion) => {
 	React.useEffect(() => {
@@ -344,16 +344,16 @@ const useHeroGlow = (ref, isDark, reduceMotion) => {
 					filter: heroFilter(isDark, 0),
 				},
 				{
-					transform: 'scale(1.06) translate(-2%, 1.5%)',
-					filter: heroFilter(isDark, -12),
+					transform: 'scale(1.16) translate(-5%, 4%)',
+					filter: heroFilter(isDark, -25),
 				},
 				{
-					transform: 'scale(1.03) translate(1.5%, -1%)',
-					filter: heroFilter(isDark, 8),
+					transform: 'scale(1.1) translate(4%, -3%)',
+					filter: heroFilter(isDark, 18),
 				},
 			],
 			{
-				duration: 24000,
+				duration: 14000,
 				easing: 'ease-in-out',
 				direction: 'alternate',
 				iterations: Infinity,
