@@ -4,7 +4,12 @@ const config: StorybookConfig = {
 	// Auto-discover every component story. Stories live at
 	// `components/**/__docs__/**/*.stories.{jsx,tsx}` by convention, so a new
 	// component's stories appear without editing this list.
-	stories: ['../components/**/__docs__/**/*.stories.@(jsx|tsx)'],
+	// The Introduction landing page lives in .storybook/introduction, outside
+	// `components/**`, so the story-snapshot suite never picks it up.
+	stories: [
+		'./introduction/*.stories.@(jsx|tsx)',
+		'../components/**/__docs__/**/*.stories.@(jsx|tsx)',
+	],
 
 	addons: [
 		'@storybook/addon-links',
@@ -23,6 +28,9 @@ const config: StorybookConfig = {
 			to: '/assets',
 		},
 		{ from: '../assets', to: '/assets' },
+		// Manager-only chrome CSS, linked from manager-head.html. Never loaded in
+		// the preview iframe, so it cannot affect components.
+		{ from: './chrome', to: '/storybook-chrome' },
 		// SLDS 2 styling is served from the npm package @salesforce-ux/design-system-2
 		// (latest) rather than a committed static stylesheet. See preview-head.html.
 		{

@@ -1,0 +1,132 @@
+/*
+ * Storybook manager chrome, styled after the Lightning Design System 2 site.
+ *
+ * Loaded by .storybook/manager-head.html, so it applies to the manager page
+ * only (sidebar, toolbar, addon panel) and never to the preview iframe.
+ *
+ * Selectors use Storybook's stable hooks (ids, `data-*` attributes and the
+ * `sidebar-*` / `sb-bar` class names), never its generated emotion classes.
+ */
+
+:root {
+	--dsr-chrome-navy: #03234d;
+	--dsr-chrome-heading: #032d60;
+	--dsr-chrome-brand: #0176d3;
+	--dsr-chrome-brand-dark: #014486;
+	--dsr-chrome-hover: #eef4ff;
+	--dsr-chrome-border: #e5e5e5;
+	--dsr-chrome-muted: #5c5c5c;
+	--dsr-chrome-font:
+		system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+		'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Sidebar ---------------------------------------------------------------- */
+
+.sidebar-container {
+	background: #fff;
+	border-right: 1px solid var(--dsr-chrome-border);
+	color: var(--dsr-chrome-navy);
+	font-family: var(--dsr-chrome-font);
+}
+
+/* Brand: replace the Storybook logo with the Salesforce cloud + product name. */
+.sidebar-header {
+	min-height: 56px;
+	padding-bottom: 8px;
+	margin-bottom: 8px;
+	border-bottom: 1px solid var(--dsr-chrome-border);
+}
+
+.sidebar-header a[href]:not([tabindex='0']) {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	color: var(--dsr-chrome-heading);
+	text-decoration: none;
+}
+
+.sidebar-header a[href]:not([tabindex='0']) > * {
+	display: none;
+}
+
+.sidebar-header a[href]:not([tabindex='0'])::before {
+	content: '';
+	flex: none;
+	width: 36px;
+	height: 25px;
+	background: url('../assets/images/logo.svg') left center / contain no-repeat;
+}
+
+.sidebar-header a[href]:not([tabindex='0'])::after {
+	content: 'Design System React';
+	font-size: 15px;
+	font-weight: 700;
+	line-height: 1.2;
+	letter-spacing: -0.01em;
+}
+
+/* Search */
+#storybook-explorer-searchfield {
+	font-family: var(--dsr-chrome-font);
+	color: var(--dsr-chrome-navy);
+}
+
+/* Section headers ("COMPONENTS"), like the site's nav section labels. */
+.sidebar-subheading {
+	color: var(--dsr-chrome-muted);
+	letter-spacing: 0.08em;
+}
+
+.sidebar-subheading button {
+	color: inherit;
+	font-family: var(--dsr-chrome-font);
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: inherit;
+	text-transform: uppercase;
+}
+
+/* Nav items */
+.sidebar-item {
+	border-radius: 4px;
+	color: var(--dsr-chrome-navy);
+	font-family: var(--dsr-chrome-font);
+}
+
+.sidebar-item:hover {
+	background: var(--dsr-chrome-hover);
+}
+
+.sidebar-item[data-selected='true'],
+.sidebar-item[data-selected='true']:hover {
+	/* Storybook paints the selection solid blue; use the site's light tint. */
+	background: var(--dsr-chrome-hover) !important;
+	box-shadow: inset 3px 0 0 var(--dsr-chrome-brand);
+}
+
+.sidebar-item[data-selected='true'],
+.sidebar-item[data-selected='true'] a,
+.sidebar-item[data-selected='true'] svg {
+	color: var(--dsr-chrome-brand-dark) !important;
+	font-weight: 700;
+}
+
+.sidebar-item[data-selected='true'] [data-testid='context-menu'] {
+	background: transparent !important;
+	color: var(--dsr-chrome-brand-dark) !important;
+}
+
+/* Toolbar and addon panel -------------------------------------------------- */
+
+.sb-bar {
+	background: #fff;
+	border-bottom: 1px solid var(--dsr-chrome-border);
+	box-shadow: none;
+	font-family: var(--dsr-chrome-font);
+}
+
+#storybook-panel-root {
+	border-top: 1px solid var(--dsr-chrome-border);
+	font-family: var(--dsr-chrome-font);
+}
