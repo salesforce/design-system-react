@@ -10,12 +10,29 @@
 import React from 'react';
 import { linkTo } from '@storybook/addon-links';
 import pkg from '../../package.json';
+import slds2Pkg from '@salesforce-ux/design-system-2/package.json';
 import heroImage from './hero.jpg';
 
 const REPO = 'https://github.com/salesforce/design-system-react';
 const STYLING_GUIDE =
 	'https://developer.salesforce.com/docs/platform/multiframework/guide/mfw-styling.html';
 const LLMS = 'https://salesforce.github.io/design-system-react/llms.txt';
+
+// SLDS versions are `2.<Salesforce release>.<patch>`. Salesforce ships three
+// releases a year, two numbers apart, and 244 was Summer '23, so the release
+// name follows from the minor version (264 is Winter '27).
+const releaseName = (version) => {
+	const release = Number(version.split('.')[1]);
+	const steps = Math.round((release - 244) / 2);
+	const index = ((steps % 3) + 3) % 3;
+	const season = ['Summer', 'Winter', 'Spring'][index];
+	// Winter is named for the following year.
+	const year = 23 + Math.floor((steps + 2) / 3);
+	return `${season} ’${year}`;
+};
+
+const slds2Release = releaseName(slds2Pkg.version);
+
 const TITLE_FONT =
 	"'Salesforce Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif";
 
@@ -66,10 +83,11 @@ const styles = {
 		color: '#fff',
 	},
 	heroVersion: {
-		margin: '12px 0 0',
-		fontSize: '0.9375rem',
-		fontWeight: 700,
+		margin: '16px 0 0',
+		fontSize: '1rem',
+		fontWeight: 400,
 	},
+	heroLink: { color: '#fff', textDecoration: 'underline' },
 	heroLead: {
 		margin: '32px 0 0',
 		maxWidth: 560,
@@ -188,7 +206,27 @@ const IntroductionPage = () => (
 				<h1 style={styles.heroTitle}>
 					Design System <i>for</i> React
 				</h1>
-				<p style={styles.heroVersion}>v{pkg.version}</p>
+				<p style={styles.heroVersion}>
+					Latest release:{' '}
+					<a
+						href={`${REPO}/releases/tag/v${pkg.version}`}
+						target="_blank"
+						rel="noreferrer"
+						style={styles.heroLink}
+					>
+						{pkg.version}
+					</a>{' '}
+					| Pairs well with:{' '}
+					<a
+						href={`https://www.npmjs.com/package/${slds2Pkg.name}/v/${slds2Pkg.version}`}
+						target="_blank"
+						rel="noreferrer"
+						style={styles.heroLink}
+					>
+						SLDS {slds2Release}
+					</a>{' '}
+					({slds2Pkg.version})
+				</p>
 				<p style={styles.heroLead}>
 					Accessible, localization-friendly React components for Lightning
 					Design System 2.
