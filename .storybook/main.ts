@@ -38,6 +38,13 @@ const config: StorybookConfig = {
 			to: '/assets',
 		},
 		{ from: '../assets', to: '/assets' },
+		// Salesforce cloud (no wordmark) as the browser-tab icon in place of
+		// Storybook's. Storybook uses the first staticDirs entry that maps to
+		// /favicon.svg.
+		{
+			from: '../node_modules/@salesforce-ux/design-system/assets/images/logo-noname.svg',
+			to: '/favicon.svg',
+		},
 		// Manager-only chrome CSS, linked from manager-head.html. Never loaded in
 		// the preview iframe, so it cannot affect components.
 		{ from: './chrome', to: '/storybook-chrome' },
