@@ -22,6 +22,11 @@ const config: StorybookConfig = {
 		sidebarOnboardingChecklist: false,
 	},
 
+	core: {
+		// No "What's new in Storybook" popup at the bottom of the sidebar.
+		disableWhatsNewNotifications: true,
+	},
+
 	framework: {
 		name: '@storybook/react-vite',
 		options: {},
