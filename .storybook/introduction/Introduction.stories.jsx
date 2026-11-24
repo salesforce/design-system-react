@@ -222,6 +222,8 @@ const LEGAL_LINKS = [
 	['Privacy', 'https://www.salesforce.com/company/privacy/'],
 	['Responsible Disclosure', 'https://www.salesforce.com/company/disclosure/'],
 	['Trust', 'https://trust.salesforce.com/'],
+	// Machine-readable docs index for coding agents (see the Explore card).
+	['llms.txt', LLMS],
 ];
 
 const LegalFooter = () => (
@@ -258,11 +260,9 @@ const LegalFooter = () => (
 				>
 					All rights reserved
 				</a>
-				. Various trademarks held by their respective owners.
-			</p>
-			<p style={styles.footerP}>
-				Salesforce, Inc. Salesforce Tower, 415 Mission Street, 3rd Floor, San
-				Francisco, CA 94105, United States
+				. Various trademarks held by their respective owners. Salesforce, Inc.
+				Salesforce Tower, 415 Mission Street, 3rd Floor, San Francisco, CA
+				94105, United States
 			</p>
 		</div>
 	</footer>
