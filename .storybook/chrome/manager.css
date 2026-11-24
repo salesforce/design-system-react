@@ -91,6 +91,12 @@
 	font-family: var(--dsr-chrome-font);
 }
 
+/* Hide the node-type icons (folder, component, story, docs). The expand
+   chevron has no `type` attribute, so it stays. */
+.sidebar-item svg[type] {
+	display: none;
+}
+
 .sidebar-item:hover {
 	background: var(--dsr-chrome-hover);
 }
