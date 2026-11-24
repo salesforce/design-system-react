@@ -232,8 +232,7 @@ const IntroductionPage = () => (
 						style={styles.heroLink}
 					>
 						SLDS {slds2Release}
-					</a>{' '}
-					({slds2Pkg.version})
+					</a>
 				</p>
 				<p style={styles.heroLead}>
 					Accessible, localization-friendly React components for Lightning
@@ -243,6 +242,9 @@ const IntroductionPage = () => (
 		</header>
 
 		<main style={styles.main}>
+			<h2 style={{ ...styles.h2, marginTop: 0 }}>
+				Create the world’s best enterprise app experiences.
+			</h2>
 			<p style={{ ...styles.p, fontSize: '1.125rem' }}>
 				Design System React is the React implementation of the{' '}
 				<ExternalLink href="https://www.lightningdesignsystem.com/">
