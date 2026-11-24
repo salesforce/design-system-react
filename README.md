@@ -16,7 +16,7 @@
 
 `@alpha` points to v11 pre-releases. Use `@latest` for the latest stable release. Releases and their notes are listed on the [GitHub Releases](https://github.com/salesforce/design-system-react/releases) page.
 
-v11 is not a drop-in upgrade from 0.10.x: some components were removed or renamed. See [CHANGELOG.md](CHANGELOG.md) for the breaking changes.
+v11 is not a drop-in upgrade from 0.10.x: some components were removed or renamed, and many props changed. The [migration guide](docs/migration-v11.md) maps each 0.10.x pattern to its v11 replacement; [CHANGELOG.md](CHANGELOG.md) has the full list.
 
 From 11.0.0 on, releases follow the [Versioning & Support Policy](docs/codebase-overview.md#versioning--support-policy): what a major, minor or patch can change, how deprecations work, and how fixes reach consumers. The [Breaking-Change Taxonomy](docs/codebase-overview.md#breaking-change-taxonomy) defines breaking changes by what `getByRole` and `getByLabelText` queries see.
 
