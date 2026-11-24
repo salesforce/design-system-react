@@ -59,8 +59,8 @@ const styles = {
 	hero: {
 		position: 'relative',
 		overflow: 'hidden',
-		// 50px shorter than before: 25px off the top and bottom.
-		padding: '71px 0 95px',
+		// Title and release line only, so equal space above and below.
+		padding: '72px 0',
 		color: '#fff',
 		// Solid fallback (the image's base blue) keeps the white text readable
 		// while the image loads.
@@ -96,13 +96,6 @@ const styles = {
 		fontWeight: 400,
 	},
 	heroLink: { color: '#fff', textDecoration: 'underline' },
-	heroLead: {
-		margin: '32px 0 0',
-		maxWidth: 560,
-		fontSize: '1.125rem',
-		lineHeight: 1.5,
-		fontWeight: 600,
-	},
 	main: { maxWidth: 800, margin: '0 auto', padding: '56px 32px 80px' },
 	h2: {
 		margin: '56px 0 16px',
@@ -309,10 +302,6 @@ const IntroductionPage = () => (
 					>
 						SLDS {slds2Release}
 					</a>
-				</p>
-				<p style={styles.heroLead}>
-					Accessible, localization-friendly React components for Lightning
-					Design System 2.
 				</p>
 			</div>
 		</header>
