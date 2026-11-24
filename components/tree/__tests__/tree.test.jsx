@@ -409,6 +409,23 @@ describe('Tree', () => {
 			});
 		});
 
+		it('fires once when an item is clicked before the tree has focus', () => {
+			const onSelect = vi.fn();
+			const { getNode, getItem, nodes } = renderTree({ onSelect });
+
+			// A mouse press focuses the item, then the click lands on it
+			fireEvent.mouseDown(getNode('grains'));
+			fireEvent.focus(getNode('grains'));
+			fireEvent.mouseUp(getNode('grains'));
+			fireEvent.click(getItem('grains'));
+			expect(onSelect).toHaveBeenCalledTimes(1);
+			expect(onSelect).toHaveBeenCalledWith(eventOfType('click'), {
+				node: nodes[0],
+				isSelected: true,
+				selectedIds: ['grains'],
+			});
+		});
+
 		it('fires on Enter with the requested state', () => {
 			const onSelect = vi.fn();
 			const { getNode, nodes } = renderTree({ onSelect });
