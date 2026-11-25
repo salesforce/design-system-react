@@ -510,14 +510,14 @@ const heroLines = (box) => {
 };
 
 // Glass-like glints: a soft white band slowly sweeps down a few of the lines
-// over 3s, then rests. Each glinting line has its own cycle length and start, so
+// over 3s, then rests for 20–35s. Each glinting line has its own cycle length and start, so
 // together they read as random reflections but stay deterministic.
 const SHIMMER_LINES = [
-	{ line: 2, cycle: 11300, delay: 900 },
-	{ line: 6, cycle: 16900, delay: 5200 },
-	{ line: 9, cycle: 13100, delay: 2600 },
-	{ line: 13, cycle: 18700, delay: 8800 },
-	{ line: 15, cycle: 14300, delay: 6400 },
+	{ line: 2, cycle: 23300, delay: 1500 },
+	{ line: 6, cycle: 33900, delay: 10200 },
+	{ line: 9, cycle: 27100, delay: 5800 },
+	{ line: 13, cycle: 37700, delay: 17400 },
+	{ line: 15, cycle: 29300, delay: 13000 },
 ];
 const SHIMMER_SWEEP = 3000;
 const shimmerStyle = {
