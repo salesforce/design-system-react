@@ -48,7 +48,7 @@ const clamp = (min, max) => {
 const GUTTER = clamp(16, 32);
 // Height of the fade at the bottom of the hero, added to its bottom padding
 // so the release line keeps the same clear space above the fade.
-const HERO_FADE = 28;
+const HERO_FADE = 110;
 
 const TITLE_FONT =
 	"'Salesforce Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif";
@@ -109,11 +109,16 @@ const styles = {
 		right: 0,
 		bottom: 0,
 		height: HERO_FADE,
-		background:
-			'linear-gradient(to bottom, transparent, var(--slds-g-color-surface-1, #fff))',
+		// Eased stops, so a tall fade doesn't read as a flat band.
+		background: `linear-gradient(to bottom, transparent, ${[20, 45, 75]
+			.map(
+				(mix, i) =>
+					`color-mix(in srgb, var(--slds-g-color-surface-1, #fff) ${mix}%, transparent) ${30 + i * 20}%`
+			)
+			.join(', ')}, var(--slds-g-color-surface-1, #fff))`,
 		pointerEvents: 'none',
 	},
-	// Lines hanging from the hero's top edge (see HERO_LINES). Ends above
+	// Lines hanging from the hero's top edge (see heroLines). Ends above
 	// the hero fade so they never reach the page body.
 	heroDeco: {
 		position: 'absolute',
