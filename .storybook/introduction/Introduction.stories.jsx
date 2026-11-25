@@ -418,11 +418,10 @@ const HERO_LINE_COLORS = [
 const PHI = (1 + Math.sqrt(5)) / 2;
 // Powers of φ for the 16 gaps, left to right.
 const HERO_GAP_STEPS = [1, 0, 2, 1, 3, 0, 1, 2, 0, 1, 3, 1, 0, 2, 1, 2];
-// Per line: thickness (0.75–2px, thin on purpose), color index, and length
-// (0–1 of the room it has).
+// Per line: thickness (1–4px), color index, and length (0–1 of the room it
+// has).
 const HERO_LINE_WIDTHS = [
-	1.5, 0.75, 2, 1, 1.25, 1.75, 0.75, 2, 1, 1.5, 0.75, 1.75, 1.25, 1, 2, 0.75,
-	1.5,
+	2, 1, 3.5, 1.5, 2.5, 1, 4, 1.5, 3, 1, 2, 4, 1.5, 3, 1, 2.5, 1,
 ];
 const HERO_LINE_HUES = [0, 3, 5, 1, 6, 2, 4, 0, 5, 3, 1, 6, 4, 2, 5, 0, 3];
 const HERO_LINE_LENGTHS = [
