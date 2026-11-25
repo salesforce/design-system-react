@@ -506,6 +506,7 @@ const heroLines = (box) => {
 				left,
 				width,
 				height: length,
+				overflow: 'hidden',
 				borderRadius: `0 0 ${width}px ${width}px`,
 				backgroundColor: HERO_LINE_COLORS[HERO_LINE_HUES[i]],
 				opacity: 0.75,
@@ -685,6 +686,52 @@ const useHeroDrip = (beadRef, dropRef, lines, reduceMotion) => {
 	}, [beadRef, dropRef, lines, reduceMotion]);
 };
 
+// Glass-like glints: a narrow white band sweeps quickly down a few of the
+// lines, then rests. Each glinting line has its own cycle length and start, so
+// together they read as random reflections but stay deterministic.
+const SHIMMER_LINES = [
+	{ line: 2, cycle: 7300, delay: 900 },
+	{ line: 6, cycle: 11900, delay: 4200 },
+	{ line: 9, cycle: 9100, delay: 2600 },
+	{ line: 13, cycle: 13700, delay: 6800 },
+	{ line: 15, cycle: 8300, delay: 5400 },
+];
+const SHIMMER_SWEEP = 900;
+const shimmerStyle = {
+	position: 'absolute',
+	left: 0,
+	right: 0,
+	top: 0,
+	height: '45%',
+	background:
+		'linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.85), transparent)',
+	transform: 'translateY(-100%)',
+};
+
+const useLineShimmer = (decoRef, lines, reduceMotion) => {
+	React.useEffect(() => {
+		const deco = decoRef.current;
+		if (!deco || !lines || reduceMotion) return undefined;
+		const animations = [...deco.querySelectorAll('[data-hero-glint]')]
+			.filter((glint) => typeof glint.animate === 'function')
+			.map((glint) => {
+				const { cycle, delay } = SHIMMER_LINES.find(
+					(shimmer) => `${shimmer.line}` === glint.dataset.heroGlint
+				);
+				const sweep = SHIMMER_SWEEP / cycle;
+				return glint.animate(
+					[
+						{ transform: 'translateY(-100%)', easing: 'ease-in-out' },
+						{ transform: 'translateY(230%)', offset: sweep },
+						{ transform: 'translateY(230%)' },
+					],
+					{ duration: cycle, delay, iterations: Infinity }
+				);
+			});
+		return () => animations.forEach((animation) => animation.cancel());
+	}, [decoRef, lines, reduceMotion]);
+};
+
 // `scheme` is the Color Scheme toolbar global (light, dark or system), the
 // same value preview-decorator.js turns into slds-color-scheme--* on <body>.
 const IntroductionPage = ({ scheme = 'light' }) => {
@@ -699,6 +746,8 @@ const IntroductionPage = ({ scheme = 'light' }) => {
 	const beadRef = React.useRef(null);
 	const dropRef = React.useRef(null);
 	useHeroDrip(beadRef, dropRef, lines, reduceMotion);
+	const decoRef = React.useRef(null);
+	useLineShimmer(decoRef, lines, reduceMotion);
 
 	return (
 		<div style={styles.page}>
@@ -717,12 +766,17 @@ const IntroductionPage = ({ scheme = 'light' }) => {
 				<div aria-hidden="true" style={styles.heroFade} />
 				{textBox && (
 					<div
+						ref={decoRef}
 						aria-hidden="true"
 						data-hero-deco=""
 						style={{ ...styles.heroDeco, opacity: isDark ? 0.7 : 1 }}
 					>
-						{lines.map((line) => (
-							<div key={line.key} style={line.style} />
+						{lines.map((line, i) => (
+							<div key={line.key} style={line.style}>
+								{SHIMMER_LINES.some((shimmer) => shimmer.line === i) && (
+									<div data-hero-glint={i} style={shimmerStyle} />
+								)}
+							</div>
 						))}
 						<div ref={beadRef} data-hero-drip="" style={dripBeadStyle} />
 						<div ref={dropRef} data-hero-drip="" style={dripDropStyle} />
