@@ -162,7 +162,8 @@ const styles = {
 	main: {
 		maxWidth: 800,
 		margin: '0 auto',
-		padding: `${clamp(28, 56)} ${GUTTER} ${clamp(40, 80)}`,
+		// No top padding: the hero's bottom fade already gives the space.
+		padding: `0 ${GUTTER} ${clamp(40, 80)}`,
 	},
 	h2: {
 		margin: `${clamp(36, 56)} 0 16px`,
