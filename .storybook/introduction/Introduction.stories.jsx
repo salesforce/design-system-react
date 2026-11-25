@@ -46,6 +46,9 @@ const clamp = (min, max) => {
 };
 // Side gutter shared by the hero, body and footer so they keep one left edge.
 const GUTTER = clamp(16, 32);
+// Height of the fade at the bottom of the hero, added to its bottom padding
+// so the release line keeps the same clear space above the fade.
+const HERO_FADE = 28;
 
 const TITLE_FONT =
 	"'Salesforce Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif";
@@ -73,9 +76,9 @@ const styles = {
 	hero: {
 		position: 'relative',
 		overflow: 'hidden',
-		// Title and release line only, so equal space above and below. Scales
-		// from 28px on phones to 72px on desktop.
-		padding: `${clamp(28, 72)} 0`,
+		// Title and release line only, so equal space above and below the text
+		// (28px on phones to 72px on desktop), plus the fade at the bottom.
+		padding: `${clamp(28, 72)} 0 calc(${clamp(28, 72)} + ${HERO_FADE}px)`,
 		color: '#fff',
 		// Solid fallback (the image's base blue) keeps the white text readable
 		// while the image loads.
@@ -96,6 +99,19 @@ const styles = {
 		backgroundRepeat: 'no-repeat',
 		transition: 'filter 300ms ease',
 		willChange: 'transform, filter',
+	},
+	// Fades the bottom of the hero into the page. It uses the same surface
+	// token as `page`, so it ends in white in light mode and the dark surface
+	// in dark mode. Sits above the image and below the text.
+	heroFade: {
+		position: 'absolute',
+		left: 0,
+		right: 0,
+		bottom: 0,
+		height: HERO_FADE,
+		background:
+			'linear-gradient(to bottom, transparent, var(--slds-g-color-surface-1, #fff))',
+		pointerEvents: 'none',
 	},
 	// Same width and side padding as `main`, so the hero text and the body copy
 	// share one left edge at every viewport width.
@@ -386,6 +402,7 @@ const IntroductionPage = ({ scheme = 'light' }) => {
 					data-hero-image=""
 					style={{ ...styles.heroImage, filter: heroFilter(isDark) }}
 				/>
+				<div aria-hidden="true" style={styles.heroFade} />
 				<div style={styles.heroInner}>
 					<h1 style={styles.heroTitle}>
 						Design System <i>for</i> React
