@@ -392,7 +392,7 @@ const useHeroGlow = (ref, isDark, reduceMotion) => {
 };
 
 // Right-edge hero decorations: seven thin lines in the image's gradient
-// colors, a pearl-core orb and a ring. `needs` is the clear width (px, from
+// colors and a pearl-core orb. `needs` is the clear width (px, from
 // the hero's right edge) a shape takes up, so each one only renders when it
 // fits beside the text.
 const HERO_LINE_COLORS = [
@@ -407,10 +407,10 @@ const HERO_LINE_COLORS = [
 const HERO_SHAPES = [
 	...HERO_LINE_COLORS.map((color, i) => ({
 		key: `line-${i}`,
-		needs: 120,
+		needs: 168,
 		style: {
 			position: 'absolute',
-			right: 32 + (HERO_LINE_COLORS.length - 1 - i) * 12,
+			right: 20 + (HERO_LINE_COLORS.length - 1 - i) * 24,
 			top: `${18 + (i % 3) * 7}%`,
 			bottom: `${14 + ((i + 1) % 3) * 6}%`,
 			width: 2,
@@ -421,10 +421,10 @@ const HERO_SHAPES = [
 	})),
 	{
 		key: 'orb',
-		needs: 250,
+		needs: 340,
 		style: {
 			position: 'absolute',
-			right: 136,
+			right: 224,
 			top: '16%',
 			width: 96,
 			height: 96,
@@ -433,22 +433,6 @@ const HERO_SHAPES = [
 				'radial-gradient(circle at 34% 30%, #fff 0%, #ffd3ec 18%, #f29ad0 45%, #a46ee8 78%, #7a4fd6 100%)',
 			boxShadow: '0 0 36px 6px rgba(226, 140, 230, 0.45)',
 			opacity: 0.9,
-		},
-	},
-	{
-		key: 'ring',
-		needs: 320,
-		style: {
-			position: 'absolute',
-			right: 250,
-			bottom: '22%',
-			width: 44,
-			height: 44,
-			borderRadius: '50%',
-			border: '2px solid #f2a6dc',
-			boxShadow:
-				'inset 0 0 12px rgba(180, 120, 240, 0.6), 0 0 14px rgba(242, 166, 220, 0.5)',
-			opacity: 0.85,
 		},
 	},
 ];
@@ -473,7 +457,7 @@ const useDecoSpace = (textRef) => {
 				textRight = Math.max(textRight, range.getBoundingClientRect().right);
 			});
 			const free = hero.getBoundingClientRect().right - textRight - DECO_GAP;
-			setSpace(free >= 120 ? Math.floor(free) : 0);
+			setSpace(free >= 168 ? Math.floor(free) : 0);
 		};
 		measure();
 		const observer = new ResizeObserver(measure);
