@@ -392,9 +392,11 @@ const useHeroGlow = (ref, isDark, reduceMotion) => {
 };
 
 // Right-edge hero decorations: seven thin lines in the image's gradient
-// colors and a pearl-core orb. `needs` is the clear width (px, from
-// the hero's right edge) a shape takes up, so each one only renders when it
-// fits beside the text.
+// colors. The gaps between them are golden-ratio steps (18px × φⁿ, n = 0–3)
+// in an irregular, fixed order, so the spacing looks hand-placed but stays
+// stable between renders. `needs` is the clear width (px, from the hero's
+// right edge) a line takes up, so each one only renders when it fits beside
+// the text; at narrower widths the lines nearest the edge stay, down to three.
 const HERO_LINE_COLORS = [
 	'#ffb37a',
 	'#ff8f8f',
@@ -404,13 +406,26 @@ const HERO_LINE_COLORS = [
 	'#8f8ff5',
 	'#7fb4ff',
 ];
-const HERO_SHAPES = [
-	...HERO_LINE_COLORS.map((color, i) => ({
+const PHI = (1 + Math.sqrt(5)) / 2;
+// Powers of φ for each gap, from the rightmost line inward.
+const HERO_GAP_STEPS = [1, 2, 0, 3, 1, 2];
+// Distance of each line from the hero's right edge, rightmost first.
+const HERO_LINE_OFFSETS = HERO_GAP_STEPS.reduce(
+	(offsets, step) => [
+		...offsets,
+		offsets[offsets.length - 1] + Math.round(18 * PHI ** step),
+	],
+	[20]
+);
+const HERO_MIN_DECO = HERO_LINE_OFFSETS[2] + 2;
+const HERO_SHAPES = HERO_LINE_COLORS.map((color, i) => {
+	const right = HERO_LINE_OFFSETS[HERO_LINE_COLORS.length - 1 - i];
+	return {
 		key: `line-${i}`,
-		needs: 168,
+		needs: right + 2,
 		style: {
 			position: 'absolute',
-			right: 20 + (HERO_LINE_COLORS.length - 1 - i) * 24,
+			right,
 			top: `${18 + (i % 3) * 7}%`,
 			bottom: `${14 + ((i + 1) % 3) * 6}%`,
 			width: 2,
@@ -418,24 +433,8 @@ const HERO_SHAPES = [
 			backgroundColor: color,
 			opacity: 0.75,
 		},
-	})),
-	{
-		key: 'orb',
-		needs: 340,
-		style: {
-			position: 'absolute',
-			right: 224,
-			top: '16%',
-			width: 96,
-			height: 96,
-			borderRadius: '50%',
-			background:
-				'radial-gradient(circle at 34% 30%, #fff 0%, #ffd3ec 18%, #f29ad0 45%, #a46ee8 78%, #7a4fd6 100%)',
-			boxShadow: '0 0 36px 6px rgba(226, 140, 230, 0.45)',
-			opacity: 0.9,
-		},
-	},
-];
+	};
+});
 
 // Clear width between the hero text's right edge (the inked extent of the
 // title and release line, not their full-width boxes) and the hero's right
@@ -457,7 +456,7 @@ const useDecoSpace = (textRef) => {
 				textRight = Math.max(textRight, range.getBoundingClientRect().right);
 			});
 			const free = hero.getBoundingClientRect().right - textRight - DECO_GAP;
-			setSpace(free >= 168 ? Math.floor(free) : 0);
+			setSpace(free >= HERO_MIN_DECO ? Math.floor(free) : 0);
 		};
 		measure();
 		const observer = new ResizeObserver(measure);
