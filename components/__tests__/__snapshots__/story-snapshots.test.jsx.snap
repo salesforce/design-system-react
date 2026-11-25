@@ -10646,7 +10646,7 @@ exports[`Story HTML snapshots > Tabs > WithErrorTab 1`] = `
 exports[`Story HTML snapshots > Textarea > AssistiveTextOnly 1`] = `
 "<div class="slds-p-around_medium">
   <div class="slds-form-element"><label class="slds-form-element__label slds-assistive-text" for="textarea-assistive">This label is only visible to screen readers</label>
-    <div class="slds-form-element__control"><textarea class="slds-textarea" id="textarea-assistive" name="assistive-textarea" placeholder="No visible label, but has assistive text"></textarea></div>
+    <div class="slds-form-element__control"><textarea name="assistive-textarea" placeholder="No visible label, but has assistive text" class="slds-textarea" id="textarea-assistive"></textarea></div>
   </div>
 </div>"
 `;
@@ -10654,7 +10654,7 @@ exports[`Story HTML snapshots > Textarea > AssistiveTextOnly 1`] = `
 exports[`Story HTML snapshots > Textarea > Disabled 1`] = `
 "<div class="slds-p-around_medium">
   <div class="slds-form-element"><label class="slds-form-element__label" for="textarea-disabled">Disabled Textarea</label>
-    <div class="slds-form-element__control"><textarea class="slds-textarea" disabled="" id="textarea-disabled" name="disabled-textarea" placeholder="This textarea is disabled"></textarea></div>
+    <div class="slds-form-element__control"><textarea name="disabled-textarea" placeholder="This textarea is disabled" disabled="" class="slds-textarea" id="textarea-disabled"></textarea></div>
   </div>
 </div>"
 `;
@@ -10670,7 +10670,7 @@ exports[`Story HTML snapshots > Textarea > DocSiteDefault 1`] = `
 exports[`Story HTML snapshots > Textarea > DocSiteDisabled 1`] = `
 "<div class="slds-p-around_medium">
   <div class="slds-form-element"><label class="slds-form-element__label" for="text-area-disabled">Textarea Label</label>
-    <div class="slds-form-element__control"><textarea class="slds-textarea" disabled="" id="text-area-disabled" name="disabled" placeholder="Placeholder Text"></textarea></div>
+    <div class="slds-form-element__control"><textarea name="disabled" disabled="" placeholder="Placeholder Text" class="slds-textarea" id="text-area-disabled"></textarea></div>
   </div>
 </div>"
 `;
@@ -10678,7 +10678,7 @@ exports[`Story HTML snapshots > Textarea > DocSiteDisabled 1`] = `
 exports[`Story HTML snapshots > Textarea > DocSiteError 1`] = `
 "<div class="slds-p-around_medium">
   <div class="slds-form-element slds-has-error"><label class="slds-form-element__label" for="text-area-error"><abbr class="slds-required" title="required">*</abbr>Textarea Label</label>
-    <div class="slds-form-element__control"><textarea class="slds-textarea" id="text-area-error" name="required-textarea-error" placeholder="Placeholder Text" required="" aria-describedby="error-1"></textarea></div>
+    <div class="slds-form-element__control"><textarea aria-describedby="error-1" name="required-textarea-error" placeholder="Placeholder Text" class="slds-textarea" id="text-area-error" required=""></textarea></div>
     <div id="error-1" class="slds-form-element__help">This field is required</div>
   </div>
 </div>"
@@ -10687,7 +10687,7 @@ exports[`Story HTML snapshots > Textarea > DocSiteError 1`] = `
 exports[`Story HTML snapshots > Textarea > Required 1`] = `
 "<div class="slds-p-around_medium">
   <div class="slds-form-element"><label class="slds-form-element__label" for="textarea-required"><abbr class="slds-required" title="required">*</abbr>Required Textarea</label>
-    <div class="slds-form-element__control"><textarea class="slds-textarea" id="textarea-required" name="required-textarea" placeholder="This field is required" required=""></textarea></div>
+    <div class="slds-form-element__control"><textarea name="required-textarea" placeholder="This field is required" class="slds-textarea" id="textarea-required" required=""></textarea></div>
   </div>
 </div>"
 `;
@@ -10695,7 +10695,7 @@ exports[`Story HTML snapshots > Textarea > Required 1`] = `
 exports[`Story HTML snapshots > Textarea > Standard 1`] = `
 "<div class="slds-p-around_medium">
   <div class="slds-form-element"><label class="slds-form-element__label" for="textarea-standard">Textarea Label</label>
-    <div class="slds-form-element__control"><textarea class="slds-textarea" id="textarea-standard" name="standard-textarea" placeholder="Placeholder Text"></textarea></div>
+    <div class="slds-form-element__control"><textarea name="standard-textarea" placeholder="Placeholder Text" class="slds-textarea" id="textarea-standard"></textarea></div>
   </div>
 </div>"
 `;
@@ -10703,7 +10703,7 @@ exports[`Story HTML snapshots > Textarea > Standard 1`] = `
 exports[`Story HTML snapshots > Textarea > WithError 1`] = `
 "<div class="slds-p-around_medium">
   <div class="slds-form-element slds-has-error"><label class="slds-form-element__label" for="textarea-error"><abbr class="slds-required" title="required">*</abbr>Textarea with Error</label>
-    <div class="slds-form-element__control"><textarea class="slds-textarea" id="textarea-error" name="error-textarea" placeholder="Please fix this error" required="" aria-describedby="_R_0H1_"></textarea></div>
+    <div class="slds-form-element__control"><textarea name="error-textarea" placeholder="Please fix this error" class="slds-textarea" id="textarea-error" required="" aria-describedby="_R_0H1_"></textarea></div>
     <div id="_R_0H1_" class="slds-form-element__help">This field is required and cannot be empty.</div>
   </div>
 </div>"
@@ -10712,7 +10712,15 @@ exports[`Story HTML snapshots > Textarea > WithError 1`] = `
 exports[`Story HTML snapshots > Textarea > WithMaxLength 1`] = `
 "<div class="slds-p-around_medium">
   <div class="slds-form-element"><label class="slds-form-element__label" for="textarea-maxlength">Limited Characters</label>
-    <div class="slds-form-element__control"><textarea class="slds-textarea" id="textarea-maxlength" maxLength="100" name="maxlength-textarea" placeholder="Max 100 characters"></textarea></div>
+    <div class="slds-form-element__control"><textarea name="maxlength-textarea" placeholder="Max 100 characters" class="slds-textarea" id="textarea-maxlength" maxLength="100"></textarea></div>
+  </div>
+</div>"
+`;
+
+exports[`Story HTML snapshots > Textarea > WithRows 1`] = `
+"<div class="slds-p-around_medium">
+  <div class="slds-form-element"><label class="slds-form-element__label" for="textarea-rows">Tall Textarea</label>
+    <div class="slds-form-element__control"><textarea name="rows-textarea" placeholder="This textarea shows five visible lines" rows="5" class="slds-textarea" id="textarea-rows"></textarea></div>
   </div>
 </div>"
 `;
@@ -10720,7 +10728,7 @@ exports[`Story HTML snapshots > Textarea > WithMaxLength 1`] = `
 exports[`Story HTML snapshots > Textarea > WithValue 1`] = `
 "<div class="slds-p-around_medium">
   <div class="slds-form-element"><label class="slds-form-element__label" for="textarea-with-value">Textarea with Value</label>
-    <div class="slds-form-element__control"><textarea class="slds-textarea" id="textarea-with-value" name="textarea-value">This is some preset content in the textarea.</textarea></div>
+    <div class="slds-form-element__control"><textarea name="textarea-value" class="slds-textarea" id="textarea-with-value">This is some preset content in the textarea.</textarea></div>
   </div>
 </div>"
 `;
