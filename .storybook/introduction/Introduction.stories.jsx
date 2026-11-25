@@ -439,6 +439,9 @@ const HERO_LINE_X = (() => {
 })();
 // Clear space kept between a line and the text.
 const DECO_GAP = 16;
+// Drip drop size and how far it falls past a line's tip (px).
+const DRIP_DROP = 5;
+const DRIP_FALL = 40;
 
 // Measures the hero and the inked extent of its title and release line (not
 // their full-width boxes), relative to the hero, so the lines can be laid out
@@ -489,14 +492,20 @@ const heroLines = (box) => {
 		const height = overText
 			? overTextRoom * (0.4 + 0.6 * HERO_LINE_LENGTHS[i])
 			: (box.top + (sideRoom - box.top) * HERO_LINE_LENGTHS[i]) / 2;
+		const length = Math.max(0, Math.round(height));
 		return {
 			key: `line-${i}`,
+			// How far a drip's drop may fall past the tip (see useHeroDrip): up to
+			// 40px, but over the text it stops 4px above the title.
+			fall: overText
+				? Math.max(0, Math.min(DRIP_FALL, box.top - 4 - length - DRIP_DROP))
+				: DRIP_FALL,
 			style: {
 				position: 'absolute',
 				top: 0,
 				left,
 				width,
-				height: Math.max(0, Math.round(height)),
+				height: length,
 				borderRadius: `0 0 ${width}px ${width}px`,
 				backgroundColor: HERO_LINE_COLORS[HERO_LINE_HUES[i]],
 				opacity: 0.75,
@@ -513,7 +522,6 @@ const DRIP_ORDER = HERO_LINE_X.map((_, i) => (i * 7) % HERO_LINE_X.length);
 // Pause after each drip (ms), so the rhythm isn't metronomic.
 const DRIP_PAUSES = [3200, 2600, 4200, 3000, 3800, 2800, 4500];
 const DRIP_BEAD = 18;
-const DRIP_DROP = 5;
 // Peak opacity of the bead and the drop, shared so they read as one light.
 const DRIP_OPACITY = 0.45;
 // Light blue from the line palette, mixed into the drop.
@@ -576,7 +584,8 @@ const useHeroDrip = (beadRef, dropRef, lines, reduceMotion) => {
 			});
 
 		const drip = async (step) => {
-			const line = lines[DRIP_ORDER[step % DRIP_ORDER.length]].style;
+			const { fall: dropFall, style: line } =
+				lines[DRIP_ORDER[step % DRIP_ORDER.length]];
 			if (line.height >= 24) {
 				const color = line.backgroundColor;
 				const x = line.left + line.width / 2;
@@ -643,11 +652,16 @@ const useHeroDrip = (beadRef, dropRef, lines, reduceMotion) => {
 					[
 						{ transform: `${at} scale(1)`, opacity: DRIP_OPACITY },
 						{
-							transform: `translateY(${tip + 10}px) scale(0.8, 1.3)`,
+							transform: `translateY(${tip + dropFall * 0.45}px) scale(0.85, 1.25)`,
+							opacity: DRIP_OPACITY * 0.6,
+							offset: 0.5,
+						},
+						{
+							transform: `translateY(${tip + dropFall}px) scale(0.7, 1.4)`,
 							opacity: 0,
 						},
 					],
-					{ duration: 600, easing: 'ease-in' }
+					{ duration: 1100, easing: 'ease-in' }
 				);
 				running.forEach((animation) => animation.cancel());
 				running = [];
