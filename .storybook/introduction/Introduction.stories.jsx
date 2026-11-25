@@ -49,6 +49,7 @@ const GUTTER = clamp(16, 32);
 // Height of the fade at the bottom of the hero, added to its bottom padding
 // so the release line keeps the same clear space above the fade.
 const HERO_FADE = 110;
+const HERO_PAD = 'clamp(28px, 3.333vw, 72px)';
 
 const TITLE_FONT =
 	"'Salesforce Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif";
@@ -77,8 +78,9 @@ const styles = {
 		position: 'relative',
 		overflow: 'hidden',
 		// Title and release line only, so equal space above and below the text
-		// (28px on phones to 72px on desktop), plus the fade at the bottom.
-		padding: `${clamp(28, 72)} 0 calc(${clamp(28, 72)} + ${HERO_FADE}px)`,
+		// (3.333vw: about 47px at a 1400px desktop, never under 28px on
+		// phones), plus the fade at the bottom.
+		padding: `${HERO_PAD} 0 calc(${HERO_PAD} + ${HERO_FADE}px)`,
 		color: '#fff',
 		// Solid fallback (the image's base blue) keeps the white text readable
 		// while the image loads.
@@ -511,6 +513,9 @@ const DRIP_ORDER = HERO_LINE_X.map((_, i) => (i * 7) % HERO_LINE_X.length);
 const DRIP_PAUSES = [3200, 2600, 4200, 3000, 3800, 2800, 4500];
 const DRIP_BEAD = 18;
 const DRIP_DROP = 5;
+// Lower than the bead's 0.9: the drop is solid and brighter at its core, so
+// this makes the two read as one light.
+const DRIP_DROP_OPACITY = 0.55;
 
 const dripBeadStyle = {
 	position: 'absolute',
@@ -590,7 +595,7 @@ const useHeroDrip = (beadRef, dropRef, lines, reduceMotion) => {
 					drop,
 					[
 						{ transform: `${at} scale(0.3)`, opacity: 0 },
-						{ transform: `${at} scale(1)`, opacity: 0.95 },
+						{ transform: `${at} scale(1)`, opacity: DRIP_DROP_OPACITY },
 					],
 					{ duration: 500, easing: 'ease-out' }
 				);
@@ -598,7 +603,7 @@ const useHeroDrip = (beadRef, dropRef, lines, reduceMotion) => {
 				await play(
 					drop,
 					[
-						{ transform: `${at} scale(1)`, opacity: 0.95 },
+						{ transform: `${at} scale(1)`, opacity: DRIP_DROP_OPACITY },
 						{
 							transform: `translateY(${tip + 10}px) scale(0.8, 1.3)`,
 							opacity: 0,
