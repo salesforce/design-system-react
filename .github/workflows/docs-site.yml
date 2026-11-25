@@ -11,7 +11,10 @@ name: Docs site
 
 on:
   push:
-    branches: [master]
+    # TEMPORARY: feat/storybook-intro-sidebar deploys a preview before the
+    # stack merges. Drop it (and its github-pages environment branch policy)
+    # before merging.
+    branches: [master, feat/storybook-intro-sidebar]
   release:
     types: [published]
   workflow_dispatch:
