@@ -1,5 +1,8 @@
 import type { StorybookConfig } from '@storybook/react-vite';
 
+// A quoted root-relative asset path, not preceded by a backslash.
+const ASSET_PATH = /(?<!\\)(['"`])\/assets\//g;
+
 const config: StorybookConfig = {
 	// Auto-discover every component story. Stories live at
 	// `components/**/__docs__/**/*.stories.{jsx,tsx}` by convention, so a new
@@ -31,6 +34,36 @@ const config: StorybookConfig = {
 		name: '@storybook/react-vite',
 		options: {},
 	},
+
+	// Stories and examples point at icons and images with root-relative paths
+	// (`/assets/icons`), which is what consumers copy. On GitHub Pages the site
+	// lives under a subpath (/design-system-react/), where those 404. In the
+	// Storybook build only, rewrite them relative to iframe.html (`./assets/`),
+	// which resolves the same way locally and under any subpath. Source files
+	// and tests keep the root-relative form.
+	viteFinal: (viteConfig) => ({
+		...viteConfig,
+		plugins: [
+			...(viteConfig.plugins ?? []),
+			{
+				name: 'dsr-relative-story-assets',
+				// After the JSX transform and the docs source capture, so "Show code"
+				// still shows `/assets/icons`: the captured source is an escaped
+				// string (`\"/assets/`), which the lookbehind skips.
+				enforce: 'post',
+				transform(code, id) {
+					if (
+						!/\/components\/.*\.[jt]sx?$/.test(id) ||
+						id.includes('node_modules') ||
+						!code.includes('/assets/')
+					) {
+						return null;
+					}
+					return { code: code.replace(ASSET_PATH, '$1./assets/'), map: null };
+				},
+			},
+		],
+	}),
 
 	staticDirs: [
 		{
