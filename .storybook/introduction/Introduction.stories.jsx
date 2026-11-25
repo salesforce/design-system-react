@@ -409,8 +409,12 @@ const HERO_LINE_COLORS = [
 const PHI = (1 + Math.sqrt(5)) / 2;
 // Powers of φ for the 16 gaps, left to right.
 const HERO_GAP_STEPS = [1, 0, 2, 1, 3, 0, 1, 2, 0, 1, 3, 1, 0, 2, 1, 2];
-// Per line: thickness (px), color index, and length (0–1 of the room it has).
-const HERO_LINE_WIDTHS = [2, 1, 3, 1, 2, 2, 1, 3, 1, 2, 1, 3, 2, 1, 2, 1, 3];
+// Per line: thickness (0.75–2px, thin on purpose), color index, and length
+// (0–1 of the room it has).
+const HERO_LINE_WIDTHS = [
+	1.5, 0.75, 2, 1, 1.25, 1.75, 0.75, 2, 1, 1.5, 0.75, 1.75, 1.25, 1, 2, 0.75,
+	1.5,
+];
 const HERO_LINE_HUES = [0, 3, 5, 1, 6, 2, 4, 0, 5, 3, 1, 6, 4, 2, 5, 0, 3];
 const HERO_LINE_LENGTHS = [
 	0.7, 0.45, 1, 0.6, 0.85, 0.5, 0.95, 0.55, 0.8, 0.4, 0.9, 0.65, 1, 0.5, 0.75,
@@ -472,11 +476,11 @@ const heroLines = (box) => {
 		const left = Math.round(fraction * box.width - width / 2);
 		const overText =
 			left + width > box.left - DECO_GAP && left < box.right + DECO_GAP;
-		// Over the text: 40–100% of the space above the title. Beside it: from
-		// the title's top down to as far as the fade, by the line's length.
+		// Over the text: 40–100% of the space above the title. Beside it: half
+		// of the run from the title's top toward the fade, by the line's length.
 		const height = overText
 			? overTextRoom * (0.4 + 0.6 * HERO_LINE_LENGTHS[i])
-			: box.top + (sideRoom - box.top) * HERO_LINE_LENGTHS[i];
+			: (box.top + (sideRoom - box.top) * HERO_LINE_LENGTHS[i]) / 2;
 		return {
 			key: `line-${i}`,
 			style: {
