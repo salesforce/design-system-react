@@ -79,8 +79,9 @@ const styles = {
 		overflow: 'hidden',
 		// Title and release line only, so equal space above and below the text
 		// (3.333vw: about 47px at a 1400px desktop, never under 28px on
-		// phones), plus the fade at the bottom.
-		padding: `${HERO_PAD} 0 calc(${HERO_PAD} + ${HERO_FADE}px)`,
+		// phones), plus the fade at the bottom. 30px more on top leaves room for
+		// the hanging lines above the title.
+		padding: `calc(${HERO_PAD} + 30px) 0 calc(${HERO_PAD} + ${HERO_FADE}px)`,
 		color: '#fff',
 		// Solid fallback (the image's base blue) keeps the white text readable
 		// while the image loads.
@@ -513,9 +514,8 @@ const DRIP_ORDER = HERO_LINE_X.map((_, i) => (i * 7) % HERO_LINE_X.length);
 const DRIP_PAUSES = [3200, 2600, 4200, 3000, 3800, 2800, 4500];
 const DRIP_BEAD = 18;
 const DRIP_DROP = 5;
-// Lower than the bead's 0.9: the drop is solid and brighter at its core, so
-// this makes the two read as one light.
-const DRIP_DROP_OPACITY = 0.55;
+// Peak opacity of the bead and the drop, shared so they read as one light.
+const DRIP_OPACITY = 0.45;
 
 const dripBeadStyle = {
 	position: 'absolute',
@@ -584,18 +584,23 @@ const useHeroDrip = (beadRef, dropRef, lines, reduceMotion) => {
 					bead,
 					[
 						{ transform: `translateY(${-DRIP_BEAD}px)`, opacity: 0 },
-						{ opacity: 0.9, offset: 0.2 },
-						{ transform: `translateY(${tip - DRIP_BEAD}px)`, opacity: 0.9 },
+						{ opacity: DRIP_OPACITY, offset: 0.2 },
+						{
+							transform: `translateY(${tip - DRIP_BEAD}px)`,
+							opacity: DRIP_OPACITY,
+						},
 					],
 					{ duration: 900 + tip * 8, easing: 'ease-in' }
 				);
-				play(bead, [{ opacity: 0.9 }, { opacity: 0 }], { duration: 300 });
+				play(bead, [{ opacity: DRIP_OPACITY }, { opacity: 0 }], {
+					duration: 300,
+				});
 				const at = `translateY(${tip - DRIP_DROP / 2}px)`;
 				await play(
 					drop,
 					[
 						{ transform: `${at} scale(0.3)`, opacity: 0 },
-						{ transform: `${at} scale(1)`, opacity: DRIP_DROP_OPACITY },
+						{ transform: `${at} scale(1)`, opacity: DRIP_OPACITY },
 					],
 					{ duration: 500, easing: 'ease-out' }
 				);
@@ -603,7 +608,7 @@ const useHeroDrip = (beadRef, dropRef, lines, reduceMotion) => {
 				await play(
 					drop,
 					[
-						{ transform: `${at} scale(1)`, opacity: DRIP_DROP_OPACITY },
+						{ transform: `${at} scale(1)`, opacity: DRIP_OPACITY },
 						{
 							transform: `translateY(${tip + 10}px) scale(0.8, 1.3)`,
 							opacity: 0,
