@@ -428,11 +428,11 @@ const IntroductionPage = ({ scheme = 'light' }) => {
 
 				<h3 style={styles.h3}>1. Install</h3>
 				<Snippet label="Install command">
-					npm install @salesforce/design-system-react@alpha
+					npm install @salesforce/design-system-react@rc
 				</Snippet>
 				<p style={styles.p}>
-					v11 is in prerelease and needs the <Code>@alpha</Code> tag. Without
-					it, npm installs the stable 0.10.x line (React 16.8+, SLDS 1). v11
+					v11 is in prerelease and needs the <Code>@rc</Code> tag. Without it,
+					npm installs the stable 0.10.x line (React 16.8+, SLDS 1). v11
 					requires React 19.2 and isn't a drop-in upgrade from 0.10.x. Pin the
 					exact version you tested against. For <Code>ERESOLVE</Code> errors,
 					see the{' '}
