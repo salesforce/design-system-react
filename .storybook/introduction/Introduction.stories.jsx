@@ -439,9 +439,6 @@ const HERO_LINE_X = (() => {
 })();
 // Clear space kept between a line and the text.
 const DECO_GAP = 16;
-// Drip drop size and how far it falls past a line's tip (px).
-const DRIP_DROP = 5;
-const DRIP_FALL = 40;
 
 // Measures the hero and the inked extent of its title and release line (not
 // their full-width boxes), relative to the hero, so the lines can be laid out
@@ -495,11 +492,6 @@ const heroLines = (box) => {
 		const length = Math.max(0, Math.round(height));
 		return {
 			key: `line-${i}`,
-			// How far a drip's drop may fall past the tip (see useHeroDrip): up to
-			// 40px, but over the text it stops 4px above the title.
-			fall: overText
-				? Math.max(0, Math.min(DRIP_FALL, box.top - 4 - length - DRIP_DROP))
-				: DRIP_FALL,
 			style: {
 				position: 'absolute',
 				top: 0,
@@ -517,186 +509,17 @@ const heroLines = (box) => {
 	});
 };
 
-// Order the drip visits the lines: stepping by 7 (coprime with 17) jumps
-// around the hero and reaches every line before repeating.
-const DRIP_ORDER = HERO_LINE_X.map((_, i) => (i * 7) % HERO_LINE_X.length);
-// Pause after each drip (ms), so the rhythm isn't metronomic.
-const DRIP_PAUSES = [3200, 2600, 4200, 3000, 3800, 2800, 4500];
-const DRIP_BEAD = 18;
-// Peak opacity of the bead and the drop, shared so they read as one light.
-const DRIP_OPACITY = 0.45;
-// Light blue from the line palette, mixed into the drop.
-const DRIP_BLUE = '#a8cbff';
-
-const dripBeadStyle = {
-	position: 'absolute',
-	top: 0,
-	left: 0,
-	width: 3,
-	height: DRIP_BEAD,
-	borderRadius: 2,
-	transformOrigin: 'bottom',
-	filter: 'blur(1px)',
-	opacity: 0,
-};
-const dripDropStyle = {
-	position: 'absolute',
-	top: 0,
-	left: 0,
-	width: DRIP_DROP,
-	height: DRIP_DROP,
-	borderRadius: '50%',
-	opacity: 0,
-};
-
-// One "water drip" at a time: a soft light slides down a line, speeding up
-// like gravity, swells into a glowing drop at the tip, then falls and fades.
-// After a pause it runs on another line. Off when the user prefers reduced
-// motion; restarts when the lines are laid out again.
-const useHeroDrip = (beadRef, dropRef, lines, reduceMotion) => {
-	React.useEffect(() => {
-		const bead = beadRef.current;
-		const drop = dropRef.current;
-		if (
-			!bead ||
-			!drop ||
-			!lines ||
-			reduceMotion ||
-			typeof bead.animate !== 'function'
-		) {
-			return undefined;
-		}
-		let cancelled = false;
-		let running = [];
-		const timers = new Set();
-		const play = (el, keyframes, options) => {
-			if (cancelled) return Promise.resolve();
-			const animation = el.animate(keyframes, { fill: 'forwards', ...options });
-			running.push(animation);
-			return animation.finished;
-		};
-		const wait = (ms) =>
-			new Promise((resolve) => {
-				const timer = setTimeout(() => {
-					timers.delete(timer);
-					resolve();
-				}, ms);
-				timers.add(timer);
-			});
-
-		const drip = async (step) => {
-			const { fall: dropFall, style: line } =
-				lines[DRIP_ORDER[step % DRIP_ORDER.length]];
-			if (line.height >= 24) {
-				const color = line.backgroundColor;
-				const x = line.left + line.width / 2;
-				const tip = line.height;
-				bead.style.left = `${x - 1.5}px`;
-				bead.style.background = `linear-gradient(to bottom, transparent, ${color}, #fff)`;
-				bead.style.boxShadow = `0 0 6px 1px ${color}`;
-				drop.style.left = `${x - DRIP_DROP / 2}px`;
-				// A cool blue core, so the drop reads as water catching the light.
-				drop.style.background = `radial-gradient(circle at 40% 35%, #fff, ${DRIP_BLUE} 45%, ${color})`;
-				drop.style.boxShadow = `0 0 8px 2px ${DRIP_BLUE}`;
-
-				const fall = 900 + tip * 8;
-				const at = `translateY(${tip - DRIP_DROP / 2}px)`;
-				// The drop starts forming while the bead is still arriving, and the
-				// bead then shrinks into it from the top (its tail drains into the
-				// drop) instead of fading out on its own.
-				const beadArrives = play(
-					bead,
-					[
-						{ transform: `translateY(${-DRIP_BEAD}px)`, opacity: 0 },
-						{ opacity: DRIP_OPACITY, offset: 0.2 },
-						{
-							transform: `translateY(${tip - DRIP_BEAD}px)`,
-							opacity: DRIP_OPACITY,
-						},
-					],
-					{ duration: fall, easing: 'ease-in' }
-				);
-				const dropForms = wait(fall * 0.75).then(() =>
-					play(
-						drop,
-						[
-							{ transform: `${at} scale(0.3)`, opacity: 0 },
-							{ transform: `${at} scale(1)`, opacity: DRIP_OPACITY },
-						],
-						{ duration: 650, easing: 'ease-out' }
-					)
-				);
-				await beadArrives;
-				play(
-					bead,
-					[
-						{
-							transform: `translateY(${tip - DRIP_BEAD}px) scaleY(1)`,
-							opacity: DRIP_OPACITY,
-						},
-						{
-							transform: `translateY(${tip - DRIP_BEAD}px) scaleY(0.15)`,
-							opacity: DRIP_OPACITY * 0.6,
-							offset: 0.8,
-						},
-						{
-							transform: `translateY(${tip - DRIP_BEAD}px) scaleY(0)`,
-							opacity: 0,
-						},
-					],
-					{ duration: 550, easing: 'ease-in-out' }
-				);
-				await dropForms;
-				await wait(300);
-				await play(
-					drop,
-					[
-						{ transform: `${at} scale(1)`, opacity: DRIP_OPACITY },
-						{
-							transform: `translateY(${tip + dropFall * 0.45}px) scale(0.85, 1.25)`,
-							opacity: DRIP_OPACITY * 0.6,
-							offset: 0.5,
-						},
-						{
-							transform: `translateY(${tip + dropFall}px) scale(0.7, 1.4)`,
-							opacity: 0,
-						},
-					],
-					{ duration: 1100, easing: 'ease-in' }
-				);
-				running.forEach((animation) => animation.cancel());
-				running = [];
-			}
-			await wait(DRIP_PAUSES[step % DRIP_PAUSES.length]);
-		};
-
-		(async () => {
-			await wait(1500);
-			for (let step = 0; !cancelled; step += 1) {
-				// eslint-disable-next-line no-await-in-loop
-				await drip(step);
-			}
-		})().catch(() => {});
-
-		return () => {
-			cancelled = true;
-			timers.forEach(clearTimeout);
-			running.forEach((animation) => animation.cancel());
-		};
-	}, [beadRef, dropRef, lines, reduceMotion]);
-};
-
-// Glass-like glints: a narrow white band sweeps quickly down a few of the
-// lines, then rests. Each glinting line has its own cycle length and start, so
+// Glass-like glints: a soft white band slowly sweeps down a few of the lines
+// over 3s, then rests. Each glinting line has its own cycle length and start, so
 // together they read as random reflections but stay deterministic.
 const SHIMMER_LINES = [
-	{ line: 2, cycle: 7300, delay: 900 },
-	{ line: 6, cycle: 11900, delay: 4200 },
-	{ line: 9, cycle: 9100, delay: 2600 },
-	{ line: 13, cycle: 13700, delay: 6800 },
-	{ line: 15, cycle: 8300, delay: 5400 },
+	{ line: 2, cycle: 11300, delay: 900 },
+	{ line: 6, cycle: 16900, delay: 5200 },
+	{ line: 9, cycle: 13100, delay: 2600 },
+	{ line: 13, cycle: 18700, delay: 8800 },
+	{ line: 15, cycle: 14300, delay: 6400 },
 ];
-const SHIMMER_SWEEP = 900;
+const SHIMMER_SWEEP = 3000;
 const shimmerStyle = {
 	position: 'absolute',
 	left: 0,
@@ -743,9 +566,6 @@ const IntroductionPage = ({ scheme = 'light' }) => {
 	const textRef = React.useRef(null);
 	const textBox = useHeroTextBox(textRef);
 	const lines = React.useMemo(() => textBox && heroLines(textBox), [textBox]);
-	const beadRef = React.useRef(null);
-	const dropRef = React.useRef(null);
-	useHeroDrip(beadRef, dropRef, lines, reduceMotion);
 	const decoRef = React.useRef(null);
 	useLineShimmer(decoRef, lines, reduceMotion);
 
@@ -778,8 +598,6 @@ const IntroductionPage = ({ scheme = 'light' }) => {
 								)}
 							</div>
 						))}
-						<div ref={beadRef} data-hero-drip="" style={dripBeadStyle} />
-						<div ref={dropRef} data-hero-drip="" style={dripDropStyle} />
 					</div>
 				)}
 				<div ref={textRef} style={styles.heroInner}>
