@@ -113,6 +113,18 @@ const styles = {
 			'linear-gradient(to bottom, transparent, var(--slds-g-color-surface-1, #fff))',
 		pointerEvents: 'none',
 	},
+	// Decorations pinned to the hero's right edge. Their width is the clear
+	// space right of the title and release line (see useDecoSpace), so they
+	// never sit under the text.
+	heroDeco: {
+		position: 'absolute',
+		top: 0,
+		right: 0,
+		bottom: HERO_FADE,
+		overflow: 'hidden',
+		pointerEvents: 'none',
+		transition: 'opacity 300ms ease',
+	},
 	// Same width and side padding as `main`, so the hero text and the body copy
 	// share one left edge at every viewport width.
 	heroInner: {
@@ -379,6 +391,99 @@ const useHeroGlow = (ref, isDark, reduceMotion) => {
 	}, [ref, isDark, reduceMotion]);
 };
 
+// Right-edge hero decorations: seven thin lines in the image's gradient
+// colors, a pearl-core orb and a ring. `needs` is the clear width (px, from
+// the hero's right edge) a shape takes up, so each one only renders when it
+// fits beside the text.
+const HERO_LINE_COLORS = [
+	'#ffb37a',
+	'#ff8f8f',
+	'#f7a1c4',
+	'#d9a4ef',
+	'#b48cf2',
+	'#8f8ff5',
+	'#7fb4ff',
+];
+const HERO_SHAPES = [
+	...HERO_LINE_COLORS.map((color, i) => ({
+		key: `line-${i}`,
+		needs: 120,
+		style: {
+			position: 'absolute',
+			right: 32 + (HERO_LINE_COLORS.length - 1 - i) * 12,
+			top: `${18 + (i % 3) * 7}%`,
+			bottom: `${14 + ((i + 1) % 3) * 6}%`,
+			width: 2,
+			borderRadius: 1,
+			backgroundColor: color,
+			opacity: 0.75,
+		},
+	})),
+	{
+		key: 'orb',
+		needs: 250,
+		style: {
+			position: 'absolute',
+			right: 136,
+			top: '16%',
+			width: 96,
+			height: 96,
+			borderRadius: '50%',
+			background:
+				'radial-gradient(circle at 34% 30%, #fff 0%, #ffd3ec 18%, #f29ad0 45%, #a46ee8 78%, #7a4fd6 100%)',
+			boxShadow: '0 0 36px 6px rgba(226, 140, 230, 0.45)',
+			opacity: 0.9,
+		},
+	},
+	{
+		key: 'ring',
+		needs: 320,
+		style: {
+			position: 'absolute',
+			right: 250,
+			bottom: '22%',
+			width: 44,
+			height: 44,
+			borderRadius: '50%',
+			border: '2px solid #f2a6dc',
+			boxShadow:
+				'inset 0 0 12px rgba(180, 120, 240, 0.6), 0 0 14px rgba(242, 166, 220, 0.5)',
+			opacity: 0.85,
+		},
+	},
+];
+
+// Clear width between the hero text's right edge (the inked extent of the
+// title and release line, not their full-width boxes) and the hero's right
+// edge, less a gap. 0 when there's no room for the decorations.
+const DECO_GAP = 32;
+const useDecoSpace = (textRef) => {
+	const [space, setSpace] = React.useState(0);
+	React.useLayoutEffect(() => {
+		const text = textRef.current;
+		const hero = text?.parentElement;
+		if (!text || !hero || typeof ResizeObserver === 'undefined') {
+			return undefined;
+		}
+		const measure = () => {
+			const range = document.createRange();
+			let textRight = 0;
+			Array.from(text.children).forEach((child) => {
+				range.selectNodeContents(child);
+				textRight = Math.max(textRight, range.getBoundingClientRect().right);
+			});
+			const free = hero.getBoundingClientRect().right - textRight - DECO_GAP;
+			setSpace(free >= 120 ? Math.floor(free) : 0);
+		};
+		measure();
+		const observer = new ResizeObserver(measure);
+		observer.observe(hero);
+		observer.observe(text);
+		return () => observer.disconnect();
+	}, [textRef]);
+	return space;
+};
+
 // `scheme` is the Color Scheme toolbar global (light, dark or system), the
 // same value preview-decorator.js turns into slds-color-scheme--* on <body>.
 const IntroductionPage = ({ scheme = 'light' }) => {
@@ -387,6 +492,8 @@ const IntroductionPage = ({ scheme = 'light' }) => {
 	const isDark = scheme === 'dark' || (scheme === 'system' && osDark);
 	const imageRef = React.useRef(null);
 	useHeroGlow(imageRef, isDark, reduceMotion);
+	const textRef = React.useRef(null);
+	const decoSpace = useDecoSpace(textRef);
 
 	return (
 		<div style={styles.page}>
@@ -403,7 +510,24 @@ const IntroductionPage = ({ scheme = 'light' }) => {
 					style={{ ...styles.heroImage, filter: heroFilter(isDark) }}
 				/>
 				<div aria-hidden="true" style={styles.heroFade} />
-				<div style={styles.heroInner}>
+				{decoSpace > 0 && (
+					<div
+						aria-hidden="true"
+						data-hero-deco=""
+						style={{
+							...styles.heroDeco,
+							width: decoSpace,
+							opacity: isDark ? 0.7 : 1,
+						}}
+					>
+						{HERO_SHAPES.filter((shape) => shape.needs <= decoSpace).map(
+							(shape) => (
+								<div key={shape.key} style={shape.style} />
+							)
+						)}
+					</div>
+				)}
+				<div ref={textRef} style={styles.heroInner}>
 					<h1 style={styles.heroTitle}>
 						Design System <i>for</i> React
 					</h1>
