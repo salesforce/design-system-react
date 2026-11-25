@@ -516,6 +516,8 @@ const DRIP_BEAD = 18;
 const DRIP_DROP = 5;
 // Peak opacity of the bead and the drop, shared so they read as one light.
 const DRIP_OPACITY = 0.45;
+// Light blue from the line palette, mixed into the drop.
+const DRIP_BLUE = '#a8cbff';
 
 const dripBeadStyle = {
 	position: 'absolute',
@@ -524,6 +526,7 @@ const dripBeadStyle = {
 	width: 3,
 	height: DRIP_BEAD,
 	borderRadius: 2,
+	transformOrigin: 'bottom',
 	filter: 'blur(1px)',
 	opacity: 0,
 };
@@ -556,15 +559,20 @@ const useHeroDrip = (beadRef, dropRef, lines, reduceMotion) => {
 		}
 		let cancelled = false;
 		let running = [];
-		let timer;
+		const timers = new Set();
 		const play = (el, keyframes, options) => {
+			if (cancelled) return Promise.resolve();
 			const animation = el.animate(keyframes, { fill: 'forwards', ...options });
 			running.push(animation);
 			return animation.finished;
 		};
 		const wait = (ms) =>
 			new Promise((resolve) => {
-				timer = setTimeout(resolve, ms);
+				const timer = setTimeout(() => {
+					timers.delete(timer);
+					resolve();
+				}, ms);
+				timers.add(timer);
 			});
 
 		const drip = async (step) => {
@@ -577,10 +585,16 @@ const useHeroDrip = (beadRef, dropRef, lines, reduceMotion) => {
 				bead.style.background = `linear-gradient(to bottom, transparent, ${color}, #fff)`;
 				bead.style.boxShadow = `0 0 6px 1px ${color}`;
 				drop.style.left = `${x - DRIP_DROP / 2}px`;
-				drop.style.background = `radial-gradient(circle at 40% 35%, #fff, ${color})`;
-				drop.style.boxShadow = `0 0 8px 2px ${color}`;
+				// A cool blue core, so the drop reads as water catching the light.
+				drop.style.background = `radial-gradient(circle at 40% 35%, #fff, ${DRIP_BLUE} 45%, ${color})`;
+				drop.style.boxShadow = `0 0 8px 2px ${DRIP_BLUE}`;
 
-				await play(
+				const fall = 900 + tip * 8;
+				const at = `translateY(${tip - DRIP_DROP / 2}px)`;
+				// The drop starts forming while the bead is still arriving, and the
+				// bead then shrinks into it from the top (its tail drains into the
+				// drop) instead of fading out on its own.
+				const beadArrives = play(
 					bead,
 					[
 						{ transform: `translateY(${-DRIP_BEAD}px)`, opacity: 0 },
@@ -590,21 +604,40 @@ const useHeroDrip = (beadRef, dropRef, lines, reduceMotion) => {
 							opacity: DRIP_OPACITY,
 						},
 					],
-					{ duration: 900 + tip * 8, easing: 'ease-in' }
+					{ duration: fall, easing: 'ease-in' }
 				);
-				play(bead, [{ opacity: DRIP_OPACITY }, { opacity: 0 }], {
-					duration: 300,
-				});
-				const at = `translateY(${tip - DRIP_DROP / 2}px)`;
-				await play(
-					drop,
+				const dropForms = wait(fall * 0.75).then(() =>
+					play(
+						drop,
+						[
+							{ transform: `${at} scale(0.3)`, opacity: 0 },
+							{ transform: `${at} scale(1)`, opacity: DRIP_OPACITY },
+						],
+						{ duration: 650, easing: 'ease-out' }
+					)
+				);
+				await beadArrives;
+				play(
+					bead,
 					[
-						{ transform: `${at} scale(0.3)`, opacity: 0 },
-						{ transform: `${at} scale(1)`, opacity: DRIP_OPACITY },
+						{
+							transform: `translateY(${tip - DRIP_BEAD}px) scaleY(1)`,
+							opacity: DRIP_OPACITY,
+						},
+						{
+							transform: `translateY(${tip - DRIP_BEAD}px) scaleY(0.15)`,
+							opacity: DRIP_OPACITY * 0.6,
+							offset: 0.8,
+						},
+						{
+							transform: `translateY(${tip - DRIP_BEAD}px) scaleY(0)`,
+							opacity: 0,
+						},
 					],
-					{ duration: 500, easing: 'ease-out' }
+					{ duration: 550, easing: 'ease-in-out' }
 				);
-				await wait(350);
+				await dropForms;
+				await wait(300);
 				await play(
 					drop,
 					[
@@ -632,7 +665,7 @@ const useHeroDrip = (beadRef, dropRef, lines, reduceMotion) => {
 
 		return () => {
 			cancelled = true;
-			clearTimeout(timer);
+			timers.forEach(clearTimeout);
 			running.forEach((animation) => animation.cancel());
 		};
 	}, [beadRef, dropRef, lines, reduceMotion]);
