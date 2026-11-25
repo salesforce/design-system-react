@@ -4,8 +4,10 @@
 // # Tooltip
 
 import React, {
+	useId,
 	useState,
 	useEffect,
+	useLayoutEffect,
 	useRef,
 	useCallback,
 	useContext,
@@ -20,8 +22,8 @@ import classNames from 'classnames';
 import EventUtil from '../../utilities/event';
 import { useControllableState } from '../../utilities/hooks';
 import { POPOVER_TOOLTIP } from '../../utilities/constants';
-import generateId from '../../utilities/generate-id';
-import { renderTrigger, type TriggerRender } from '../../utilities/merge-props';
+import { renderTrigger } from '../../utilities/merge-props';
+import type { TriggerRender } from '../../types/common';
 
 import Dialog from '../utilities/dialog';
 import Icon from '../icon';
@@ -34,6 +36,8 @@ import componentDoc from './component.json';
 import { IconSettingsContext } from '../icon-settings';
 
 // ### Types
+
+export type { TriggerRender };
 
 export type TooltipAlign =
 	| 'top'
@@ -271,6 +275,16 @@ const defaultLabels: TooltipLabels = {
 	learnMoreBefore: 'Click',
 };
 
+// Renders the trigger slot as a component, so the trigger props' handlers are only
+// handed to the slot rather than called from Tooltip's render
+const TooltipTrigger = ({
+	render,
+	triggerProps,
+}: {
+	render: TriggerRender<TooltipTriggerProps>;
+	triggerProps: TooltipTriggerProps;
+}) => renderTrigger(render, triggerProps);
+
 /**
  * The PopoverTooltip component is variant of the Lightning Design System Popover component.
  * This component wraps an element that triggers it to open. It must be a focusable child element
@@ -314,11 +328,13 @@ const Tooltip = ({
 	// State
 	const [isOpen, setIsOpen] = useControllableState(isOpenProp, defaultIsOpen);
 	const [triggerRendered, setTriggerRendered] = useState(false);
+	const generatedId = useId();
+	// Trigger size for the anchored nubbin, measured once the tooltip opens
+	const [triggerSize, setTriggerSize] = useState({ height: 0, width: 0 });
 
 	// Refs
 	const triggerRef = useRef<HTMLDivElement>(null);
 	const tooltipTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-	const generatedIdRef = useRef(generateId());
 	const isUnmountingRef = useRef(false);
 	// Latest open state, read by the hover/blur/Escape timers
 	const isOpenRef = useRef(isOpen);
@@ -356,7 +372,8 @@ const Tooltip = ({
 			},
 			componentDoc
 		);
-	}, []);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []); // Only run on mount
 
 	// Cleanup on unmount
 	useEffect(() => {
@@ -370,8 +387,8 @@ const Tooltip = ({
 
 	// Get computed values
 	const getId = useCallback(() => {
-		return idProp || generatedIdRef.current;
-	}, [idProp]);
+		return idProp || generatedId;
+	}, [idProp, generatedId]);
 
 	const getIsOpen = useCallback(
 		() => !isDisabled && isOpen,
@@ -522,7 +539,7 @@ const Tooltip = ({
 	const saveTriggerRef = useCallback(
 		(component: HTMLDivElement | null) => {
 			if (component && triggerRef.current !== component) {
-				(triggerRef as React.MutableRefObject<HTMLDivElement | null>).current =
+				(triggerRef as React.RefObject<HTMLDivElement | null>).current =
 					component;
 				// Dialog/Popper.js cannot place the popover until
 				// the trigger/target DOM node is mounted.
@@ -533,6 +550,21 @@ const Tooltip = ({
 		},
 		[triggerRendered]
 	);
+
+	// Measure the trigger for the anchored nubbin before paint, so it is placed on open.
+	// Runs after every render, as the old in-render measurement did, so a trigger that
+	// resizes while the tooltip is open is re-measured.
+	const isAnchoredNubbinOpen = hasAnchoredNubbin && getIsOpen();
+	// eslint-disable-next-line react-hooks/exhaustive-deps -- no deps on purpose; the updater returns the same state when the size is unchanged, so it settles
+	useLayoutEffect(() => {
+		if (!isAnchoredNubbinOpen || !triggerRef.current) {
+			return;
+		}
+		const { height, width } = triggerRef.current.getBoundingClientRect();
+		setTriggerSize((size) =>
+			size.height === height && size.width === width ? size : { height, width }
+		);
+	});
 
 	// Render helpers
 	const getAnchoredNubbinStyles = () => {
@@ -548,21 +580,16 @@ const Tooltip = ({
 			width: '0',
 		};
 		const nubbinStyles: CSSProperties = {
-			backgroundColor: '#16325c',
+			// Same chain as the SLDS 2 tooltip body, so the nubbin matches it.
+			backgroundColor:
+				'var(--slds-c-tooltip-color-background, var(--slds-g-color-surface-inverse-1, #16325c))',
 			content: '""',
 			height: '1rem',
 			position: 'absolute',
 			transform: 'rotate(45deg)',
 			width: '1rem',
 		};
-		const triggerDimensions = {
-			height: triggerRef.current
-				? triggerRef.current.getBoundingClientRect().height
-				: 0,
-			width: triggerRef.current
-				? triggerRef.current.getBoundingClientRect().width
-				: 0,
-		};
+		const triggerDimensions = triggerSize;
 
 		switch (alignment) {
 			case 'bottom': {
@@ -595,18 +622,13 @@ const Tooltip = ({
 			}
 		}
 
-		return (
-			<>
-				<style>{`#${getId()}:after, #${getId()}:before {
-	display: none;
-}`}</style>
-				{getIsOpen() ? (
-					<div style={nubbinContainerStyles}>
-						<div style={nubbinStyles} />
-					</div>
-				) : null}
-			</>
-		);
+		// The dialog doesn't draw its own nubbin (`isNubbinHidden`); this one is
+		// drawn with inline styles, which CSP `style-src` doesn't block.
+		return getIsOpen() ? (
+			<div style={nubbinContainerStyles}>
+				<div style={nubbinStyles} />
+			</div>
+		) : null;
 	};
 
 	const getContent = () => {
@@ -626,56 +648,71 @@ const Tooltip = ({
 		};
 
 		if (trigger !== undefined) {
-			return renderTrigger(trigger, triggerProps);
+			return <TooltipTrigger render={trigger} triggerProps={triggerProps} />;
 		}
 
 		// Deprecated: each child element is a trigger
 		if (React.Children.count(children) !== 0) {
 			return React.Children.map(children, (child) =>
-				React.isValidElement(child) ? renderTrigger(child, triggerProps) : child
+				React.isValidElement(child) ? (
+					<TooltipTrigger render={child} triggerProps={triggerProps} />
+				) : (
+					child
+				)
 			);
 		}
 
 		if (onClickTrigger) {
-			return renderTrigger(
-				<a
-					href="#"
-					onClick={
-						EventUtil.trappedHandler(
-							onClickTrigger
-						) as React.MouseEventHandler<HTMLAnchorElement>
+			return (
+				<TooltipTrigger
+					render={
+						// eslint-disable-next-line jsx-a11y/anchor-is-valid -- SLDS tooltip markup uses an anchor for the clickable trigger
+						<a
+							href="#"
+							onClick={
+								EventUtil.trappedHandler(
+									onClickTrigger
+								) as React.MouseEventHandler<HTMLAnchorElement>
+							}
+						>
+							<Icon
+								category="utility"
+								colorVariant={iconColorVariant}
+								inverse={isInverseIcon}
+								name="info"
+								assistiveText={{
+									label: assistiveText.triggerLearnMoreIcon,
+								}}
+								size="x-small"
+							/>
+						</a>
 					}
-				>
-					<Icon
-						category="utility"
-						colorVariant={iconColorVariant}
-						inverse={isInverseIcon}
-						name="info"
-						assistiveText={{
-							label: assistiveText.triggerLearnMoreIcon,
-						}}
-						size="x-small"
-					/>
-				</a>,
-				triggerProps
+					triggerProps={triggerProps}
+				/>
 			);
 		}
 
-		return renderTrigger(
-			<Button
-				aria-disabled
-				assistiveText={{
-					icon: assistiveText.triggerLearnMoreIcon,
-				}}
-				iconCategory="utility"
-				iconClassName={iconColorVariant && `slds-icon-text-${iconColorVariant}`}
-				iconName="info"
-				// `bare` keeps `slds-button_icon`, which Button drops for `inverse` alone
-				iconVariant={isInverseIcon ? 'bare' : undefined}
-				inverse={isInverseIcon}
-				variant="icon"
-			/>,
-			triggerProps
+		return (
+			<TooltipTrigger
+				render={
+					<Button
+						aria-disabled
+						assistiveText={{
+							icon: assistiveText.triggerLearnMoreIcon,
+						}}
+						iconCategory="utility"
+						iconClassName={
+							iconColorVariant && `slds-icon-text-${iconColorVariant}`
+						}
+						iconName="info"
+						// `bare` keeps `slds-button_icon`, which Button drops for `inverse` alone
+						iconVariant={isInverseIcon ? 'bare' : undefined}
+						inverse={isInverseIcon}
+						variant="icon"
+					/>
+				}
+				triggerProps={triggerProps}
+			/>
 		);
 	};
 
@@ -714,6 +751,7 @@ const Tooltip = ({
 			<Dialog
 				closeOnTabKey
 				hasNubbin
+				isNubbinHidden={hasAnchoredNubbin}
 				contentsClassName={classNames(
 					'slds-popover',
 					'slds-popover_tooltip',
@@ -743,7 +781,7 @@ const Tooltip = ({
 
 	const containerStyles: CSSProperties = {
 		display: 'inline-block',
-		lineHeight: '1',
+		lineHeight: 'var(--slds-g-font-line-height-1, 1)',
 		...triggerStyle,
 	};
 

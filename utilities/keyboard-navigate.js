@@ -5,9 +5,8 @@ import escapeRegExp from 'lodash.escaperegexp';
 import KEYS from './key-code';
 
 /**
- * Resolve a component context's trigger to a DOM node. `componentContext.trigger`
- * is already stored as a DOM element (via a callback ref) throughout the codebase,
- * so we return it directly. This replaces `ReactDOM.findDOMNode`, which was removed
+ * Resolve a component context's trigger to a DOM node. `componentContext.getTrigger()`
+ * returns the DOM element stored by a callback ref, so we return it directly. This replaces `ReactDOM.findDOMNode`, which was removed
  * in React 19.
  */
 const resolveTriggerNode = (trigger) => {
@@ -27,7 +26,6 @@ const keyboardNavigate = ({
 	isOpen,
 	event,
 	key,
-	keyCode,
 	navigableItems,
 	onFocus,
 	onSelect,
@@ -37,7 +35,7 @@ const keyboardNavigate = ({
 	const { indexes } = navigableItems;
 	const lastIndex = indexes.length - 1;
 	let focusedIndex;
-	let ch = key || String.fromCharCode(keyCode);
+	let ch = key;
 
 	if (/^[ -~]$/.test(ch)) {
 		ch = ch.toLowerCase();
@@ -49,12 +47,12 @@ const keyboardNavigate = ({
 	// and Up arrows open the menu (Down moving focus to the first item, Up to
 	// the last), in addition to Enter and Space.
 	const openMenuKeys =
-		keyCode === KEYS.ENTER ||
-		keyCode === KEYS.SPACE ||
-		keyCode === KEYS.UP ||
-		keyCode === KEYS.DOWN;
+		key === KEYS.ENTER ||
+		key === KEYS.SPACE ||
+		key === KEYS.UP ||
+		key === KEYS.DOWN;
 
-	if (keyCode === KEYS.ESCAPE) {
+	if (key === KEYS.ESCAPE) {
 		if (isOpen) toggleOpen();
 	} else if (!isOpen) {
 		[focusedIndex] = indexes;
@@ -63,24 +61,23 @@ const keyboardNavigate = ({
 		}
 		if (
 			openMenuKeys &&
-			componentContext.trigger &&
-			resolveTriggerNode(componentContext.trigger) === target
+			resolveTriggerNode(componentContext.getTrigger()) === target
 		) {
 			componentContext.handleClick(event);
 		}
-	} else if (keyCode === KEYS.ENTER || keyCode === KEYS.SPACE) {
+	} else if (key === KEYS.ENTER || key === KEYS.SPACE) {
 		onSelect(currentFocusedIndex);
 	} else {
 		const navigableIndex = indexes.indexOf(currentFocusedIndex);
 
-		if (keyCode === KEYS.DOWN) {
+		if (key === KEYS.DOWN) {
 			if (navigableIndex < lastIndex) {
 				const newNavigableIndex = navigableIndex + 1;
 				focusedIndex = indexes[newNavigableIndex];
 			} else {
 				[focusedIndex] = indexes;
 			}
-		} else if (keyCode === KEYS.UP) {
+		} else if (key === KEYS.UP) {
 			if (navigableIndex > 0) {
 				const newNavigableIndex = navigableIndex - 1;
 				focusedIndex = indexes[newNavigableIndex];
@@ -103,8 +100,8 @@ const keyboardNavigate = ({
 			navigableItems.forEach((item) => {
 				if (
 					(focusedIndex === undefined &&
-						item.text.substr(0, pattern.length) === pattern) ||
-					(consecutive > 0 && item.text.substr(0, 1) === ch)
+						item.text.slice(0, pattern.length) === pattern) ||
+					(consecutive > 0 && item.text.slice(0, 1) === ch)
 				) {
 					consecutive -= 1;
 					focusedIndex = item.index;

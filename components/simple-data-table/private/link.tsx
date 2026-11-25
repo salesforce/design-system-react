@@ -1,7 +1,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { forwardRef, ReactNode, AnchorHTMLAttributes } from 'react';
+import { forwardRef, ReactNode, AnchorHTMLAttributes } from 'react';
 import KEYS from '../../../utilities/key-code';
 
 interface LinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
@@ -13,13 +13,20 @@ interface LinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
 // `SimpleDataTableInteractiveElement` focuses the link through its `ref`
 const Link = forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => {
 	// Avoid passing props to <a> that it doesn't understand
-	const { onOpen, onClose, children, onClick, ...passThroughProps } = props;
+	const {
+		onOpen: _onOpen,
+		onClose: _onClose,
+		children,
+		onClick,
+		...passThroughProps
+	} = props;
 
 	return (
+		// eslint-disable-next-line jsx-a11y/no-static-element-interactions -- href arrives through passThroughProps
 		<a
 			ref={ref}
 			onKeyDown={(event) => {
-				if (event.keyCode === KEYS.ENTER && onClick) {
+				if (event.key === KEYS.ENTER && onClick) {
 					// eslint-disable-next-line @typescript-eslint/no-explicit-any
 					onClick(event as any);
 				}

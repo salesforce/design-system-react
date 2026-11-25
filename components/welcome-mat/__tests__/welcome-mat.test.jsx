@@ -115,7 +115,7 @@ describe('SLDSWelcomeMat', () => {
 
 			fireEvent.keyDown(document.body.querySelector('.slds-modal'), {
 				key: 'Escape',
-				keyCode: 27,
+				code: 'Escape',
 			});
 
 			expect(onRequestClose).toHaveBeenCalledTimes(1);
@@ -262,6 +262,7 @@ describe('SLDSWelcomeMat', () => {
 								labels={{
 									label: `Don't show this again`,
 								}}
+								onChange={() => {}}
 							/>
 						}
 						infoActions={
@@ -313,6 +314,7 @@ describe('SLDSWelcomeMat', () => {
 								labels={{
 									label: `Don't show this again`,
 								}}
+								onChange={() => {}}
 							/>
 						}
 						infoActions={
@@ -362,6 +364,7 @@ describe('SLDSWelcomeMat', () => {
 								labels={{
 									label: `Don't show this again`,
 								}}
+								onChange={() => {}}
 							/>
 						}
 						infoActions={
@@ -403,6 +406,7 @@ describe('SLDSWelcomeMat', () => {
 								labels={{
 									label: `Don't show this again`,
 								}}
+								onChange={() => {}}
 							/>
 						}
 						infoActions={
@@ -440,6 +444,7 @@ describe('SLDSWelcomeMat', () => {
 								labels={{
 									label: `Don't show this again`,
 								}}
+								onChange={() => {}}
 							/>
 						}
 						infoActions={

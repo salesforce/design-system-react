@@ -4,7 +4,6 @@
 
 import React, {
 	forwardRef,
-	useState,
 	useEffect,
 	useRef,
 	useCallback,
@@ -22,7 +21,7 @@ import Button from '../button';
 import MediaObject from '../media-object';
 import Icon from '../icon';
 import Dialog from '../utilities/dialog';
-import { useControllableState } from '../../utilities/hooks';
+import { useClickOutside, useControllableState } from '../../utilities/hooks';
 import keyboardNavigableDialog from '../../utilities/keyboard-navigable-dialog';
 import KEYS from '../../utilities/key-code';
 import { POPOVER } from '../../utilities/constants';
@@ -439,7 +438,6 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>((props, ref) => {
 		controlledIsOpen,
 		defaultIsOpen
 	);
-	const [inputRendered, setInputRendered] = useState(false);
 
 	// Refs
 	const triggerRef = useRef<HTMLDivElement>(null);
@@ -552,13 +550,18 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>((props, ref) => {
 		[handleClose]
 	);
 
-	// Handle click outside
+	// Request a close on a mousedown outside the popover. The container holds the trigger
+	// and an inline dialog; a dialog in a portal carries the ignore class instead.
 	const handleClickOutside = useCallback(
-		(event: MouseEvent) => {
-			handleClose(event, { trigger: 'clickOutside' });
+		(event: globalThis.MouseEvent | TouchEvent) => {
+			handleClose(event as unknown as MouseEvent, { trigger: 'clickOutside' });
 		},
 		[handleClose]
 	);
+	useClickOutside(triggerRef, handleClickOutside, {
+		enabled: isOpen,
+		ignoreClass: `ignore-click-${id}`,
+	});
 
 	// Handle mouse enter
 	const handleMouseEnter = useCallback(
@@ -644,13 +647,13 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>((props, ref) => {
 	// Handle key down
 	const handleKeyDown = useCallback(
 		(event: KeyboardEvent) => {
-			if (event.keyCode) {
-				if (event.keyCode !== KEYS.TAB) {
+			if (event.key) {
+				if (event.key !== KEYS.TAB) {
 					keyboardNavigableDialog({
 						event,
 						isOpen,
 						handleClick: (e: MouseEvent) => handleClick(e),
-						keyCode: event.keyCode,
+						key: event.key,
 						eventTarget: event.target,
 						// keyboardNavigableDialog calls `toggleOpen()` without the event; pass it through
 						toggleOpen: () => toggleOpenFromKeyboard(event),
@@ -689,24 +692,20 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>((props, ref) => {
 	// Container ref callback
 	const setContainerRef = useCallback(
 		(component: HTMLDivElement | null) => {
-			(triggerRef as React.MutableRefObject<HTMLDivElement | null>).current =
+			(triggerRef as React.RefObject<HTMLDivElement | null>).current =
 				component;
 			if (typeof ref === 'function') {
 				ref(component);
 			} else if (ref) {
 				ref.current = component;
 			}
-			if (component && !inputRendered) {
-				setInputRendered(true);
-			}
 		},
-		[inputRendered, ref]
+		[ref]
 	);
 
 	// Dialog ref callback
 	const setMenuRef = useCallback((component: HTMLElement | null) => {
-		(dialogRef as React.MutableRefObject<HTMLElement | null>).current =
-			component;
+		(dialogRef as React.RefObject<HTMLElement | null>).current = component;
 	}, []);
 
 	// Cleanup on unmount

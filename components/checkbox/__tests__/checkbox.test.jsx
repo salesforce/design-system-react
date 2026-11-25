@@ -19,6 +19,7 @@ describe('Checkbox visual picker figure', () => {
 				variant="visual-picker"
 				labels={{ label: 'Option' }}
 				visualPickerFigure={<span className="figure-content">$30</span>}
+				onChange={() => {}}
 			/>
 		);
 
@@ -36,6 +37,7 @@ describe('Checkbox visual picker figure', () => {
 				variant="visual-picker"
 				labels={{ label: 'Option' }}
 				visualPickerFigure="$30"
+				onChange={() => {}}
 			/>
 		);
 
@@ -57,6 +59,7 @@ describe('Checkbox visual picker figure', () => {
 				visualPickerFigureNotSelected={
 					<span className="not-selected-content">Not selected</span>
 				}
+				onChange={() => {}}
 			/>
 		);
 
@@ -212,19 +215,38 @@ describe('Checkbox control model', () => {
 
 	it('applies indeterminate to the DOM and clears it when the prop goes back to undefined', () => {
 		const { container, rerender } = render(
-			<Checkbox id="cb-indeterminate" checked={false} indeterminate />
+			<Checkbox
+				id="cb-indeterminate"
+				checked={false}
+				indeterminate
+				onChange={() => {}}
+			/>
 		);
 		const input = getInput(container);
 		expect(input.indeterminate).toBe(true);
 
-		rerender(<Checkbox id="cb-indeterminate" checked={false} />);
+		rerender(
+			<Checkbox id="cb-indeterminate" checked={false} onChange={() => {}} />
+		);
 		expect(input.indeterminate).toBe(false);
 
-		rerender(<Checkbox id="cb-indeterminate" checked={false} indeterminate />);
+		rerender(
+			<Checkbox
+				id="cb-indeterminate"
+				checked={false}
+				indeterminate
+				onChange={() => {}}
+			/>
+		);
 		expect(input.indeterminate).toBe(true);
 
 		rerender(
-			<Checkbox id="cb-indeterminate" checked={false} indeterminate={false} />
+			<Checkbox
+				id="cb-indeterminate"
+				checked={false}
+				indeterminate={false}
+				onChange={() => {}}
+			/>
 		);
 		expect(input.indeterminate).toBe(false);
 	});
@@ -259,9 +281,10 @@ describe('Checkbox control model', () => {
 		rerender(<Checkbox id="cb-flip" checked={undefined} />);
 
 		const messages = consoleError.mock.calls.map((args) => args.join(' '));
-		expect(messages.some((m) => /uncontrolled|controlled/i.test(m))).toBe(
-			false
-		);
+		// React's message, not the library's "Checkbox is controlled" guidance
+		expect(
+			messages.some((m) => /changing an? (un)?controlled input/i.test(m))
+		).toBe(false);
 	});
 
 	it('ignores the removed defaultChecked prop and warns', () => {
@@ -287,10 +310,7 @@ describe('Checkbox control model', () => {
 });
 
 describe('Checkbox: required `onChange`', () => {
-	it('warns once when `onChange` is missing, and not when exempt', async () => {
-		// Fresh modules so the once-per-session warning state is reset
-		vi.resetModules();
-		const { default: FreshCheckbox } = await import('../index');
+	it('warns once when `onChange` is missing, and not when exempt', () => {
 		const consoleError = vi
 			.spyOn(console, 'error')
 			.mockImplementation(() => {});
@@ -300,11 +320,11 @@ describe('Checkbox: required `onChange`', () => {
 				.filter((m) => m.includes('`onChange` is required by'));
 
 		// `disabled` and `readOnly` don't need `onChange`
-		render(<FreshCheckbox checked disabled labels={{ label: 'A' }} />);
+		render(<Checkbox checked disabled labels={{ label: 'A' }} />);
 		expect(requiredWarnings()).toHaveLength(0);
-		render(<FreshCheckbox checked readOnly labels={{ label: 'B' }} />);
+		render(<Checkbox checked readOnly labels={{ label: 'B' }} />);
 		expect(requiredWarnings()).toHaveLength(0);
-		render(<FreshCheckbox checked labels={{ label: 'C' }} />);
+		render(<Checkbox checked labels={{ label: 'C' }} />);
 		expect(requiredWarnings()).toHaveLength(1);
 
 		consoleError.mockRestore();
@@ -324,8 +344,8 @@ describe('Checkbox keyboard and readOnly', () => {
 		);
 		const input = container.querySelector('input');
 
-		fireEvent.keyDown(input, { key: 'Enter', keyCode: 13 });
-		fireEvent.keyDown(input, { key: ' ', keyCode: 32 });
+		fireEvent.keyDown(input, { key: 'Enter' });
+		fireEvent.keyDown(input, { key: ' ' });
 
 		// Space toggles a native checkbox through its click; Enter does not toggle it
 		expect(onChange).not.toHaveBeenCalled();

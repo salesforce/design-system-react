@@ -3,11 +3,7 @@
 
 import React, { type KeyboardEvent } from 'react';
 
-import Input, {
-	type InputBaseProps,
-	type InputProps,
-	type InputAssistiveText,
-} from './index';
+import Input, { type InputBaseProps, type InputAssistiveText } from './index';
 import InputIcon from '../icon/input-icon/index';
 import checkProps from './check-props';
 import componentDoc from './component.json';
@@ -46,7 +42,7 @@ const handleKeyDown = (
 	event: KeyboardEvent<HTMLInputElement>,
 	onSearch?: (event: KeyboardEvent<HTMLInputElement> | React.MouseEvent) => void
 ) => {
-	if (event.keyCode === KEYS.ENTER && onSearch) {
+	if (event.key === KEYS.ENTER && onSearch && !EventUtil.isComposing(event)) {
 		EventUtil.trapImmediate(event);
 		onSearch(event);
 	}

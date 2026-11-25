@@ -2,6 +2,7 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 import React, {
+	useId,
 	useState,
 	useRef,
 	useCallback,
@@ -29,7 +30,6 @@ import KEYS from '../../utilities/key-code';
 import lowPriorityWarning from '../../utilities/warning/low-priority-warning';
 
 import { DATE_PICKER } from '../../utilities/constants';
-import generateId from '../../utilities/generate-id';
 import { IconSettingsContext } from '../icon-settings';
 import { useClickOutside, useControllableState } from '../../utilities/hooks';
 
@@ -350,7 +350,7 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 	const triggerRef = useRef<HTMLDivElement | null>(null);
 	const inputRef = useRef<HTMLInputElement | null>(null);
 	const selectedDateCellRef = useRef<HTMLElement | null>(null);
-	const generatedId = useRef(generateId());
+	const generatedId = useId();
 
 	// `value` is controlled data; `undefined` (warned in `checkProps`) means no date
 	const value = valueProp ?? null;
@@ -394,7 +394,7 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 	}, []);
 
 	// Derived state
-	const getId = useCallback(() => idProp || generatedId.current, [idProp]);
+	const getId = useCallback(() => idProp || generatedId, [idProp, generatedId]);
 
 	const getIsOpen = useCallback(() => !!isOpen, [isOpen]);
 
@@ -543,9 +543,9 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 		(event: KeyboardEvent<HTMLInputElement>) => {
 			// Don't open if user is selecting text
 			if (
-				event.keyCode &&
+				event.key &&
 				!event.shiftKey &&
-				(event.keyCode === KEYS.DOWN || event.keyCode === KEYS.UP)
+				(event.key === KEYS.DOWN || event.key === KEYS.UP)
 			) {
 				EventUtil.trapEvent(event);
 				// Go through the same request path as clicking, so a controlled
@@ -555,10 +555,10 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 				}
 			}
 
-			if (event.keyCode === KEYS.ESCAPE || event.keyCode === KEYS.ENTER) {
+			if (event.key === KEYS.ESCAPE || event.key === KEYS.ENTER) {
 				EventUtil.trapEvent(event);
 				handleRequestClose(event, {
-					trigger: event.keyCode === KEYS.ESCAPE ? 'escape' : 'enter',
+					trigger: event.key === KEYS.ESCAPE ? 'escape' : 'enter',
 				});
 			}
 

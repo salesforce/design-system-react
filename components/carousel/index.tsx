@@ -23,7 +23,10 @@ import {
 
 import CarouselIndicators from './private/carousel-indicators';
 import PreviousNextCarouselNavigator from './private/previous-next-carousel-navigator';
-import CarouselItem, { type CarouselItemProps } from './private/carousel-item';
+import CarouselItem from './private/carousel-item';
+import type { CarouselItemProps } from './types';
+
+export type { CarouselItemProps };
 import AutoplayButton from './private/auto-play-button';
 import checkProps from './check-props';
 import componentDoc from './component.json';
@@ -126,7 +129,11 @@ export interface CarouselItemClickData {
 export interface CarouselProps {
 	/** Assistive text for accessibility */
 	assistiveText?: CarouselAssistiveText;
-	/** Autoplay interval in milliseconds */
+	/**
+	 * Time each panel shows during autoplay, in milliseconds. In browsers with the Web Animations API,
+	 * the countdown pauses while the pointer is over the carousel or the browser tab is hidden, and
+	 * resumes with the time it had left.
+	 */
 	autoplayInterval?: number;
 	/** CSS classes */
 	className?: string | string[] | Record<string, boolean>;
@@ -141,6 +148,8 @@ export interface CarouselProps {
 	/**
 	 * Enables autoplay and shows the autoplay (play / pause) button. Whether autoplay is running comes
 	 * from `isAutoplayOn` / `defaultIsAutoplayOn`; when neither is set, autoplay starts on mount.
+	 * Autoplay pauses while the pointer is over the carousel and stops when the user navigates or
+	 * focuses an item.
 	 */
 	hasAutoplay?: boolean;
 	/** Show previous/next navigation buttons */
@@ -257,11 +266,16 @@ const Carousel = ({
 	const isAutoplayRunning = hasAutoplay && isAutoplayOn;
 	const [indicatorsHaveFocus, setIndicatorsHaveFocus] = useState(false);
 	const [stageWidth, setStageWidth] = useState(0);
-	const [translateX, setTranslateX] = useState(-1000000);
+	// The stage width measured on mount; `null` until then
+	const [initialStageWidth, setInitialStageWidth] = useState<number | null>(
+		null
+	);
 
 	// Refs
 	const stageRef = useRef<HTMLDivElement>(null);
-	const initialStageWidthRef = useRef<number>(0);
+	// The running autoplay dwell, so hovering can pause and resume it
+	const dwellRef = useRef<Animation | null>(null);
+	const isPointerOverRef = useRef(false);
 
 	// Helper functions
 	const canGoToNext = useCallback(
@@ -276,12 +290,6 @@ const Carousel = ({
 			`content-id-${carouselId}-${itemId}`,
 		[]
 	);
-
-	// Update translation based on current panel
-	const changeTranslationAutomatically = useCallback(() => {
-		const width = stageWidth || initialStageWidthRef.current;
-		setTranslateX(-(width * currentPanel));
-	}, [stageWidth, currentPanel]);
 
 	// Request a panel change: updates internal state when uncontrolled, always reports the request
 	const setCurrentPanel = useCallback(
@@ -389,7 +397,7 @@ const Carousel = ({
 	// Keyboard handler
 	const handleKeyDown = useCallback(
 		(event: KeyboardEvent<HTMLDivElement>) => {
-			const keyDownCallbacks: Record<number, () => void> = {
+			const keyDownCallbacks: Record<string, () => void> = {
 				[KEYS.LEFT]: () => {
 					if (isInfinite || canGoToPrevious()) {
 						onPreviousPanelHandler(event);
@@ -410,9 +418,9 @@ const Carousel = ({
 				},
 			};
 
-			if (keyDownCallbacks[event.keyCode]) {
+			if (keyDownCallbacks[event.key]) {
 				EventUtil.trapImmediate(event);
-				keyDownCallbacks[event.keyCode]();
+				keyDownCallbacks[event.key]();
 			}
 		},
 		[
@@ -436,7 +444,7 @@ const Carousel = ({
 	// Effect: Mount - measure stage width and set up resize listener
 	useEffect(() => {
 		if (canUseDOM && stageRef.current?.offsetWidth !== undefined) {
-			initialStageWidthRef.current = stageRef.current.offsetWidth;
+			setInitialStageWidth(stageRef.current.offsetWidth);
 			setStageWidth(stageRef.current.offsetWidth);
 		}
 
@@ -451,36 +459,106 @@ const Carousel = ({
 		};
 	}, [setDimensions]);
 
-	// Effect: Update translation when currentPanel or stageWidth changes
-	useEffect(() => {
-		changeTranslationAutomatically();
-	}, [changeTranslationAutomatically]);
+	// Pause the dwell while the pointer is over the carousel or the tab is hidden, otherwise run it
+	const syncDwell = useCallback(() => {
+		const dwell = dwellRef.current;
+		if (!dwell) {
+			return;
+		}
+		if (isPointerOverRef.current || document.hidden) {
+			dwell.pause();
+		} else {
+			dwell.play();
+		}
+	}, []);
 
-	// Effect: run the autoplay timer while autoplay is on (controlled or not); cleared on stop and unmount
+	// Counts finished dwells, so the next one starts even when a controlled panel doesn't change
+	const [dwellCount, setDwellCount] = useState(0);
+
+	// Effect: while autoplay is on (controlled or not), time one dwell per committed panel, then step.
+	// A new dwell starts only after React commits the previous step, so a step never acts on a panel
+	// that hasn't rendered yet. Cleared on stop, panel change and unmount.
 	useEffect(() => {
 		if (!isAutoplayRunning) {
 			return undefined;
 		}
-		const autoplayId = setInterval(() => {
+		const step = () => {
+			setDwellCount((count) => count + 1);
 			autoplayStepRef.current();
-		}, autoplayInterval);
-		return () => clearInterval(autoplayId);
-	}, [isAutoplayRunning, autoplayInterval]);
+		};
+		const stage = stageRef.current;
+		if (stage && typeof stage.animate === 'function') {
+			// A keyframe-less animation is a timer that can be paused and resumed with the time it has left
+			const dwell = stage.animate([], { duration: autoplayInterval });
+			dwell.onfinish = step;
+			dwellRef.current = dwell;
+			syncDwell();
+			return () => {
+				dwell.onfinish = null;
+				dwell.cancel();
+				dwellRef.current = null;
+			};
+		}
+		// No Web Animations API (jsdom), so no pausing
+		const timeoutId = setTimeout(step, autoplayInterval);
+		return () => clearTimeout(timeoutId);
+	}, [
+		isAutoplayRunning,
+		autoplayInterval,
+		currentPanel,
+		dwellCount,
+		syncDwell,
+	]);
+
+	// Pause the autoplay dwell while the pointer is over the carousel. `pointermove` also catches a
+	// pointer that was already over the carousel when it mounted, which never fires `pointerenter`.
+	const onPointerEnter = useCallback(() => {
+		isPointerOverRef.current = true;
+		syncDwell();
+	}, [syncDwell]);
+
+	const onPointerMove = useCallback(() => {
+		if (!isPointerOverRef.current) {
+			onPointerEnter();
+		}
+	}, [onPointerEnter]);
+
+	const onPointerLeave = useCallback(() => {
+		isPointerOverRef.current = false;
+		syncDwell();
+	}, [syncDwell]);
+
+	// Pause the autoplay dwell while the browser tab is hidden. The document timeline keeps running in
+	// a hidden tab, so without this the dwell would finish as soon as the tab is shown again.
+	useEffect(() => {
+		if (!canUseEventListeners) {
+			return undefined;
+		}
+		document.addEventListener('visibilitychange', syncDwell);
+		return () => document.removeEventListener('visibilitychange', syncDwell);
+	}, [syncDwell]);
 
 	// Computed values
 	const isPreviousBtnDisabled = !(isInfinite || canGoToPrevious());
 	const isNextBtnDisabled = !(isInfinite || canGoToNext());
-	const itemWidth =
-		(stageWidth || initialStageWidthRef.current) / itemsPerPanel;
+	const panelWidth = stageWidth || initialStageWidth || 0;
+	const itemWidth = panelWidth / itemsPerPanel;
+	// Keep the stage off-screen until it has been measured
+	const translateX =
+		initialStageWidth === null ? -1000000 : -(panelWidth * currentPanel);
 	const carouselMargins = hasPreviousNextPanelNavigation
 		? { marginLeft: '44px', marginRight: '44px' }
 		: {};
 
 	return (
+		// eslint-disable-next-line jsx-a11y/no-static-element-interactions -- delegates arrow keys from the focused indicator; not itself interactive
 		<div
 			className={classNames('slds-carousel', className as string)}
 			id={id}
 			onKeyDown={handleKeyDown}
+			onPointerEnter={onPointerEnter}
+			onPointerMove={onPointerMove}
+			onPointerLeave={onPointerLeave}
 		>
 			<div className="slds-grid_vertical slds-col slds-path__scroller">
 				{hasAutoplay && (

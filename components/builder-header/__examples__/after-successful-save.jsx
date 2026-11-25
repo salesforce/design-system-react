@@ -8,7 +8,7 @@ import BuilderHeaderNavLink from '../nav-link';
 import BuilderHeaderNavDropdown from '../nav-dropdown';
 import BuilderHeaderToolbar from '../toolbar';
 
-const Example = (props) => (
+const Example = () => (
 	<IconSettings iconPath="/assets/icons">
 		<BuilderHeader
 			assistiveText={{

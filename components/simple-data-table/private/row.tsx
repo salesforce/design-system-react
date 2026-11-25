@@ -28,6 +28,7 @@ import type {
 import CellContext from './cell-context';
 import TableContext from './table-context';
 import useContextHelper from './context-helper';
+import { getCornerRowStyle, getCornerStyle } from './corner-style';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const InteractiveCheckbox = InteractiveElement(
@@ -60,6 +61,10 @@ export interface SimpleDataTableRowProps {
 	tableId?: string;
 	rowIndex?: number;
 	stacked?: boolean;
+	/** The row is the table's top row (the header is hidden) */
+	isFirstRow?: boolean;
+	/** The row is the table's bottom row */
+	isLastRow?: boolean;
 }
 
 /**
@@ -94,6 +99,19 @@ const SimpleDataTableRow: React.FC<SimpleDataTableRowProps> = (props) => {
 			}
 		},
 		[isDisabled, item, onToggle]
+	);
+
+	const { isFirstRow, isLastRow } = props;
+	const columnCount = props.columns?.length ?? 0;
+	const getColumnCornerStyle = useCallback(
+		(index: number) =>
+			getCornerStyle({
+				isFirstRow,
+				isLastRow,
+				isFirstColumn: index === 0 && !props.canSelectRows,
+				isLastColumn: index === columnCount - 1 && !props.rowActions,
+			}),
+		[columnCount, isFirstRow, isLastRow, props.canSelectRows, props.rowActions]
 	);
 
 	const ariaProps = useMemo(() => {
@@ -168,6 +186,7 @@ const SimpleDataTableRow: React.FC<SimpleDataTableRowProps> = (props) => {
 				'slds-is-selected': props.canSelectRows && isSelected,
 				'slds-has-focus': hasFocus,
 			})}
+			style={getCornerRowStyle({ isFirstRow, isLastRow })}
 		>
 			{useMemo(
 				() => (
@@ -177,7 +196,15 @@ const SimpleDataTableRow: React.FC<SimpleDataTableRowProps> = (props) => {
 								role={tableContext.isGrid ? 'gridcell' : undefined}
 								className="slds-text-align_right"
 								data-label={props.stacked ? 'Select Row' : undefined}
-								style={{ width: '3.25rem' }}
+								style={{
+									...getCornerStyle({
+										isFirstRow,
+										isLastRow,
+										isFirstColumn: true,
+										isLastColumn: columnCount === 0 && !props.rowActions,
+									}),
+									width: '3.25rem',
+								}}
 								onFocus={handleFocus}
 								onKeyDown={handleKeyDown}
 								ref={(ref) => {
@@ -204,6 +231,7 @@ const SimpleDataTableRow: React.FC<SimpleDataTableRowProps> = (props) => {
 									value={{
 										columnIndex: props.canSelectRows ? index + 1 : index,
 										rowIndex: props.rowIndex ?? 0,
+										cornerStyle: getColumnCornerStyle(index),
 									}}
 								>
 									<Cell
@@ -239,6 +267,12 @@ const SimpleDataTableRow: React.FC<SimpleDataTableRowProps> = (props) => {
 									? (props.columns?.length ?? 0) + 1
 									: (props.columns?.length ?? 0),
 								rowIndex: props.rowIndex ?? 0,
+								cornerStyle: getCornerStyle({
+									isFirstRow,
+									isLastRow,
+									isFirstColumn: columnCount === 0 && !props.canSelectRows,
+									isLastColumn: true,
+								}),
 							}}
 						>
 							{props.rowActions
@@ -259,9 +293,13 @@ const SimpleDataTableRow: React.FC<SimpleDataTableRowProps> = (props) => {
 					</>
 				),
 				[
+					columnCount,
+					getColumnCornerStyle,
 					handleFocus,
 					handleKeyDown,
 					hasFocus,
+					isFirstRow,
+					isLastRow,
 					item,
 					tabIndex,
 					props.canSelectRows,
@@ -274,6 +312,7 @@ const SimpleDataTableRow: React.FC<SimpleDataTableRowProps> = (props) => {
 					selectRowCellContext,
 					checkboxSelection,
 					radioSelection,
+					tableContext.isGrid,
 				]
 			)}
 		</tr>

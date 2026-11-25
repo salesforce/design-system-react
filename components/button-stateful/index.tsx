@@ -113,7 +113,10 @@ interface ButtonStatefulBaseProps extends Omit<
 	onFocus?: (event: FocusEvent<HTMLButtonElement>) => void;
 	/** Key down handler */
 	onKeyDown?: (event: KeyboardEvent<HTMLButtonElement>) => void;
-	/** Key press handler */
+	/**
+	 * @deprecated `keypress` is a deprecated DOM event. Use `onKeyDown` and read
+	 * `event.key` instead. Still works, and warns.
+	 */
 	onKeyPress?: (event: KeyboardEvent<HTMLButtonElement>) => void;
 	/** Key up handler */
 	onKeyUp?: (event: KeyboardEvent<HTMLButtonElement>) => void;
@@ -121,7 +124,7 @@ interface ButtonStatefulBaseProps extends Omit<
 	onMouseDown?: (event: MouseEvent<HTMLButtonElement>) => void;
 	/** Mouse enter handler */
 	onMouseEnter?: (event: MouseEvent<HTMLButtonElement>) => void;
-	/** Scale to full width on small screens */
+	/** Stretches the button to the full width of its container (`slds-button_stretch`) */
 	responsive?: boolean;
 	/** Initial/unselected state */
 	stateOne?: ButtonStatefulState;
@@ -191,7 +194,11 @@ const ButtonStateful = ({
 	triggerClassName?: unknown;
 }): React.ReactElement => {
 	useEffect(() => {
-		checkProps(BUTTON_STATEFUL, { active, disabled, onClick }, componentDoc);
+		checkProps(
+			BUTTON_STATEFUL,
+			{ active, disabled, onClick, onKeyPress },
+			componentDoc
+		);
 	});
 
 	// `active` is the deprecated name; `isActive` wins when both are passed.
@@ -217,7 +224,7 @@ const ButtonStateful = ({
 				// SLDS uses one or the other: `:focus` on `slds-is-selected` would win
 				'slds-is-selected': active && !isClicked,
 				'slds-is-selected-clicked': active && isClicked,
-				'slds-max-small-button_stretch': responsive,
+				'slds-button_stretch': responsive,
 				'slds-button_icon-border': variant === 'icon',
 				'slds-button_icon-border-filled': variant === 'icon-filled',
 			}),
@@ -268,6 +275,7 @@ const ButtonStateful = ({
 				onClick={handleClick}
 				onFocus={onFocus}
 				onKeyDown={onKeyDown}
+				// eslint-disable-next-line local/no-deprecated -- forwards the deprecated `onKeyPress` prop until 11.0
 				onKeyPress={onKeyPress}
 				onKeyUp={onKeyUp}
 				onMouseDown={onMouseDown}
@@ -318,6 +326,7 @@ const ButtonStateful = ({
 			onClick={handleClick}
 			onFocus={onFocus}
 			onKeyDown={onKeyDown}
+			// eslint-disable-next-line local/no-deprecated -- forwards the deprecated `onKeyPress` prop until 11.0
 			onKeyPress={onKeyPress}
 			onKeyUp={onKeyUp}
 			onMouseDown={onMouseDown}

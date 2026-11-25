@@ -26,6 +26,7 @@ export type {
 	MenuDropdownValue,
 	MenuDropdownTriggerProps,
 } from './menu-dropdown';
+export type { TriggerRender } from '../../types/common';
 export {
 	DropdownNubbinPositions,
 	ListItem,

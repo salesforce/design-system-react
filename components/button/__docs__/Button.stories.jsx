@@ -127,6 +127,34 @@ IconXXSmall.args = {
 	title: 'Close',
 };
 
+export const GlobalHeaderIcon = Template.bind({});
+GlobalHeaderIcon.args = {
+	variant: 'icon',
+	assistiveText: { icon: 'Help and Training' },
+	iconCategory: 'utility',
+	iconName: 'question',
+	iconSize: 'small',
+	iconVariant: 'global-header',
+	title: 'Help and Training',
+};
+// SLDS global header markup; the container is position: fixed, so render it in place.
+GlobalHeaderIcon.decorators = [
+	(Story) => (
+		<div
+			className="slds-global-header_container"
+			style={{ position: 'static' }}
+		>
+			<div className="slds-global-header slds-grid slds-grid_align-end">
+				<ul className="slds-global-actions">
+					<li className="slds-global-actions__item">
+						<Story />
+					</li>
+				</ul>
+			</div>
+		</div>
+	),
+];
+
 // ============================================
 // Inverse Buttons (for dark backgrounds)
 // ============================================

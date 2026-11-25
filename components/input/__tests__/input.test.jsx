@@ -3,10 +3,13 @@ import { render, fireEvent, act } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 
 import Input from '../';
+import Search from '../search';
 import Icon from '../../icon';
 import InputIcon from '../../icon/input-icon';
 import IconSettings from '../../icon-settings';
 import Tooltip from '../../tooltip';
+import checkProps from '../check-props';
+import { INPUT } from '../../../utilities/constants';
 
 describe('SLDSInput', () => {
 	const defaultProps = {
@@ -256,7 +259,6 @@ describe('SLDSInput', () => {
 	describe('Input with Loading Spinner Icon', () => {
 		it('renders spinner with correct aria-describedby', () => {
 			const { container } = renderInput({
-				assistiveText: { label: 'Passed assistive text to icon' },
 				hasSpinner: true,
 				iconRight: (
 					<InputIcon
@@ -282,7 +284,6 @@ describe('SLDSInput', () => {
 	describe('Input with Loading Spinner Icon & Error', () => {
 		it('input aria-describedby points to both spinner and error message', () => {
 			const { container } = renderInput({
-				assistiveText: { label: 'Passed assistive text to icon' },
 				required: true,
 				errorText: 'Error Message',
 				hasSpinner: true,
@@ -352,8 +353,8 @@ describe('SLDSInput', () => {
 
 			// Test increment with keyboard
 			onChangeData = {};
-			fireEvent.keyDown(increment, { key: 'Enter', keyCode: 13, which: 13 });
-			fireEvent.keyUp(increment, { key: 'Enter', keyCode: 13, which: 13 });
+			fireEvent.keyDown(increment, { key: 'Enter' });
+			fireEvent.keyUp(increment, { key: 'Enter' });
 			expect(onChangeData.number).toBe(2);
 			expect(onChangeData.value).toBe('2');
 
@@ -365,14 +366,14 @@ describe('SLDSInput', () => {
 
 			// Test decrement with keyboard
 			onChangeData = {};
-			fireEvent.keyDown(decrement, { key: 'Enter', keyCode: 13, which: 13 });
-			fireEvent.keyUp(decrement, { key: 'Enter', keyCode: 13, which: 13 });
+			fireEvent.keyDown(decrement, { key: 'Enter' });
+			fireEvent.keyUp(decrement, { key: 'Enter' });
 			expect(onChangeData.number).toBe(0);
 			expect(onChangeData.value).toBe('0');
 		});
 
 		it('respects min and max values', () => {
-			let changeOccurred = false;
+			let changeOccurred;
 			const { container } = renderInput({
 				maxValue: 1,
 				minValue: 1,
@@ -564,24 +565,21 @@ describe('SLDSInput', () => {
 	});
 
 	describe('Removed props', () => {
-		it('warns once for `defaultValue` and does not pass it to the input', async () => {
-			vi.resetModules();
+		it('warns once for `defaultValue` and does not pass it to the input', () => {
 			const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
 			try {
-				const { default: checkProps } = await import('../check-props');
-				const { INPUT } = await import('../../../utilities/constants');
 				checkProps(INPUT, { defaultValue: 'x' });
 				checkProps(INPUT, { defaultValue: 'x' });
 				const sunsetCalls = errorSpy.mock.calls.filter((call) =>
 					String(call[0]).includes('defaultValue')
 				);
 				expect(sunsetCalls).toHaveLength(1);
+
+				const { container } = renderInput({ defaultValue: 'stale' });
+				expect(container.querySelector('input').value).toBe('');
 			} finally {
 				errorSpy.mockRestore();
 			}
-
-			const { container } = renderInput({ defaultValue: 'stale' });
-			expect(container.querySelector('input').value).toBe('');
 		});
 
 		it('ignores and warns about `assistiveText.fieldLevelHelpButton`', () => {
@@ -602,6 +600,29 @@ describe('SLDSInput', () => {
 			} finally {
 				errorSpy.mockRestore();
 			}
+		});
+	});
+
+	describe('Search', () => {
+		const renderSearch = (onSearch) =>
+			render(
+				<IconSettings iconPath="/assets/icons">
+					<Search assistiveText={{ label: 'Search' }} onSearch={onSearch} />
+				</IconSettings>
+			).getByRole('textbox');
+
+		it('calls onSearch on Enter', () => {
+			const onSearch = vi.fn();
+			fireEvent.keyDown(renderSearch(onSearch), { key: 'Enter' });
+			expect(onSearch).toHaveBeenCalledTimes(1);
+		});
+
+		it('ignores the Enter that commits an IME composition', () => {
+			const onSearch = vi.fn();
+			const input = renderSearch(onSearch);
+			fireEvent.keyDown(input, { key: 'Enter', isComposing: true });
+			fireEvent.keyDown(input, { key: 'Enter', keyCode: 229 });
+			expect(onSearch).not.toHaveBeenCalled();
 		});
 	});
 });

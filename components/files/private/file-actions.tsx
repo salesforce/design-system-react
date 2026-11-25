@@ -71,16 +71,20 @@ const FileActions = (props: FileActionsProps) => {
 								...moreActionsDropdown.props.assistiveText,
 							},
 							overlay: moreActionsDropdown.props.overlay ?? false,
+							// SLDS clips `.slds-file__title_scrim` (`overflow: hidden`), so
+							// render the menu outside the file instead of inside the scrim.
+							menuPosition:
+								moreActionsDropdown.props.menuPosition ??
+								'overflowBoundaryElement',
 							buttonVariant: moreActionsDropdown.props.buttonVariant ?? 'icon',
 							buttonInverse:
 								moreActionsDropdown.props.buttonInverse ??
 								props.hasNoVisibleTitle,
-							className: classNames(
-								'dsr-file__more-actions-dropdown',
-								moreActionsDropdown.props.className
-							),
+							// The trigger wraps the button, so SLDS's
+							// `.slds-button-group .slds-button:first-child` would round
+							// its left corners; `slds-button_last` rounds the right ones.
 							triggerClassName: classNames(
-								'dsr-file__more-actions',
+								'slds-button_last',
 								moreActionsDropdown.props.triggerClassName
 							),
 						})

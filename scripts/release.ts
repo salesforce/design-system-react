@@ -3,7 +3,7 @@
  * origin/<base> (default master), commit, push, and open the PR.
  *
  * Usage:
- *   tsx scripts/release.ts <version | next> [--base <branch>] [--dry-run]
+ *   tsx scripts/release.ts <version | next [--rc]> [--base <branch>] [--dry-run]
  *
  *   <version>        Explicit version, e.g. 11.0.0-alpha.4 or 11.0.0
  *   next             Increment the trailing number of the current prerelease
@@ -11,6 +11,10 @@
  *                    branch (`--base` other than master), a stable version gets
  *                    a patch bump (0.10.65 -> 0.10.66). Not valid for a stable
  *                    version on master.
+ *   next --rc        Start or continue the release candidate:
+ *                    11.0.0-alpha.N or -beta.N -> 11.0.0-rc.0, and
+ *                    11.0.0-rc.N -> 11.0.0-rc.N+1. Promote an rc to stable with
+ *                    an explicit version (11.0.0).
  *   --base <branch>  Release from this branch instead of master, e.g. 0.10.x.
  *   --dry-run        Print what would happen; change nothing.
  *
@@ -37,13 +41,14 @@ interface PackageJson {
 
 const args = process.argv.slice(2);
 const dryRun = args.includes('--dry-run');
+const rc = args.includes('--rc');
 const baseIndex = args.indexOf('--base');
 const base = baseIndex === -1 ? 'master' : args[baseIndex + 1];
 const [input] = args.filter(
 	(a, i) => !a.startsWith('--') && (baseIndex === -1 || i !== baseIndex + 1)
 );
 const USAGE =
-	'usage: tsx scripts/release.ts <version | next> [--base <branch>] [--dry-run]';
+	'usage: tsx scripts/release.ts <version | next [--rc]> [--base <branch>] [--dry-run]';
 
 const run = (
 	cmd: string,
@@ -66,6 +71,7 @@ const step = (msg: string) =>
 
 if (!input) fail(USAGE);
 if (!base || base.startsWith('--')) fail(USAGE);
+if (rc && input !== 'next') fail(USAGE);
 
 // Preflight
 if (git('status', '--porcelain', '--untracked-files=no'))
@@ -84,7 +90,17 @@ let version = input;
 if (input === 'next') {
 	const prerelease = current.match(/^(.*-[a-z]+\.)(\d+)$/);
 	const stable = current.match(/^(\d+\.\d+\.)(\d+)$/);
-	if (prerelease) {
+	if (rc) {
+		const candidate = current.match(/^(\d+\.\d+\.\d+)-(alpha|beta|rc)\.(\d+)$/);
+		if (!candidate)
+			fail(
+				`"next --rc" needs a prerelease version, but ${base} is at ${current}`
+			);
+		version =
+			candidate[2] === 'rc'
+				? `${candidate[1]}-rc.${Number(candidate[3]) + 1}`
+				: `${candidate[1]}-rc.0`;
+	} else if (prerelease) {
 		version = `${prerelease[1]}${Number(prerelease[2]) + 1}`;
 	} else if (stable && base !== 'master') {
 		version = `${stable[1]}${Number(stable[2]) + 1}`;

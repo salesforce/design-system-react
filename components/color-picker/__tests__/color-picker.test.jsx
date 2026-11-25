@@ -132,7 +132,13 @@ describe('SLDSColorPicker', () => {
 		it('calls validateColor when input changes', () => {
 			const customValidator = vi.fn();
 			const { container } = render(
-				<ColorPicker value="" validateColor={customValidator} />
+				<ColorPicker
+					value=""
+					validateColor={customValidator}
+					events={{
+						onChange: () => {},
+					}}
+				/>
 			);
 
 			const input = container.querySelector(selectors.summaryInput);
@@ -146,7 +152,14 @@ describe('SLDSColorPicker', () => {
 		});
 
 		it('value prop is set in input', () => {
-			const { container } = render(<ColorPicker value="#FFFFFF" />);
+			const { container } = render(
+				<ColorPicker
+					value="#FFFFFF"
+					events={{
+						onChange: () => {},
+					}}
+				/>
+			);
 
 			const input = container.querySelector(selectors.summaryInput);
 			expect(input.value).toBe('#FFFFFF');
@@ -161,7 +174,11 @@ describe('SLDSColorPicker', () => {
 			const { container } = render(
 				<ColorPicker
 					value=""
-					events={{ onOpen: onOpenSpy, onRequestOpen: onRequestOpenSpy }}
+					events={{
+						onOpen: onOpenSpy,
+						onRequestOpen: onRequestOpenSpy,
+						onChange: () => {},
+					}}
 				/>
 			);
 
@@ -178,7 +195,14 @@ describe('SLDSColorPicker', () => {
 		it('closes popover when clicked and popover is open', async () => {
 			const onCloseSpy = vi.fn();
 			const { container } = render(
-				<ColorPicker value="" defaultIsOpen events={{ onClose: onCloseSpy }} />
+				<ColorPicker
+					value=""
+					defaultIsOpen
+					events={{
+						onClose: onCloseSpy,
+						onChange: () => {},
+					}}
+				/>
 			);
 
 			const button = container.querySelector(selectors.toggle);
@@ -204,6 +228,7 @@ describe('SLDSColorPicker', () => {
 						swatchColors={['#ff0000']}
 						events={{
 							onWorkingColorChange: onWorkingColorChange,
+							onChange: () => {},
 						}}
 					/>
 				);
@@ -231,14 +256,14 @@ describe('SLDSColorPicker', () => {
 						swatchColors={['#ff0000', '#0000ff']}
 						events={{
 							onWorkingColorChange: onWorkingColorChange,
+							onChange: () => {},
 						}}
 					/>
 				);
 
 				const swatch = container.querySelector(selectors.swatch);
 				fireEvent.keyDown(swatch, {
-					keyCode: KEYS.RIGHT,
-					which: KEYS.RIGHT,
+					key: KEYS.RIGHT,
 				});
 
 				expect(onWorkingColorChange).toHaveBeenCalledWith(
@@ -258,14 +283,14 @@ describe('SLDSColorPicker', () => {
 						swatchColors={['#ff0000', '#0000ff']}
 						events={{
 							onWorkingColorChange: onWorkingColorChange,
+							onChange: () => {},
 						}}
 					/>
 				);
 
 				const swatch = container.querySelector(selectors.swatch);
 				fireEvent.keyDown(swatch, {
-					keyCode: KEYS.LEFT,
-					which: KEYS.LEFT,
+					key: KEYS.LEFT,
 				});
 
 				expect(onWorkingColorChange).toHaveBeenCalledWith(
@@ -286,6 +311,7 @@ describe('SLDSColorPicker', () => {
 							swatchColors={['#ff0000', '#0000ff']}
 							events={{
 								onWorkingColorChange: onWorkingColorChange,
+								onChange: () => {},
 							}}
 						/>
 					)
@@ -293,8 +319,7 @@ describe('SLDSColorPicker', () => {
 
 				const swatch = container.querySelector(selectors.swatch);
 				fireEvent.keyDown(swatch, {
-					keyCode: KEYS.RIGHT,
-					which: KEYS.RIGHT,
+					key: KEYS.RIGHT,
 				});
 
 				expect(onWorkingColorChange).toHaveBeenCalledWith(
@@ -315,6 +340,7 @@ describe('SLDSColorPicker', () => {
 							swatchColors={['#ff0000', '#0000ff']}
 							events={{
 								onWorkingColorChange: onWorkingColorChange,
+								onChange: () => {},
 							}}
 						/>
 					)
@@ -322,8 +348,7 @@ describe('SLDSColorPicker', () => {
 
 				const swatch = container.querySelector(selectors.swatch);
 				fireEvent.keyDown(swatch, {
-					keyCode: KEYS.LEFT,
-					which: KEYS.LEFT,
+					key: KEYS.LEFT,
 				});
 
 				expect(onWorkingColorChange).toHaveBeenCalledWith(
@@ -426,6 +451,7 @@ describe('SLDSColorPicker', () => {
 								isOpen
 								events={{
 									onWorkingColorChange: onWorkingColorChange,
+									onChange: () => {},
 								}}
 							/>
 						);
@@ -458,14 +484,14 @@ describe('SLDSColorPicker', () => {
 								isOpen
 								events={{
 									onWorkingColorChange: onWorkingColorChange,
+									onChange: () => {},
 								}}
 							/>
 						);
 
 						const point = container.querySelector(selectors.gridPoint);
 						fireEvent.keyDown(point, {
-							keyCode: KEYS.UP,
-							which: KEYS.UP,
+							key: KEYS.UP,
 						});
 
 						expect(onWorkingColorChange).toHaveBeenCalledWith(
@@ -486,14 +512,14 @@ describe('SLDSColorPicker', () => {
 								isOpen
 								events={{
 									onWorkingColorChange: onWorkingColorChange,
+									onChange: () => {},
 								}}
 							/>
 						);
 
 						const point = container.querySelector(selectors.gridPoint);
 						fireEvent.keyDown(point, {
-							keyCode: KEYS.DOWN,
-							which: KEYS.DOWN,
+							key: KEYS.DOWN,
 						});
 
 						expect(onWorkingColorChange).toHaveBeenCalledWith(
@@ -514,14 +540,14 @@ describe('SLDSColorPicker', () => {
 								isOpen
 								events={{
 									onWorkingColorChange: onWorkingColorChange,
+									onChange: () => {},
 								}}
 							/>
 						);
 
 						const point = container.querySelector(selectors.gridPoint);
 						fireEvent.keyDown(point, {
-							keyCode: KEYS.LEFT,
-							which: KEYS.LEFT,
+							key: KEYS.LEFT,
 						});
 
 						expect(onWorkingColorChange).toHaveBeenCalledWith(
@@ -542,14 +568,14 @@ describe('SLDSColorPicker', () => {
 								isOpen
 								events={{
 									onWorkingColorChange: onWorkingColorChange,
+									onChange: () => {},
 								}}
 							/>
 						);
 
 						const point = container.querySelector(selectors.gridPoint);
 						fireEvent.keyDown(point, {
-							keyCode: KEYS.RIGHT,
-							which: KEYS.RIGHT,
+							key: KEYS.RIGHT,
 						});
 
 						expect(onWorkingColorChange).toHaveBeenCalledWith(
@@ -570,6 +596,7 @@ describe('SLDSColorPicker', () => {
 								isOpen
 								events={{
 									onWorkingColorChange: onWorkingColorChange,
+									onChange: () => {},
 								}}
 							/>
 						);
@@ -577,8 +604,7 @@ describe('SLDSColorPicker', () => {
 						const point = container.querySelector(selectors.gridPoint);
 						fireEvent.keyDown(point, {
 							shiftKey: true,
-							keyCode: KEYS.UP,
-							which: KEYS.UP,
+							key: KEYS.UP,
 						});
 
 						expect(onWorkingColorChange).toHaveBeenCalledWith(
@@ -599,14 +625,14 @@ describe('SLDSColorPicker', () => {
 								isOpen
 								events={{
 									onWorkingColorChange: onWorkingColorChange,
+									onChange: () => {},
 								}}
 							/>
 						);
 
 						const point = container.querySelector(selectors.gridPoint);
 						fireEvent.keyDown(point, {
-							keyCode: KEYS.UP,
-							which: KEYS.UP,
+							key: KEYS.UP,
 						});
 
 						expect(onWorkingColorChange).toHaveBeenCalledWith(
@@ -627,6 +653,7 @@ describe('SLDSColorPicker', () => {
 								isOpen
 								events={{
 									onWorkingColorChange: onWorkingColorChange,
+									onChange: () => {},
 								}}
 							/>
 						);
@@ -634,8 +661,7 @@ describe('SLDSColorPicker', () => {
 						const point = container.querySelector(selectors.gridPoint);
 						fireEvent.keyDown(point, {
 							shiftKey: true,
-							keyCode: KEYS.UP,
-							which: KEYS.UP,
+							key: KEYS.UP,
 						});
 
 						expect(onWorkingColorChange).toHaveBeenCalledWith(
@@ -659,6 +685,7 @@ describe('SLDSColorPicker', () => {
 							isOpen
 							events={{
 								onWorkingColorChange: onWorkingColorChange,
+								onChange: () => {},
 							}}
 						/>
 					);
@@ -689,6 +716,7 @@ describe('SLDSColorPicker', () => {
 							isOpen
 							events={{
 								onWorkingColorChange: onWorkingColorChange,
+								onChange: () => {},
 							}}
 						/>
 					);
@@ -721,6 +749,9 @@ describe('SLDSColorPicker', () => {
 							value=""
 							isOpen
 							validateWorkingColor={customColorValidator}
+							events={{
+								onChange: () => {},
+							}}
 						/>
 					);
 
@@ -737,7 +768,14 @@ describe('SLDSColorPicker', () => {
 
 				it('valueWorking is set in custom tab inner input', () => {
 					const { container } = render(
-						<ColorPicker value="" isOpen valueWorking="#00ff00" />
+						<ColorPicker
+							value=""
+							isOpen
+							valueWorking="#00ff00"
+							events={{
+								onChange: () => {},
+							}}
+						/>
 					);
 
 					const hexInput = container.querySelector(selectors.customHex);
@@ -755,6 +793,7 @@ describe('SLDSColorPicker', () => {
 							isOpen
 							events={{
 								onWorkingColorChange: onWorkingColorChange,
+								onChange: () => {},
 							}}
 						/>
 					);
@@ -785,6 +824,7 @@ describe('SLDSColorPicker', () => {
 							isOpen
 							events={{
 								onWorkingColorChange: onWorkingColorChange,
+								onChange: () => {},
 							}}
 						/>
 					);
@@ -815,6 +855,7 @@ describe('SLDSColorPicker', () => {
 							isOpen
 							events={{
 								onWorkingColorChange: onWorkingColorChange,
+								onChange: () => {},
 							}}
 						/>
 					);
@@ -845,6 +886,7 @@ describe('SLDSColorPicker', () => {
 							isOpen
 							events={{
 								onWorkingColorChange: onWorkingColorChange,
+								onChange: () => {},
 							}}
 						/>
 					);
@@ -875,6 +917,7 @@ describe('SLDSColorPicker', () => {
 							isOpen
 							events={{
 								onWorkingColorChange: onWorkingColorChange,
+								onChange: () => {},
 							}}
 						/>
 					);
@@ -903,6 +946,9 @@ describe('SLDSColorPicker', () => {
 
 	describe('Accessibility label for toggle button is configured correctly for screen reader', () => {
 		it('Use assistive text label if present', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
 			const label = 'Pick a color';
 			const assistiveText = 'Should be read';
 			const { container } = render(
@@ -910,17 +956,30 @@ describe('SLDSColorPicker', () => {
 					value=""
 					labels={{ label }}
 					assistiveText={{ label: assistiveText }}
+					events={{
+						onChange: () => {},
+					}}
 				/>
 			);
 
 			const button = container.querySelector(selectors.toggle);
 			const span = button.querySelector('span');
 			expect(span.textContent).toContain(assistiveText);
+			// Passes both on purpose, which warns that only one is needed
+			consoleError.mockRestore();
 		});
 
 		it('Use label for screen reader if assistive text is not provided', () => {
 			const label = 'Pick a color';
-			const { container } = render(<ColorPicker value="" labels={{ label }} />);
+			const { container } = render(
+				<ColorPicker
+					value=""
+					labels={{ label }}
+					events={{
+						onChange: () => {},
+					}}
+				/>
+			);
 
 			const button = container.querySelector(selectors.toggle);
 			const span = button.querySelector('span');
@@ -947,12 +1006,17 @@ describe('SLDSColorPicker', () => {
 		});
 
 		it('summary input does not type uncontrolled when events.onChange is missing', () => {
+			// Omits the required handler on purpose
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
 			const { container } = render(<ColorPicker value="#000000" />);
 
 			const input = container.querySelector(selectors.summaryInput);
 			fireEvent.change(input, { target: { value: '#ff0000' } });
 
 			expect(input.value).toBe('#000000');
+			consoleError.mockRestore();
 		});
 
 		it('summary input follows value when the parent updates it', () => {
@@ -988,7 +1052,14 @@ describe('SLDSColorPicker', () => {
 		});
 
 		it('derives the error message from value instead of seeding it', () => {
-			const { container, rerender } = render(<ColorPicker value="#000000" />);
+			const { container, rerender } = render(
+				<ColorPicker
+					value="#000000"
+					events={{
+						onChange: () => {},
+					}}
+				/>
+			);
 			expect(
 				container.querySelector('.slds-form-error')
 			).not.toBeInTheDocument();
@@ -1027,7 +1098,10 @@ describe('SLDSColorPicker', () => {
 				const onRequestOpen = vi.fn();
 				const { container } = render(
 					<ColorPicker
-						events={{ onRequestOpen }}
+						events={{
+							onRequestOpen,
+							onChange: () => {},
+						}}
 						isOpen={false}
 						value="#000000"
 					/>
@@ -1046,7 +1120,11 @@ describe('SLDSColorPicker', () => {
 				const onRequestOpen = vi.fn();
 				const { container } = render(
 					<ColorPicker
-						events={{ onRequestClose, onRequestOpen }}
+						events={{
+							onRequestClose,
+							onRequestOpen,
+							onChange: () => {},
+						}}
 						isOpen
 						value="#000000"
 					/>
@@ -1072,6 +1150,7 @@ describe('SLDSColorPicker', () => {
 					return (
 						<ColorPicker
 							events={{
+								onChange: () => {},
 								onRequestClose: () => setIsOpen(false),
 								onRequestOpen: () => setIsOpen(true),
 							}}
@@ -1089,10 +1168,51 @@ describe('SLDSColorPicker', () => {
 				expect(
 					container.querySelector(selectors.popover)
 				).not.toBeInTheDocument();
+
+				fireEvent.click(container.querySelector(selectors.toggle));
+				fireEvent.click(container.querySelector(selectors.submit));
+				expect(
+					container.querySelector(selectors.popover)
+				).not.toBeInTheDocument();
+
+				fireEvent.click(container.querySelector(selectors.toggle));
+				fireEvent.mouseDown(document.body);
+				expect(
+					container.querySelector(selectors.popover)
+				).not.toBeInTheDocument();
+			});
+
+			it('controlled isOpen stays open on a click outside, and requests close', () => {
+				const onRequestClose = vi.fn();
+				const { container } = render(
+					<ColorPicker
+						events={{
+							onRequestClose,
+							onChange: () => {},
+						}}
+						isOpen
+						value="#000000"
+					/>
+				);
+
+				fireEvent.mouseDown(document.body);
+
+				expect(container.querySelector(selectors.popover)).toBeInTheDocument();
+				expect(onRequestClose).toHaveBeenCalledTimes(1);
+				expect(onRequestClose.mock.calls[0][1]).toEqual({
+					trigger: 'clickOutside',
+				});
 			});
 
 			it('uncontrolled opens and closes itself without callbacks', () => {
-				const { container } = render(<ColorPicker value="#000000" />);
+				const { container } = render(
+					<ColorPicker
+						value="#000000"
+						events={{
+							onChange: () => {},
+						}}
+					/>
+				);
 
 				fireEvent.click(container.querySelector(selectors.toggle));
 				expect(container.querySelector(selectors.popover)).toBeInTheDocument();
@@ -1114,7 +1234,11 @@ describe('SLDSColorPicker', () => {
 				const onRequestClose = vi.fn();
 				const { container } = render(
 					<ColorPicker
-						events={{ onRequestClose, onRequestOpen }}
+						events={{
+							onRequestClose,
+							onRequestOpen,
+							onChange: () => {},
+						}}
 						value="#000000"
 					/>
 				);
@@ -1135,7 +1259,13 @@ describe('SLDSColorPicker', () => {
 
 			it('defaultIsOpen seeds the uncontrolled open state', () => {
 				const { container } = render(
-					<ColorPicker defaultIsOpen value="#000000" />
+					<ColorPicker
+						defaultIsOpen
+						value="#000000"
+						events={{
+							onChange: () => {},
+						}}
+					/>
 				);
 				expect(container.querySelector(selectors.popover)).toBeInTheDocument();
 
@@ -1153,6 +1283,9 @@ describe('SLDSColorPicker', () => {
 						swatchColors={['#ff0000']}
 						value="#000000"
 						variant="custom"
+						events={{
+							onChange: () => {},
+						}}
 					/>
 				);
 				const customHexValue = () =>
@@ -1189,7 +1322,10 @@ describe('SLDSColorPicker', () => {
 				const onWorkingColorChange = vi.fn();
 				const { container } = render(
 					<ColorPicker
-						events={{ onWorkingColorChange }}
+						events={{
+							onWorkingColorChange,
+							onChange: () => {},
+						}}
 						isOpen
 						value="#000000"
 						valueWorking="#00ff00"
@@ -1217,6 +1353,7 @@ describe('SLDSColorPicker', () => {
 					return (
 						<ColorPicker
 							events={{
+								onChange: () => {},
 								onWorkingColorChange: (event, data) =>
 									setValueWorking(data.color.hex),
 							}}
@@ -1247,10 +1384,7 @@ describe('SLDSColorPicker', () => {
 });
 
 describe('ColorPicker: required `events.onChange`', () => {
-	it('warns once when `events.onChange` is missing, and not when exempt', async () => {
-		// Fresh modules so the once-per-session warning state is reset
-		vi.resetModules();
-		const { default: FreshColorPicker } = await import('../index');
+	it('warns once when `events.onChange` is missing, and not when exempt', () => {
 		const consoleError = vi
 			.spyOn(console, 'error')
 			.mockImplementation(() => {});
@@ -1260,10 +1394,10 @@ describe('ColorPicker: required `events.onChange`', () => {
 				.filter((m) => m.includes('`events.onChange` is required by'));
 
 		// `disabled` doesn't need `events.onChange`
-		render(<FreshColorPicker disabled value="" />);
+		render(<ColorPicker disabled value="" />);
 		expect(requiredWarnings()).toHaveLength(0);
 		// `events` without `onChange` isn't enough
-		render(<FreshColorPicker events={{ onRequestOpen: () => {} }} value="" />);
+		render(<ColorPicker events={{ onRequestOpen: () => {} }} value="" />);
 		expect(requiredWarnings()).toHaveLength(1);
 
 		consoleError.mockRestore();
@@ -1279,6 +1413,8 @@ describe('ColorPicker: required `events.onChange`', () => {
 						onRequestClose: () => {
 							wasOpen = !!container.querySelector(selectors.popover);
 						},
+
+						onChange: () => {},
 					}}
 					value="#000000"
 				/>
@@ -1402,7 +1538,14 @@ describe('ColorPicker: required `events.onChange`', () => {
 
 describe('ColorPicker id', () => {
 	it('lands the consumer id on the root element', () => {
-		const { container } = render(<ColorPicker id="my-picker" />);
+		const { container } = render(
+			<ColorPicker
+				id="my-picker"
+				events={{
+					onChange: () => {},
+				}}
+			/>
+		);
 		expect(container.firstChild).toHaveAttribute('id', 'my-picker');
 		expect(container.firstChild).toHaveClass('slds-color-picker');
 	});

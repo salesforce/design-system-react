@@ -116,7 +116,7 @@ class DatepickerCalendarWrapper extends React.Component<
 	};
 
 	handleFirstFocusableNodeKeyDown = (event: React.KeyboardEvent) => {
-		if (event.shiftKey && event.keyCode === KEYS.TAB) {
+		if (event.shiftKey && event.key === KEYS.TAB) {
 			EventUtil.trapEvent(event);
 		}
 	};
@@ -129,14 +129,14 @@ class DatepickerCalendarWrapper extends React.Component<
 	};
 
 	handleKeyDown = (event: React.KeyboardEvent) => {
-		if (event.keyCode === KEYS.ESCAPE) {
+		if (event.key === KEYS.ESCAPE) {
 			EventUtil.trapEvent(event);
 			this.props.onRequestClose(event, {});
 		}
 	};
 
 	handleLastFocusableNodeKeyDown = (event: React.KeyboardEvent) => {
-		if (!event.shiftKey && event.keyCode === KEYS.TAB) {
+		if (!event.shiftKey && event.key === KEYS.TAB) {
 			EventUtil.trapEvent(event);
 			this.previousMonthRef?.focus();
 		}

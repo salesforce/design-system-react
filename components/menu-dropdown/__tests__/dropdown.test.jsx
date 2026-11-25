@@ -1,5 +1,11 @@
 import { useState } from 'react';
-import { render, fireEvent, screen, waitFor } from '@testing-library/react';
+import {
+	render,
+	fireEvent,
+	screen,
+	waitFor,
+	within,
+} from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 
 import Dropdown from '../../menu-dropdown';
@@ -39,12 +45,15 @@ const DropdownCustomContent = (props) => (
 						<a
 							id="custom-dropdown-menu-content-link"
 							className="slds-m-right_medium"
-							href="#"
+							href="#settings"
 							onClick={EventUtil.trappedHandler(props.onClick)}
 						>
 							Settings
 						</a>
-						<a href="#" onClick={EventUtil.trappedHandler(props.onClick)}>
+						<a
+							href="#log-out"
+							onClick={EventUtil.trappedHandler(props.onClick)}
+						>
 							Log Out
 						</a>
 					</p>
@@ -346,6 +355,23 @@ describe('SLDSMenuDropdown', () => {
 
 			expect(onClick).toHaveBeenCalledTimes(1);
 		});
+
+		it('calls onClick with the keydown event when a key opens the menu', () => {
+			const onClick = vi.fn();
+			const { container } = renderDropdown({ onClick });
+
+			fireEvent.keyDown(
+				container.querySelector('.slds-dropdown-trigger button'),
+				{
+					key: 'Enter',
+				}
+			);
+
+			expect(onClick).toHaveBeenCalledTimes(1);
+			const [event] = onClick.mock.calls[0];
+			expect(event.type).toBe('keydown');
+			expect(event.key).toBe('Enter');
+		});
 	});
 
 	describe('Expanded', () => {
@@ -476,6 +502,35 @@ describe('SLDSMenuDropdown', () => {
 			await waitFor(() => {
 				expect(container.querySelector('.slds-dropdown')).toBeInTheDocument();
 			});
+		});
+
+		it('reports one click and one open each time Enter opens the menu', async () => {
+			const onClick = vi.fn();
+			const onOpen = vi.fn();
+			const onRequestOpen = vi.fn();
+			const { container } = renderDropdown({ onClick, onOpen, onRequestOpen });
+			const button = container.querySelector('button');
+
+			for (let round = 1; round <= 2; round += 1) {
+				fireEvent.keyDown(button, keyObjects.ENTER);
+				await waitFor(() => {
+					expect(container.querySelector('.slds-dropdown')).toBeInTheDocument();
+				});
+				expect(onClick).toHaveBeenCalledTimes(round);
+				expect(onClick.mock.calls[round - 1][0].key).toBe('Enter');
+				expect(onRequestOpen).toHaveBeenCalledTimes(round);
+				expect(onOpen).toHaveBeenCalledTimes(round);
+
+				fireEvent.keyDown(
+					container.querySelector('.slds-dropdown__item a'),
+					keyObjects.ESCAPE
+				);
+				await waitFor(() => {
+					expect(
+						container.querySelector('.slds-dropdown')
+					).not.toBeInTheDocument();
+				});
+			}
 		});
 
 		// The focusMenuItem callback in menu-dropdown.tsx:609 expects an HTMLLIElement
@@ -1314,6 +1369,65 @@ describe('SLDSMenuDropdown', () => {
 				);
 				expect(tooltip).toBeInTheDocument();
 			});
+			// No <style> element, so a CSP without 'unsafe-inline' in
+			// style-src doesn't block anything.
+			expect(document.querySelectorAll('style')).toHaveLength(0);
+		});
+
+		const renderTooltipDropdown = (tooltipMenuItem = <Tooltip />) =>
+			renderDropdown({
+				isOpen: true,
+				options: [
+					{ label: 'Test item A', value: 'A0' },
+					{
+						label: 'Test item B',
+						value: 'B0',
+						tooltipContent: 'Testing tooltip content',
+					},
+				],
+				tooltipMenuItem,
+			});
+
+		it('keeps the link the menu item’s direct child, so SLDS styles it', () => {
+			const { container } = renderTooltipDropdown();
+			const item = container.querySelector('#sample-dropdown-item-1');
+			const link = within(item).getByRole('menuitem');
+			expect(link.parentElement).toBe(item);
+			expect(item.querySelector('.slds-tooltip-trigger a')).toBeNull();
+		});
+
+		it('opens on hover and focus and describes the link while open', async () => {
+			const { container } = renderTooltipDropdown();
+			const link = within(
+				container.querySelector('#sample-dropdown-item-1')
+			).getByRole('menuitem');
+			const getTooltip = () =>
+				container.querySelector('#sample-dropdown-item-1-tooltip');
+			expect(getTooltip()).toBeNull();
+			expect(link).not.toHaveAttribute('aria-describedby');
+
+			fireEvent.mouseEnter(link);
+			await waitFor(() => expect(getTooltip()).toBeInTheDocument());
+			expect(getTooltip()).toHaveTextContent('Testing tooltip content');
+			expect(link).toHaveAttribute(
+				'aria-describedby',
+				'sample-dropdown-item-1-tooltip'
+			);
+
+			fireEvent.mouseLeave(link);
+			await waitFor(() => expect(getTooltip()).toBeNull());
+
+			fireEvent.focus(link);
+			await waitFor(() => expect(getTooltip()).toBeInTheDocument());
+			fireEvent.blur(link);
+			await waitFor(() => expect(getTooltip()).toBeNull());
+		});
+
+		it('lets the template’s isOpen control the tooltip', () => {
+			const { container } = renderTooltipDropdown(<Tooltip isOpen />);
+			expect(
+				container.querySelector('#sample-dropdown-item-1-tooltip')
+			).toBeInTheDocument();
 		});
 	});
 

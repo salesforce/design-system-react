@@ -32,6 +32,8 @@ export interface DialogProps {
 	context?: unknown;
 	/** Whether the dialog has a nubbin (arrow pointer) */
 	hasNubbin?: boolean;
+	/** With `hasNubbin`, keeps the nubbin's offset but doesn't draw it */
+	isNubbinHidden?: boolean;
 	/** Prevents the dialog from repositioning based on viewport */
 	hasStaticAlignment?: boolean;
 	/** Element to inherit width from */
@@ -71,4 +73,3 @@ declare const Dialog: React.ForwardRefExoticComponent<
 >;
 
 export default Dialog;
-

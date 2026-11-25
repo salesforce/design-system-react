@@ -9,10 +9,8 @@ import classnames from 'classnames';
 import Button, { type ButtonProps } from '../button';
 import { MENU_DROPDOWN_TRIGGER } from '../../utilities/constants';
 import isElementOfType from '../../utilities/is-element-of-type';
-import mergeProps, {
-	renderTrigger,
-	type TriggerRender,
-} from '../../utilities/merge-props';
+import mergeProps, { renderTrigger } from '../../utilities/merge-props';
+import type { TriggerRender } from '../../types/common';
 
 /**
  * Props MenuDropdown passes to a `trigger` that isn't a `Button`. The trigger `div` handles
@@ -204,6 +202,7 @@ const ButtonTrigger = forwardRef<
 	}
 
 	return (
+		// eslint-disable-next-line jsx-a11y/no-static-element-interactions -- wrapper delegates events from the focusable trigger it contains
 		<div
 			ref={ref}
 			className={classnames(

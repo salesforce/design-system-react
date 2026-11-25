@@ -15,7 +15,12 @@ const items = [
 const renderTable = (props, children) =>
 	render(
 		<IconSettings iconPath="/assets/icons">
-			<SimpleDataTable id="children-table" items={items} {...props}>
+			<SimpleDataTable
+				id="children-table"
+				items={items}
+				onRowChange={() => {}}
+				{...props}
+			>
 				{children}
 			</SimpleDataTable>
 		</IconSettings>
@@ -55,7 +60,6 @@ describe('SimpleDataTable children', () => {
 		for (let i = 0; i < 5; i += 1) {
 			fireEvent.keyDown(container.querySelector('tbody td[tabindex="0"]'), {
 				key: 'ArrowRight',
-				keyCode: 39,
 			});
 		}
 		const cells = firstRowCells();

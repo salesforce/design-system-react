@@ -218,7 +218,7 @@ design-system-react/
 │       ├── private/            # Internal sub-components
 │       └── __docs__/
 │           └── Component.stories.tsx
-├── utilities/            # Shared utilities (not public API)
+├── utilities/            # Shared utilities (not public API, not importable)
 │   ├── hooks/            # Custom React hooks
 │   └── constants.ts      # Component display names
 ├── types/                # Shared TypeScript types
@@ -239,6 +239,8 @@ Each component follows this structure:
 | `__docs__/*.stories.tsx` | Storybook stories                                  |
 
 Components not in a `private` folder are considered public API and fall within the scope of semantic versioning for breaking changes.
+
+**Public surface.** The package `exports` map is the contract. The public entry points are the root (`.` and `./components`), `./components/<name>`, and documented subcomponent files such as `components/accordion/panel`. `utilities/**`, every `private/` folder, and the `check-props` modules are blocked (`ERR_PACKAGE_PATH_NOT_EXPORTED`), and no internal `.d.ts` is an entry point. A type used in a public prop signature must be declared in a public file, never under `utilities/` or `private/`, and exported by name from a public entry point: put shared ones in `types/common.ts` and re-export them from the root and the component; put a component's own in its `types.ts` (private files import them from there) and export them from its `index`. `npm run build` checks all of this (`scripts/check-package-exports.mjs`).
 
 ### Other Top-Level Directories
 
@@ -728,20 +730,65 @@ const buttonClass = classNames('slds-button', {
 
 ## Maintainability & Versioning
 
+### Versioning & Support Policy
+
+DSR follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) from 11.0.0 on. The [Breaking-Change Taxonomy](#breaking-change-taxonomy) below defines what counts as breaking.
+
+| Release   | May contain                                                                                                                                                                                                |
+| --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Major** | Any API or behavior break as defined by the taxonomy, and removal of anything deprecated in an earlier minor.                                                                                              |
+| **Minor** | Additions (components, props, callback data, exported types, entry points), deprecations, and layout or visual changes, including bumps of the `@salesforce-ux/design-system-2` stylesheet DSR depends on. |
+| **Patch** | Fixes only: bugs, accessibility and security fixes that leave every documented contract in place.                                                                                                          |
+
+**Deprecation.** A deprecated prop, value, callback shape or component keeps working for at least one minor release before a major removes it. Each deprecation:
+
+- is listed under `### Deprecated` in [CHANGELOG.md](../CHANGELOG.md), with its replacement and the major that removes it (for 11.x, 12.0.0);
+- logs a one-time development warning through `utilities/warning/deprecated-property.js` (see [Deprecation Warnings](#deprecation-warnings)), and nothing in production builds;
+- is marked `@deprecated` in `types.ts`, so editors flag it in the generated `.d.ts`.
+
+**CHANGELOG.** Every release has a section in [CHANGELOG.md](../CHANGELOG.md), in [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) format. The section an entry sits under gives its level: `Added` and `Deprecated` are minor, `Fixed` is patch, `Removed` is major, and `Changed` is minor unless it starts with **BREAKING**. A **BREAKING** entry needs a major after 11.0.0 (during the 11.0.0 prereleases, any `alpha`/`beta`/`rc` can carry one) and says what to change.
+
+**Fix forward.** There are no long-lived maintenance branches for 11.x. Security, accessibility and bug fixes land on `master` and ship in the next patch or minor of the current major. This works because of the rules above and the [testing-query contract](#breaking-change-taxonomy): nothing is removed or renamed within 11, and role- and label-based tests keep passing, so upgrading to the latest 11.x is the way to get fixes. Consumers who want to control when changes arrive should:
+
+- depend on a tilde range (`~11.y.0`) to take patches automatically and minors deliberately;
+- run their own CI against the `rc` dist-tag (`npm install @salesforce/design-system-react@rc`) before each stable release.
+
+The 0.10.x line predates this policy and gets maintenance releases from the [`0.10.x` branch](https://github.com/salesforce/design-system-react/tree/0.10.x) only.
+
 ### Breaking-Change Taxonomy
 
-Publish this taxonomy alongside any SemVer policy so consumers know what a minor/patch release can and cannot change:
+Consumers should know what a minor or patch release can and cannot change. The rule for rendered output: **a change is breaking if it can fail a consumer's [React Testing Library](https://testing-library.com/docs/queries/about/#priority) test that uses `getByRole` or `getByLabelText`.** Those two queries sit at the top of RTL's priority list. The other queries match content the consumer supplies or can override, so they are outside DSR's contract.
 
-- **Breaking:** prop rename, prop type narrowing, or prop removal.
-- **Breaking:** removing or renaming a styling hook (a `className*` target or documented SLDS class consumers style against).
-- **Breaking:** adding a default value to a prop that was previously required or had no default, if it changes rendered output for existing callers (see [Boolean Props & Defaults](#boolean-props--defaults)).
-- **Not breaking:** markup/DOM-structure changes, _provided_ any externally exposed `ref` continues to resolve to an equivalent element. This is also why [Ref Typing](#compatibility--support) matters — a ref typed to the wrong element makes "equivalent element" ambiguous.
+**Breaking: what `getByRole` sees.** For the same props, a minor or patch may not change:
 
-This is the concrete version of the general backward-compatibility policy already stated under [Deprecation Warnings](#deprecation-warnings) — that section covers the _process_ (console warnings, major-version bump); this taxonomy covers _what counts_.
+- **Role:** each element's implicit or explicit `role`, including composite children (`option`, `menuitem`, `tab`, `treeitem`, `row`/`gridcell`).
+- **Where the accessible name comes from:** if the name comes from a prop (e.g. `label`, `assistiveText.*`), it keeps coming from that prop. Default string _values_ are not part of the contract; consumers can override them.
+- **State filters:** `checked`, `selected`, `expanded`, `pressed`, `current`, `level`, `hidden`, `disabled`/`aria-disabled`. If the open combobox matches `expanded: true` today, it keeps matching.
+- **Interactions that change those states:** if `user.click(trigger)` or `user.keyboard('{ArrowDown}')` exposes a `listbox` or `menu` today, or sets `selected` on an `option`, it keeps doing so.
+
+**Breaking: what `getByLabelText` sees.** Only that the label stays attached to its form control (`<label for>`, a wrapping label, or `aria-labelledby`), so `getByLabelText(consumerLabel)` still returns the input, select or textarea. The label text itself belongs to the consumer.
+
+**Breaking: API surface.**
+
+- Prop rename, prop type narrowing, or prop removal.
+- Changing a callback signature: argument order, the event object, or the shape of the data object.
+- Narrowing an exported type: removing a union member, making an optional field required, or changing a generic.
+- Removing or renaming a public entry point (a subpath in the `exports` map: `.`, `./components`, `./components/<name>`) or a named export from one. `utilities/` and `private/` are not entry points, so changing them is never breaking.
+- Raising the minimum version of a peer dependency (`react`, `react-dom`, `@salesforce-ux/design-system`).
+- Removing or renaming a styling hook (a `className*` target or documented SLDS class consumers style against).
+- Adding a default value to a prop that was previously required or had no default, if it changes rendered output for existing callers (see [Boolean Props & Defaults](#boolean-props--defaults)).
+
+**Not breaking:**
+
+- Markup and DOM-structure changes, _provided_ every `getByRole` and `getByLabelText` query still resolves the same way, and any externally exposed `ref` still resolves to an equivalent element. This is also why [Ref Typing](#compatibility--support) matters: a ref typed to the wrong element makes "equivalent element" ambiguous.
+- Anything neither query can see: wrapper elements, element order inside a role, class names other than the styling hooks above, `id` values, and default visible text.
+- Results of `getByText`, `getByPlaceholderText`, `getByDisplayValue`, `getByAltText`, `getByTitle`, `getByTestId` and `container.querySelector`. These are not part of the contract; write consumer tests with role and label queries.
+
+This is the concrete version of the backward-compatibility policy under [Deprecation Warnings](#deprecation-warnings): that section covers the _process_ (console warnings, major-version bump); this taxonomy covers _what counts_.
 
 ### Private-Component Enforcement
 
-The `private/` folder exemption (see [Component Folder Structure](#component-folder-structure)) is currently a naming convention, not a lint-enforced boundary — there's no rule today that fails a build if code outside a component imports from another component's `private/` path. Treat closing that gap (e.g. an ESLint `no-restricted-imports` rule scoped to `**/private/**`) as a maintainability requirement, not a nice-to-have: without it, the exemption can be silently violated and the "private" folder stops meaning what it claims to.
+For consumers, the `private/` folder exemption (see [Component Folder Structure](#component-folder-structure)) is enforced by the `exports` map, which blocks every `private/` path. Inside the repo it is still a naming convention, not a lint-enforced boundary — there's no rule today that fails a build if code outside a component imports from another component's `private/` path. Treat closing that gap (e.g. an ESLint `no-restricted-imports` rule scoped to `**/private/**`) as a maintainability requirement, not a nice-to-have: without it, the exemption can be silently violated and the "private" folder stops meaning what it claims to.
 
 ### Development Diagnostics Scope
 

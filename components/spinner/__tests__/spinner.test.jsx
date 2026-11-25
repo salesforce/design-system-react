@@ -77,16 +77,13 @@ describe('Spinner', () => {
 			expect(ref.current).toBe(root);
 		});
 
-		it('still applies deprecated containerClassName and containerStyle, and warns', async () => {
-			// Fresh modules so the once-per-session warning state is reset
-			vi.resetModules();
-			const { default: FreshSpinner } = await import('../../spinner');
+		it('still applies deprecated containerClassName and containerStyle, and warns', () => {
 			const consoleError = vi
 				.spyOn(console, 'error')
 				.mockImplementation(() => {});
 
 			const { container } = render(
-				<FreshSpinner
+				<Spinner
 					className="new-class"
 					containerClassName="old-class"
 					containerStyle={{ zIndex: 1, top: '2px' }}

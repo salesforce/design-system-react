@@ -150,12 +150,11 @@ const Alert = ({
 	return (
 		<div
 			className={classNames(
-				'slds-notify slds-notify_alert slds-theme_alert-texture',
+				'slds-notify slds-notify_alert',
 				{
-					'slds-theme_info': variant === 'info',
-					'slds-theme_warning': variant === 'warning',
-					'slds-theme_error': variant === 'error',
-					'slds-theme_offline': variant === 'offline',
+					'slds-alert_warning': variant === 'warning',
+					'slds-alert_error': variant === 'error',
+					'slds-alert_offline': variant === 'offline',
 				},
 				className as string
 			)}
@@ -169,6 +168,7 @@ const Alert = ({
 			<h2>
 				{labels.heading}{' '}
 				{labels.headingLink && (
+					// eslint-disable-next-line jsx-a11y/anchor-is-valid -- SLDS alert markup uses an anchor for the heading link
 					<a onClick={EventUtil.trappedHandler(onClickHeadingLink)} href="#">
 						{labels.headingLink}
 					</a>

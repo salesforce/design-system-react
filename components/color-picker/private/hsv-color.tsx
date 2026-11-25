@@ -2,6 +2,7 @@ import React, { useRef, useCallback } from 'react';
 
 import KEYS from '../../../utilities/key-code';
 import RadioButtonGroup from '../../../components/radio-button-group';
+import type { RadioGroupChangeHandler } from '../../../components/radio-group';
 import Radio from '../../../components/radio-button-group/radio';
 import ColorUtils from '../../../utilities/color';
 import {
@@ -37,19 +38,20 @@ export interface HsvColorProps {
 		data: { delta: number }
 	) => void;
 	/** Callback for swatch toggle (working color vs transparent) */
-	onSwatchChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+	onSwatchChange: RadioGroupChangeHandler;
 	/** Previous working color (fallback when transparent) */
 	previousColor: WorkingColor;
 }
 
 const selectedStyle = {
-	border: '1px solid #9e9e9e',
-	boxShadow: 'rgb(117, 112, 112) 1px 1px 1px',
+	border: '1px solid var(--slds-g-color-border-2, #9e9e9e)',
+	boxShadow:
+		'var(--slds-g-color-neutral-base-50, rgb(117, 112, 112)) 1px 1px 1px',
 	marginRight: '2px',
 };
 
 const unselectedStyle = {
-	border: '1px solid #9e9e9e',
+	border: '1px solid var(--slds-g-color-border-2, #9e9e9e)',
 	marginRight: '2px',
 };
 
@@ -88,7 +90,7 @@ const HsvColor: React.FC<HsvColorProps> = ({
 
 	const handleKeyDown = useCallback(
 		(event: React.KeyboardEvent) => {
-			const keyDownCallbacks: Record<number, (multiplier: number) => void> = {
+			const keyDownCallbacks: Record<string, (multiplier: number) => void> = {
 				[KEYS.LEFT]: (multiplier) => {
 					onSaturationNavigate(event, { delta: multiplier * -1 });
 				},
@@ -103,19 +105,12 @@ const HsvColor: React.FC<HsvColorProps> = ({
 				},
 			};
 
-			if (keyDownCallbacks[event.keyCode]) {
+			if (keyDownCallbacks[event.key]) {
 				event.preventDefault();
-				keyDownCallbacks[event.keyCode](event.shiftKey ? 10 : 1);
+				keyDownCallbacks[event.key](event.shiftKey ? 10 : 1);
 			}
 		},
 		[onSaturationNavigate, onValueNavigate]
-	);
-
-	const handleSwatchChange = useCallback(
-		(event: React.ChangeEvent<HTMLInputElement>) => {
-			onSwatchChange(event);
-		},
-		[onSwatchChange]
 	);
 
 	// When working color is transparent: either use the previous color or default to black
@@ -146,6 +141,7 @@ const HsvColor: React.FC<HsvColorProps> = ({
 				role="presentation"
 			>
 				{/* eslint-disable jsx-a11y/anchor-has-content */}
+				{/* eslint-disable-next-line jsx-a11y/anchor-is-valid -- SLDS range indicator markup; keyboard handled by onKeyDown */}
 				<a
 					aria-atomic="true"
 					aria-describedby={`color-picker-instructions-${id}`}
@@ -185,11 +181,10 @@ const HsvColor: React.FC<HsvColorProps> = ({
 					name={`${id}-color-picker-swatch-toggle-button-group`}
 					assistiveText={{ label: 'Toggle Transparency' }}
 					style={style}
-					onChange={handleSwatchChange}
+					onChange={onSwatchChange}
 					value={isTransparent() ? '' : workingColor.hex}
 				>
 					<Radio
-						checked={!isTransparent()}
 						id={`color-picker-active-working-color-swatch-${id}`}
 						key="working-color"
 						labels={{
@@ -200,7 +195,6 @@ const HsvColor: React.FC<HsvColorProps> = ({
 						variant="swatch"
 					/>
 					<Radio
-						checked={isTransparent()}
 						id={`color-picker-transparent-swatch-${id}`}
 						key="transparent"
 						labels={{ label: labels.customTabTransparentSwatch }}

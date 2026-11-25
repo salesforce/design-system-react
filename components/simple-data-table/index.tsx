@@ -24,6 +24,7 @@ import {
 import SimpleDataTableCell from './cell';
 import SimpleDataTableColumn from './column';
 import SimpleDataTableHead from './private/head';
+import { inheritRadius } from './private/corner-style';
 import SimpleDataTableRow from './private/row';
 import SimpleDataTableRowActions from './row-actions';
 import TableContext from './private/table-context';
@@ -703,8 +704,8 @@ class SimpleDataTable extends React.Component<
 			...this.headerRefs.column,
 			...this.headerRefs.action,
 		];
-		let newRowIndex = 0;
-		let newColumnIndex = 0;
+		let newRowIndex;
+		let newColumnIndex;
 
 		if (event.shiftKey) {
 			if (columnIndex - 1 >= 0) {
@@ -902,7 +903,6 @@ class SimpleDataTable extends React.Component<
 								'slds-table_striped': this.props.striped,
 								'slds-table_col-bordered': this.props.columnBordered,
 								'slds-no-row-hover': this.props.noRowHover,
-								'slds-table_header-hidden': this.props.isHeadless,
 							},
 							this.props.className
 						)}
@@ -944,6 +944,7 @@ class SimpleDataTable extends React.Component<
 								}
 							}}
 							isHidden={this.props.isHeadless}
+							isOnlyRow={numRows === 0}
 							indeterminateSelected={indeterminateSelected}
 							canSelectRows={canSelectRows}
 							columns={columns}
@@ -952,7 +953,7 @@ class SimpleDataTable extends React.Component<
 							onSort={this.props.onSort}
 							showRowActions={!!RowActions}
 						/>
-						<tbody>
+						<tbody style={inheritRadius}>
 							{numRows > 0
 								? this.props.items.map((item, index) => {
 										const rowId =
@@ -999,6 +1000,8 @@ class SimpleDataTable extends React.Component<
 												rowActions={RowActions}
 												tableId={this.getId()}
 												rowIndex={index + numHeaderRows}
+												isFirstRow={this.props.isHeadless && index === 0}
+												isLastRow={index === numRows - 1}
 											/>
 										);
 									})
@@ -1021,7 +1024,8 @@ class SimpleDataTable extends React.Component<
 		);
 
 		if (this.props.fixedHeader) {
-			const border = '1px solid var(--slds-g-color-border-1)';
+			const border =
+				'1px solid var(--slds-g-color-border-1, rgb(221, 219, 218))';
 			const styles: React.CSSProperties = {
 				borderTop: border,
 				height: '100%',
@@ -1033,7 +1037,7 @@ class SimpleDataTable extends React.Component<
 				styles.borderRight = border;
 				styles.borderTop = 'none';
 				styles.borderRadius =
-					'0 0 var(--slds-g-radius-border-2) var(--slds-g-radius-border-2)';
+					'0 0 var(--slds-g-radius-border-2, 0.25rem) var(--slds-g-radius-border-2, 0.25rem)';
 			}
 
 			const fixedScrollerStyle: React.CSSProperties = {

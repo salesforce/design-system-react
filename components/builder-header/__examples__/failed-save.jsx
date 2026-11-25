@@ -9,7 +9,7 @@ import BuilderHeaderNavLink from '~/components/builder-header/nav-link';
 import BuilderHeaderNavDropdown from '~/components/builder-header/nav-dropdown';
 import BuilderHeaderToolbar from '~/components/builder-header/toolbar';
 
-const Example = (props) => (
+const Example = () => (
 	<IconSettings iconPath="/assets/icons">
 		<BuilderHeader
 			assistiveText={{
@@ -70,7 +70,7 @@ const Example = (props) => (
 									<p className="slds-p-bottom_x-small">
 										Pellentesque magna tellus, dapibus vitae placerat nec,
 										viverra vel mi.{' '}
-										<a href="#" title="Learn More">
+										<a href="#learn-more" title="Learn More">
 											Learn More
 										</a>
 									</p>

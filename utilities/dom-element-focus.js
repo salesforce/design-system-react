@@ -6,7 +6,7 @@ let ancestor = null;
 let focusLaterElement = null;
 
 const handleScopedKeyDown = (event) => {
-	if (!canUseDOM || !ancestor || event.keyCode !== KEYS.TAB) {
+	if (!canUseDOM || !ancestor || event.key !== KEYS.TAB) {
 		return;
 	}
 	const tabbableElements = findTabbableElement(ancestor);
@@ -54,7 +54,7 @@ const ElementFocus = {
 			) {
 				try {
 					focusLaterElement.focus();
-				} catch (e) {
+				} catch {
 					// Silently ignore - element may have been removed from DOM
 				}
 			}

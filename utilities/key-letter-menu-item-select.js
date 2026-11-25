@@ -3,8 +3,8 @@
 import escapeRegExp from 'lodash.escaperegexp';
 
 // Determines the focusedIndex of a menu item following keyboard letter presses
-const keyLetterMenuItemSelect = ({ key, keyBuffer, keyCode, options }) => {
-	let ch = key || String.fromCharCode(keyCode);
+const keyLetterMenuItemSelect = ({ key, keyBuffer, options }) => {
+	let ch = key;
 
 	if (/^[ -~]$/.test(ch)) {
 		ch = ch.toLowerCase();
@@ -29,8 +29,8 @@ const keyLetterMenuItemSelect = ({ key, keyBuffer, keyCode, options }) => {
 
 		if (
 			(focusedIndex === undefined &&
-				itemLabel.substr(0, pattern.length) === pattern) ||
-			(consecutive > 0 && itemLabel.substr(0, 1) === ch)
+				itemLabel.slice(0, pattern.length) === pattern) ||
+			(consecutive > 0 && itemLabel.slice(0, 1) === ch)
 		) {
 			consecutive -= 1;
 			focusedIndex = index;

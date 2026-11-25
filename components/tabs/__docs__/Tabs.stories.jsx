@@ -132,6 +132,23 @@ export const WithDisabledTab = {
 	),
 };
 
+// Tab with an error: `hasError` adds an error icon after the label
+export const WithErrorTab = {
+	render: () => (
+		<ControlledTabs initialValue="0">
+			<TabsPanel label="Details">
+				<p>This tab has no errors.</p>
+			</TabsPanel>
+			<TabsPanel label="Billing" hasError>
+				<p>This tab has an error.</p>
+			</TabsPanel>
+			<TabsPanel label="Notes">
+				<p>This tab has no errors.</p>
+			</TabsPanel>
+		</ControlledTabs>
+	),
+};
+
 // Initial value: the parent decides which tab starts selected
 export const InitialValue = {
 	render: () => (

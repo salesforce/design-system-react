@@ -2,8 +2,6 @@ import { render, act, screen } from '@testing-library/react';
 import { page, userEvent } from 'vitest/browser';
 import { afterEach, describe, it, expect } from 'vitest';
 
-import '@salesforce-ux/design-system-2/dist/css/bundled/slds2.lightning-blue.css';
-
 import ProgressIndicator from '../';
 import IconSettings from '../../icon-settings';
 
@@ -29,9 +27,10 @@ describe('SLDSProgressIndicator path (browser)', () => {
 				<ProgressIndicator
 					id="path-browser"
 					type="path"
-					steps={steps}
+					steps={steps.map((step, index) =>
+						index < 2 ? { ...step, status: 'completed' } : step
+					)}
 					selectedStep={steps[2]}
-					completedSteps={steps.slice(0, 2)}
 				/>
 				<button type="button">After</button>
 			</IconSettings>

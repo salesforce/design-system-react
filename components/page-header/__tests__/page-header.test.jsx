@@ -18,6 +18,7 @@ const recordHomeActions = (
 				key="PageHeaderFollowButton"
 				disabled={false}
 				iconSize="medium"
+				onClick={() => {}}
 				responsive={false}
 				stateOne={{ iconCategory: 'utility', iconName: 'add', label: 'Follow' }}
 				stateTwo={{
@@ -43,9 +44,7 @@ const recordHomeActions = (
 					iconCategory="utility"
 					iconName="down"
 					iconVariant="border-filled"
-					onSelect={() => {
-						console.log('selected');
-					}}
+					onSelect={() => {}}
 					openOn="click"
 					align="right"
 					options={[

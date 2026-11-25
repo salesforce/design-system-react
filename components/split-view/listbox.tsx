@@ -10,12 +10,13 @@ import eventUtil from '../../utilities/event';
 import { SPLIT_VIEW_LISTBOX } from '../../utilities/constants';
 
 import Icon from '../icon';
-import SplitViewListItemContent, {
-	type SplitViewListItem,
-} from './private/list-item-content';
+import SplitViewListItemContent from './private/list-item-content';
 import listItemWithContent from './private/list-item-with-content';
 import checkProps, { checkSelectionProps } from './listbox-check-props';
 import componentDoc from './component.json';
+import type { SplitViewListItem } from './types';
+
+export type { SplitViewListItem };
 
 export const SORT_OPTIONS = Object.freeze({
 	UP: 'up',
@@ -425,6 +426,7 @@ class SplitViewListbox<
 
 	headerWrapper(children: ReactNode): ReactNode {
 		return this.props.events?.onSort ? (
+			// eslint-disable-next-line jsx-a11y/anchor-is-valid -- SLDS split view header markup uses an anchor for sorting
 			<a
 				aria-live="polite"
 				style={{ borderTop: '0' }}

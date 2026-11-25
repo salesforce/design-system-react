@@ -17,18 +17,14 @@
 
 // ## Dependencies
 
-// ### React
-import ReactDOM from 'react-dom';
-
 // ### Event Helpers
 import KEYS from './key-code';
 import EventUtil from './event';
 
-/* eslint-disable react/no-find-dom-node */
-
-const internalHandleClick = ({ trigger, eventTarget, handleClick }) => {
-	if (trigger && ReactDOM.findDOMNode(trigger) === eventTarget) {
-		// eslint-disable-line react/no-find-dom-node
+// `trigger` is the trigger's DOM element. This read the global `window.event`
+// and called `ReactDOM.findDOMNode`, which React 19 removed.
+const internalHandleClick = ({ event, trigger, eventTarget, handleClick }) => {
+	if (trigger && trigger === eventTarget) {
 		handleClick(event);
 	}
 };
@@ -37,12 +33,12 @@ const KeyboardNavigableDialog = ({
 	event,
 	isOpen,
 	handleClick,
-	keyCode,
+	key,
 	eventTarget,
 	trigger,
 	toggleOpen,
 }) => {
-	switch (keyCode) {
+	switch (key) {
 		case KEYS.ESCAPE:
 			if (isOpen) {
 				toggleOpen();
@@ -52,6 +48,7 @@ const KeyboardNavigableDialog = ({
 		case KEYS.ENTER:
 			if (!isOpen) {
 				internalHandleClick({
+					event,
 					trigger,
 					eventTarget,
 					handleClick,

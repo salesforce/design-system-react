@@ -5,14 +5,13 @@ import type { KeyboardEvent } from 'react';
 
 export interface KeyboardNavigateParams {
 	componentContext: {
-		trigger: HTMLElement | null;
+		getTrigger: () => HTMLElement | null;
 		handleClick?: (event: Event) => void;
 	};
 	currentFocusedIndex: number;
 	event: KeyboardEvent | Event;
 	isOpen: boolean;
-	key?: string;
-	keyCode: number;
+	key: string;
 	navigableItems: Array<{ index: number; text: string }> & {
 		indexes: number[];
 		keyBuffer: (char: string) => string;
@@ -23,11 +22,8 @@ export interface KeyboardNavigateParams {
 	toggleOpen: () => void;
 }
 
-declare function keyboardNavigate(params: KeyboardNavigateParams): number | undefined;
+declare function keyboardNavigate(
+	params: KeyboardNavigateParams
+): number | undefined;
 
 export default keyboardNavigate;
-
-
-
-
-

@@ -299,13 +299,10 @@ const Tabs = (props: TabsProps): React.ReactElement => {
 				let index = selectedIndex;
 				let preventDefault = false;
 
-				if (event.keyCode === KEYS.LEFT || event.keyCode === KEYS.UP) {
+				if (event.key === KEYS.LEFT || event.key === KEYS.UP) {
 					index = getPrevTab(index);
 					preventDefault = true;
-				} else if (
-					event.keyCode === KEYS.RIGHT ||
-					event.keyCode === KEYS.DOWN
-				) {
+				} else if (event.key === KEYS.RIGHT || event.key === KEYS.DOWN) {
 					index = getNextTab(index);
 					preventDefault = true;
 				}
@@ -373,6 +370,7 @@ const Tabs = (props: TabsProps): React.ReactElement => {
 		});
 
 	return (
+		// eslint-disable-next-line jsx-a11y/no-static-element-interactions -- wrapper delegates events from the focusable tabs it contains
 		<div
 			id={id}
 			className={classNames(

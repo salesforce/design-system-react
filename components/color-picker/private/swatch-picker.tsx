@@ -75,7 +75,7 @@ const SwatchPicker: React.FC<SwatchPickerProps> = ({
 
 	const handleKeyDown = useCallback(
 		(event: React.KeyboardEvent) => {
-			const keyDownCallbacks: Record<number, () => void> = {
+			const keyDownCallbacks: Record<string, () => void> = {
 				[KEYS.RIGHT]: () => {
 					if (direction === DIRECTIONS.RTL) {
 						selectNextColor(event);
@@ -98,9 +98,9 @@ const SwatchPicker: React.FC<SwatchPickerProps> = ({
 				},
 			};
 
-			if (event.keyCode && keyDownCallbacks[event.keyCode]) {
+			if (event.key && keyDownCallbacks[event.key]) {
 				EventUtil.trapEvent(event);
-				keyDownCallbacks[event.keyCode]();
+				keyDownCallbacks[event.key]();
 			}
 		},
 		[direction, selectNextColor, selectPreviousColor]

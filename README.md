@@ -18,6 +18,8 @@
 
 v11 is not a drop-in upgrade from 0.10.x: some components were removed or renamed. See [CHANGELOG.md](CHANGELOG.md) for the breaking changes.
 
+From 11.0.0 on, releases follow the [Versioning & Support Policy](docs/codebase-overview.md#versioning--support-policy): what a major, minor or patch can change, how deprecations work, and how fixes reach consumers. The [Breaking-Change Taxonomy](docs/codebase-overview.md#breaking-change-taxonomy) defines breaking changes by what `getByRole` and `getByLabelText` queries see.
+
 ## Highlights
 
 - **SLDS 2** — Styled by the [SLDS 2](https://www.lightningdesignsystem.com/) npm package, with the Cosmos (default) and Lightning Blue themes
@@ -86,6 +88,24 @@ import IconSettings from '@salesforce/design-system-react/components/icon-settin
 
 > **Known issue:** In 11.0.0-alpha.4, `ColorPicker`, `Filter`, and `Tree` have no
 > `components/<name>` entry point. Import them from `@salesforce/design-system-react`.
+
+### Catch deprecated props
+
+Deprecated props still compile in v11. Enable [`@typescript-eslint/no-deprecated`](https://typescript-eslint.io/rules/no-deprecated/) so that using one is a lint error that names the replacement. This matters most if coding agents work in your repo, because they read lint output, not editor strikethroughs:
+
+```js
+// eslint.config.mjs
+import { defineConfig } from 'eslint/config';
+import tseslint from 'typescript-eslint';
+
+export default defineConfig(tseslint.configs.base, {
+	files: ['**/*.{ts,tsx}'],
+	languageOptions: { parserOptions: { projectService: true } },
+	rules: { '@typescript-eslint/no-deprecated': 'error' },
+});
+```
+
+See [docs/lint-deprecated-props.md](docs/lint-deprecated-props.md).
 
 ## Styling
 

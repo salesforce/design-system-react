@@ -26,7 +26,6 @@ class Example extends React.Component {
 						disabled={this.props.disabled}
 						required={this.props.required}
 						name={this.props.name}
-						errorId={this.props.errorId}
 					>
 						{days.map((day) => (
 							<Radio
@@ -48,7 +47,6 @@ Example.propTypes = {
 	disabled: PropTypes.bool,
 	required: PropTypes.bool,
 	name: PropTypes.string,
-	errorId: PropTypes.string,
 	errorLabel: PropTypes.string,
 };
 

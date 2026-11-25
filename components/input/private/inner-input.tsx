@@ -7,7 +7,9 @@ import type {
 	FocusEvent,
 	KeyboardEvent,
 	MouseEvent,
-	FormEvent,
+	InputEvent,
+	SubmitEvent,
+	SyntheticEvent,
 	CSSProperties,
 	AriaAttributes,
 } from 'react';
@@ -131,19 +133,22 @@ export interface InnerInputProps {
 	/** Focus event handler */
 	onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
 	/** Input event handler */
-	onInput?: (event: FormEvent<HTMLInputElement>) => void;
+	onInput?: (event: InputEvent<HTMLInputElement>) => void;
 	/** Invalid event handler */
-	onInvalid?: (event: FormEvent<HTMLInputElement>) => void;
+	onInvalid?: (event: SyntheticEvent<HTMLInputElement>) => void;
 	/** Key down event handler */
 	onKeyDown?: (event: KeyboardEvent<HTMLInputElement>) => void;
-	/** Key press event handler */
+	/**
+	 * @deprecated `keypress` is a deprecated DOM event. Use `onKeyDown` and read
+	 * `event.key` instead. Still works, and warns.
+	 */
 	onKeyPress?: (event: KeyboardEvent<HTMLInputElement>) => void;
 	/** Key up event handler */
 	onKeyUp?: (event: KeyboardEvent<HTMLInputElement>) => void;
 	/** Select event handler */
-	onSelect?: (event: FormEvent<HTMLInputElement>) => void;
+	onSelect?: (event: SyntheticEvent<HTMLInputElement>) => void;
 	/** Submit event handler */
-	onSubmit?: (event: FormEvent<HTMLInputElement>) => void;
+	onSubmit?: (event: SubmitEvent<HTMLInputElement>) => void;
 	/** Placeholder text */
 	placeholder?: string;
 	/** Makes input read-only */
@@ -310,6 +315,7 @@ const InnerInput = ({
 					onInput={onInput}
 					onInvalid={onInvalid}
 					onKeyDown={onKeyDown}
+					// eslint-disable-next-line local/no-deprecated -- forwards the deprecated `onKeyPress` prop until 11.0
 					onKeyPress={onKeyPress}
 					onKeyUp={onKeyUp}
 					onSelect={onSelect}
@@ -348,6 +354,7 @@ const InnerInput = ({
 			)}
 
 			{isStatic && (
+				// eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions -- static display text; the inline edit trigger is the focusable control
 				<span
 					className={classNames('slds-form-element__static', 'slds-grid', {
 						'slds-grid_align-spread': variant !== COUNTER,

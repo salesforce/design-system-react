@@ -8,12 +8,7 @@
 // ## Dependencies
 
 // ### React
-import React, {
-	forwardRef,
-	useEffect,
-	useRef,
-	type ReactNode,
-} from 'react';
+import React, { forwardRef, useEffect, useRef, type ReactNode } from 'react';
 
 // ### classNames
 import classNames from 'classnames';
@@ -23,10 +18,6 @@ import { TAB } from '../../../utilities/constants';
 
 import Icon from '../../icon';
 import { type TabsVariant } from '../index';
-
-/*
- * Disabled Tab CSS has been removed. If you'd like to use the styling, please import it in your module bundler.
- */
 
 export interface TabProps {
 	/**
@@ -106,7 +97,7 @@ const Tab = forwardRef<HTMLElement, TabProps>((props, ref) => {
 		if (typeof ref === 'function') {
 			ref(node);
 		} else if (ref) {
-			(ref as React.MutableRefObject<HTMLElement | null>).current = node;
+			(ref as React.RefObject<HTMLElement | null>).current = node;
 		}
 	};
 
@@ -140,6 +131,7 @@ const Tab = forwardRef<HTMLElement, TabProps>((props, ref) => {
 			id={id}
 			title={typeof children === 'string' ? children : undefined}
 		>
+			{/* eslint-disable-next-line jsx-a11y/anchor-is-valid -- SLDS tabs markup uses an anchor for each tab */}
 			<a
 				className={classNames({
 					[activeTabClassName]: selected,
@@ -170,7 +162,7 @@ const Tab = forwardRef<HTMLElement, TabProps>((props, ref) => {
 								label: assistiveText.withErrorIcon,
 							}}
 							category="utility"
-							containerClassName="slds-icon_container slds-icon-utility-error"
+							containerClassName="slds-icon_container"
 							size="x-small"
 							name="error"
 							colorVariant="error"

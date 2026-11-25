@@ -7,6 +7,7 @@ import importX from 'eslint-plugin-import-x';
 import storybook from 'eslint-plugin-storybook';
 import prettier from 'eslint-config-prettier';
 import globals from 'globals';
+import noDeprecated from './eslint-rules/no-deprecated.mjs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -62,12 +63,13 @@ export default tseslint.config(
 			// Gitignored agent scratch space (see AGENTS.md).
 			'.planning/**',
 			'storybook-based-tests/**',
-			'icons/**',
 			'**/*.config.js',
 			'**/*.config.cjs',
 			'**/*.config.mjs',
 			'.storybook/**',
 			'eslint-plugin/**',
+			// This repo's own lint rules (plain Node modules, like the config).
+			'eslint-rules/**',
 			// Build/release tooling (Node scripts), outside the type-aware program.
 			'scripts/**',
 			// Legacy Karma/chai/sinon browser tests, excluded from the Vitest run
@@ -174,6 +176,9 @@ export default tseslint.config(
 			// gradual-migration stance — so they stay visible without breaking the
 			// "zero errors" gate. Ratchet back to `error` as the backlog is worked
 			// down (and as components migrate to function-component form).
+			// These rules account for every remaining warning; they are carried past 11.0
+			// GA and capped by `--max-warnings` in the `lint` script. Lower the
+			// cap when you fix one; never raise it.
 			'react-hooks/refs': 'warn',
 			'react-hooks/set-state-in-effect': 'warn',
 			'react-hooks/immutability': 'warn',
@@ -281,6 +286,55 @@ export default tseslint.config(
 		rules: {
 			'@typescript-eslint/no-explicit-any': 'off',
 			'no-console': 'off',
+		},
+	},
+
+	// Deprecated APIs in library source. During the 11.x RC a component still
+	// reads its own deprecated props to honor them; `local/no-deprecated` allows
+	// that (it's the upstream rule, minus symbols declared under the same
+	// `components/<name>/` or `utilities/<name>/` directory), so the exemption
+	// is by kind of use rather than a per-file count. Any other use, such as a
+	// component passing another component's deprecated prop or a deprecated
+	// React or DOM API, is an error. Tests exercise the deprecated paths on
+	// purpose. The rule needs type information, so re-enable the project for
+	// `.js`/`.jsx` source, which the JavaScript block above opts out
+	// (`tsconfig.eslint.json` includes it via `allowJs`).
+	{
+		files: [
+			'components/**/*.{ts,tsx,js,jsx}',
+			'utilities/**/*.{ts,tsx,js,jsx}',
+			'types/**/*.ts',
+		],
+		ignores: [
+			'**/__tests__/**',
+			'**/*.test.{ts,tsx,js,jsx}',
+			'**/*.type-test.{ts,tsx}',
+			'**/*.browser-test.*',
+			'**/__examples__/**',
+			'**/__docs__/**',
+		],
+		languageOptions: {
+			parserOptions: { project: ['./tsconfig.eslint.json'] },
+		},
+		plugins: { local: { rules: { 'no-deprecated': noDeprecated } } },
+		rules: {
+			'local/no-deprecated': 'error',
+		},
+	},
+
+	// Deprecated props in examples and stories. Agents and consumers copy these
+	// files verbatim, so a deprecated prop here spreads; make it an error. As
+	// above, `.js`/`.jsx` files get the project back for type information.
+	{
+		files: [
+			'components/**/__examples__/**/*.{ts,tsx,js,jsx}',
+			'components/**/__docs__/**/*.{ts,tsx,js,jsx}',
+		],
+		languageOptions: {
+			parserOptions: { project: ['./tsconfig.eslint.json'] },
+		},
+		rules: {
+			'@typescript-eslint/no-deprecated': 'error',
 		},
 	}
 );

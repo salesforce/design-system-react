@@ -111,6 +111,10 @@ class Dialog extends React.Component {
 		 */
 		hasNubbin: PropTypes.bool,
 		/**
+		 * With `hasNubbin`, keeps the nubbin's offset but doesn't draw it, for a component that draws its own (Tooltip `hasAnchoredNubbin`).
+		 */
+		isNubbinHidden: PropTypes.bool,
+		/**
 		 * By default, dialogs will flip their alignment (such as bottom to top) if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint. `hasStaticAlignment` disables this behavior and allows this component to extend beyond boundary elements.
 		 */
 		hasStaticAlignment: PropTypes.bool,
@@ -332,7 +336,7 @@ class Dialog extends React.Component {
 	};
 
 	handleKeyDown = (event) => {
-		if (event.keyCode === KEYS.TAB) {
+		if (event.key === KEYS.TAB) {
 			if (this.props.closeOnTabKey) {
 				EventUtil.trap(event);
 				this.handleClose(event);
@@ -508,6 +512,7 @@ class Dialog extends React.Component {
 								this.props.position === 'overflowBoundaryElement',
 						},
 						this.props.hasNubbin &&
+							!this.props.isNubbinHidden &&
 							getNubbinClassName(this.props.align, this.state.popperData),
 						this.props.contentsClassName
 					) || undefined,

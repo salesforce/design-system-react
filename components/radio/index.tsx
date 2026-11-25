@@ -9,6 +9,7 @@ import React, {
 	type ChangeEvent,
 	type FocusEvent,
 	type KeyboardEvent,
+	type MouseEvent,
 	type CSSProperties,
 } from 'react';
 import classNames from 'classnames';
@@ -65,10 +66,21 @@ export interface RadioChangeData {
 }
 
 /**
+ * Event passed to a Radio's `onChange`: the input's `change` event when a
+ * click selects it, the `click` event when a click deselects a checked
+ * `deselectable` radio (a checked radio fires no `change`), or the `keydown`
+ * event when Enter or Space selects or deselects it.
+ */
+export type RadioChangeEvent =
+	| ChangeEvent<HTMLInputElement>
+	| MouseEvent<HTMLInputElement>
+	| KeyboardEvent<HTMLInputElement>;
+
+/**
  * Change handler for Radio
  */
 export type RadioChangeHandler = (
-	event: ChangeEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>,
+	event: RadioChangeEvent,
 	data: RadioChangeData
 ) => void;
 
@@ -289,10 +301,7 @@ const Radio = (props: RadioProps): React.ReactElement => {
 	const dataProps = getDataProps(rest);
 
 	const handleChange = useCallback(
-		(
-			event: ChangeEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>,
-			preventDuplicate?: boolean
-		) => {
+		(event: RadioChangeEvent, preventDuplicate?: boolean) => {
 			if (!preventDuplicateRef.current) {
 				preventDuplicateRef.current = Boolean(preventDuplicate);
 				onChange?.(event, { checked: !checked });
@@ -319,7 +328,7 @@ const Radio = (props: RadioProps): React.ReactElement => {
 	if (variant === 'swatch') {
 		radioLabel = (
 			<label
-				style={{ border: '1px' }}
+				style={{ border: 'var(--slds-g-sizing-border-1, 1px)' }}
 				className="slds-radio_button__label"
 				htmlFor={id}
 			>
@@ -410,16 +419,16 @@ const Radio = (props: RadioProps): React.ReactElement => {
 				onChange={(event) => handleChange(event)}
 				onClick={(event) => {
 					if (checked && deselectable) {
-						handleChange(event as unknown as ChangeEvent<HTMLInputElement>);
+						handleChange(event);
 					}
 				}}
-				onKeyPress={(event) => {
-					const { charCode } = event;
-					if (charCode === KEYS.SPACE && checked && deselectable) {
+				onKeyDown={(event) => {
+					const { key } = event;
+					if (key === KEYS.SPACE && checked && deselectable) {
 						handleChange(event, true);
 					} else if (
-						(charCode === KEYS.ENTER && checked && deselectable) ||
-						!checked
+						(key === KEYS.ENTER && checked && deselectable) ||
+						(!checked && (key === KEYS.SPACE || key === KEYS.ENTER))
 					) {
 						handleChange(event);
 					}

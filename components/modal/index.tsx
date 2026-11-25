@@ -233,6 +233,7 @@ const Modal = forwardRef<HTMLElement, ModalProps>(
 			if (ariaHideApp) {
 				checkAppElementIsSet();
 			}
+			// eslint-disable-next-line react-hooks/exhaustive-deps
 		}, []); // Only run on mount
 
 		// Set return focus on mount
@@ -421,13 +422,13 @@ const Modal = forwardRef<HTMLElement, ModalProps>(
 			}
 
 			return (
+				// eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions -- onClick only stops propagation to the backdrop; not an interaction
 				<header
 					className={classNames(
 						'slds-modal__header',
 						{
 							'slds-modal__header_empty': headerEmpty,
 							[`slds-theme_${prompt}`]: isPrompt,
-							'slds-theme_alert-texture': isPrompt,
 						},
 						headerClassName,
 						classNameHeader
@@ -453,6 +454,7 @@ const Modal = forwardRef<HTMLElement, ModalProps>(
 			};
 
 			return (
+				// eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions -- onClick only stops propagation to the backdrop; not an interaction
 				<footer
 					className={classNames(
 						footerClasses,
@@ -478,6 +480,7 @@ const Modal = forwardRef<HTMLElement, ModalProps>(
 			};
 
 			return (
+				// eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions -- onClick only stops propagation to the backdrop; not an interaction
 				<section
 					className={classNames(
 						'slds-modal',
@@ -498,6 +501,7 @@ const Modal = forwardRef<HTMLElement, ModalProps>(
 						style={modalStyle}
 					>
 						{renderHeader()}
+						{/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions -- onClick only stops propagation to the backdrop; not an interaction */}
 						<div
 							className={classNames(
 								'slds-modal__content',

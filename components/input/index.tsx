@@ -13,7 +13,9 @@ import React, {
 	type FocusEvent,
 	type KeyboardEvent,
 	type MouseEvent,
-	type FormEvent,
+	type InputEvent,
+	type SubmitEvent,
+	type SyntheticEvent,
 	type CSSProperties,
 	type AriaAttributes,
 } from 'react';
@@ -28,6 +30,7 @@ import type { InputIconProps } from '../icon/input-icon';
 
 import checkProps from './check-props';
 import { INPUT } from '../../utilities/constants';
+import KEYS from '../../utilities/key-code';
 import componentDoc from './component.json';
 
 const COUNTER = 'counter';
@@ -154,19 +157,22 @@ export interface InputBaseProps {
 	/** Focus event handler */
 	onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
 	/** Input event handler */
-	onInput?: (event: FormEvent<HTMLInputElement>) => void;
+	onInput?: (event: InputEvent<HTMLInputElement>) => void;
 	/** Invalid event handler */
-	onInvalid?: (event: FormEvent<HTMLInputElement>) => void;
+	onInvalid?: (event: SyntheticEvent<HTMLInputElement>) => void;
 	/** Key down event handler */
 	onKeyDown?: (event: KeyboardEvent<HTMLInputElement>) => void;
-	/** Key press event handler */
+	/**
+	 * @deprecated `keypress` is a deprecated DOM event. Use `onKeyDown` and read
+	 * `event.key` instead. Still works, and warns.
+	 */
 	onKeyPress?: (event: KeyboardEvent<HTMLInputElement>) => void;
 	/** Key up event handler */
 	onKeyUp?: (event: KeyboardEvent<HTMLInputElement>) => void;
 	/** Select event handler */
-	onSelect?: (event: FormEvent<HTMLInputElement>) => void;
+	onSelect?: (event: SyntheticEvent<HTMLInputElement>) => void;
 	/** Submit event handler */
-	onSubmit?: (event: FormEvent<HTMLInputElement>) => void;
+	onSubmit?: (event: SubmitEvent<HTMLInputElement>) => void;
 	/** Placeholder text */
 	placeholder?: string;
 	/** Makes input read-only */
@@ -576,7 +582,7 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
 					iconCategory="utility"
 					iconName={direction === DECREMENT ? 'ban' : 'new'}
 					onKeyDown={(event: KeyboardEvent) => {
-						if (event.keyCode === 13) {
+						if (event.key === KEYS.ENTER) {
 							performStep(direction, event);
 						}
 					}}

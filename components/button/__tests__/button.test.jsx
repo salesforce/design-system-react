@@ -32,12 +32,60 @@ describe('SLDSButton', () => {
 		});
 	});
 
+	describe('responsive', () => {
+		it('stretches the button with slds-button_stretch, not a DOM attribute', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			renderButton({ responsive: true });
+
+			const button = screen.getByRole('button');
+			expect(button).toHaveClass('slds-button_stretch');
+			expect(button).not.toHaveAttribute('responsive');
+			expect(consoleError).not.toHaveBeenCalled();
+			consoleError.mockRestore();
+		});
+
+		it('does not stretch by default', () => {
+			renderButton();
+
+			expect(screen.getByRole('button')).not.toHaveClass('slds-button_stretch');
+		});
+	});
+
 	describe('Form Props Render', () => {
 		it('renders formAction prop', () => {
 			const formAction = 'http://localhost/some/url';
 			renderButton({ formAction });
 			const btn = screen.getByRole('button');
 			expect(btn).toHaveAttribute('formaction', formAction);
+		});
+
+		it('defaults type to submit when formAction is set, without a warning', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			renderButton({ formAction: 'http://localhost/some/url' });
+
+			expect(screen.getByRole('button')).toHaveAttribute('type', 'submit');
+			expect(consoleError).not.toHaveBeenCalled();
+			consoleError.mockRestore();
+		});
+
+		it('keeps an explicit type when formAction is set', () => {
+			// React warns that formAction is ignored on this type, which is the point
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			renderButton({ formAction: 'http://localhost/some/url', type: 'button' });
+
+			expect(screen.getByRole('button')).toHaveAttribute('type', 'button');
+			consoleError.mockRestore();
+		});
+
+		it('defaults type to button without formAction', () => {
+			renderButton();
+			expect(screen.getByRole('button')).toHaveAttribute('type', 'button');
 		});
 	});
 

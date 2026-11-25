@@ -21,13 +21,11 @@ describe('SLDSTooltip', () => {
 
 	const renderTooltip = (
 		props = {},
-		children = <Button label="Hover me for tooltip" />
+		trigger = <Button label="Hover me for tooltip" />
 	) => {
 		return render(
 			<IconSettings iconPath="/assets/icons">
-				<Tooltip {...defaultProps} {...props}>
-					{children}
-				</Tooltip>
+				<Tooltip {...defaultProps} trigger={trigger} {...props} />
 			</IconSettings>
 		);
 	};
@@ -179,7 +177,7 @@ describe('SLDSTooltip', () => {
 			});
 		});
 
-		it('uses custom id when provided', () => {
+		it('uses custom id when provided', async () => {
 			renderTooltip({ id: 'custom-tooltip-id' });
 			const trigger = screen.getByRole('button', {
 				name: 'Hover me for tooltip',
@@ -187,10 +185,23 @@ describe('SLDSTooltip', () => {
 
 			// The id will be used for aria-describedby when open
 			expect(trigger).not.toHaveAttribute('aria-describedby');
+
+			await userEvent.hover(trigger);
+
+			await waitFor(() => {
+				expect(trigger).toHaveAttribute(
+					'aria-describedby',
+					'custom-tooltip-id'
+				);
+				expect(document.querySelector('.slds-popover_tooltip')).toHaveAttribute(
+					'id',
+					'custom-tooltip-id'
+				);
+			});
 		});
 
 		it('respects hoverOpenDelay', async () => {
-			const { container } = renderTooltip({ hoverOpenDelay: 100 });
+			renderTooltip({ hoverOpenDelay: 100 });
 			const trigger = screen.getByRole('button', {
 				name: 'Hover me for tooltip',
 			});
@@ -375,7 +386,7 @@ describe('SLDSTooltip', () => {
 			expect(svg).not.toHaveClass('slds-icon-text-default');
 		});
 
-		it('does not change custom children', () => {
+		it('does not change a custom trigger', () => {
 			renderTooltip({ iconVariant: 'inverse' });
 			const trigger = screen.getByRole('button', {
 				name: 'Hover me for tooltip',
@@ -509,9 +520,8 @@ describe('SLDSTooltip', () => {
 						isOpen={isOpen}
 						onRequestOpen={() => setIsOpen(true)}
 						onRequestClose={() => setIsOpen(false)}
-					>
-						<Button label="Hover me for tooltip" />
-					</Tooltip>
+						trigger={<Button label="Hover me for tooltip" />}
+					/>
 				);
 			};
 			render(
@@ -558,9 +568,8 @@ describe('SLDSTooltip', () => {
 						{...defaultProps}
 						isOpen={false}
 						onRequestClose={onRequestClose}
-					>
-						<Button label="Hover me for tooltip" />
-					</Tooltip>
+						trigger={<Button label="Hover me for tooltip" />}
+					/>
 				</IconSettings>
 			);
 			await wait(20);
@@ -571,7 +580,7 @@ describe('SLDSTooltip', () => {
 	});
 
 	describe('Custom trigger', () => {
-		it('renders with custom child component', async () => {
+		it('renders a custom trigger element', async () => {
 			renderTooltip({}, <button type="button">Custom Trigger</button>);
 			const trigger = screen.getByRole('button', { name: 'Custom Trigger' });
 
@@ -589,7 +598,7 @@ describe('SLDSTooltip', () => {
 
 	describe('HasAnchoredNubbin', () => {
 		it('renders with anchored nubbin when enabled', async () => {
-			const { container } = renderTooltip({
+			renderTooltip({
 				hasAnchoredNubbin: true,
 				align: 'top',
 			});
@@ -604,11 +613,119 @@ describe('SLDSTooltip', () => {
 					document.querySelector('.slds-popover_tooltip')
 				).toBeInTheDocument();
 
-				// NOTE: Anchored nubbin is rendered via inline styles, check for style element
-				const styleElement = container.querySelector('style');
-				expect(styleElement).toBeInTheDocument();
-				expect(styleElement.textContent).toContain('display: none');
+				// The dialog draws no nubbin of its own, so nothing needs hiding
+				// with a <style> element, which a CSP without 'unsafe-inline' blocks.
+				expect(
+					document.querySelector('.slds-popover_tooltip').className
+				).not.toMatch(/slds-nubbin/);
+				expect(document.querySelectorAll('style')).toHaveLength(0);
 			});
+		});
+
+		it.each([
+			['a generated id', undefined],
+			['an id that is not a CSS identifier', '1 "tip"\\'],
+		])('hides the SLDS nubbin of the tooltip for %s', async (_name, id) => {
+			renderTooltip({
+				hasAnchoredNubbin: true,
+				align: 'top',
+				id,
+			});
+
+			await userEvent.hover(
+				screen.getByRole('button', { name: 'Hover me for tooltip' })
+			);
+
+			await waitFor(() => {
+				const tooltip = document.querySelector('.slds-popover_tooltip');
+				expect(tooltip).toBeInTheDocument();
+				// Hidden by leaving out the class, not by an id-based rule, so any
+				// id works
+				expect(tooltip.className).not.toMatch(/slds-nubbin/);
+				expect(document.querySelectorAll('style')).toHaveLength(0);
+			});
+		});
+
+		it('positions the nubbin from the measured trigger size', async () => {
+			const rectSpy = vi
+				.spyOn(HTMLElement.prototype, 'getBoundingClientRect')
+				.mockReturnValue({
+					height: 20,
+					width: 40,
+					top: 0,
+					left: 0,
+					bottom: 20,
+					right: 40,
+					x: 0,
+					y: 0,
+				});
+			try {
+				const { container } = renderTooltip({
+					hasAnchoredNubbin: true,
+					align: 'bottom',
+					isOpen: true,
+				});
+
+				await waitFor(() => {
+					expect(
+						document.querySelector('.slds-popover_tooltip')
+					).toBeInTheDocument();
+				});
+				const nubbinContainer = container.querySelector(
+					'div[style*="position: relative"]'
+				);
+				expect(nubbinContainer).toHaveStyle({ left: '20px', top: '20px' });
+			} finally {
+				rectSpy.mockRestore();
+			}
+		});
+
+		it('re-measures a trigger that resizes while the tooltip is open', async () => {
+			const rect = (width, height) => ({
+				height,
+				width,
+				top: 0,
+				left: 0,
+				bottom: height,
+				right: width,
+				x: 0,
+				y: 0,
+			});
+			const rectSpy = vi
+				.spyOn(HTMLElement.prototype, 'getBoundingClientRect')
+				.mockReturnValue(rect(40, 20));
+			try {
+				const props = {
+					hasAnchoredNubbin: true,
+					align: 'bottom',
+					isOpen: true,
+				};
+				const { container, rerender } = renderTooltip(props);
+				const nubbinContainer = () =>
+					container.querySelector('div[style*="position: relative"]');
+				await waitFor(() => {
+					expect(nubbinContainer()).toHaveStyle({ left: '20px' });
+				});
+
+				// The trigger grows (a longer label, say) while the tooltip stays open
+				rectSpy.mockReturnValue(rect(100, 30));
+				rerender(
+					<IconSettings iconPath="/assets/icons">
+						<Tooltip
+							{...defaultProps}
+							trigger={<Button label="Hover me for tooltip" />}
+							{...props}
+							content="Longer content"
+						/>
+					</IconSettings>
+				);
+
+				await waitFor(() => {
+					expect(nubbinContainer()).toHaveStyle({ left: '50px', top: '30px' });
+				});
+			} finally {
+				rectSpy.mockRestore();
+			}
 		});
 	});
 

@@ -149,6 +149,36 @@ describe('RadioGroup', () => {
 		expect(getRadio(container, 'a')).toBeChecked();
 	});
 
+	it('passes the event that made the request: change, click or keydown', () => {
+		const onChange = vi.fn();
+		const { container, rerender } = render(
+			<RadioGroup value={null} onChange={onChange}>
+				<Radio labels={{ label: 'A' }} value="a" deselectable />
+			</RadioGroup>
+		);
+
+		// Only a click on an unchecked radio fires `change`. A checked
+		// `deselectable` radio is deselected from its `click`, and Enter from
+		// its `keydown`, so `event.target.value` is not always available: read
+		// `data.value`.
+		fireEvent.click(getRadio(container, 'a'));
+		expect(onChange.mock.calls[0][0].type).toBe('change');
+		expect(onChange.mock.calls[0][1].value).toBe('a');
+
+		rerender(
+			<RadioGroup value="a" onChange={onChange}>
+				<Radio labels={{ label: 'A' }} value="a" deselectable />
+			</RadioGroup>
+		);
+		fireEvent.click(getRadio(container, 'a'));
+		expect(onChange.mock.calls[1][0].type).toBe('click');
+		expect(onChange.mock.calls[1][1].value).toBeNull();
+
+		fireEvent.keyDown(getRadio(container, 'a'), { key: 'Enter' });
+		expect(onChange.mock.calls[2][0].type).toBe('keydown');
+		expect(onChange.mock.calls[2][1].value).toBeNull();
+	});
+
 	it('still supports checked on each Radio without a group value, and warns', () => {
 		const consoleError = vi
 			.spyOn(console, 'error')
@@ -179,10 +209,7 @@ describe('RadioGroup', () => {
 });
 
 describe('RadioGroup: required `onChange`', () => {
-	it('warns once when `onChange` is missing, and not when exempt', async () => {
-		// Fresh modules so the once-per-session warning state is reset
-		vi.resetModules();
-		const { default: FreshRadioGroup } = await import('../');
+	it('warns once when `onChange` is missing, and not when exempt', () => {
 		const consoleError = vi
 			.spyOn(console, 'error')
 			.mockImplementation(() => {});
@@ -193,15 +220,15 @@ describe('RadioGroup: required `onChange`', () => {
 
 		// `disabled` doesn't need `onChange`
 		render(
-			<FreshRadioGroup disabled labels={{ label: 'A' }} value={null}>
+			<RadioGroup disabled labels={{ label: 'A' }} value={null}>
 				{null}
-			</FreshRadioGroup>
+			</RadioGroup>
 		);
 		expect(requiredWarnings()).toHaveLength(0);
 		render(
-			<FreshRadioGroup labels={{ label: 'B' }} value={null}>
+			<RadioGroup labels={{ label: 'B' }} value={null}>
 				{null}
-			</FreshRadioGroup>
+			</RadioGroup>
 		);
 		expect(requiredWarnings()).toHaveLength(1);
 

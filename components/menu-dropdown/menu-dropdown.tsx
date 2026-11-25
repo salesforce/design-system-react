@@ -55,10 +55,11 @@ import {
 	MENU_DROPDOWN_TRIGGER,
 } from '../../utilities/constants';
 import { useControllableState } from '../../utilities/hooks/use-controllable-state';
+import { useLatestRef } from '../../utilities/hooks/use-latest-ref';
 import { IconSettingsContext } from '../icon-settings';
 import type { IconCategory } from '../../types/common';
 import isElementOfType from '../../utilities/is-element-of-type';
-import type { TriggerRender } from '../../utilities/merge-props';
+import type { TriggerRender } from '../../types/common';
 import type { MenuDropdownTriggerProps } from './button-trigger';
 import type { ButtonAssistiveText } from '../button';
 
@@ -318,8 +319,11 @@ export interface MenuDropdownBaseProps {
 	nubbinPosition?: DropdownNubbinPosition;
 	/** Called when the triggering button loses focus */
 	onBlur?: (event: FocusEvent) => void;
-	/** Triggered when the trigger button is clicked */
-	onClick?: (event: MouseEvent) => void;
+	/**
+	 * Called when the trigger is clicked, or when Enter, Space, Up or Down on the
+	 * trigger opens the menu (with that `keydown` event).
+	 */
+	onClick?: (event: MouseEvent | KeyboardEvent) => void;
 	/**
 	 * Triggered after the menu closes, in both modes. Receives the event that
 	 * closed it (see `MenuDropdownCloseEvent`) and a `MenuDropdownCloseData`
@@ -403,7 +407,10 @@ export interface MenuDropdownBaseProps {
 	 * control. It must render a focusable element and pass it `ref`.
 	 */
 	trigger?: TriggerRender<MenuDropdownTriggerProps>;
-	/** Tooltip component template for menu items */
+	/**
+	 * Tooltip component template for menu items with `tooltipContent`. The item opens it on hover
+	 * and focus, unless the template sets `isOpen`.
+	 */
 	tooltipMenuItem?: ReactNode;
 	/** CSS classes to be added to wrapping trigger div */
 	triggerClassName?: string | string[] | Record<string, boolean>;
@@ -702,11 +709,6 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 		return null;
 	}, []);
 
-	// Handle close
-	const handleCloseRef = useRef<(event?: MenuDropdownCloseEvent) => void>(
-		() => {}
-	);
-
 	// The open state `onOpen`/`onClose` last reported. It starts at the initial
 	// state, so a menu that renders open does not report an open on mount.
 	const notifiedOpenRef = useRef(Boolean(isOpenValue) && !disabled);
@@ -793,8 +795,8 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 		[setIsOpenValue, notifyOpenChange]
 	);
 
-	// Update the ref so the open-dropdown registration always calls the latest
-	handleCloseRef.current = handleClose;
+	// The open-dropdown registration always calls the latest `handleClose`
+	const handleCloseRef = useLatestRef(handleClose);
 
 	// Requests an open. With a controlled `isOpen` only `onRequestOpen` runs; the
 	// menu opens (and `onOpen` fires) when the parent sets `isOpen={true}`.
@@ -1025,23 +1027,11 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 		[focusedIndex, getMenu, getMenuItem, focusMenuItem, scrollToMenuItem]
 	);
 
-	// Create a context object for keyboard navigation
-	const componentContext = useMemo(
-		() => ({
-			trigger: triggerRef.current,
-			handleClick: (event: Event) => {
-				handleClick(event as unknown as MouseEvent);
-			},
-		}),
-		[handleClick]
-	);
-
 	// Handle keyboard navigate
 	const handleKeyboardNavigate = useCallback(
 		({
 			event,
 			isOpen: menuIsOpen = true,
-			keyCode,
 			onFocus: focusCallback = handleKeyboardFocus,
 			onSelect: selectCallback,
 			target,
@@ -1049,19 +1039,22 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 		}: {
 			event: KeyboardEvent;
 			isOpen?: boolean;
-			keyCode: number;
 			onFocus?: (index: number | undefined) => void;
 			onSelect: (index: number) => void;
 			target: EventTarget | null;
 			toggleOpen?: () => void;
 		}) => {
 			keyboardNavigate({
-				componentContext,
+				// Opening from the trigger is done by `toggleOpen`, so a key that
+				// opens the menu only reports `onClick`, with this keydown event.
+				componentContext: {
+					getTrigger: () => triggerRef.current,
+					handleClick: () => onClick?.(event),
+				},
 				currentFocusedIndex: focusedIndex,
 				event,
 				isOpen: menuIsOpen,
-				key: (event as unknown as { key?: string }).key,
-				keyCode,
+				key: event.key,
 				navigableItems,
 				onFocus: focusCallback,
 				onSelect: selectCallback,
@@ -1069,7 +1062,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 				toggleOpen: toggleCallback,
 			});
 		},
-		[componentContext, focusedIndex, handleKeyboardFocus, navigableItems]
+		[focusedIndex, handleKeyboardFocus, navigableItems, onClick]
 	);
 
 	// Handle cancel
@@ -1084,21 +1077,20 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 	// Handle key down
 	const handleKeyDown = useCallback(
 		(event: KeyboardEvent) => {
-			if (event.keyCode) {
-				if (event.keyCode === KEYS.TAB) {
+			if (event.key) {
+				if (event.key === KEYS.TAB) {
 					handleCancel(event);
 				} else if (
-					event.keyCode === KEYS.ENTER ||
-					event.keyCode === KEYS.SPACE ||
-					event.keyCode === KEYS.DOWN ||
-					event.keyCode === KEYS.UP ||
-					event.keyCode === KEYS.ESCAPE
+					event.key === KEYS.ENTER ||
+					event.key === KEYS.SPACE ||
+					event.key === KEYS.DOWN ||
+					event.key === KEYS.UP ||
+					event.key === KEYS.ESCAPE
 				) {
 					EventUtil.trap(event);
 					handleKeyboardNavigate({
 						event,
 						isOpen: getIsOpen(),
-						keyCode: event.keyCode,
 						onSelect: (index: number) => handleSelect(index, event),
 						target: event.target,
 						toggleOpen: () => toggleOpen(event),
@@ -1294,7 +1286,6 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 		) => {
 			let dialogAlign = 'bottom';
 			let hasNubbin = false;
-			let positionClassName = '';
 
 			if (nubbinPosition) {
 				hasNubbin = true;
@@ -1305,7 +1296,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 
 			const positions =
 				DropdownToDialogNubbinMapping[dialogAlign]?.split(' ') || [];
-			positionClassName = classNames(
+			const positionClassName = classNames(
 				positions.map((position) => `slds-dropdown_${position}`)
 			);
 

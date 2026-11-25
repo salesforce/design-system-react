@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { action } from 'storybook/actions';
 
 import Tree from '../index';
-import sampleNodesDynamicHashMap from './dynamic-hashmap.tsx';
+import sampleNodesDynamicHashMap from './dynamic-hashmap';
 import DefaultExample from '../__examples__/default';
 
 const meta: Meta<typeof Tree> = {
@@ -37,7 +37,13 @@ export const Base: Story = {
 
 export const BaseWithStencil: Story = {
 	name: 'Base with stencil',
-	render: () => <DefaultExample action={action} loadingStencil />,
+	render: () => (
+		<DefaultExample
+			action={action}
+			nodes={sampleNodesDynamicHashMap.loading.nodes}
+			initialExpandedIds={sampleNodesDynamicHashMap.loading.expandedIds}
+		/>
+	),
 };
 
 export const InitialExpandedSelected: Story = {

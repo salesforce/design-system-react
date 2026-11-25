@@ -5,79 +5,12 @@
 
 // Implements the [CarouselItem design pattern](https://www.lightningdesignsystem.com/components/carousel/) in React.
 
-import { type FocusEvent, type MouseEvent, type ReactNode } from 'react';
+import { type MouseEvent, type ReactNode } from 'react';
 
 import Button from '../../button';
 
 import { CAROUSEL_ITEM } from '../../../utilities/constants';
-import { type CarouselRenderItemData } from '../index';
-
-export interface CarouselItemProps {
-	/**
-	 * Label of the button to be displayed. If not provided, no button will be rendered.
-	 */
-	buttonLabel?: string;
-	/**
-	 * Carousel HTML ID
-	 */
-	carouselId?: string;
-	/**
-	 * CSS classes that are applied to the component
-	 */
-	className?: string | string[] | Record<string, boolean>;
-	/**
-	 * Visible paragraph text to be displayed on the carousel item
-	 */
-	description?: string | ReactNode;
-	/**
-	 * Function to generate the panel HTML `id`.
-	 */
-	getPanelId?: (params: { carouselId: string; itemId: string }) => string;
-	/**
-	 * Carousel Item's visible heading
-	 */
-	heading?: string | Record<string, unknown>;
-	/**
-	 * Link URL
-	 */
-	href?: string;
-	/**
-	 * Id of the item component.
-	 */
-	id?: string;
-	/**
-	 * Image alt text
-	 */
-	imageAssistiveText?: string;
-	/**
-	 * Boolean indicating whether this item is currently visible in the active parent carousel panel
-	 */
-	isInCurrentPanel?: boolean;
-	/**
-	 * Width of the carousel item
-	 */
-	itemWidth?: number;
-	/**
-	 * Triggered when the item is clicked.
-	 */
-	onClick?: (event: MouseEvent) => void;
-	/**
-	 * Accepts a callback to handle when the a tag is focused on
-	 */
-	onFocus?: (event: FocusEvent) => void;
-	/**
-	 * Renders the item's content in place of the default image, heading and description. Called with `{ item }`.
-	 */
-	renderItem?: (data: CarouselRenderItemData) => ReactNode;
-	/**
-	 * Index of the panel this item belongs to, to be used when associating it to an indicator
-	 */
-	panelIndex?: number;
-	/**
-	 * Path of the image to be used
-	 */
-	src?: string;
-}
+import type { CarouselItemProps } from '../types';
 
 /**
  * A carousel allows multiple pieces of featured content to occupy an allocated amount of space.
@@ -152,7 +85,7 @@ const CarouselItem = ({
 					onClick={handleOnClick}
 					onFocus={onFocus}
 					style={{
-						backgroundColor: 'white',
+						backgroundColor: 'var(--slds-g-color-surface-1, white)',
 						width: '100%',
 					}}
 					tabIndex={isInCurrentPanel ? 0 : -1}

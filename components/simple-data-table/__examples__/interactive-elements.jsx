@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { action } from 'storybook/actions';
 
 import SimpleDataTable from '~/components/simple-data-table'; // `~` is replaced with design-system-react at runtime
@@ -13,10 +13,16 @@ import Checkbox from '~/components/checkbox';
 const InteractiveButton = SimpleDataTableInteractiveElement(Button);
 const InteractiveCheckBox = SimpleDataTableInteractiveElement(Checkbox);
 
-const CustomSimpleDataTableCell = ({ id, children, ...props }) => {
+const CustomSimpleDataTableCell = ({ id, children: _children, ...props }) => {
+	const [checked, setChecked] = useState(false);
 	const cell = (
 		<SimpleDataTableCell {...props}>
-			<InteractiveCheckBox id={`${id}-checkbox`} labels={{ label: 'Option' }} />
+			<InteractiveCheckBox
+				id={`${id}-checkbox`}
+				labels={{ label: 'Option' }}
+				checked={checked}
+				onChange={(event, data) => setChecked(data.checked)}
+			/>
 			<InteractiveButton onClick={action('button clicked')} label="Open" />
 			<div>
 				<SimpleDataTableInteractiveLink onClick={action('link clicked')}>

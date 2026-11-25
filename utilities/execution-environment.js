@@ -4,6 +4,8 @@
 const canUseDOM = !!(
 	typeof window !== 'undefined' &&
 	window.document &&
+	// A feature check, not a call; one `createElement` overload is deprecated.
+	// eslint-disable-next-line local/no-deprecated
 	window.document.createElement
 );
 const canUseEventListeners =

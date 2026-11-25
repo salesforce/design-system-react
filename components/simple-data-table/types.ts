@@ -20,7 +20,7 @@ export interface SimpleDataTableItem {
 	[key: string]: unknown;
 }
 
-export interface SimpleDataTableSelection extends SimpleDataTableItem {}
+export type SimpleDataTableSelection = SimpleDataTableItem;
 
 export interface SimpleDataTableColumnConfig {
 	Cell: React.ComponentType<SimpleDataTableCellProps>;
@@ -440,4 +440,14 @@ export interface SimpleDataTableInteractiveElementProps {
 	/** Called after the wrapper focuses the element */
 	onRequestFocus?: () => void;
 	tabIndex?: number;
+}
+
+/** Second argument of `SimpleDataTableInteractiveElement(Component, options)` */
+export interface SimpleDataTableInteractiveElementOptions {
+	/**
+	 * Pass `onOpen` and `onClose` to the element, which it calls when its popover opens and
+	 * closes, so table keyboard navigation pauses while it is open. Defaults to `true` for
+	 * MenuDropdown and `false` for everything else.
+	 */
+	tracksOpen?: boolean;
 }

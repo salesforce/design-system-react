@@ -116,7 +116,7 @@ describe('SLDSSplitView - Listbox', () => {
 	describe('When a list item is selected', () => {
 		describe('and single select only', () => {
 			it('should focus the item that is clicked', () => {
-				const { container, rerender } = renderListbox({
+				const { container } = renderListbox({
 					options: listOptions,
 					events: {
 						onSelect: () => {},
@@ -530,22 +530,14 @@ describe('SLDSSplitView - Listbox', () => {
 		});
 
 		describe('deprecated item objects in selection and unread', () => {
-			// Warnings are emitted once per module lifetime, so use a fresh module
-			const importFreshListbox = async () => {
-				vi.resetModules();
-				const { default: FreshListbox } = await import('../listbox');
-				return FreshListbox;
-			};
-
-			it('matches objects by id and warns once', async () => {
-				const FreshListbox = await importFreshListbox();
+			it('matches objects by id and warns once', () => {
 				const consoleError = vi
 					.spyOn(console, 'error')
 					.mockImplementation(() => {});
 				const onSelect = vi.fn();
 				// Copies: matched by id, not identity
 				const { container, rerender } = render(
-					<FreshListbox
+					<SplitViewListbox
 						options={listOptions}
 						selection={[{ ...listOptions[1] }]}
 						unread={[{ ...listOptions[2] }]}
@@ -566,7 +558,7 @@ describe('SLDSSplitView - Listbox', () => {
 				});
 
 				rerender(
-					<FreshListbox
+					<SplitViewListbox
 						options={listOptions}
 						selection={[listOptions[3]]}
 						unread={[listOptions[2]]}
@@ -585,8 +577,7 @@ describe('SLDSSplitView - Listbox', () => {
 				consoleError.mockRestore();
 			});
 
-			it('matches objects by identity when items have no id', async () => {
-				const FreshListbox = await importFreshListbox();
+			it('matches objects by identity when items have no id', () => {
 				const consoleError = vi
 					.spyOn(console, 'error')
 					.mockImplementation(() => {});
@@ -595,7 +586,7 @@ describe('SLDSSplitView - Listbox', () => {
 				);
 				const onSelect = vi.fn();
 				const { container } = render(
-					<FreshListbox
+					<SplitViewListbox
 						multiple
 						options={optionsWithoutIds}
 						selection={[optionsWithoutIds[1]]}

@@ -23,7 +23,7 @@ describe('Button Stateful', () => {
 		it('button exists - is not undefined', () => {
 			const { container } = render(
 				<IconSettings iconPath="/assets/icons">
-					<ButtonStateful {...requiredProps} />
+					<ButtonStateful onClick={() => {}} {...requiredProps} />
 				</IconSettings>
 			);
 
@@ -34,7 +34,7 @@ describe('Button Stateful', () => {
 		it('if no isActive prop, is not active', () => {
 			const { container } = render(
 				<IconSettings iconPath="/assets/icons">
-					<ButtonStateful {...requiredProps} />
+					<ButtonStateful onClick={() => {}} {...requiredProps} />
 				</IconSettings>
 			);
 
@@ -51,7 +51,7 @@ describe('Button Stateful', () => {
 		it('renders isActive prop', () => {
 			const { container } = render(
 				<IconSettings iconPath="/assets/icons">
-					<ButtonStateful {...requiredProps} isActive />
+					<ButtonStateful onClick={() => {}} {...requiredProps} isActive />
 				</IconSettings>
 			);
 
@@ -140,6 +140,7 @@ describe('Button Stateful', () => {
 			const { container } = render(
 				<IconSettings iconPath="/assets/icons">
 					<ButtonStateful
+						onClick={() => {}}
 						{...requiredProps}
 						aria-pressed={true}
 						aria-label="abc"
@@ -159,7 +160,11 @@ describe('Button Stateful', () => {
 		it('gives correct aria default for buttons with icon', () => {
 			const { container } = render(
 				<IconSettings iconPath="/assets/icons">
-					<ButtonStateful {...requiredPropsNoVariant} variant="icon" />
+					<ButtonStateful
+						onClick={() => {}}
+						{...requiredPropsNoVariant}
+						variant="icon"
+					/>
 				</IconSettings>
 			);
 
@@ -172,7 +177,11 @@ describe('Button Stateful', () => {
 		it('gives correct aria default for buttons with icon-filled', () => {
 			const { container } = render(
 				<IconSettings iconPath="/assets/icons">
-					<ButtonStateful {...requiredPropsNoVariant} variant="icon-filled" />
+					<ButtonStateful
+						onClick={() => {}}
+						{...requiredPropsNoVariant}
+						variant="icon-filled"
+					/>
 				</IconSettings>
 			);
 
@@ -185,7 +194,11 @@ describe('Button Stateful', () => {
 		it('gives correct aria default for non-icon buttons', () => {
 			const { container } = render(
 				<IconSettings iconPath="/assets/icons">
-					<ButtonStateful {...requiredPropsNoVariant} variant="base" />
+					<ButtonStateful
+						onClick={() => {}}
+						{...requiredPropsNoVariant}
+						variant="base"
+					/>
 				</IconSettings>
 			);
 
@@ -202,6 +215,7 @@ describe('Button Stateful', () => {
 				const { container } = render(
 					<IconSettings iconPath="/assets/icons">
 						<ButtonStateful
+							onClick={() => {}}
 							{...requiredPropsNoVariant}
 							variant={variant}
 							onMouseDown={onMouseDown}
@@ -217,7 +231,7 @@ describe('Button Stateful', () => {
 			const onBlur = vi.fn();
 			const { container } = render(
 				<IconSettings iconPath="/assets/icons">
-					<ButtonStateful onBlur={onBlur} />
+					<ButtonStateful onBlur={onBlur} onClick={() => {}} />
 				</IconSettings>
 			);
 			fireEvent.mouseLeave(getButton(container));
@@ -230,7 +244,7 @@ describe('Button Stateful', () => {
 			getButton(
 				render(
 					<IconSettings iconPath="/assets/icons">
-						<ButtonStateful variant={variant} />
+						<ButtonStateful variant={variant} onClick={() => {}} />
 					</IconSettings>
 				).container
 			);
@@ -250,6 +264,16 @@ describe('Button Stateful', () => {
 			expect(button).toHaveAttribute('aria-live', 'assertive');
 		});
 
+		it('stretches the button with slds-button_stretch when responsive', () => {
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<ButtonStateful responsive onClick={() => {}} />
+				</IconSettings>
+			);
+			expect(getButton(container)).toHaveClass('slds-button_stretch');
+			expect(renderVariant(undefined)).not.toHaveClass('slds-button_stretch');
+		});
+
 		it('applies no variant modifier for text', () => {
 			const button = renderVariant('text');
 			expect(button).toHaveClass('slds-button', 'slds-button_stateful');
@@ -263,10 +287,7 @@ describe('Button Stateful', () => {
 });
 
 describe('ButtonStateful: required `onClick`', () => {
-	it('warns once when `onClick` is missing, and not when exempt', async () => {
-		// Fresh modules so the once-per-session warning state is reset
-		vi.resetModules();
-		const { default: FreshButtonStateful } = await import('../');
+	it('warns once when `onClick` is missing, and not when exempt', () => {
 		const consoleError = vi
 			.spyOn(console, 'error')
 			.mockImplementation(() => {});
@@ -276,9 +297,9 @@ describe('ButtonStateful: required `onClick`', () => {
 				.filter((m) => m.includes('`onClick` is required by'));
 
 		// `disabled` doesn't need `onClick`
-		render(<FreshButtonStateful disabled isActive={false} />);
+		render(<ButtonStateful disabled isActive={false} />);
 		expect(requiredWarnings()).toHaveLength(0);
-		render(<FreshButtonStateful isActive={false} />);
+		render(<ButtonStateful isActive={false} />);
 		expect(requiredWarnings()).toHaveLength(1);
 
 		consoleError.mockRestore();

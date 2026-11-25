@@ -4,6 +4,7 @@ import { describe, it, expect, vi } from 'vitest';
 import Files from '../';
 import File from '../file';
 import IconSettings from '../../icon-settings';
+import MenuDropdown from '../../menu-dropdown';
 
 describe('Files', () => {
 	it("applies its crop to files that don't set their own", () => {
@@ -30,6 +31,33 @@ describe('Files', () => {
 			'slds-file__crop_16-by-9'
 		);
 	});
+
+	it('renders more actions without a <style> element', () => {
+		const { container } = render(
+			<IconSettings iconPath="/assets/icons">
+				<File
+					id="file-actions"
+					labels={{ title: 'Proposal.pdf' }}
+					moreActionsDropdown={
+						<MenuDropdown
+							id="file-actions-menu"
+							options={[{ label: 'Menu Item One', value: 'A0' }]}
+						/>
+					}
+				/>
+			</IconSettings>
+		);
+		// SLDS's button-group class rounds the trigger's corners, so there's
+		// nothing for a CSP without 'unsafe-inline' in style-src to block.
+		expect(
+			container.querySelector('.slds-button-group .slds-dropdown-trigger')
+		).toHaveClass('slds-button_last');
+		expect(container.querySelectorAll('style')).toHaveLength(0);
+	});
+
+	it('keeps the deprecated injectMoreActionsStyles as a no-op', () => {
+		expect(File.injectMoreActionsStyles()).toBeNull();
+	});
 });
 
 describe('File without href', () => {
@@ -45,5 +73,25 @@ describe('File without href', () => {
 		const notPrevented = fireEvent.click(link);
 		expect(notPrevented).toBe(false);
 		expect(onClickImage).toHaveBeenCalledTimes(1);
+	});
+});
+
+describe('File loading', () => {
+	it('lifts the spinner container without a deprecated Spinner prop', () => {
+		const warn = vi.spyOn(console, 'error').mockImplementation(() => {});
+		const { container } = render(
+			<IconSettings iconPath="/assets/icons">
+				<File isLoading labels={{ title: 'One.pdf' }} />
+			</IconSettings>
+		);
+		expect(container.querySelector('.slds-spinner_container')).toHaveStyle({
+			zIndex: '1',
+		});
+		expect(
+			warn.mock.calls.filter(([message]) =>
+				String(message).includes('will be removed')
+			)
+		).toEqual([]);
+		warn.mockRestore();
 	});
 });

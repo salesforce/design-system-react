@@ -250,7 +250,7 @@ describe('Tabs', () => {
 				`.${COMPONENT_CSS_CLASSES.link}`
 			);
 			links.forEach((node, index) => {
-				const errorIcon = node.querySelector('.slds-icon-utility-error');
+				const errorIcon = node.querySelector('.slds-icon-text-error');
 				if (index === 2) {
 					expect(errorIcon).toBeInTheDocument();
 				} else {
@@ -413,13 +413,9 @@ describe('Tabs', () => {
 
 			fireEvent.keyDown(myTabsListItems[0], {
 				key: 'Tab',
-				keyCode: 9,
-				which: 9,
 			});
 			fireEvent.keyDown(myTabsListItems[0], {
-				key: 'Right',
-				keyCode: 39,
-				which: 39,
+				key: 'ArrowRight',
 			});
 
 			myFirstPanel = container.querySelector(`div#${id}-slds-tabs_panel-0`);
@@ -455,13 +451,9 @@ describe('Tabs', () => {
 
 			fireEvent.keyDown(myTabsListItems[0], {
 				key: 'Tab',
-				keyCode: 9,
-				which: 9,
 			});
 			fireEvent.keyDown(myTabsListItems[0], {
-				key: 'Right',
-				keyCode: 39,
-				which: 39,
+				key: 'ArrowRight',
 			});
 
 			myFirstPanel = container.querySelector(`div#${id}-slds-tabs_panel-0`);
@@ -522,8 +514,6 @@ describe('Tabs', () => {
 
 			fireEvent.keyDown(items[0], {
 				key: 'ArrowRight',
-				keyCode: 39,
-				which: 39,
 			});
 
 			expect(onSelect).toHaveBeenCalledTimes(1);
@@ -551,7 +541,7 @@ describe('Tabs', () => {
 				</Tabs>
 			);
 
-			fireEvent.keyDown(items[2], { key: 'ArrowLeft', keyCode: 37, which: 37 });
+			fireEvent.keyDown(items[2], { key: 'ArrowLeft' });
 
 			expect(onSelect).toHaveBeenCalledTimes(2);
 			[event, data] = onSelect.mock.calls[1];
@@ -579,7 +569,7 @@ describe('Tabs', () => {
 			const items = getItems(container);
 
 			fireEvent.click(items[0]);
-			fireEvent.keyDown(items[0], { key: 'Tab', keyCode: 9, which: 9 });
+			fireEvent.keyDown(items[0], { key: 'Tab' });
 
 			expect(onSelect).not.toHaveBeenCalled();
 		});
@@ -592,8 +582,6 @@ describe('Tabs', () => {
 			fireEvent.click(items[2]);
 			fireEvent.keyDown(items[0], {
 				key: 'ArrowRight',
-				keyCode: 39,
-				which: 39,
 			});
 
 			expect(onSelect).toHaveBeenCalledTimes(2);

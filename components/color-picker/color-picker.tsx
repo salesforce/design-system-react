@@ -1,5 +1,6 @@
 /* eslint-disable max-lines */
 import React, {
+	useId,
 	useState,
 	useCallback,
 	useRef,
@@ -19,10 +20,10 @@ import Input, { type InputChangeData } from '../input';
 import TabsPanel from '../tabs/panel';
 import ColorPickerTabs from './private/color-picker-tabs';
 import Popover from '../popover';
+import type { RadioGroupChangeHandler } from '../radio-group';
 
 import ColorUtils from '../../utilities/color';
 import { COLOR_PICKER } from '../../utilities/constants';
-import generateId from '../../utilities/generate-id';
 import { useControllableState, useLatestRef } from '../../utilities/hooks';
 
 import {
@@ -274,8 +275,8 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
 	);
 
 	// Generate stable ID
-	const generatedId = useRef(idProp || generateId());
-	const componentId = idProp || generatedId.current;
+	const generatedId = useId();
+	const componentId = idProp || generatedId;
 
 	// Refs
 	const wrapperRef = useRef<HTMLDivElement>(null);
@@ -411,9 +412,9 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
 	);
 
 	// Event handlers
-	const handleSwatchChange = useCallback(
-		(event: React.ChangeEvent<HTMLInputElement>) => {
-			updateWorkingColor(event, { hex: event.target.value });
+	const handleSwatchChange = useCallback<RadioGroupChangeHandler>(
+		(event, data) => {
+			updateWorkingColor(event, { hex: data.value ?? '' });
 		},
 		[updateWorkingColor]
 	);

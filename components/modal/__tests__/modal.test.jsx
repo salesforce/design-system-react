@@ -84,16 +84,13 @@ describe('SLDSModal', () => {
 			vi.restoreAllMocks();
 		});
 
-		it('still apply, merged with the new props, and warn', async () => {
-			// Fresh modules so the once-per-session warning state is reset
-			vi.resetModules();
-			const { default: FreshModal } = await import('../');
+		it('still apply, merged with the new props, and warn', () => {
 			const consoleError = vi
 				.spyOn(console, 'error')
 				.mockImplementation(() => {});
 
 			render(
-				<FreshModal
+				<Modal
 					ariaHideApp={false}
 					classNameContent="new-content"
 					containerClassName="old-container"
@@ -108,7 +105,7 @@ describe('SLDSModal', () => {
 					styleContent={{ height: '300px' }}
 				>
 					hello
-				</FreshModal>
+				</Modal>
 			);
 
 			const modal = getModalNode();
@@ -143,6 +140,18 @@ describe('SLDSModal', () => {
 					)
 				).toBe(true);
 			});
+		});
+	});
+
+	describe('Prompt', () => {
+		it('themes the header without the legacy SLDS 1 alert texture class', () => {
+			renderModal({ isOpen: true, prompt: 'error', heading: 'Heading' });
+			const modal = getModalNode();
+			expect(modal).toHaveClass('slds-modal_prompt');
+			const header = modal.querySelector('.slds-modal__header');
+			expect(header).toHaveClass('slds-theme_error');
+			// SLDS 2 does not define slds-theme_alert-texture
+			expect(header).not.toHaveClass('slds-theme_alert-texture');
 		});
 	});
 
@@ -296,7 +305,7 @@ describe('SLDSModal', () => {
 				disableClose: true,
 				onRequestClose,
 			});
-			fireEvent.keyDown(getModalNode(), { key: 'Escape', keyCode: 27 });
+			fireEvent.keyDown(getModalNode(), { key: 'Escape', code: 'Escape' });
 			fireEvent.click(getModalNode());
 			expect(onRequestClose).not.toHaveBeenCalled();
 		});
@@ -449,7 +458,7 @@ describe('SLDSModal', () => {
 			});
 
 			const modal = getModalNode();
-			fireEvent.keyDown(modal, { key: 'Escape', keyCode: 27 });
+			fireEvent.keyDown(modal, { key: 'Escape', code: 'Escape' });
 
 			expect(onRequestClose).toHaveBeenCalledTimes(1);
 			const [event, data] = onRequestClose.mock.calls[0];

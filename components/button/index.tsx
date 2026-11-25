@@ -122,7 +122,10 @@ export interface ButtonBaseProps extends Omit<
 	onFocus?: (event: FocusEvent<HTMLButtonElement>) => void;
 	/** Key down event handler */
 	onKeyDown?: (event: KeyboardEvent<HTMLButtonElement>) => void;
-	/** Key press event handler */
+	/**
+	 * @deprecated `keypress` is a deprecated DOM event. Use `onKeyDown` and read
+	 * `event.key` instead. Still works, and warns.
+	 */
 	onKeyPress?: (event: KeyboardEvent<HTMLButtonElement>) => void;
 	/** Key up event handler */
 	onKeyUp?: (event: KeyboardEvent<HTMLButtonElement>) => void;
@@ -143,7 +146,7 @@ export interface ButtonBaseProps extends Omit<
 	 * @deprecated Focus the button through `ref` or `buttonRef` instead. Still works, and warns.
 	 */
 	requestFocus?: boolean;
-	/** Responsive width on small screens */
+	/** Stretches the button to the full width of its container (`slds-button_stretch`) */
 	responsive?: boolean;
 	/** Custom inline styles */
 	style?: CSSProperties;
@@ -151,7 +154,10 @@ export interface ButtonBaseProps extends Omit<
 	tabIndex?: number;
 	/** HTML title attribute */
 	title?: string;
-	/** Button type attribute */
+	/**
+	 * Button type attribute. Defaults to `submit` when `formAction` is set, since browsers
+	 * ignore `formAction` on other types, and to `button` otherwise.
+	 */
 	type?: ButtonType;
 }
 
@@ -164,7 +170,11 @@ interface ButtonIconProps {
 	 * `xx-small` requires `iconVariant`, since SLDS only defines it for the button container (matches `lightning-button-icon`).
 	 */
 	iconSize?: ButtonIconSize;
-	/** Icon variant */
+	/**
+	 * Icon variant. `global-header` renders the SLDS global header action button
+	 * (`slds-global-actions__item-action`); place it inside a
+	 * `slds-global-actions__item` in the global header markup.
+	 */
 	iconVariant?: ButtonIconVariant;
 }
 
@@ -221,6 +231,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 			onMouseUp,
 			onRequestFocus,
 			requestFocus,
+			responsive = false,
 			style,
 			tabIndex,
 			title,
@@ -230,21 +241,22 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 			// Injected by `ButtonGroup` into its last child for `MenuDropdown`; a
 			// Button has no use for it, so keep it off the DOM.
 			triggerClassName: _triggerClassName,
-			type = 'button',
+			type: propType,
 			variant = 'neutral',
 			...restProps
 		} = props as ButtonProps & {
 			tooltip?: ReactNode;
 			triggerClassName?: unknown;
 		};
+		const type = propType ?? (props.formAction ? 'submit' : 'button');
 
 		useEffect(() => {
 			checkRemovedProps(
 				BUTTON,
-				{ onRequestFocus, requestFocus, tooltip },
+				{ onKeyPress, onRequestFocus, requestFocus, tooltip },
 				componentDoc
 			);
-		}, [onRequestFocus, requestFocus, tooltip]);
+		}, [onKeyPress, onRequestFocus, requestFocus, tooltip]);
 
 		const internalRef = useRef<HTMLButtonElement | null>(null);
 
@@ -286,11 +298,12 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 					'slds-button_icon-border-inverse': borderInverseIcon,
 					[`slds-button_icon-${computedIconVariant}`]:
 						computedIconVariant && !borderInverseIcon,
-					'slds-global-header__button_icon': iconGlobalHeader,
+					'slds-global-actions__item-action': iconGlobalHeader,
 					[`slds-button_icon-${iconSize}`]:
 						iconVariant && iconSize !== 'medium',
 					'slds-button_reset': variant === 'link',
 					'slds-text-link': variant === 'link',
+					'slds-button_stretch': responsive,
 				},
 				className as string
 			);
@@ -311,12 +324,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 			return (
 				<ButtonIcon
 					category={iconCategory || 'utility'}
-					className={classNames(
-						{
-							'slds-global-header__icon': iconVariant === 'global-header',
-						},
-						iconClassName as string
-					)}
+					className={iconClassName as string}
 					hint={hint}
 					inverse={inverse}
 					name={name}
@@ -355,6 +363,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 					onClick={handleClick}
 					onFocus={onFocus}
 					onKeyDown={onKeyDown}
+					// eslint-disable-next-line local/no-deprecated -- forwards the deprecated `onKeyPress` prop until 11.0
 					onKeyPress={onKeyPress}
 					onKeyUp={onKeyUp}
 					onMouseDown={onMouseDown}

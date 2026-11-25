@@ -28,7 +28,7 @@ class Example extends React.Component {
 	}
 
 	onChange =
-		(inputName) =>
+		(_inputName) =>
 		(event, { value }) => {
 			this.setState({ pageType: value });
 		};
@@ -39,7 +39,7 @@ class Example extends React.Component {
 		}
 	};
 
-	handleRequestClose = (event, data) => {
+	handleRequestClose = () => {
 		if (this.props.log) {
 			this.props.log('handleRequestClose');
 		}
@@ -50,7 +50,7 @@ class Example extends React.Component {
 		});
 	};
 
-	handleSave = (event, data) => {
+	handleSave = () => {
 		if (this.state.pageType.length === 0) {
 			this.setState({
 				errorText: 'Required field.',
@@ -91,11 +91,15 @@ class Example extends React.Component {
 	};
 
 	render() {
-		// Body of Edit Dialog that is shown when clicking on edit button (pencil icon)
-		const editDialogPopoverBody = (
+		// Body of Edit Dialog that is shown when clicking on edit button (pencil icon).
+		// The header shows two edit dialogs, so each body gets its own ids.
+		const renderEditDialogBody = (idPrefix) => (
 			<div className="slds-form slds-form_stacked slds-p-top_medium slds-p-right_small slds-p-left_small">
+				<h2 id={`${idPrefix}-heading`} className="slds-assistive-text">
+					Edit Page Type
+				</h2>
 				<Input
-					id="page-type"
+					id={`${idPrefix}-input`}
 					inputRef={this.setInputRef}
 					label="Page Type"
 					value={this.state.pageType}
@@ -159,8 +163,8 @@ class Example extends React.Component {
 								{this.state.prevPageType}
 							</span>
 							<EditDialog
-								ariaLabelledby="Edit Name"
-								body={editDialogPopoverBody}
+								ariaLabelledby="page-type-1-heading"
+								body={renderEditDialogBody('page-type-1')}
 								isModified={this.state.pageType !== this.state.prevPageType}
 								onCancel={this.handleRequestClose}
 								onClose={this.handleClose}
@@ -170,13 +174,13 @@ class Example extends React.Component {
 								onOpen={this.onOpen}
 								position="absolute"
 								align="top left"
-								id="edit-dialog-popover"
+								id="edit-dialog-popover-1"
 								isOpen={this.state.isOpen}
 								style={{ color: 'initial' }}
 								labels={{ save: 'Done' }}
 							>
 								<Tooltip
-									id="page-type-tooltip"
+									id="page-type-1-tooltip"
 									align="bottom"
 									content="Edit Page Type"
 									trigger={
@@ -211,8 +215,8 @@ class Example extends React.Component {
 								{this.state.prevPageType}
 							</span>
 							<EditDialog
-								ariaLabelledby="Edit Name"
-								body={editDialogPopoverBody}
+								ariaLabelledby="page-type-2-heading"
+								body={renderEditDialogBody('page-type-2')}
 								isModified={this.state.pageType !== this.state.prevPageType}
 								onCancel={this.handleRequestClose}
 								onClose={this.handleClose}
@@ -222,13 +226,13 @@ class Example extends React.Component {
 								onOpen={this.onOpen}
 								position="absolute"
 								align="top left"
-								id="edit-dialog-popover"
+								id="edit-dialog-popover-2"
 								isOpen={this.state.isOpen}
 								style={{ color: 'initial' }}
 								labels={{ save: 'Done' }}
 							>
 								<Tooltip
-									id="page-type-tooltip"
+									id="page-type-2-tooltip"
 									align="bottom"
 									content="Edit Page Type"
 									trigger={
