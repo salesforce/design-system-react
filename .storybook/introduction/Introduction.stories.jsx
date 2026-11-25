@@ -492,6 +492,8 @@ const heroLines = (box) => {
 				borderRadius: `0 0 ${width}px ${width}px`,
 				backgroundColor: HERO_LINE_COLORS[HERO_LINE_HUES[i]],
 				opacity: 0.75,
+				// A slight softening, so the lines read as light, not hard rules.
+				filter: 'blur(1px)',
 			},
 		};
 	});
