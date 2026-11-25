@@ -504,6 +504,130 @@ const heroLines = (box) => {
 	});
 };
 
+// Order the drip visits the lines: stepping by 7 (coprime with 17) jumps
+// around the hero and reaches every line before repeating.
+const DRIP_ORDER = HERO_LINE_X.map((_, i) => (i * 7) % HERO_LINE_X.length);
+// Pause after each drip (ms), so the rhythm isn't metronomic.
+const DRIP_PAUSES = [3200, 2600, 4200, 3000, 3800, 2800, 4500];
+const DRIP_BEAD = 18;
+const DRIP_DROP = 5;
+
+const dripBeadStyle = {
+	position: 'absolute',
+	top: 0,
+	left: 0,
+	width: 3,
+	height: DRIP_BEAD,
+	borderRadius: 2,
+	filter: 'blur(1px)',
+	opacity: 0,
+};
+const dripDropStyle = {
+	position: 'absolute',
+	top: 0,
+	left: 0,
+	width: DRIP_DROP,
+	height: DRIP_DROP,
+	borderRadius: '50%',
+	opacity: 0,
+};
+
+// One "water drip" at a time: a soft light slides down a line, speeding up
+// like gravity, swells into a glowing drop at the tip, then falls and fades.
+// After a pause it runs on another line. Off when the user prefers reduced
+// motion; restarts when the lines are laid out again.
+const useHeroDrip = (beadRef, dropRef, lines, reduceMotion) => {
+	React.useEffect(() => {
+		const bead = beadRef.current;
+		const drop = dropRef.current;
+		if (
+			!bead ||
+			!drop ||
+			!lines ||
+			reduceMotion ||
+			typeof bead.animate !== 'function'
+		) {
+			return undefined;
+		}
+		let cancelled = false;
+		let running = [];
+		let timer;
+		const play = (el, keyframes, options) => {
+			const animation = el.animate(keyframes, { fill: 'forwards', ...options });
+			running.push(animation);
+			return animation.finished;
+		};
+		const wait = (ms) =>
+			new Promise((resolve) => {
+				timer = setTimeout(resolve, ms);
+			});
+
+		const drip = async (step) => {
+			const line = lines[DRIP_ORDER[step % DRIP_ORDER.length]].style;
+			if (line.height >= 24) {
+				const color = line.backgroundColor;
+				const x = line.left + line.width / 2;
+				const tip = line.height;
+				bead.style.left = `${x - 1.5}px`;
+				bead.style.background = `linear-gradient(to bottom, transparent, ${color}, #fff)`;
+				bead.style.boxShadow = `0 0 6px 1px ${color}`;
+				drop.style.left = `${x - DRIP_DROP / 2}px`;
+				drop.style.background = `radial-gradient(circle at 40% 35%, #fff, ${color})`;
+				drop.style.boxShadow = `0 0 8px 2px ${color}`;
+
+				await play(
+					bead,
+					[
+						{ transform: `translateY(${-DRIP_BEAD}px)`, opacity: 0 },
+						{ opacity: 0.9, offset: 0.2 },
+						{ transform: `translateY(${tip - DRIP_BEAD}px)`, opacity: 0.9 },
+					],
+					{ duration: 900 + tip * 8, easing: 'ease-in' }
+				);
+				play(bead, [{ opacity: 0.9 }, { opacity: 0 }], { duration: 300 });
+				const at = `translateY(${tip - DRIP_DROP / 2}px)`;
+				await play(
+					drop,
+					[
+						{ transform: `${at} scale(0.3)`, opacity: 0 },
+						{ transform: `${at} scale(1)`, opacity: 0.95 },
+					],
+					{ duration: 500, easing: 'ease-out' }
+				);
+				await wait(350);
+				await play(
+					drop,
+					[
+						{ transform: `${at} scale(1)`, opacity: 0.95 },
+						{
+							transform: `translateY(${tip + 10}px) scale(0.8, 1.3)`,
+							opacity: 0,
+						},
+					],
+					{ duration: 600, easing: 'ease-in' }
+				);
+				running.forEach((animation) => animation.cancel());
+				running = [];
+			}
+			await wait(DRIP_PAUSES[step % DRIP_PAUSES.length]);
+		};
+
+		(async () => {
+			await wait(1500);
+			for (let step = 0; !cancelled; step += 1) {
+				// eslint-disable-next-line no-await-in-loop
+				await drip(step);
+			}
+		})().catch(() => {});
+
+		return () => {
+			cancelled = true;
+			clearTimeout(timer);
+			running.forEach((animation) => animation.cancel());
+		};
+	}, [beadRef, dropRef, lines, reduceMotion]);
+};
+
 // `scheme` is the Color Scheme toolbar global (light, dark or system), the
 // same value preview-decorator.js turns into slds-color-scheme--* on <body>.
 const IntroductionPage = ({ scheme = 'light' }) => {
@@ -514,6 +638,10 @@ const IntroductionPage = ({ scheme = 'light' }) => {
 	useHeroGlow(imageRef, isDark, reduceMotion);
 	const textRef = React.useRef(null);
 	const textBox = useHeroTextBox(textRef);
+	const lines = React.useMemo(() => textBox && heroLines(textBox), [textBox]);
+	const beadRef = React.useRef(null);
+	const dropRef = React.useRef(null);
+	useHeroDrip(beadRef, dropRef, lines, reduceMotion);
 
 	return (
 		<div style={styles.page}>
@@ -536,9 +664,11 @@ const IntroductionPage = ({ scheme = 'light' }) => {
 						data-hero-deco=""
 						style={{ ...styles.heroDeco, opacity: isDark ? 0.7 : 1 }}
 					>
-						{heroLines(textBox).map((line) => (
+						{lines.map((line) => (
 							<div key={line.key} style={line.style} />
 						))}
+						<div ref={beadRef} data-hero-drip="" style={dripBeadStyle} />
+						<div ref={dropRef} data-hero-drip="" style={dripDropStyle} />
 					</div>
 				)}
 				<div ref={textRef} style={styles.heroInner}>
