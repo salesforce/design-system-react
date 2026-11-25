@@ -113,12 +113,12 @@ const styles = {
 			'linear-gradient(to bottom, transparent, var(--slds-g-color-surface-1, #fff))',
 		pointerEvents: 'none',
 	},
-	// Decorations pinned to the hero's right edge. Their width is the clear
-	// space right of the title and release line (see useDecoSpace), so they
-	// never sit under the text.
+	// Lines hanging from the hero's top edge (see HERO_LINES). Ends above
+	// the hero fade so they never reach the page body.
 	heroDeco: {
 		position: 'absolute',
 		top: 0,
+		left: 0,
 		right: 0,
 		bottom: HERO_FADE,
 		overflow: 'hidden',
@@ -391,12 +391,12 @@ const useHeroGlow = (ref, isDark, reduceMotion) => {
 	}, [ref, isDark, reduceMotion]);
 };
 
-// Right-edge hero decorations: seven thin lines in the image's gradient
-// colors. The gaps between them are golden-ratio steps (18px × φⁿ, n = 0–3)
-// in an irregular, fixed order, so the spacing looks hand-placed but stays
-// stable between renders. `needs` is the clear width (px, from the hero's
-// right edge) a line takes up, so each one only renders when it fits beside
-// the text; at narrower widths the lines nearest the edge stay, down to three.
+// Hero decorations: 17 thin lines in the image's gradient colors, hanging
+// from the hero's top edge across its full width. The gaps between them are
+// golden-ratio steps (φⁿ, n = 0–3) in an irregular, fixed order, scaled to
+// the hero width, and each line has its own thickness and length, so the set
+// looks hand-placed but is the same on every render. Lines over the text
+// column stop short of the title; lines beside it run further down.
 const HERO_LINE_COLORS = [
 	'#ffb37a',
 	'#ff8f8f',
@@ -407,41 +407,32 @@ const HERO_LINE_COLORS = [
 	'#7fb4ff',
 ];
 const PHI = (1 + Math.sqrt(5)) / 2;
-// Powers of φ for each gap, from the rightmost line inward.
-const HERO_GAP_STEPS = [1, 2, 0, 3, 1, 2];
-// Distance of each line from the hero's right edge, rightmost first.
-const HERO_LINE_OFFSETS = HERO_GAP_STEPS.reduce(
-	(offsets, step) => [
-		...offsets,
-		offsets[offsets.length - 1] + Math.round(18 * PHI ** step),
-	],
-	[20]
-);
-const HERO_MIN_DECO = HERO_LINE_OFFSETS[2] + 2;
-const HERO_SHAPES = HERO_LINE_COLORS.map((color, i) => {
-	const right = HERO_LINE_OFFSETS[HERO_LINE_COLORS.length - 1 - i];
-	return {
-		key: `line-${i}`,
-		needs: right + 2,
-		style: {
-			position: 'absolute',
-			right,
-			top: `${18 + (i % 3) * 7}%`,
-			bottom: `${14 + ((i + 1) % 3) * 6}%`,
-			width: 2,
-			borderRadius: 1,
-			backgroundColor: color,
-			opacity: 0.75,
-		},
-	};
-});
+// Powers of φ for the 16 gaps, left to right.
+const HERO_GAP_STEPS = [1, 0, 2, 1, 3, 0, 1, 2, 0, 1, 3, 1, 0, 2, 1, 2];
+// Per line: thickness (px), color index, and length (0–1 of the room it has).
+const HERO_LINE_WIDTHS = [2, 1, 3, 1, 2, 2, 1, 3, 1, 2, 1, 3, 2, 1, 2, 1, 3];
+const HERO_LINE_HUES = [0, 3, 5, 1, 6, 2, 4, 0, 5, 3, 1, 6, 4, 2, 5, 0, 3];
+const HERO_LINE_LENGTHS = [
+	0.7, 0.45, 1, 0.6, 0.85, 0.5, 0.95, 0.55, 0.8, 0.4, 0.9, 0.65, 1, 0.5, 0.75,
+	0.6, 0.9,
+];
+// Each line's x position as a fraction of the hero width (4%–96%).
+const HERO_LINE_X = (() => {
+	const xs = HERO_GAP_STEPS.reduce(
+		(acc, step) => [...acc, acc[acc.length - 1] + PHI ** step],
+		[0]
+	);
+	const span = xs[xs.length - 1];
+	return xs.map((x) => 0.04 + (x / span) * 0.92);
+})();
+// Clear space kept between a line and the text.
+const DECO_GAP = 16;
 
-// Clear width between the hero text's right edge (the inked extent of the
-// title and release line, not their full-width boxes) and the hero's right
-// edge, less a gap. 0 when there's no room for the decorations.
-const DECO_GAP = 32;
-const useDecoSpace = (textRef) => {
-	const [space, setSpace] = React.useState(0);
+// Measures the hero and the inked extent of its title and release line (not
+// their full-width boxes), relative to the hero, so the lines can be laid out
+// around the text. null until measured.
+const useHeroTextBox = (textRef) => {
+	const [box, setBox] = React.useState(null);
 	React.useLayoutEffect(() => {
 		const text = textRef.current;
 		const hero = text?.parentElement;
@@ -449,14 +440,19 @@ const useDecoSpace = (textRef) => {
 			return undefined;
 		}
 		const measure = () => {
+			const heroRect = hero.getBoundingClientRect();
 			const range = document.createRange();
-			let textRight = 0;
-			Array.from(text.children).forEach((child) => {
+			const rects = Array.from(text.children).map((child) => {
 				range.selectNodeContents(child);
-				textRight = Math.max(textRight, range.getBoundingClientRect().right);
+				return range.getBoundingClientRect();
 			});
-			const free = hero.getBoundingClientRect().right - textRight - DECO_GAP;
-			setSpace(free >= HERO_MIN_DECO ? Math.floor(free) : 0);
+			setBox({
+				width: heroRect.width,
+				height: heroRect.height,
+				left: Math.min(...rects.map((r) => r.left)) - heroRect.left,
+				right: Math.max(...rects.map((r) => r.right)) - heroRect.left,
+				top: Math.min(...rects.map((r) => r.top)) - heroRect.top,
+			});
 		};
 		measure();
 		const observer = new ResizeObserver(measure);
@@ -464,7 +460,37 @@ const useDecoSpace = (textRef) => {
 		observer.observe(text);
 		return () => observer.disconnect();
 	}, [textRef]);
-	return space;
+	return box;
+};
+
+// Positions and sizes the lines for a measured hero (see useHeroTextBox).
+const heroLines = (box) => {
+	const overTextRoom = box.top - DECO_GAP;
+	const sideRoom = box.height - HERO_FADE - DECO_GAP;
+	return HERO_LINE_X.map((fraction, i) => {
+		const width = HERO_LINE_WIDTHS[i];
+		const left = Math.round(fraction * box.width - width / 2);
+		const overText =
+			left + width > box.left - DECO_GAP && left < box.right + DECO_GAP;
+		// Over the text: 40–100% of the space above the title. Beside it: from
+		// the title's top down to as far as the fade, by the line's length.
+		const height = overText
+			? overTextRoom * (0.4 + 0.6 * HERO_LINE_LENGTHS[i])
+			: box.top + (sideRoom - box.top) * HERO_LINE_LENGTHS[i];
+		return {
+			key: `line-${i}`,
+			style: {
+				position: 'absolute',
+				top: 0,
+				left,
+				width,
+				height: Math.max(0, Math.round(height)),
+				borderRadius: `0 0 ${width}px ${width}px`,
+				backgroundColor: HERO_LINE_COLORS[HERO_LINE_HUES[i]],
+				opacity: 0.75,
+			},
+		};
+	});
 };
 
 // `scheme` is the Color Scheme toolbar global (light, dark or system), the
@@ -476,7 +502,7 @@ const IntroductionPage = ({ scheme = 'light' }) => {
 	const imageRef = React.useRef(null);
 	useHeroGlow(imageRef, isDark, reduceMotion);
 	const textRef = React.useRef(null);
-	const decoSpace = useDecoSpace(textRef);
+	const textBox = useHeroTextBox(textRef);
 
 	return (
 		<div style={styles.page}>
@@ -493,21 +519,15 @@ const IntroductionPage = ({ scheme = 'light' }) => {
 					style={{ ...styles.heroImage, filter: heroFilter(isDark) }}
 				/>
 				<div aria-hidden="true" style={styles.heroFade} />
-				{decoSpace > 0 && (
+				{textBox && (
 					<div
 						aria-hidden="true"
 						data-hero-deco=""
-						style={{
-							...styles.heroDeco,
-							width: decoSpace,
-							opacity: isDark ? 0.7 : 1,
-						}}
+						style={{ ...styles.heroDeco, opacity: isDark ? 0.7 : 1 }}
 					>
-						{HERO_SHAPES.filter((shape) => shape.needs <= decoSpace).map(
-							(shape) => (
-								<div key={shape.key} style={shape.style} />
-							)
-						)}
+						{heroLines(textBox).map((line) => (
+							<div key={line.key} style={line.style} />
+						))}
 					</div>
 				)}
 				<div ref={textRef} style={styles.heroInner}>
