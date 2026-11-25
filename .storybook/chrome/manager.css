@@ -1,0 +1,203 @@
+/*
+ * Storybook manager chrome, styled after the Lightning Design System 2 site.
+ *
+ * Loaded by .storybook/manager-head.html, so it applies to the manager page
+ * only (sidebar, toolbar, addon panel) and never to the preview iframe.
+ *
+ * Selectors use Storybook's stable hooks (ids, `data-*` attributes and the
+ * `sidebar-*` / `sb-bar` class names), never its generated emotion classes.
+ */
+
+:root {
+	--dsr-chrome-bg: #fff;
+	--dsr-chrome-navy: #03234d;
+	--dsr-chrome-heading: #032d60;
+	--dsr-chrome-brand: #0176d3;
+	--dsr-chrome-brand-dark: #014486;
+	--dsr-chrome-hover: #eef4ff;
+	--dsr-chrome-border: #e5e5e5;
+	--dsr-chrome-muted: #5c5c5c;
+	--dsr-chrome-font:
+		system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+		'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Dark: manager.js mirrors the Color Scheme toolbar global onto
+   <html data-dsr-scheme> (light, dark or system), so the chrome follows the
+   same setting as the canvas. Values are SLDS 2's dark tokens (surface-1,
+   on-surface-1/2/3, accent-2/3, border-1). Plain overrides rather than
+   light-dark(), because Storybook's layout sets its own color-scheme. */
+html[data-dsr-scheme='dark'] {
+	--dsr-chrome-bg: #242424;
+	--dsr-chrome-navy: #e5e5e5;
+	--dsr-chrome-heading: #d8e6fe;
+	--dsr-chrome-brand: #7cb1fe;
+	--dsr-chrome-brand-dark: #a8cbff;
+	--dsr-chrome-hover: #1f2a3d;
+	--dsr-chrome-border: #444;
+	--dsr-chrome-muted: #aeaeae;
+}
+
+@media (prefers-color-scheme: dark) {
+	html[data-dsr-scheme='system'] {
+		--dsr-chrome-bg: #242424;
+		--dsr-chrome-navy: #e5e5e5;
+		--dsr-chrome-heading: #d8e6fe;
+		--dsr-chrome-brand: #7cb1fe;
+		--dsr-chrome-brand-dark: #a8cbff;
+		--dsr-chrome-hover: #1f2a3d;
+		--dsr-chrome-border: #444;
+		--dsr-chrome-muted: #aeaeae;
+	}
+}
+
+/* Sidebar ---------------------------------------------------------------- */
+
+.sidebar-container {
+	background: var(--dsr-chrome-bg);
+	border-right: 1px solid var(--dsr-chrome-border);
+	color: var(--dsr-chrome-navy);
+	font-family: var(--dsr-chrome-font);
+}
+
+/* Brand: the title text ("Design System <i>for</i> React") is the theme's
+   brandTitle in manager.js; this adds the Salesforce cloud before it. */
+.sidebar-header {
+	min-height: 56px;
+}
+
+.sidebar-header a[href]:not([tabindex='0']) {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	color: var(--dsr-chrome-heading);
+	text-decoration: none;
+	/* Same face as the Lightning Design System for React site's title:
+	   Salesforce Sans where installed (its license doesn't allow shipping it). */
+	font-family:
+		'Salesforce Sans',
+		system-ui,
+		-apple-system,
+		'Segoe UI',
+		Roboto,
+		Arial,
+		sans-serif;
+	/* 15px keeps the four-word title on one line beside the gear at the
+	   default sidebar width. */
+	font-size: 15px;
+	font-weight: 500;
+	white-space: nowrap;
+	line-height: 1.2;
+}
+
+.sidebar-header a[href]:not([tabindex='0'])::before {
+	content: '';
+	flex: none;
+	width: 36px;
+	height: 25px;
+	background: url('../assets/images/logo.svg') left center / contain no-repeat;
+}
+
+/* Search */
+#storybook-explorer-searchfield {
+	font-family: var(--dsr-chrome-font);
+	color: var(--dsr-chrome-navy);
+}
+
+/* Section headers ("COMPONENTS"), like the site's nav section labels. */
+.sidebar-subheading {
+	color: var(--dsr-chrome-muted);
+	letter-spacing: 0.08em;
+}
+
+.sidebar-subheading button {
+	color: inherit;
+	font-family: var(--dsr-chrome-font);
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: inherit;
+	text-transform: uppercase;
+}
+
+/* Nav items */
+.sidebar-item {
+	border-radius: 4px;
+	color: var(--dsr-chrome-navy);
+	font-family: var(--dsr-chrome-font);
+}
+
+/* Hide the node-type icons (folder, component, story, docs). The expand
+   chevron has no `type` attribute, so it stays. */
+.sidebar-item svg[type] {
+	display: none;
+}
+
+/* With the 12px icon gone, the 8px expand caret sat high (its wrapper is
+   top-aligned with a 2px offset sized for the icon). Center it on the text. */
+.sidebar-item > button {
+	align-items: center;
+}
+
+.sidebar-item > button > div:first-child {
+	margin-top: 0;
+}
+
+/* Story and docs rows under a component: Storybook indents them 40px (+18px
+   per extra level) through a depth-computed padding. Pull the content 10px
+   left (40 -> 30) at every depth by offsetting the (now empty) icon slot, so
+   the link's own box and focus ring stay inside the row. */
+.sidebar-item[data-parent-id] > a > div:first-child {
+	margin-left: -10px;
+}
+
+.sidebar-item:hover {
+	background: var(--dsr-chrome-hover);
+}
+
+.sidebar-item[data-selected='true'],
+.sidebar-item[data-selected='true']:hover {
+	/* Storybook paints the selection solid blue; use the site's light tint. */
+	background: var(--dsr-chrome-hover) !important;
+	box-shadow: inset 3px 0 0 var(--dsr-chrome-brand);
+	/* Square left corners so the accent bar is a straight edge, not curved. */
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+.sidebar-item[data-selected='true'],
+.sidebar-item[data-selected='true'] a,
+.sidebar-item[data-selected='true'] svg {
+	color: var(--dsr-chrome-brand-dark) !important;
+	font-weight: 700;
+}
+
+/* First-level links (no parent, e.g. "Get started") stay bold when not
+   selected, so they read as top-level entries next to the section headings. */
+.sidebar-item:not([data-parent-id]) > a {
+	font-weight: 700;
+}
+
+/* "Open context menu" button: Storybook paints a hover fill plus a 5px
+   box-shadow glow behind it, which shows as a gradient halo over the row. */
+.sidebar-item [data-testid='context-menu'] {
+	background: transparent !important;
+	box-shadow: none !important;
+}
+
+.sidebar-item[data-selected='true'] [data-testid='context-menu'] {
+	color: var(--dsr-chrome-brand-dark) !important;
+}
+
+/* Toolbar and addon panel -------------------------------------------------- */
+
+.sb-bar {
+	background: var(--dsr-chrome-bg);
+	border-bottom: 1px solid var(--dsr-chrome-border);
+	box-shadow: none;
+	font-family: var(--dsr-chrome-font);
+}
+
+#storybook-panel-root {
+	border-top: 1px solid var(--dsr-chrome-border);
+	font-family: var(--dsr-chrome-font);
+}

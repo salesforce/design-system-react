@@ -1,0 +1,6 @@
+<!-- Storybook injects this file into the manager page only (sidebar, toolbar,
+     addon panel), never into the preview iframe, so these styles cannot reach
+     the components or the canvas. The stylesheet is served from
+     .storybook/chrome via the staticDirs entry in main.ts; the relative href
+     keeps it working under the GitHub Pages subpath. -->
+<link rel="stylesheet" href="./storybook-chrome/manager.css" />

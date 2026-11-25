@@ -2,7 +2,9 @@
  * Per-theme SLDS 2 stylesheet paths for Storybook.
  *
  * All files are shipped by the npm package `@salesforce-ux/design-system-2`,
- * served from `/slds2` (see main.ts staticDirs).
+ * served from `./slds2` (see main.ts staticDirs). Paths are relative to
+ * iframe.html so they also work under a subpath such as GitHub Pages'
+ * /design-system-react/.
  *
  * - Lightning Blue and Cosmos are single bundled builds (tokens + everything).
  * - Pearl is a *sub-theme*: an overlay of brand-token overrides layered ON TOP of
@@ -16,16 +18,16 @@
 export const THEMES = {
 	'lightning-blue': {
 		title: 'Lightning Blue',
-		href: '/slds2/bundled/slds2.lightning-blue.css',
+		href: './slds2/bundled/slds2.lightning-blue.css',
 	},
 	cosmos: {
 		title: 'Cosmos (SLDS2)',
-		href: '/slds2/bundled/slds2.cosmos.css',
+		href: './slds2/bundled/slds2.cosmos.css',
 	},
 	pearl: {
 		title: 'Pearl (Alpha)',
-		href: '/slds2/bundled/slds2.cosmos.css',
-		overlay: '/assets/pearl-theme/pearl.css',
+		href: './slds2/bundled/slds2.cosmos.css',
+		overlay: './assets/pearl-theme/pearl.css',
 	},
 };
 
